@@ -18,9 +18,9 @@
   <description>JiBX</description>
 
   <scm>
-    <url>http://jibx.svn.sourceforge.net/viewvc/jibx/trunk/schema-library/</url>
-    <connection>scm:svn:https://jibx.svn.sourceforge.net/svnroot/jibx/trunk/schema-library/</connection>
-    <developerConnection>scm:svn:https://jibx.svn.sourceforge.net/svnroot/jibx/trunk/schema-library/</developerConnection>
+    <url>https://github.com/jibx/schema-library</url>
+    <connection>scm:git:git://github.com/jibx/schema-library.git</connection>
+    <developerConnection>scm:git:git@github.com:jibx/schema-library.git</developerConnection>
   </scm>
 
   <modules>
