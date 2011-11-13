@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jibx.config</groupId>
+    <artifactId>jibx-parent</artifactId>
+    <version>3-SNAPSHOT</version>
+    <relativePath>../jibx-parent</relativePath>
+  </parent>
+
+  <groupId>org.jibx.schema.config</groupId>
+  <artifactId>schema-library-reactor</artifactId>
+  <version>1.0.2-SNAPSHOT</version>
+  
+  <packaging>pom</packaging>
+  <name>schema-library-reactor</name>
+  <description>JiBX</description>
+
+  <scm>
+    <url>http://jibx.svn.sourceforge.net/viewvc/jibx/trunk/schema-library/</url>
+    <connection>scm:svn:https://jibx.svn.sourceforge.net/svnroot/jibx/trunk/schema-library/</connection>
+    <developerConnection>scm:svn:https://jibx.svn.sourceforge.net/svnroot/jibx/trunk/schema-library/</developerConnection>
+  </scm>
+
+  <modules>
+    <module>schema-library-parent</module>
+    <!-- module>schema-utilities</module -->
+
+    <!-- module>org.docbook</module -->
+    <!-- module>org.apache.maven</module -->
+    <!-- module>org.hr-xml</module -->
+    <module>org.opentravel</module>
+    <!-- module>org.oasis-open</module -->
+    <!-- module>org.w3</module -->
+    <!-- module>net.webservicex</module -->
+    <!-- module>org.xmlsoap</module -->
+
+    <!-- module>org.jibx</module -->
+  </modules>
+
+</project>

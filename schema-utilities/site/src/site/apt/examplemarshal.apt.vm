@@ -1,0 +1,57 @@
+ -----
+ JiBX Open Schema Project
+ -----
+ Don Corley
+ -----
+ March 4, 2011
+ -----
+
+XML Marshaling and Unmarshaling examples
+
+ The JiBX Schema Library artifacts can be used to manipulate xml.
+ 
+* Maven POM example
+
+ An excellent example of loading an xml file and doing some simple modifications
+ can be found in the project building utility. Here is all you have to do:
+
+ Step 1: Add the schema's maven dependency to your project:
+
++-----+
+<dependency>
+   <groupId>org.jibx.schema.org.apache.maven</groupId>
+   <artifactId>org.jibx.schema.org.apache.maven.maven_v4_0_0</artifactId>
+   <version>${project.version}</version>
+</dependency>
++-----+
+
+ Step 2: Start writing code. As you can see, the code is pretty simple. After
+ I open a inputStream to the POM file, I just unmarshal the document, make some
+ changes, marshal it back to XML and write it.
+  
++-----+
+IBindingFactory jc = BindingDirectory.getFactory(Model.class);
+IUnmarshallingContext unmarshaller = jc.createUnmarshallingContext();
+Model message = (Model)unmarshaller.unmarshalDocument( inStream, URL_ENCODING);
+
+model.setGroupId(groupId);
+model.setArtifactId(artifactId);
+
+IBindingFactory jc = BindingDirectory.getFactory(Model.class);
+IMarshallingContext marshaller = jc.createMarshallingContext();
+marshaller.setIndent(4);
+marshaller.marshalDocument(message, URL_ENCODING, null, out);
++-----+
+
+ You can find the complete source
+ code for this example in the create-jibx-project-utilities maven project.
+
+ If you want a concrete example, get the jibx sample schema project from our
+ {{{http://http://jibx.git.sourceforge.net/git/gitweb.cgi?p=jibx/schema-library;a=tree;f=org.jibx}repository}}.
+ If you don't know how to download from a git tree, just grab the pom file and the java source file
+ from the org.jibx.test.person sub-project. Change the version number of the dependencies to ${project.version},
+ and place them in a directory on your hard drive. Then type:
++-----+
+ mvn install
++-----+
+ Take a look at the source code. It's pretty simple. It shows how to do a simple marshal and unmarshal operation.

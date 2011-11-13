@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <artifactId>schema-library-parent</artifactId>
+        <groupId>org.jibx.schema.config</groupId>
+        <version>1.0.1-SNAPSHOT</version>
+        <relativePath>../../schema-library-parent</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.jibx.schema.org.w3</groupId>
+    <artifactId>org.jibx.schema.org.w3._2005._08.addressing.ws_addr</artifactId>
+    <packaging>bundle</packaging>
+    <name>Schema Library - w3.org - _2005._08.addressing.ws_addr</name>
+    <version>1.0.1-SNAPSHOT</version>
+    <description>www.w3.org/2005/08/addressing/ws-addr.xsd</description>
+    <developers>
+        <developer>
+            <name>Don Corley</name>
+            <email>don@tourgeek.com</email>
+        </developer>
+    </developers>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jibx</groupId>
+                <artifactId>jibx-maven-plugin</artifactId>
+                <inherited>true</inherited>
+                <configuration>
+          <schemaLocation>http://www.w3.org/2005/08/addressing/ws-addr.xsd</schemaLocation>
+        </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

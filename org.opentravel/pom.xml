@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jibx.schema.config</groupId>
+    <artifactId>schema-library-reactor</artifactId>
+    <version>1.0.2-SNAPSHOT</version>
+  </parent>
+  
+  <groupId>org.jibx.schema.org.opentravel</groupId>
+  <artifactId>opentravel-reactor</artifactId>
+  <version>1.0.2-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>opentravel.org</name>
+  <description>Opentravel.org schema library. This is a carefully packaged and tuned binding for the opentravel.org schemas.</description>
+
+  <properties>
+    <link>./opentravel/index.html</link>
+  </properties>
+
+  <modules>
+    <!-- module>_2010B</module -->
+    <module>_2011A</module>
+  </modules>  
+
+</project>

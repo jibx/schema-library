@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <artifactId>schema-utilities-reactor</artifactId>
+    <groupId>org.jibx.schema.config</groupId>
+    <version>1.0.1-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>create-jibx-project-utilities</artifactId>
+  <packaging>bundle</packaging>
+
+  <name>create-jibx-project-utilities</name>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <Bundle-ManifestVersion>2</Bundle-ManifestVersion>
+            <Main-Class>org.jibx.schema.utility.createjibxprojectutilities.CreateJibxProject</Main-Class>
+            <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
+            <Private-Package>*;version=${project.version}</Private-Package>
+            <Bundle-Version>${project.version}</Bundle-Version>
+          </instructions>
+        </configuration>
+      </plugin>
+    </plugins>
+
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+  </build>
+
+  <dependencies>
+      <dependency>
+        <groupId>org.jibx.schema.org.apache.maven</groupId>
+        <artifactId>org.jibx.schema.org.apache.maven.maven_v4_0_0</artifactId>
+        <version>1.0.1-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jibx.schema.org.oasis_open</groupId>
+        <artifactId>org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog</artifactId>
+        <version>1.0.1-SNAPSHOT</version>
+      </dependency>
+  </dependencies>
+
+</project>

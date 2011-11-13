@@ -1,0 +1,170 @@
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+  <properties>
+    <title>JiBX Schema Library Project</title>
+    <author email="don@tourgeek.com">Don Corley</author>
+  </properties>
+
+  <!-- Optional HEAD element, which is copied as is into the XHTML <head> element -->
+  <head>
+    <meta name="description" content="JiBX Schema Library Project"/>
+    <meta name="keywords" content="JiBX Schema Library Project, Java Schema binding, JiBX, Open Source"/>
+  </head>
+
+  <body>
+
+     <section name="JiBX Schema Library Project Tools">
+
+      <p><b>JiBX Schema Library Project</b> is collection of pre-built <a href="http://jibx.org">JiBX</a> java schema bindings.</p>
+      
+      <p>Contributing to the Schema Library is easy. We have several great tools.
+      You can also hire a schema analyst to do it for you. The <a href="team-list.html">JiBX team</a> are experts in JiBX and schema
+      analysis.
+      </p>
+      
+     <subsection name="Schema building tools">
+
+     <p>There are several great tools available for building your schema library.</p>
+     
+     <ul>
+     <li>The <a href="#JiBX project building tool">JiBX project building tool</a>. Simple, just supply the schema location or schema list.</li>
+     <li>The <a href="../jibx-maven-plugin">jibx-maven-plugin</a>. When you want to optimize your schema bindings.</li>
+     </ul>
+     
+     </subsection>
+
+     <subsection name="JiBX project building tool">
+
+     <p>The JiBX project building tool can be run several ways:</p>
+     
+     <ul>
+     <li><a href="#JiBX standalone project building tool">A standalone gui java application</a></li>
+     <li><a href="#JiBX standalone project building tool">A standalone java application</a></li>
+     <li><a href="#Running the JiBX project building tool as a maven plugin">A maven plugin.</a></li>
+     </ul>
+     
+     <p>Whichever tools you use, the parameters are the same.<br/>
+     For a single schema:</p>
+<table>
+<tr><th>Parameter</th><th>Description</th></tr>
+<tr><td>schemaLocation</td><td>The URL of the schema.</td></tr>
+<tr><td>parentProjectDirectory</td><td>The parent project name (Optional). If you want this project added as a sub-project.</td></tr>
+<tr><td>description</td><td>The schema description.<br/>Try to format your description as follows: 'Schema Library - (site url) - (Schema description)'.</td></tr>
+<tr><td>developerName</td><td>Your name.</td></tr>
+<tr><td>developerEmail</td><td>Your email.</td></tr>
+</table>
+     
+     <p>For multiple schema from a schema catalog:</p>
+<table>
+<tr><th>Parameter</th><th>Description</th></tr>
+<tr><td>catalogLocation</td><td>The url of the open-oasis schema catalog.</td></tr>
+<tr><td>projectName</td><td>The name of the schema collection (typically the main project url).</td></tr>
+<tr><td>projectDescription</td><td>The description of the schema collection.</td></tr>
+<tr><td>organizationName</td><td>The organization name.</td></tr>
+<tr><td>organizationURL</td><td>The organization URL.</td></tr>
+<tr><td>targetDomain</td><td>This filter will only include the catalog schema residing at this domain (optional).</td></tr>
+<tr><td>developerName</td><td>Your name.</td></tr>
+<tr><td>developerEmail</td><td>Your email.</td></tr>
+</table>
+     
+     </subsection>
+
+     <subsection name="JiBX standalone project building tool">
+
+     <p>First, <a href="http://repo2.maven.org/maven2/org/jibx/schema/config/create-jibx-project/${project.version}/create-jibx-project-${project.version}.jar"> download</a> the 'create-jibx-project'
+     utility jar file.</p>
+     
+     <p>If you don't supply any parameters, the <strong>gui</strong> tool will start up automatically. Enter the
+     on-screen parameters and press the build button. Just double-click the downloaded jar file or type:</p>
+
+     <source>
+ java -jar create-jibx-project-${project.version}.jar
+     </source>
+
+     <p>The easiest way is setup a new project is to supply the location of a schema.</p>
+
+     <source>
+ java -jar create-jibx-project-${project.version}.jar schemaLocation=http://maven.apache.org/maven-v4_0_0.xsd
+     </source>
+     
+     <p>Give this example a try. After you run this program change your directory to the newly
+     created maven project directory and build the project:<br/>
+     <source>
+cd org.jibx.schema.org.apache.maven.maven_v4_0_0
+mvn install<br/>
+     </source>
+     You have just created a java schema binding for a maven POM xml file.</p>
+
+     <p>If you want to submit your project to the JiBX schema library, you will need to supply
+     a few more pieces of information:</p>
+     
+     <source>
+ java -jar create-jibx-project-${project.version}.jar \
+ schemaLocation=http://maven.apache.org/maven-v4_0_0.xsd \
+ description="Schema Library - maven.apache.org - Maven POM version 4.0 schema" \
+ developerName="Don Corley" \
+ developerEmail="don@tourgeek.com"
+     </source>
+     
+     <p>If you have a oasis-open formatted catalog listing several schema, this tool will create a main project with a sub-project for
+     each schema:</p>
+     
+     <source>
+ java -jar create-jibx-project-${project.version}.jar \
+ catalogLocation=http://schemas.stylusstudio.com/maven/catalogs/catalog.xml \
+ targetDomain=maven.apache.org \
+ projectName="maven.apache.org" \
+ projectDescription="Maven POM schema bindings." \
+ organizationName="Apache Maven" \
+ organizationURL="http://maven.apache.org" \
+ developerName="Don Corley" \
+ developerEmail="don@tourgeek.com"
+     </source>
+
+     <p>If you want to add more schema to a currently existing main project, add the
+     parentProjectDirectory parameter:</p>
+     
+     <source>
+ java -jar create-jibx-project-${project.version}.jar \
+ schemaLocation=http://maven.apache.org/maven-v4_0_0.xsd \
+ parentProjectDirectory=org.apache.maven \
+ description="Schema Library - maven.apache.org - Maven POM version 4.0 schema" \
+ developerName="Don Corley" \
+ developerEmail="don@tourgeek.com"
+     </source>
+     
+     </subsection>
+     
+     <subsection name="Running the JiBX project building tool as a maven plugin">
+
+     <p>To run the JiBX project building tool as a maven plugin, use the same parameters as the
+     standalone example. For single schema bindings, use the 'generate' goal. Remember to add
+     '-D' to the start of your parameters.</p>
+
+     <source>
+mvn org.jibx.schema.config:schema-maven-plugin:${project.version}:generate -DschemaLocation=http://maven.apache.org/maven-v4_0_0.xsd
+     </source>
+     
+     <p>For multiple schema bindings, use the 'scan-catalog' goal.</p>
+
+     <source>
+mvn org.jibx.schema.config:schema-maven-plugin:${project.version}:scan-catalog \
+ -DcatalogLocation=http://schemas.stylusstudio.com/maven/catalogs/catalog.xml \
+ -DtargetDomain=maven.apache.org \
+ -DprojectName="maven.apache.org" \
+ -DprojectDescription="Maven POM schema bindings." \
+ -DorganizationName="Apache Maven" \
+ -DorganizationURL="http://maven.apache.org" \
+ -DdeveloperName="Don Corley" \
+ -DdeveloperEmail="don@tourgeek.com"
+     </source>
+     
+    </subsection>
+
+    </section>
+
+  </body>
+
+</document>

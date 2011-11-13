@@ -1,0 +1,71 @@
+ -----
+ JiBX Open Schema Project
+ -----
+ Don Corley
+ -----
+ March 4, 2011
+ -----
+
+OSGi examples
+
+ You won't believe how easy your deployments will be with OSGi.
+ 
+* OSGi example
+
+ All of the Schema Library's artifacts are included in the JiBX OSGI obr index located at:
+ 
++-----+
+http://jibx.org/repository.xml
++-----+
+ 
+ Step 1: Download {{{http://felix.apache.org/}Apache felix}}. Any obr capable OSGi implementation
+ will work (glassfish, etc).
+ 
+ Step 2: Start your OSGi container. Change to the felix directory and type:
+
++-----+
+java -jar bin/felix.jar
++-----+
+
+ You should see the gogo prompt "g!"
+
+ Step 3: Add the jibx repository and type list to see all the OSGi bundles available.
+  
++-----+
+g! repos add http://jibx.org/repository.xml
+g! list
++-----+
+
+ Step 4: Deploy the test bundle and run it. OSGi will automagically deploy all the dependent bundles
+ 
+  
++-----+
+g! deploy -s 'Schema Library - jibx.org - Address Schema Test'
++-----+
+
+ You should see output similar to this. Amazing.
+ 
++-----+
+Target resource(s):
+-------------------
+   Schema Library - jibx.org - Address Schema Test (2.0.0.SNAPSHOT)
+
+Optional resource(s):
+---------------------
+   Schema Library - jibx.org - Address Schema (1.2.4.SNAPSHOT)
+   jibx-run - JiBX runtime (1.2.4.SNAPSHOT)
+   Schema Library - jibx.org - Person Schema (1.2.4.SNAPSHOT)
+   Joda-Time (1.6.2)
+Deploying...starting
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:address xmlns:tns="http://www.jibx.org/sampleschema/address">
+<tns:person xmlns:tns="http://www.jibx.org/sampleschema/person">
+<tns:firstName>Don</tns:firstName>
+<tns:lastName>Corley</tns:lastName></tns:person>
+<tns:city>Monrovia, CA, USA</tns:city>
+</tns:address>
+Test ran great!
+done.
++-----+
+
+ 

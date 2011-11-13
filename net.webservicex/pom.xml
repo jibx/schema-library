@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>schema-library-parent</artifactId>
+        <groupId>org.jibx.schema.config</groupId>
+        <version>1.0.1-SNAPSHOT</version>
+        <relativePath>../schema-library-parent</relativePath>
+    </parent>
+
+  <groupId>org.jibx.schema.net.webservicex</groupId>
+  <artifactId>net.webservicex-reactor</artifactId>
+  <version>1.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>webservicex.net</name>
+  <description>webservicex.net schema library</description>
+
+  <modules>
+    <module>transform</module>
+    <module>net.webservicex.stockquote</module>
+    <module>net.webservicex.currencyconvertor</module>
+  </modules>
+
+</project>

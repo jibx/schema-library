@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jibx.schema.config</groupId>
+    <artifactId>schema-library-reactor</artifactId>
+    <version>1.0.2-SNAPSHOT</version>
+  </parent>
+
+  <version>1.0.2-SNAPSHOT</version>
+  <groupId>org.jibx.schema.config</groupId>
+  <artifactId>schema-library-parent</artifactId>
+
+  <packaging>pom</packaging>
+  <name>schema-library-parent - schema library parent project</name>
+  <description>schema library parent shared settings</description>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.jibx</groupId>
+        <artifactId>jibx-maven-plugin</artifactId>
+        <inherited>true</inherited>
+
+        <executions>
+          <execution>
+            <id>generate-java-code-from-schema</id>
+            <goals>
+              <goal>schema-codegen</goal>
+            </goals>
+          </execution>
+          <execution>
+              <id>compile-binding</id>
+              <goals>
+                  <goal>bind</goal>
+              </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <options>
+            <package>${project.artifactId}</package>
+          </options>
+         <schemaBindingDirectory>target/generated-sources</schemaBindingDirectory>
+         <includeSchemaBindings>
+           <includeSchemaBinding>binding.xml</includeSchemaBinding>
+         </includeSchemaBindings>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <Include-Resource>META-INF/binding.xml=${basedir}/target/generated-sources/binding.xml</Include-Resource>
+            <Export-Package>${project.artifactId}.*;version=${project.version}</Export-Package>    <!-- Override jibxPackage or jibxPackageExport with actual packages -->
+          </instructions>
+        </configuration>
+      </plugin>
+
+       <!-- If you want to place the binding file in a separate jar -->
+      <!-- plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.3.1</version>
+        <executions>
+          <execution>
+            <id>add-source</id>
+            <phase>package</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+        <configuration>
+          <classifier>binding</classifier>
+          <classesDirectory>target/generated-sources</classesDirectory>
+          <includes><include>binding.xml</include></includes>
+        </configuration>
+        </execution>
+        </executions>
+      </plugin -->
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.jibx</groupId>
+      <artifactId>jibx-run</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jibx</groupId>
+      <artifactId>jibx-extras</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.core</artifactId>
+      <scope>provided</scope> <!-- This better be provided -->
+    </dependency>
+  </dependencies>
+  
+</project>

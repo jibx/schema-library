@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <artifactId>schema-library-parent</artifactId>
+        <groupId>org.jibx.schema.config</groupId>
+        <version>1.0.1-SNAPSHOT</version>
+        <relativePath>../schema-library-parent</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.jibx.schema.org.xmlsoap.schemas</groupId>
+    <artifactId>org.xmlsoap.schemas</artifactId>
+    <packaging>pom</packaging>
+    <name>xmlsoap.org</name>
+    <version>1.0.1-SNAPSHOT</version>
+    <description>xmlsoap.org Schema bindings.</description>
+    <developers>
+        <developer>
+            <name>Don Corley</name>
+            <email>don@tourgeek.com</email>
+        </developer>
+    </developers>
+    <organization>
+        <name>xmlsoap.org</name>
+        <url>http://www.xmlsoap.org</url>
+    </organization>
+    <modules>
+        <!-- module>org.jibx.schema.org.xmlsoap.schemas.soap.encoding.default</module>
+        <module>org.jibx.schema.org.xmlsoap.schemas.soap.envelope.default</module>
+        <module>org.jibx.schema.org.xmlsoap.schemas.ws._2002._04.content_type.default</module>
+        <module>org.jibx.schema.org.xmlsoap.schemas.ws._2002._04.dime.wsdl.default</module>
+        <module>org.jibx.schema.org.xmlsoap.schemas.ws._2002._04.reference.default</module -->
+        <module>org.jibx.schema.org.xmlsoap.schemas.ws._2002._07.utility.utility</module>
+        <!-- module>org.jibx.schema.org.xmlsoap.schemas.ws._2003._06.utility.utility</module -->
+        <module>org.jibx.schema.org.xmlsoap.schemas.wsdl</module>
+        <module>org.jibx.schema.org.xmlsoap.schemas.wsdl._2003_02_11</module>
+        <!-- module>org.jibx.schema.org.xmlsoap.schemas.wsdl.soap._2003_02_11</module -->
+    </modules>
+</project>

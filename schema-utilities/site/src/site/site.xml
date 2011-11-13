@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="JiBX" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:pom="http://maven.apache.org/POM/4.0.0">
+<bannerLeft>
+<name>schema-library</name>
+<href>http://jibx.org/schema-library/</href>
+</bannerLeft>
+<bannerRight>
+<src>http://sourceforge.net/sflogo.php?group_id=69358&amp;type=5</src>
+<href>http://sourceforge.net/</href>
+</bannerRight>
+<body>
+<links>
+<item name="JiBX Home Page" href="../index.html"/>
+<item name="SourceForge Page" href="http://www.sourceforge.net/projects/jibx/"/>
+<item name="Mailing Lists" href="http://jibx.sourceforge.net/mail-lists.html"/>
+<item name="Wiki" href="http://wiki.jibx.org/"/>
+<item name="Bugs" href="http://jibx.sourceforge.net/bugs.html"/>
+<item name="Downloads" href="http://sourceforge.net/project/showfiles.php?group_id=69358"/>
+</links>
+<menu name="Main Project">
+<item name="JiBX" href="../index.html"/>
+</menu>
+<menu name="Overview">
+<item name="Introduction" href="./index.html"/>
+</menu>
+<menu name="Adding your schema">
+<item name="Tools" href="./tools.html"/>
+<item name="Contributing" href="./contributing.html"/>
+<item name="Optimizing" href="./optimizing.html"/>
+</menu>
+<menu name="Example">
+<item name="Marshal and Unmarshal" href="./examplemarshal.html"/>
+<item name="OSGi deployment" href="./exampleosgi.html"/>
+<item name="Eclipse" href="./opentravel/index.html"/>
+</menu>
+<menu name="Schema library">
+<item name="docbook.org" href="./site.html#docbook.org" collapse="true">
+<item name="Schema Library - docbook.org - 5_0"/>
+</item>
+<item name="maven.apache.org" href="./site.html#maven.apache.org" collapse="true">
+<item name="Schema Library - maven.apache.org - v3_0_0"/>
+<item name="Schema Library - maven.apache.org - v4_0_0"/>
+</item>
+<item name="hr-xml.org" href="./site.html#hr-xml.org" collapse="true">
+<item name="Schema Library - hr-xml.org - 2.4 - AssessmentCancelRequest"/>
+<item name="Schema Library - hr-xml.org - 2.4 - AssessmentCatalog"/>
+<item name="Schema Library - hr-xml.org - 2.4 - AssessmentCatalogQuery"/>
+<item name="Schema Library - hr-xml.org - 2.4 - AssessmentOrderAcknowledgement"/>
+<item name="Schema Library - hr-xml.org - 2.4 - AssessmentOrderRequest"/>
+<item name="Schema Library - hr-xml.org - 2.4 - AssessmentResult"/>
+<item name="Schema Library - hr-xml.org - 2.4 - AssessmentStatusRequest"/>
+<item name="Schema Library - hr-xml.org - 2.4 - Assignment"/>
+<item name="Schema Library - hr-xml.org - 2.4 - BackgroundCheck"/>
+<item name="Schema Library - hr-xml.org - 2.4 - BackgroundReports"/>
+<item name="Schema Library - hr-xml.org - 2.4 - Candidate"/>
+<item name="Schema Library - hr-xml.org - 2.4 - Credit"/>
+<item name="Schema Library - hr-xml.org - 2.4 - ExerciseConfirmation"/>
+<item name="Schema Library - hr-xml.org - 2.4 - ExerciseRequest"/>
+<item name="Schema Library - hr-xml.org - 2.4 - HumanResource"/>
+<item name="Schema Library - hr-xml.org - 2.4 - IndicativeBatch"/>
+<item name="Schema Library - hr-xml.org - 2.4 - IndicativeData"/>
+<item name="Schema Library - hr-xml.org - 2.4 - Invoice"/>
+<item name="Schema Library - hr-xml.org - 2.4 - NewHire"/>
+<item name="Schema Library - hr-xml.org - 2.4 - PayrollBenefitContributions"/>
+<item name="Schema Library - hr-xml.org - 2.4 - PayrollInstructions"/>
+<item name="Schema Library - hr-xml.org - 2.4 - PositionOpening"/>
+<item name="Schema Library - hr-xml.org - 2.4 - RemoveExerciseConfirmations"/>
+<item name="Schema Library - hr-xml.org - 2.4 - RemoveExerciseRequests"/>
+<item name="Schema Library - hr-xml.org - 2.4 - RemoveGrants"/>
+<item name="Schema Library - hr-xml.org - 2.4 - RemoveStockDeposits"/>
+<item name="Schema Library - hr-xml.org - 2.4 - RemoveStockPlanParticipants"/>
+<item name="Schema Library - hr-xml.org - 2.4 - RemoveStockPlans"/>
+<item name="Schema Library - hr-xml.org - 2.4 - RemoveStockSaleConfirmations"/>
+<item name="Schema Library - hr-xml.org - 2.4 - Resume"/>
+<item name="Schema Library - hr-xml.org - 2.4 - StaffingAction"/>
+<item name="Schema Library - hr-xml.org - 2.4 - StaffingOrder"/>
+<item name="Schema Library - hr-xml.org - 2.4 - StockDeposit"/>
+<item name="Schema Library - hr-xml.org - 2.4 - StockPlan"/>
+<item name="Schema Library - hr-xml.org - 2.4 - StockPlanParticipant"/>
+<item name="Schema Library - hr-xml.org - 2.4 - StockPurchasePlanCoverage"/>
+<item name="Schema Library - hr-xml.org - 2.4 - StockSaleConfirmation"/>
+<item name="Schema Library - hr-xml.org - 2.4 - TimeCard"/>
+<item name="Schema Library - hr-xml.org - 2.4 - simpledc20021212"/>
+<item name="Schema Library - hr-xml.org - 2.4 - xml"/>
+<item name="Schema Library - hr-xml.org - 2.4 - xmldsig_core_schema"/>
+</item>
+<item name="opentravel.org" href="./site.html#opentravel.org" collapse="true">
+<item name="Schema Library - opentravel.org 2010B"/>
+<item name="Schema Library - opentravel-schema-reactor - 2010B - opentravel.org schema project"/>
+<item name="opentravel.org schema cache - 2010B"/>
+<item name="Schema Library - org.opentravel.base - 2010B - opentravel.org base schema"/>
+<item name="Schema Library - org.opentravel.air - 2010B - opentravel.org air schema"/>
+<item name="Schema Library - org.opentravel.veh - 2010B - opentravel.org veh schema"/>
+<item name="Schema Library - org.opentravel.profile - 2010B - opentravel.org profile schema"/>
+<item name="Schema Library - org.opentravel.hotel - 2010B - opentravel.org hotel schema"/>
+<item name="Schema Library - org.opentravel.destactivity - 2010B - opentravel.org destactivity schema"/>
+<item name="Schema Library - org.opentravel.pkg - 2010B - opentravel.org pkg schema"/>
+<item name="Schema Library - org.opentravel.travelitinerary - 2010B - opentravel.org travelitinerary schema"/>
+<item name="Schema Library - org.opentravel.tour - 2010B - opentravel.org tour schema"/>
+<item name="Schema Library - org.opentravel.dynamicpkg - 2010B - opentravel.org dynamicpkg schema"/>
+<item name="Schema Library - org.opentravel.insurance - 2010B - opentravel.org insurance schema"/>
+<item name="Schema Library - org.opentravel.loyalty - 2010B - opentravel.org loyalty schema"/>
+<item name="Schema Library - org.opentravel.cruise - 2010B - opentravel.org cruise schema"/>
+<item name="Schema Library - org.opentravel.golf - 2010B - opentravel.org golf schema"/>
+<item name="Schema Library - org.opentravel.rail - 2010B - opentravel.org rail schema"/>
+<item name="Schema Library - org.opentravel.screen - 2010B - opentravel.org screen schema"/>
+<item name="Schema Library - org.opentravel.ping - 2010B - opentravel.org ping schema"/>
+<item name="Schema Library - org.opentravel.misc - 2010B - opentravel.org misc schema"/>
+<item name="Schema Library - org.opentravel.fastrez - 2010B - opentravel.org fastrez schema"/>
+<item name="Schema Library - org.opentravel.codetable - 2010B - opentravel.org codetable schema"/>
+<item name="Schema Library - opentravel-all - 2010B - All opentravel.org bundles"/>
+<item name="opentravel-archetype Archetype for samples"/>
+<item name="Schema Library - opentravel-tests-reactor - opentravel tests"/>
+<item name="Schema Library - opentravel.org - test-ping"/>
+<item name="Schema Library - opentravel.org - test-hotel"/>
+</item>
+<item name="oasis-open.org" href="./site.html#oasis-open.org" collapse="true">
+<item name="Schema Library - oasis-open.org - catalog"/>
+</item>
+<item name="w3.org" href="./site.html#w3.org" collapse="true">
+<item name="Schema Library - w3.org - _2002._08.xhtml.xhtml1_strict"/>
+<item name="Schema Library - w3.org - _2002._08.xhtml.xhtml1_frameset"/>
+<item name="Schema Library - w3.org - _2002._08.xhtml.xhtml1_transitional"/>
+<item name="Schema Library - w3.org - _2001._06.soap_encoding"/>
+<item name="Schema Library - w3.org - _2001._12.soap_envelope"/>
+<item name="Schema Library - w3.org - _2001.xml"/>
+<item name="Schema Library - w3.org - _2003._05.soap_encoding"/>
+<item name="Schema Library - w3.org - _2003._05.soap_envelope.soap_envelope"/>
+<item name="Schema Library - w3.org - _2003._06.wsdl.wsdl12_ext"/>
+<item name="Schema Library - w3.org - _2004._08.wsdl.wsdl20"/>
+<item name="Schema Library - w3.org - _2004._08.xop.include"/>
+<item name="Schema Library - w3.org - _2005._05.wsdl.soap"/>
+<item name="Schema Library - w3.org - _2005._05.wsdl.wsdl20"/>
+<item name="Schema Library - w3.org - _2005._05.xmlmime"/>
+<item name="Schema Library - w3.org - _2005._08.addressing.ws_addr"/>
+<item name="Schema Library - w3.org - _2006._01.wsdl.wsdl20"/>
+<item name="Schema Library - w3.org - _2006._02.addressing.wsdl.ws_addr_wsdl"/>
+<item name="Schema Library - w3.org - _2006._03.wsdl.rpc"/>
+<item name="Schema Library - w3.org - _2006._03.wsdl.soap"/>
+<item name="Schema Library - w3.org - _2006._03.wsdl.wsdl20"/>
+<item name="Schema Library - w3.org - TR._2002.REC_xmldsig_core_20020212.xmldsig_core_schema"/>
+<item name="Schema Library - w3.org - TR._2002.REC_xmlenc_core_20021210.xenc_schema"/>
+</item>
+<item name="webservicex.net" href="./site.html#webservicex.net" collapse="true">
+<item name="Schema Library - webservicex.net - stockquote"/>
+<item name="Schema Library - webservicex.net - currencyconverter"/>
+</item>
+<item name="xmlsoap.org" href="./site.html#xmlsoap.org" collapse="true">
+<item name="Schema Library - xmlsoap.org - ws._2002._07.utility.utility"/>
+<item name="Schema Library - xmlsoap.org - wsdl"/>
+<item name="Schema Library - xmlsoap.org - wsdl._2003_02_11"/>
+</item>
+<item name="jibx.org" href="./site.html#jibx.org" collapse="true">
+<item name="Schema Library - jibx.org - Person Schema"/>
+<item name="Schema Library - jibx.org - Address Schema"/>
+<item name="Schema Library - jibx.org - Company Schema"/>
+<item name="Schema Library - jibx.org - Person Schema Test"/>
+<item name="Schema Library - jibx.org - Address Schema Test"/>
+<item name="Schema Library - jibx.org - Company Schema Test"/>
+<item name="Schema Library - jibx.org - Schema Test"/>
+</item>
+</menu>
+<menu name="Other schema libraries">
+<item name="PIDF-LO (RFC 4119)" href="http://code.google.com/p/jibx-bindings/"/>
+</menu>
+<menu ref="reports"/>
+</body>
+</project>

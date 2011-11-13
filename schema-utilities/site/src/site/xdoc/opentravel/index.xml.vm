@@ -1,0 +1,122 @@
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+  <properties>
+    <title>Opentravel Alliance Open Source Software</title>
+    <author email="don@tourgeek.com">Don Corley</author>
+  </properties>
+
+  <!-- Optional HEAD element, which is copied as is into the XHTML <head> element -->
+  <head>
+    <meta name="description" content="Opentravel Alliance Open Source Software"/>
+    <meta name="keywords" content="Opentravel Alliance, Open Source Software, Opentravel, Opentravel.org, Open Source"/>
+  </head>
+
+  <body>
+
+     <section name="JiBX Opentravel Schema Project">
+
+      <p><b>JiBX Opentravel Schema Project</b> is a collection of pre-packaged OSGi bundles for the
+      <a href="http://www.opentravel.org/">opentravel.org</a> schema library.
+      </p>
+      
+      <p>It doesn't get much simpler than this.</p> 
+
+      <p>This project has pre-packaged components ready to include into your project. Since the code has
+      already been bound to the schema, you can start using it right now. Just add the maven dependencies
+      to your project and start writing code.</p> 
+
+      <p>Maven will automatically include all the dependent packages in your project and in your war file.
+      OSGi will only load the modules that are needed on-demand. For example, If you are creating a hotel
+      reservation, the profile schema package will only load if you link the reservation to a profile.
+      No wonder there is so much excitement over OSGi.</p> 
+
+      <p>Try it. it's easy:</p>
+       
+      <p>Step 1: Add this dependency to your project:</p>
+      
+      <p>
+      <source>&lt;dependency&gt;<br/>
+&#160;&#160;&lt;groupId&gt;org.jibx.schema.org.opentravel._2010B&lt;/groupId&gt;<br/>
+&#160;&#160;&lt;artifactId&gt;org.jibx.schema.org.opentravel._2010B.hotel&lt;/artifactId&gt;<br/>
+&#160;&#160;&lt;version&gt;${project.version}&lt;/version&gt;<br/>
+&lt;/dependency&gt;</source>
+      </p>       
+
+      <p>Step 2: Start writing code.</p>
+      
+      <p>If you have about five minutes, try this example. You will create a
+      project that will create an opentravel message,
+      convert it to xml, then convert it back to a java object. <i>Here goes!</i></p>
+      
+      <p>First, you need java, eclipse, and the eclipse maven plugin (m2eclipse).
+      This is a pretty standard development environment.</p>
+      
+      <p>From the eclipse menu, select: New -> project -> Maven -> Maven Project</p>
+      
+      <p>Click 'Next', then click the 'Add archetype' button on the next screen</p>
+      
+      <p>Fill in the fields with this information:<br/>
+    <source>
+    groupId: org.jibx.schema.org.opentravel._2010B<br/>
+    artifactId: opentravel-archetype<br/>
+    version: ${project.version}<br/>
+    </source>
+    <strong>Note:</strong> The image below contain a different group, artifact and version number
+    (I can't create a new image for every version). Use the preceding values instead.
+      </p>
+      
+      <p><img src="../images/archetype.jpg" alt="Archetype"/></p>
+      
+    <p>Click 'Next' and fill this screen with whatever you want. I entered:<br/>
+
+    <source>
+      groupID: com.company.ota<br/>
+      artifactId: ota-ping-test<br/>
+    </source>
+      </p>
+      
+      <p><img src="../images/archetype2.jpg" alt="Archetype"/></p>
+
+      <p>Click 'Finish' and your project is built.<br/>
+      Now we're ready to run it.</p>
+      
+      <p>First, right click on your project and select 'Run as' -> 'Maven Install'</p>
+      
+      <p><img src="../images/archetype3.jpg" alt="Archetype"/></p>
+
+      <p>This compiles your code and retrieves any dependent code from the maven library.</p>
+      
+      <p>Now, right click your project name and select 'Run as' -> 'Maven build...'<br/>
+      and enter <code>exec:java</code> as the goal<br/>
+      This will run your new program<br/></p>
+      
+      <p><img src="../images/archetype4.jpg" alt="Archetype"/></p>
+      
+      <p>You should see output similar to this:</p>
+
+      <p><img src="../images/archetype5.jpg" alt="Archetype"/></p>
+      
+	<p>What this program just did was to build an opentravel message, convert it to xml,
+	then convert it back to a java object and retrieve the data. Nice!<br/>
+	Take a look at your source code. It's pretty simple. It's pretty clean.</p>
+	
+	<p>You may have to sync maven by right clicking your project and select maven -> update project configurations,
+	then maven -> update dependencies. Now right-click and select maven -> download sources, then maven -> download javadocs.</p>
+	
+	<p>Now the cool part. Open your source code (App.java).<br/>
+	Place a breakpoint at line 69 <code>(ping.setEchoData("Hello World!");)</code><br/>
+	and right click App.java in the left nav bar and select Debug as -> Java Application.<br/>
+	When it stops, step into the setEchoData method and voila, you see the source for the
+	java class that represents the xml item, with comments straight from the schema. <b>Very Cool!</b></p>
+	
+      <p><img src="../images/archetype6.jpg" alt="Archetype"/></p>
+      
+	<p>Now that was pretty painless, huh?</p>
+	
+    </section>
+
+  </body>
+
+</document>

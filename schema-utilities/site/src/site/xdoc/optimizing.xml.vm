@@ -1,0 +1,73 @@
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+  <properties>
+    <title>JiBX Schema Library Project</title>
+    <author email="don@tourgeek.com">Don Corley</author>
+  </properties>
+
+  <!-- Optional HEAD element, which is copied as is into the XHTML <head> element -->
+  <head>
+    <meta name="description" content="JiBX Schema Library Project"/>
+    <meta name="keywords" content="JiBX Schema Library Project, Java Schema binding, JiBX, Open Source"/>
+  </head>
+
+  <body>
+
+     <section name="Optimizing your JiBX Schema Library Project">
+
+      <p>To increase the usefulness of your schema library, you may want to optimize it.</p>
+      
+      <p>For a simple, well designed schema, our tools do an excellent job of creating
+      java bindings.</p>
+      
+      <p>As schema get more complicated, you may want to change the way code is generated or
+      actually modify the java code and the JiBX bindings to make them more usable. This is
+      where JiBX shines. The JiBX tools can optimize the generation and binding of java code in
+      many ways.</p>
+      
+      <p>For example many of the definitions in the wsdl 1.1 spec begin with a 't':<br/>
+      <code>&lt;xs:complexType name="tBinding"&gt;</code><br/>
+      which results in a java class called <code>TBinding</code>. Wouldn't it be better to call the java class
+      <code>Binding</code>?</p>
+      
+     <subsection name="Completely Optimize your library">
+
+      <p>For a example of thorough optimization, see the <a href="./site.html#opentravel.org">opentravel.org</a> schema.
+      This schema has been optimized in several ways.</p>
+      <p>The opentravel schema are huge, almost 300 schema definitions for nearly 20 different business
+      segments all in one namespace. A huge java library would be terribly inefficient. Now, the 
+      library is broken into 21 OSGi bundles. The complex dependencies are managed automatically.</p>
+           
+     </subsection>
+           
+     <subsection name="Use xslt to fix your schema">
+
+      <p>If you are using a schema that you can't change, do an xsl transformation before processing
+      it by JiBX. A great example is the <a href="./site.html#webservicex.net">webservicex</a> schema. The schema defininitions are embedded in
+      wsdl files. A simple xslt file extracts the schema definition so we can build the java binding.
+      Even if the schema owner changes their schema definition, our project will still build correctly.</p>
+
+     </subsection>
+     
+     <subsection name="Customize your binding definition">
+
+      <p>If you would like to add methods that would be useful in your java class, JiBX allows this.<br/>
+      You can take the pre-built binding definition and customize it for use in your java class.<br/>
+      For example, if you had a schema that supplied a file's location and name, wouldn't it be nice
+      to have a java method that returned a File object:<br/>
+      <code>
+public File getFile() {<br/>
+&#xA0;&#xA0;return new File(getLocation() + File.separator + getName());<br/>
+}
+      </code>
+      </p>
+           
+     </subsection>
+     
+    </section>
+
+  </body>
+
+</document>

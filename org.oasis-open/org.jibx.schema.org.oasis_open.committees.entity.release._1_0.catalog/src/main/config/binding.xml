@@ -1,0 +1,85 @@
+<binding xmlns:er="urn:oasis:names:tc:entity:xmlns:xml:catalog" name="binding" package="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog" trim-whitespace="true">
+  <namespace uri="urn:oasis:names:tc:entity:xmlns:xml:catalog" default="elements" prefix="er"/>
+  <format label="er:systemOrPublic" type="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.SystemOrPublic" enum-value-method="xmlValue"/>
+  <mapping abstract="true" type-name="er:catalog" class="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.Catalog">
+    <collection get-method="getChoiceList" set-method="setChoiceList" create-type="java.util.ArrayList">
+      <structure type="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.Catalog$Choice" ordered="false" choice="true">
+        <structure type="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.Public" test-method="ifPublic" get-method="getPublic" set-method="setPublic" usage="optional"/>
+        <structure type="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog._System" test-method="ifSystem" get-method="getSystem" set-method="setSystem" usage="optional"/>
+        <structure type="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.Uri" test-method="ifUri" get-method="getUri" set-method="setUri" usage="optional"/>
+        <structure type="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.RewriteSystem" test-method="ifRewriteSystem" get-method="getRewriteSystem" set-method="setRewriteSystem" usage="optional"/>
+        <structure type="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.RewriteURI" test-method="ifRewriteURI" get-method="getRewriteURI" set-method="setRewriteURI" usage="optional"/>
+        <structure type="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.DelegatePublic" test-method="ifDelegatePublic" get-method="getDelegatePublic" set-method="setDelegatePublic" usage="optional"/>
+        <structure type="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.DelegateSystem" test-method="ifDelegateSystem" get-method="getDelegateSystem" set-method="setDelegateSystem" usage="optional"/>
+        <structure type="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.DelegateURI" test-method="ifDelegateURI" get-method="getDelegateURI" set-method="setDelegateURI" usage="optional"/>
+        <structure type="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.NextCatalog" test-method="ifNextCatalog" get-method="getNextCatalog" set-method="setNextCatalog" usage="optional"/>
+        <structure type="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.Group" test-method="ifGroup" get-method="getGroup" set-method="setGroup" usage="optional"/>
+        <structure get-method="getAny" set-method="setAny" marshaller="org.jibx.extras.DomElementMapper" unmarshaller="org.jibx.extras.DomElementMapper"/>
+      </structure>
+    </collection>
+    <value style="attribute" name="id" get-method="getId" set-method="setId" usage="optional"/>
+    <value style="attribute" name="prefer" get-method="getPrefer" set-method="setPrefer" usage="optional" format="er:systemOrPublic"/>
+  </mapping>
+  <mapping class="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.Catalog" name="catalog">
+    <structure map-as="er:catalog"/>
+  </mapping>
+  <mapping abstract="true" type-name="er:public" class="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.Public"/>
+  <mapping class="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.Public" name="public">
+    <structure map-as="er:public"/>
+  </mapping>
+  <mapping abstract="true" type-name="er:system" class="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog._System"/>
+  <mapping class="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog._System" name="system">
+    <structure map-as="er:system"/>
+  </mapping>
+  <mapping abstract="true" type-name="er:uri" class="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.Uri"/>
+  <mapping class="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.Uri" name="uri">
+    <structure map-as="er:uri"/>
+    <value style="attribute" name="name" get-method="getName" set-method="setName" usage="optional"/>
+    <value style="attribute" name="uri" get-method="getUri" set-method="setUri" usage="optional"/>
+  </mapping>
+  <mapping abstract="true" type-name="er:rewriteSystem" class="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.RewriteSystem"/>
+  <mapping class="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.RewriteSystem" name="rewriteSystem">
+    <structure map-as="er:rewriteSystem"/>
+  </mapping>
+  <mapping abstract="true" type-name="er:rewriteURI" class="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.RewriteURI"/>
+  <mapping class="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.RewriteURI" name="rewriteURI">
+    <structure map-as="er:rewriteURI"/>
+  </mapping>
+  <mapping abstract="true" type-name="er:delegatePublic" class="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.DelegatePublic"/>
+  <mapping class="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.DelegatePublic" name="delegatePublic">
+    <structure map-as="er:delegatePublic"/>
+  </mapping>
+  <mapping abstract="true" type-name="er:delegateSystem" class="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.DelegateSystem"/>
+  <mapping class="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.DelegateSystem" name="delegateSystem">
+    <structure map-as="er:delegateSystem"/>
+  </mapping>
+  <mapping abstract="true" type-name="er:delegateURI" class="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.DelegateURI"/>
+  <mapping class="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.DelegateURI" name="delegateURI">
+    <structure map-as="er:delegateURI"/>
+  </mapping>
+  <mapping abstract="true" type-name="er:nextCatalog" class="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.NextCatalog"/>
+  <mapping class="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.NextCatalog" name="nextCatalog">
+    <structure map-as="er:nextCatalog"/>
+  </mapping>
+  <mapping abstract="true" type-name="er:group" class="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.Group">
+    <collection get-method="getChoiceList" set-method="setChoiceList" create-type="java.util.ArrayList">
+      <structure type="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.Group$Choice" ordered="false" choice="true">
+        <structure type="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.Public" test-method="ifPublic" get-method="getPublic" set-method="setPublic" usage="optional"/>
+        <structure type="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog._System" test-method="ifSystem" get-method="getSystem" set-method="setSystem" usage="optional"/>
+        <structure type="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.Uri" test-method="ifUri" get-method="getUri" set-method="setUri" usage="optional"/>
+        <structure type="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.RewriteSystem" test-method="ifRewriteSystem" get-method="getRewriteSystem" set-method="setRewriteSystem" usage="optional"/>
+        <structure type="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.RewriteURI" test-method="ifRewriteURI" get-method="getRewriteURI" set-method="setRewriteURI" usage="optional"/>
+        <structure type="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.DelegatePublic" test-method="ifDelegatePublic" get-method="getDelegatePublic" set-method="setDelegatePublic" usage="optional"/>
+        <structure type="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.DelegateSystem" test-method="ifDelegateSystem" get-method="getDelegateSystem" set-method="setDelegateSystem" usage="optional"/>
+        <structure type="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.DelegateURI" test-method="ifDelegateURI" get-method="getDelegateURI" set-method="setDelegateURI" usage="optional"/>
+        <structure type="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.NextCatalog" test-method="ifNextCatalog" get-method="getNextCatalog" set-method="setNextCatalog" usage="optional"/>
+        <structure get-method="getAny" set-method="setAny" marshaller="org.jibx.extras.DomElementMapper" unmarshaller="org.jibx.extras.DomElementMapper"/>
+      </structure>
+    </collection>
+    <value style="attribute" name="prefer" get-method="getPrefer" set-method="setPrefer" usage="optional" format="er:systemOrPublic"/>
+    <value style="attribute" name="id" get-method="getId" set-method="setId" usage="optional"/>
+  </mapping>
+  <mapping class="org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog.Group" name="group">
+    <structure map-as="er:group"/>
+  </mapping>
+</binding>

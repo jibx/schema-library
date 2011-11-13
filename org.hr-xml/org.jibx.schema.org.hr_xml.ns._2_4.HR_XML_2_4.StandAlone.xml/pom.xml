@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <artifactId>schema-library-parent</artifactId>
+        <groupId>org.jibx.schema.config</groupId>
+        <version>1.0.1-SNAPSHOT</version>
+        <relativePath>../../schema-library-parent</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.jibx.schema.org.hr_xml.ns</groupId>
+    <artifactId>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.xml</artifactId>
+    <packaging>bundle</packaging>
+    <name>Schema Library - hr-xml.org - 2.4 - xml</name>
+    <version>1.0.1-SNAPSHOT</version>
+    <description>ns.hr-xml.org/2_4/HR-XML-2_4/StandAlone/xml.xsd</description>
+    <developers>
+        <developer>
+            <name>Don Corley</name>
+            <email>don@tourgeek.com</email>
+        </developer>
+    </developers>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jibx</groupId>
+                <artifactId>jibx-maven-plugin</artifactId>
+                <inherited>true</inherited>
+                <configuration>
+          <schemaLocation>http://ns.hr-xml.org/2_4/HR-XML-2_4/StandAlone/xml.xsd</schemaLocation>
+        </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

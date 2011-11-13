@@ -1,0 +1,49 @@
+ -----
+ JiBX Open Schema Project
+ -----
+ Don Corley
+ -----
+ February 4, 2011
+ -----
+
+Schema Library Project
+
+ The JiBX Schema Library Project is a repository of pre-built java code bound to xml schema definitions.
+ They are ready to deploy to your project. No configuration, no builds required.
+ 
+* Easy to use java schema bindings
+
+ It's this easy:
+
+ Step 1: Add your schema's dependency to your maven project:
+
++-----+
+
+<dependency>
+   <groupId>org.jibx.schema.org.opentravel._2010B</groupId>
+   <artifactId>org.jibx.schema.org.opentravel._2010B.hotel</artifactId>
+   <version>${project.version}</version>
+</dependency>
+
++-----+
+
+ Step 2: Start writing code. That's it. If you're using an IDE
+ like eclipse or netbeans, the java source code for the schema binding will display
+ automatically.
+
+ Maven will automatically include all the dependent packages in your project and
+ in your war file. If you're in an OSGi environment, the correct bundles will
+ load as they are needed.
+
+ To add our OSGi repository index to your web server:
+  
++-----+
+
+repos add http://jibx.org/repository.xml
+
++-----+
+
+Current pre-built schema
+
+  We currently have close to 100 {{{./site.html}pre-built schema}}, with more on the way!
+

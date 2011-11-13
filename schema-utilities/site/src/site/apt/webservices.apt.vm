@@ -1,0 +1,48 @@
+ -----
+ JiBX Open Schema Project
+ -----
+ Don Corley
+ -----
+ June 10, 2011
+ -----
+
+Web service example
+
+ Instructions on building and running a JiBX web service example.
+ 
+* Example
+
+ Step 1: Checkout the web service sample from our source repository. This example is very similar
+ to the cxf web service example.
+ 
++-----+
+ svn co https://jibx.svn.sourceforge.net/svnroot/jibx/trunk/schema-library/schema-utilities/examples/opentravel-webservice/opentravel-ping/opentravel-ping-service
+ cd opentravel-ping-service
+ mvn clean install
++-----+
+
+ Step 2: Download {{{http://www.fusesource.com/}Apache servicemix (fusesource distribution)}} and start it up.
+ 
++-----+
+ tar zxvf apache-servicemix-x.x-SNAPSHOT.tar.gz
+ cd apache-servicemix-x.x.x-fuse-00-xx
+ bin/servicemix
++-----+
+
+ Step 3: Add the jibx repository and add the JiBX OSGi bundles.
+
++-----+
+ features:install obr
+ obr:addurl http://www.jibx.org/repository.xml
+ obr:deploy 'Schema Library - org.opentravel.ping - 2011A - opentravel.org ping schema'
+ install mvn:org.jibx.schema.org.opentravel.ws/org.jibx.schema.org.opentravel._2011A.ping.ws/1.0.1-SNAPSHOT
+ (remember the Bundle ID)
+ ctrl+d (stop servicemix)
+ bin/servicemix (restart servicemix)
+ start 222 (replace 222 with the Bundle ID displayed above)
++-----+
+
+ Step 4: Load client.html into your favorite browser and click 'send'. Most browsers will display
+ the soap xml message returned from the web service (some will just display 'status: 0')
+ 
+That's it!

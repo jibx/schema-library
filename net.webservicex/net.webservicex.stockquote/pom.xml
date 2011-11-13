@@ -1,0 +1,72 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jibx.schema.config</groupId>
+    <artifactId>schema-library-parent</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
+    <relativePath>../../schema-library-parent</relativePath>
+  </parent>
+
+  <groupId>org.jibx.schema.net.webservicex</groupId>
+  <artifactId>org.jibx.schema.net.webservicex.stockquote</artifactId>
+  <packaging>bundle</packaging>
+
+  <name>Schema Library - webservicex.net - stockquote</name>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>1.6</version>
+        <executions>
+          <execution>
+            <phase>validate</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target unless="maven.test.skip">
+				<mkdir dir="${basedir}/target/wsdl" />
+				<get src="http://www.webservicex.net/StockQuote.asmx?WSDL" dest="${basedir}/target/wsdl/StockQuote.xsd" />
+              </target>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>xml-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>initialize</phase> <!-- Has to be done before codegen -->
+            <goals>
+              <goal>transform</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <transformationSets>
+            <transformationSet>
+              <dir>target/wsdl</dir>
+              <stylesheet>${basedir}/../transform/src/main/xslt/transform.xsl</stylesheet>
+            </transformationSet>
+          </transformationSets>
+        </configuration>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.jibx</groupId>
+        <artifactId>jibx-maven-plugin</artifactId>
+        <inherited>true</inherited>
+       <configuration>
+          <schemaLocation>target/generated-resources/xml/xslt</schemaLocation>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jibx.schema.config</groupId>
+    <artifactId>schema-library-reactor</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
+  </parent>
+
+  <groupId>org.jibx.schema.org.jibx</groupId>
+  <artifactId>jibx-library-reactor</artifactId>
+  
+  <packaging>pom</packaging>
+
+  <name>jibx.org</name>
+  <description>jibx.org schema library. A collection of sample schema binding projects.</description>
+
+  <organization>
+  	<name>jibx</name>
+  	<url>http://jibx.org</url>
+  </organization>
+  
+  <developers>
+    <developer>
+      <name>Don Corley</name>
+      <email>don@tourgeek.com</email>
+    </developer>
+  </developers>
+  
+  <modules>
+    <module>org.jibx.schema.person</module>
+    <module>org.jibx.schema.address</module>
+    <module>org.jibx.schema.company</module>
+    <module>org.jibx.test.person</module>
+    <module>org.jibx.test.address</module>
+    <module>org.jibx.test.company</module>
+    <module>org.jibx.schema.test</module>
+  </modules>
+
+</project>

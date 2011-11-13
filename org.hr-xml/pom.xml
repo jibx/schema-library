@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>org.jibx.schema.config</groupId>
+        <artifactId>schema-library-parent</artifactId>
+        <version>1.0.1-SNAPSHOT</version>
+        <relativePath>../schema-library-parent</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.jibx.schema.org.hr_xml</groupId>
+    <artifactId>org.hr_xml</artifactId>
+    <packaging>pom</packaging>
+    <name>hr-xml.org</name>
+    <version>1.0.1-SNAPSHOT</version>
+    <description>Human Resources XML Schema bindings.</description>
+    <developers>
+        <developer>
+            <name>Don Corley</name>
+            <email>don@tourgeek.com</email>
+        </developer>
+    </developers>
+    <organization>
+        <name>hr-xml.org</name>
+        <url>http://www.hr-xml.org</url>
+    </organization>
+    <modules>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.AssessmentCancelRequest</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.AssessmentCatalog</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.AssessmentCatalogQuery</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.AssessmentOrderAcknowledgement</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.AssessmentOrderRequest</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.AssessmentResult</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.AssessmentStatusRequest</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.Assignment</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.BackgroundCheck</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.BackgroundReports</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.Candidate</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.Credit</module>
+        <!-- module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.Enrollment</module -->
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.ExerciseConfirmation</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.ExerciseRequest</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.HumanResource</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.IndicativeBatch</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.IndicativeData</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.Invoice</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.NewHire</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.PayrollBenefitContributions</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.PayrollInstructions</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.PositionOpening</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.RemoveExerciseConfirmations</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.RemoveExerciseRequests</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.RemoveGrants</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.RemoveStockDeposits</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.RemoveStockPlanParticipants</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.RemoveStockPlans</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.RemoveStockSaleConfirmations</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.Resume</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.StaffingAction</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.StaffingOrder</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.StockDeposit</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.StockPlan</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.StockPlanParticipant</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.StockPurchasePlanCoverage</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.StockSaleConfirmation</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.TimeCard</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.simpledc20021212</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.xml</module>
+        <module>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.xmldsig_core_schema</module>
+    </modules>
+</project>

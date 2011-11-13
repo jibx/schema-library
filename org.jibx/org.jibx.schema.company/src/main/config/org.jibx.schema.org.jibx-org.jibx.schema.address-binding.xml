@@ -1,0 +1,9 @@
+<binding name="binding" package="org.jibx.schema.org.jibx.schema.address" trim-whitespace="true">
+  <namespace uri="http://www.jibx.org/sampleschema/address" default="elements" prefix="tns"/>
+  <include path="org.jibx.schema.org.jibx-org.jibx.schema.person-binding.xml" precompiled="true"/>
+  <mapping class="org.jibx.schema.org.jibx.schema.address.Address" name="address">
+    <structure type="org.jibx.schema.org.jibx.schema.person.Person" get-method="getPerson" set-method="setPerson"/>
+    <value style="element" name="street" get-method="getStreet" set-method="setStreet"/>
+    <value style="element" name="city" get-method="getCity" set-method="setCity"/>
+  </mapping>
+</binding>

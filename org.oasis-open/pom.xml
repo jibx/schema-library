@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jibx.schema.config</groupId>
+    <artifactId>schema-library-reactor</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
+  </parent>
+
+    <groupId>org.jibx.schema.org.oasis_open</groupId>
+    <artifactId>oasis-open-reactor</artifactId>
+
+    <packaging>pom</packaging>
+
+    <name>oasis-open.org</name>
+
+    <description>oasis-open schema library.</description>
+    <modules>
+        <module>org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog</module>
+    </modules>
+</project>

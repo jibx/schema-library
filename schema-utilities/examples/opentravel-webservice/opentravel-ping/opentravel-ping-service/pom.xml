@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+       <groupId>org.apache.servicemix.features</groupId>
+       <artifactId>features</artifactId>
+       <version>4.3.0</version>
+    </parent>
+
+    <groupId>org.jibx.schema.org.opentravel.ws</groupId>
+    <artifactId>org.jibx.schema.org.opentravel._2011A.ping.ws</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
+    
+    <packaging>bundle</packaging>
+    <name>JiBX opentravel ping service engine</name>
+    <description>JiBX opentravel ping web service</description>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Export-Package>
+                            ${project.artifactId}.*;version=${project.version}
+                        </Export-Package>
+                        <Import-Package>
+                            javax.wsdl,
+                            javax.xml.bind,
+                            javax.xml.bind.annotation,
+                            javax.xml.namespace,
+                            javax.xml.soap,
+                            javax.xml.ws,
+                            META-INF.cxf,
+                            org.apache.cxf.bus,
+                            org.apache.cxf.bus.spring,
+                            org.apache.cxf.bus.resource,
+                            org.apache.cxf.configuration.spring,
+                            org.apache.cxf.resource,
+                            org.apache.servicemix.cxfse,
+                            org.springframework.beans.factory.config,
+	                        *;resolution:=optional,
+                        </Import-Package>
+                        <Require-Bundle>org.apache.cxf.bundle</Require-Bundle>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <dependencies>
+		<dependency>
+		  <groupId>org.jibx.schema.org.opentravel._2011A</groupId>
+		  <artifactId>org.jibx.schema.org.opentravel._2011A.ping</artifactId>
+		  <version>1.0.1</version>
+		</dependency>
+
+        <dependency>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-ws-metadata_2.0_spec</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-databinding-jibx</artifactId>
+            <version>2.4.1</version>
+        </dependency>
+    </dependencies>
+    
+</project>

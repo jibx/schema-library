@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jibx.schema.config</groupId>
+    <artifactId>schema-library-parent</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
+    <relativePath>../../schema-library-parent</relativePath>
+  </parent>
+
+  <groupId>org.jibx.schema.org.jibx</groupId>
+  <artifactId>org.jibx.schema.org.jibx.sampleschema.address</artifactId>
+  <packaging>bundle</packaging>
+
+  <name>Schema Library - jibx.org - Address Schema</name>
+  <description>
+  org.jibx.sampleschema.address -
+  A schema binding project using a very simple schema which has a base schema.
+  The base schema is retrieved from the org.jibx.sampleschema.person artifact.
+  </description>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.jibx</groupId>
+        <artifactId>jibx-maven-plugin</artifactId>
+
+        <executions>
+          <execution>
+            <id>generate-java-code-from-schema</id>
+            <goals>
+              <goal>schema-codegen</goal>
+            </goals>
+          </execution>
+          <execution>
+              <id>compile-binding</id>
+              <goals>
+                  <goal>bind</goal>
+              </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <includeBaseBindings>
+            <includeBaseBinding>
+              <groupId>org.jibx.schema.org.jibx</groupId>
+              <artifactId>org.jibx.schema.org.jibx.sampleschema.person</artifactId>
+              <directory>META-INF</directory>
+              <includes>
+                <include>binding.xml</include>
+              </includes>
+            </includeBaseBinding>
+          </includeBaseBindings>
+          <schemaLocation>http://www.jibx.org/sampleschema/address.xsd</schemaLocation>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.jibx.schema.org.jibx</groupId>
+      <artifactId>org.jibx.schema.org.jibx.sampleschema.person</artifactId>
+      <version>1.0.1-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+</project>

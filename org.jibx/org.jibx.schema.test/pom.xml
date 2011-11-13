@@ -1,0 +1,85 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jibx.schema.config</groupId>
+    <artifactId>schema-library-parent</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
+    <relativePath>../../schema-library-parent</relativePath>
+  </parent>
+
+  <groupId>org.jibx.schema.org.jibx</groupId>
+  <artifactId>org.jibx.schema.org.jibx.schema.test</artifactId>
+  <packaging>bundle</packaging>
+
+  <name>Schema Library - jibx.org - Schema Test</name>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>xml-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>initialize</phase> <!-- Has to be done before codegen -->
+            <goals>
+              <goal>transform</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <transformationSets>
+            <transformationSet>
+              <dir>src/main/xml</dir>
+              <stylesheet>${basedir}/src/main/xslt/transform.xsl</stylesheet>
+            </transformationSet>
+          </transformationSets>
+        </configuration>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.jibx</groupId>
+        <artifactId>jibx-maven-plugin</artifactId>
+
+        <executions>
+          <execution>
+            <id>generate-java-code-from-schema</id>
+            <goals>
+              <goal>schema-codegen</goal>
+            </goals>
+            <configuration>
+              <directory>${basedir}/target/generated-resources/xml/xslt</directory>
+              <options>
+                <package>${project.artifactId}</package>
+              </options>
+            </configuration>
+          </execution>
+          <execution>
+              <id>compile-binding</id>
+              <goals>
+                  <goal>bind</goal>
+              </goals>
+              <configuration>
+                 <directory>${basedir}/target/generated-sources</directory>
+                 <includes>
+                   <include>binding.xml</include>
+                 </includes>
+              </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <Include-Resource>META-INF/binding.xml=${basedir}/target/generated-sources/binding.xml</Include-Resource>
+          </instructions>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

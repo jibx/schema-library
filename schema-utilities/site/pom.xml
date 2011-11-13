@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jibx.schema.config</groupId>
+    <artifactId>schema-utilities-reactor</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>schema-library-site</artifactId>
+
+  <packaging>pom</packaging>
+
+  <name>Schema Library Project</name>
+
+  <description>Pre-build schema. Generated Java sources from XSD schemas.</description>
+  
+  <developers>
+      <developer>
+          <id>doncorley</id>
+          <name>Don Corley</name>
+          <email>don@tourgeek.com</email>
+          <url>http://www.tourgeek.com/</url>
+          <timezone>-8</timezone>
+      </developer>
+  </developers>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.0-beta-3</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.jibx.schema.config</groupId>
+        <artifactId>schema-maven-plugin</artifactId>
+        
+        <executions>
+          <execution>
+            <phase>pre-site</phase> <!-- Has to be done before site -->
+            <goals>
+              <goal>scan-projects</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>xml-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>pre-site</phase> <!-- Has to be done before site -->
+            <goals>
+              <goal>transform</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <transformationSets>
+            <transformationSet>
+              <outputDir>${basedir}/target/xml/site</outputDir>
+              <dir>${basedir}/target/xml</dir>
+              <stylesheet>${basedir}/src/main/xsl/site.xsl</stylesheet>
+              <outputProperties>
+                <outputProperty>
+                  <name>indent</name>
+                  <value>yes</value>
+                </outputProperty>
+              </outputProperties>
+            </transformationSet>
+            <transformationSet>
+              <outputDir>${basedir}/target/xml/schema</outputDir>
+              <dir>${basedir}/target/xml</dir>
+              <stylesheet>${basedir}/src/main/xsl/schema.xsl</stylesheet>
+              <outputProperties>
+                <outputProperty>
+                  <name>indent</name>
+                  <value>yes</value>
+                </outputProperty>
+              </outputProperties>
+            </transformationSet>
+          </transformationSets>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.4.3</version>
+        <executions>
+          <execution>
+            <id>copy-site</id>
+            <phase>pre-site</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/src/site</outputDirectory>
+              <resources>          
+                <resource>
+                  <directory>${basedir}/target/xml/site</directory>
+                  <filtering>false</filtering>
+                  <includes>
+                    <include>site.xml</include>
+                  </includes>
+                </resource>
+              </resources>              
+            </configuration>            
+          </execution>
+          <execution>
+            <id>copy-schema</id>
+            <phase>pre-site</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/src/site/xdoc</outputDirectory>
+              <resources>          
+                <resource>
+                  <directory>${basedir}/target/xml/schema</directory>
+                  <filtering>false</filtering>
+                  <includes>
+                    <include>site.xml</include>
+                  </includes>
+                </resource>
+              </resources>              
+            </configuration>            
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+
+  <distributionManagement>
+      <site>
+          <id>sourceforge.net</id>
+          <url>scp://shell.sourceforge.net/home/project-web/jibx/htdocs/schema-library</url>
+      </site>
+  </distributionManagement>
+  
+</project>

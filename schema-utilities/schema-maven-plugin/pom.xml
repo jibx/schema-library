@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jibx.schema.config</groupId>
+    <artifactId>schema-utilities-reactor</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>schema-maven-plugin</artifactId>
+
+  <packaging>maven-plugin</packaging>
+  <name>schema-maven-plugin</name>
+
+  <url>http://jibx.sf.net/schema-maven-plugin/</url>
+  <description>Auto generate JiBX schema to java projects.</description>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.jibx.schema.config</groupId>
+      <artifactId>create-jibx-project-utilities</artifactId>
+      <version>1.0.1-SNAPSHOT</version>
+    </dependency>
+
+      <dependency>
+        <groupId>org.jibx.schema.org.apache.maven</groupId>
+        <artifactId>org.jibx.schema.org.apache.maven.maven_v4_0_0</artifactId>
+        <version>1.0.1-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jibx.schema.org.oasis_open</groupId>
+        <artifactId>org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog</artifactId>
+        <version>1.0.1-SNAPSHOT</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-archetype-plugin</artifactId>
+          <version>2.0</version>
+      </dependency>
+      <dependency>
+          <groupId>org.apache.maven</groupId>
+          <artifactId>maven-plugin-api</artifactId>
+          <version>2.2.1</version>
+      </dependency>
+      <dependency>
+          <groupId>org.apache.maven</groupId>
+          <artifactId>maven-project</artifactId>
+          <version>2.2.1</version>
+      </dependency>
+      <dependency>
+          <groupId>org.jibx</groupId>
+          <artifactId>jibx-tools</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>org.jibx</groupId>
+          <artifactId>jibx-bind</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>org.jibx</groupId>
+          <artifactId>jibx-extras</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>org.jibx</groupId>
+          <artifactId>jibx-run</artifactId>
+      </dependency>
+
+      <dependency>
+        <groupId>org.codehaus.plexus</groupId>
+        <artifactId>plexus-utils</artifactId>
+        <version>2.0.5</version>
+      </dependency>
+  </dependencies>
+  <reporting>
+      <plugins>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-plugin-plugin</artifactId>
+              <version>2.7</version>
+          </plugin>
+      </plugins>
+  </reporting>
+  
+</project>

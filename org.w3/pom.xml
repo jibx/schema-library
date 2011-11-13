@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <artifactId>schema-library-parent</artifactId>
+        <groupId>org.jibx.schema.config</groupId>
+        <version>1.0.1-SNAPSHOT</version>
+        <relativePath>../schema-library-parent</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.jibx.schema.org.w3</groupId>
+    <artifactId>org.w3</artifactId>
+    <packaging>pom</packaging>
+    <name>w3.org</name>
+    <version>1.0.1-SNAPSHOT</version>
+    <description>w3c Schema bindings.</description>
+    <developers>
+        <developer>
+            <name>Don Corley</name>
+            <email>don@tourgeek.com</email>
+        </developer>
+    </developers>
+    <organization>
+        <name>w3.org</name>
+        <url>http://www.w3.org</url>
+    </organization>
+    <modules>
+        <module>org.jibx.schema.org.w3._2002._08.xhtml.xhtml1_strict</module>
+        <module>org.jibx.schema.org.w3._2002._08.xhtml.xhtml1_frameset</module>
+        <module>org.jibx.schema.org.w3._2002._08.xhtml.xhtml1_transitional</module>
+        <module>org.jibx.schema.org.w3._2001._06.soap_encoding</module>
+        <module>org.jibx.schema.org.w3._2001._12.soap_envelope</module>
+        <module>org.jibx.schema.org.w3._2001.xml</module>
+        <module>org.jibx.schema.org.w3._2003._05.soap_encoding</module>
+        <module>org.jibx.schema.org.w3._2003._05.soap_envelope.soap_envelope</module>
+        <module>org.jibx.schema.org.w3._2003._06.wsdl.wsdl12_ext</module>
+        <module>org.jibx.schema.org.w3._2004._08.wsdl.wsdl20</module>
+        <module>org.jibx.schema.org.w3._2004._08.xop.include</module>
+        <module>org.jibx.schema.org.w3._2005._05.wsdl.soap</module>
+        <module>org.jibx.schema.org.w3._2005._05.wsdl.wsdl20</module>
+        <module>org.jibx.schema.org.w3._2005._05.xmlmime</module>
+        <module>org.jibx.schema.org.w3._2005._08.addressing.ws_addr</module>
+        <module>org.jibx.schema.org.w3._2006._01.wsdl.wsdl20</module>
+        <module>org.jibx.schema.org.w3._2006._02.addressing.wsdl.ws_addr_wsdl</module>
+        <module>org.jibx.schema.org.w3._2006._03.wsdl.rpc</module>
+        <module>org.jibx.schema.org.w3._2006._03.wsdl.soap</module>
+        <module>org.jibx.schema.org.w3._2006._03.wsdl.wsdl20</module>
+        <module>org.jibx.schema.org.w3.TR._2002.REC_xmldsig_core_20020212.xmldsig_core_schema</module>
+        <module>org.jibx.schema.org.w3.TR._2002.REC_xmlenc_core_20021210.xenc_schema</module>
+    </modules>
+</project>

@@ -1,0 +1,7 @@
+<binding name="binding" package="org.jibx.schema.org.jibx.schema.person" trim-whitespace="true">
+  <namespace uri="http://www.jibx.org/sampleschema/person" default="elements" prefix="tns"/>
+  <mapping class="org.jibx.schema.org.jibx.schema.person.Person" name="person">
+    <value style="element" name="firstName" get-method="getFirstName" set-method="setFirstName"/>
+    <value style="element" name="lastName" get-method="getLastName" set-method="setLastName"/>
+  </mapping>
+</binding>
