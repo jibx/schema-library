@@ -6,3 +6,6 @@ target
 .metadata
 *.releaseBackup
 release.properties
+schema-utilities/examples/org.jibx.android.test.app/bin
+schema-utilities/examples/org.jibx.android.test.app/gen
+
