@@ -16,13 +16,14 @@
   <properties>
     <systemName>rail</systemName>
     <schemaFilter>OTA_Rail</schemaFilter>
-    <include-binding>${basedir}/../profile/target/generated-sources/binding.xml</include-binding>
+    <include-binding>${basedir}/../base.rail/target/generated-sources/binding.xml</include-binding>
   </properties>
+
 
   <dependencies>
     <dependency>
       <groupId>org.jibx.schema.org.opentravel._2011B</groupId>
-      <artifactId>org.jibx.schema.org.opentravel._2011B.profile</artifactId>
+      <artifactId>org.jibx.schema.org.opentravel._2011B.base.rail</artifactId>
       <version>${project.version}</version>
     </dependency>
   </dependencies>

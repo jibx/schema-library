@@ -45,6 +45,7 @@
     <module>cruise</module>
     <module>ground</module>
     <module>golf</module>
+    <module>base.rail</module>
     <module>rail</module>
     <module>screen</module>
 
