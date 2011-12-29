@@ -44,7 +44,7 @@
               <includeBaseBindings>
                 <includeBaseBinding>
                   <includes>
-                    <include>${basedir}/../base/target/generated-sources/binding.xml</include>
+                    <include>${include-binding}</include>
                   </includes>
                 </includeBaseBinding>
               </includeBaseBindings>

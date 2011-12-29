@@ -16,12 +16,13 @@
   <properties>
     <systemName>air</systemName>
     <schemaFilter>OTA_Air</schemaFilter>
+    <include-binding>${basedir}/../profile/target/generated-sources/binding.xml</include-binding>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>org.jibx.schema.org.opentravel._2011B</groupId>
-      <artifactId>org.jibx.schema.org.opentravel._2011B.base.air</artifactId>
+      <artifactId>org.jibx.schema.org.opentravel._2011B.profile</artifactId>
       <version>${project.version}</version>
     </dependency>
   </dependencies>

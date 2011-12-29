@@ -7,7 +7,7 @@
   <schema-type type-name="date" format-name="LocalDate.default"/>
   <schema-type type-name="time" format-name="LocalTime.local"/>
   <class-decorator class="org.jibx.schema.codegen.extend.CollectionMethodsDecorator"/>
-  <schema-set package="org.jibx.schema.org.opentravel._2011B.base.rail" names="OTA_RailCommonTypes.xsd,OTA_RailPreferences.xsd">
+  <schema-set package="org.jibx.schema.org.opentravel._2011B.base.rail" names="OTA_RailCommonTypes.xsd OTA_RailPreferences.xsd">
     <name-converter strip-prefixes="OTA_Rail"/>
   </schema-set>
 </schema-set> 

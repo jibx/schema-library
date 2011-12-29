@@ -7,10 +7,7 @@
   <schema-type type-name="date" format-name="LocalDate.default"/>
   <schema-type type-name="time" format-name="LocalTime.local"/>
   <class-decorator class="org.jibx.schema.codegen.extend.CollectionMethodsDecorator"/>
-  <schema-set package="org.jibx.schema.org.opentravel._2011B.base.air" names="OTA_AirCommonTypes.xsd">
-    <name-converter strip-prefixes="OTA_Air"/>
-  </schema-set>
-  <schema-set package="org.jibx.schema.org.opentravel._2011B.base.air" names="OTA_AirPreferences.xsd">
+  <schema-set package="org.jibx.schema.org.opentravel._2011B.base.air" names="OTA_AirCommonTypes.xsd OTA_AirPreferences.xsd">
     <name-converter strip-prefixes="OTA_Air"/>
   </schema-set>
 </schema-set> 
