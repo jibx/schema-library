@@ -71,6 +71,7 @@
                   </includes>
                 </includeBaseBinding>
               </includeBaseBindings>
+              <defaultNamespace>${defaultNamespace}</defaultNamespace>
 	        </configuration>
           </execution>
           <execution>

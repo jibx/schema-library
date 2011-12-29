@@ -28,6 +28,7 @@
     <module>schema</module>
 
     <module>base</module>
+    <module>base.air</module>
     <module>air</module>
     <module>veh</module>
     <module>profile</module>
@@ -90,6 +91,7 @@
                   </includes>
                 </includeBaseBinding>
               </includeBaseBindings>
+              <defaultNamespace>${defaultNamespace}</defaultNamespace>
 	        </configuration>
           </execution>
           <execution>

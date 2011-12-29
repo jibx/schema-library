@@ -38,7 +38,7 @@
 	            <includeSchemas>
 	                <includeSchema>FastRezOTA_*.xsd</includeSchema>
 	            </includeSchemas>
-                <defaultNamespace>http://www.opentravel.org/OTA/2003/05</defaultNamespace>
+                <defaultNamespace>${defaultNamespace}</defaultNamespace>
 	        </configuration>
           </execution>
                 <execution>
