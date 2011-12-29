@@ -8,4 +8,5 @@ target
 release.properties
 schema-utilities/examples/org.jibx.android.test.app/bin
 schema-utilities/examples/org.jibx.android.test.app/gen
+org.opentravel/_2011B/opentravel-schema/schema/src/main/schema/ota-schema
 
