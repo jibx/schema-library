@@ -43,15 +43,13 @@
               <includeBaseBindings>
                 <includeBaseBinding>
                   <includes>
-                    <include>${basedir}/../base/target/generated-sources/binding.xml</include>
                     <include>${basedir}/../base.air/target/generated-sources/binding.xml</include>
                     <include>${basedir}/../base.veh/target/generated-sources/binding.xml</include>
                     <include>${basedir}/../base.rail/target/generated-sources/binding.xml</include>
-                    <include>${basedir}/../base.hotel/target/generated-sources/binding.xml</include>
                   </includes>
                 </includeBaseBinding>
               </includeBaseBindings>
-              <defaultNamespace>http://www.opentravel.org/OTA/2003/05</defaultNamespace>
+              <defaultNamespace>${defaultNamespace}</defaultNamespace>
 	        </configuration>
           </execution>
           <execution>
