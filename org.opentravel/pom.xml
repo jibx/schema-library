@@ -21,8 +21,7 @@
   </properties>
 
   <modules>
-    <!-- module>_2010B</module -->
-    <module>_2011A</module>
+    <module>_2011B</module>
   </modules>  
 
 </project>
