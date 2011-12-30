@@ -16,7 +16,7 @@
   <properties>
     <systemName>base.rail</systemName>
     <schemaFilter>OTA_Rail</schemaFilter>
-    <include-binding>${basedir}/../base/target/generated-sources/binding.xml</include-binding>
+    <include-binding>${basedir}/../base.hotel/target/generated-sources/binding.xml</include-binding>
   </properties>
 
   <build>
@@ -44,7 +44,7 @@
               <includeBaseBindings>
                 <includeBaseBinding>
                   <includes>
-                    <include>${basedir}/../base/target/generated-sources/binding.xml</include>
+                    <include>${include-binding}</include>
                   </includes>
                 </includeBaseBinding>
               </includeBaseBindings>
@@ -72,7 +72,7 @@
   <dependencies>
     <dependency>
       <groupId>org.jibx.schema.org.opentravel._2011B</groupId>
-      <artifactId>org.jibx.schema.org.opentravel._2011B.base</artifactId>
+      <artifactId>org.jibx.schema.org.opentravel._2011B.base.hotel</artifactId>
       <version>${project.version}</version>
     </dependency>
   </dependencies>

@@ -29,10 +29,15 @@
 
     <module>base</module>
     <module>base.air</module>
-    <module>air</module>
-    <module>veh</module>
+    <module>base.veh</module>
+    <module>base.hotel</module>
+    <module>base.rail</module>
     <module>profile</module>
+    <module>rail</module>
+    <module>veh</module>
     <module>hotel</module>
+    <module>air</module>
+
     <module>destactivity</module>
     <module>pkg</module>
     <module>travelitinerary</module>
@@ -46,8 +51,6 @@
     <module>cruise</module>
     <module>ground</module>
     <module>golf</module>
-    <module>base.rail</module>
-    <module>rail</module>
     <module>screen</module>
 
     <module>ping</module>

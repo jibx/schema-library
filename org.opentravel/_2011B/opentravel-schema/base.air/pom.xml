@@ -21,7 +21,6 @@
 
   <build>
     <plugins>
-
       <plugin>
         <groupId>org.jibx</groupId>
         <artifactId>jibx-maven-plugin</artifactId>
@@ -65,7 +64,6 @@
           </execution>
         </executions>
 	  </plugin>
-
   </plugins>
   </build>
 
