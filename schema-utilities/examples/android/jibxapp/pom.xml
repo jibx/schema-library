@@ -57,6 +57,13 @@
                         <platform>14</platform>
                     </sdk>
                 </configuration>
+		<executions>
+			<execution>
+				<goals>
+					<goal>apklib</goal>
+				</goals>
+			</execution>
+		</executions>
             </plugin>
         </plugins>
     </build>
