@@ -16,8 +16,8 @@ Web service example
  to the cxf web service example.
  
 +-----+
- svn co https://jibx.svn.sourceforge.net/svnroot/jibx/trunk/schema-library/schema-utilities/examples/opentravel-webservice/opentravel-ping/opentravel-ping-service
- cd opentravel-ping-service
+ git clone git@github.com:jibx/schema-library.git
+ cd schema-library/schema-utilities/examples/opentravel-webservice/opentravel-ping/opentravel-ping-service
  mvn clean install
 +-----+
 
@@ -34,15 +34,16 @@ Web service example
 +-----+
  features:install obr
  obr:addurl http://www.jibx.org/repository.xml
- obr:deploy 'Schema Library - org.opentravel.ping - 2011A - opentravel.org ping schema'
- install mvn:org.jibx.schema.org.opentravel.ws/org.jibx.schema.org.opentravel._2011A.ping.ws/1.0.1-SNAPSHOT
+ obr:deploy 'Schema Library - org.opentravel.ping - 2011B - opentravel.org ping schema'
+ install mvn:org.jibx.schema.org.opentravel.ws/org.jibx.schema.org.opentravel._2011B.ping.ws/1.0.3-SNAPSHOT
  (remember the Bundle ID)
  ctrl+d (stop servicemix)
  bin/servicemix (restart servicemix)
  start 222 (replace 222 with the Bundle ID displayed above)
 +-----+
 
- Step 4: Load client.html into your favorite browser and click 'send'. Most browsers will display
- the soap xml message returned from the web service (some will just display 'status: 0')
+ Step 4: Load client.html (from the opentravel-ping-service project root directory) into your favorite browser
+ and click 'send'. Most browsers will display the soap xml message returned from the web
+ service (some will just display 'status: 0'). To see the wsdl from servicemix, {{{http://localhost:8092/Ping?wsdl}Click here}}.
  
 That's it!
