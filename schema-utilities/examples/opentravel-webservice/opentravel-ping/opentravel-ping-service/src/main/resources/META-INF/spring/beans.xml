@@ -8,7 +8,7 @@ http://cxf.apache.org/jaxws
 http://cxf.apache.org/schemas/jaxws.xsd">
 
     <jaxws:endpoint id="ping"
-    implementor="org.jibx.schema.org.opentravel._2011A.ping.ws.impl.PingImpl"    
+    implementor="org.jibx.schema.org.opentravel._2011B.ping.ws.impl.PingImpl"    
     address="http://localhost:8092/Ping"
     wsdlLocation="ping.wsdl">
         <jaxws:dataBinding>

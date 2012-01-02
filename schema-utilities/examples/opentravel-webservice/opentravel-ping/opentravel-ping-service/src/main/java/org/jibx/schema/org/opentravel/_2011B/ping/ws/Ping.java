@@ -1,4 +1,4 @@
-package org.jibx.schema.org.opentravel._2011A.ping.ws;
+package org.jibx.schema.org.opentravel._2011B.ping.ws;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -7,8 +7,8 @@ import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 
 import org.apache.cxf.annotations.DataBinding;
-import org.jibx.schema.org.opentravel._2011A.ping.PingRQ;
-import org.jibx.schema.org.opentravel._2011A.ping.PingRS;
+import org.jibx.schema.org.opentravel._2011B.ping.PingRQ;
+import org.jibx.schema.org.opentravel._2011B.ping.PingRS;
 
 /**
  * The web services interface.

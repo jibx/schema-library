@@ -4,23 +4,19 @@
 
   <parent>
     <groupId>org.jibx.schema.config</groupId>
-    <artifactId>schema-library-reactor</artifactId>
+    <artifactId>schema-utilities-reactor</artifactId>
     <version>1.0.3-SNAPSHOT</version>
   </parent>
 
-  <artifactId>schema-utilities-reactor</artifactId>
+  <artifactId>schema-examples-reactor</artifactId>
   <packaging>pom</packaging>
 
   <name>schema-utilities-reactor - schema-utilities parent</name>
   <description>JiBX schema - schema-utilities parent</description>
 
   <modules>
-    <module>create-jibx-project-utilities</module>
-    <module>create-jibx-project</module>
-    <module>schema-maven-plugin</module>
-    <module>site</module>
-    
-    <!-- examples are not included since the final examples often use servicemix parents which can't be deployed -->
+    <!-- module>android</module -->
+    <module>opentravel-webservice</module>
   </modules>
 
 </project>

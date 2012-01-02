@@ -4,14 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-       <groupId>org.apache.servicemix.features</groupId>
+       <groupId>org.apache.servicemix</groupId>
        <artifactId>features</artifactId>
-       <version>4.3.0</version>
+       <version>4.4.0</version>
     </parent>
 
     <groupId>org.jibx.schema.org.opentravel.ws</groupId>
-    <artifactId>org.jibx.schema.org.opentravel._2011A.ping.ws</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <artifactId>org.jibx.schema.org.opentravel._2011B.ping.ws</artifactId>
+    <version>1.0.3-SNAPSHOT</version>
     
     <packaging>bundle</packaging>
     <name>JiBX opentravel ping service engine</name>
@@ -61,9 +61,9 @@
     
     <dependencies>
 		<dependency>
-		  <groupId>org.jibx.schema.org.opentravel._2011A</groupId>
-		  <artifactId>org.jibx.schema.org.opentravel._2011A.ping</artifactId>
-		  <version>1.0.1</version>
+		  <groupId>org.jibx.schema.org.opentravel._2011B</groupId>
+		  <artifactId>org.jibx.schema.org.opentravel._2011B.ping</artifactId>
+		  <version>1.0.2</version>
 		</dependency>
 
         <dependency>

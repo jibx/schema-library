@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.jibx.schema.config</groupId>
         <artifactId>schema-examples-reactor</artifactId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.0.3-SNAPSHOT</version>
     </parent>
 
     <groupId>org.jibx.schema.org.opentravel.ws</groupId>

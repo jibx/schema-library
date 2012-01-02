@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.jibx.schema.org.opentravel.ws</groupId>
         <artifactId>opentravel-webservice-reactor</artifactId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.0.3-SNAPSHOT</version>
     </parent>
 
     <artifactId>opentravel-webservice-ping-reactor</artifactId>

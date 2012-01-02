@@ -11,11 +11,11 @@
 
 	<wsdl:types>
 		<xsd:schema targetNamespace="http://www.opentravel.org/OTA/2003/05"
-			id="OTA2011A" elementFormDefault="qualified"
+			id="OTA2011B" elementFormDefault="qualified"
 			version="1.000">
-			<xsd:import schemaLocation="http://www.opentravel.org/2011A/OTA_PingRQ.xsd"
+			<xsd:import schemaLocation="http://www.opentravel.org/2011B/OTA_PingRQ.xsd"
 				namespace="http://www.opentravel.org/OTA/2003/05" />
-			<xsd:import schemaLocation="http://www.opentravel.org/2011A/OTA_PingRS.xsd"
+			<xsd:import schemaLocation="http://www.opentravel.org/2011B/OTA_PingRS.xsd"
 				namespace="http://www.opentravel.org/OTA/2003/05" />
 		</xsd:schema>
 	</wsdl:types>

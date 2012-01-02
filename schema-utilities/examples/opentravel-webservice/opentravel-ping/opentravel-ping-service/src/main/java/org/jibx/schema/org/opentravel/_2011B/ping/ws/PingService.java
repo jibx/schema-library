@@ -1,4 +1,4 @@
-package org.jibx.schema.org.opentravel._2011A.ping.ws;
+package org.jibx.schema.org.opentravel._2011B.ping.ws;
 
 import java.net.MalformedURLException;
 import java.net.URL;
