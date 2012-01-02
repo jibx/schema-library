@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Sample JiBX Hotel Client!</string>
+    <string name="app_name">HotelClient</string>
+    <string name="date_desc">Date</string>
+    <string name="nights_desc">Nights</string>
+    <string name="check_avail_button">Check&lt;br/&gt;availability</string>
+    
+</resources>
