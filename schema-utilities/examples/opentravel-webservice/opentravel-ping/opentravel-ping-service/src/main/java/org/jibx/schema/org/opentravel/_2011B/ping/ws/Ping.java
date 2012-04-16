@@ -19,8 +19,8 @@ import org.jibx.schema.org.opentravel._2011B.ping.PingRS;
 public interface Ping {
 
     @WebResult(name = "PingRS", targetNamespace = "http://www.opentravel.org/OTA/2003/05", partName = "payload")
-    @WebMethod(operationName = "SendPing")
-    public PingRS sendPing(
+    @WebMethod(operationName = "Ping")
+    public PingRS ping(
         @WebParam(partName = "payload", name = "PingRQ", targetNamespace = "http://www.opentravel.org/OTA/2003/05")
         	PingRQ payload
     );

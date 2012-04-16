@@ -28,7 +28,7 @@
     </wsdl:message>
 
     <wsdl:portType name="Ping">
-        <wsdl:operation name="SendPing">
+        <wsdl:operation name="Ping">
             <wsdl:input message="tns:PingRequest"/>
             <wsdl:output message="tns:PingResponse"/>
         </wsdl:operation>
@@ -36,7 +36,7 @@
     
     <wsdl:binding name="PingSOAPBinding" type="tns:Ping">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
-        <wsdl:operation name="SendPing">
+        <wsdl:operation name="Ping">
             <wsdl:input>
                 <soap:body use="literal" />
             </wsdl:input>

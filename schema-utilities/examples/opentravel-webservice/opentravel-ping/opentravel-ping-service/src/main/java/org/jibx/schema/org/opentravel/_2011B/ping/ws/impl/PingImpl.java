@@ -16,7 +16,7 @@ import org.joda.time.DateTime;
 @WebService(serviceName = "PingService", targetNamespace = "http://www.opentravel.org/OTA/2003/05/ws", endpointInterface = "org.jibx.schema.org.opentravel._2011B.ping.ws.Ping")
 public class PingImpl implements Ping {
 
-	public PingRS sendPing(PingRQ ping) {
+	public PingRS ping(PingRQ ping) {
 
 		PingRS response = new PingRS();
 		response.setPayloadStdAttributes(createStandardPayload());

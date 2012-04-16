@@ -10,7 +10,7 @@ Explanation
 -----------
 The web service is a simple JAX-WS web service called Ping.
 
-The beans.xml file, located in the src/main/resources/META-INF/spring
+The blueprint.xml file, located in the src/main/resources/META-INF/blueprint
 directory:
 
 1. Imports the configuration files needed to enable CXF and OSGi work
@@ -46,7 +46,7 @@ To install and run the example where you build the example bundle
 yourself, complete the following steps:
 
 1. Build the example by opening a command prompt, changing directory to
-   examples/cxf-osgi (this example) and entering the following Maven
+   opentravel-ping-service (this example) and enter the following Maven
    command:
 
      mvn install
@@ -59,10 +59,17 @@ yourself, complete the following steps:
    copies it to your local Maven repository and to the target directory
    of this example.
      
-3. Install the example by entering the following command in
+3. Install the example by entering the following commands in
    the ServiceMix console:
    
-     features:install examples-cxf-osgi
+     features:install obr
+     obr:addurl http://www.jibx.org/repository.xml
+     obr:deploy 'Schema Library - org.opentravel.ping - 2011B - opentravel.org ping schema'
+     install mvn:org.jibx.schema.org.opentravel.ws/org.jibx.schema.org.opentravel._2011B.ping.ws/1.0.3-SNAPSHOT
+     (remember the Bundle ID)
+     ctrl+d (stop servicemix)
+     bin/servicemix (restart servicemix)
+     start 222 (replace 222 with the Bundle ID displayed above) 
        
    It makes use of the ServiceMix features facility. For more
    information about the features facility, see the README.txt file
@@ -71,7 +78,7 @@ yourself, complete the following steps:
 To view the service WSDL, open your browser and go to the following
 URL:
 
-  http://localhost:8181/Ping?wsdl
+  http://localhost:8092/ping?wsdl
 
 Note, if you use Safari, right click the window and select
 'Show Source'.
@@ -91,7 +98,7 @@ at the ServiceMix console:
 At the end of the listing, you should see an entry similar to the
 following:
 
-  [170] [Active     ] [Started] [  60] Apache ServiceMix Example :: CXF OSGi (4.2.0.0)
+  [170] [Active     ] [Started] [  60] JiBX opentravel ping service engine (1.0.3.SNAPSHOT)
 
 In this case, the bundle ID is 170.
 
@@ -121,3 +128,17 @@ directory of your ServiceMix installation, or by typing
 the following command in the ServiceMix console:
 
   log:display
+  
+Changing the web service url
+----------------------------
+
+You can change the web service url by changing the configuration
+property for the web address.
+
+In karaf, change the httpaddress property by typing:
+  config:edit org.jibx.ws.ping
+  config:propset httpAddress http://localhost:8082/ping
+  config:update
+  
+You must restart the bundle for the change to take place.
+ 
