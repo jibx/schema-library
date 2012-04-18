@@ -16,6 +16,7 @@
 
     <modules>
         <module>opentravel-ping-service</module>
+        <module>opentravel-ping-rest</module>
         <module>opentravel-ping-features</module>
     </modules>
 
