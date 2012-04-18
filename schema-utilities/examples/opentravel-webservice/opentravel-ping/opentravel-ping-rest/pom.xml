@@ -41,20 +41,6 @@
                             ${project.artifactId}.*;version=${project.version},
                         </Export-Package>
                         <Import-Package>
-                            javax.wsdl,
-                            javax.xml.bind,
-                            javax.xml.bind.annotation,
-                            javax.xml.namespace,
-                            javax.xml.soap,
-                            javax.xml.ws,
-                            META-INF.cxf,
-                            org.apache.cxf.bus,
-                            org.apache.cxf.bus.spring,
-                            org.apache.cxf.bus.resource,
-                            org.apache.cxf.configuration.spring,
-                            org.apache.cxf.resource,
-                            org.apache.servicemix.cxfse,
-                            org.springframework.beans.factory.config,
 	                        *;resolution:=optional,
                         </Import-Package>
                         <Require-Bundle>org.apache.cxf.bundle</Require-Bundle>
