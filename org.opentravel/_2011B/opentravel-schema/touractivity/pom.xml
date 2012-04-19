@@ -8,10 +8,10 @@
     <version>1.0.3-SNAPSHOT</version>
   </parent>
   
-  <artifactId>org.jibx.schema.org.opentravel._2011B.tour</artifactId>
+  <artifactId>org.jibx.schema.org.opentravel._2011B.touractivity</artifactId>
   <packaging>bundle</packaging>
 
-  <name>Schema Library - org.opentravel.tour - 2011B - opentravel.org tour schema</name>
+  <name>Schema Library - org.opentravel.touractivity - 2011B - opentravel.org tour schema</name>
 
   <properties>
     <systemName>tour</systemName>
@@ -20,6 +20,11 @@
   </properties>
 
   <dependencies>
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel._2011B</groupId>
+      <artifactId>org.jibx.schema.org.opentravel._2011B.misc</artifactId>
+      <version>${project.version}</version>
+    </dependency>
     <dependency>
       <groupId>org.jibx.schema.org.opentravel._2011B</groupId>
       <artifactId>org.jibx.schema.org.opentravel._2011B.pkg</artifactId>

@@ -7,7 +7,7 @@
   <schema-type type-name="date" format-name="LocalDate.default"/>
   <schema-type type-name="time" format-name="LocalTime.local"/>
   <class-decorator class="org.jibx.schema.codegen.extend.CollectionMethodsDecorator"/>
-  <schema-set package="org.jibx.schema.org.opentravel._2011B.tour" generate-all="true" names="OTA_Tour*.xsd">
-    <name-converter strip-prefixes="OTA_Tour"/>
+  <schema-set package="org.jibx.schema.org.opentravel._2011B.touractivity" generate-all="true" names="OTA_TourActivity*.xsd">
+    <name-converter strip-prefixes="OTA_TourActivity"/>
   </schema-set>
 </schema-set> 

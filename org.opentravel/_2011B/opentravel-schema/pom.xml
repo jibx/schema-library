@@ -42,7 +42,7 @@
     <module>pkg</module>
     <module>travelitinerary</module>
 
-    <module>tour</module>
+    <module>touractivity</module>
     <module>dynamicpkg</module>
     
     <module>insurance</module>

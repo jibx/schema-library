@@ -10,5 +10,5 @@ public interface PingService {
 	 * @param request
 	 * @return
 	 */
-	public abstract PingRS ping(PingRQ request);
+	public PingRS ping(PingRQ request);
 }

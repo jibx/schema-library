@@ -31,68 +31,68 @@ public interface AirService
     /**
      * Request flight availability for a city pair on a specific date for a specific number and type of passengers.
      */
-    AvailRS avail(AvailRQ req);
+	public AvailRS avail(AvailRQ req);
     
     /**
      * Book a specific itinerary for one or more identified passengers.
      */
-    BookRS book(BookRQ req);
+	public BookRS book(BookRQ req);
     
     /**
      * Modify a previously-booked itinerary for one or more identified passengers.
      */
-    BookRS bookModify(BookModifyRQ req);
+	public BookRS bookModify(BookModifyRQ req);
     
     /**
      * Submit check-in information for self-service channels (kiosks, web and mobile).
      */
-    CheckInRS checkin(CheckInRQ req);
+	public CheckInRS checkin(CheckInRQ req);
     
     /**
      * Request that a company responsible for ticket fulfillment, such as a GDS, issue an electronic ticket and/or
      * automated miscellaneous charge order (MCO).
      */
-    DemandTicketRS demandTicket(DemandTicketRQ req);
+	public DemandTicketRS demandTicket(DemandTicketRQ req);
     
     /**
      * Get additional flight details for each leg of a flight (e.g. journey time, meal service).
      */
-    DetailsRS details(DetailsRQ req);
+	public DetailsRS details(DetailsRQ req);
     
     /**
      * Display fares between a given city pair.
      */
-    FareDisplayRS fareDisplay(FareDisplayRQ req);
+	public FareDisplayRS fareDisplay(FareDisplayRQ req);
     
     /**
      * Retrieve real-time flight departure, arrival and gate information for a particular flight, including actual as
      * well as scheduled departure and arrival times.
      */
-    FlifoRS flifo(FlifoRQ req);
+	public FlifoRS flifo(FlifoRQ req);
     
     /**
      * Get priced itinerary options for flights between specific city pairs on specific dates for specific numbers and
      * types of passengers.
      */
-    LowFareSearchRS lowFareSearch(LowFareSearchRQ req);
+	public LowFareSearchRS lowFareSearch(LowFareSearchRQ req);
     
     /**
      * Get pricing information for specific flights on specific dates for a specific number and type of passengers.
      */
-    PriceRS price(PriceRQ req);
+	public PriceRS price(PriceRQ req);
     
     /**
      * Get text rules for a specific fare class code for an airline and city pair on a specific date.
      */
-    RulesRS rules(RulesRQ req);
+	public RulesRS rules(RulesRQ req);
     
     /**
      * Display flight schedule between a given city pair.
      */
-    ScheduleRS schedule(ScheduleRQ req);
+	public ScheduleRS schedule(ScheduleRQ req);
     
     /**
      * Get seat map details for one or more flight segments for specific dates.
      */
-    SeatMapRS seatMap(SeatMapRQ req);
+	public SeatMapRS seatMap(SeatMapRQ req);
 }
