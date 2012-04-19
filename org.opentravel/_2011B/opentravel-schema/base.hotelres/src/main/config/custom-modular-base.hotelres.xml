@@ -7,8 +7,7 @@
   <schema-type type-name="date" format-name="LocalDate.default"/>
   <schema-type type-name="time" format-name="LocalTime.local"/>
   <class-decorator class="org.jibx.schema.codegen.extend.CollectionMethodsDecorator"/>
-  <schema-set package="org.jibx.schema.org.opentravel._2011B.base.profile" names="OTA_Profile.xsd">
-    <name-converter strip-prefixes="OTA_Profile"/>
-    <!-- schema-set generate-all="false" prefer-inline="true" names="OTA_Profile.xsd"/ -->
+  <schema-set package="org.jibx.schema.org.opentravel._2011B.base.hotelres" names="OTA_HotelCommonTypes.xsd OTA_HotelReservation.xsd">
+    <name-converter strip-prefixes="OTA_Hotel"/>
   </schema-set>
 </schema-set> 

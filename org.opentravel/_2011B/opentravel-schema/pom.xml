@@ -28,10 +28,10 @@
     <module>schema</module>
 
     <module>base</module>
-    <module>base.profile</module>
     <module>base.air</module>
     <module>base.veh</module>
     <module>base.hotel</module>
+    <module>base.hotelres</module>
     <module>base.rail</module>
     <module>base.cruise</module>
     <module>profile</module>

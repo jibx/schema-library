@@ -8,19 +8,19 @@
     <version>1.0.3-SNAPSHOT</version>
   </parent>
   
-  <artifactId>org.jibx.schema.org.opentravel._2011B.base.profile</artifactId>
+  <artifactId>org.jibx.schema.org.opentravel._2011B.base.hotelres</artifactId>
   <packaging>bundle</packaging>
 
-  <name>Schema Library - org.opentravel.base.profile - 2011B - opentravel.org profile base schema</name>
+  <name>Schema Library - org.opentravel.base.hotelres - 2011B - opentravel.org base hotel res schema</name>
 
   <properties>
-    <systemName>base.profile</systemName>
-    <schemaFilter>OTA_Profile</schemaFilter>
+    <systemName>base.hotelres</systemName>
+    <schemaFilter>OTA_Hotel</schemaFilter>
+    <include-binding>${basedir}/../profile/target/generated-sources/binding.xml</include-binding>
   </properties>
 
   <build>
     <plugins>
-
       <plugin>
         <groupId>org.jibx</groupId>
         <artifactId>jibx-maven-plugin</artifactId>
@@ -37,14 +37,13 @@
 	            	<customization>${customization-file}</customization>
 	            </customizations>
 	            <includeSchemas>
-	                <includeSchema>${schemaFilter}.xsd</includeSchema>
+	                <includeSchema>${schemaFilter}CommonTypes.xsd</includeSchema>
+	                <includeSchema>${schemaFilter}Reservation.xsd</includeSchema>
 	            </includeSchemas>
               <includeBaseBindings>
                 <includeBaseBinding>
                   <includes>
-                    <include>${basedir}/../base.air/target/generated-sources/binding.xml</include>
-                    <include>${basedir}/../base.veh/target/generated-sources/binding.xml</include>
-                    <include>${basedir}/../base.rail/target/generated-sources/binding.xml</include>
+                    <include>${include-binding}</include>
                   </includes>
                 </includeBaseBinding>
               </includeBaseBindings>
@@ -65,24 +64,13 @@
           </execution>
         </executions>
 	  </plugin>
-
   </plugins>
   </build>
  
   <dependencies>
     <dependency>
       <groupId>org.jibx.schema.org.opentravel._2011B</groupId>
-      <artifactId>org.jibx.schema.org.opentravel._2011B.base.air</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.jibx.schema.org.opentravel._2011B</groupId>
-      <artifactId>org.jibx.schema.org.opentravel._2011B.base.veh</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.jibx.schema.org.opentravel._2011B</groupId>
-      <artifactId>org.jibx.schema.org.opentravel._2011B.base.rail</artifactId>
+      <artifactId>org.jibx.schema.org.opentravel._2011B.profile</artifactId>
       <version>${project.version}</version>
     </dependency>
   </dependencies>

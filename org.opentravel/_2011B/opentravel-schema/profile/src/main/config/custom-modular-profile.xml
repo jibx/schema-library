@@ -11,4 +11,4 @@
     <name-converter strip-prefixes="OTA_Profile"/>
     <!-- schema-set generate-all="false" prefer-inline="true" names="OTA_Profile.xsd"/ -->
   </schema-set>
-</schema-set> 
+</schema-set>

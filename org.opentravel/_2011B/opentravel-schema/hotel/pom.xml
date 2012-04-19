@@ -40,13 +40,15 @@
 	                <includeSchema>${schemaFilter}*RS.xsd</includeSchema>
 	                <includeSchema>${schemaFilter}*RQ.xsd</includeSchema>
 	            </includeSchemas>
-	            <excludes>	<!-- This is in the profile package -->
+	            <excludes>	<!-- This is in the base package -->
 	            	<exclude>OTA_HotelPreferences.xsd</exclude>
-	            </excludes>
+	            	<exclude>OTA_HotelCommonTypes.xsd</exclude>
+    		        <exclude>OTA_HotelReservation.xsd</exclude>
+    		    </excludes>
               <includeBaseBindings>
                 <includeBaseBinding>
                   <includes>
-                    <include>${basedir}/../profile/target/generated-sources/binding.xml</include>
+                    <include>${basedir}/../base.hotelres/target/generated-sources/binding.xml</include>
                   </includes>
                 </includeBaseBinding>
               </includeBaseBindings>
@@ -74,7 +76,7 @@
   <dependencies>
     <dependency>
       <groupId>org.jibx.schema.org.opentravel._2011B</groupId>
-      <artifactId>org.jibx.schema.org.opentravel._2011B.profile</artifactId>
+      <artifactId>org.jibx.schema.org.opentravel._2011B.base.hotelres</artifactId>
       <version>${project.version}</version>
     </dependency>
   </dependencies>
