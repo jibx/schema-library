@@ -28,6 +28,7 @@
     <module>schema</module>
 
     <module>base</module>
+    <module>base.profile</module>
     <module>base.air</module>
     <module>base.veh</module>
     <module>base.hotel</module>

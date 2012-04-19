@@ -8,13 +8,13 @@
     <version>1.0.3-SNAPSHOT</version>
   </parent>
   
-  <artifactId>org.jibx.schema.org.opentravel._2011B.profile</artifactId>
+  <artifactId>org.jibx.schema.org.opentravel._2011B.base.profile</artifactId>
   <packaging>bundle</packaging>
 
-  <name>Schema Library - org.opentravel.profile - 2011B - opentravel.org profile schema</name>
+  <name>Schema Library - org.opentravel.base.profile - 2011B - opentravel.org profile base schema</name>
 
   <properties>
-    <systemName>profile</systemName>
+    <systemName>base.profile</systemName>
     <schemaFilter>OTA_Profile</schemaFilter>
   </properties>
 
@@ -37,13 +37,14 @@
 	            	<customization>${customization-file}</customization>
 	            </customizations>
 	            <includeSchemas>
-	                <includeSchema>${schemaFilter}*RS.xsd</includeSchema>
-	                <includeSchema>${schemaFilter}*RQ.xsd</includeSchema>
+	                <includeSchema>${schemaFilter}.xsd</includeSchema>
 	            </includeSchemas>
               <includeBaseBindings>
                 <includeBaseBinding>
                   <includes>
-                    <include>${basedir}/../base.profile/target/generated-sources/binding.xml</include>
+                    <include>${basedir}/../base.air/target/generated-sources/binding.xml</include>
+                    <include>${basedir}/../base.veh/target/generated-sources/binding.xml</include>
+                    <include>${basedir}/../base.rail/target/generated-sources/binding.xml</include>
                   </includes>
                 </includeBaseBinding>
               </includeBaseBindings>
@@ -71,7 +72,17 @@
   <dependencies>
     <dependency>
       <groupId>org.jibx.schema.org.opentravel._2011B</groupId>
-      <artifactId>org.jibx.schema.org.opentravel._2011B.base.profile</artifactId>
+      <artifactId>org.jibx.schema.org.opentravel._2011B.base.air</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel._2011B</groupId>
+      <artifactId>org.jibx.schema.org.opentravel._2011B.base.veh</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel._2011B</groupId>
+      <artifactId>org.jibx.schema.org.opentravel._2011B.base.rail</artifactId>
       <version>${project.version}</version>
     </dependency>
   </dependencies>
