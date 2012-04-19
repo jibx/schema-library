@@ -15,9 +15,11 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>opentravel-ping-service</module>
-        <module>opentravel-ping-rest</module>
-        <module>opentravel-ping-features</module>
+        <module>config-databinding</module>
+        <module>opentravel-ping-ws-service</module>
+        <module>opentravel-ping-ws-rest</module>
+        <module>opentravel-ping-ws-soap</module>
+        <module>opentravel-ping-ws-features</module>
     </modules>
-
+    
 </project>

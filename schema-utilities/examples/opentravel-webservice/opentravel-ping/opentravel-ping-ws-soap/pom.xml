@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.jibx.schema.org.opentravel.ws</groupId>
+        <artifactId>opentravel-webservice-ping-reactor</artifactId>
+        <version>1.0.3-SNAPSHOT</version>
+    </parent>
+
+    <groupId>org.jibx.schema.org.opentravel.ws</groupId>
+    <artifactId>org.jibx.schema.org.opentravel._2011B.ping.ws.soap</artifactId>
+    <version>1.0.3-SNAPSHOT</version>
+    
+    <packaging>bundle</packaging>
+    <name>opentravel-ping-ws-soap</name>
+    <description>JiBX opentravel ping web service soap implementation</description>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Export-Package>
+                            ${project.artifactId}.*;version=${project.version}
+                        </Export-Package>
+                        <Import-Package>
+	                        *;resolution:=optional,
+                        </Import-Package>
+                        <Require-Bundle>org.apache.cxf.bundle</Require-Bundle>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <dependencies>
+        <dependency>
+            <groupId>org.jibx.schema.org.opentravel.ws</groupId>
+            <artifactId>org.jibx.schema.org.opentravel._2011B.ping.ws.service</artifactId>
+            <version>1.0.3-SNAPSHOT</version>    
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-ws-metadata_2.0_spec</artifactId>
+            <version>${geronimo-ws-metadata.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-databinding-jibx</artifactId>
+            <version>${cxf-version}</version>
+        </dependency>
+    </dependencies>
+    
+</project>
