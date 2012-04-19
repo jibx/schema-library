@@ -32,6 +32,7 @@
     <module>base.veh</module>
     <module>base.hotel</module>
     <module>base.rail</module>
+    <module>base.cruise</module>
     <module>profile</module>
     <module>rail</module>
     <module>veh</module>
