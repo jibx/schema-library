@@ -15,7 +15,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>config-databinding</module>
         <module>opentravel-ping-ws-service</module>
         <module>opentravel-ping-ws-rest</module>
         <module>opentravel-ping-ws-soap</module>

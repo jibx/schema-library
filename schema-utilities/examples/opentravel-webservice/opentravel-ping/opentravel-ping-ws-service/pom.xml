@@ -47,9 +47,9 @@
 
     <dependencies>
 	<dependency>
-		<groupId>org.jibx.config</groupId>
-		<artifactId>org.jibx.config.databinding</artifactId>
-		<version>1.2.4-SNAPSHOT</version>
+	    <groupId>org.jibx.schema.config</groupId>
+	    <artifactId>org.jibx.config.databinding</artifactId>
+	    <version>1.0.3-SNAPSHOT</version>
 	</dependency>
 	<dependency>
 		<groupId>org.jibx.schema.org.opentravel._2011B</groupId>

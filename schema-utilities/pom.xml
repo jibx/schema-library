@@ -15,12 +15,12 @@
   <description>JiBX schema - schema-utilities parent</description>
 
   <modules>
-    <module>create-jibx-project-utilities</module>
-    <module>create-jibx-project</module>
-    <module>schema-maven-plugin</module>
-    <module>site</module>
-    
-    <!-- examples are not included since the final examples often use servicemix parents which can't be deployed -->
+    <!-- module>create-jibx-project-utilities</module -->
+    <!-- module>create-jibx-project</module -->
+    <!-- module>schema-maven-plugin</module -->
+    <!-- module>site</module -->
+    <module>config-databinding</module>
+    <module>examples</module>
   </modules>
 
 </project>
