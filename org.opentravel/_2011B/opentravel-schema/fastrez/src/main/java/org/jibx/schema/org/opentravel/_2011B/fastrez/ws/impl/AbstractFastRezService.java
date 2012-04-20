@@ -1,23 +1,22 @@
-package org.jibx.schema.org.opentravel._2011B.cruise.ws.impl;
+package org.jibx.schema.org.opentravel._2011B.fastrez.ws.impl;
 
-import org.jibx.schema.org.opentravel._2011B.cruise.ws.*;
-import org.jibx.schema.org.opentravel._2011B.cruise.*;
-import org.jibx.schema.org.opentravel._2011B.base.ws.*;
+import org.jibx.schema.org.opentravel._2011B.fastrez.ws.*;
+import org.jibx.schema.org.opentravel._2011B.fastrez.*;
 import org.joda.time.DateTime;
 
 /**
- * Skeleton cruise service implementation.
+ * Skeleton FastRez service implementation.
  * @author don
  *
  */
-public abstract class AbstractCruiseService extends BaseService
-	implements CruiseService
+public abstract class AbstractFastRezService extends Object //BaseService
+	implements FastRezService
 {
 
 	/**
 	 * Constructor
 	 */
-	public AbstractCruiseService()
+	public AbstractFastRezService()
 	{
 		super();
 	}
@@ -27,7 +26,7 @@ public abstract class AbstractCruiseService extends BaseService
 	 */
 	public void init()
 	{
-		super.init();
+		//super.init();
 	}
 
 	/**

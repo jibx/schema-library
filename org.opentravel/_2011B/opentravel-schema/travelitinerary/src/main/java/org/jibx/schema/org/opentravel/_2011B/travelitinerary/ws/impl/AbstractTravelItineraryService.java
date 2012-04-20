@@ -1,23 +1,23 @@
-package org.jibx.schema.org.opentravel._2011B.cruise.ws.impl;
+package org.jibx.schema.org.opentravel._2011B.travelitinerary.ws.impl;
 
-import org.jibx.schema.org.opentravel._2011B.cruise.ws.*;
-import org.jibx.schema.org.opentravel._2011B.cruise.*;
+import org.jibx.schema.org.opentravel._2011B.travelitinerary.ws.*;
+import org.jibx.schema.org.opentravel._2011B.travelitinerary.*;
 import org.jibx.schema.org.opentravel._2011B.base.ws.*;
 import org.joda.time.DateTime;
 
 /**
- * Skeleton cruise service implementation.
+ * Skeleton travelitinerary service implementation.
  * @author don
  *
  */
-public abstract class AbstractCruiseService extends BaseService
-	implements CruiseService
+public abstract class AbstractTravelItineraryService extends BaseService
+	implements TravelItineraryService
 {
 
 	/**
 	 * Constructor
 	 */
-	public AbstractCruiseService()
+	public AbstractTravelItineraryService()
 	{
 		super();
 	}
