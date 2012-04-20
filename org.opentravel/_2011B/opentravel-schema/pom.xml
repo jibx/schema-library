@@ -35,6 +35,10 @@
     <module>base.rail</module>
     <module>base.cruise</module>
     <module>base.dynamicpkg</module>
+    <module>base.pkg</module>
+    <module>base.ground</module>
+    <module>base.loyalty</module>
+    <module>base.insurance</module>
     <module>profile</module>
     <module>rail</module>
     <module>veh</module>

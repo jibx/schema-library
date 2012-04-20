@@ -8,21 +8,21 @@
     <version>1.0.3-SNAPSHOT</version>
   </parent>
   
-  <artifactId>org.jibx.schema.org.opentravel._2011B.pkg</artifactId>
+  <artifactId>org.jibx.schema.org.opentravel._2011B.base.insurance</artifactId>
   <packaging>bundle</packaging>
 
-  <name>Schema Library - org.opentravel.pkg - 2011B - opentravel.org pkg schema</name>
+  <name>Schema Library - org.opentravel.insurance - 2011B - opentravel.org insurance schema</name>
 
   <properties>
-    <systemName>pkg</systemName>
-    <schemaFilter>OTA_Pkg</schemaFilter>
-    <include-binding>${basedir}/../base.pkg/target/generated-sources/binding.xml</include-binding>
+    <systemName>base.insurance</systemName>
+    <schemaFilter>OTA_Insurance</schemaFilter>
+    <include-binding>${basedir}/../profile/target/generated-sources/binding.xml</include-binding>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>org.jibx.schema.org.opentravel._2011B</groupId>
-      <artifactId>org.jibx.schema.org.opentravel._2011B.base.pkg</artifactId>
+      <artifactId>org.jibx.schema.org.opentravel._2011B.profile</artifactId>
       <version>${project.version}</version>
     </dependency>
   </dependencies>

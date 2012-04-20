@@ -16,12 +16,13 @@
   <properties>
     <systemName>ground</systemName>
     <schemaFilter>OTA_Ground</schemaFilter>
-  </properties>
+    <include-binding>${basedir}/../base.ground/target/generated-sources/binding.xml</include-binding>
+    </properties>
  
   <dependencies>
     <dependency>
       <groupId>org.jibx.schema.org.opentravel._2011B</groupId>
-      <artifactId>org.jibx.schema.org.opentravel._2011B.base</artifactId>
+      <artifactId>org.jibx.schema.org.opentravel._2011B.base.ground</artifactId>
       <version>${project.version}</version>
     </dependency>
   </dependencies>
