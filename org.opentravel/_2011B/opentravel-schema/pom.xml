@@ -39,6 +39,7 @@
     <module>base.ground</module>
     <module>base.loyalty</module>
     <module>base.insurance</module>
+    <module>base.touractivity</module>
     <module>profile</module>
     <module>rail</module>
     <module>veh</module>
