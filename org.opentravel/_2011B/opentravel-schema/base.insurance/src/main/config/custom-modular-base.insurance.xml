@@ -7,7 +7,7 @@
   <schema-type type-name="date" format-name="LocalDate.default"/>
   <schema-type type-name="time" format-name="LocalTime.local"/>
   <class-decorator class="org.jibx.schema.codegen.extend.CollectionMethodsDecorator"/>
-  <schema-set package="org.jibx.schema.org.opentravel._2011B.insurance" names="OTA_InsuranceCommonTypes.xsd">
+  <schema-set package="org.jibx.schema.org.opentravel._2011B.base.insurance" names="OTA_InsuranceCommonTypes.xsd">
     <name-converter strip-prefixes="OTA_Insurance"/>
     <!-- schema-set generate-all="false" prefer-inline="true" names="OTA_InsuranceCommonTypes.xsd"/  -->
   </schema-set>

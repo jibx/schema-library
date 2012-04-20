@@ -14,7 +14,7 @@
   <name>Schema Library - org.opentravel.loyalty - 2011B - opentravel.org loyalty schema</name>
 
   <properties>
-    <systemName>base.loyalty</systemName>
+    <systemName>loyalty</systemName>
     <schemaFilter>OTA_Loyalty</schemaFilter>
     <include-binding>${basedir}/../base.loyalty/target/generated-sources/binding.xml</include-binding>
   </properties>
@@ -24,7 +24,6 @@
       <plugin>
         <groupId>org.jibx</groupId>
         <artifactId>jibx-maven-plugin</artifactId>
-
         <executions>
           <execution>
             <id>generate-java-code-from-schema</id>
@@ -37,7 +36,8 @@
 	            	<customization>${customization-file}</customization>
 	            </customizations>
 	            <includeSchemas>
-	                <includeSchema>${schemaFilter}CommonTypes.xsd</includeSchema>
+	                <includeSchema>${schemaFilter}*RS.xsd</includeSchema>
+	                <includeSchema>${schemaFilter}*RQ.xsd</includeSchema>
 	            </includeSchemas>
               <includeBaseBindings>
                 <includeBaseBinding>

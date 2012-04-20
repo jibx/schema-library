@@ -17,7 +17,7 @@
     <systemName>ground</systemName>
     <schemaFilter>OTA_Ground</schemaFilter>
     <include-binding>${basedir}/../base.ground/target/generated-sources/binding.xml</include-binding>
-    </properties>
+  </properties>
  
   <dependencies>
     <dependency>

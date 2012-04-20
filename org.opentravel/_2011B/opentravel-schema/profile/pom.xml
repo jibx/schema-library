@@ -20,11 +20,9 @@
 
   <build>
     <plugins>
-
       <plugin>
         <groupId>org.jibx</groupId>
         <artifactId>jibx-maven-plugin</artifactId>
-
         <executions>
           <execution>
             <id>generate-java-code-from-schema</id>
@@ -66,7 +64,6 @@
           </execution>
         </executions>
 	  </plugin>
-
     </plugins>
   </build>
  

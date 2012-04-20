@@ -4,6 +4,7 @@ target
 .classpath
 *~
 .metadata
+.attach*
 *.releaseBackup
 release.properties
 schema-utilities/examples/org.jibx.android.test.app/bin

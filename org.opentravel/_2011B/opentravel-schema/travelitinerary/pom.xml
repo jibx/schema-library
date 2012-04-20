@@ -19,10 +19,62 @@
     <include-binding>${basedir}/../hotel/target/generated-sources/binding.xml</include-binding>
   </properties>
 
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.jibx</groupId>
+        <artifactId>jibx-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>generate-java-code-from-schema</id>
+            <goals>
+              <goal>schema-codegen</goal>
+            </goals>
+	        <configuration>
+	        	<schemaLocation>${schemaLocation}</schemaLocation>
+	            <customizations>
+	            	<customization>${customization-file}</customization>
+	            </customizations>
+	            <includeSchemas>
+	                <includeSchema>${schemaFilter}*.xsd</includeSchema>
+	            </includeSchemas>
+              <includeBaseBindings>
+                <includeBaseBinding>
+                  <includes>
+                    <include>${basedir}/../base.cruise/target/generated-sources/binding.xml</include>
+                    <include>${basedir}/../hotel/target/generated-sources/binding.xml</include>
+                  </includes>
+                </includeBaseBinding>
+              </includeBaseBindings>
+              <defaultNamespace>${defaultNamespace}</defaultNamespace>
+	        </configuration>
+          </execution>
+          <execution>
+              <id>compile-binding</id>
+              <goals>
+                  <goal>bind</goal>
+              </goals>
+              <configuration>
+                  <schemaBindingDirectory>target/generated-sources</schemaBindingDirectory>
+                  <includeSchemaBindings>
+                    <includeSchemaBinding>binding.xml</includeSchemaBinding>
+                  </includeSchemaBindings>
+              </configuration>
+          </execution>
+        </executions>
+	  </plugin>
+    </plugins>
+  </build>
+
   <dependencies>
     <dependency>
       <groupId>org.jibx.schema.org.opentravel._2011B</groupId>
       <artifactId>org.jibx.schema.org.opentravel._2011B.hotel</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel._2011B</groupId>
+      <artifactId>org.jibx.schema.org.opentravel._2011B.base.cruise</artifactId>
       <version>${project.version}</version>
     </dependency>
   </dependencies>
