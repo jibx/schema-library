@@ -30,6 +30,7 @@
 	<exclusion>
 	  <groupId>org.jibx</groupId>
 	  <artifactId>jibx-extras</artifactId>
+	  <scope>compile</scope>
 	</exclusion>
 	   </exclusions>
 	</dependency>

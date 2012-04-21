@@ -24,7 +24,7 @@
           <instructions>
             <Bundle-ManifestVersion>2</Bundle-ManifestVersion>
             <Main-Class>org.jibx.schema.utility.createjibxproject.CreateSchemaProject</Main-Class>
-            <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
+            <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
             <Private-Package>*;version=${project.version}</Private-Package>
             <Bundle-Version>${project.version}</Bundle-Version>
           </instructions>

@@ -74,6 +74,7 @@
 	<dependency>
 	  <groupId>org.jibx</groupId>
 	  <artifactId>jibx-extras</artifactId>
+	  <scope>compile</scope>
 	</dependency>
 	<dependency>	<!-- Why isn't this a jibx dependency? -->
 	  <groupId>joda-time</groupId>
