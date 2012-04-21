@@ -1,0 +1,6 @@
+<OTA_TourActivityRQ xmlns="http://www.opentravel.org/OTA/2003/05"
+     TimeStamp="2012-04-18T03:43:38.166Z"
+     Target="Production"
+     Version="1.0">
+  <EchoData>Hello</EchoData>
+</OTA_TourActivityRQ>

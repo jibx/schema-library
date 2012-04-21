@@ -1,22 +1,29 @@
-package org.jibx.schema.org.opentravel._2011B.ping.ws.service;
+package org.jibx.schema.org.opentravel._2011B.ping.ws.impl;
 
 import org.jibx.schema.org.opentravel._2011B.base.Errors;
 import org.jibx.schema.org.opentravel._2011B.base.OTAPayloadStdAttributes;
 import org.jibx.schema.org.opentravel._2011B.base.Success;
 import org.jibx.schema.org.opentravel._2011B.base._Error;
+import org.jibx.schema.org.opentravel._2011B.base.ws.BaseService;
 import org.jibx.schema.org.opentravel._2011B.ping.PingRQ;
 import org.jibx.schema.org.opentravel._2011B.ping.PingRS;
 import org.jibx.schema.org.opentravel._2011B.ping.PingRS.Sequence;
-import org.jibx.schema.org.opentravel._2011B.ping.ws.impl.DefaultPingService;
+import org.jibx.schema.org.opentravel._2011B.ping.ws.PingService;
 import org.joda.time.DateTime;
 
-public class PingServiceImpl extends DefaultPingService
+/**
+ * Skeleton ping service implementation.
+ * @author don
+ *
+ */
+public abstract class DefaultPingService extends BaseService
+	implements PingService
 {
 
 	/**
 	 * Constructor
 	 */
-	public PingServiceImpl()
+	public DefaultPingService()
 	{
 		super();
 	}
@@ -31,27 +38,19 @@ public class PingServiceImpl extends DefaultPingService
 
 	/**
 	 * Service the ping request.
+	 * You should override this method.
 	 * @param request
 	 * @return
 	 */
 	public PingRS ping(PingRQ request) {
-
+		
 		PingRS response = new PingRS();
 		response.setPayloadStdAttributes(createStandardPayload());
 		movePayloadData(request.getPayloadStdAttributes(), response.getPayloadStdAttributes());
 		
-        if (request.getEchoData() == null || request.getEchoData().length() == 0) {
-        	Errors errors = addError(null, "Error, empty echo data", null);
-        	response.setErrors(errors);
-        	return response;
-        }
-
-        Sequence sequence = new Sequence();
-        sequence.setSuccess(new Success());
-        sequence.setEchoData(request.getEchoData());
-        response.addSuccess(sequence);
-		
-        return response;
+    	Errors errors = addError(null, "Error, ping method not implemented", null);
+    	response.setErrors(errors);
+    	return response;
 	}
 
 }

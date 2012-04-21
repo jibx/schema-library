@@ -1,5 +1,10 @@
 package org.jibx.schema.org.opentravel._2011B.base.ws;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.jibx.schema.org.opentravel._2011B.base.Errors;
 import org.jibx.schema.org.opentravel._2011B.base.OTAPayloadStdAttributes;
 import org.jibx.schema.org.opentravel._2011B.base._Error;
@@ -84,5 +89,20 @@ public abstract class BaseService extends Object
     	error.setType(type);
     	errors.addError(error);
     	return errors;
+	}
+	
+	protected static final DateFormat yyyymmddDateFormat = new SimpleDateFormat("yyyy-mm-dd");
+	/**
+	 * Convert yyyy-mm-dd to Date object.
+	 * @param ymdDate
+	 * @return
+	 */
+	public static Date convertYMDToDate(String ymdDate)
+	{
+		try {
+			return yyyymmddDateFormat.parse(ymdDate);
+		} catch (ParseException e) {
+			return null;
+		}
 	}
 }
