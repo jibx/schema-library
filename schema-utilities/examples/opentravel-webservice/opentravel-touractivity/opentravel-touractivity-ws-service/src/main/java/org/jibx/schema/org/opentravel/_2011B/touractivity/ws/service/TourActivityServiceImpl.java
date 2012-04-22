@@ -3,14 +3,9 @@ package org.jibx.schema.org.opentravel._2011B.touractivity.ws.service;
 import java.util.Calendar;
 import java.util.Date;
 
-import org.jibx.schema.org.opentravel._2011B.base.AgeQualifier;
-import org.jibx.schema.org.opentravel._2011B.base.AgeQualifyingEnum;
-import org.jibx.schema.org.opentravel._2011B.base.CurrencyAmountGroup;
-import org.jibx.schema.org.opentravel._2011B.base.Errors;
-import org.jibx.schema.org.opentravel._2011B.base.Success;
+import org.jibx.schema.org.opentravel._2011B.base.*;
 import org.jibx.schema.org.opentravel._2011B.base.touractivity.TourActivityCharge;
-import org.jibx.schema.org.opentravel._2011B.touractivity.AvailRQ;
-import org.jibx.schema.org.opentravel._2011B.touractivity.AvailRS;
+import org.jibx.schema.org.opentravel._2011B.touractivity.*;
 import org.jibx.schema.org.opentravel._2011B.touractivity.AvailRS.TourActivityInfo;
 import org.jibx.schema.org.opentravel._2011B.touractivity.AvailRS.TourActivityInfo.Pricing;
 import org.jibx.schema.org.opentravel._2011B.touractivity.AvailRS.TourActivityInfo.Pricing.ParticipantCategory;
@@ -22,7 +17,7 @@ import org.jibx.schema.org.opentravel._2011B.touractivity.ws.impl.DefaultTourAct
  * @author Don Corley <don@tourgeek.com>
  */
 public class TourActivityServiceImpl extends DefaultTourActivityService
-	implements TourActivityService
+	implements TourActivityService//, BundleActivator
 {
 
 	/**
@@ -40,7 +35,15 @@ public class TourActivityServiceImpl extends DefaultTourActivityService
 	{
 		super.init();
 	}
+/*
+	public void start(BundleContext bundleContext) throws Exception {
+		bundleContext.registerService(TourActivityService.class, this, null);
+	}
 
+	public void stop(BundleContext bundleContext) throws Exception {
+		// Unregisters automagically
+	}
+*/
 	/**
 	 * Service the avail request.
 	 * @param request

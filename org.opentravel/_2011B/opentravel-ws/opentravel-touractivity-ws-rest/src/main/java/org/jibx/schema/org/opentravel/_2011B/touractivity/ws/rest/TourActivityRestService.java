@@ -20,9 +20,13 @@ import org.jibx.schema.org.opentravel._2011B.base.ws.BaseService;
 import org.jibx.schema.org.opentravel._2011B.touractivity.*;
 import org.jibx.schema.org.opentravel._2011B.touractivity.ws.TourActivityService;
 import org.jibx.schema.org.opentravel._2011B.touractivity.ws.service.TourActivityServiceImpl;
+//import org.osgi.framework.BundleActivator;
+//import org.osgi.framework.BundleContext;
 
 @Path("/touractivityservice/")
-public class TourActivityRestService {
+public class TourActivityRestService
+//	implements BundleActivator
+{
 
 	Map<String, AvailRQ> savedRequests = new HashMap<String, AvailRQ>();
 
@@ -36,10 +40,10 @@ public class TourActivityRestService {
      * @return
      */
     @GET
-    @Path("/avail/{id}/")
+    @Path("/avail/{id}/{date}/")
     @Produces("application/xml")
-    public AvailRQ getAvail(@PathParam("id") String id) {
-        System.out.println("----invoking get touractivity (get), AvailRQ id is: " + id);
+    public AvailRQ getAvail(@PathParam("id") String id, @PathParam("date") String date) {
+        System.out.println("----invoking get touractivity (get), tour id is: " + id + " date is: " + date);
         AvailRQ requestToReturn = savedRequests.get(id);
         if (requestToReturn == null) {
         	requestToReturn = new AvailRQ();
@@ -148,4 +152,12 @@ public class TourActivityRestService {
 		return touractivityService;
 	}
 	protected TourActivityService touractivityService = null;
+/*
+	public void start(BundleContext context) throws Exception {
+        System.out.println("----osgi start");
+		touractivityService = (TourActivityService)context.getServiceReference(TourActivityService.class);
+	}
+
+	public void stop(BundleContext context) throws Exception {
+	}*/
 }

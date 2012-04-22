@@ -49,7 +49,6 @@
     <dependency>
       <groupId>org.osgi</groupId>
       <artifactId>org.osgi.core</artifactId>
-      <version>4.2.0</version>
       <scope>provided</scope> <!-- This better be provided -->
     </dependency>
 
