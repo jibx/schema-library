@@ -36,6 +36,7 @@
                             ${project.artifactId}.*;version=${project.version},
                         </Export-Package>
                         <Import-Package>
+                            org.osgi.*;resolution:=optional;version="[1.5,2)",	<!-- HACK - cxf-rt-databinding-jibx messes this up -->
 	                        *;resolution:=optional,
                         </Import-Package>
                         <Require-Bundle>org.apache.cxf.bundle</Require-Bundle>
@@ -63,11 +64,6 @@
 	    <version>${cxf-version}</version>
 	</dependency>
     <dependency>
-	    <groupId>org.apache.cxf</groupId>
-	    <artifactId>cxf-rt-frontend-jaxws</artifactId>
-	    <version>${cxf-version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-databinding-jibx</artifactId>
             <version>${cxf-version}</version>

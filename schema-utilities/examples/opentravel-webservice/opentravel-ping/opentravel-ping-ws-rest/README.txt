@@ -256,7 +256,7 @@ uninstall --force joda-time/1.6.2
 install mvn:org.jibx.config.osgi.wrapped/org.jibx.config.osgi.wrapped.joda-time/1.6.2
 install mvn:joda-time/joda-time/2.0
 install mvn:org.jibx/jibx-run/1.2.4-SNAPSHOT
-install mvn:org.jibx.config/org.jibx.config.databinding/1.2.4-SNAPSHOT
+install mvn:org.jibx.schema.config/org.jibx.config.databinding/1.0.3-SNAPSHOT
 install mvn:org.jibx.schema.org.opentravel._2011B/org.jibx.schema.org.opentravel._2011B.ping/1.0.3-SNAPSHOT
 install mvn:org.jibx.schema.org.opentravel._2011B/org.jibx.schema.org.opentravel._2011B.base/1.0.3-SNAPSHOT
 install mvn:org.jibx.schema.org.opentravel.ws/org.jibx.schema.org.opentravel._2011B.ping.ws.service/1.0.3-SNAPSHOT
