@@ -13,6 +13,20 @@
 
   <name>Schema Library - org.opentravel.ping - 2011B - opentravel.org ping schema</name>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <instructions>	<!-- Export-Service is deprecated but required by due to a bug in bundle-plugin -->
+                         <Export-Service>org.jibx.schema.org.opentravel._2011B.ping.ws.PingActivityService</Export-Service>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
   <properties>
     <systemName>ping</systemName>
     <schemaFilter>OTA_Ping</schemaFilter>

@@ -16,7 +16,7 @@
 
   <modules>
     <!-- module>android</module -->
-    <module>opentravel-webservice</module>
+    <module>opentravel-touractivity-ws-service</module>
   </modules>
 
 </project>
