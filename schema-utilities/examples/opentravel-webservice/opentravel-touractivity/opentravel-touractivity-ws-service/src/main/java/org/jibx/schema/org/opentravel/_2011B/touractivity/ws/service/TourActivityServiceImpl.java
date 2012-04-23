@@ -16,15 +16,13 @@ import org.jibx.schema.org.opentravel._2011B.touractivity.AvailRS.TourActivityIn
 import org.jibx.schema.org.opentravel._2011B.touractivity.AvailRS.TourActivityInfo.Pricing.ParticipantCategory;
 import org.jibx.schema.org.opentravel._2011B.touractivity.ws.TourActivityService;
 import org.jibx.schema.org.opentravel._2011B.touractivity.ws.impl.DefaultTourActivityService;
-import org.osgi.framework.BundleActivator;
-import org.osgi.framework.BundleContext;
 
 /**
  * Example web services server for the opentravel TourActivity Avail message pair.
  * @author Don Corley <don@tourgeek.com>
  */
 public class TourActivityServiceImpl extends DefaultTourActivityService
-	implements TourActivityService, BundleActivator
+	implements TourActivityService
 {
 
 	/**
@@ -41,14 +39,6 @@ public class TourActivityServiceImpl extends DefaultTourActivityService
 	public void init()
 	{
 		super.init();
-	}
-
-	public void start(BundleContext bundleContext) throws Exception {
-		bundleContext.registerService(TourActivityService.class.getName(), this, null);
-	}
-
-	public void stop(BundleContext bundleContext) throws Exception {
-		// Unregisters automagically
 	}
 
 	/**
