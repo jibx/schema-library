@@ -37,6 +37,7 @@
 	                        *;resolution:=optional,
                         </Import-Package>
                         <Require-Bundle>org.apache.cxf.bundle</Require-Bundle>
+                        <!-- Bundle-Activator>org.jibx.schema.org.opentravel._2011B.touractivity.ws.rest.TourActivityRestService</Bundle-Activator -->
                     </instructions>
                 </configuration>
             </plugin>

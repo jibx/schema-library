@@ -33,11 +33,9 @@
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Export-Package>${project.artifactId}.*;version=${project.version}</Export-Package>
-                        <Import-Package>
-                            *;resolution:=optional,
-                            </Import-Package>
+                        <Import-Package>*;resolution:=optional</Import-Package>
                         <Require-Bundle>org.apache.cxf.bundle</Require-Bundle>
-                        <!-- Bundle-Activator>org.jibx.schema.org.opentravel._2011B.touractivity.ws.service.TourActivityServiceImpl</Bundle-Activator -->
+                        <Bundle-Activator>org.jibx.schema.org.opentravel._2011B.touractivity.ws.service.TourActivityServiceImpl</Bundle-Activator>
                     </instructions>
                 </configuration>
             </plugin>

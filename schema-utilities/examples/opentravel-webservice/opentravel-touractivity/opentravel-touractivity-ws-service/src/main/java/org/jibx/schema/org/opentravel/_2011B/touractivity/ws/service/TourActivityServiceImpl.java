@@ -44,7 +44,7 @@ public class TourActivityServiceImpl extends DefaultTourActivityService
 	}
 
 	public void start(BundleContext bundleContext) throws Exception {
-//		bundleContext.registerService(TourActivityService.class, this, null);
+		bundleContext.registerService(TourActivityService.class.getName(), this, null);
 	}
 
 	public void stop(BundleContext bundleContext) throws Exception {

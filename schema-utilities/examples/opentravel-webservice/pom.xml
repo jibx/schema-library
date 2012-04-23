@@ -17,6 +17,7 @@
 
     <modules>
         <module>opentravel-ping</module>
+        <module>opentravel-touractivity</module>
     </modules>
 
 </project>

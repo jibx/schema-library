@@ -37,8 +37,18 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.jibx.schema.org.opentravel.ws</groupId>
-			<artifactId>org.jibx.schema.org.opentravel._2011B.touractivity.ws</artifactId>
+		    <groupId>org.jibx.schema.org.opentravel.ws</groupId>
+		    <artifactId>org.jibx.schema.org.opentravel._2011B.touractivity.ws.service</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.jibx.schema.org.opentravel._2011B.ws</groupId>
+		    <artifactId>org.jibx.schema.org.opentravel._2011B.touractivity.ws.soap</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.jibx.schema.org.opentravel._2011B.ws</groupId>
+		    <artifactId>org.jibx.schema.org.opentravel._2011B.touractivity.ws.rest</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>

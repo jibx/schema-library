@@ -3,38 +3,32 @@
  */
 package org.jibx.schema.org.opentravel._2011B.touractivity.ws.rest;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import org.jibx.schema.org.opentravel._2011B.base.Errors;
-import org.jibx.schema.org.opentravel._2011B.base._Error;
+import org.jibx.schema.org.opentravel._2011B.base.touractivity.TourActivityID;
 import org.jibx.schema.org.opentravel._2011B.base.ws.BaseService;
-import org.jibx.schema.org.opentravel._2011B.touractivity.*;
+import org.jibx.schema.org.opentravel._2011B.touractivity.AvailRQ;
+import org.jibx.schema.org.opentravel._2011B.touractivity.AvailRQ.Schedule;
+import org.jibx.schema.org.opentravel._2011B.touractivity.AvailRS;
 import org.jibx.schema.org.opentravel._2011B.touractivity.ws.TourActivityService;
-import org.jibx.schema.org.opentravel._2011B.touractivity.ws.impl.DefaultTourActivityService;
-import org.jibx.schema.org.opentravel._2011B.touractivity.ws.service.TourActivityServiceImpl;
-//import org.osgi.framework.BundleActivator;
-//import org.osgi.framework.BundleContext;
 
 @Path("/touractivityservice/")
 public class TourActivityRestService
-//	implements BundleActivator
 {
 
     public TourActivityRestService() {
         init();
     }
 
+    public void init() {
+    }
+
     /**
-     * Get a stored touractivity message by id
+     * Get a stored touractivity message by tour code
      * @param id
      * @return
      */
@@ -43,9 +37,20 @@ public class TourActivityRestService
     @Produces("application/xml")
     public AvailRS getAvail(@PathParam("id") String id, @PathParam("date") String date) {
         System.out.println("----invoking get touractivity (get), tour id is: " + id + " date is: " + date);
-        AvailRS requestToReturn = DefaultTourActivityService.createAvailRS(null);
-    	requestToReturn.setOTAPayloadStdAttributes(BaseService.createStandardPayload());
-        return requestToReturn;
+        // Create a request
+        AvailRQ request = new AvailRQ();
+		request.setOTAPayloadStdAttributes(BaseService.createStandardPayload());
+		TourActivityID tourActivityID = new TourActivityID();
+		request.addTourActivityBasicInfo(tourActivityID);
+		tourActivityID.setTourActivityID(id);
+		Schedule schedule = new Schedule();
+		request.addSchedule(schedule);
+		schedule.addStartTime(date);
+
+		AvailRS response = null;
+        if (getTourActivityService() != null)
+        	response = getTourActivityService().avail(request);
+		return response;
     }
     
     /**
@@ -57,17 +62,11 @@ public class TourActivityRestService
     @Path("/avail/")
     public AvailRS postAvail(AvailRQ request) {
         System.out.println("----invoking add touractivity (post)");
-        AvailRS response;
-        response = getTourActivityService().avail(request);
+        AvailRS response = null;
+        if (getTourActivityService() != null)
+        	response = getTourActivityService().avail(request);
 
         return response; //AvailRS.ok().type("application/xml").entity(touractivity).build();
-    }
-
-    final void init() {
-        AvailRS request = new AvailRS();
-//?        request.setEchoData("Hello");
-        request.setOTAPayloadStdAttributes(BaseService.createStandardPayload());
-        request.getOTAPayloadStdAttributes().setTargetName("123");
     }
 
 	/**
@@ -76,17 +75,16 @@ public class TourActivityRestService
 	 */
 	public TourActivityService getTourActivityService()
 	{
-		if (touractivityService == null)
-			touractivityService = new TourActivityServiceImpl();
-		return touractivityService;
+		return tourActivityService;
 	}
-	protected TourActivityService touractivityService = null;
-/*
-	public void start(BundleContext context) throws Exception {
-        System.out.println("----osgi start");
-		touractivityService = (TourActivityService)context.getServiceReference(TourActivityService.class);
+	/**
+	 * Set the touractivity service.
+	 * @param tourActivityService
+	 */
+	public void setTourActivityService(TourActivityService tourActivityService)
+	{
+		this.tourActivityService = tourActivityService;
 	}
+	protected TourActivityService tourActivityService = null;
 
-	public void stop(BundleContext context) throws Exception {
-	}*/
 }

@@ -45,7 +45,6 @@ public class TourActivitySoapService extends Service {
         super(WSDL_LOCATION, SERVICE);
     }
     
-
     /**
      *
      * @return

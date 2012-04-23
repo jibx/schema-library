@@ -8,7 +8,7 @@
         <version>1.0.3-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.jibx.schema.org.opentravel.ws</groupId>
+    <groupId>org.jibx.schema.org.opentravel._2011B.ws</groupId>
     <version>1.0.3-SNAPSHOT</version>    
 
     <artifactId>org.jibx.schema.org.opentravel._2011B.ping.ws.rest</artifactId>

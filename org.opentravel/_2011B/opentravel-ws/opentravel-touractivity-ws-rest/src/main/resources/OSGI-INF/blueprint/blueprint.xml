@@ -10,11 +10,13 @@
   http://cxf.apache.org/blueprint/jaxrs http://cxf.apache.org/schemas/blueprint/jaxrs.xsd
   http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/core.xsd
   ">
-  <!-- cxf:bus> *uncomment this to see debugging messages*
+  <!-- cxf:bus> *uncomment this to see cxf debugging messages*
     <cxf:features>
       <cxf:logging/>
     </cxf:features>
   </cxf:bus -->
+  
+  <!-- OSGI property for http path -->
   <property-placeholder persistent-id="org.jibx.schema.org.opentravel._2011B.touractivity.ws.rest"
     xmlns="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0">
     <default-properties>
@@ -22,15 +24,24 @@
     </default-properties>
   </property-placeholder>
 
-    <jaxrs:server id="customerService" address="${httpAddress}" >
+  <!-- JAX-RS Server definition -->
+   <jaxrs:server id="tourActivityService" address="${httpAddress}" >
       <jaxrs:serviceBeans>
-        <ref component-id="customerSvc"/>
+        <ref component-id="tourActivitySvc"/>
       </jaxrs:serviceBeans>
       <jaxrs:dataBinding>
           <bean class="org.jibx.config.databinding.MyJibxDataBinding" />
       </jaxrs:dataBinding>
-    </jaxrs:server>
+   </jaxrs:server>
 
-    <bean id="customerSvc" class="org.jibx.schema.org.opentravel._2011B.touractivity.ws.rest.TourActivityRestService" />
+   <!-- tourActivity RESTful service -->
+   <bean id="tourActivitySvc" class="org.jibx.schema.org.opentravel._2011B.touractivity.ws.rest.TourActivityRestService">
+        <property name="tourActivityService" ref="tourActivityServiceRef" />
+   </bean>
+
+   <!-- OSGI Service listener -->
+	<reference id="tourActivityServiceRef"
+	    interface="org.jibx.schema.org.opentravel._2011B.touractivity.ws.TourActivityService"
+	    availability="optional" />
 
 </blueprint>

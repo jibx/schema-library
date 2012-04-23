@@ -104,7 +104,7 @@ utility such a curl or Wget. See below for more details.
     -------------------
 Open a browser and go to the following URL:
 
-   http://localhost:8181/cxf/rest/touractivityservice/touractivity/123
+   http://localhost:8181/cxf/rest/touractivityservice/avail/cityss/2012-04-12
 
 It should display an XML representation for customer 123.
 
@@ -265,20 +265,3 @@ obr:addurl file:/home/don/.m2/snapshot-repository.xml
 obr:deploy org.jibx.schema.org.opentravel._2011B.touractivity.ws.service
 obr:deploy org.jibx.schema.org.opentravel._2011B.touractivity.ws.soap
 obr:deploy org.jibx.schema.org.opentravel._2011B.touractivity.ws.rest
-
-
-
-
-install mvn:org.jibx/jibx-run/1.2.4-SNAPSHOT
-install mvn:org.jibx.config/org.jibx.config.databinding/1.2.4-SNAPSHOT
-install mvn:org.jibx.schema.org.opentravel._2011B/org.jibx.schema.org.opentravel._2011B.touractivity/1.0.3-SNAPSHOT
-install mvn:org.jibx.schema.org.opentravel._2011B/org.jibx.schema.org.opentravel._2011B.base/1.0.3-SNAPSHOT
-install mvn:org.jibx.schema.org.opentravel.ws/org.jibx.schema.org.opentravel._2011B.touractivity.ws.service/1.0.3-SNAPSHOT
-install mvn:org.jibx.schema.org.opentravel.ws/org.jibx.schema.org.opentravel._2011B.touractivity.ws.rest/1.0.3-SNAPSHOT
-install mvn:org.jibx.schema.org.opentravel.ws/org.jibx.schema.org.opentravel._2011B.touractivity.ws.soap/1.0.3-SNAPSHOT
-
-features:install obr
-sleep 2000
-obr:addurl http://www.jibx.org/repository.xml
-obr:deploy 'Schema Library - org.opentravel.touractivity - 2011B - opentravel.org touractivity schema'
-install mvn:org.jibx.schema.org.opentravel.ws/org.jibx.schema.org.opentravel._2011B.touractivity.rest/1.0.3-SNAPSHOT
