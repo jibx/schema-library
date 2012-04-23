@@ -85,7 +85,7 @@ Running a Client
 
 You can browse WSDL at:
 
-http://localhost:8181/cxf/rest/pingservice?_wadl&_type=xml
+http://localhost:8181/cxf/rest/ping?_wadl&_type=xml
 
 or
 
@@ -104,7 +104,7 @@ utility such a curl or Wget. See below for more details.
     -------------------
 Open a browser and go to the following URL:
 
-   http://localhost:8181/cxf/rest/pingservice/ping/123
+   http://localhost:8181/cxf/rest/ping/ping/123
 
 It should display an XML representation for customer 123.
 
@@ -134,20 +134,20 @@ the invocations. For example, try using curl as follows:
 
   # Create a customer
   #
-  curl -X POST -T src/main/resources/org/jibx/org/opentravel/ws/new_message.xml -H "Content-Type: text/xml" http://localhost:8181/cxf/rest/pingservice/ping
+  curl -X POST -T src/main/resources/org/jibx/org/opentravel/ws/new_message.xml -H "Content-Type: text/xml" http://localhost:8181/cxf/rest/ping/ping
   # Try running this twice. You should get an error the second time
 
   # Retrieve the customer instance with id 123
   #
-  curl http://localhost:8181/cxf/rest/pingservice/ping/123
+  curl http://localhost:8181/cxf/rest/ping/ping/123
  
   # Update the customer instance with target 0
   #
-  curl -X PUT -T src/main/resources/org/jibx/org/opentravel/ws/new_message.xml -H "Content-Type: text/xml" http://localhost:8181/cxf/rest/pingservice/ping
+  curl -X PUT -T src/main/resources/org/jibx/org/opentravel/ws/new_message.xml -H "Content-Type: text/xml" http://localhost:8181/cxf/rest/ping/ping
   
   # Delete the customer instance with id 123
   #
-  curl -X DELETE http://localhost:8181/cxf/rest/pingservice/ping/123
+  curl -X DELETE http://localhost:8181/cxf/rest/ping/ping/123
   # Try running this twice. You should get an error the second time
 
 
