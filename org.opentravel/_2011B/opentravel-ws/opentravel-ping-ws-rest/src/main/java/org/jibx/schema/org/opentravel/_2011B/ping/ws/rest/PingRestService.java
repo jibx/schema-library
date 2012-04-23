@@ -18,7 +18,7 @@ import org.jibx.schema.org.opentravel._2011B.ping.PingRQ;
 import org.jibx.schema.org.opentravel._2011B.ping.PingRS;
 import org.jibx.schema.org.opentravel._2011B.ping.ws.PingService;
 
-@Path("/ping/")
+@Path("/")
 public class PingRestService {
 
 	private Logger m_logger;

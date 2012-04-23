@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Logger;
 
 import org.jibx.schema.org.opentravel._2011B.base.Errors;
 import org.jibx.schema.org.opentravel._2011B.base.OTAPayloadStdAttributes;
@@ -17,6 +18,9 @@ import org.joda.time.DateTime;
  */
 public abstract class BaseService extends Object
 {
+
+	protected Logger m_logger;
+	
 	/**
 	 * Constructor
 	 */
@@ -31,6 +35,8 @@ public abstract class BaseService extends Object
 	 */
 	public void init()
 	{
+        m_logger = Logger.getLogger("org.jibx.schema.org.opentravel");
+    	m_logger.info("Starting opentravel service: " + this.getClass().getName());
 	}
 
     /**

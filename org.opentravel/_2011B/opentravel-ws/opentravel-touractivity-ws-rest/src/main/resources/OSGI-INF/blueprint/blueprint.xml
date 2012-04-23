@@ -20,7 +20,7 @@
   <property-placeholder persistent-id="org.jibx.schema.org.opentravel._2011B.touractivity.ws.rest"
     xmlns="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0">
     <default-properties>
-      <property name="httpAddress" value="/rest" />
+      <property name="httpAddress" value="/touractivity" />
     </default-properties>
   </property-placeholder>
 

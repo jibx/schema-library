@@ -1,14 +1,11 @@
 package org.jibx.schema.org.opentravel._2011B.ping.ws.service;
 
 import org.jibx.schema.org.opentravel._2011B.base.Errors;
-import org.jibx.schema.org.opentravel._2011B.base.OTAPayloadStdAttributes;
 import org.jibx.schema.org.opentravel._2011B.base.Success;
-import org.jibx.schema.org.opentravel._2011B.base._Error;
 import org.jibx.schema.org.opentravel._2011B.ping.PingRQ;
 import org.jibx.schema.org.opentravel._2011B.ping.PingRS;
 import org.jibx.schema.org.opentravel._2011B.ping.PingRS.Sequence;
 import org.jibx.schema.org.opentravel._2011B.ping.ws.impl.DefaultPingService;
-import org.joda.time.DateTime;
 
 public class PingServiceImpl extends DefaultPingService
 {

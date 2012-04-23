@@ -18,7 +18,7 @@ import org.jibx.schema.org.opentravel._2011B.touractivity.AvailRQ.Schedule;
 import org.jibx.schema.org.opentravel._2011B.touractivity.AvailRS;
 import org.jibx.schema.org.opentravel._2011B.touractivity.ws.TourActivityService;
 
-@Path("/touractivity/")
+@Path("/")
 public class TourActivityRestService
 {
 
