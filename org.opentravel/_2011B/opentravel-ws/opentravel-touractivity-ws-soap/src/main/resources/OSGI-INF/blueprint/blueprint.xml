@@ -15,7 +15,7 @@
 
    <!-- SOAP Server -->
    <jaxws:endpoint id="touractivity"
-      implementor="#tourActivitySvc"
+      implementor="#tourActivitySoapSvc"
       address="${httpAddress}"
       wsdlLocation="touractivity.wsdl">
         <jaxws:dataBinding>
@@ -24,12 +24,12 @@
    </jaxws:endpoint>	  
 
    <!-- tourActivity SOAP service -->
-   <bean id="tourActivitySvc" class="org.jibx.schema.org.opentravel._2011B.touractivity.ws.soap.impl.TourActivityImpl">
-        <property name="tourActivityService" ref="tourActivityServiceRef" />
+   <bean id="tourActivitySoapSvc" class="org.jibx.schema.org.opentravel._2011B.touractivity.ws.soap.impl.TourActivityImpl">
+        <property name="tourActivityService" ref="tourActivitySoapServiceRef" />
    </bean>
 
    <!-- OSGI Service listener -->
-	<reference id="tourActivityServiceRef"
+	<reference id="tourActivitySoapServiceRef"
 	    interface="org.jibx.schema.org.opentravel._2011B.touractivity.ws.TourActivityService"
 	    availability="optional" /> 
 

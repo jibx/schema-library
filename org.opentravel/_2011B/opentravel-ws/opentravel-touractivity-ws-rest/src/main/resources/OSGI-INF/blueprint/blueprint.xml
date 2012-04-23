@@ -25,9 +25,9 @@
   </property-placeholder>
 
   <!-- JAX-RS Server definition -->
-   <jaxrs:server id="tourActivityService" address="${httpAddress}" >
+   <jaxrs:server id="tourActivityRestService" address="${httpAddress}" >
       <jaxrs:serviceBeans>
-        <ref component-id="tourActivitySvc"/>
+        <ref component-id="tourActivityRestSvc"/>
       </jaxrs:serviceBeans>
       <jaxrs:dataBinding>
           <bean class="org.jibx.config.databinding.MyJibxDataBinding" />
@@ -35,12 +35,12 @@
    </jaxrs:server>
 
    <!-- tourActivity RESTful service -->
-   <bean id="tourActivitySvc" class="org.jibx.schema.org.opentravel._2011B.touractivity.ws.rest.TourActivityRestService">
-        <property name="tourActivityService" ref="tourActivityServiceRef" />
+   <bean id="tourActivityRestSvc" class="org.jibx.schema.org.opentravel._2011B.touractivity.ws.rest.TourActivityRestService">
+        <property name="tourActivityService" ref="tourActivityRestServiceRef" />
    </bean>
 
    <!-- OSGI Service listener -->
-	<reference id="tourActivityServiceRef"
+	<reference id="tourActivityRestServiceRef"
 	    interface="org.jibx.schema.org.opentravel._2011B.touractivity.ws.TourActivityService"
 	    availability="optional" />
 
