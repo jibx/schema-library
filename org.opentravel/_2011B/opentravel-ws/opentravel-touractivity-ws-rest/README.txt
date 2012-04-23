@@ -31,7 +31,7 @@ Prerequisites for Running the Example
     -------------------
 Open a browser and go to the following URL:
 
-   http://localhost:8181/cxf/touractivity/avail/cityss/2012-04-12
+   http://localhost:8181/cxf/touractivity/avail/cityss/2012-05-12
 
 It should display an XML availability response message for this tour and date.
 
@@ -68,3 +68,6 @@ obr:addurl file:/home/don/.m2/snapshot-repository.xml
 obr:deploy org.jibx.schema.org.opentravel._2011B.touractivity.ws.service
 obr:deploy org.jibx.schema.org.opentravel._2011B.touractivity.ws.soap
 obr:deploy org.jibx.schema.org.opentravel._2011B.touractivity.ws.rest
+obr:deploy org.jibx.schema.org.opentravel._2011B.ping.ws.service
+obr:deploy org.jibx.schema.org.opentravel._2011B.ping.ws.soap
+obr:deploy org.jibx.schema.org.opentravel._2011B.ping.ws.rest
