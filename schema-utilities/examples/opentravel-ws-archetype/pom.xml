@@ -9,7 +9,6 @@
     </parent>
 
   <artifactId>opentravel-ws-archetype</artifactId>
-  <version>1.0.4-SNAPSHOT</version>
   <packaging>maven-archetype</packaging>
 
   <name>org.jibx.schema.org.opentravel._2011B.touractivity.ws.service-archetype</name>

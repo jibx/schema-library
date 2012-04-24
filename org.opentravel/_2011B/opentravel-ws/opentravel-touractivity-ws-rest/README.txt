@@ -11,7 +11,7 @@ To run a web client:
 -------------------
 Open a browser and go to the following URL:
 
-   http://localhost:8181/cxf/touractivity/avail/cityss/2012-05-12
+   http://localhost:8181/cxf/touractivity/avail/cityss/2012-09-22
 
 It should display an XML availability response message for this tour and date.
 
