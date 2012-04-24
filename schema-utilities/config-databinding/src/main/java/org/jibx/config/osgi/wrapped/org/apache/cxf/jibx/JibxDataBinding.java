@@ -17,21 +17,20 @@
  * under the License.
  */
 
-package org.jibx.config.databinding;
+package org.jibx.config.osgi.wrapped.org.apache.cxf.jibx;
 
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
 
 import org.apache.cxf.databinding.DataReader;
 import org.apache.cxf.databinding.DataWriter;
-import org.apache.cxf.jibx.JibxDataBinding;
 
-public class MyJibxDataBinding extends JibxDataBinding {
+public class JibxDataBinding extends org.apache.cxf.jibx.JibxDataBinding {
 
     @SuppressWarnings("unchecked")
     public <T> DataReader<T> createReader(Class<T> cls) {
         if (XMLStreamReader.class.equals(cls)) {
-            return (DataReader<T>)(new MyJibxDataReader());
+            return (DataReader<T>)(new JibxDataReader());
         }
         return null;
     }
@@ -39,7 +38,7 @@ public class MyJibxDataBinding extends JibxDataBinding {
     @SuppressWarnings("unchecked")
     public <T> DataWriter<T> createWriter(Class<T> cls) {
         if (XMLStreamWriter.class.equals(cls)) {
-            return (DataWriter<T>)(new MyJibxDataWriter());
+            return (DataWriter<T>)(new JibxDataWriter());
         }
         return null;
     }

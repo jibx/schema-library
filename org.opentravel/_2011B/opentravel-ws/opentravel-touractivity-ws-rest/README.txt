@@ -58,9 +58,11 @@ Note: To run this under karaf:
 uninstall --force joda-time/1.6.2
 install mvn:org.jibx.config.osgi.wrapped/org.jibx.config.osgi.wrapped.joda-time/1.6.2
 install mvn:joda-time/joda-time/2.0
+install mvn:org.jibx.config.osgi.wrapped/org.jibx.config.osgi.wrapped.org.apache.cxf.jibx/2.4.1
 
 features:install obr
 sleep 4000
+obr:addurl http://www.jibx.org/repository.xml
 repository=http://www.jbundle.org:8081/nexus/content/repositories/repository
 repository=file:/home/don/workspace/workspace/bin/obr
 obr:addurl file:/home/don/.m2/snapshot-repository.xml

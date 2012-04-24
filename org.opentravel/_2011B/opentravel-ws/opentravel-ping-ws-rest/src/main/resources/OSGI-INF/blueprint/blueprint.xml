@@ -27,7 +27,7 @@
         <ref component-id="pingRestSvc"/>
       </jaxrs:serviceBeans>
       <jaxrs:dataBinding>
-          <bean class="org.jibx.config.databinding.MyJibxDataBinding" />
+          <bean class="org.jibx.config.osgi.wrapped.org.apache.cxf.jibx.JibxDataBinding" />
       </jaxrs:dataBinding>
     </jaxrs:server>
 

@@ -102,7 +102,7 @@ utility such a curl or Wget. See below for more details.
     -------------------
 Open a browser and go to the following URL:
 
-   http://localhost:8181/cxf/ping/ping/123
+   http://localhost:8181/cxf/ping/ping/Hello
 
 It should display an XML representation for customer 123.
 

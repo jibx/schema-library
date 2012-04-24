@@ -30,10 +30,10 @@
         <ref component-id="tourActivityRestSvc"/>
       </jaxrs:serviceBeans>
       <jaxrs:dataBinding>
-          <bean class="org.jibx.config.databinding.MyJibxDataBinding" />
+          <bean class="org.jibx.config.osgi.wrapped.org.apache.cxf.jibx.JibxDataBinding" />
       </jaxrs:dataBinding>
    </jaxrs:server>
-
+   
    <!-- tourActivity RESTful service -->
    <bean id="tourActivityRestSvc" class="org.jibx.schema.org.opentravel._2011B.touractivity.ws.rest.TourActivityRestService">
         <property name="tourActivityService" ref="tourActivityRestServiceRef" />

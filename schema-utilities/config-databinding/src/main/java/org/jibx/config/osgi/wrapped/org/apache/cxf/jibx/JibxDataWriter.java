@@ -17,11 +17,10 @@
  * under the License.
  */
 
-package org.jibx.config.databinding;
+package org.jibx.config.osgi.wrapped.org.apache.cxf.jibx;
 
 import javax.xml.stream.XMLStreamWriter;
 
-import org.apache.cxf.jibx.JibxDataWriter;
 import org.jibx.runtime.BindingDirectory;
 import org.jibx.runtime.IBindingFactory;
 import org.jibx.runtime.IMarshallable;
@@ -29,7 +28,7 @@ import org.jibx.runtime.IMarshallingContext;
 import org.jibx.runtime.JiBXException;
 import org.jibx.runtime.impl.StAXWriter;
 
-public class MyJibxDataWriter extends JibxDataWriter {
+public class JibxDataWriter extends org.apache.cxf.jibx.JibxDataWriter {
 
     public void write(Object obj, XMLStreamWriter output) {
         try {

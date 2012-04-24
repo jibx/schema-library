@@ -8,11 +8,14 @@
       <version>1.0.3-SNAPSHOT</version>
     </parent>
 
-    <artifactId>org.jibx.config.databinding</artifactId>
+    <groupId>org.jibx.config.osgi.wrapped</groupId>
+    <artifactId>org.jibx.config.osgi.wrapped.org.apache.cxf.jibx</artifactId>
+    <version>2.4.1</version>
     
     <packaging>bundle</packaging>
-    <name>jibx-config-databinding</name>
-    <description>JiBX cxf databinding</description>
+    <name>JiBX cxf databinding with REST patches</name>
+    <description>JiBX cxf databinding with REST patches</description>
+    <!-- This bug was fixed here https://issues.apache.org/jira/browse/CXF-4245 -->
     
     <build>
         <plugins>
@@ -31,6 +34,7 @@
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Export-Package>
                             ${project.artifactId}.*;version=${project.version},
+                            org.apache.cxf.jibx.*;version=${project.version},
                         </Export-Package>
                         <Import-Package>
 	                        *;resolution:=optional,

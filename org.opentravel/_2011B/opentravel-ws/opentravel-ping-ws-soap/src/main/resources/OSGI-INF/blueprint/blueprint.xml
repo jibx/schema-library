@@ -18,7 +18,7 @@
       address="${httpAddress}"
       wsdlLocation="ping.wsdl">
         <jaxws:dataBinding>
-        	<bean class="org.apache.cxf.jibx.JibxDataBinding"/>
+          <bean class="org.jibx.config.osgi.wrapped.org.apache.cxf.jibx.JibxDataBinding" />
         </jaxws:dataBinding>
    </jaxws:endpoint>	  
 

@@ -17,12 +17,11 @@
  * under the License.
  */
 
-package org.jibx.config.databinding;
+package org.jibx.config.osgi.wrapped.org.apache.cxf.jibx;
 
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLStreamReader;
 
-import org.apache.cxf.jibx.JibxDataReader;
 import org.apache.cxf.jibx.JibxNullBindingFactory;
 import org.apache.cxf.jibx.JibxSimpleTypes;
 import org.jibx.runtime.BindingDirectory;
@@ -32,7 +31,7 @@ import org.jibx.runtime.impl.StAXReaderWrapper;
 import org.jibx.runtime.impl.UnmarshallingContext;
 
 
-public class MyJibxDataReader extends JibxDataReader {
+public class JibxDataReader extends org.apache.cxf.jibx.JibxDataReader {
 
     public Object read(QName elementQName, XMLStreamReader input, Class type) {
         try {
