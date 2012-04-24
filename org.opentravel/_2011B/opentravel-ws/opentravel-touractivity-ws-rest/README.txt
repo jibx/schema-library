@@ -7,28 +7,8 @@
 CXF JAX-RS EXAMPLE
 ==================
 
-Purpose
--------
-Create a RESTful JAX-RS web service using CXF and expose it with the 
-OSGi HTTP Service.
-
-Prerequisites for Running the Example
--------------------------------------
-1. You must have the following installed on your machine:
-
-   - JDK 1.6 or higher
-   - Maven 2.2.1 or higher
-   
-  For more information, see the README in the top-level examples
-  directory.
-
-2. Start ServiceMix by running the following command:
-
-  <servicemix_home>/bin/servicemix          (on UNIX)
-  <servicemix_home>\bin\servicemix          (on Windows)
-
-(a) To run a web client:
-    -------------------
+To run a web client:
+-------------------
 Open a browser and go to the following URL:
 
    http://localhost:8181/cxf/touractivity/avail/cityss/2012-05-12
