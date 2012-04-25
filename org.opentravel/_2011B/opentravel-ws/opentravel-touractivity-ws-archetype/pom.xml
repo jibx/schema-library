@@ -3,9 +3,10 @@
   <modelVersion>4.0.0</modelVersion>
 
     <parent>
-      <groupId>org.jibx.schema.org.opentravel._2011B.ws</groupId>
-      <artifactId>opentravel-2011B-ws-reactor</artifactId>
-      <version>1.0.3</version>
+  <groupId>org.jibx.schema.config</groupId>
+  <artifactId>schema-library-reactor2</artifactId>
+      <version>1.0.3-SNAPSHOT</version>
+      <relativePath>../../../..</relativePath>
     </parent>
 
   <artifactId>opentravel-touractivity-ws-archetype</artifactId>
