@@ -8,24 +8,27 @@
 
 Web service example
 
- Instructions on building and running a JiBX web service example.
+ This simple example you will install a simple web service that uses SOAP and REST protocols.
+ This web service implements the {{{http://www.opentravel.org}opentravel.org}} ping service. When you send
+ a {{{Ping request}http://www.opentravel.org/2011B/OTA_PingRQ.xsd}} the service
+ echos a {{{Ping reply}http://www.opentravel.org/2011B/OTA_PingRQ.xsd}}
  
-* Example
+ For more detailed example, check out my
+ {{{http://blog.tourgeek.com/2012/04/creating-soap-and-rest-services-for-opentravel.html}blog here}}.
 
- Step 1: Checkout the web service sample from our source repository. This example is very similar
- to the cxf web service example.
+ The service source code for this example is in our repository {{{https://github.com/jibx/schema-library/blob/master/org.opentravel/_2011B/opentravel-ws/opentravel-ping-ws-service/src/main/java/org/jibx/schema/org/opentravel/_2011B/ping/ws/service/PingServiceImpl.java}here}}.
  
- If you would like to see a more detailed example which implements a REST and SOAP service
- using the same service object,
- check out my {{{blog here}http://blog.tourgeek.com/2012/04/creating-soap-and-and-rest-services-for-opentravel.html}}.
- 
-+-----+
- git clone git@github.com:jibx/schema-library.git
- cd schema-library/schema-utilities/examples/opentravel-webservice/opentravel-ping/opentravel-ping-service
- mvn clean install
-+-----+
+ This example has three services:
 
- Step 2: Download {{{http://servicemix.apache.org/}Apache servicemix}} and start it up.
+ * Your ping service implementation which is registered as an OSGi service.
+   
+ * A ping RESTful service that will call your OSGi registered ping service.
+   
+ * A ping SOAP service that also uses your ping service.
+
+* Running this example
+ 
+ Step 1: Download {{{http://servicemix.apache.org/}Apache servicemix}} and start it up.
  
 +-----+
  tar zxvf apache-servicemix-x.x.x.tar.gz
@@ -33,7 +36,7 @@ Web service example
  bin/servicemix
 +-----+
 
- Step 3: Add the jibx repository then add the JiBX OSGi bundles.
+ Step 2: Add and run the JiBX OSGi bundles in this example.
 
 +-----+
  features:install obr
@@ -41,14 +44,15 @@ Web service example
  obr:deploy org.jibx.schema.org.opentravel._2011B.ping.ws.service
  obr:deploy org.jibx.schema.org.opentravel._2011B.ping.ws.rest
  obr:deploy org.jibx.schema.org.opentravel._2011B.ping.ws.soap
- # ctrl+d (stop servicemix) - You must restart karaf due to an auto-wiring problem
+ # ctrl+d (stop servicemix) - You must restart due to a karaf auto-wiring problem
  # bin/servicemix (restart servicemix)
  start org.jibx.schema.org.opentravel._2011B.ping.ws.service
  start org.jibx.schema.org.opentravel._2011B.ping.ws.rest
  start org.jibx.schema.org.opentravel._2011B.ping.ws.soap
 +-----+
 
- Step 4: Click this link {{{http://localhost:8181/cxf/ping/ping/Hello}http://localhost:8181/cxf/ping/ping/Hello}} to test the RESTful service.
+ Step 3: Click this link {{{http://localhost:8181/cxf/ping/ping/Hello}http://localhost:8181/cxf/ping/ping/Hello}} to send a 'Hello' message to the RESTful ping service.
+ 
  Load client.html (from the opentravel-ping-service project root directory) into your favorite browser
  and click 'send'. Most browsers will display the soap xml message returned from the web
  service (some will just display 'status: 0'). To see the wsdl from servicemix, {{{http://localhost:8092/ping?wsdl}Click here}}.
