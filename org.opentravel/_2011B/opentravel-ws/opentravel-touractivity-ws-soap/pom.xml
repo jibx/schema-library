@@ -12,8 +12,7 @@
     <artifactId>org.jibx.schema.org.opentravel._2011B.touractivity.ws.soap</artifactId>
     
     <packaging>bundle</packaging>
-    <name>opentravel-touractivity-ws-soap</name>
-    <description>JiBX opentravel touractivity web service soap implementation</description>
+    <name>Schema Library - org.opentravel.touractivity.ws.soap - 2011B - opentravel.org touractivity soap server</name>
 
     <build>
         <plugins>

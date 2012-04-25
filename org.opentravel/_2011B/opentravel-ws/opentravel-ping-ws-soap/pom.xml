@@ -12,8 +12,7 @@
     <artifactId>org.jibx.schema.org.opentravel._2011B.ping.ws.soap</artifactId>
     
     <packaging>bundle</packaging>
-    <name>opentravel-ping-ws-soap</name>
-    <description>JiBX opentravel ping web service soap implementation</description>
+    <name>Schema Library - org.opentravel.ping.ws.soap - 2011B - opentravel.org ping soap server</name>
 
     <build>
         <plugins>

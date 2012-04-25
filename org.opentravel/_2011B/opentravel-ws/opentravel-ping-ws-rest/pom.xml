@@ -11,8 +11,7 @@
     <artifactId>org.jibx.schema.org.opentravel._2011B.ping.ws.rest</artifactId>
     
     <packaging>bundle</packaging>
-    <name>opentravel-ping-ws-rest</name>
-    <description>JiBX opentravel ping RESTful web service</description>
+    <name>Schema Library - org.opentravel.ping.ws.rest - 2011B - opentravel.org ping rest server</name>
     
     <build>
         <plugins>
