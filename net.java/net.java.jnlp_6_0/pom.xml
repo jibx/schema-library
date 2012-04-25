@@ -11,7 +11,7 @@
     <artifactId>org.jibx.schema.net.java.jnlp_6_0</artifactId>
     <packaging>bundle</packaging>
     <name>Schema Library - java.net - jnlp - 6_0</name>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <description>java.net/jnlp-6_0.xsd</description>
     <developers>
         <developer>

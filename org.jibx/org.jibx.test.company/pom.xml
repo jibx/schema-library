@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.jibx.schema.org.jibx</groupId>
     <artifactId>jibx-library-reactor</artifactId>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
   </parent>
 
   <groupId>org.jibx.schema.org.jibx.test</groupId>
@@ -55,7 +55,7 @@
     <dependency>
         <groupId>org.jibx.schema.org.jibx</groupId>
         <artifactId>org.jibx.schema.org.jibx.sampleschema.company</artifactId>
-        <version>1.0.4-SNAPSHOT</version>
+        <version>1.0.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
 

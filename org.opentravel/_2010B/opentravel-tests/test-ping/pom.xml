@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.jibx.schema.org.opentravel._2010B</groupId>
     <artifactId>opentravel-2010B-tests-reactor</artifactId>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
   </parent>
 
   <artifactId>org.jibx.schema.test.ping</artifactId>
@@ -23,7 +23,7 @@
     <dependency>
       <groupId>org.jibx.schema.org.opentravel._2010B</groupId>
       <artifactId>org.jibx.schema.org.opentravel._2010B.ping</artifactId>
-      <version>1.0.4-SNAPSHOT</version>
+      <version>1.0.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
 
