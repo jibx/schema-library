@@ -17,7 +17,6 @@
   <modules>
     <!-- module>android</module -->
     <module>opentravel-touractivity-ws-service</module>
-    <module>opentravel-ws-archetype</module>
   </modules>
 
 </project>
