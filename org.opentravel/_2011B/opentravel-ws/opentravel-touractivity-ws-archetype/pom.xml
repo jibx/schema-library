@@ -3,15 +3,12 @@
   <modelVersion>4.0.0</modelVersion>
 
     <parent>
-  <groupId>org.jibx.schema.config</groupId>
-  <artifactId>schema-library-reactor3</artifactId>
-      <version>1.0.4-SNAPSHOT</version>
-      <relativePath>../../../..</relativePath>
+      <groupId>org.jibx.schema.org.opentravel._2011B.ws</groupId>
+      <artifactId>opentravel-2011B-ws-reactor</artifactId>
+      <version>1.0.3-SNAPSHOT</version>
     </parent>
 
-  <groupId>org.jibx.schema.org.opentravel._2011B.ws</groupId>
   <artifactId>opentravel-touractivity-ws-service-archetype</artifactId>
-  <version>1.0.4-SNAPSHOT</version>
   <packaging>maven-archetype</packaging>
 
   <name>opentravel-touractivity-ws-archetype</name>

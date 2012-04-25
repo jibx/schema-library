@@ -5,13 +5,13 @@
   <parent>
     <groupId>org.jibx.config</groupId>
     <artifactId>jibx-parent</artifactId>
-    <version>2</version>
+    <version>3-SNAPSHOT</version>
     <relativePath>../jibx-parent</relativePath>
   </parent>
 
   <groupId>org.jibx.schema.config</groupId>
-  <artifactId>schema-library-reactor3</artifactId>
-  <version>1.0.4-SNAPSHOT</version>
+  <artifactId>schema-library-reactor</artifactId>
+  <version>1.0.3-SNAPSHOT</version>
   
   <packaging>pom</packaging>
   <name>schema-library-reactor</name>
@@ -24,20 +24,19 @@
   </scm>
 
   <modules>
-    <!-- module>schema-library-parent</module -->
-    <!-- module>schema-utilities</module -->
+    <module>schema-library-parent</module>
+    <module>schema-utilities</module>
 
     <!-- module>org.docbook</module -->
     <!-- module>org.apache.maven</module -->
     <!-- module>org.hr-xml</module -->
-    <!-- module>org.opentravel</module -->
+    <module>org.opentravel</module>
     <!-- module>org.oasis-open</module -->
     <!-- module>org.w3</module -->
     <!-- module>net.webservicex</module -->
     <!-- module>org.xmlsoap</module -->
 
     <!-- module>org.jibx</module -->
-    <module>org.opentravel/_2011B/opentravel-ws/opentravel-touractivity-ws-archetype</module>
   </modules>
 
 </project>
