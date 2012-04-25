@@ -10,11 +10,11 @@ Web service example
 
  This simple example you will install a simple web service that uses SOAP and REST protocols.
  This web service implements the {{{http://www.opentravel.org}opentravel.org}} ping service. When you send
- a {{{Ping request}http://www.opentravel.org/2011B/OTA_PingRQ.xsd}} the service
- echos a {{{Ping reply}http://www.opentravel.org/2011B/OTA_PingRQ.xsd}}
+ a {{{http://www.opentravel.org/2011B/OTA_PingRQ.xsd}Ping request}} the service
+ echos a {{{http://www.opentravel.org/2011B/OTA_PingRS.xsd}Ping reply}}
  
  For more detailed example, check out my
- {{{http://blog.tourgeek.com/2012/04/creating-soap-and-rest-services-for-opentravel.html}blog here}}.
+ {{{http://blog.tourgeek.com/2012/04/creating-soap-and-rest-services-for.html}blog here}}.
 
  The service source code for this example is in our repository {{{https://github.com/jibx/schema-library/blob/master/org.opentravel/_2011B/opentravel-ws/opentravel-ping-ws-service/src/main/java/org/jibx/schema/org/opentravel/_2011B/ping/ws/service/PingServiceImpl.java}here}}.
  
