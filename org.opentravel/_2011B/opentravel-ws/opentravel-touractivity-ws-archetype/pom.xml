@@ -5,12 +5,12 @@
     <parent>
   <groupId>org.jibx.schema.config</groupId>
   <artifactId>schema-library-reactor2</artifactId>
-      <version>1.0.3</version>
+      <version>1.0.4-SNAPSHOT</version>
       <relativePath>../../../..</relativePath>
     </parent>
 
   <artifactId>opentravel-touractivity-ws-archetype</artifactId>
-  <version>1.0.3</version>
+  <version>1.0.4-SNAPSHOT</version>
   <packaging>maven-archetype</packaging>
 
   <name>opentravel-touractivity-ws-archetype</name>
