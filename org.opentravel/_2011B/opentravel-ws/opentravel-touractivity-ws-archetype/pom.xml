@@ -9,7 +9,7 @@
     </parent>
 
   <artifactId>opentravel-touractivity-ws-archetype</artifactId>
-  <version>1.0.3</version>
+  <version>1.0.3-SNAPSHOT</version>
   <packaging>maven-archetype</packaging>
 
   <name>opentravel-touractivity-ws-archetype</name>
