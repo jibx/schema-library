@@ -32,7 +32,7 @@
 <item name="Marshal and Unmarshal" href="./examplemarshal.html"/>
 <item name="OSGi deployment" href="./exampleosgi.html"/>
 <item name="Eclipse" href="./opentravel/index.html"/>
-<item name="ServiceMix" href="./webservices.html"/>
+<item name="Web Services" href="./webservices.html"/>
 </menu>
 <menu name="Schema library">
 <item name="jibx.org" href="./site.html#jibx.org" collapse="true">

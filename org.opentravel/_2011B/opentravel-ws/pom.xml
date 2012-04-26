@@ -17,7 +17,7 @@
   <modules>
     <module>opentravel-touractivity-ws-rest</module>
     <module>opentravel-touractivity-ws-soap</module>
-    <module>opentravel-ws-archetype</module>
+    <module>opentravel-touractivity-ws-archetype</module>
     <module>opentravel-ping-ws-rest</module>
     <module>opentravel-ping-ws-soap</module>
     <module>opentravel-ping-ws-service</module>

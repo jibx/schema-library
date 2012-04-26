@@ -6,6 +6,19 @@
  Apr 24, 2012
  -----
 
+Web Services
+
+ The schema library contains SOAP and REST services for several of the message bindings
+ in this library. All you have to do is implement the service that processes the messages.
+
+ For example, this library contains SOAP and REST services that processes the opentravel.org
+ Tour Activity messages. You only need to implement this interface and register your service.
+ The SOAP and REST services will automatically use your implementation.
+ The following example shows you how to do this with the opentravel.org 'ping' service.
+
+ For more detailed example, check out my
+ {{{http://blog.tourgeek.com/2012/04/creating-soap-and-rest-services-for.html}blog here}}.
+
 Web service example
 
  This simple example you will install a simple web service that uses SOAP and REST protocols.
@@ -13,9 +26,6 @@ Web service example
  a {{{http://www.opentravel.org/2011B/OTA_PingRQ.xsd}Ping request}} the service
  echos a {{{http://www.opentravel.org/2011B/OTA_PingRS.xsd}Ping reply}}
  
- For more detailed example, check out my
- {{{http://blog.tourgeek.com/2012/04/creating-soap-and-rest-services-for.html}blog here}}.
-
  The service source code for this example is in our repository {{{https://github.com/jibx/schema-library/blob/master/org.opentravel/_2011B/opentravel-ws/opentravel-ping-ws-service/src/main/java/org/jibx/schema/org/opentravel/_2011B/ping/ws/service/PingServiceImpl.java}here}}.
  
  This example has three services:
