@@ -8,10 +8,10 @@
 
 Web Services
 
- The schema library contains SOAP and REST services for several of the message bindings
- in this library. All you have to do is implement the service that processes the messages.
+ This schema library contains SOAP and REST services for several message sets.
+ All you have to do is implement the service that processes the messages.
 
- For example, this library contains SOAP and REST services that processes the opentravel.org
+ For example, this library contains SOAP and REST services that process the opentravel.org
  Tour Activity messages. You only need to implement this interface and register your service.
  The SOAP and REST services will automatically use your implementation.
  The following example shows you how to do this with the opentravel.org 'ping' service.
@@ -23,12 +23,12 @@ Web service example
 
  This simple example you will install a simple web service that uses SOAP and REST protocols.
  This web service implements the {{{http://www.opentravel.org}opentravel.org}} ping service. When you send
- a {{{http://www.opentravel.org/2011B/OTA_PingRQ.xsd}Ping request}} the service
+ a {{{http://www.opentravel.org/2011B/OTA_PingRQ.xsd}Ping request}} this service
  echos a {{{http://www.opentravel.org/2011B/OTA_PingRS.xsd}Ping reply}}
  
  The service source code for this example is in our repository {{{https://github.com/jibx/schema-library/blob/master/org.opentravel/_2011B/opentravel-ws/opentravel-ping-ws-service/src/main/java/org/jibx/schema/org/opentravel/_2011B/ping/ws/service/PingServiceImpl.java}here}}.
  
- This example has three services:
+ This example uses three services:
 
  * Your ping service implementation which is registered as an OSGi service.
    
@@ -67,4 +67,4 @@ Web service example
  and click 'send'. Most browsers will display the soap xml message returned from the web
  service (some will just display 'status: 0'). To see the wsdl from servicemix, {{{http://localhost:8092/ping?wsdl}Click here}}.
  
-That's it!
+ Voilà
