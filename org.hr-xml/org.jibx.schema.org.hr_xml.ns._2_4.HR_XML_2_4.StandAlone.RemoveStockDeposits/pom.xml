@@ -3,7 +3,7 @@
     <parent>
         <artifactId>schema-library-parent</artifactId>
         <groupId>org.jibx.schema.config</groupId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.0.4-SNAPSHOT</version>
         <relativePath>../../schema-library-parent</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -11,7 +11,7 @@
     <artifactId>org.jibx.schema.org.hr_xml.ns._2_4.HR_XML_2_4.StandAlone.RemoveStockDeposits</artifactId>
     <packaging>bundle</packaging>
     <name>Schema Library - hr-xml.org - 2.4 - RemoveStockDeposits</name>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.4-SNAPSHOT</version>
     <description>ns.hr-xml.org/2_4/HR-XML-2_4/StandAlone/RemoveStockDeposits.xsd</description>
     <developers>
         <developer>

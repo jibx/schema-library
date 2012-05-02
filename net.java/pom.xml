@@ -11,7 +11,7 @@
 
   <groupId>org.jibx.schema.net.java</groupId>
   <artifactId>net.java-reactor</artifactId>
-  <version>1.0.1-SNAPSHOT</version>
+  <version>1.0.4-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>java.net</name>
