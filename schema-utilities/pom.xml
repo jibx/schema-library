@@ -15,10 +15,10 @@
   <description>JiBX schema - schema-utilities parent</description>
 
   <modules>
-    <!-- module>create-jibx-project-utilities</module -->
-    <!-- module>create-jibx-project</module -->
-    <!-- module>schema-maven-plugin</module -->
-    <!-- module>site</module -->
+    <module>create-jibx-project-utilities</module>
+    <module>create-jibx-project</module>
+    <module>schema-maven-plugin</module>
+    <module>site</module>
     <module>config-databinding</module>
     <module>examples</module>
   </modules>
