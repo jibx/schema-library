@@ -5,10 +5,10 @@
   <parent>
     <groupId>org.jibx.schema.config</groupId>
     <artifactId>schema-library-reactor</artifactId>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.0.4</version>
   </parent>
 
-  <version>1.0.4-SNAPSHOT</version>
+  <version>1.0.4</version>
   <groupId>org.jibx.schema.config</groupId>
   <artifactId>schema-library-parent</artifactId>
 
