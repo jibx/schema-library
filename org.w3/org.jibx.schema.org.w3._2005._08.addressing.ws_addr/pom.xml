@@ -3,7 +3,7 @@
     <parent>
         <artifactId>schema-library-parent</artifactId>
         <groupId>org.jibx.schema.config</groupId>
-        <version>1.0.4</version>
+        <version>1.0.5-SNAPSHOT</version>
         <relativePath>../../schema-library-parent</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -11,7 +11,7 @@
     <artifactId>org.jibx.schema.org.w3._2005._08.addressing.ws_addr</artifactId>
     <packaging>bundle</packaging>
     <name>Schema Library - w3.org - _2005._08.addressing.ws_addr</name>
-    <version>1.0.4</version>
+    <version>1.0.5-SNAPSHOT</version>
     <description>www.w3.org/2005/08/addressing/ws-addr.xsd</description>
     <developers>
         <developer>

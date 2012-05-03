@@ -6,7 +6,7 @@
     <parent>
       <groupId>org.jibx.schema.org.opentravel._2011B.ws</groupId>
       <artifactId>opentravel-2011B-ws-reactor</artifactId>
-      <version>1.0.4</version>
+      <version>1.0.5-SNAPSHOT</version>
     </parent>
 
     <artifactId>org.jibx.schema.org.opentravel._2011B.touractivity.ws.soap</artifactId>
@@ -47,7 +47,7 @@
         <dependency>
             <groupId>org.jibx.schema.org.opentravel.ws</groupId>
             <artifactId>org.jibx.schema.org.opentravel._2011B.touractivity.ws.service</artifactId>
-            <version>1.0.4</version>    
+            <version>1.0.5-SNAPSHOT</version>    
         </dependency>
         
         <dependency>
@@ -58,7 +58,7 @@
 	  <dependency>
 	    <groupId>org.jibx.config.osgi.wrapped</groupId>
 	    <artifactId>org.jibx.config.osgi.wrapped.org.apache.cxf.jibx</artifactId>
-	    <version>2.4.2</version>
+	    <version>2.4.3-SNAPSHOT</version>
 	  </dependency>
     </dependencies>
     

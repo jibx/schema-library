@@ -3,7 +3,7 @@
     <parent>
         <artifactId>schema-library-parent</artifactId>
         <groupId>org.jibx.schema.config</groupId>
-        <version>1.0.4</version>
+        <version>1.0.5-SNAPSHOT</version>
         <relativePath>../../schema-library-parent</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -11,7 +11,7 @@
     <artifactId>org.jibx.schema.org.w3._2002._08.xhtml.xhtml1_strict</artifactId>
     <packaging>bundle</packaging>
     <name>Schema Library - w3.org - _2002._08.xhtml.xhtml1_strict</name>
-    <version>1.0.4</version>
+    <version>1.0.5-SNAPSHOT</version>
     <description>xhtml 1.0 strict schema definintion</description>
     <developers>
         <developer>

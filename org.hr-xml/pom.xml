@@ -3,7 +3,7 @@
     <parent>
         <groupId>org.jibx.schema.config</groupId>
         <artifactId>schema-library-parent</artifactId>
-        <version>1.0.4</version>
+        <version>1.0.5-SNAPSHOT</version>
         <relativePath>../schema-library-parent</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -11,7 +11,7 @@
     <artifactId>org.hr_xml</artifactId>
     <packaging>pom</packaging>
     <name>hr-xml.org</name>
-    <version>1.0.4</version>
+    <version>1.0.5-SNAPSHOT</version>
     <description>Human Resources XML Schema bindings.</description>
     <developers>
         <developer>
