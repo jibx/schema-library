@@ -4,7 +4,7 @@
 
   <parent>
     <groupId>org.jibx.schema.config</groupId>
-    <artifactId>schema-utilities-reactor2</artifactId>
+    <artifactId>schema-utilities-reactor</artifactId>
     <version>1.0.5-SNAPSHOT</version>
   </parent>
 
