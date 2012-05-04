@@ -21,6 +21,7 @@
     <module>site</module>
     <module>config-databinding</module>
     <module>examples</module>
+    <module>obr</module>
   </modules>
 
 </project>
