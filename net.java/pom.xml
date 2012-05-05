@@ -5,7 +5,7 @@
     <parent>
         <artifactId>schema-library-parent</artifactId>
         <groupId>org.jibx.schema.config</groupId>
-        <version>1.0.0</version>
+        <version>1.0.4</version>
         <relativePath>../schema-library-parent</relativePath>
     </parent>
 
