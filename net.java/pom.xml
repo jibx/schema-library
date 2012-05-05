@@ -5,13 +5,12 @@
     <parent>
         <artifactId>schema-library-parent</artifactId>
         <groupId>org.jibx.schema.config</groupId>
-        <version>1.0.4</version>
+        <version>1.0.5-SNAPSHOT</version>
         <relativePath>../schema-library-parent</relativePath>
     </parent>
 
   <groupId>org.jibx.schema.net.java</groupId>
   <artifactId>net.java-reactor</artifactId>
-  <version>1.0.4-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>java.net</name>

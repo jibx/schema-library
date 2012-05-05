@@ -11,10 +11,10 @@
 
   <groupId>org.jibx.schema.config</groupId>
   <artifactId>schema-library-reactor</artifactId>
-  <version>1.0.4-SNAPSHOT</version>
+  <version>1.0.5-SNAPSHOT</version>
   
   <packaging>pom</packaging>
-  <name>schema-library-reactor4</name>
+  <name>schema-library-reactor</name>
   <description>JiBX</description>
 
   <scm>
