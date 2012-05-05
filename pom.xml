@@ -11,10 +11,10 @@
 
   <groupId>org.jibx.schema.config</groupId>
   <artifactId>schema-library-reactor</artifactId>
-  <version>1.0.5-SNAPSHOT</version>
+  <version>1.0.4-SNAPSHOT</version>
   
   <packaging>pom</packaging>
-  <name>schema-library-reactor</name>
+  <name>schema-library-reactor4</name>
   <description>JiBX</description>
 
   <scm>
@@ -24,7 +24,7 @@
   </scm>
 
   <modules>
-    <module>schema-library-parent</module>
+    <!-- module>schema-library-parent</module>
     <module>schema-utilities</module>
 
     <module>org.docbook</module>
@@ -36,7 +36,8 @@
     <module>net.webservicex</module>
     <module>org.xmlsoap</module>
 
-    <module>org.jibx</module>
+    <module>org.jibx</module -->
+    <module>net.java</module>
   </modules>
 
 </project>

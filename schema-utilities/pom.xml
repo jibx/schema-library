@@ -4,23 +4,23 @@
 
   <parent>
     <groupId>org.jibx.schema.config</groupId>
-    <artifactId>schema-library-reactor</artifactId>
-    <version>1.0.5-SNAPSHOT</version>
+    <artifactId>schema-library-reactor4</artifactId>
+    <version>1.0.4-SNAPSHOT</version>
   </parent>
 
-  <artifactId>schema-utilities-reactor</artifactId>
+  <artifactId>schema-utilities-reactor4</artifactId>
   <packaging>pom</packaging>
 
   <name>schema-utilities-reactor - schema-utilities parent</name>
   <description>JiBX schema - schema-utilities parent</description>
 
   <modules>
-    <module>create-jibx-project-utilities</module>
+    <!-- module>create-jibx-project-utilities</module>
     <module>create-jibx-project</module>
     <module>schema-maven-plugin</module>
     <module>site</module>
     <module>config-databinding</module>
-    <module>examples</module>
+    <module>examples</module -->
     <module>obr</module>
   </modules>
 

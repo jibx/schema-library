@@ -4,11 +4,11 @@
 
   <parent>
     <groupId>org.jibx.schema.config</groupId>
-    <artifactId>schema-utilities-reactor</artifactId>
-    <version>1.0.5-SNAPSHOT</version>
+    <artifactId>schema-utilities-reactor4</artifactId>
+    <version>1.0.4-SNAPSHOT</version>
   </parent>
 
-  <artifactId>obr</artifactId>
+  <artifactId>jibx-schema-library-obr</artifactId>
   <packaging>pom</packaging>
 
   <name>obr - JiBX schema library OBR repository</name>
