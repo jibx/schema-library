@@ -24,8 +24,8 @@
   </scm>
 
   <modules>
-    <!-- module>schema-library-parent</module>
-    <module>schema-utilities</module>
+    <module>schema-library-parent</module>
+    <!-- module>schema-utilities</module>
 
     <module>org.docbook</module>
     <module>org.apache.maven</module>
