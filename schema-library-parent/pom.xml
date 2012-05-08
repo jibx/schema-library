@@ -15,6 +15,10 @@
   <name>schema-library-parent - schema library parent project</name>
   <description>schema library parent shared settings</description>
 
+  <properties>
+    <projectName>jibx-schema-library</projectName>
+  </properties>
+
   <build>
     <plugins>
       <plugin>
