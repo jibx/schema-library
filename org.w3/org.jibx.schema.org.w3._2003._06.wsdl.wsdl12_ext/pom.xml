@@ -3,7 +3,7 @@
     <parent>
         <artifactId>schema-library-parent</artifactId>
         <groupId>org.jibx.schema.config</groupId>
-        <version>1.0.5-SNAPSHOT</version>
+        <version>1.0.6-SNAPSHOT</version>
         <relativePath>../../schema-library-parent</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -11,7 +11,7 @@
     <artifactId>org.jibx.schema.org.w3._2003._06.wsdl.wsdl12_ext</artifactId>
     <packaging>bundle</packaging>
     <name>Schema Library - w3.org - _2003._06.wsdl.wsdl12_ext</name>
-    <version>1.0.5-SNAPSHOT</version>
+    <version>1.0.6-SNAPSHOT</version>
     <description>www.w3.org/2003/06/wsdl/wsdl12-ext.xsd</description>
     <developers>
         <developer>
