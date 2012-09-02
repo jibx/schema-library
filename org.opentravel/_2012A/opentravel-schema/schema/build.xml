@@ -14,9 +14,10 @@
 			<download-ota-file filename="FastRezOTA_HotelResRS.xsd"/>
 			<download-ota-file filename="FastRezOTA_ReadRQ.xsd"/>
 			<download-ota-file filename="FastRezOTA_SimpleTypes.xsd"/>
-			<download-ota-file filename="OTA_AirAncillaryOffer.xsd"/>
 			<download-ota-file filename="OTA_AirAvailRQ.xsd"/>
 			<download-ota-file filename="OTA_AirAvailRS.xsd"/>
+			<download-ota-file filename="OTA_AirBaggageRQ.xsd"/>
+			<download-ota-file filename="OTA_AirBaggageRS.xsd"/>
 			<download-ota-file filename="OTA_AirBookModifyRQ.xsd"/>
 			<download-ota-file filename="OTA_AirBookRQ.xsd"/>
 			<download-ota-file filename="OTA_AirBookRS.xsd"/>
@@ -119,6 +120,8 @@
 			<download-ota-file filename="OTA_GolfCourseSearchRS.xsd"/>
 			<download-ota-file filename="OTA_GolfFacilityInfoRQ.xsd"/>
 			<download-ota-file filename="OTA_GolfFacilityInfoRS.xsd"/>
+			<download-ota-file filename="OTA_GolfRateRQ.xsd"/>
+			<download-ota-file filename="OTA_GolfRateRS.xsd"/>
 			<download-ota-file filename="OTA_GroundAvailRQ.xsd"/>
 			<download-ota-file filename="OTA_GroundAvailRS.xsd"/>
 			<download-ota-file filename="OTA_GroundBookRQ.xsd"/>
@@ -221,6 +224,7 @@
 			<download-ota-file filename="OTA_InsurancePlanSearchRS.xsd"/>
 			<download-ota-file filename="OTA_InsuranceQuoteRQ.xsd"/>
 			<download-ota-file filename="OTA_InsuranceQuoteRS.xsd"/>
+			<download-ota-file filename="OTA_Lists.xsd"/>
 			<download-ota-file filename="OTA_LoyaltyAccountCreateRQ.xsd"/>
 			<download-ota-file filename="OTA_LoyaltyAccountRS.xsd"/>
 			<download-ota-file filename="OTA_LoyaltyCertificateCreateNotifRQ.xsd"/>

@@ -12,6 +12,7 @@ schema-utilities/examples/org.jibx.android.test.app/gen
 org.opentravel/_2010B/opentravel-schema/schema/src/main/schema/ota-schema
 org.opentravel/_2011A/opentravel-schema/schema/src/main/schema/ota-schema
 org.opentravel/_2011B/opentravel-schema/schema/src/main/schema/ota-schema
+org.opentravel/_2012A/opentravel-schema/schema/src/main/schema/ota-schema
 gen
 bin
 
