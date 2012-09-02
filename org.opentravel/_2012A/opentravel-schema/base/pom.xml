@@ -37,11 +37,12 @@
 	            <includeSchemas>
 	                <includeSchema>OTA_Common*.xsd</includeSchema>
 	                <includeSchema>OTA_SimpleTypes.xsd</includeSchema>
+	                <includeSchema>OTA_Lists.xsd</includeSchema>
 	            </includeSchemas>
                 <customizations>
                     <customization>${customization-file}</customization>
                 </customizations>
-              <defaultNamespace>${defaultNamespace}</defaultNamespace>
+              <defaultNamespace>http://www.opentravel.org/OTA/2003/05/common</defaultNamespace>
 	        </configuration>
           </execution>
                 <execution>

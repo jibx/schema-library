@@ -41,9 +41,7 @@
               <includeBaseBindings>
                 <includeBaseBinding>
                   <includes>
-                    <include>${basedir}/../base.air/target/generated-sources/binding.xml</include>
-                    <include>${basedir}/../base.veh/target/generated-sources/binding.xml</include>
-                    <include>${basedir}/../base.rail/target/generated-sources/binding.xml</include>
+                    <include>${basedir}/../base.profile/target/generated-sources/binding.xml</include>
                   </includes>
                 </includeBaseBinding>
               </includeBaseBindings>
@@ -70,17 +68,7 @@
   <dependencies>
     <dependency>
       <groupId>org.jibx.schema.org.opentravel._2012A</groupId>
-      <artifactId>org.jibx.schema.org.opentravel._2012A.base.air</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.jibx.schema.org.opentravel._2012A</groupId>
-      <artifactId>org.jibx.schema.org.opentravel._2012A.base.veh</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.jibx.schema.org.opentravel._2012A</groupId>
-      <artifactId>org.jibx.schema.org.opentravel._2012A.base.rail</artifactId>
+      <artifactId>org.jibx.schema.org.opentravel._2012A.base.profile</artifactId>
       <version>${project.version}</version>
     </dependency>
   </dependencies>

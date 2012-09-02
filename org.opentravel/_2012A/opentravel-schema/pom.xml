@@ -40,6 +40,7 @@
     <module>base.loyalty</module>
     <module>base.insurance</module>
     <module>base.touractivity</module>
+    <module>base.profile</module>
     <module>profile</module>
     <module>rail</module>
     <module>veh</module>

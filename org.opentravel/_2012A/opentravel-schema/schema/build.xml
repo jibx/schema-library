@@ -16,8 +16,8 @@
 			<download-ota-file filename="FastRezOTA_SimpleTypes.xsd"/>
 			<download-ota-file filename="OTA_AirAvailRQ.xsd"/>
 			<download-ota-file filename="OTA_AirAvailRS.xsd"/>
-			<download-ota-file filename="OTA_AirBaggageRQ.xsd"/>
-			<download-ota-file filename="OTA_AirBaggageRS.xsd"/>
+			<!-- beta  download-ota-file filename="OTA_AirBaggageRQ.xsd"/>
+			<download-ota-file filename="OTA_AirBaggageRS.xsd"/ -->
 			<download-ota-file filename="OTA_AirBookModifyRQ.xsd"/>
 			<download-ota-file filename="OTA_AirBookRQ.xsd"/>
 			<download-ota-file filename="OTA_AirBookRS.xsd"/>
@@ -120,10 +120,10 @@
 			<download-ota-file filename="OTA_GolfCourseSearchRS.xsd"/>
 			<download-ota-file filename="OTA_GolfFacilityInfoRQ.xsd"/>
 			<download-ota-file filename="OTA_GolfFacilityInfoRS.xsd"/>
-			<download-ota-file filename="OTA_GolfRateRQ.xsd"/>
-			<download-ota-file filename="OTA_GolfRateRS.xsd"/>
-			<download-ota-file filename="OTA_GroundAvailRQ.xsd"/>
-			<download-ota-file filename="OTA_GroundAvailRS.xsd"/>
+			<!-- beta download-ota-file filename="OTA_GolfRateRQ.xsd"/>
+			<download-ota-file filename="OTA_GolfRateRS.xsd"/ -->
+			<!-- alpha download-ota-file filename="OTA_GroundAvailRQ.xsd"/>
+			<download-ota-file filename="OTA_GroundAvailRS.xsd"/ -->
 			<download-ota-file filename="OTA_GroundBookRQ.xsd"/>
 			<download-ota-file filename="OTA_GroundBookRS.xsd"/>
 			<download-ota-file filename="OTA_GroundCancelRQ.xsd"/>
