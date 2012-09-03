@@ -24,9 +24,9 @@ import org.jibx.schema.org.opentravel._2012A.base.hotelres.RoomGroup;
 import org.jibx.schema.org.opentravel._2012A.hotel.AvailRequestSegments.AvailRequestSegment.RoomStayCandidates;
 import org.jibx.schema.org.opentravel._2012A.hotel.AvailRequestSegments.AvailRequestSegment.RoomStayCandidates.RoomStayCandidate;
 import org.jibx.schema.org.opentravel._2012A.base.hotelres.RatePlanCandidates.RatePlanCandidate;
-import org.jibx.schema.org.opentravel._2012A.profile.Profile;
-import org.jibx.schema.org.opentravel._2012A.profile.Profiles;
-import org.jibx.schema.org.opentravel._2012A.profile.Profiles.ProfileInfo;
+import org.jibx.schema.org.opentravel._2012A.base.profile.Profile;
+import org.jibx.schema.org.opentravel._2012A.base.profile.Profiles;
+import org.jibx.schema.org.opentravel._2012A.base.profile.Profiles.ProfileInfo;
 
 import org.jibx.schema.org.opentravel._2012A.base.OTAPayloadStdAttributes;
 import org.jibx.runtime.BindingDirectory;
@@ -116,9 +116,10 @@ public class HotelTest
     	RatePlanGroup ratePlanGroup = new RatePlanGroup();
     	ratePlanCandidate.setRatePlanGroup(ratePlanGroup);
     	ratePlanGroup.setRatePlan("5");
-    	PromotionCodeGroup promotionCodeGroup = new PromotionCodeGroup();
-    	ratePlanGroup.setPromotionCodeGroup(promotionCodeGroup);
-    	promotionCodeGroup.setPromotionCode("123");
+    	//PromotionCodeGroup promotionCodeGroup = new PromotionCodeGroup();
+    	//ratePlanGroup.setPromotionCodeGroup(promotionCodeGroup);
+    	//promotionCodeGroup.setPromotionCode("123");
+    	ratePlanGroup.setPromotionCode("123");
     	
     	RoomStayCandidates roomStayCandidates = new RoomStayCandidates();
     	availRequestSegment.setRoomStayCandidates(roomStayCandidates);

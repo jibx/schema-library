@@ -14,7 +14,7 @@
   <name>Schema Library - org.opentravel.base.profile - 2012A - opentravel.org base profile schema</name>
 
   <properties>
-    <systemName>profile</systemName>
+    <systemName>base.profile</systemName>
     <schemaFilter>OTA_Profile</schemaFilter>
   </properties>
 
