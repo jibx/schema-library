@@ -130,4 +130,16 @@ implements TourActivityService
 		dateTimeSpanGroup.setStart(date);
 	}
 		
+	/**
+	 * Create an empty availability response.
+	 * @param request
+	 * @return
+	 */
+	public static SearchRS createSearchRS(SearchRQ request)
+	{
+		SearchRS response = new SearchRS();
+		response.setOTAPayloadStdAttributes(createStandardPayload());
+		movePayloadData(request.getOTAPayloadStdAttributes(), response.getOTAPayloadStdAttributes());
+		return response;
+	}
 }

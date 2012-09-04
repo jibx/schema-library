@@ -16,6 +16,9 @@ import org.jibx.schema.org.opentravel._2012A.base.ws.BaseService;
 import org.jibx.schema.org.opentravel._2012A.touractivity.AvailRQ;
 import org.jibx.schema.org.opentravel._2012A.touractivity.AvailRQ.Schedule;
 import org.jibx.schema.org.opentravel._2012A.touractivity.AvailRS;
+import org.jibx.schema.org.opentravel._2012A.touractivity.SearchRQ;
+import org.jibx.schema.org.opentravel._2012A.touractivity.SearchRQ.DateTimePref;
+import org.jibx.schema.org.opentravel._2012A.touractivity.SearchRS;
 import org.jibx.schema.org.opentravel._2012A.touractivity.ws.TourActivityService;
 
 @Path("/")
@@ -72,8 +75,46 @@ public class TourActivityRestService
         AvailRS response = null;
         if (getTourActivityService() != null)
         	response = getTourActivityService().avail(request);
-
         return response; //AvailRS.ok().type("application/xml").entity(touractivity).build();
+    }
+
+    /**
+     * Search for tours.
+     * @param id
+     * @return
+     */
+    @GET
+    @Path("/search/{startdate}/{enddate}/")
+    @Produces("application/xml")
+    public SearchRS getSearch(@PathParam("startdate") String startdate, @PathParam("enddate") String enddate) {
+    	m_logger.info("Invoking get touractivity/search (get), date range: " + startdate + ", to " + enddate);
+        // Create a request
+        SearchRQ request = new SearchRQ();
+		request.setOTAPayloadStdAttributes(BaseService.createStandardPayload());
+		DateTimePref dateTimePref = new DateTimePref();
+		dateTimePref.setStart(startdate);
+		dateTimePref.setEnd(enddate);
+		request.setDateTimePref(dateTimePref);
+
+		SearchRS response = null;
+        if (getTourActivityService() != null)
+        	response = getTourActivityService().search(request);
+		return response;
+    }
+    
+    /**
+     * Search (post) and touractivity.
+     * @param request
+     * @return
+     */
+    @POST
+    @Path("/search/")
+    public SearchRS postSearch(SearchRQ request) {
+    	m_logger.info("Invoking add touractivity/search (post)");
+        SearchRS response = null;
+        if (getTourActivityService() != null)
+        	response = getTourActivityService().search(request);
+        return response;
     }
 
 	/**
