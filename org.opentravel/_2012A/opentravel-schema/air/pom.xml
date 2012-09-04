@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.jibx.schema.org.opentravel._2012A</groupId>
     <artifactId>opentravel-schema-reactor</artifactId>
-    <version>1.0.6-SNAPSHOT</version>
+    <version>1.0.6</version>
   </parent>
   
   <artifactId>org.jibx.schema.org.opentravel._2012A.air</artifactId>
