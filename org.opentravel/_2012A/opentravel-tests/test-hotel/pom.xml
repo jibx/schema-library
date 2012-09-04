@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.jibx.schema.org.opentravel._2012A.test</groupId>
     <artifactId>opentravel-2012A-tests-reactor</artifactId>
-    <version>1.0.6</version>
+    <version>1.0.7-SNAPSHOT</version>
   </parent>
 
   <artifactId>org.jibx.schema.org.opentravel._2012A.test.hotel</artifactId>
@@ -24,7 +24,7 @@
     <dependency>
       <groupId>org.jibx.schema.org.opentravel._2012A</groupId>
       <artifactId>org.jibx.schema.org.opentravel._2012A.hotel</artifactId>
-      <version>1.0.6</version>
+      <version>1.0.7-SNAPSHOT</version>
     </dependency>
   </dependencies>
 
