@@ -21,7 +21,7 @@ public class MainActivity extends ListActivity {
         String[] adobe_products = getResources().getStringArray(R.array.adobe_products);
  
         // Binding resources Array to ListAdapter
-        this.setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item, R.id.label, adobe_products));
+        this.setListAdapter(new ArrayAdapter<String>(this, R.layout.activity_main, R.id.label, adobe_products));
  
         ListView lv = getListView();
  
