@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="adobe_products">
+    <string-array name="tour_products">
         <item>Adobe After Effects</item>
         <item>Adobe Bridge</item>
         <item>Adobe Dreamweaver</item>

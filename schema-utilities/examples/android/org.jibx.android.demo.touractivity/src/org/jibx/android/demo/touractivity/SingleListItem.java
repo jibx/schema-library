@@ -9,9 +9,9 @@ public class SingleListItem extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.setContentView(R.layout.single_list_item_view);
+        this.setContentView(R.layout.product_display_view);
  
-        TextView txtProduct = (TextView) findViewById(R.id.product_label);
+        TextView txtProduct = (TextView) findViewById(R.id.productTextView);
  
         Intent i = getIntent();
         // getting attached intent data

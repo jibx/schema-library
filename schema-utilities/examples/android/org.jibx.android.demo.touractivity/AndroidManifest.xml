@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SingleListItem"
-                    android:label="Single Item Selected">
+                   android:label="@string/title_product_display_view">
         </activity>
     </application>
 

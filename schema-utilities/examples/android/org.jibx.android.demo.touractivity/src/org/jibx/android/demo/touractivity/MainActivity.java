@@ -1,6 +1,6 @@
 package org.jibx.android.demo.touractivity;
 
-import android.app.ListActivity;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,22 +8,26 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class MainActivity extends ListActivity {
+public class MainActivity extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
- 
+        setContentView(R.layout.activity_main);
+        ListView lv = (ListView)this.findViewById(R.id.listView);
+        
         // storing string resources into Array
-        String[] adobe_products = getResources().getStringArray(R.array.adobe_products);
- 
+        String[] adobe_products = getResources().getStringArray(R.array.tour_products);
+
+        ListAdapter adapter = new ArrayAdapter<String>(this, R.layout.list_view_text_view, R.id.listViewTextView, adobe_products);
         // Binding resources Array to ListAdapter
-        this.setListAdapter(new ArrayAdapter<String>(this, R.layout.activity_main, R.id.label, adobe_products));
+        lv.setAdapter(adapter);
  
-        ListView lv = getListView();
+//        ListView lv = getListView();
  
         // listening to single list item on click
         lv.setOnItemClickListener(new OnItemClickListener() {
@@ -42,7 +46,6 @@ public class MainActivity extends ListActivity {
           }
         });
     }
-//        setContentView(R.layout.activity_main);
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
