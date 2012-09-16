@@ -8,6 +8,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/datePicker"
+        android:visibility="invisible" />
+    
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
