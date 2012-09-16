@@ -97,7 +97,7 @@ public abstract class BaseService extends Object
     	return errors;
 	}
 	
-	protected static final DateFormat yyyymmddDateFormat = new SimpleDateFormat("yyyy-mm-dd");
+	protected static final DateFormat yyyymmddDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	/**
 	 * Convert yyyy-mm-dd to Date object.
 	 * @param ymdDate
@@ -110,5 +110,14 @@ public abstract class BaseService extends Object
 		} catch (ParseException e) {
 			return null;
 		}
+	}
+	/**
+	 * Convert a Date object to yyyy-mm-dd.
+	 * @param date
+	 * @return ymdDate
+	 */
+	public static String convertDateToYMD(Date date)
+	{
+        return yyyymmddDateFormat.format(date);
 	}
 }
