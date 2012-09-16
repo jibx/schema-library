@@ -23,10 +23,10 @@
 	       <groupId>xpp3</groupId>
 	       <artifactId>xpp3</artifactId>
 	     </exclusion>
-	    <exclusion>
+	    <!-- exclusion>
 	      <groupId>joda-time</groupId>
 	      <artifactId>joda-time</artifactId>
-	    </exclusion>
+	    </exclusion -->
 	<exclusion>
 	  <groupId>org.jibx</groupId>
 	  <artifactId>jibx-extras</artifactId>

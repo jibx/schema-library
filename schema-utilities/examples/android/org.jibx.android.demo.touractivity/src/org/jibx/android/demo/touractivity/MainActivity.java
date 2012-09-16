@@ -1,7 +1,14 @@
 package org.jibx.android.demo.touractivity;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
+import org.jibx.schema.org.opentravel._2012A.base.OTAPayloadStdAttributes;
+import org.jibx.schema.org.opentravel._2012A.base.ws.BaseService;
+import org.jibx.schema.org.opentravel._2012A.touractivity.SearchRQ;
+import org.jibx.schema.org.opentravel._2012A.touractivity.SearchRQ.DateTimePref;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -51,7 +58,7 @@ public class MainActivity extends Activity {
         
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
-        calendar.add(Calendar.MONTH, 1);
+        //calendar.add(Calendar.MONTH, 1);
         int year = calendar.get(Calendar.YEAR);
         int monthOfYear = calendar.get(Calendar.MONTH);
         int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
@@ -76,22 +83,22 @@ public class MainActivity extends Activity {
 
     public void requeryProduct(int year, int monthOfYear, int dayOfMonth)
     {
-    	String url1 = null, url2 = null, url3 = null;
-        new DownloadFilesTask().execute(url1, url2, url3);
+    	Calendar calendar = Calendar.getInstance();
+    	calendar.set(Calendar.YEAR, year);
+    	calendar.set(Calendar.MONTH, monthOfYear);
+    	calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+    	calendar.set(Calendar.HOUR_OF_DAY, 0);
+    	calendar.set(Calendar.MINUTE, 0);
+    	calendar.set(Calendar.SECOND, 0);
+    	calendar.set(Calendar.MILLISECOND, 0);
+    	Date date = calendar.getTime();
+        String YMDdate = convertDateToYMD(date);
+        new DownloadFilesTask().execute(YMDdate);
     }
     
     private class DownloadFilesTask extends AsyncTask<String, Boolean, String[][]> {
-        protected String[][] doInBackground(String... urls) {
-            String[][] totalSize = null;
-			synchronized (Thread.currentThread())
-			{
-				try {
-					Thread.currentThread().wait(5 * 1000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-            return totalSize;
+        protected String[][] doInBackground(String... criteria) {
+        	return doProductQuery(criteria[0]);
         }
 
         protected void onPreExecute() {
@@ -107,13 +114,43 @@ public class MainActivity extends Activity {
 
         protected void onPostExecute(String[][] result) {
             // storing string resources into Array
-            String[] tour_products = getResources().getStringArray(R.array.tour_products);
-            for (String product : tour_products)
+            for (String[] product : result)
             {
-            	adapter.add(product);
+            	adapter.add(product[0]);
             }
         	progressBar.setVisibility(ProgressBar.GONE);
         	progressBar.setIndeterminate(false);
         }
     }
+    
+    protected String[][] doProductQuery(String YMDdate) {
+        String[][] tour_products = null;
+        
+        SearchRQ searchRQ = new SearchRQ();
+        OTAPayloadStdAttributes payload = BaseService.createStandardPayload();
+        searchRQ.setOTAPayloadStdAttributes(payload);
+        DateTimePref dateTimePref = new DateTimePref();
+        searchRQ.setDateTimePref(dateTimePref);
+        dateTimePref.setStart(YMDdate);
+        dateTimePref.setEnd(YMDdate);
+        
+        String[] xs = getResources().getStringArray(R.array.tour_products);
+        tour_products = new String[xs.length][1];
+        for (int i = 0; i < xs.length; i++)
+        {
+        	tour_products[i][0] = xs[i];
+        }
+        
+        return tour_products;
+    }
+	protected static final DateFormat yyyymmddDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	/**
+	 * Convert yyyy-mm-dd to Date object.
+	 * @param ymdDate
+	 * @return
+	 */
+	public static String convertDateToYMD(Date date)
+	{
+			return yyyymmddDateFormat.format(date);
+	}
 }
