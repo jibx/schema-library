@@ -47,15 +47,25 @@ import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
+/**
+ * Tour Activity display.
+ * Display the tour activities using the entered date.
+ * Clicking on a tour will display the detail.
+ * @author Don Corley <don@tourgeek.com>
+ */
 public class MainActivity extends Activity {
-	ArrayAdapter<String> adapter = null;
+	
+	ArrayAdapter<String> adapter = null;	// List items 
 	ProgressBar progressBar = null;
 	
+	/**
+	 * Setup.
+	 */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
         setContentView(R.layout.activity_main);
         ListView lv = (ListView)this.findViewById(R.id.listView);
         DatePicker datePicker = (DatePicker)this.findViewById(R.id.datePicker);
@@ -71,7 +81,6 @@ public class MainActivity extends Activity {
  
               // selected item
         	  TourInfo tourInfo = mTourInfoList.get(position);
-              String product = ((TextView) view).getText().toString();
  
               // Launching new Activity on selecting single List Item
               Intent i = new Intent(getApplicationContext(), SingleListItem.class);
@@ -84,9 +93,9 @@ public class MainActivity extends Activity {
           }
         });
         
+        // Requery the list when the date changes.
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(new Date());
-        //calendar.add(Calendar.MONTH, 1);
+        calendar.setTime(new Date());	// Initial date = today
         int year = calendar.get(Calendar.YEAR);
         int monthOfYear = calendar.get(Calendar.MONTH);
         int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
@@ -103,12 +112,21 @@ public class MainActivity extends Activity {
 		requeryProduct(year, monthOfYear, dayOfMonth);	// Do initial display
     }
 
+    /**
+     * Stub.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
 
+    /**
+     * Set up to requery the product using this criteria.
+     * @param year
+     * @param monthOfYear
+     * @param dayOfMonth
+     */
     public void requeryProduct(int year, int monthOfYear, int dayOfMonth)
     {
     	Calendar calendar = Calendar.getInstance();
@@ -124,6 +142,10 @@ public class MainActivity extends Activity {
         new DownloadFilesTask().execute(YMDdate);
     }
     
+    /**
+     * Make sure query is not done in the UI thread.
+     * @author don
+     */
     private class DownloadFilesTask extends AsyncTask<String, Boolean, List<TourInfo>> {
         protected List<TourInfo> doInBackground(String... criteria) {
         	return doProductQuery(criteria[0]);
@@ -151,10 +173,15 @@ public class MainActivity extends Activity {
         	progressBar.setIndeterminate(false);
         }
     }
-    protected List<TourInfo> mTourInfoList = null;
+    protected List<TourInfo> mTourInfoList = null;	// Note: Added for simplicity - concurrency issue
     
+    /**
+     * Do the actual product query.
+     * @param YMDdate
+     * @return The list of tours (null if empty).
+     */
     protected List<TourInfo> doProductQuery(String YMDdate) {
-    	List<TourInfo> tour_products = null;
+    	List<TourInfo> tourProducts = null;
         
         SearchRQ searchRQ = new SearchRQ();
         OTAPayloadStdAttributes payload = BaseService.createStandardPayload();
@@ -164,32 +191,11 @@ public class MainActivity extends Activity {
         dateTimePref.setStart(YMDdate);
         dateTimePref.setEnd(YMDdate);
         
-        String send = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
-"<OTA_TourActivitySearchRQ" +
-"    Target=\"Production\"" +
-"    TimeStamp=\"2012-09-04T07:09:18.513Z\"" +
-"    Version=\"1.0\"" +
-"    xmlns=\"http://www.opentravel.org/OTA/2003/05\" >" +
-"        " +
-"    <SearchCriteria>" +
-"    " +
-"        <DateTimePref" +
-"            End=\"2012-09-05\"" +
-"            Start=\"2012-09-05\" />" +
-"    </SearchCriteria>" +
-"    " +
-"</OTA_TourActivitySearchRQ>";
-        send = this.marshalMessage(searchRQ);
-        
-        String reply = search(send);
-        SearchRS searchRS = null;
-        if (reply != null)
-        	searchRS = (SearchRS)this.unmarshalMessage(reply, SearchRS.class);
-        
+        SearchRS searchRS = search(searchRQ);
         if (searchRS == null)
         	return null;
         
-        tour_products = new Vector<TourInfo>();
+        tourProducts = new Vector<TourInfo>();
         List<TourActivityInfo> tourActivities = searchRS.getTourActivityInfoList();
         for (TourActivityInfo tourActivityInfo : tourActivities)
         {
@@ -197,34 +203,41 @@ public class MainActivity extends Activity {
         	TourActivityID tourActivityID = tourActivityInfo.getBasicInfo();
         	tourInfo.tourID = tourActivityID.getTourActivityID();
         	TourActivityDescription tourActivityDescription =  tourActivityInfo.getDescription();
-        	tourInfo.description = tourActivityDescription.getShortDescription();
+        	if (tourActivityDescription != null)
+        		tourInfo.description = tourActivityDescription.getShortDescription();
         	Pricing pricing = tourActivityInfo.getPricing();
-        	tourInfo.minPrice = pricing.getMinPrice();
-        	tourInfo.maxPrice = pricing.getMaxPrice();
+        	if (pricing != null)
+        	{
+        		tourInfo.minPrice = pricing.getMinPrice();
+        		tourInfo.maxPrice = pricing.getMaxPrice();
+        	}
         	
-        	tour_products.add(tourInfo);
+        	tourProducts.add(tourInfo);
         }
         
-        return tour_products;
+        return tourProducts;
     }
-    class TourInfo
-    {
-    	public TourInfo()
-    	{
-        	tourID = "";
-        	description = "";
-        	minPrice = 0f;
-        	maxPrice = 0f;    		
-    	}
-    	String tourID;
-    	String description;
-    	Float minPrice;
-    	Float maxPrice;
-    }
-	public final static String STRING_ENCODING = "UTF8";
-	public final static String URL_ENCODING = "UTF-8";
-	String bindingName = "binding";
 
+	/**
+	 * Given the search request, do the search.
+	 * @param searchRQ The search request
+	 * @return The search response
+	 */
+	public SearchRS search(SearchRQ searchRQ)
+    {
+        String send = marshalMessage(searchRQ);
+        
+        String reply = search(send);
+        SearchRS searchRS = null;
+        if (reply != null)
+        	searchRS = (SearchRS)this.unmarshalMessage(reply, SearchRS.class);
+        return searchRS;
+    }
+	/**
+	 * Given the search request, do the search.
+	 * @param searchRQ The xml search request
+	 * @return The xml search response
+	 */
 	public String search(String searchRQ)
     {
         String responseXML;
@@ -244,21 +257,46 @@ public class MainActivity extends Activity {
             
             HttpEntity responseEntity = response.getEntity();
             InputStream in = responseEntity.getContent();
-            try {
+            // A simple way to move a stream to a string.
                 responseXML = new java.util.Scanner(in).useDelimiter("\\A").next();
-            } catch (java.util.NoSuchElementException e) {
-                responseXML = "";
-            }
         } catch (ClientProtocolException e) {
         	e.printStackTrace();
         	responseXML = e.getMessage();
         } catch (IOException e) {
         	e.printStackTrace();
         	responseXML = e.getMessage();
+        } catch (java.util.NoSuchElementException e) {
+            responseXML = "";
 		}
         return responseXML;
     } 
     
+	/**
+	 * Simple tour info data structure.
+	 */
+	public static class TourInfo
+    {
+    	public TourInfo()
+    	{
+        	tourID = "";
+        	description = "";
+        	minPrice = 0f;
+        	maxPrice = 0f;    		
+    	}
+    	String tourID;
+    	String description;
+    	Float minPrice;
+    	Float maxPrice;
+    }
+
+	public final static String STRING_ENCODING = "UTF8";
+	public final static String URL_ENCODING = "UTF-8";
+	String bindingName = "binding";
+	/**
+	 * Utility to convert data to an XML string.
+	 * @param message The data to convert.
+	 * @return XML or null if it could not be converted.
+	 */
 	public String marshalMessage(Object message) {
 		try {
 			IBindingFactory jc = BindingDirectory.getFactory(bindingName, message.getClass());
@@ -275,11 +313,10 @@ public class MainActivity extends Activity {
 	}
 
 	/**
-	 * Unmarshal this xml Message to an object.
-	 * 
-	 * @param xml
-	 * @param system
-	 * @return
+	 * Utility to unmarshal this XML string to an object.
+	 * @param xml string
+	 * @param clazz The target object
+	 * @return The data object.
 	 */
 	public Object unmarshalMessage(String xml, Class<?> clazz) {
 		try {
@@ -294,7 +331,7 @@ public class MainActivity extends Activity {
 
 	protected static final DateFormat yyyymmddDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	/**
-	 * Convert a Date object to yyyy-mm-dd.
+	 * Utility to convert a Date object to yyyy-mm-dd.
 	 * @param date
 	 * @return ymdDate
 	 */
@@ -302,5 +339,5 @@ public class MainActivity extends Activity {
 	{
 			return yyyymmddDateFormat.format(date);
 	}
-}
 
+}
