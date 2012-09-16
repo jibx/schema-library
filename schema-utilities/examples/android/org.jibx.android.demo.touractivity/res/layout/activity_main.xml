@@ -16,6 +16,15 @@
         android:layout_below="@+id/datePicker"
         android:visibility="invisible" />
     
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/progressBar"
+        android:visibility="invisible"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"

@@ -5,6 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+/**
+ * Display a single tour on the screen.
+ * @author Don Corley <don@tourgeek.com>
+ */
 public class SingleListItem extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {

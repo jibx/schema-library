@@ -37,9 +37,12 @@ import org.jibx.schema.org.opentravel._2012A.touractivity.SearchRS.TourActivityI
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -47,6 +50,7 @@ import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 /**
  * Tour Activity display.
@@ -58,6 +62,15 @@ public class MainActivity extends Activity {
 	
 	ArrayAdapter<String> adapter = null;	// List items 
 	ProgressBar progressBar = null;
+	TextView statusView = null;
+	
+	String host;
+	String path;
+	
+	public static final String HOST = "host";
+	public static final String PATH = "path";
+	public static final String DEFAULT_HOST = "192.168.1.100:8181";
+	public static final String DEFAULT_PATH = "/cxf/touractivity/search";
 	
 	/**
 	 * Setup.
@@ -67,9 +80,11 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         
         setContentView(R.layout.activity_main);
+        
         ListView lv = (ListView)this.findViewById(R.id.listView);
         DatePicker datePicker = (DatePicker)this.findViewById(R.id.datePicker);
         progressBar = (ProgressBar)this.findViewById(R.id.progressBar);
+        statusView = (TextView)this.findViewById(R.id.status);
         
         adapter = new ArrayAdapter<String>(this, R.layout.list_view_text_view, R.id.listViewTextView);
         // Binding resources Array to ListAdapter
@@ -109,16 +124,53 @@ public class MainActivity extends Activity {
         };
         datePicker.init(year, monthOfYear, dayOfMonth, onDateChangedListener);
 
+        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+        host = preferences.getString(HOST, DEFAULT_HOST);
+        path = preferences.getString(PATH, DEFAULT_PATH);
+
 		requeryProduct(year, monthOfYear, dayOfMonth);	// Do initial display
     }
 
     /**
-     * Stub.
+     * Settings menu.
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.menu_settings:
+                // Launching new Activity on selecting single List Item
+                Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
+                i.putExtra(HOST, host);
+                i.putExtra(PATH, path);
+                startActivityForResult(i, R.id.menu_settings);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+    protected void onActivityResult(int requestCode, int resultCode,
+            Intent data) {
+        if (requestCode == R.id.menu_settings) {
+            if (resultCode == RESULT_OK) {
+                // A contact was picked.  Here we will just display it
+                // to the user.
+                SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+                
+                Editor editor = preferences.edit();
+                editor.putString(HOST, host = data.getStringExtra(HOST));
+                editor.putString(PATH, path = data.getStringExtra(PATH));
+                editor.commit();
+
+                DatePicker datePicker = (DatePicker)this.findViewById(R.id.datePicker);
+				requeryProduct(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth());	// Requery using new date
+            }
+        }
     }
 
     /**
@@ -152,25 +204,26 @@ public class MainActivity extends Activity {
         }
 
         protected void onPreExecute() {
+        	adapter.clear();
         	progressBar.setVisibility(ProgressBar.VISIBLE);
         	progressBar.setIndeterminate(true);
-        	adapter.clear();
-        }
-
-        protected void onProgressUpdate(Boolean... progress) {
-        	progressBar.setVisibility(ProgressBar.VISIBLE);
-        	progressBar.setIndeterminate(progress[0]);
+        	statusView.setVisibility(TextView.VISIBLE);
+        	statusView.setText("Please wait... retrieving data");
         }
 
         protected void onPostExecute(List<TourInfo> tourInfoList) {
             // storing string resources into Array
         	mTourInfoList = tourInfoList;
-            for (TourInfo tourInfo : tourInfoList)
-            {
-            	adapter.add(tourInfo.description);
-            }
+        	if (tourInfoList != null)
+        	{
+	            for (TourInfo tourInfo : tourInfoList)
+	            {
+	            	adapter.add(tourInfo.description);
+	            }
+        	}
         	progressBar.setVisibility(ProgressBar.GONE);
         	progressBar.setIndeterminate(false);
+        	statusView.setVisibility(TextView.GONE);
         }
     }
     protected List<TourInfo> mTourInfoList = null;	// Note: Added for simplicity - concurrency issue
@@ -211,7 +264,6 @@ public class MainActivity extends Activity {
         		tourInfo.minPrice = pricing.getMinPrice();
         		tourInfo.maxPrice = pricing.getMaxPrice();
         	}
-        	
         	tourProducts.add(tourInfo);
         }
         
@@ -230,7 +282,8 @@ public class MainActivity extends Activity {
         String reply = search(send);
         SearchRS searchRS = null;
         if (reply != null)
-        	searchRS = (SearchRS)this.unmarshalMessage(reply, SearchRS.class);
+        	if (reply.startsWith("<"))
+        		searchRS = (SearchRS)this.unmarshalMessage(reply, SearchRS.class);
         return searchRS;
     }
 	/**
@@ -244,7 +297,7 @@ public class MainActivity extends Activity {
         try {
 	        // Create a new HttpClient and Post Header
 	        HttpClient httpclient = new DefaultHttpClient();
-	        HttpPost httppost = new HttpPost("http://192.168.1.100:8181/cxf/touractivity/search");
+	        HttpPost httppost = new HttpPost("http://" + host + path);
 
 	        StringEntity se = new StringEntity(searchRQ, HTTP.UTF_8);
 

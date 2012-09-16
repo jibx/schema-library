@@ -25,6 +25,9 @@
         <activity android:name=".SingleListItem"
                    android:label="@string/title_product_display_view">
         </activity>
-    </application>
+        <activity android:name=".SettingsActivity"
+                   android:label="@string/menu_settings">
+        </activity>
+        </application>
 
 </manifest>
