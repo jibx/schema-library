@@ -25,7 +25,9 @@ import org.jibx.runtime.IBindingFactory;
 import org.jibx.runtime.IMarshallingContext;
 import org.jibx.runtime.IUnmarshallingContext;
 import org.jibx.runtime.JiBXException;
+import org.jibx.schema.org.opentravel._2012A.base.Errors;
 import org.jibx.schema.org.opentravel._2012A.base.OTAPayloadStdAttributes;
+import org.jibx.schema.org.opentravel._2012A.base._Error;
 import org.jibx.schema.org.opentravel._2012A.base.touractivity.TourActivityDescription;
 import org.jibx.schema.org.opentravel._2012A.base.touractivity.TourActivityID;
 import org.jibx.schema.org.opentravel._2012A.base.ws.BaseService;
@@ -108,12 +110,12 @@ public class MainActivity extends Activity {
           }
         });
         
-        // Requery the list when the date changes.
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());	// Initial date = today
         int year = calendar.get(Calendar.YEAR);
         int monthOfYear = calendar.get(Calendar.MONTH);
         int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+        // Requery the list when the date changes.
         DatePicker.OnDateChangedListener onDateChangedListener = new DatePicker.OnDateChangedListener()
         {
 			@Override
@@ -124,11 +126,13 @@ public class MainActivity extends Activity {
         };
         datePicker.init(year, monthOfYear, dayOfMonth, onDateChangedListener);
 
+        // Get the saved settings
         SharedPreferences preferences = getPreferences(MODE_PRIVATE);
         host = preferences.getString(HOST, DEFAULT_HOST);
         path = preferences.getString(PATH, DEFAULT_PATH);
 
-		requeryProduct(year, monthOfYear, dayOfMonth);	// Do initial display
+    	// Do initial display
+		requeryProduct(year, monthOfYear, dayOfMonth);
     }
 
     /**
@@ -139,6 +143,9 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
+    /**
+     * Display settings menu.
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
@@ -154,21 +161,24 @@ public class MainActivity extends Activity {
                 return super.onOptionsItemSelected(item);
         }
     }
+    /**
+     * Return from settings menu.
+     */
     protected void onActivityResult(int requestCode, int resultCode,
             Intent data) {
         if (requestCode == R.id.menu_settings) {
             if (resultCode == RESULT_OK) {
-                // A contact was picked.  Here we will just display it
-                // to the user.
+                // Save the new settings.
                 SharedPreferences preferences = getPreferences(MODE_PRIVATE);
                 
                 Editor editor = preferences.edit();
                 editor.putString(HOST, host = data.getStringExtra(HOST));
                 editor.putString(PATH, path = data.getStringExtra(PATH));
                 editor.commit();
-
+                
+            	// Requery using new date
                 DatePicker datePicker = (DatePicker)this.findViewById(R.id.datePicker);
-				requeryProduct(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth());	// Requery using new date
+				requeryProduct(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth());
             }
         }
     }
@@ -195,7 +205,7 @@ public class MainActivity extends Activity {
     }
     
     /**
-     * Make sure query is not done in the UI thread.
+     * Make sure SOA query is not done in the UI thread.
      * @author don
      */
     private class DownloadFilesTask extends AsyncTask<String, Boolean, List<TourInfo>> {
@@ -226,7 +236,6 @@ public class MainActivity extends Activity {
         	statusView.setVisibility(TextView.GONE);
         }
     }
-    protected List<TourInfo> mTourInfoList = null;	// Note: Added for simplicity - concurrency issue
     
     /**
      * Do the actual product query.
@@ -236,6 +245,7 @@ public class MainActivity extends Activity {
     protected List<TourInfo> doProductQuery(String YMDdate) {
     	List<TourInfo> tourProducts = null;
         
+    	// Populate the search request
         SearchRQ searchRQ = new SearchRQ();
         OTAPayloadStdAttributes payload = BaseService.createStandardPayload();
         searchRQ.setOTAPayloadStdAttributes(payload);
@@ -244,12 +254,16 @@ public class MainActivity extends Activity {
         dateTimePref.setStart(YMDdate);
         dateTimePref.setEnd(YMDdate);
         
+        // Send it to the server and get the result
         SearchRS searchRS = search(searchRQ);
         if (searchRS == null)
         	return null;
         
+        // Extract the information from the results
         tourProducts = new Vector<TourInfo>();
         List<TourActivityInfo> tourActivities = searchRS.getTourActivityInfoList();
+        if ((tourActivities == null) || (searchRS.getErrors() != null))
+        	return getErrorMessage(searchRS);
         for (TourActivityInfo tourActivityInfo : tourActivities)
         {
         	TourInfo tourInfo = new TourInfo();
@@ -266,10 +280,24 @@ public class MainActivity extends Activity {
         	}
         	tourProducts.add(tourInfo);
         }
-        
+
+        // Return the tours to display
         return tourProducts;
     }
-
+    /**
+     * Extract the error message and set up a fake list this this message.
+     * @param searchRS
+     * @return
+     */
+    protected List<TourInfo> getErrorMessage(SearchRS searchRS)
+    {
+    	List<TourInfo> tourProducts = new Vector<TourInfo>();
+    	TourInfo tourInfo = new TourInfo();
+    	if (searchRS.getErrors() != null)
+    		tourInfo.description = searchRS.getErrors().getError(0).getString();
+    	tourProducts.add(tourInfo);
+        return tourProducts;
+    }
 	/**
 	 * Given the search request, do the search.
 	 * @param searchRQ The search request
@@ -281,13 +309,23 @@ public class MainActivity extends Activity {
         
         String reply = search(send);
         SearchRS searchRS = null;
-        if (reply != null)
-        	if (reply.startsWith("<"))
-        		searchRS = (SearchRS)this.unmarshalMessage(reply, SearchRS.class);
+        if ((reply != null) && (reply.startsWith("<")))
+        	searchRS = (SearchRS)this.unmarshalMessage(reply, SearchRS.class);
+        else
+        {	// Error - Create fake error response message
+        	searchRS = new SearchRS();
+        	Errors errors = new Errors();
+        	searchRS.setErrors(errors);
+        	_Error item = new _Error();
+        	errors.addError(item);
+        	if ((reply == null) || (reply.length() == 0))
+        		reply = "No data returned from query";
+        	item.setString("Error: " + reply);
+        }
         return searchRS;
     }
 	/**
-	 * Given the search request, do the search.
+	 * Given the xml search request, do the search.
 	 * @param searchRQ The xml search request
 	 * @return The xml search response
 	 */
@@ -310,7 +348,7 @@ public class MainActivity extends Activity {
             
             HttpEntity responseEntity = response.getEntity();
             InputStream in = responseEntity.getContent();
-            // A simple way to move a stream to a string.
+            // A simple way to move a stream to a string
                 responseXML = new java.util.Scanner(in).useDelimiter("\\A").next();
         } catch (ClientProtocolException e) {
         	e.printStackTrace();
@@ -319,11 +357,12 @@ public class MainActivity extends Activity {
         	e.printStackTrace();
         	responseXML = e.getMessage();
         } catch (java.util.NoSuchElementException e) {
-            responseXML = "";
+            responseXML = e.getMessage();
 		}
         return responseXML;
     } 
     
+    protected List<TourInfo> mTourInfoList = null;	// Note: Added for simplicity - Fix concurrency issue
 	/**
 	 * Simple tour info data structure.
 	 */
@@ -392,5 +431,4 @@ public class MainActivity extends Activity {
 	{
 			return yyyymmddDateFormat.format(date);
 	}
-
 }
