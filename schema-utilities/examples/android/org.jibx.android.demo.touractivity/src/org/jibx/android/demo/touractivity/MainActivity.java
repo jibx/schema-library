@@ -243,8 +243,6 @@ public class MainActivity extends Activity {
      * @return The list of tours (null if empty).
      */
     protected List<TourInfo> doProductQuery(String YMDdate) {
-    	List<TourInfo> tourProducts = null;
-        
     	// Populate the search request
         SearchRQ searchRQ = new SearchRQ();
         OTAPayloadStdAttributes payload = BaseService.createStandardPayload();
@@ -260,7 +258,7 @@ public class MainActivity extends Activity {
         	return null;
         
         // Extract the information from the results
-        tourProducts = new Vector<TourInfo>();
+        List<TourInfo> tourProducts = new Vector<TourInfo>();
         List<TourActivityInfo> tourActivities = searchRS.getTourActivityInfoList();
         if ((tourActivities == null) || (searchRS.getErrors() != null))
         	return getErrorMessage(searchRS);
