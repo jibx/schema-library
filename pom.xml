@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.jibx.config</groupId>
     <artifactId>jibx-parent</artifactId>
-    <version>7-SNAPSHOT</version>
+    <version>6</version>
     <relativePath>../jibx-parent</relativePath>
   </parent>
 
@@ -24,20 +24,20 @@
   </scm>
 
   <modules>
-    <module>schema-library-parent</module>
+    <!-- module>schema-library-parent</module>
     <module>schema-utilities</module>
 
-    <module>org.docbook</module>
+    <module>org.docbook</module -->
     <module>org.apache.maven</module>
-    <module>org.hr-xml</module>
+    <!-- module>org.hr-xml</module -->
     <module>org.opentravel</module>
     <module>org.oasis-open</module>
-    <module>org.w3</module>
+    <!-- module>org.w3</module>
     <module>net.webservicex</module>
     <module>org.xmlsoap</module>
 
     <module>org.jibx</module>
-    <module>net.java</module>
+    <module>net.java</module -->
   </modules>
 
 </project>
