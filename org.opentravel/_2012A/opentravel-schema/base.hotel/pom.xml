@@ -21,6 +21,16 @@
 
   <build>
     <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <instructions>	<!-- Export-Service is deprecated but required by due to a bug in bundle-plugin -->
+                         <Export-Service>org.jibx.schema.org.opentravel._2012A.hotel.ws.HotelService</Export-Service>
+                    </instructions>
+                </configuration>
+            </plugin>
+
       <plugin>
         <groupId>org.jibx</groupId>
         <artifactId>jibx-maven-plugin</artifactId>

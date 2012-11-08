@@ -13,12 +13,11 @@ import org.jibx.runtime.JiBXException;
 import org.jibx.schema.org.opentravel._2012A.hotel.ResRQ;
 import org.jibx.schema.org.opentravel._2012A.hotel.ResRS;
 import org.jibx.schema.org.opentravel._2012A.hotel.ws.impl.DefaultHotelService;
+import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
-import org.jibx.schema.org.opentravel._2012A.touractivity.*;
-import org.jibx.schema.org.opentravel._2012A.touractivity.ws.impl.DefaultTourActivityService;
-
-public class HotelTest extends DefaultTourActivityService
+public class HotelTest extends DefaultHotelService
+	implements  BundleActivator
 {
 
 	/**
@@ -81,7 +80,7 @@ public class HotelTest extends DefaultTourActivityService
      */
     public Object createMessage()
     {
-    	AvailRQ ping = new AvailRQ();
+    	ResRQ ping = new ResRQ();
 		ping.setOTAPayloadStdAttributes(createStandardPayload());
 //    	ping.setFirstName("Don");
 //    	ping.setLastName("Corley");
@@ -94,7 +93,7 @@ public class HotelTest extends DefaultTourActivityService
      */
     public void checkMessage(Object message)
     {
-    	AvailRQ ping = (AvailRQ)message;
+    	ResRQ ping = (ResRQ)message;
 //        if (( "Don".equals(ping.getFirstName())) &&
   //      		( "Corley".equals(ping.getLastName())))
         	System.out.println ("Test ran great!");
@@ -113,7 +112,7 @@ public class HotelTest extends DefaultTourActivityService
     {
 		try {
 //			IBindingFactory jc = BindingDirectory.getFactory(BINDING_NAME, PACKAGE_NAME);	// OSGi does not like this
-			IBindingFactory jc = BindingDirectory.getFactory(AvailRQ.class);
+			IBindingFactory jc = BindingDirectory.getFactory(ResRQ.class);
 			IMarshallingContext marshaller = jc.createMarshallingContext();
 	        ByteArrayOutputStream out = new ByteArrayOutputStream();
 			marshaller.marshalDocument(message, URL_ENCODING, null, out);
@@ -136,7 +135,7 @@ public class HotelTest extends DefaultTourActivityService
     {        
 		try {
 //			IBindingFactory jc = BindingDirectory.getFactory(BINDING_NAME, PACKAGE_NAME);
-			IBindingFactory jc = BindingDirectory.getFactory(AvailRQ.class);
+			IBindingFactory jc = BindingDirectory.getFactory(ResRQ.class);
 			IUnmarshallingContext unmarshaller = jc.createUnmarshallingContext();
 	        Reader inStream = new StringReader(xml);
 			Object message = unmarshaller.unmarshalDocument( inStream, BINDING_NAME);
