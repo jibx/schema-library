@@ -15,6 +15,9 @@
   <name>Schema Library - opentravel-2012A-ws-reactor - opentravel web services</name>
 
   <modules>
+    <module>opentravel-hotel-ws-rest</module>
+    <module>opentravel-hotel-ws-soap</module>
+    <module>opentravel-hotel-ws-service</module>
     <module>opentravel-touractivity-ws-rest</module>
     <module>opentravel-touractivity-ws-soap</module>
     <module>opentravel-touractivity-ws-archetype</module>
