@@ -17,6 +17,10 @@
 				namespace="http://www.opentravel.org/OTA/2003/05" />
 			<xsd:import schemaLocation="http://www.opentravel.org/2012A/OTA_HotelResRS.xsd"
 				namespace="http://www.opentravel.org/OTA/2003/05" />
+			<xsd:import schemaLocation="http://www.opentravel.org/2012A/OTA_HotelResModifyRQ.xsd"
+				namespace="http://www.opentravel.org/OTA/2003/05" />
+			<xsd:import schemaLocation="http://www.opentravel.org/2012A/OTA_HotelResModifyRS.xsd"
+				namespace="http://www.opentravel.org/OTA/2003/05" />
 		</xsd:schema>
 	</wsdl:types>
     
@@ -26,17 +30,35 @@
     <wsdl:message name="HotelResResponse">
         <wsdl:part name="payload" element="ota:OTA_HotelResRS"/>
     </wsdl:message>
+    <wsdl:message name="HotelResModifyRequest">
+        <wsdl:part name="payload" element="ota:OTA_HotelResModifyRQ"/>
+    </wsdl:message>
+    <wsdl:message name="HotelResModifyResponse">
+        <wsdl:part name="payload" element="ota:OTA_HotelResModifyRS"/>
+    </wsdl:message>
 
     <wsdl:portType name="Hotel">
         <wsdl:operation name="HotelRes">
             <wsdl:input message="tns:HotelResRequest"/>
             <wsdl:output message="tns:HotelResResponse"/>
         </wsdl:operation>
+        <wsdl:operation name="HotelResModify">
+            <wsdl:input message="tns:HotelResModifyRequest"/>
+            <wsdl:output message="tns:HotelResModifyResponse"/>
+        </wsdl:operation>
     </wsdl:portType>
     
     <wsdl:binding name="HotelSOAPBinding" type="tns:Hotel">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
         <wsdl:operation name="HotelRes">
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+       </wsdl:operation>
+        <wsdl:operation name="HotelResModify">
             <wsdl:input>
                 <soap:body use="literal" />
             </wsdl:input>

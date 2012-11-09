@@ -2,6 +2,8 @@ package org.jibx.schema.org.opentravel._2012A.hotel.ws.soap.impl;
 
 import javax.jws.WebService;
 
+import org.jibx.schema.org.opentravel._2012A.hotel.ResModifyRQ;
+import org.jibx.schema.org.opentravel._2012A.hotel.ResModifyRS;
 import org.jibx.schema.org.opentravel._2012A.hotel.ResRQ;
 import org.jibx.schema.org.opentravel._2012A.hotel.ResRS;
 import org.jibx.schema.org.opentravel._2012A.hotel.ws.HotelService;
@@ -16,6 +18,15 @@ public class HotelImpl
         ResRS response = null;
         if (getHotelService() != null)
         	response = getHotelService().res(request);
+
+        return response;
+	}
+
+	public ResModifyRS resModify(ResModifyRQ request) {
+		
+        ResModifyRS response = null;
+        if (getHotelService() != null)
+        	response = getHotelService().resModify(request);
 
         return response;
 	}

@@ -12,6 +12,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import org.jibx.schema.org.opentravel._2012A.base.ws.BaseService;
+import org.jibx.schema.org.opentravel._2012A.hotel.ResModifyRQ;
+import org.jibx.schema.org.opentravel._2012A.hotel.ResModifyRS;
 import org.jibx.schema.org.opentravel._2012A.hotel.ResRQ;
 import org.jibx.schema.org.opentravel._2012A.hotel.ResRS;
 import org.jibx.schema.org.opentravel._2012A.hotel.SearchRQ;
@@ -72,6 +74,21 @@ public class HotelRestService
         ResRS response = null;
         if (getHotelService() != null)
         	response = getHotelService().res(request);
+        return response; //ResRS.ok().type("application/xml").entity(hotel).build();
+    }
+
+    /**
+     * Add (post) and hotel.
+     * @param request
+     * @return
+     */
+    @POST
+    @Path("/resmodify/")
+    public ResModifyRS postResModify(ResModifyRQ request) {
+    	m_logger.info("Invoking add hotel/res (post)");
+        ResModifyRS response = null;
+        if (getHotelService() != null)
+        	response = getHotelService().resModify(request);
         return response; //ResRS.ok().type("application/xml").entity(hotel).build();
     }
 

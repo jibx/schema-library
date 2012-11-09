@@ -23,4 +23,11 @@ public interface Hotel {
         @WebParam(partName = "payload", name = "HotelResRQ", targetNamespace = "http://www.opentravel.org/OTA/2003/05")
         	ResRQ payload
     );
+
+    @WebResult(name = "HotelResModifyRS", targetNamespace = "http://www.opentravel.org/OTA/2003/05", partName = "payload")
+    @WebMethod(operationName = "HotelResModify")
+    public ResModifyRS resModify(
+        @WebParam(partName = "payload", name = "HotelResModifyRQ", targetNamespace = "http://www.opentravel.org/OTA/2003/05")
+        	ResModifyRQ payload
+    );
 }
