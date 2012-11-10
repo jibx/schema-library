@@ -1,7 +1,5 @@
 package org.jibx.schema.org.opentravel._2012A.hotel.ws.service;
 
-import org.jibx.schema.org.opentravel._2012A.base.Errors;
-import org.jibx.schema.org.opentravel._2012A.base.Success;
 import org.jibx.schema.org.opentravel._2012A.hotel.ResModifyRQ;
 import org.jibx.schema.org.opentravel._2012A.hotel.ResModifyRS;
 import org.jibx.schema.org.opentravel._2012A.hotel.ResRQ;
@@ -50,5 +48,4 @@ public class HotelServiceImpl extends DefaultHotelService
 				
         return response;
 	}
-
 }
