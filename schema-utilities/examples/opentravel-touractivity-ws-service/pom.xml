@@ -5,11 +5,11 @@
     <parent>
       <groupId>org.jibx.schema.config</groupId>
       <artifactId>schema-examples-reactor</artifactId>
-      <version>1.0.7-SNAPSHOT</version>
+      <version>1.0.8-SNAPSHOT</version>
     </parent>
 
     <groupId>org.jibx.schema.org.opentravel.ws</groupId>
-    <version>1.0.7-SNAPSHOT</version>    
+    <version>1.0.8-SNAPSHOT</version>    
 
     <artifactId>org.jibx.schema.org.opentravel._2011B.touractivity.ws.service</artifactId>
     
@@ -45,7 +45,7 @@
 	<dependency>
 		<groupId>org.jibx.schema.org.opentravel._2011B</groupId>
 		<artifactId>org.jibx.schema.org.opentravel._2011B.touractivity</artifactId>
-		<version>1.0.7-SNAPSHOT</version>
+		<version>1.0.8-SNAPSHOT</version>
 	</dependency>
   </dependencies>
 

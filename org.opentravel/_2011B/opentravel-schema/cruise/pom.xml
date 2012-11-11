@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.jibx.schema.org.opentravel._2011B</groupId>
     <artifactId>opentravel-schema-reactor</artifactId>
-    <version>1.0.7-SNAPSHOT</version>
+    <version>1.0.8-SNAPSHOT</version>
   </parent>
   
   <artifactId>org.jibx.schema.org.opentravel._2011B.cruise</artifactId>
