@@ -18,6 +18,7 @@
 
   <properties>
     <link>./opentravel/index.html</link>
+    <projectName>jibx-schema-library</projectName>
   </properties>
 
   <modules>

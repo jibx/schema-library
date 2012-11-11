@@ -17,6 +17,11 @@
     <name>oasis-open.org</name>
 
     <description>oasis-open schema library.</description>
+  
+    <properties>
+      <projectName>jibx-schema-library</projectName>
+    </properties>
+
     <modules>
         <module>org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog</module>
     </modules>

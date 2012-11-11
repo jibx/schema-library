@@ -16,6 +16,10 @@
   <name>jibx.org</name>
   <description>jibx.org schema library. A collection of sample schema binding projects.</description>
 
+  <properties>
+    <projectName>jibx-schema-library</projectName>
+  </properties>
+
   <organization>
   	<name>jibx</name>
   	<url>http://jibx.org</url>
