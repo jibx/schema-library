@@ -83,10 +83,7 @@ public abstract class BaseClientTest extends Object
     public void runTest(Properties properties)
     {
     	try {
-    	    System.out.println("-----Start message client test-----");
-    	    
         	Object jibxMessage = createMessage(properties);
-    	    System.out.println("Message to send:\n" + marshalObjectToXML(jibxMessage));
     	    
     	    SOAPMessage soapMessage = createSOAPMessage(jibxMessage);
 	        
@@ -96,8 +93,6 @@ public abstract class BaseClientTest extends Object
 	 
 	        Object res = getResponseFromSOAPMessage(soapResponse, getResponseClass(jibxMessage));
 	        checkResponseMessage(properties, res);
-        	System.out.println(marshalObjectToXML(res));
-    	    System.out.println("-----End message client test-----");
     	} catch (SOAPException e) {
     		e.printStackTrace();
     	} 
