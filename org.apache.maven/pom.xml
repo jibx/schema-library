@@ -3,7 +3,7 @@
     <parent>
         <artifactId>schema-library-parent</artifactId>
         <groupId>org.jibx.schema.config</groupId>
-        <version>1.0.7</version>
+        <version>1.0.8-SNAPSHOT</version>
         <relativePath>../schema-library-parent</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -11,7 +11,7 @@
     <artifactId>org.apache.maven</artifactId>
     <packaging>pom</packaging>
     <name>maven.apache.org</name>
-    <version>1.0.7</version>
+    <version>1.0.8-SNAPSHOT</version>
     <description>Maven POM schemas. Basic schema bindings for 3.0 and 4.0 poms.</description>
     <developers>
         <developer>
