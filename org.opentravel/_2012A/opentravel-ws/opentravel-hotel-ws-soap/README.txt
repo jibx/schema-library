@@ -136,7 +136,7 @@ You can change the web service url by changing the configuration
 property for the web address.
 
 In karaf, change the httpaddress property by tytouractivity:
-  config:edit org.jibx.ws.touractivity
+  config:edit org.jibx.schema.org.opentravel._2012A.hotel.ws.soap
   config:propset httpAddress http://localhost:8082/soap/touractivity
   config:update
   
