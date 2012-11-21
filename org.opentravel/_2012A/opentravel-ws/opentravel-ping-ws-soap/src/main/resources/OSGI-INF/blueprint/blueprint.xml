@@ -8,7 +8,7 @@
   <property-placeholder persistent-id="org.jibx.schema.org.opentravel._2012A.ping.ws.soap"
     xmlns="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0">
     <default-properties>
-      <property name="httpAddress" value="http://localhost:8092/soap/ping" />
+      <property name="httpAddress" value="http://0.0.0.0:8092/soap/ping" />
     </default-properties>
   </property-placeholder>
 
