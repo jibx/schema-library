@@ -84,6 +84,11 @@
 	  <groupId>joda-time</groupId>
 	  <artifactId>joda-time</artifactId>
 	</dependency>
+	<dependency>
+      <groupId>org.jibx.schema.ws</groupId>
+      <artifactId>org.jibx.schema.ws.utilities</artifactId>
+      <version>1.0.8-SNAPSHOT</version>	    	    
+	</dependency>
   </dependencies>
 
 </project>

@@ -11,12 +11,14 @@ import org.jibx.schema.org.opentravel._2012A.base.OTAPayloadStdAttributes;
 import org.jibx.schema.org.opentravel._2012A.base._Error;
 import org.joda.time.DateTime;
 
+import org.jibx.schema.ws.utilities.Utilities;
+
 /**
  * AbstractBaseService - opentravel.org message utilities.
  * @author don
  *
  */
-public abstract class BaseService extends Object
+public abstract class BaseService extends Utilities
 {
 
 	protected Logger m_logger;

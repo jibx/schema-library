@@ -15,6 +15,7 @@
   <description>JiBX schema - schema-utilities parent</description>
 
   <modules>
+    <module>jibx-ws-utilities</module>
     <module>create-jibx-project-utilities</module>
     <module>create-jibx-project</module>
     <module>schema-maven-plugin</module>
