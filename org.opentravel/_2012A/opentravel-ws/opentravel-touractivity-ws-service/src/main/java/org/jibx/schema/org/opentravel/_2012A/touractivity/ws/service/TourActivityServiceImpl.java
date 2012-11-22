@@ -2,6 +2,8 @@ package org.jibx.schema.org.opentravel._2012A.touractivity.ws.service;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.jibx.schema.org.opentravel._2012A.base.AgeQualifier;
 import org.jibx.schema.org.opentravel._2012A.base.AgeQualifyingEnum;
@@ -9,16 +11,23 @@ import org.jibx.schema.org.opentravel._2012A.base.CurrencyAmountGroup;
 import org.jibx.schema.org.opentravel._2012A.base.Errors;
 import org.jibx.schema.org.opentravel._2012A.base.Success;
 import org.jibx.schema.org.opentravel._2012A.base.touractivity.TourActivityCharge;
+import org.jibx.schema.org.opentravel._2012A.base.touractivity.TourActivityDescription;
+import org.jibx.schema.org.opentravel._2012A.base.touractivity.TourActivityID;
 import org.jibx.schema.org.opentravel._2012A.touractivity.AvailRQ;
 import org.jibx.schema.org.opentravel._2012A.touractivity.AvailRS;
 import org.jibx.schema.org.opentravel._2012A.touractivity.AvailRS.TourActivityInfo;
 import org.jibx.schema.org.opentravel._2012A.touractivity.AvailRS.TourActivityInfo.Pricing;
 import org.jibx.schema.org.opentravel._2012A.touractivity.AvailRS.TourActivityInfo.Pricing.ParticipantCategory;
+import org.jibx.schema.org.opentravel._2012A.touractivity.SearchRQ;
+import org.jibx.schema.org.opentravel._2012A.touractivity.SearchRQ.DateTimePref;
+import org.jibx.schema.org.opentravel._2012A.touractivity.SearchRS;
 import org.jibx.schema.org.opentravel._2012A.touractivity.ws.TourActivityService;
 import org.jibx.schema.org.opentravel._2012A.touractivity.ws.impl.DefaultTourActivityService;
 
 /**
  * Example web services server for the opentravel TourActivity Avail message pair.
+ * NOTE: This is an example framework implementation. Obviously, you would access your
+ * database for tour information instead of hard-coding your access code.
  * @author Don Corley <don@tourgeek.com>
  */
 public class TourActivityServiceImpl extends DefaultTourActivityService
@@ -41,6 +50,39 @@ public class TourActivityServiceImpl extends DefaultTourActivityService
 		super.init();
 	}
 
+	/**
+	 * Service the search request.
+	 * @param request
+	 * @return
+	 */
+	public SearchRS search(SearchRQ request)
+	{
+		Date startDate = null;
+		Date endDate = null;
+		if (request.getDateTimePref() != null)
+		{
+			DateTimePref dateTimePref = request.getDateTimePref();
+			if (dateTimePref != null)
+			{
+				startDate = convertYMDToDate(dateTimePref.getStart());
+				endDate = convertYMDToDate(dateTimePref.getEnd());
+				if (endDate == null)
+					if (dateTimePref.getDuration() != null)
+						;	// + Add duration to start date
+			}
+		}
+
+		SearchRS response = createSearchRS(request);
+
+		for (TourInfo tourInfo : mapTourInfo.values())
+		{
+			if (tourInfo.isDateValid(startDate, endDate))
+				response.addTourActivityInfo(createTourActivityInfo(tourInfo));
+		}
+		response.setSuccess(new Success());
+
+		return response;
+	}
 	/**
 	 * Service the avail request.
 	 * @param request
@@ -70,7 +112,9 @@ public class TourActivityServiceImpl extends DefaultTourActivityService
         }
 
 		// Connect to my (fake) back-end system where I can get the requested information
-		MyTourInfo myTourInfo = new MyTourInfo(tourActivityID);
+		TourInfo myTourInfo = mapTourInfo.get(tourActivityID);
+		if (myTourInfo == null)
+			myTourInfo = NO_TOUR;
 		int availability = myTourInfo.getAvailability(date);
 		float price = myTourInfo.getPrice(date);
 		// Move the information to my return message
@@ -102,48 +146,124 @@ public class TourActivityServiceImpl extends DefaultTourActivityService
 		tourActivityCharge.setCurrencyAmountGroup(currencyAmountGroup);
 		currencyAmountGroup.setAmount(price);
 	}
+	/**
+	 * Create a search response tour object for this tour.
+	 * @param tourInfo
+	 * @return
+	 */
+	public SearchRS.TourActivityInfo createTourActivityInfo(TourInfo tourInfo)
+	{
+		SearchRS.TourActivityInfo tourActivityInfo = new SearchRS.TourActivityInfo();
+		TourActivityID basicInfo = new TourActivityID();
+		basicInfo.setTourActivityID(tourInfo.getTourId());
+		tourActivityInfo.setBasicInfo(basicInfo);
+		TourActivityDescription description = new TourActivityDescription();
+		description.setShortDescription(tourInfo.getDescription());
+		tourActivityInfo.setDescription(description);
+		SearchRS.TourActivityInfo.Pricing pricing = new SearchRS.TourActivityInfo.Pricing();
+		pricing.setMinPrice(tourInfo.getPrice(null));
+		pricing.setMaxPrice(tourInfo.getPrice(null));
+		tourActivityInfo.setPricing(pricing);
+		return tourActivityInfo;
+	}
 		
 	/**
-	 * This mock object represents your back-end system.
+	 * These mock objects represent your back-end system.
 	 * The actual implementation would do a SQL query on your database or
 	 * more likely do a web service call to your system.
 	 * 
-	 * This fake implementation has two tours:
-	 * cityss - Price $82.50, 5 spaces available every day but Thursday.
-	 * airxfer - Price $10.00, 10 spaces available every day.
+	 * This fake implementation has several tours.
+	 * Take a look at the static initialization code.
 	 */
-	public class MyTourInfo
+	static class TourInfo
 	{
-		public static final String CITY_SIGHTSEEING = "cityss";
-		public static final String AIRPORT_TRANSFER = "airxfer";
-		
 		String tourActivityID;
-		public MyTourInfo(String tourActivityID)
+		String description;
+		int[] availability;
+		float price;
+		Date startDate;
+		Date endDate;
+		
+		public TourInfo(String tourActivityID, String description, Date startDate, Date endDate, int[] availability, float price)
 		{
 			super();
 			this.tourActivityID = tourActivityID;
+			this.description = description;
+			this.availability = availability;
+			this.price = price;
+			this.startDate = startDate;
+			this.endDate = endDate;
+		}
+		public String getTourId()
+		{
+			return tourActivityID;
+		}
+		public String getDescription()
+		{
+			return description;
 		}
 		public int getAvailability(Date date)
 		{
-			if (AIRPORT_TRANSFER.equalsIgnoreCase(tourActivityID))
-				return 10;
-			if (CITY_SIGHTSEEING.equalsIgnoreCase(tourActivityID))
-			{
-				Calendar cal = Calendar.getInstance();
-				cal.setTime(date);
-				if (cal.get(Calendar.DAY_OF_WEEK) != Calendar.THURSDAY)
-					return 5;
-			}
-			return 0;
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(date);
+			return availability[cal.get(Calendar.DAY_OF_WEEK) - 1];
 		}
-	
 		public float getPrice(Date date)
 		{
-			if (CITY_SIGHTSEEING.equalsIgnoreCase(tourActivityID))
-				return 82.50f;
-			if (AIRPORT_TRANSFER.equalsIgnoreCase(tourActivityID))
-				return 55;
-			return 0;
+			return price;
+		}
+		public boolean isDateValid(Date startDate, Date endDate)
+		{
+			if (startDate != null)
+				if (this.endDate != null)
+					if (startDate.getTime() > this.endDate.getTime())
+						return false;
+			if (endDate != null)
+				if (this.startDate != null)
+					if (endDate.getTime() < this.startDate.getTime())
+						return false;
+			if ((startDate != null) && (endDate != null))
+				if (startDate.equals(endDate))
+					if (getAvailability(startDate) == 0)
+						return false;
+			return true;	// Valid date
 		}
 	}
+	static int[] NOT_TUESDAY = {5, 5, 5, 0, 5, 5, 5};
+	static int[] EVERY_DAY = {8, 8, 8, 8, 8, 8, 8};
+	static int[] NO_AVAIL = {0, 0, 0, 0, 0, 0, 0};
+	public static Map<String,TourInfo> mapTourInfo = new HashMap<String,TourInfo>();
+	static {
+		Date startDate = null;
+		Date endDate = null;
+		mapTourInfo.put("airxfer", new TourInfo("airxfer", "Airport Transfer", startDate, endDate, EVERY_DAY, 82.50f));
+		startDate = new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(startDate);
+		cal.add(Calendar.DATE, 180);
+		endDate = cal.getTime();
+		mapTourInfo.put("cityss", new TourInfo("cityss", "City Sightseeing", startDate, endDate, NOT_TUESDAY, 55));
+		startDate = null;
+		endDate = null;
+		mapTourInfo.put("hoponoff", new TourInfo("hoponoff", "Hop on-Hop off Bus", startDate, endDate, EVERY_DAY, 40));
+		mapTourInfo.put("river", new TourInfo("river", "River Tour", startDate, endDate, NOT_TUESDAY, 95));
+		mapTourInfo.put("canyon", new TourInfo("canyon", "Canyon Tour", startDate, endDate, EVERY_DAY, 85));
+		mapTourInfo.put("suburb", new TourInfo("suburb", "Suburb Tour", startDate, endDate, EVERY_DAY, 60));
+		startDate = new Date();
+		cal.setTime(startDate);
+		cal.add(Calendar.DATE, 90);
+		endDate = cal.getTime();
+		mapTourInfo.put("rural", new TourInfo("rural", "Rural Tour", startDate, endDate, EVERY_DAY, 155));
+		startDate = new Date();
+		cal.setTime(startDate);
+		if (cal.get(Calendar.MONTH) >= 9)
+			cal.add(Calendar.YEAR, 1);
+		cal.set(Calendar.MONTH, 9);
+		cal.set(Calendar.DATE, 22);
+		startDate = cal.getTime();
+		cal.add(Calendar.MONTH, 3);
+		endDate = cal.getTime();
+		mapTourInfo.put("fall", new TourInfo("fall", "Fall Tour", startDate, endDate, EVERY_DAY, 145));
+	}
+	TourInfo NO_TOUR = new TourInfo("", "", null, null, NO_AVAIL, 0);
 }

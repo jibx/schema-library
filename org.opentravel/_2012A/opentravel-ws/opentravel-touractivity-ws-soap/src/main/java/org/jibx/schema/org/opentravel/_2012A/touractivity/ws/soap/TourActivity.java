@@ -23,4 +23,11 @@ public interface TourActivity {
         @WebParam(partName = "payload", name = "TourActivityAvailRQ", targetNamespace = "http://www.opentravel.org/OTA/2003/05")
         	AvailRQ payload
     );
+
+    @WebResult(name = "TourActivitySearchRS", targetNamespace = "http://www.opentravel.org/OTA/2003/05", partName = "payload")
+    @WebMethod(operationName = "TourActivitySearch")
+    public SearchRS search(
+        @WebParam(partName = "payload", name = "TourActivitySearchRQ", targetNamespace = "http://www.opentravel.org/OTA/2003/05")
+        	SearchRQ payload
+    );
 }

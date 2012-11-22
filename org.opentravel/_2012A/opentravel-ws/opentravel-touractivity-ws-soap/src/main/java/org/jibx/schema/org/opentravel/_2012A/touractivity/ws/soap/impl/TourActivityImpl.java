@@ -4,6 +4,8 @@ import javax.jws.WebService;
 
 import org.jibx.schema.org.opentravel._2012A.touractivity.AvailRQ;
 import org.jibx.schema.org.opentravel._2012A.touractivity.AvailRS;
+import org.jibx.schema.org.opentravel._2012A.touractivity.SearchRQ;
+import org.jibx.schema.org.opentravel._2012A.touractivity.SearchRS;
 import org.jibx.schema.org.opentravel._2012A.touractivity.ws.TourActivityService;
 import org.jibx.schema.org.opentravel._2012A.touractivity.ws.soap.TourActivity;
 
@@ -16,6 +18,15 @@ public class TourActivityImpl
         AvailRS response = null;
         if (getTourActivityService() != null)
         	response = getTourActivityService().avail(request);
+
+        return response;
+	}
+
+	public SearchRS search(SearchRQ request) {
+		
+        SearchRS response = null;
+        if (getTourActivityService() != null)
+        	response = getTourActivityService().search(request);
 
         return response;
 	}
