@@ -1,12 +1,12 @@
 package org.jibx.schema.ws.utilities;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
-import java.io.StringBufferInputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
@@ -71,7 +71,7 @@ public class Utilities {
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
             builderFactory.setNamespaceAware(true);
             DocumentBuilder builder = builderFactory.newDocumentBuilder();
-    		InputStream stream = new StringBufferInputStream(xml);
+    		InputStream stream = new ByteArrayInputStream(xml.getBytes(URL_ENCODING));
             Document doc = builder.parse(stream);
 
             XPathFactory factory = XPathFactory.newInstance();
@@ -95,19 +95,23 @@ public class Utilities {
     }
     /**
      * Copy DOM tree to a DOM result tree.
-     * ****** Note: Replace BaseClientTest with this code ****
      * @param tree
      * @param node
      * @return The parent of the new child node.
      */
     public static Document copyTreeToDOM(Source source, String xslt)
     {
-    	Source xsltSource = new StreamSource(new StringBufferInputStream(Utilities.XSL_CONVERT));
-    	return copyTreeToDOM(source, xsltSource);
+    	Source xsltSource;
+		try {
+			xsltSource = new StreamSource(new ByteArrayInputStream(Utilities.XSL_CONVERT.getBytes(URL_ENCODING)));
+			return copyTreeToDOM(source, xsltSource);
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return null;
     }
     /**
      * Copy DOM tree to a DOM result tree.
-     * ****** Note: Replace BaseClientTest with this code ****
      * @param tree
      * @param node
      * @return The parent of the new child node.
@@ -129,7 +133,6 @@ public class Utilities {
     }
     /**
      * Copy DOM tree to a DOM result tree.
-     * ****** Note: Replace BaseClientTest with this code ****
      * @param tree
      * @param node
      * @param xslt XSL Transformation source
@@ -366,7 +369,7 @@ public class Utilities {
         }
     }
     /**
-     * Create a default ping message.
+     * Create a stream from this file.
      * @return
      */
     public static InputStream getStream(Class<?> cl, String filename)

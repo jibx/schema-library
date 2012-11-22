@@ -18,6 +18,7 @@
     <module>opentravel-hotel-ws-rest</module>
     <module>opentravel-hotel-ws-soap</module>
     <module>opentravel-hotel-ws-service</module>
+    <module>opentravel-base-ws-test-client</module>
     <module>opentravel-hotel-ws-test-client</module>
     <module>opentravel-hotel-ws-test-service</module>
     <module>opentravel-touractivity-ws-rest</module>

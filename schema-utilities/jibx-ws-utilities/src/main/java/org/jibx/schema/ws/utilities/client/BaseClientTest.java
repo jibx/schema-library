@@ -1,10 +1,6 @@
 package org.jibx.schema.ws.utilities.client;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.util.Iterator;
 import java.util.Properties;
 
@@ -95,20 +91,7 @@ public abstract class BaseClientTest extends Utilities
     		if (properties.getProperty(FILENAME) != null)
     	{
     		String filename = properties.getProperty(FILENAME);
-    		InputStream stream = null;
-    		URL url = this.getClass().getResource(filename);
-    		try {
-    			if (url != null)
-    				stream = url.openStream();
-			} catch (IOException e) {
-				stream = null;
-			}
-    		if (stream == null)
-				try {
-					stream = new FileInputStream(filename);
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				}
+    		InputStream stream = getStream(this.getClass(), filename);
     		String className = properties.getProperty(CLASSNAME);
     		if (className == null)
     		{
