@@ -1,0 +1,50 @@
+ -----
+ JiBX Open Schema Project
+ -----
+ Don Corley
+ -----
+ Dec 24, 2012
+ -----
+
+Web Services Client
+
+ This schema library includes a simple client framework for SOAP and RESTful web services.
+ 
+ The client framework contains utility methods to send RESTful messages, wrap a message in a
+ SOAP envelope and do testing. It's easy to send a messages and receive the response.
+ 
+ Included in the client framework are utilities to manipulate and check namespace aware XML
+ schema. You can easily convert your JiBX object tree to XML or DOM and back to JiBX.
+ You can convert your XML
+ using XSL Translation. You can also search your XML trees using XPATH.
+ 
+ These utilities make creating a web-services client quick and easy.
+ 
+ These tools also make the client library the perfect toolbox to create your
+ client test cases. The client library has a utility that can read XML files from the
+ local classpath storage and send them to your test service.
+
+ For more detailed example, check out my
+ {{{http://blog.tourgeek.com/2012/04/creating-soap-and-rest-services-for.html}blog here}}.
+
+Client Web service example
+
+ Before running this client test, you must have a Web Service running. Go through the
+ {{{service.html}Web Services example}} before running this example.
+
+* Running this example
+ 
+ Step 1: Download the test hotel client from our github repository:
+ {{{http://servicemix.apache.org/}http://}}.
+ 
+ Step 2: Move to the project directory and invoke maven.
+
++-----+
+ cd opentravel-hotel-ws-test-service
+ mvn install
++-----+
+
+ That's it. You should see some sample SOAP and REST requests and replies and some messages
+ indicating that the test ran okay.
+  
+ Voilà

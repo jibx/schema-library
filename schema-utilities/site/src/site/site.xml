@@ -33,6 +33,8 @@
 <item name="OSGi deployment" href="./exampleosgi.html"/>
 <item name="Eclipse" href="./opentravel/index.html"/>
 <item name="Web Services" href="./webservices.html"/>
+<item name="Client" href="./client.html"/>
+<item name="Test Service" href="./service.html"/>
 </menu>
 <menu name="Schema library">
 <item name="jibx.org" href="./site.html#jibx.org" collapse="true">

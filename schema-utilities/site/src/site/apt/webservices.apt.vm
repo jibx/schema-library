@@ -21,7 +21,7 @@ Web Services
 
 Web service example
 
- This simple example you will install a simple web service that uses SOAP and REST protocols.
+ In this example you will install a simple web service that uses SOAP and REST protocols.
  This web service implements the {{{http://www.opentravel.org}opentravel.org}} ping service. When you send
  a {{{http://www.opentravel.org/2011B/OTA_PingRQ.xsd}Ping request}} this service
  echos a {{{http://www.opentravel.org/2011B/OTA_PingRS.xsd}Ping reply}}

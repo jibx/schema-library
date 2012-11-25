@@ -16,6 +16,7 @@
 
   <modules>
     <module>jibx-ws-utilities</module>
+    <module>jibx-ws-base-rest-client</module>
     <module>create-jibx-project-utilities</module>
     <module>create-jibx-project</module>
     <module>schema-maven-plugin</module>

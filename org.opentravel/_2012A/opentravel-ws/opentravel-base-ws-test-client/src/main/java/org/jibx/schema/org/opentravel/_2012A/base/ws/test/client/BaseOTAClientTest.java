@@ -1,30 +1,14 @@
 package org.jibx.schema.org.opentravel._2012A.base.ws.test.client;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.io.Writer;
 import java.util.Properties;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.mime.MultipartEntity;
-import org.apache.http.entity.mime.content.ContentBody;
-import org.apache.http.entity.mime.content.InputStreamBody;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.jibx.schema.org.opentravel._2012A.base.OTAPayloadStdAttributes;
-import org.jibx.schema.ws.utilities.Utilities;
-import org.jibx.schema.ws.utilities.client.BaseClientTest;
 import org.joda.time.DateTime;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
+import org.jibx.schema.org.opentravel.schema.ws.base.rest.client.BaseRestClient;
 
-public class BaseOTAClientTest extends BaseClientTest
+public class BaseOTAClientTest extends BaseRestClient
 	implements  BundleActivator
 {
 
@@ -88,36 +72,5 @@ public class BaseOTAClientTest extends BaseClientTest
     public void checkResponseMessage(Properties properties, Object message)
     {    	
     	// Override this to check the response
-    }
-    /**
-     * Send a xml REST message.
-     * @param filename
-     * @return
-     */
-    public String sendRestMessage(String filename, String restEndpoint)
-    {
-    	try {
-	    	HttpClient httpclient = new DefaultHttpClient();
-	    	HttpPost post = new HttpPost(restEndpoint);
-
-	    	MultipartEntity entity = new MultipartEntity();
-    		InputStream inStream = Utilities.getStream(getClass(), filename);
-	    	ContentBody contentBody = new InputStreamBody(inStream, "text/xml", filename);
-	    	entity.addPart("file", contentBody);
-	    	post.setEntity(entity);
-
-			HttpResponse response = httpclient.execute(post);
-			HttpEntity httpEntity = response.getEntity();
-			InputStream inputStream = httpEntity.getContent();
-			Reader reader = new InputStreamReader(inputStream);
-			Writer writer = new StringWriter();
-			Utilities.transferStream(reader, writer);
-			return writer.toString();
-		} catch (ClientProtocolException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-    	return null;
     }
 }

@@ -16,7 +16,7 @@ import org.jibx.schema.org.opentravel._2012A.hotel.ResModifyRS;
 import org.jibx.schema.org.opentravel._2012A.hotel.ResRQ;
 import org.jibx.schema.org.opentravel._2012A.hotel.ResRS;
 import org.jibx.schema.org.opentravel._2012A.hotel.ws.impl.DefaultHotelService;
-import org.jibx.schema.ws.utilities.client.BaseClientTest;
+import org.jibx.schema.ws.utilities.client.BaseClient;
 
 import com.sun.istack.logging.Logger;
 
@@ -50,12 +50,12 @@ public class HotelServiceImpl extends DefaultHotelService
 
 		ResRS response = null;//createResRS(request);
     	Properties properties = new Properties();
-    	properties.setProperty(BaseClientTest.FILENAME, "/OTA_HotelResRS.xml");
-    	properties.setProperty(BaseClientTest.CLASSNAME, ResRQ.class.getName());
+    	properties.setProperty(BaseClient.FILENAME, "/OTA_HotelResRS.xml");
+    	properties.setProperty(BaseClient.CLASSNAME, ResRQ.class.getName());
     	if (request.getOTAPayloadStdAttributes() != null)
     		if (request.getOTAPayloadStdAttributes().getEchoToken() != null)
         		if (request.getOTAPayloadStdAttributes().getEchoToken().startsWith("/"))
-        	    	properties.setProperty(BaseClientTest.FILENAME, request.getOTAPayloadStdAttributes().getEchoToken());
+        	    	properties.setProperty(BaseClient.FILENAME, request.getOTAPayloadStdAttributes().getEchoToken());
     	
     	response = (ResRS)this.createMessage(properties);
 		movePayloadData(request.getOTAPayloadStdAttributes(), response.getOTAPayloadStdAttributes());
@@ -74,8 +74,8 @@ public class HotelServiceImpl extends DefaultHotelService
 
 		ResModifyRS response = null;//createResModifyRS(request);
     	Properties properties = new Properties();
-    	properties.setProperty(BaseClientTest.FILENAME, "/OTA_HotelResModifyRS.xml");
-    	properties.setProperty(BaseClientTest.CLASSNAME, ResModifyRQ.class.getName());
+    	properties.setProperty(BaseClient.FILENAME, "/OTA_HotelResModifyRS.xml");
+    	properties.setProperty(BaseClient.CLASSNAME, ResModifyRQ.class.getName());
     	
     	response = (ResModifyRS)this.createMessage(properties);
 		movePayloadData(request.getOTAPayloadStdAttributes(), response.getOTAPayloadStdAttributes());
@@ -134,9 +134,9 @@ public class HotelServiceImpl extends DefaultHotelService
     public Object createMessage(Properties properties)
     {
     	if (properties != null)
-    		if (properties.getProperty(BaseClientTest.FILENAME) != null)
+    		if (properties.getProperty(BaseClient.FILENAME) != null)
     	{
-    		String filename = properties.getProperty(BaseClientTest.FILENAME);
+    		String filename = properties.getProperty(BaseClient.FILENAME);
     		InputStream stream = null;
     		URL url = this.getClass().getResource(filename);
     		try {
@@ -151,14 +151,14 @@ public class HotelServiceImpl extends DefaultHotelService
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
-    		String className = properties.getProperty(BaseClientTest.CLASSNAME);
+    		String className = properties.getProperty(BaseClient.CLASSNAME);
     		if (className == null)
     		{
     			System.out.println("Error, you must specify unmarshalling file name for XML file " + filename);
     			return null;
     		}
     		try {
-				return BaseClientTest.unmarshalSource(new StreamSource(stream), Class.forName(className));
+				return BaseClient.unmarshalSource(new StreamSource(stream), Class.forName(className));
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			}

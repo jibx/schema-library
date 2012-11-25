@@ -1,0 +1,74 @@
+ -----
+ JiBX Open Schema Project
+ -----
+ Don Corley
+ -----
+ Dec 24, 2012
+ -----
+
+Web Services Test Framework
+
+ This schema library includes a simple server framework for SOAP and RESTful web services.
+ 
+ The server framework contains utility methods to receive SOAP and RESTful messages, test the 
+ requests for validity and send a reply.
+ 
+ Included in the server framework are utilities to manipulate and check namespace aware XML
+ schema. You can easily convert your JiBX object tree to XML or DOM. You can convert your XML
+ using XSL Translation. You can also search your XML trees using XPATH.
+ 
+ Having all these tools available make the server library the perfect toolbox to create your
+ server test cases. The server library also has a utility that can read XML files from the
+ local classpath storage and use these messages as replies.
+
+ For more detailed example, check out my
+ {{{http://blog.tourgeek.com/2012/04/creating-soap-and-rest-services-for.html}blog here}}.
+
+Web service example
+
+ In this example you will install a simple web service that uses SOAP and REST protocols.
+ This web service implements the {{{http://www.opentravel.org}opentravel.org}} hotel res service. When you send
+ a {{{http://www.opentravel.org/2012A/OTA_HotelResRQ.xsd}HotelRes request}} this service
+ echos a {{{http://www.opentravel.org/2012A/OTA_HotelResRS.xsd}HotelRes reply}}
+ 
+ The project source code for this example is in our repository {{{https://github.com/jibx/schema-library/tree/master/org.opentravel/_2012A/opentravel-ws/opentravel-hotel-ws-test-service}here}}.
+ 
+ This example uses three services:
+
+ * Your hotel res service implementation which is registered as an OSGi service.
+   
+ * A hotel RESTful service that will call your OSGi registered hotel res service.
+   
+ * A hotel SOAP service that also uses your hotel res service.
+
+* Running this example
+ 
+ Step 1: Download {{{http://servicemix.apache.org/}Apache servicemix}} and start it up.
+ 
++-----+
+ tar zxvf apache-servicemix-x.x.x.tar.gz
+ cd apache-servicemix-x.x.x
+ bin/servicemix
++-----+
+
+ Step 2: Add and run the JiBX OSGi bundles in this example.
+
++-----+
+ features:install obr
+ obr:addurl http://www.jibx.org/repository/repository.xml
+ obr:deploy org.jibx.schema.org.opentravel._2012A.hotel.ws.service
+ obr:deploy org.jibx.schema.org.opentravel._2012A.hotel.ws.rest
+ obr:deploy org.jibx.schema.org.opentravel._2012A.hotel.ws.soap
+ # ctrl+d (stop servicemix) - You must restart due to a karaf auto-wiring problem
+ # bin/servicemix (restart servicemix)
+ start org.jibx.schema.org.opentravel._2012A.hotel.ws.service
+ start org.jibx.schema.org.opentravel._2012A.hotel.ws.rest
+ start org.jibx.schema.org.opentravel._2012A.hotel.ws.soap
++-----+
+
+ Step 3: Click this link {{{http://localhost:8181/cxf/hotel/hotel/Hello}http://localhost:8181/cxf/hotel/hotel/Hello}} to send a 'Hello' message to the RESTful hotel service.
+ 
+ If you would like to test this web service to see if it works, either fire up soapui and send it a message.
+ {{{http://}My blog will show you how} or run the JiBX test client using my {{{client.html}instructions here}}.
+  
+ Voilà

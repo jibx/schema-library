@@ -23,7 +23,7 @@ import org.osgi.framework.BundleContext;
 import org.w3c.dom.Element;
 
 @SuppressWarnings("restriction")
-public abstract class BaseClientTest extends Utilities
+public abstract class BaseClient extends Utilities
 	implements  BundleActivator
 {
     public static final String FILENAME = "filename";
@@ -33,7 +33,7 @@ public abstract class BaseClientTest extends Utilities
 	/**
 	 * Constructor
 	 */
-	public BaseClientTest()
+	public BaseClient()
 	{
 		super();
 	}

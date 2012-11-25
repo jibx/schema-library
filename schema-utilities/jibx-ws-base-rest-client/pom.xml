@@ -3,19 +3,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-      <groupId>org.jibx.schema.org.opentravel._2012A.ws</groupId>
-      <artifactId>opentravel-2012A-ws-reactor</artifactId>
+      <groupId>org.jibx.schema.config</groupId>
+      <artifactId>schema-utilities-reactor</artifactId>
       <version>1.0.8-SNAPSHOT</version>
     </parent>
 
-    <artifactId>org.jibx.schema.org.opentravel._2012A.hotel.ws.test.client</artifactId>
+    <groupId>org.jibx.schema.ws</groupId>
+    <artifactId>org.jibx.schema.ws.base.rest.client</artifactId>
     
     <packaging>bundle</packaging>
-    <name>Schema Library - org.jibx.hotel.ws.client - 2012A - opentravel.org hotel test web client</name>
-    
-    <properties>
-      <maven.test.skip>true</maven.test.skip>	<!-- Override this with -Dmaven.test.skip=false to run test -->
-    </properties>
+    <name>Schema Library - org.jibx.ws.base.rest.client - opentravel.org base RESTful web client</name>
     
     <build>
         <plugins>
@@ -39,53 +36,33 @@
 	                        *;resolution:=optional,
                         </Import-Package>
                         <Require-Bundle>org.apache.cxf.bundle</Require-Bundle>
-                        <Bundle-Activator>org.jibx.schema.org.opentravel._2012A.hotel.ws.client.HotelClient</Bundle-Activator>
                     </instructions>
                 </configuration>
             </plugin>
-
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <phase>run</phase>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-            <mainClass>org.jibx.schema.org.opentravel._2012A.hotel.ws.client.HotelClient</mainClass>
-        </configuration>
-      </plugin>
-            </plugins>
+          </plugins>
     </build>
 
   <dependencies>
-	<dependency>
-		<groupId>org.jibx.schema.org.opentravel._2012A</groupId>
-		<artifactId>org.jibx.schema.org.opentravel._2012A.hotel</artifactId>
-		<version>1.0.8-SNAPSHOT</version>
-	</dependency>
-
     <dependency>
-      <groupId>org.jibx.schema.org.opentravel._2012A.ws</groupId>
-      <artifactId>org.jibx.schema.org.opentravel._2012A.base.ws.test.client</artifactId>
+      <groupId>org.jibx.schema.ws</groupId>
+      <artifactId>org.jibx.schema.ws.utilities</artifactId>
       <version>1.0.8-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.2.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpmime</artifactId>
+      <version>4.2.2</version>
     </dependency>
 
     <dependency>
       <groupId>org.osgi</groupId>
       <artifactId>org.osgi.core</artifactId>
-    </dependency>
-    
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-    </dependency>
- 
+    </dependency> 
   </dependencies>
 
 </project>

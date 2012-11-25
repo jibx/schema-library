@@ -16,14 +16,14 @@ import org.w3c.dom.Element;
 
 import org.jibx.schema.org.opentravel._2012A.base.ws.test.client.BaseOTAClientTest;
 
-public class HotelClientTest extends BaseOTAClientTest
+public class HotelClientTestCase extends HotelClientTest
 	implements  BundleActivator
 {
 
 	/**
 	 * Constructor
 	 */
-	public HotelClientTest()
+	public HotelClientTestCase()
 	{
 		super();
 	}
@@ -39,52 +39,8 @@ public class HotelClientTest extends BaseOTAClientTest
     @Test
     @Category(HotelClientTest.class)
     public void test() {
-    	HotelClientTest test = new HotelClientTest();
+    	HotelClientTestCase test = new HotelClientTestCase();
     	test.start(null);
-    }
-
-    public static final void main(String[] args)
-    {
-    	HotelClientTest test = new HotelClientTest();
-    	test.start(null);
-    }
-
-    //private static final String endpoint = "http://localhost:8088/mockHotelSOAPBinding";
-    private static final String endpoint = "http://localhost:8092/soap/hotel";
-    private static final String restEndpoint = "http://localhost:8181/cxf/hotel/res";
-    /**
-     * Test it!
-     */
-    public void start(BundleContext context)
-    {
-    	Properties properties = new Properties();
-    	properties.setProperty(ENDPOINT, endpoint);
-    	properties.setProperty(FILENAME, "/OTA_HotelResRQ.xml");
-    	properties.setProperty(CLASSNAME, ResRQ.class.getName());
-    	
-    	runTest(properties);	// By default, run the test once with no properties
-    	
-    	properties.setProperty(FILENAME, "/OTA_HotelResModifyRQ.xml");
-    	properties.setProperty(CLASSNAME, ResModifyRQ.class.getName());
-    	runTest(properties);	// By default, run the test once with no properties
-    	
-    	String response = this.sendRestMessage("/OTA_HotelResRQ.xml", restEndpoint);
-		System.out.println("REST Response:\n" + response);
-    }
-    /**
-     * Create a default ping message.
-     * @return
-     */
-    public Object createMessage(Properties properties)
-    {
-    	Object request = super.createMessage(properties);
-    	if (request instanceof ResRQ)
-    		checkPayload(((ResRQ)request).getOTAPayloadStdAttributes());
-    	else if (request instanceof ResModifyRQ)
-    		checkPayload(((ResModifyRQ)request).getOTAPayloadStdAttributes());
-		String xml = marshalObjectToXML(request);
-	    System.out.println("Message to send:\n" + xml);
-        return request;
     }
     /**
      * Check the contents of this message.
@@ -105,4 +61,5 @@ public class HotelClientTest extends BaseOTAClientTest
     	Assert.assertTrue("Return message is missing success element", "Success".equalsIgnoreCase(firstElement));
     	Assert.assertTrue("Return message is missing success element",  Utilities.xPathTest(xml, "//ota:Success", "ota", "http://www.opentravel.org/OTA/2003/05"));
     }
+
 }
