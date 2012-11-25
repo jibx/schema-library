@@ -6,7 +6,7 @@
   <parent>
     <artifactId>schema-utilities-reactor</artifactId>
     <groupId>org.jibx.schema.config</groupId>
-    <version>1.0.8</version>
+    <version>1.0.9-SNAPSHOT</version>
   </parent>
 
   <artifactId>create-jibx-project</artifactId>
@@ -37,7 +37,7 @@
     <dependency>
       <groupId>org.jibx.schema.config</groupId>
       <artifactId>create-jibx-project-utilities</artifactId>
-      <version>1.0.8</version>
+      <version>1.0.9-SNAPSHOT</version>
     </dependency>
   </dependencies>
 
