@@ -14,6 +14,11 @@
   <name>schema-utilities-reactor - schema-utilities parent</name>
   <description>JiBX schema - schema-utilities parent</description>
 
+  <properties>
+    <link>./opentravel/index.html</link>
+    <projectName>jibx-schema-library</projectName>
+  </properties>
+
   <modules>
     <module>jibx-ws-utilities</module>
     <module>jibx-ws-base-rest-client</module>
