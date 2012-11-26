@@ -15,14 +15,14 @@ Web Services Test Framework
  
  Included in the server framework are utilities to manipulate and check namespace aware XML
  schema. You can easily convert your JiBX object tree to XML or DOM. You can convert your XML
- using XSL Translation. You can also search your XML trees using XPATH.
+ using XSL Transformation. You can also search your XML trees using XPATH.
  
  Having all these tools available make the server library the perfect toolbox to create your
- server test cases. The server library also has a utility that can read XML files from the
+ server test cases. The server library also has a utility that can read XML message files from the
  local classpath storage and use these messages as replies.
 
  For more detailed example, check out my
- {{{http://blog.tourgeek.com/2012/04/creating-soap-and-rest-services-for.html}blog here}}.
+ {{{http://blog.tourgeek.com}blog here}}.
 
 Web service example
 
@@ -31,7 +31,8 @@ Web service example
  a {{{http://www.opentravel.org/2012A/OTA_HotelResRQ.xsd}HotelRes request}} this service
  echos a {{{http://www.opentravel.org/2012A/OTA_HotelResRS.xsd}HotelRes reply}}
  
- The project source code for this example is in our repository {{{https://github.com/jibx/schema-library/tree/master/org.opentravel/_2012A/opentravel-ws/opentravel-hotel-ws-test-service}here}}.
+ The project source code for this example is in our repository here:
+ {{{https://github.com/jibx/schema-library/tree/master/org.opentravel/_2012A/opentravel-ws/opentravel-hotel-ws-test-service}https://github.com/jibx/schema-library/tree/master/org.opentravel/_2012A/opentravel-ws/opentravel-hotel-ws-test-service}}.
  
  This example uses three services:
 
@@ -56,19 +57,21 @@ Web service example
 +-----+
  features:install obr
  obr:addurl http://www.jibx.org/repository/repository.xml
- obr:deploy org.jibx.schema.org.opentravel._2012A.hotel.ws.service
+ obr:deploy org.jibx.schema.org.opentravel._2012A.hotel.ws.test.service
  obr:deploy org.jibx.schema.org.opentravel._2012A.hotel.ws.rest
  obr:deploy org.jibx.schema.org.opentravel._2012A.hotel.ws.soap
  # ctrl+d (stop servicemix) - You must restart due to a karaf auto-wiring problem
  # bin/servicemix (restart servicemix)
- start org.jibx.schema.org.opentravel._2012A.hotel.ws.service
+ start org.jibx.schema.org.opentravel._2012A.hotel.ws.test.service
  start org.jibx.schema.org.opentravel._2012A.hotel.ws.rest
  start org.jibx.schema.org.opentravel._2012A.hotel.ws.soap
 +-----+
 
- Step 3: Click this link {{{http://localhost:8181/cxf/hotel/hotel/Hello}http://localhost:8181/cxf/hotel/hotel/Hello}} to send a 'Hello' message to the RESTful hotel service.
+ Step 3: Click this link {{{http://localhost:8181/cxf/hotel/search/2013-05-01/2013-05-01}http://localhost:8181/cxf/hotel/search/2013-05-01/2013-05-01}}
+ to do a search using the RESTful hotel service.
  
  If you would like to test this web service to see if it works, either fire up soapui and send it a message.
- {{{http://}My blog will show you how} or run the JiBX test client using my {{{client.html}instructions here}}.
+ You will find the wsdl file here: {{{http://localhost:8092/soap/touractivity?wsdl}http://localhost:8092/soap/touractivity?wsdl}}.
+ {{{http://}My blog will show you how} or run the JiBX test client using my {{{./client.html}instructions here}}.
   
  Voilà

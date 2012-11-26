@@ -16,26 +16,26 @@ Web Services Client
  Included in the client framework are utilities to manipulate and check namespace aware XML
  schema. You can easily convert your JiBX object tree to XML or DOM and back to JiBX.
  You can convert your XML
- using XSL Translation. You can also search your XML trees using XPATH.
+ using XSL Transformation. You can also search your XML trees using XPATH.
  
  These utilities make creating a web-services client quick and easy.
  
  These tools also make the client library the perfect toolbox to create your
- client test cases. The client library has a utility that can read XML files from the
+ client test cases. The client library has a utility that can read XML message files from the
  local classpath storage and send them to your test service.
 
- For more detailed example, check out my
- {{{http://blog.tourgeek.com/2012/04/creating-soap-and-rest-services-for.html}blog here}}.
+ For more detailed explanation, check out my
+ {{{http://blog.tourgeek.com}blog here}}.
 
 Client Web service example
 
- Before running this client test, you must have a Web Service running. Go through the
- {{{service.html}Web Services example}} before running this example.
+ Before running this client test, you must have a Web Service running. Set up the
+ {{{./service.html}Web Services example}} or create a {{{http://blog.tourgeek.com/2012/04/creating-soap-and-rest-services-for.html}soapui server}} before running this example.
 
 * Running this example
  
  Step 1: Download the test hotel client from our github repository:
- {{{http://servicemix.apache.org/}http://}}.
+ {{{https://github.com/jibx/schema-library/tree/master/org.opentravel/_2012A/opentravel-ws/opentravel-hotel-ws-test-client}https://github.com/jibx/schema-library/tree/master/org.opentravel/_2012A/opentravel-ws/opentravel-hotel-ws-test-client}}.
  
  Step 2: Move to the project directory and invoke maven.
 
@@ -47,4 +47,16 @@ Client Web service example
  That's it. You should see some sample SOAP and REST requests and replies and some messages
  indicating that the test ran okay.
   
+* Alternate testing method
+ 
+ These tests may also be run in an OSGi container
+ 
+  Step 1: If you are running the sample server, you already have and OSGi container up. Just type:
+
++-----+
+ obr:deploy -s org.jibx.schema.org.opentravel._2012A.hotel.ws.test.client
++-----+
+
+ Your test should run automatically.
+
  Voilà
