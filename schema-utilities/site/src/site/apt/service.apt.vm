@@ -61,17 +61,19 @@ Web service example
  obr:deploy org.jibx.schema.org.opentravel._2012A.hotel.ws.rest
  obr:deploy org.jibx.schema.org.opentravel._2012A.hotel.ws.soap
  # ctrl+d (stop servicemix) - You must restart due to a karaf auto-wiring problem
- # bin/servicemix (restart servicemix)
+ # bin/servicemix (restart servicemix and ignore the wiring error on startup)
  start org.jibx.schema.org.opentravel._2012A.hotel.ws.test.service
  start org.jibx.schema.org.opentravel._2012A.hotel.ws.rest
  start org.jibx.schema.org.opentravel._2012A.hotel.ws.soap
 +-----+
 
- Step 3: Click this link {{{http://localhost:8181/cxf/hotel/search/2013-05-01/2013-05-01}http://localhost:8181/cxf/hotel/search/2013-05-01/2013-05-01}}
- to do a search using the RESTful hotel service.
+ Step 3: 
+ You will find the wsdl file here: {{{http://localhost:8092/soap/hotel?wsdl}http://localhost:8092/soap/touractivity?wsdl}}.
  
- If you would like to test this web service to see if it works, either fire up soapui and send it a message.
- You will find the wsdl file here: {{{http://localhost:8092/soap/touractivity?wsdl}http://localhost:8092/soap/touractivity?wsdl}}.
- {{{http://}My blog will show you how} or run the JiBX test client using my {{{./client.html}instructions here}}.
+ If you would like to test this web service to see if it works, either fire up soapui and send it a message or create a
+ {{{http://blog.tourgeek.com}JiBX test client}} using the {{{./client.html}JiBX client framework}}.
+ 
+ You will find the RESTful web services located at {{{http://localhost:8181/cxf/hotel/function}http://localhost:8181/cxf/hotel/function}}, where
+ function is the action such as search, res, resmodify, etc.
   
  Voilà

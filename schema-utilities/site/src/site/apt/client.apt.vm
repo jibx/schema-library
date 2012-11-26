@@ -41,22 +41,11 @@ Client Web service example
 
 +-----+
  cd opentravel-hotel-ws-test-service
- mvn install
+ mvn clean install -Dmaven.test.skip=false
 +-----+
 
  That's it. You should see some sample SOAP and REST requests and replies and some messages
- indicating that the test ran okay.
-  
-* Alternate testing method
- 
- These tests may also be run in an OSGi container
- 
-  Step 1: If you are running the sample server, you already have and OSGi container up. Just type:
-
-+-----+
- obr:deploy -s org.jibx.schema.org.opentravel._2012A.hotel.ws.test.client
-+-----+
-
- Your test should run automatically.
+ indicating that the test ran okay. If you look at the server console, you should see a message
+ complaining about an invalid message that I purposefully sent.
 
  Voilà

@@ -32,19 +32,270 @@
 <item name="Marshal and Unmarshal" href="./examplemarshal.html"/>
 <item name="OSGi deployment" href="./exampleosgi.html"/>
 <item name="Eclipse" href="./opentravel/index.html"/>
-<item name="Web Services" href="./webservices.html"/>
-<item name="Client" href="./client.html"/>
-<item name="Test Service" href="./service.html"/>
+<item name="ServiceMix" href="./webservices.html"/>
+<item name="Client framework" href="./client.html"/>
+<item name="Server framework" href="./service.html"/>
 </menu>
 <menu name="Schema library">
+<item name="docbook.org" href="./site.html#docbook.org" collapse="true">
+<item name="Schema Library - docbook.org - 5_0"/>
+</item>
+<item name="maven.apache.org" href="./site.html#maven.apache.org" collapse="true">
+<item name="Schema Library - maven.apache.org - v3_0_0"/>
+<item name="Schema Library - maven.apache.org - v4_0_0"/>
+</item>
+<item name="hr-xml.org" href="./site.html#hr-xml.org" collapse="true">
+<item name="Schema Library - hr-xml.org - 2.4 - AssessmentCancelRequest"/>
+<item name="Schema Library - hr-xml.org - 2.4 - AssessmentCatalog"/>
+<item name="Schema Library - hr-xml.org - 2.4 - AssessmentCatalogQuery"/>
+<item name="Schema Library - hr-xml.org - 2.4 - AssessmentOrderAcknowledgement"/>
+<item name="Schema Library - hr-xml.org - 2.4 - AssessmentOrderRequest"/>
+<item name="Schema Library - hr-xml.org - 2.4 - AssessmentResult"/>
+<item name="Schema Library - hr-xml.org - 2.4 - AssessmentStatusRequest"/>
+<item name="Schema Library - hr-xml.org - 2.4 - Assignment"/>
+<item name="Schema Library - hr-xml.org - 2.4 - BackgroundCheck"/>
+<item name="Schema Library - hr-xml.org - 2.4 - BackgroundReports"/>
+<item name="Schema Library - hr-xml.org - 2.4 - Candidate"/>
+<item name="Schema Library - hr-xml.org - 2.4 - Credit"/>
+<item name="Schema Library - hr-xml.org - 2.4 - ExerciseConfirmation"/>
+<item name="Schema Library - hr-xml.org - 2.4 - ExerciseRequest"/>
+<item name="Schema Library - hr-xml.org - 2.4 - HumanResource"/>
+<item name="Schema Library - hr-xml.org - 2.4 - IndicativeBatch"/>
+<item name="Schema Library - hr-xml.org - 2.4 - IndicativeData"/>
+<item name="Schema Library - hr-xml.org - 2.4 - Invoice"/>
+<item name="Schema Library - hr-xml.org - 2.4 - NewHire"/>
+<item name="Schema Library - hr-xml.org - 2.4 - PayrollBenefitContributions"/>
+<item name="Schema Library - hr-xml.org - 2.4 - PayrollInstructions"/>
+<item name="Schema Library - hr-xml.org - 2.4 - PositionOpening"/>
+<item name="Schema Library - hr-xml.org - 2.4 - RemoveExerciseConfirmations"/>
+<item name="Schema Library - hr-xml.org - 2.4 - RemoveExerciseRequests"/>
+<item name="Schema Library - hr-xml.org - 2.4 - RemoveGrants"/>
+<item name="Schema Library - hr-xml.org - 2.4 - RemoveStockDeposits"/>
+<item name="Schema Library - hr-xml.org - 2.4 - RemoveStockPlanParticipants"/>
+<item name="Schema Library - hr-xml.org - 2.4 - RemoveStockPlans"/>
+<item name="Schema Library - hr-xml.org - 2.4 - RemoveStockSaleConfirmations"/>
+<item name="Schema Library - hr-xml.org - 2.4 - Resume"/>
+<item name="Schema Library - hr-xml.org - 2.4 - StaffingAction"/>
+<item name="Schema Library - hr-xml.org - 2.4 - StaffingOrder"/>
+<item name="Schema Library - hr-xml.org - 2.4 - StockDeposit"/>
+<item name="Schema Library - hr-xml.org - 2.4 - StockPlan"/>
+<item name="Schema Library - hr-xml.org - 2.4 - StockPlanParticipant"/>
+<item name="Schema Library - hr-xml.org - 2.4 - StockPurchasePlanCoverage"/>
+<item name="Schema Library - hr-xml.org - 2.4 - StockSaleConfirmation"/>
+<item name="Schema Library - hr-xml.org - 2.4 - TimeCard"/>
+<item name="Schema Library - hr-xml.org - 2.4 - simpledc20021212"/>
+<item name="Schema Library - hr-xml.org - 2.4 - xml"/>
+<item name="Schema Library - hr-xml.org - 2.4 - xmldsig_core_schema"/>
+</item>
+<item name="opentravel.org" href="./site.html#opentravel.org" collapse="true">
+<item name="Schema Library - opentravel.org 2012A"/>
+<item name="Schema Library - opentravel-schema-reactor - 2012A - opentravel.org schema project"/>
+<item name="opentravel.org schema cache - 2012A"/>
+<item name="Schema Library - org.opentravel.base - 2012A - opentravel.org base schema"/>
+<item name="Schema Library - org.opentravel.base.air - 2012A - opentravel.org base air schema"/>
+<item name="Schema Library - org.opentravel.base.veh - 2012A - opentravel.org base veh schema"/>
+<item name="Schema Library - org.opentravel.base.hotel - 2012A - opentravel.org base hotel schema"/>
+<item name="Schema Library - org.opentravel.base.hotelres - 2012A - opentravel.org base hotel res schema"/>
+<item name="Schema Library - org.opentravel.base.rail - 2012A - opentravel.org rail base schema"/>
+<item name="Schema Library - org.opentravel.base.cruise - 2012A - opentravel.org base cruise schema"/>
+<item name="Schema Library - org.opentravel.base.dynamicpkg - 2012A - opentravel.org base dynamicpkg schema"/>
+<item name="Schema Library - org.opentravel.base.pkg - 2012A - opentravel.org base pkg schema"/>
+<item name="Schema Library - org.opentravel.base.ground - 2012A - opentravel.org base ground schema"/>
+<item name="Schema Library - org.opentravel.base.loyalty - 2012A - opentravel.org base loyalty schema"/>
+<item name="Schema Library - org.opentravel.base.insurance - 2012A - opentravel.org base insurance schema"/>
+<item name="Schema Library - org.opentravel.base.touractivity - 2012A - opentravel.org tour schema"/>
+<item name="Schema Library - org.opentravel.base.profile - 2012A - opentravel.org base profile schema"/>
+<item name="Schema Library - org.opentravel.profile - 2012A - opentravel.org profile schema"/>
+<item name="Schema Library - org.opentravel.rail - 2012A - opentravel.org rail schema"/>
+<item name="Schema Library - org.opentravel.veh - 2012A - opentravel.org veh schema"/>
+<item name="Schema Library - org.opentravel.hotel - 2012A - opentravel.org hotel schema"/>
+<item name="Schema Library - org.opentravel.air - 2012A - opentravel.org air schema"/>
+<item name="Schema Library - org.opentravel.destactivity - 2012A - opentravel.org destactivity schema"/>
+<item name="Schema Library - org.opentravel.pkg - 2012A - opentravel.org pkg schema"/>
+<item name="Schema Library - org.opentravel.travelitinerary - 2012A - opentravel.org travelitinerary schema"/>
+<item name="Schema Library - org.opentravel.touractivity - 2012A - opentravel.org tour activity schema"/>
+<item name="Schema Library - org.opentravel.dynamicpkg - 2012A - opentravel.org dynamicpkg schema"/>
+<item name="Schema Library - org.opentravel.insurance - 2012A - opentravel.org insurance schema"/>
+<item name="Schema Library - org.opentravel.loyalty - 2012A - opentravel.org loyalty schema"/>
+<item name="Schema Library - org.opentravel.cruise - 2012A - opentravel.org cruise schema"/>
+<item name="Schema Library - org.opentravel.ground - 2012A - opentravel.org ground schema"/>
+<item name="Schema Library - org.opentravel.golf - 2012A - opentravel.org golf schema"/>
+<item name="Schema Library - org.opentravel.screen - 2012A - opentravel.org screen schema"/>
+<item name="Schema Library - org.opentravel.ping - 2012A - opentravel.org ping schema"/>
+<item name="Schema Library - org.opentravel.misc - 2012A - opentravel.org misc schema"/>
+<item name="Schema Library - org.opentravel.fastrez - 2012A - opentravel.org fastrez schema"/>
+<item name="Schema Library - org.opentravel.codetable - 2012A - opentravel.org codetable schema"/>
+<item name="Schema Library - opentravel-all - 2012A - All opentravel.org bundles"/>
+<item name="opentravel-archetype Archetype for samples"/>
+<item name="Schema Library - opentravel-tests-reactor - opentravel tests"/>
+<item name="Schema Library - opentravel.org - test-ping"/>
+<item name="Schema Library - opentravel.org - test-hotel"/>
+<item name="Schema Library - opentravel-2012A-ws-reactor - opentravel web services"/>
+<item name="Schema Library - org.opentravel.hotel.ws.rest - 2012A - opentravel.org hotel rest server"/>
+<item name="Schema Library - org.opentravel.hotel.ws.soap - 2012A - opentravel.org hotel soap server"/>
+<item name="Schema Library - org.opentravel.hotel.ws.service - 2012A - opentravel.org hotel web service"/>
+<item name="Schema Library - org.jibx.base.ws.client - 2012A - opentravel.org base test web client"/>
+<item name="Schema Library - org.jibx.hotel.ws.client - 2012A - opentravel.org hotel test web client"/>
+<item name="Schema Library - org.jibx.hotel.ws.service - 2012A - opentravel.org hotel web service"/>
+<item name="Schema Library - org.opentravel.touractivity.ws.rest - 2012A - opentravel.org touractivity rest server"/>
+<item name="Schema Library - org.opentravel.touractivity.ws.soap - 2012A - opentravel.org touractivity soap server"/>
+<item name="opentravel-touractivity-ws-service"/>
+<item name="opentravel-touractivity-ws-archetype"/>
+<item name="Schema Library - org.opentravel.ping.ws.rest - 2012A - opentravel.org ping rest server"/>
+<item name="Schema Library - org.opentravel.ping.ws.soap - 2012A - opentravel.org ping soap server"/>
+<item name="Schema Library - org.opentravel.ping.ws.service - 2012A - opentravel.org ping web service"/>
+<item name="JiBX opentravel web service karaf features"/>
+<item name="Schema Library - opentravel.org 2011B"/>
+<item name="Schema Library - opentravel-schema-reactor - 2011B - opentravel.org schema project"/>
+<item name="opentravel.org schema cache - 2011B"/>
+<item name="Schema Library - org.opentravel.base - 2011B - opentravel.org base schema"/>
+<item name="Schema Library - org.opentravel.base.air - 2011B - opentravel.org base air schema"/>
+<item name="Schema Library - org.opentravel.base.veh - 2011B - opentravel.org base veh schema"/>
+<item name="Schema Library - org.opentravel.base.hotel - 2011B - opentravel.org base hotel schema"/>
+<item name="Schema Library - org.opentravel.base.hotelres - 2011B - opentravel.org base hotel res schema"/>
+<item name="Schema Library - org.opentravel.base.rail - 2011B - opentravel.org rail base schema"/>
+<item name="Schema Library - org.opentravel.base.cruise - 2011B - opentravel.org base cruise schema"/>
+<item name="Schema Library - org.opentravel.base.dynamicpkg - 2011B - opentravel.org base dynamicpkg schema"/>
+<item name="Schema Library - org.opentravel.base.pkg - 2011B - opentravel.org base pkg schema"/>
+<item name="Schema Library - org.opentravel.base.ground - 2011B - opentravel.org base ground schema"/>
+<item name="Schema Library - org.opentravel.base.loyalty - 2011B - opentravel.org base loyalty schema"/>
+<item name="Schema Library - org.opentravel.insurance - 2011B - opentravel.org base insurance schema"/>
+<item name="Schema Library - org.opentravel.base.touractivity - 2011B - opentravel.org tour schema"/>
+<item name="Schema Library - org.opentravel.profile - 2011B - opentravel.org profile schema"/>
+<item name="Schema Library - org.opentravel.rail - 2011B - opentravel.org rail schema"/>
+<item name="Schema Library - org.opentravel.veh - 2011B - opentravel.org veh schema"/>
+<item name="Schema Library - org.opentravel.hotel - 2011B - opentravel.org hotel schema"/>
+<item name="Schema Library - org.opentravel.air - 2011B - opentravel.org air schema"/>
+<item name="Schema Library - org.opentravel.destactivity - 2011B - opentravel.org destactivity schema"/>
+<item name="Schema Library - org.opentravel.pkg - 2011B - opentravel.org pkg schema"/>
+<item name="Schema Library - org.opentravel.travelitinerary - 2011B - opentravel.org travelitinerary schema"/>
+<item name="Schema Library - org.opentravel.touractivity - 2011B - opentravel.org tour activity schema"/>
+<item name="Schema Library - org.opentravel.dynamicpkg - 2011B - opentravel.org dynamicpkg schema"/>
+<item name="Schema Library - org.opentravel.insurance - 2011B - opentravel.org insurance schema"/>
+<item name="Schema Library - org.opentravel.loyalty - 2011B - opentravel.org loyalty schema"/>
+<item name="Schema Library - org.opentravel.cruise - 2011B - opentravel.org cruise schema"/>
+<item name="Schema Library - org.opentravel.ground - 2011B - opentravel.org ground schema"/>
+<item name="Schema Library - org.opentravel.golf - 2011B - opentravel.org golf schema"/>
+<item name="Schema Library - org.opentravel.screen - 2011B - opentravel.org screen schema"/>
+<item name="Schema Library - org.opentravel.ping - 2011B - opentravel.org ping schema"/>
+<item name="Schema Library - org.opentravel.misc - 2011B - opentravel.org misc schema"/>
+<item name="Schema Library - org.opentravel.fastrez - 2011B - opentravel.org fastrez schema"/>
+<item name="Schema Library - org.opentravel.codetable - 2011B - opentravel.org codetable schema"/>
+<item name="Schema Library - opentravel-all - 2011B - All opentravel.org bundles"/>
+<item name="opentravel-archetype Archetype for samples"/>
+<item name="Schema Library - opentravel-tests-reactor - opentravel tests"/>
+<item name="Schema Library - opentravel.org - test-ping"/>
+<item name="Schema Library - opentravel.org - test-hotel"/>
+<item name="Schema Library - opentravel-2011B-ws-reactor - opentravel web services"/>
+<item name="Schema Library - org.opentravel.touractivity.ws.rest - 2011B - opentravel.org touractivity rest server"/>
+<item name="Schema Library - org.opentravel.touractivity.ws.soap - 2011B - opentravel.org touractivity soap server"/>
+<item name="opentravel-touractivity-ws-archetype"/>
+<item name="Schema Library - org.opentravel.ping.ws.rest - 2011B - opentravel.org ping rest server"/>
+<item name="Schema Library - org.opentravel.ping.ws.soap - 2011B - opentravel.org ping soap server"/>
+<item name="Schema Library - org.opentravel.ping.ws.service - 2011B - opentravel.org ping web service"/>
+<item name="JiBX opentravel web service karaf features"/>
+<item name="Schema Library - opentravel.org 2011A"/>
+<item name="Schema Library - opentravel-schema-reactor - 2011A - opentravel.org schema project"/>
+<item name="opentravel.org schema cache - 2011A"/>
+<item name="Schema Library - org.opentravel.base - 2011A - opentravel.org base schema"/>
+<item name="Schema Library - org.opentravel.air - 2011A - opentravel.org air schema"/>
+<item name="Schema Library - org.opentravel.veh - 2011A - opentravel.org veh schema"/>
+<item name="Schema Library - org.opentravel.profile - 2011A - opentravel.org profile schema"/>
+<item name="Schema Library - org.opentravel.hotel - 2011A - opentravel.org hotel schema"/>
+<item name="Schema Library - org.opentravel.destactivity - 2011A - opentravel.org destactivity schema"/>
+<item name="Schema Library - org.opentravel.pkg - 2011A - opentravel.org pkg schema"/>
+<item name="Schema Library - org.opentravel.travelitinerary - 2011A - opentravel.org travelitinerary schema"/>
+<item name="Schema Library - org.opentravel.tour - 2011A - opentravel.org tour schema"/>
+<item name="Schema Library - org.opentravel.dynamicpkg - 2011A - opentravel.org dynamicpkg schema"/>
+<item name="Schema Library - org.opentravel.insurance - 2011A - opentravel.org insurance schema"/>
+<item name="Schema Library - org.opentravel.loyalty - 2011A - opentravel.org loyalty schema"/>
+<item name="Schema Library - org.opentravel.cruise - 2011A - opentravel.org cruise schema"/>
+<item name="Schema Library - org.opentravel.ground - 2011A - opentravel.org ground schema"/>
+<item name="Schema Library - org.opentravel.golf - 2011A - opentravel.org golf schema"/>
+<item name="Schema Library - org.opentravel.rail - 2011A - opentravel.org rail schema"/>
+<item name="Schema Library - org.opentravel.screen - 2011A - opentravel.org screen schema"/>
+<item name="Schema Library - org.opentravel.ping - 2011A - opentravel.org ping schema"/>
+<item name="Schema Library - org.opentravel.misc - 2011A - opentravel.org misc schema"/>
+<item name="Schema Library - org.opentravel.fastrez - 2011A - opentravel.org fastrez schema"/>
+<item name="Schema Library - org.opentravel.codetable - 2011A - opentravel.org codetable schema"/>
+<item name="Schema Library - opentravel-all - 2011A - All opentravel.org bundles"/>
+<item name="opentravel-archetype Archetype for samples"/>
+<item name="Schema Library - opentravel-tests-reactor - opentravel tests"/>
+<item name="Schema Library - opentravel.org - test-ping"/>
+<item name="Schema Library - opentravel.org - test-hotel"/>
+<item name="Schema Library - opentravel.org 2010B"/>
+<item name="Schema Library - opentravel-schema-reactor - 2010B - opentravel.org schema project"/>
+<item name="opentravel.org schema cache - 2010B"/>
+<item name="Schema Library - org.opentravel.base - 2010B - opentravel.org base schema"/>
+<item name="Schema Library - org.opentravel.air - 2010B - opentravel.org air schema"/>
+<item name="Schema Library - org.opentravel.veh - 2010B - opentravel.org veh schema"/>
+<item name="Schema Library - org.opentravel.profile - 2010B - opentravel.org profile schema"/>
+<item name="Schema Library - org.opentravel.hotel - 2010B - opentravel.org hotel schema"/>
+<item name="Schema Library - org.opentravel.destactivity - 2010B - opentravel.org destactivity schema"/>
+<item name="Schema Library - org.opentravel.pkg - 2010B - opentravel.org pkg schema"/>
+<item name="Schema Library - org.opentravel.travelitinerary - 2010B - opentravel.org travelitinerary schema"/>
+<item name="Schema Library - org.opentravel.tour - 2010B - opentravel.org tour schema"/>
+<item name="Schema Library - org.opentravel.dynamicpkg - 2010B - opentravel.org dynamicpkg schema"/>
+<item name="Schema Library - org.opentravel.insurance - 2010B - opentravel.org insurance schema"/>
+<item name="Schema Library - org.opentravel.loyalty - 2010B - opentravel.org loyalty schema"/>
+<item name="Schema Library - org.opentravel.cruise - 2010B - opentravel.org cruise schema"/>
+<item name="Schema Library - org.opentravel.golf - 2010B - opentravel.org golf schema"/>
+<item name="Schema Library - org.opentravel.rail - 2010B - opentravel.org rail schema"/>
+<item name="Schema Library - org.opentravel.screen - 2010B - opentravel.org screen schema"/>
+<item name="Schema Library - org.opentravel.ping - 2010B - opentravel.org ping schema"/>
+<item name="Schema Library - org.opentravel.misc - 2010B - opentravel.org misc schema"/>
+<item name="Schema Library - org.opentravel.fastrez - 2010B - opentravel.org fastrez schema"/>
+<item name="Schema Library - org.opentravel.codetable - 2010B - opentravel.org codetable schema"/>
+<item name="Schema Library - opentravel-all - 2010B - All opentravel.org bundles"/>
+<item name="opentravel-archetype Archetype for samples"/>
+<item name="Schema Library - opentravel-tests-reactor - opentravel tests"/>
+<item name="Schema Library - opentravel.org - test-hotel"/>
+</item>
+<item name="oasis-open.org" href="./site.html#oasis-open.org" collapse="true">
+<item name="Schema Library - oasis-open.org - catalog"/>
+</item>
+<item name="w3.org" href="./site.html#w3.org" collapse="true">
+<item name="Schema Library - w3.org - _2002._08.xhtml.xhtml1_strict"/>
+<item name="Schema Library - w3.org - _2002._08.xhtml.xhtml1_frameset"/>
+<item name="Schema Library - w3.org - _2002._08.xhtml.xhtml1_transitional"/>
+<item name="Schema Library - w3.org - _2001._06.soap_encoding"/>
+<item name="Schema Library - w3.org - _2001._12.soap_envelope"/>
+<item name="Schema Library - w3.org - _2001.xml"/>
+<item name="Schema Library - w3.org - _2003._05.soap_encoding"/>
+<item name="Schema Library - w3.org - _2003._05.soap_envelope.soap_envelope"/>
+<item name="Schema Library - w3.org - _2003._06.wsdl.wsdl12_ext"/>
+<item name="Schema Library - w3.org - _2004._08.wsdl.wsdl20"/>
+<item name="Schema Library - w3.org - _2004._08.xop.include"/>
+<item name="Schema Library - w3.org - _2005._05.wsdl.soap"/>
+<item name="Schema Library - w3.org - _2005._05.wsdl.wsdl20"/>
+<item name="Schema Library - w3.org - _2005._05.xmlmime"/>
+<item name="Schema Library - w3.org - _2005._08.addressing.ws_addr"/>
+<item name="Schema Library - w3.org - _2006._01.wsdl.wsdl20"/>
+<item name="Schema Library - w3.org - _2006._02.addressing.wsdl.ws_addr_wsdl"/>
+<item name="Schema Library - w3.org - _2006._03.wsdl.rpc"/>
+<item name="Schema Library - w3.org - _2006._03.wsdl.soap"/>
+<item name="Schema Library - w3.org - _2006._03.wsdl.wsdl20"/>
+<item name="Schema Library - w3.org - TR._2002.REC_xmldsig_core_20020212.xmldsig_core_schema"/>
+<item name="Schema Library - w3.org - TR._2002.REC_xmlenc_core_20021210.xenc_schema"/>
+</item>
+<item name="webservicex.net" href="./site.html#webservicex.net" collapse="true">
+<item name="Schema Library - webservicex.net - transform xslt resource"/>
+<item name="Schema Library - webservicex.net - stockquote"/>
+<item name="Schema Library - webservicex.net - currencyconverter"/>
+</item>
+<item name="xmlsoap.org" href="./site.html#xmlsoap.org" collapse="true">
+<item name="Schema Library - xmlsoap.org - ws._2002._07.utility.utility"/>
+<item name="Schema Library - xmlsoap.org - wsdl"/>
+<item name="Schema Library - xmlsoap.org - wsdl._2003_02_11"/>
+</item>
 <item name="jibx.org" href="./site.html#jibx.org" collapse="true">
 <item name="Schema Library - jibx.org - Person Schema"/>
 <item name="Schema Library - jibx.org - Address Schema"/>
 <item name="Schema Library - jibx.org - Company Schema"/>
-<item name="Schema Library - jibx.org - Person Schema Test"/>
-<item name="Schema Library - jibx.org - Address Schema Test"/>
-<item name="Schema Library - jibx.org - Company Schema Test"/>
 <item name="Schema Library - jibx.org - Schema Test"/>
+</item>
+<item name="java.net" href="./site.html#java.net" collapse="true">
+<item name="Schema Library - java.net - jnlp - 6_0"/>
 </item>
 </menu>
 <menu name="Other schema libraries">
