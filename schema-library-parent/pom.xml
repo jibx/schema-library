@@ -5,11 +5,11 @@
   <parent>
     <groupId>org.jibx.schema.config</groupId>
     <artifactId>schema-library-reactor</artifactId>
-    <version>1.0.9-SNAPSHOT</version>
+    <version>1.0.8-SNAPSHOT</version>
   </parent>
 
   <groupId>org.jibx.schema.config</groupId>
-  <artifactId>schema-library-parent</artifactId>
+  <artifactId>schema-library-parent2</artifactId>
 
   <packaging>pom</packaging>
   <name>schema-library-parent - schema library parent project</name>
