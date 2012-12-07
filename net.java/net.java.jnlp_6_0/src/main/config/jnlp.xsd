@@ -1,7 +1,10 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            xmlns:jfx="http://javafx.com">
 
   <!-- Schema for a JNLP 6.0 -->
   <!-- mechanically generated from DTD.  Needs tweaking, reorg and comments to make it more comprehensible -->
+  <xs:import namespace="http://javafx.com"
+              schemaLocation="javafx.xsd"/>
 
   <xs:element name="jnlp">
     <xs:complexType>
@@ -140,6 +143,7 @@
         <xs:element ref="extension"/>
         <xs:element ref="property"/>
         <xs:element ref="package"/>
+        <xs:element ref="jfx:javafx-runtime"/>
       </xs:choice>
       <xs:attribute name="os" type="xs:string" use="optional"/>
       <xs:attribute name="arch" type="xs:string" use="optional"/>
