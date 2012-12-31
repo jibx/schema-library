@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>schema-library-parent2</artifactId>
+        <artifactId>schema-library-parent</artifactId>
         <groupId>org.jibx.schema.config</groupId>
         <version>1.0.9-SNAPSHOT</version>
         <relativePath>../schema-library-parent</relativePath>

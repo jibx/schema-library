@@ -9,7 +9,7 @@
   </parent>
 
   <groupId>org.jibx.schema.config</groupId>
-  <artifactId>schema-library-parent2</artifactId>
+  <artifactId>schema-library-parent</artifactId>
 
   <packaging>pom</packaging>
   <name>schema-library-parent - schema library parent project</name>
