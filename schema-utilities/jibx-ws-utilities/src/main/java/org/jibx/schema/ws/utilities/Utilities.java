@@ -53,9 +53,12 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class Utilities {
-    
-	public final static String STRING_ENCODING = "UTF8";
+
+    public final static String STRING_ENCODING = "UTF8";
     public final static String URL_ENCODING = "UTF-8";
+    public static final String FILENAME = "filename";
+    public static final String CLASSNAME = "classname";
+    public static final String ENDPOINT = "endpoint";
 
     /**
      * Return true if this XPath expression evaluates to a non-null set.

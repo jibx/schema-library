@@ -26,9 +26,6 @@ import org.w3c.dom.Element;
 public abstract class BaseClient extends Utilities
 	implements  BundleActivator
 {
-    public static final String FILENAME = "filename";
-    public static final String CLASSNAME = "classname";
-    public static final String ENDPOINT = "endpoint";
 
 	/**
 	 * Constructor

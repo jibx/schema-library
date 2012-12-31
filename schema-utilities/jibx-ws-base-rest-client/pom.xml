@@ -45,7 +45,7 @@
   <dependencies>
     <dependency>
       <groupId>org.jibx.schema.ws</groupId>
-      <artifactId>org.jibx.schema.ws.utilities</artifactId>
+      <artifactId>org.jibx.schema.ws.client</artifactId>
       <version>1.0.9-SNAPSHOT</version>
     </dependency>
     <dependency>

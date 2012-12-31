@@ -16,7 +16,7 @@ import org.jibx.schema.org.opentravel._2012A.hotel.ResModifyRS;
 import org.jibx.schema.org.opentravel._2012A.hotel.ResRQ;
 import org.jibx.schema.org.opentravel._2012A.hotel.ResRS;
 import org.jibx.schema.org.opentravel._2012A.hotel.ws.impl.DefaultHotelService;
-import org.jibx.schema.ws.utilities.client.BaseClient;
+import org.jibx.schema.ws.utilities.Utilities;
 
 import com.sun.istack.logging.Logger;
 
@@ -50,12 +50,12 @@ public class HotelServiceImpl extends DefaultHotelService
 
 		ResRS response = null;//createResRS(request);
     	Properties properties = new Properties();
-    	properties.setProperty(BaseClient.FILENAME, "/OTA_HotelResRS.xml");
-    	properties.setProperty(BaseClient.CLASSNAME, ResRQ.class.getName());
+    	properties.setProperty(Utilities.FILENAME, "/OTA_HotelResRS.xml");
+    	properties.setProperty(Utilities.CLASSNAME, ResRQ.class.getName());
     	if (request.getOTAPayloadStdAttributes() != null)
     		if (request.getOTAPayloadStdAttributes().getEchoToken() != null)
         		if (request.getOTAPayloadStdAttributes().getEchoToken().startsWith("/"))
-        	    	properties.setProperty(BaseClient.FILENAME, request.getOTAPayloadStdAttributes().getEchoToken());
+        	    	properties.setProperty(Utilities.FILENAME, request.getOTAPayloadStdAttributes().getEchoToken());
     	
     	response = (ResRS)this.createMessage(properties);
 		movePayloadData(request.getOTAPayloadStdAttributes(), response.getOTAPayloadStdAttributes());
@@ -74,8 +74,8 @@ public class HotelServiceImpl extends DefaultHotelService
 
 		ResModifyRS response = null;//createResModifyRS(request);
     	Properties properties = new Properties();
-    	properties.setProperty(BaseClient.FILENAME, "/OTA_HotelResModifyRS.xml");
-    	properties.setProperty(BaseClient.CLASSNAME, ResModifyRQ.class.getName());
+    	properties.setProperty(Utilities.FILENAME, "/OTA_HotelResModifyRS.xml");
+    	properties.setProperty(Utilities.CLASSNAME, ResModifyRQ.class.getName());
     	
     	response = (ResModifyRS)this.createMessage(properties);
 		movePayloadData(request.getOTAPayloadStdAttributes(), response.getOTAPayloadStdAttributes());
@@ -99,7 +99,7 @@ public class HotelServiceImpl extends DefaultHotelService
 				checkPaymentCard(paymentCard);
 				
 				/* This is how you would do an XSLT transform:
-				Document doc = TestUtilities.copyTreeToDOM(new DOMSource(BaseClientTest.marshalObjectToDOM(request)), TestUtilities.XSL_CONVERT);
+				Document doc = TestUtilities.copyTreeToDOM(new DOMSource(UtilitiesTest.marshalObjectToDOM(request)), TestUtilities.XSL_CONVERT);
 				System.out.println(TestUtilities.unmarshalSourceToXML(new DOMSource(doc)));
 				*/
 			} catch (Exception e) {
@@ -129,14 +129,14 @@ public class HotelServiceImpl extends DefaultHotelService
     /**
      * Create a default message.
      * @return
-     * ********* Note: This method was copied from BaseClientTest - make it static *****
+     * ********* Note: This method was copied from UtilitiesTest - make it static *****
      */
     public Object createMessage(Properties properties)
     {
     	if (properties != null)
-    		if (properties.getProperty(BaseClient.FILENAME) != null)
+    		if (properties.getProperty(Utilities.FILENAME) != null)
     	{
-    		String filename = properties.getProperty(BaseClient.FILENAME);
+    		String filename = properties.getProperty(Utilities.FILENAME);
     		InputStream stream = null;
     		URL url = this.getClass().getResource(filename);
     		try {
@@ -151,14 +151,14 @@ public class HotelServiceImpl extends DefaultHotelService
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
-    		String className = properties.getProperty(BaseClient.CLASSNAME);
+    		String className = properties.getProperty(Utilities.CLASSNAME);
     		if (className == null)
     		{
     			System.out.println("Error, you must specify unmarshalling file name for XML file " + filename);
     			return null;
     		}
     		try {
-				return BaseClient.unmarshalSource(new StreamSource(stream), Class.forName(className));
+				return Utilities.unmarshalSource(new StreamSource(stream), Class.forName(className));
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			}
