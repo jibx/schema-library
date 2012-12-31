@@ -8,13 +8,21 @@
       <version>1.0.9-SNAPSHOT</version>
     </parent>
 
-    <artifactId>org.jibx.schema.org.opentravel._2011B.touractivity.ws.rest</artifactId>
+    <artifactId>org.jibx.schema.org.opentravel._2011B.touractivity.ws.service</artifactId>
     
     <packaging>bundle</packaging>
-    <name>Schema Library - org.opentravel.touractivity.ws.rest - 2011B - opentravel.org touractivity rest server</name>
+    <name>opentravel-touractivity-ws-service</name>
+    <description>JiBX opentravel touractivity web service implementation</description>
     
     <build>
         <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
@@ -22,40 +30,20 @@
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Export-Package>${project.artifactId}.*;version=${project.version}</Export-Package>
-                        <Import-Package>
-                            org.osgi.*;resolution:=optional;version="[1.5,2)",	<!-- HACK - cxf-rt-databinding-jibx messes this up -->
-                            *;resolution:=optional
-                         </Import-Package>
+                        <Import-Package>*;resolution:=optional</Import-Package>
                         <Require-Bundle>org.apache.cxf.bundle</Require-Bundle>
-                        <!-- Bundle-Activator>org.jibx.schema.org.opentravel._2011B.touractivity.ws.rest.TourActivityRestService</Bundle-Activator -->
                     </instructions>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.jibx.schema.org.opentravel._2011B.ws</groupId>
-            <artifactId>org.jibx.schema.org.opentravel._2011B.touractivity.ws.service</artifactId>
-            <version>1.0.9-SNAPSHOT</version>    
-        </dependency>
+  <dependencies>
 	<dependency>
 		<groupId>org.jibx.schema.org.opentravel._2011B</groupId>
 		<artifactId>org.jibx.schema.org.opentravel._2011B.touractivity</artifactId>
 		<version>1.0.9-SNAPSHOT</version>
 	</dependency>
-        
-    <dependency>
-	    <groupId>org.apache.cxf</groupId>
-	    <artifactId>cxf-rt-frontend-jaxrs</artifactId>
-	    <version>${cxf-version}</version>
-	</dependency>
-	  <dependency>
-	    <groupId>org.jibx.config.osgi.wrapped</groupId>
-	    <artifactId>org.jibx.config.osgi.wrapped.org.apache.cxf.jibx</artifactId>
-	    <version>2.6.2</version>
-	  </dependency>
-    </dependencies>
+  </dependencies>
 
 </project>
