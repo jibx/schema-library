@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jibx.schema.config</groupId>
+    <artifactId>schema-examples-reactor</artifactId>
+    <version>1.0.9-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>org.jibx.schema.org.opentravel.example.swing</artifactId>
+
+  <name>jbundle-util-webapp-sample - Simple java sample app</name>
+  <packaging>bundle</packaging>
+  
+  <build>
+    <plugins>
+      <plugin>	<!-- Lets you run your app standalone by typing exec:java -->
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <executions>
+          <execution>
+          	<phase>run</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+            <mainClass>${project.artifactId}.App</mainClass>	<!-- These properties are declared in my parent pom (jbundle-util-webapp-webstart) -->
+        </configuration>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
+          </archive>
+        </configuration>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <Bundle-ManifestVersion>2</Bundle-ManifestVersion>
+            <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+            <Export-Package>${project.artifactId};version=${project.version}</Export-Package>
+            <Import-Package>
+                *;resolution:=optional,
+            </Import-Package>
+            <Bundle-Version>${project.version}</Bundle-Version>
+            <Main-Class>${project.artifactId}.App</Main-Class>	<!-- Standalone support -->
+          </instructions>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>
