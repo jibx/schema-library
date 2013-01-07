@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05/common" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05/common" elementFormDefault="qualified" version="2.000" id="OTA2010A">
+	<xs:include schemaLocation="OTA_CommonTypes.xsd"/>
+	<xs:element name="OTA_CodeTables">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="OTA_CodeTable" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Descriptions" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Description" type="FreeTextType" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Description of the Table Section (aka Context). The contents could be in multiple languages identified by the lang attribute. See FreeTextType for more details. It is always possible for trading partners to maintain the code tables using multi-lingual content. The OTA_CodeTable/@NameCode are the only items that are required to be consistent. Any extensions have to be identified using the extension indicator, part of the code pattern.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Codes" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Code" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="CodeContents">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="CodeContent" type="CodeContentType" maxOccurs="unbounded"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="Value" type="OTA_CodeValueType" use="required">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">The OTA CodeValue is the first part of the code pattern that is sent in actual instances. OTA Code has the format 999.CCC.X Where, 999=Code Value; CCC=Optional Context Abbreviation; X=Optional Extension Indicator. The Extension indicator X will be used when the trading partner-specific codes are sent. When the extension indicator is present, then the section abbreviation is mandatory to  ensure the pattern's consistency.
+                                                        </xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="CreationDate" type="xs:date" use="required"/>
+												<xs:attribute name="MarkedForDeletionDate" type="xs:date" use="optional"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="Name" type="xs:string" use="required">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">The Context attribute is used to indicate the section name. Every Code table section will be named using the following information: 1. Context (Name) and 2. Context Abbreviation (NameCode). As per the OpenTravel Best Practices, any attribute/element that has the OTA_CodeType type will have to be named using this "Context" so as to identify the code table section at runtime. However, for backward compatibility reasons, the Context Abbreviation attribute will be used where the elements/attributes are named generically. The context abbreviation is expected to be sent as a "value" based on the code pattern. For example, Name=AgeQualifyingCode and NameCode=AQC. The code for "infant" could be sent using the value "7.AQC", so the receiver can lookup the code table and process properly.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="NameCode" type="AlphaLength3" use="required">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Abbreviation for the code table context (section). Note to OpenTravel Code Table developers: Please make sure the abbreviations are unique. Before coming up with an abbreviation for a code table section, please make sure it has not been used before. Please refer to the documentation for Context for additional Details.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="CreationDate" type="xs:date" use="required">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">
+                                    Specifies the Creation date of this code table section.
+                                </xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="MarkedForDeletionDate" type="xs:date" use="optional">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">
+                                    Specifies the date on which this table section has been deprecated.
+                                </xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="CodeContentType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Description of the code.  The contents could be in multiple languages identified by the lang attribute. See FreeTextType for more details.  It is always possible for trading partners to maintain the code tables using multi-lingual content. The OTA_CodeTable/@NameCode are the only items that are required to be consistent. Any extensions have to be identified using the extension indicator, part of the code pattern.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="FreeTextType">
+				<xs:attribute name="Name" type="xs:string" use="required">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">The Code Name. The contents could be in multiple languages identified by the lang  attribute associated with the CodeContent. There should be at least one CodeText.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="OTA_CodeValueType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The code value is the first part of the code table pattern. The OTA_CodeValueType is only used within code table xml documents. The actual RQ/RS documents will use the complete pattern OTA_CodeType.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9A-Z]{1,3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,10 @@
+<ns:OTA_TourActivityAvailRQ TimeStamp="2012-04-19T05:16:51.353Z" Target="Production" Version="1.0"
+     xmlns:ns="http://www.opentravel.org/OTA/2003/05/common">
+   <ns:TourActivity>
+      <ns:BasicInfo TourActivityID="CITYSS"/>
+      <ns:Schedule>
+         <ns:StartTime>2012-05-11</ns:StartTime>
+      </ns:Schedule>
+      <ns:ParticipantCount Quantity="1"/>
+   </ns:TourActivity>
+</ns:OTA_TourActivityAvailRQ>

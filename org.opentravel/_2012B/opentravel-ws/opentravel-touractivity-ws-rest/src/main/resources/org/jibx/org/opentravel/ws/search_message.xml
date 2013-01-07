@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OTA_TourActivitySearchRQ
+    Target="Production"
+    TimeStamp="2012-09-04T07:09:18.513Z"
+    Version="1.0"
+    xmlns="http://www.opentravel.org/OTA/2003/05/common" >
+
+    <SearchCriteria>
+
+        <DateTimePref
+            End="2012-09-05"
+            Start="2012-09-05" />
+    </SearchCriteria>
+
+</OTA_TourActivitySearchRQ>

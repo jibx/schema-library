@@ -23,12 +23,12 @@
     <module>jibx-ws-utilities</module>
     <module>jibx-ws-client</module>
     <module>jibx-ws-base-rest-client</module>
-    <module>create-jibx-project-utilities</module>
+    <!-- module>create-jibx-project-utilities</module>
     <module>create-jibx-project</module>
-    <module>schema-maven-plugin</module>
+    <module>schema-maven-plugin</module -->
     <module>site</module>
-    <module>config-databinding</module>
-    <module>examples</module>
+    <!-- module>config-databinding</module>
+    <module>examples</module -->
   </modules>
 
 </project>

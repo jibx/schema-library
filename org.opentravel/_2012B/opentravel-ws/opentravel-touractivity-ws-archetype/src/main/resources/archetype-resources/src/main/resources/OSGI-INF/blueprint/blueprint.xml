@@ -1,0 +1,18 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<blueprint
+    xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:jaxws="http://cxf.apache.org/blueprint/jaxws"
+    xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+                         http://cxf.apache.org/blueprint/jaxws http://cxf.apache.org/schemas/blueprint/jaxws.xsd">
+
+   <service id="tourActivityService" ref="tourActivitySvc"
+    	interface="org.jibx.schema.org.opentravel._2012B.touractivity.ws.TourActivityService" />
+
+   <!-- tourActivity service -->
+   <bean id="tourActivitySvc" class="${package}.TourActivityServiceImpl">
+   </bean>
+
+</blueprint>
