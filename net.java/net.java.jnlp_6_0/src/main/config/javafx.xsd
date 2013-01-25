@@ -10,5 +10,14 @@
     </xs:complexType>
   </xs:element>
 
+  <xs:element name="javafx-desc">
+    <xs:complexType>
+      <xs:attribute name="main-class" type="xs:string" use="optional"/>
+      <xs:attribute name="width" type="xs:string" use="optional"/>
+      <xs:attribute name="height" type="xs:string" use="optional"/>
+      <xs:attribute name="name" type="xs:string" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+
 </xs:schema>
 

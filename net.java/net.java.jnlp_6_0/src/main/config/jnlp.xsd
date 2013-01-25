@@ -19,6 +19,7 @@
           <xs:element ref="component-desc"/>
           <xs:element ref="installer-desc"/>
         </xs:choice>
+        <xs:element ref="jfx:javafx-desc" minOccurs="0" maxOccurs="1"/>
       </xs:sequence>
       <xs:attribute name="spec" type="xs:string" use="optional"/>
       <xs:attribute name="version" type="xs:string" use="optional"/>
