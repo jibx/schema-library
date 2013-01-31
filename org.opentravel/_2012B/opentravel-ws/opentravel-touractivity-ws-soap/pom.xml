@@ -59,11 +59,6 @@
             <artifactId>cxf-rt-databinding-jibx</artifactId>
             <version>${cxf-version}</version>
         </dependency>
-    <dependency>
-      <groupId>org.jibx.config.osgi.wrapped</groupId>
-      <artifactId>org.jibx.config.osgi.wrapped.org.apache.cxf.jibx</artifactId>
-      <version>2.6.2</version>
-    </dependency>
-        </dependencies>
+    </dependencies>
     
 </project>

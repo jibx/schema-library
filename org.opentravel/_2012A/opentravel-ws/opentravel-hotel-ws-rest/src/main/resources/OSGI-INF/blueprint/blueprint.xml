@@ -20,7 +20,7 @@
   <property-placeholder persistent-id="org.jibx.schema.org.opentravel._2012A.hotel.ws.rest"
     xmlns="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0">
     <default-properties>
-      <property name="httpAddress" value="/hotel" />
+      <property name="httpAddress" value="http://0.0.0.0:8092/rest//hotel" />
     </default-properties>
   </property-placeholder>
 
@@ -30,7 +30,7 @@
         <ref component-id="hotelRestSvc"/>
       </jaxrs:serviceBeans>
       <jaxrs:dataBinding>
-          <bean class="org.jibx.config.osgi.wrapped.org.apache.cxf.jibx.JibxDataBinding" />
+          <bean class="org.apache.cxf.jibx.JibxDataBinding" />
       </jaxrs:dataBinding>
    </jaxrs:server>
    

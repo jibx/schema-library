@@ -18,7 +18,7 @@
   <property-placeholder persistent-id="org.jibx.schema.org.opentravel._2012A.ping.ws.rest"
     xmlns="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0">
     <default-properties>
-      <property name="httpAddress" value="/ping" />
+      <property name="httpAddress" value="http://0.0.0.0:8092/rest/ping" />
     </default-properties>
   </property-placeholder>
 
@@ -27,7 +27,7 @@
         <ref component-id="pingRestSvc"/>
       </jaxrs:serviceBeans>
       <jaxrs:dataBinding>
-          <bean class="org.jibx.config.osgi.wrapped.org.apache.cxf.jibx.JibxDataBinding" />
+          <bean class="org.apache.cxf.jibx.JibxDataBinding" />
       </jaxrs:dataBinding>
     </jaxrs:server>
 

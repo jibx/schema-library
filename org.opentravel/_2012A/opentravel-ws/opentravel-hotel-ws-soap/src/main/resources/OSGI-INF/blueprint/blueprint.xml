@@ -19,7 +19,7 @@
       address="${httpAddress}"
       wsdlLocation="hotel.wsdl">
         <jaxws:dataBinding>
-          <bean class="org.jibx.config.osgi.wrapped.org.apache.cxf.jibx.JibxDataBinding" />
+          <bean class="org.apache.cxf.jibx.JibxDataBinding" />
         </jaxws:dataBinding>
    </jaxws:endpoint>	  
 
