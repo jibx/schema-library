@@ -15,9 +15,9 @@
             <scope>provided</scope>
         </dependency>
 	<dependency>
-	  <groupId>org.jibx.schema.org.opentravel._2012A</groupId>
-	  <artifactId>org.jibx.schema.org.opentravel._2012A.touractivity</artifactId>
-	  <version>1.0.6</version>
+	  <groupId>org.jibx.schema.org.opentravel._2012B</groupId>
+	  <artifactId>org.jibx.schema.org.opentravel._2012B.touractivity</artifactId>
+	  <version>1.0.9-SNAPSHOT</version>
 	   <exclusions>
 	     <exclusion>
 	       <groupId>xpp3</groupId>
