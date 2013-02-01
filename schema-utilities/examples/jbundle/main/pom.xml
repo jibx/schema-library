@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jibx.schema.org.opentravel.example.jbundle</groupId>
+    <artifactId>jibx-example-jbundle-reactor</artifactId>
+    <version>1.0.9-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>org.jibx.schema.org.opentravel.example.jbundle.main</artifactId>
+  <packaging>pom</packaging>
+  <name>jibx-example-jbundle-opentravel-main</name>
+
+      <properties>
+        <record>${project.groupId}.opentravel.touractivity.db.TourActivity</record>
+      </properties>
+  
+  <profiles>
+    <profile>
+      <id>thin</id>
+      <properties>
+        <mainClass>${project.groupId}.opentravel.touractivity.thin.ThinTourActivityApplet</mainClass>
+      </properties>
+    </profile>
+  </profiles>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.example.jbundle</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.thin</artifactId>
+      <version>${schema-library-version-range}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.example.jbundle</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.db</artifactId>
+      <version>${schema-library-version-range}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.example.jbundle</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.thin.app</artifactId>
+      <version>${schema-library-version-range}</version>
+    </dependency>
+    <dependency>
+       <groupId>org.jbundle.config.dep</groupId>
+       <artifactId>jbundle-config-dep-all</artifactId>
+       <version>${jbundle-version}</version>
+       <type>pom</type>
+     </dependency>
+    </dependencies>
+
+</project>

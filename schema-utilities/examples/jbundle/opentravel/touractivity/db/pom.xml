@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jibx.schema.org.opentravel.example.jbundle</groupId>
+    <artifactId>jibx-example-jbundle-opentravel-touractivity-reactor</artifactId>
+    <version>1.0.9-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.db</artifactId>
+  <packaging>bundle</packaging>
+  <name>jibx-example-jbundle-opentravel-touractivity-db</name>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.example.jbundle</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.model</artifactId>
+      <version>${schema-library-version-range}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.example.jbundle</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.res</artifactId>
+      <version>${schema-library-version-range}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.jbundle.config.dep</groupId>
+        <artifactId>jbundle-config-dep-base</artifactId>	<!-- jbundle-config-dep-main is all that is needed for compile, run needs all -->
+        <version>${jbundle-version-range}</version>
+        <type>pom</type>
+    </dependency>
+    <dependency>
+      <groupId>org.jbundle.main</groupId>
+      <artifactId>org.jbundle.main.db</artifactId>
+      <version>${jbundle-version-range}</version>
+    </dependency>
+  </dependencies>
+
+</project>

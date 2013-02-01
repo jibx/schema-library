@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jibx.schema.org.opentravel.example.jbundle</groupId>
+    <artifactId>jibx-example-jbundle-thin-reactor</artifactId>
+    <version>1.0.9-SNAPSHOT</version>
+  </parent>
+
+
+  <artifactId>org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.thin.app</artifactId>
+  <packaging>bundle</packaging>
+  <name>jibx-example-jbundle-opentravel-touractivity-thin-app</name>
+
+  <properties>
+    <mainClass>${project.artifactId}.ThinTourActivityApplet</mainClass>
+    <jbundle-package-import>
+        *;resolution:=optional,
+        org.jbundle.res.app.office.contact.db;resolution:=optional,
+    </jbundle-package-import>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.jbundle.config.dep</groupId>
+      <artifactId>jbundle-config-dep-thin</artifactId>
+      <version>${jbundle-version-range}</version>
+      <type>pom</type>
+    </dependency>
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.example.jbundle</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.thin</artifactId>
+      <version>${schema-library-version-range}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.example.jbundle</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.res</artifactId>
+      <version>${schema-library-version-range}</version>
+    </dependency>
+  </dependencies>
+
+</project>
