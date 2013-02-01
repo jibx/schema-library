@@ -23,10 +23,10 @@
 
   <modules>
     <module>_2012B</module>
-    <!-- module>_2012A</module>
+    <module>_2012A</module>
     <module>_2011B</module>
     <module>_2011A</module>
-    <module>_2010B</module -->
+    <module>_2010B</module>
   </modules>  
 
 </project>

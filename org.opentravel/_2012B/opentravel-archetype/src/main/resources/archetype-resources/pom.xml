@@ -14,14 +14,14 @@
     <dependency>
       <groupId>org.jibx.schema.org.opentravel._2012B</groupId>
       <artifactId>org.jibx.schema.org.opentravel._2012B.hotel</artifactId>
-      <version>1.0.4</version>
+      <version>1.0.9</version>
     </dependency>
 #end
 #if(${travel-segment}=='ping')
     <dependency>
       <groupId>org.jibx.schema.org.opentravel._2012B</groupId>
       <artifactId>org.jibx.schema.org.opentravel._2012B.ping</artifactId>
-      <version>1.0.4</version>
+      <version>1.0.9</version>
     </dependency>
 #end
   </dependencies>

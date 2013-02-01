@@ -3,9 +3,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-      <groupId>org.jibx.schema.config</groupId>
-      <artifactId>schema-examples-reactor</artifactId>
-      <version>1.0.6</version>    
+      <groupId>org.jibx.schema.org.opentravel._2012B.ws</groupId>
+      <artifactId>opentravel-2012B-ws-reactor</artifactId>
+      <version>1.0.9</version>    
     </parent>
 
     <groupId>${groupId}</groupId>

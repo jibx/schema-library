@@ -29,8 +29,8 @@ import org.jibx.schema.org.opentravel._2012B.touractivity.ws.impl.DefaultTourAct
 
 /**
  * Example web services server for the opentravel TourActivity Avail message pair.
- * NOTE: This is an example framework implementation. Obviously, you would access your
- * database for tour information instead of hard-coding your access code.
+ * NOTE: This is an example framework implementation. 
+ * Just replace my code with some real code.
  * @author Don Corley <don@tourgeek.com>
  */
 public class TourActivityServiceImpl extends DefaultTourActivityService
