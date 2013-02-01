@@ -28,11 +28,11 @@ Web service example
 
  In this example you will install a simple web service that uses SOAP and REST protocols.
  This web service implements the {{{http://www.opentravel.org}opentravel.org}} hotel res service. When you send
- a {{{http://www.opentravel.org/2012A/OTA_HotelResRQ.xsd}HotelRes request}} this service
- echos a {{{http://www.opentravel.org/2012A/OTA_HotelResRS.xsd}HotelRes reply}}
+ a {{{http://www.opentravel.org/2012B/OTA_HotelResRQ.xsd}HotelRes request}} this service
+ echos a {{{http://www.opentravel.org/2012B/OTA_HotelResRS.xsd}HotelRes reply}}
  
  The project source code for this example is in our repository here:
- {{{https://github.com/jibx/schema-library/tree/master/org.opentravel/_2012A/opentravel-ws/opentravel-hotel-ws-test-service}https://github.com/jibx/schema-library/tree/master/org.opentravel/_2012A/opentravel-ws/opentravel-hotel-ws-test-service}}.
+ {{{https://github.com/jibx/schema-library/tree/master/org.opentravel/_2012B/opentravel-ws/opentravel-hotel-ws-test-service}https://github.com/jibx/schema-library/tree/master/org.opentravel/_2012B/opentravel-ws/opentravel-hotel-ws-test-service}}.
  
  This example uses three services:
 
@@ -44,12 +44,12 @@ Web service example
 
 * Running this example
  
- Step 1: Download {{{http://servicemix.apache.org/}Apache servicemix}} and start it up.
+ Step 1: Download {{{http://karaf.apache.org/}Apache karaf}} and start it up.
  
 +-----+
- tar zxvf apache-servicemix-x.x.x.tar.gz
- cd apache-servicemix-x.x.x
- bin/servicemix
+ tar zxvf apache-karaf-x.x.x.tar.gz
+ cd apache-karaf-x.x.x
+ bin/karaf
 +-----+
 
  Step 2: Add and run the JiBX OSGi bundles in this example.
@@ -57,23 +57,18 @@ Web service example
 +-----+
  features:install obr
  obr:addurl http://www.jibx.org/repository/repository.xml
- obr:deploy org.jibx.schema.org.opentravel._2012A.hotel.ws.test.service
- obr:deploy org.jibx.schema.org.opentravel._2012A.hotel.ws.rest
- obr:deploy org.jibx.schema.org.opentravel._2012A.hotel.ws.soap
- # ctrl+d (stop servicemix) - You must restart due to a karaf auto-wiring problem
- # bin/servicemix (restart servicemix and ignore the wiring error on startup)
- start org.jibx.schema.org.opentravel._2012A.hotel.ws.test.service
- start org.jibx.schema.org.opentravel._2012A.hotel.ws.rest
- start org.jibx.schema.org.opentravel._2012A.hotel.ws.soap
+ obr:start -d org.jibx.schema.org.opentravel._2012B.hotel.ws.test.service
+ obr:start -d org.jibx.schema.org.opentravel._2012B.hotel.ws.rest
+ obr:start -d org.jibx.schema.org.opentravel._2012B.hotel.ws.soap
 +-----+
 
- Step 3: 
+ Step 3:
  You will find the wsdl file here: {{{http://localhost:8092/soap/hotel?wsdl}http://localhost:8092/soap/touractivity?wsdl}}.
  
  If you would like to test this web service to see if it works, either fire up soapui and send it a message or create a
  {{{http://blog.tourgeek.com}JiBX test client}} using the {{{./client.html}JiBX client framework}}.
  
- You will find the RESTful web services located at {{{http://localhost:8181/cxf/hotel/function}http://localhost:8181/cxf/hotel/function}}, where
+ You will find the RESTful web services located at {{{http://localhost:8092/rest/hotel/function}http://localhost:8092/rest/hotel/function}}, where
  function is the action such as search, res, resmodify, etc.
   
  Voilà

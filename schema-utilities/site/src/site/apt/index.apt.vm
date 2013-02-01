@@ -3,7 +3,7 @@
  -----
  Don Corley
  -----
- February 4, 2011
+ February 1, 2013
  -----
 
 Schema Library Project
@@ -20,8 +20,8 @@ Schema Library Project
 +-----+
 
 <dependency>
-   <groupId>org.jibx.schema.org.opentravel._2010B</groupId>
-   <artifactId>org.jibx.schema.org.opentravel._2010B.hotel</artifactId>
+   <groupId>org.jibx.schema.org.opentravel._2012B</groupId>
+   <artifactId>org.jibx.schema.org.opentravel._2012B.hotel</artifactId>
    <version>${project.version}</version>
 </dependency>
 
@@ -39,7 +39,7 @@ Schema Library Project
   
 +-----+
 
-repos add http://jibx.org/repository.xml
+http://jibx.org/repository.xml
 
 +-----+
 

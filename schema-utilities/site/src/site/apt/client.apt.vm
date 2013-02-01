@@ -35,12 +35,12 @@ Client Web service example
 * Running this example
  
  Step 1: Download the test hotel client from our github repository:
- {{{https://github.com/jibx/schema-library/tree/master/org.opentravel/_2012A/opentravel-ws/opentravel-hotel-ws-test-client}https://github.com/jibx/schema-library/tree/master/org.opentravel/_2012A/opentravel-ws/opentravel-hotel-ws-test-client}}.
+ {{{https://github.com/jibx/schema-library/tree/master/org.opentravel/_2012B/opentravel-ws/opentravel-hotel-ws-test-client}https://github.com/jibx/schema-library/tree/master/org.opentravel/_2012B/opentravel-ws/opentravel-hotel-ws-test-client}}.
  
  Step 2: Move to the project directory and invoke maven.
 
 +-----+
- cd opentravel-hotel-ws-test-service
+ cd opentravel-hotel-ws-test-client
  mvn clean install -Dmaven.test.skip=false
 +-----+
 

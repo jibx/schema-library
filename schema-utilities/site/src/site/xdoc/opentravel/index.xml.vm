@@ -21,16 +21,12 @@
       <a href="http://www.opentravel.org/">opentravel.org</a> schema library.
       </p>
       
-      <p>It doesn't get much simpler than this.</p> 
-
       <p>This project has pre-packaged components ready to include into your project. Since the code has
       already been bound to the schema, you can start using it right now. Just add the maven dependencies
       to your project and start writing code.</p> 
 
       <p>Maven will automatically include all the dependent packages in your project and in your war file.
-      OSGi will only load the modules that are needed on-demand. For example, If you are creating a hotel
-      reservation, the profile schema package will only load if you link the reservation to a profile.
-      No wonder there is so much excitement over OSGi.</p> 
+      OSGi will only load the modules that are needed, on-demand.</p> 
 
       <p>Try it. it's easy:</p>
        
@@ -38,13 +34,15 @@
       
       <p>
       <source>&lt;dependency&gt;<br/>
-&#160;&#160;&lt;groupId&gt;org.jibx.schema.org.opentravel._2010B&lt;/groupId&gt;<br/>
-&#160;&#160;&lt;artifactId&gt;org.jibx.schema.org.opentravel._2010B.hotel&lt;/artifactId&gt;<br/>
+&#160;&#160;&lt;groupId&gt;org.jibx.schema.org.opentravel._2012B&lt;/groupId&gt;<br/>
+&#160;&#160;&lt;artifactId&gt;org.jibx.schema.org.opentravel._2012B.touractivity&lt;/artifactId&gt;<br/>
 &#160;&#160;&lt;version&gt;${project.version}&lt;/version&gt;<br/>
 &lt;/dependency&gt;</source>
       </p>       
 
       <p>Step 2: Start writing code.</p>
+
+      <p>--------------</p>
       
       <p>If you have about five minutes, try this example. You will create a
       project that will create an opentravel message,
@@ -59,7 +57,7 @@
       
       <p>Fill in the fields with this information:<br/>
     <source>
-    groupId: org.jibx.schema.org.opentravel._2010B<br/>
+    groupId: org.jibx.schema.org.opentravel._2012B<br/>
     artifactId: opentravel-archetype<br/>
     version: ${project.version}<br/>
     </source>

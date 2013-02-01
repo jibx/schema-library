@@ -40,7 +40,7 @@ g! list
  
   
 +-----+
-g! deploy -s 'Schema Library - jibx.org - Address Schema Test'
+g! deploy -s 'Schema Library - jibx.org - Schema Test'
 +-----+
 
  You should see output similar to this. Amazing.
@@ -48,7 +48,7 @@ g! deploy -s 'Schema Library - jibx.org - Address Schema Test'
 +-----+
 Target resource(s):
 -------------------
-   Schema Library - jibx.org - Address Schema Test (2.0.0.SNAPSHOT)
+   Schema Library - jibx.org - Schema Test (${project.version})
 
 Optional resource(s):
 ---------------------

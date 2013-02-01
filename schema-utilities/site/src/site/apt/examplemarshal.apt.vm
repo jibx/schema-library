@@ -47,7 +47,7 @@ marshaller.marshalDocument(message, URL_ENCODING, null, out);
  code for this example in the create-jibx-project-utilities maven project.
 
  If you want a concrete example, get the jibx sample schema project from our
- {{{http://http://jibx.git.sourceforge.net/git/gitweb.cgi?p=jibx/schema-library;a=tree;f=org.jibx}repository}}.
+ {{{https://github.com/jibx/schema-library/tree/master/schema-utilities/create-jibx-project-utilities}repository}}.
  If you don't know how to download from a git tree, just grab the pom file and the java source file
  from the org.jibx.test.person sub-project. Change the version number of the dependencies to ${project.version},
  and place them in a directory on your hard drive. Then type:

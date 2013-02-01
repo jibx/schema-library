@@ -8,11 +8,11 @@
 
 Web Services
 
- This schema library contains SOAP and REST services for several message sets.
- All you have to do is implement the service that processes the messages.
+ This schema library contains SOAP and REST services for many of the opentravel message sets.
+ All the hard work is done. All you have to do is implement the service that processes the messages.
 
  For example, this library contains SOAP and REST services that process the opentravel.org
- Tour Activity messages. You only need to implement this interface and register your service.
+ Tour Activity messages. You only need to implement the touractivity interface and register your service.
  The SOAP and REST services will automatically use your implementation.
  The following example shows you how to do this with the opentravel.org 'ping' service.
 
@@ -23,10 +23,10 @@ Web service example
 
  In this example you will install a simple web service that uses SOAP and REST protocols.
  This web service implements the {{{http://www.opentravel.org}opentravel.org}} ping service. When you send
- a {{{http://www.opentravel.org/2011B/OTA_PingRQ.xsd}Ping request}} this service
- echos a {{{http://www.opentravel.org/2011B/OTA_PingRS.xsd}Ping reply}}
+ a {{{http://www.opentravel.org/2012B/OTA_PingRQ.xsd}Ping request}} this service
+ echos a {{{http://www.opentravel.org/2012B/OTA_PingRS.xsd}Ping reply}}
  
- The service source code for this example is in our repository {{{https://github.com/jibx/schema-library/blob/master/org.opentravel/_2011B/opentravel-ws/opentravel-ping-ws-service/src/main/java/org/jibx/schema/org/opentravel/_2011B/ping/ws/service/PingServiceImpl.java}here}}.
+ The service source code for this example is in our repository {{{https://github.com/jibx/schema-library/blob/master/org.opentravel/_2012B/opentravel-ws/opentravel-ping-ws-service/src/main/java/org/jibx/schema/org/opentravel/_2012B/ping/ws/service/PingServiceImpl.java}here}}.
  
  This example uses three services:
 
@@ -38,33 +38,33 @@ Web service example
 
 * Running this example
  
- Step 1: Download {{{http://servicemix.apache.org/}Apache servicemix}} and start it up.
+ Step 1: Download {{{http://karaf.apache.org/}Apache karaf}} and start it up.
  
 +-----+
- tar zxvf apache-servicemix-x.x.x.tar.gz
- cd apache-servicemix-x.x.x
- bin/servicemix
+ tar zxvf apache-karaf-x.x.x.tar.gz
+ cd apache-karaf-x.x.x
+ bin/karaf
 +-----+
 
  Step 2: Add and run the JiBX OSGi bundles in this example.
 
 +-----+
- features:install obr
+ features:addurl mvn:org.apache.cxf.karaf/apache-cxf/${cxf-version}/xml/features
+ features:install cxf cxf-databinding-jibx http obr
+
  obr:addurl http://www.jibx.org/repository.xml
- obr:deploy org.jibx.schema.org.opentravel._2011B.ping.ws.service
- obr:deploy org.jibx.schema.org.opentravel._2011B.ping.ws.rest
- obr:deploy org.jibx.schema.org.opentravel._2011B.ping.ws.soap
- # ctrl+d (stop servicemix) - You must restart due to a karaf auto-wiring problem
- # bin/servicemix (restart servicemix)
- start org.jibx.schema.org.opentravel._2011B.ping.ws.service
- start org.jibx.schema.org.opentravel._2011B.ping.ws.rest
- start org.jibx.schema.org.opentravel._2011B.ping.ws.soap
+ obr:start -d org.jibx.schema.org.opentravel._2011B.ping.ws.service
+ obr:start -d org.jibx.schema.org.opentravel._2011B.ping.ws.rest
+ obr:start -d org.jibx.schema.org.opentravel._2011B.ping.ws.soap
 +-----+
 
- Step 3: Click this link {{{http://localhost:8181/cxf/ping/ping/Hello}http://localhost:8181/cxf/ping/ping/Hello}} to send a 'Hello' message to the RESTful ping service.
+ You just added cxf and a web server to your OSGi container. Then you started a REST and SOAP server and your ping web service.
+
+ Step 3: Click this link {{{http://localhost:8181/rest/ping/ping/Hello}http://localhost:8092/rest/ping/ping/Hello}} to send a 'Hello' message to the RESTful ping service.
  
  Load client.html (from the opentravel-ping-service project root directory) into your favorite browser
  and click 'send'. Most browsers will display the soap xml message returned from the web
- service (some will just display 'status: 0'). To see the wsdl from servicemix, {{{http://localhost:8092/soap/ping?wsdl}Click here}}.
+ service (some will just display 'status: 0'). To see the wsdl from karaf, {{{http://localhost:8092/soap/ping?wsdl}Click here}}.
+
  
  Voilà
