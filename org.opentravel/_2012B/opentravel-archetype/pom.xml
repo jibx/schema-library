@@ -3,7 +3,7 @@
   <parent>
     <artifactId>opentravel-2012B-reactor</artifactId>
     <groupId>org.jibx.schema.org.opentravel._2012B</groupId>
-    <version>1.0.10-SNAPSHOT</version>
+    <version>1.0.9-SNAPSHOT</version>
   </parent>
   
   <modelVersion>4.0.0</modelVersion>
