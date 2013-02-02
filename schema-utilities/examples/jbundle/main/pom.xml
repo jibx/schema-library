@@ -21,7 +21,7 @@
     <profile>
       <id>thin</id>
       <properties>
-        <mainClass>${project.groupId}.opentravel.touractivity.thin.ThinTourActivityApplet</mainClass>
+        <mainClass>${project.groupId}.opentravel.touractivity.thin.app.ThinTourActivityApplet</mainClass>
       </properties>
     </profile>
   </profiles>
