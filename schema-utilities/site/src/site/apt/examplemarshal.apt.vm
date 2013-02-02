@@ -51,7 +51,9 @@ marshaller.marshalDocument(message, URL_ENCODING, null, out);
  If you don't know how to download from a git tree, just grab the pom file and the java source file
  from the org.jibx.test.person sub-project. Change the version number of the dependencies to ${project.version},
  and place them in a directory on your hard drive. Then type:
+
 +-----+
  mvn install
 +-----+
+
  Take a look at the source code. It's pretty simple. It shows how to do a simple marshal and unmarshal operation.

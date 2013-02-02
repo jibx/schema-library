@@ -31,7 +31,7 @@
 <item name="Marshal and Unmarshal" href="./examplemarshal.html"/>
 <item name="OSGi deployment" href="./exampleosgi.html"/>
 <item name="Eclipse" href="./opentravel/index.html"/>
-<item name="ServiceMix" href="./webservices.html"/>
+<item name="Web Services" href="./webservices.html"/>
 <item name="Client framework" href="./client.html"/>
 <item name="Server framework" href="./service.html"/>
 </menu>
