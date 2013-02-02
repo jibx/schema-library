@@ -5,7 +5,7 @@
     <parent>
       <groupId>org.jibx.schema.org.opentravel._2012B.ws</groupId>
       <artifactId>opentravel-2012B-ws-reactor</artifactId>
-      <version>1.0.9-SNAPSHOT</version>
+      <version>1.0.9</version>
     </parent>
 
     <artifactId>org.jibx.schema.org.opentravel._2012B.hotel.ws.rest</artifactId>
@@ -38,7 +38,7 @@
 	<dependency>
 		<groupId>org.jibx.schema.org.opentravel._2012B</groupId>
 		<artifactId>org.jibx.schema.org.opentravel._2012B.hotel</artifactId>
-		<version>1.0.9-SNAPSHOT</version>
+		<version>1.0.9</version>
 	</dependency>
         
     <dependency>
