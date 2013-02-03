@@ -1,0 +1,1149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><file>
+	<MessageInfo ID="2">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Hotel Pricing Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.hotel.request.HotelRateRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>4</ReverseMessageInfoID>
+		<ContactTypeID>5</ContactTypeID>
+		<RequestTypeID>2</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="4">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Hotel Pricing Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.hotel.response.HotelRateResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>5</ContactTypeID>
+		<RequestTypeID>2</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="10">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Land Pricing Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.land.request.LandRateRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>11</ReverseMessageInfoID>
+		<ContactTypeID>7</ContactTypeID>
+		<RequestTypeID>2</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="11">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Land Pricing Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.land.response.LandRateResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>7</ContactTypeID>
+		<RequestTypeID>2</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="14">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Hotel Availability Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.hotel.request.HotelAvailabilityRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>15</ReverseMessageInfoID>
+		<ContactTypeID>5</ContactTypeID>
+		<RequestTypeID>3</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="15">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Hotel Availability Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.hotel.response.HotelAvailabilityResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>5</ContactTypeID>
+		<RequestTypeID>3</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="18">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Hotel Booking Request</Description>
+		<Code>OTA_HotelBookingRQ</Code>
+		<MessageClass>com.tourapp.tour.message.hotel.request.HotelBookingRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>19</ReverseMessageInfoID>
+		<ContactTypeID>5</ContactTypeID>
+		<RequestTypeID>7</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="19">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Hotel Booking Response</Description>
+		<Code>OTA_HotelBookingRS</Code>
+		<MessageClass>com.tourapp.tour.message.hotel.response.HotelBookingResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>5</ContactTypeID>
+		<RequestTypeID>7</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="22">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Land Booking Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.land.request.LandBookingRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>23</ReverseMessageInfoID>
+		<ContactTypeID>7</ContactTypeID>
+		<RequestTypeID>7</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="23">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Land Booking Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.land.response.LandBookingResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>7</ContactTypeID>
+		<RequestTypeID>7</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="24">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Hotel Rate AND Availability Request</Description>
+		<Code>OTA_HotelAvailRQ</Code>
+		<MessageClass>com.tourapp.tour.message.hotel.request.HotelRateAvailRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>25</ReverseMessageInfoID>
+		<ContactTypeID>5</ContactTypeID>
+		<RequestTypeID>5</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="25">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Hotel Rate AND Availability Response</Description>
+		<Code>OTA_HotelAvailRS</Code>
+		<MessageClass>com.tourapp.tour.message.hotel.response.HotelRateAvailResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>5</ContactTypeID>
+		<RequestTypeID>5</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="29">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Land Availability Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.land.request.LandAvailabilityRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>30</ReverseMessageInfoID>
+		<ContactTypeID>7</ContactTypeID>
+		<RequestTypeID>3</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="30">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Land Availability Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.land.response.LandAvailabilityResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>7</ContactTypeID>
+		<RequestTypeID>3</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="31">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Manual Messages</Description>
+		<Code>MANUAL</Code>
+		<MessageClass/>
+		<MessageProperties><![CDATA[
+]]></MessageProperties>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID/>
+		<RequestTypeID>6</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="32">
+		<LastChanged>2011-08-05T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Transportation Pricing Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.trans.request.TransportationRateRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>33</ReverseMessageInfoID>
+		<ContactTypeID>8</ContactTypeID>
+		<RequestTypeID>2</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="33">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Transportation Pricing Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.trans.response.TransportationRateResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>8</ContactTypeID>
+		<RequestTypeID>2</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="34">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Car Pricing Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.car.request.CarRateRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>35</ReverseMessageInfoID>
+		<ContactTypeID>10</ContactTypeID>
+		<RequestTypeID>2</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="35">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Car Pricing Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.car.response.CarRateResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>10</ContactTypeID>
+		<RequestTypeID>2</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="36">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Air Pricing Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.air.request.AirRateRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>37</ReverseMessageInfoID>
+		<ContactTypeID>6</ContactTypeID>
+		<RequestTypeID>2</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="37">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Air Pricing Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.air.response.AirRateResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>6</ContactTypeID>
+		<RequestTypeID>2</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="38">
+		<LastChanged>2011-08-05T15:59:48</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Tour Pricing Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.tour.request.TourRateRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>39</ReverseMessageInfoID>
+		<ContactTypeID>11</ContactTypeID>
+		<RequestTypeID>2</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="39">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Tour Pricing Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.tour.response.TourRateResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>11</ContactTypeID>
+		<RequestTypeID>2</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="40">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Item Pricing Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.item.request.ItemRateRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>41</ReverseMessageInfoID>
+		<ContactTypeID>12</ContactTypeID>
+		<RequestTypeID>2</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="41">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Item Pricing Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.item.response.ItemRateResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>12</ContactTypeID>
+		<RequestTypeID>2</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="42">
+		<LastChanged>2011-08-05T15:59:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Cruise Pricing Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.cruise.request.CruiseRateRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>43</ReverseMessageInfoID>
+		<ContactTypeID>9</ContactTypeID>
+		<RequestTypeID>2</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="43">
+		<LastChanged>2011-08-05T15:59:48</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Cruise Pricing Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.cruise.response.CruiseRateResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>9</ContactTypeID>
+		<RequestTypeID>2</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="44">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Air Availability Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.air.response.AirAvailabilityResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>6</ContactTypeID>
+		<RequestTypeID>3</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="45">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Air Availability Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.air.request.AirAvailabilityRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>44</ReverseMessageInfoID>
+		<ContactTypeID>6</ContactTypeID>
+		<RequestTypeID>3</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="46">
+		<LastChanged>2011-08-05T15:59:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Car Availability Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.car.response.CarAvailabilityResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>10</ContactTypeID>
+		<RequestTypeID>3</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="47">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Car Availability Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.car.request.CarAvailabilityRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>46</ReverseMessageInfoID>
+		<ContactTypeID>10</ContactTypeID>
+		<RequestTypeID>3</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="48">
+		<LastChanged>2011-08-05T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Cruise Availability Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.cruise.response.CruiseAvailabilityResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>9</ContactTypeID>
+		<RequestTypeID>3</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="49">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Cruise Availability Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.cruise.request.CruiseAvailabilityRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>48</ReverseMessageInfoID>
+		<ContactTypeID>9</ContactTypeID>
+		<RequestTypeID>3</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="50">
+		<LastChanged>2011-08-05T15:59:48</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Tour Availability Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.tour.response.TourAvailabilityResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>11</ContactTypeID>
+		<RequestTypeID>3</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="51">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Tour Availability Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.tour.request.TourAvailabilityRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>50</ReverseMessageInfoID>
+		<ContactTypeID>11</ContactTypeID>
+		<RequestTypeID>3</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="52">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Item Availability Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.item.response.ItemAvailabilityResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>12</ContactTypeID>
+		<RequestTypeID>3</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="53">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Item Availability Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.item.request.ItemAvailabilityRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>12</ContactTypeID>
+		<RequestTypeID>3</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="54">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Transportation Availability Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.trans.response.TransportationAvailabilityResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>8</ContactTypeID>
+		<RequestTypeID>3</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="55">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Transportation Availability Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.trans.request.TransportationAvailabilityRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>54</ReverseMessageInfoID>
+		<ContactTypeID>8</ContactTypeID>
+		<RequestTypeID>3</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="56">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Air Booking Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.air.response.AirBookingResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>6</ContactTypeID>
+		<RequestTypeID>7</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="57">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Air Booking Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.air.request.AirBookingRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>56</ReverseMessageInfoID>
+		<ContactTypeID>6</ContactTypeID>
+		<RequestTypeID>7</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="58">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Car Booking Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.car.response.CarBookingResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>10</ContactTypeID>
+		<RequestTypeID>7</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="59">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Car Booking Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.car.request.CarBookingRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>58</ReverseMessageInfoID>
+		<ContactTypeID>10</ContactTypeID>
+		<RequestTypeID>7</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="60">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Cruise Booking Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.cruise.response.CruiseBookingResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>9</ContactTypeID>
+		<RequestTypeID>7</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="61">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Cruise Booking Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.cruise.request.CruiseBookingRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>60</ReverseMessageInfoID>
+		<ContactTypeID>9</ContactTypeID>
+		<RequestTypeID>7</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="62">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Tour Booking Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.tour.response.TourBookingResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>11</ContactTypeID>
+		<RequestTypeID>7</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="63">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Tour Booking Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.tour.request.TourBookingRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>62</ReverseMessageInfoID>
+		<ContactTypeID>11</ContactTypeID>
+		<RequestTypeID>7</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="64">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Item Booking Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.item.response.ItemBookingResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>12</ContactTypeID>
+		<RequestTypeID>7</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="65">
+		<LastChanged>2012-04-11T02:27:23</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Item Booking Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.item.request.ItemBookingRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>64</ReverseMessageInfoID>
+		<ContactTypeID>12</ContactTypeID>
+		<RequestTypeID>7</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="66">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Transportation Booking Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.trans.response.TransportationBookingResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>8</ContactTypeID>
+		<RequestTypeID>7</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="67">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Transportation Booking Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.trans.request.TransportationBookingRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>66</ReverseMessageInfoID>
+		<ContactTypeID>8</ContactTypeID>
+		<RequestTypeID>7</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="68">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Customer Booking Messages</Description>
+		<Code>BOOKING</Code>
+		<MessageClass/>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>2</ContactTypeID>
+		<RequestTypeID>6</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="69">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Vendor tour messages</Description>
+		<Code>TOUR</Code>
+		<MessageClass/>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>1</ContactTypeID>
+		<RequestTypeID>6</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="70">
+		<LastChanged>2011-09-12T14:49:26</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Hotel Booking Change Request</Description>
+		<Code>OTA_HotelResModifyRQ</Code>
+		<MessageClass>com.tourapp.tour.message.hotel.request.HotelBookingChangeRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>5</ContactTypeID>
+		<RequestTypeID>8</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="71">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Booking Cancellation Request</Description>
+		<Code>OTA_CancelRQ</Code>
+		<MessageClass>com.tourapp.tour.message.base.request.CancelRequest</MessageClass>
+		<MessageProperties><![CDATA[#Field properties
+#Wed Apr 02 01:40:09 PDT 2008
+]]></MessageProperties>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>73</ReverseMessageInfoID>
+		<ContactTypeID>13</ContactTypeID>
+		<RequestTypeID>9</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="72">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Hotel Booking Change Response</Description>
+		<Code>OTA_HotelResModifyRS</Code>
+		<MessageClass>com.tourapp.tour.message.hotel.response.HotelBookingChangeResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>5</ContactTypeID>
+		<RequestTypeID>8</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="73">
+		<LastChanged>2011-09-10T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Booking Cancellation Response</Description>
+		<Code>OTA_CancelRS</Code>
+		<MessageClass>com.tourapp.tour.message.base.response.CancelResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>13</ContactTypeID>
+		<RequestTypeID>9</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="74">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Air Booking Change Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.air.request.AirBookingChangeRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>6</ContactTypeID>
+		<RequestTypeID>8</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="75">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Air Booking Change Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.air.response.AirBookingChangeResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>6</ContactTypeID>
+		<RequestTypeID>8</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="76">
+		<LastChanged>2011-08-05T15:59:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Cruise Booking Change Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.cruise.response.CruiseBookingChangeResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>9</ContactTypeID>
+		<RequestTypeID>8</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="77">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Cruise Booking Change Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.cruise.request.CruiseBookingChangeRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>9</ContactTypeID>
+		<RequestTypeID>8</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="78">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Item Booking Change Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.item.response.ItemBookingChangeResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>12</ContactTypeID>
+		<RequestTypeID>8</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="79">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Item Booking Change Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.item.request.ItemBookingChangeRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>12</ContactTypeID>
+		<RequestTypeID>8</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="80">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Land Booking Change Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.land.response.LandBookingChangeResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>7</ContactTypeID>
+		<RequestTypeID>8</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="81">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Land Booking Change Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.land.request.LandBookingChangeRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>7</ContactTypeID>
+		<RequestTypeID>8</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="82">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Car Booking Change Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.car.response.CarBookingChangeResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>10</ContactTypeID>
+		<RequestTypeID>8</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="83">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Car Booking Change Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.car.request.CarBookingChangeRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>10</ContactTypeID>
+		<RequestTypeID>8</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="84">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Tour Booking Change Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.tour.response.TourBookingChangeResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>11</ContactTypeID>
+		<RequestTypeID>8</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="85">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Tour Booking Change Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.tour.request.TourBookingChangeRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>11</ContactTypeID>
+		<RequestTypeID>8</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="86">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Transportation Booking Change Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.trans.response.TransportationBookingChangeResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>8</ContactTypeID>
+		<RequestTypeID>8</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="87">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Transportation Booking Change Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.trans.request.TransportationBookingChangeRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>8</ContactTypeID>
+		<RequestTypeID>8</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="88">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Product Request Error</Description>
+		<Code/>
+		<MessageClass/>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>13</ContactTypeID>
+		<RequestTypeID>10</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="89">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Product Reply Error</Description>
+		<Code/>
+		<MessageClass/>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>13</ContactTypeID>
+		<RequestTypeID>10</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="90">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Air Information Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.air.request.AirInformationRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>91</ReverseMessageInfoID>
+		<ContactTypeID>6</ContactTypeID>
+		<RequestTypeID>1</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="91">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Air Information Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.air.response.AirInformationResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>6</ContactTypeID>
+		<RequestTypeID>1</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="92">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Cruise Information Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.cruise.response.CruiseInformationResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>9</ContactTypeID>
+		<RequestTypeID>1</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="93">
+		<LastChanged>2012-04-11T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Hotel Information Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.hotel.response.HotelInformationResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>5</ContactTypeID>
+		<RequestTypeID>1</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="94">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Land Information Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.land.response.LandInformationResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>7</ContactTypeID>
+		<RequestTypeID>1</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="95">
+		<LastChanged>2011-09-09T05:00:46</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Car Information Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.car.response.CarInformationResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>10</ContactTypeID>
+		<RequestTypeID>1</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="96">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Tour Information Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.tour.response.TourInformationResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>11</ContactTypeID>
+		<RequestTypeID>1</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="97">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Transportation Information Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.trans.response.TransportationInformationResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>8</ContactTypeID>
+		<RequestTypeID>1</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="98">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Cruise Information Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.cruise.request.CruiseInformationRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>92</ReverseMessageInfoID>
+		<ContactTypeID>9</ContactTypeID>
+		<RequestTypeID>1</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="99">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Hotel Information Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.hotel.request.HotelInformationRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>93</ReverseMessageInfoID>
+		<ContactTypeID>5</ContactTypeID>
+		<RequestTypeID>1</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="100">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Item Information Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.item.request.ItemInformationRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>101</ReverseMessageInfoID>
+		<ContactTypeID>12</ContactTypeID>
+		<RequestTypeID>1</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="101">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Item Information Response</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.item.response.ItemInformationResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID>12</ContactTypeID>
+		<RequestTypeID>1</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="102">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Land Information Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.land.request.LandInformationRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>94</ReverseMessageInfoID>
+		<ContactTypeID>7</ContactTypeID>
+		<RequestTypeID>1</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="103">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Car Information Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.car.request.CarInformationRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>95</ReverseMessageInfoID>
+		<ContactTypeID>10</ContactTypeID>
+		<RequestTypeID>1</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="104">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Tour Information Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.tour.request.TourInformationRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>96</ReverseMessageInfoID>
+		<ContactTypeID>11</ContactTypeID>
+		<RequestTypeID>1</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="105">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Transportation Information Request</Description>
+		<Code/>
+		<MessageClass>com.tourapp.tour.message.trans.request.TransportationInformationRequest</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>97</ReverseMessageInfoID>
+		<ContactTypeID>8</ContactTypeID>
+		<RequestTypeID>1</RequestTypeID>
+	</MessageInfo>
+	<MessageInfo ID="106">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Ping Request</Description>
+		<Code>OTA_PingRQ</Code>
+		<MessageClass>com.tourapp.tour.message.base.BaseProductMessageDesc</MessageClass>
+		<MessageProperties><![CDATA[#Field properties
+#Fri Mar 26 07:46:04 PDT 2010
+]]></MessageProperties>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>107</ReverseMessageInfoID>
+		<ContactTypeID/>
+		<RequestTypeID/>
+	</MessageInfo>
+	<MessageInfo ID="107">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Ping Response</Description>
+		<Code>OTA_PingRS</Code>
+		<MessageClass>com.tourapp.tour.message.base.response.BaseProductResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID/>
+		<RequestTypeID/>
+	</MessageInfo>
+	<MessageInfo ID="108">
+		<LastChanged>2008-02-12T05:00:43</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Currency Conversion Request</Description>
+		<Code>ConversionRate</Code>
+		<MessageClass>com.tourapp.tour.message.base.BaseProductMessageDesc</MessageClass>
+		<MessageProperties><![CDATA[#Field properties
+#Fri Oct 17 01:09:12 PDT 2008
+]]></MessageProperties>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID>109</ReverseMessageInfoID>
+		<ContactTypeID/>
+		<RequestTypeID/>
+	</MessageInfo>
+	<MessageInfo ID="109">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Currency Conversion Response</Description>
+		<Code>ConversionRateResponse</Code>
+		<MessageClass>com.tourapp.tour.message.base.response.BaseProductResponse</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID/>
+		<RequestTypeID/>
+	</MessageInfo>
+	<MessageInfo ID="110">
+		<LastChanged>2011-09-09T15:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Run Remote Process Request</Description>
+		<Code>RunRemoteProcessRQ</Code>
+		<MessageClass>org.jbundle.base.message.remote.RunRemoteProcessMessageData</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>1</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID/>
+		<RequestTypeID/>
+	</MessageInfo>
+	<MessageInfo ID="111">
+		<LastChanged>2012-03-31T23:49:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Standard Message Response</Description>
+		<Code>StandardMessageRS</Code>
+		<MessageClass>org.jbundle.base.message.remote.StandardMessageResponseData</MessageClass>
+		<MessageProperties/>
+		<MessageInfoTypeID>2</MessageInfoTypeID>
+		<ReverseMessageInfoID/>
+		<ContactTypeID/>
+		<RequestTypeID/>
+	</MessageInfo>
+</file>

@@ -24,17 +24,18 @@
         <mainClass>${project.groupId}.opentravel.touractivity.thin.app.ThinTourActivityApplet</mainClass>
       </properties>
     </profile>
+    <profile>
+      <id>dev</id>
+      <properties>
+        <record></record>
+      </properties>
+    </profile>
   </profiles>
 
   <dependencies>
     <dependency>
       <groupId>org.jibx.schema.org.opentravel.example.jbundle</groupId>
-      <artifactId>org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.thin</artifactId>
-      <version>${schema-library-version-range}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.jibx.schema.org.opentravel.example.jbundle</groupId>
-      <artifactId>org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.db</artifactId>
+      <artifactId>org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.screen</artifactId>
       <version>${schema-library-version-range}</version>
     </dependency>
     <dependency>

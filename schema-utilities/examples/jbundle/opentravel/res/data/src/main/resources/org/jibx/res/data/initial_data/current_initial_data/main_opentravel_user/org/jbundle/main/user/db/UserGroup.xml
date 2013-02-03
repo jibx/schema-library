@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><file>
+	<UserGroup ID="1">
+		<LastChanged>2010-11-29T05:53:57</LastChanged>
+		<Deleted>N</Deleted>
+		<Properties/>
+		<Description>Anonymous user</Description>
+		<AccessMap><![CDATA[*.*	2	1	
+]]></AccessMap>
+	</UserGroup>
+</file>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><file>
+	<KeyInfo ID="1">
+		<LastChanged>2013-02-01T06:41:40</LastChanged>
+		<Deleted>N</Deleted>
+		<KeyFilename>TourActivity</KeyFilename>
+		<KeyNumber/>
+		<KeyField1>ID</KeyField1>
+		<KeyField2/>
+		<KeyField3/>
+		<KeyField4/>
+		<KeyField5/>
+		<KeyField6/>
+		<KeyField7/>
+		<KeyField8/>
+		<KeyField9/>
+		<KeyName/>
+		<KeyType>K</KeyType>
+		<IncludeScope>4</IncludeScope>
+	</KeyInfo>
+	<KeyInfo ID="2">
+		<LastChanged>2013-02-01T06:41:54</LastChanged>
+		<Deleted>N</Deleted>
+		<KeyFilename>TourActivity</KeyFilename>
+		<KeyNumber/>
+		<KeyField1>Description</KeyField1>
+		<KeyField2/>
+		<KeyField3/>
+		<KeyField4/>
+		<KeyField5/>
+		<KeyField6/>
+		<KeyField7/>
+		<KeyField8/>
+		<KeyField9/>
+		<KeyName/>
+		<KeyType>S</KeyType>
+		<IncludeScope>4</IncludeScope>
+	</KeyInfo>
+</file>

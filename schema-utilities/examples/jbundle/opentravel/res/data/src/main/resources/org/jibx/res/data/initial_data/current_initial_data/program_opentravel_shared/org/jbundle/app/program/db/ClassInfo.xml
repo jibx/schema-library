@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><file>
+	<ClassInfo ID="1">
+		<LastChanged>2013-02-03T06:27:43</LastChanged>
+		<Deleted>N</Deleted>
+		<ClassName>TourActivity</ClassName>
+		<BaseClassName>VirtualRecord</BaseClassName>
+		<ClassDesc>Tour Activity record</ClassDesc>
+		<ClassProjectID>3</ClassProjectID>
+		<ClassPackage>.db</ClassPackage>
+		<ClassSourceFile>TourActivity</ClassSourceFile>
+		<ClassType>record</ClassType>
+		<ClassExplain/>
+		<ClassHelp/>
+		<ClassImplements/>
+		<SeeAlso/>
+		<TechnicalInfo/>
+		<CopyDescFrom/>
+	</ClassInfo>
+	<ClassInfo ID="2">
+		<LastChanged>2013-02-03T06:17:50</LastChanged>
+		<Deleted>N</Deleted>
+		<ClassName>TourActivityScreen</ClassName>
+		<BaseClassName>Screen</BaseClassName>
+		<ClassDesc>Display Screen</ClassDesc>
+		<ClassProjectID>5</ClassProjectID>
+		<ClassPackage>.screen</ClassPackage>
+		<ClassSourceFile>TourActivityScreen</ClassSourceFile>
+		<ClassType>screen</ClassType>
+		<ClassExplain/>
+		<ClassHelp/>
+		<ClassImplements/>
+		<SeeAlso/>
+		<TechnicalInfo/>
+		<CopyDescFrom/>
+	</ClassInfo>
+	<ClassInfo ID="3">
+		<LastChanged>2013-02-03T06:17:26</LastChanged>
+		<Deleted>N</Deleted>
+		<ClassName>TourActivityGridScreen</ClassName>
+		<BaseClassName>GridScreen</BaseClassName>
+		<ClassDesc/>
+		<ClassProjectID>5</ClassProjectID>
+		<ClassPackage>.screen</ClassPackage>
+		<ClassSourceFile>TourActivityGridScreen</ClassSourceFile>
+		<ClassType>screen</ClassType>
+		<ClassExplain/>
+		<ClassHelp/>
+		<ClassImplements/>
+		<SeeAlso/>
+		<TechnicalInfo/>
+		<CopyDescFrom/>
+	</ClassInfo>
+</file>

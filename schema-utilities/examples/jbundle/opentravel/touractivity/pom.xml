@@ -19,6 +19,7 @@
     <module>res</module>
     <module>thin</module>
     <module>db</module>
+    <module>screen</module>
   </modules>
 
 </project>

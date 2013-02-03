@@ -27,7 +27,7 @@
     <module>create-jibx-project</module>
     <module>schema-maven-plugin</module>
     <module>site</module>
-    <!-- module>examples</module -->
+    <module>examples</module>
   </modules>
 
 </project>

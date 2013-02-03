@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><file>
+	<ScreenIn ID="1">
+		<LastChanged>2013-02-03T06:15:49</LastChanged>
+		<Deleted>N</Deleted>
+		<ScreenInProgName>TourActivityScreen</ScreenInProgName>
+		<ScreenOutNumber/>
+		<ScreenItemNumber>10</ScreenItemNumber>
+		<ScreenFileName>TourActivity</ScreenFileName>
+		<ScreenFieldName>Description</ScreenFieldName>
+		<ScreenRow/>
+		<ScreenCol/>
+		<ScreenGroup/>
+		<ScreenPhysicalNum/>
+		<ScreenLocation/>
+		<ScreenFieldDesc/>
+		<ScreenText/>
+		<ScreenAnchor/>
+		<ScreenControlType/>
+	</ScreenIn>
+	<ScreenIn ID="2">
+		<LastChanged>2013-02-03T06:15:59</LastChanged>
+		<Deleted>N</Deleted>
+		<ScreenInProgName>TourActivityScreen</ScreenInProgName>
+		<ScreenOutNumber/>
+		<ScreenItemNumber>30</ScreenItemNumber>
+		<ScreenFileName>TourActivity</ScreenFileName>
+		<ScreenFieldName>MinPrice</ScreenFieldName>
+		<ScreenRow/>
+		<ScreenCol/>
+		<ScreenGroup/>
+		<ScreenPhysicalNum/>
+		<ScreenLocation/>
+		<ScreenFieldDesc/>
+		<ScreenText/>
+		<ScreenAnchor/>
+		<ScreenControlType/>
+	</ScreenIn>
+	<ScreenIn ID="3">
+		<LastChanged>2013-02-03T06:16:06</LastChanged>
+		<Deleted>N</Deleted>
+		<ScreenInProgName>TourActivityScreen</ScreenInProgName>
+		<ScreenOutNumber/>
+		<ScreenItemNumber>40</ScreenItemNumber>
+		<ScreenFileName>TourActivity</ScreenFileName>
+		<ScreenFieldName>MaxPrice</ScreenFieldName>
+		<ScreenRow/>
+		<ScreenCol/>
+		<ScreenGroup/>
+		<ScreenPhysicalNum/>
+		<ScreenLocation/>
+		<ScreenFieldDesc/>
+		<ScreenText/>
+		<ScreenAnchor/>
+		<ScreenControlType/>
+	</ScreenIn>
+	<ScreenIn ID="4">
+		<LastChanged>2013-02-03T06:17:11</LastChanged>
+		<Deleted>N</Deleted>
+		<ScreenInProgName>TourActivityGridScreen</ScreenInProgName>
+		<ScreenOutNumber/>
+		<ScreenItemNumber>10</ScreenItemNumber>
+		<ScreenFileName>TourActivity</ScreenFileName>
+		<ScreenFieldName>Description</ScreenFieldName>
+		<ScreenRow/>
+		<ScreenCol/>
+		<ScreenGroup/>
+		<ScreenPhysicalNum/>
+		<ScreenLocation/>
+		<ScreenFieldDesc/>
+		<ScreenText/>
+		<ScreenAnchor/>
+		<ScreenControlType/>
+	</ScreenIn>
+</file>

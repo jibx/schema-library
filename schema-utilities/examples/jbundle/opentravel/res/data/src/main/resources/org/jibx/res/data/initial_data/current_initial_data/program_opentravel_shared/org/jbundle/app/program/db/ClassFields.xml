@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><file>
+	<ClassFields ID="1">
+		<LastChanged>2013-02-03T06:17:23</LastChanged>
+		<Deleted>N</Deleted>
+		<ClassInfoClassName>TourActivityGridScreen</ClassInfoClassName>
+		<ClassInfoID/>
+		<ClassFieldClass>TourActivity</ClassFieldClass>
+		<ClassFieldSequence>0</ClassFieldSequence>
+		<ClassFieldName/>
+		<ClassFieldDesc/>
+		<ClassFieldProtect/>
+		<ClassFieldInitial/>
+		<ClassFieldInitialValue/>
+		<ClassFieldsType>C</ClassFieldsType>
+		<IncludeScope>4</IncludeScope>
+	</ClassFields>
+	<ClassFields ID="2">
+		<LastChanged>2013-02-03T06:17:47</LastChanged>
+		<Deleted>N</Deleted>
+		<ClassInfoClassName>TourActivityScreen</ClassInfoClassName>
+		<ClassInfoID/>
+		<ClassFieldClass>TourActivity</ClassFieldClass>
+		<ClassFieldSequence>0</ClassFieldSequence>
+		<ClassFieldName/>
+		<ClassFieldDesc/>
+		<ClassFieldProtect/>
+		<ClassFieldInitial/>
+		<ClassFieldInitialValue/>
+		<ClassFieldsType>C</ClassFieldsType>
+		<IncludeScope>4</IncludeScope>
+	</ClassFields>
+	<ClassFields ID="3">
+		<LastChanged>2013-02-03T06:49:40</LastChanged>
+		<Deleted>N</Deleted>
+		<ClassInfoClassName>TourActivity</ClassInfoClassName>
+		<ClassInfoID/>
+		<ClassFieldClass>TourActivityScreen</ClassFieldClass>
+		<ClassFieldSequence>10</ClassFieldSequence>
+		<ClassFieldName>MAINT_SCREEN_CLASS</ClassFieldName>
+		<ClassFieldDesc/>
+		<ClassFieldProtect>public static final</ClassFieldProtect>
+		<ClassFieldInitial/>
+		<ClassFieldInitialValue>MAINT_MODE</ClassFieldInitialValue>
+		<ClassFieldsType>S</ClassFieldsType>
+		<IncludeScope>4</IncludeScope>
+	</ClassFields>
+	<ClassFields ID="4">
+		<LastChanged>2013-02-03T06:49:26</LastChanged>
+		<Deleted>N</Deleted>
+		<ClassInfoClassName>TourActivity</ClassInfoClassName>
+		<ClassInfoID/>
+		<ClassFieldClass>TourActivityGridScreen</ClassFieldClass>
+		<ClassFieldSequence>20</ClassFieldSequence>
+		<ClassFieldName>GRID_SCREEN_CLASS</ClassFieldName>
+		<ClassFieldDesc/>
+		<ClassFieldProtect>public static final</ClassFieldProtect>
+		<ClassFieldInitial/>
+		<ClassFieldInitialValue>DISPLAY_MODE</ClassFieldInitialValue>
+		<ClassFieldsType>S</ClassFieldsType>
+		<IncludeScope>4</IncludeScope>
+	</ClassFields>
+</file>

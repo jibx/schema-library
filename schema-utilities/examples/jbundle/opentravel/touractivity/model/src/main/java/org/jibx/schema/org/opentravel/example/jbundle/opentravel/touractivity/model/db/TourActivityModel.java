@@ -16,6 +16,8 @@ public interface TourActivityModel extends Rec
     public static final String TOUR_ACTIVITY_PRIMARY_KEY = "TourActivityPrimary";
 
     public static final String DESCRIPTION_KEY = "Description";
+    public static final String MAINT_SCREEN_CLASS = "org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.screen.TourActivityScreen";
+    public static final String GRID_SCREEN_CLASS = "org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.screen.TourActivityGridScreen";
 
     public static final String TOUR_ACTIVITY_FILE = "TourActivity";
     public static final String THIN_CLASS = "org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.thin.db.TourActivity";

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><file>
+	<LogicFile ID="1">
+		<LastChanged>2013-02-03T06:15:31</LastChanged>
+		<Deleted>N</Deleted>
+		<Sequence>50</Sequence>
+		<MethodName>openMainRecord</MethodName>
+		<LogicDescription/>
+		<MethodReturns/>
+		<MethodInterface/>
+		<MethodClassName>TourActivityScreen</MethodClassName>
+		<LogicSource>return new TourActivity(this);</LogicSource>
+		<LogicThrows/>
+		<Protection/>
+		<CopyFrom/>
+		<IncludeScope>4</IncludeScope>
+	</LogicFile>
+	<LogicFile ID="2">
+		<LastChanged>2013-02-03T06:16:46</LastChanged>
+		<Deleted>N</Deleted>
+		<Sequence>1,000</Sequence>
+		<MethodName>openMainRecord</MethodName>
+		<LogicDescription/>
+		<MethodReturns/>
+		<MethodInterface/>
+		<MethodClassName>TourActivityGridScreen</MethodClassName>
+		<LogicSource>return new TourActivity(this);</LogicSource>
+		<LogicThrows/>
+		<Protection/>
+		<CopyFrom/>
+		<IncludeScope>4</IncludeScope>
+	</LogicFile>
+	<LogicFile ID="3">
+		<LastChanged>2013-02-03T06:16:54</LastChanged>
+		<Deleted>N</Deleted>
+		<Sequence>1,000</Sequence>
+		<MethodName>setupSFields</MethodName>
+		<LogicDescription/>
+		<MethodReturns/>
+		<MethodInterface/>
+		<MethodClassName>TourActivityGridScreen</MethodClassName>
+		<LogicSource/>
+		<LogicThrows/>
+		<Protection/>
+		<CopyFrom/>
+		<IncludeScope>4</IncludeScope>
+	</LogicFile>
+</file>

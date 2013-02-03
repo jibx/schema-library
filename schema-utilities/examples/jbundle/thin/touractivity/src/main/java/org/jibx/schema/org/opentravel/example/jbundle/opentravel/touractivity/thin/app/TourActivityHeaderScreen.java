@@ -67,12 +67,9 @@ public class TourActivityHeaderScreen extends JScreen
     {
         super.addSubPanels(parent);
         
-        BaseApplet baseApplet = BaseApplet.getSharedInstance();
-        RemoteSession remoteSession = baseApplet.makeRemoteSession(m_remoteSession, ".test.vet.remote.CatSession");
-        TourActivity recCat = new TourActivity(this);
-        baseApplet.linkRemoteSessionTable(remoteSession, recCat, false);
-
-        TourActivityThinGridScreen gridScreen = new TourActivityThinGridScreen(parent, recCat);
+        TourActivityThinGridScreen gridScreen = new TourActivityThinGridScreen(parent, null);
+//        if (Contact.DATE_CHANGED.equalsIgnoreCase(fieldInfo.getFieldName()))
+  //          component = new org.jbundle.thin.base.screen.util.cal.JCalendarDualField(fieldInfo);
 
         m_gbconstraints.weightx = 0.0;                        // Minimum width to hold labels
         m_gbconstraints.anchor = GridBagConstraints.NORTHWEST;    // Labels right justified

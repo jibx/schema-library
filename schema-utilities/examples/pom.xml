@@ -15,8 +15,9 @@
   <description>JiBX schema - schema-utilities parent</description>
 
   <modules>
-    <!-- module>android</module -->
-    <!-- module>opentravel-touractivity-ws-service</module -->
+    <module>android</module>
+    <module>opentravel-touractivity-ws-service</module>
+    <module>jbundle</module>
   </modules>
 
 </project>

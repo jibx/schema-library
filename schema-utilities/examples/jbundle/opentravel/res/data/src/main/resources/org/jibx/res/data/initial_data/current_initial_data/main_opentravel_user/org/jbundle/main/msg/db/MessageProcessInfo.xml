@@ -1,0 +1,3990 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><file>
+	<MessageProcessInfo ID="1">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_HotelAvailRQOut</Code>
+		<Description>Hotel Pricing Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>3</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>2</LocalMessageProcessInfoID>
+		<MessageInfoID>2</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties><![CDATA[#Field properties
+#Wed Mar 03 14:21:36 PST 2010
+screen.screen=com.tourapp.tour.booking.message.hotel.screen.HotelAvailResponseScreen
+email.XSLTDocument=docs/styles/xsl/tour/message/getrates.xsl
+]]></Properties>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="2">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_HotelAvailRQ</Code>
+		<Description>Hotel Pricing Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>4</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>2</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.hotel.request.in.HotelRateRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="3">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_HotelAvailRS</Code>
+		<Description>Hotel Pricing Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>4</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="4">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_HotelAvailRSOut</Code>
+		<Description>Hotel Pricing Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>4</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="5">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_HotelAvailRQUpdate</Code>
+		<Description>Hotel Pricing Outbound Update Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>6</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>2</LocalMessageProcessInfoID>
+		<MessageInfoID>2</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties><![CDATA[#Field properties
+#Fri Oct 03 01:16:45 PDT 2008
+email.XSLTDocument=docs/styles/xsl/tour/message/getrates.xsl
+]]></Properties>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="6">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_HotelAvailRSUpdate</Code>
+		<Description>Hotel Pricing Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>4</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.hotel.response.in.BookingHotelRateMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="7">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_HotelAvailRQRQ</Code>
+		<Description>Hotel Availability Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>32</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>14</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.hotel.request.in.HotelAvailRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="8">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_HotelAvailRQRQUpdate</Code>
+		<Description>Hotel Availability Outbound Update Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>10</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>7</LocalMessageProcessInfoID>
+		<MessageInfoID>14</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties><![CDATA[#Field properties
+#Wed Mar 03 14:21:36 PST 2010
+screen.screen=com.tourapp.tour.booking.message.hotel.screen.HotelAvailResponseScreen
+email.XSLTDocument=docs/styles/xsl/tour/message/getinventory.xsl
+]]></Properties>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="9">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_HotelAvailRSRS</Code>
+		<Description>Hotel Availability Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>15</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="10">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_HotelAvailRSRSUpdate</Code>
+		<Description>Hotel Availability Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>15</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.hotel.response.in.BookingHotelAvailMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="11">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_HotelBookingRQ</Code>
+		<Description>Hotel Booking Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>13</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>18</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.hotel.request.in.HotelBookingRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="12">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_HotelBookingRQUpdate</Code>
+		<Description>Hotel Booking Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>14</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>11</LocalMessageProcessInfoID>
+		<MessageInfoID>18</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties><![CDATA[#Field properties
+#Fri Oct 03 01:18:38 PDT 2008
+email.XSLTDocument=docs/styles/xsl/tour/message/getbooking.xsl
+]]></Properties>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="13">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_HotelBookingRS</Code>
+		<Description>Hotel Booking Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>19</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="14">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_HotelBookingRSUpdate</Code>
+		<Description>Hotel Booking Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>19</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.hotel.response.in.BookingHotelBookingMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="15">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_HotelRateAvailRQ</Code>
+		<Description>Hotel Rate AND Availability Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>17</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>24</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.hotel.request.in.HotelRateAvailRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="16">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Hotel Rate AND Availability Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>18</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>15</LocalMessageProcessInfoID>
+		<MessageInfoID>24</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="17">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_HotelRateAvailRS</Code>
+		<Description>Hotel Rate AND Avail. Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>25</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="18">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_HotelRateAvailRQUpdate</Code>
+		<Description>Hotel Rate AND Avail Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>25</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.hotel.response.in.BookingHotelRateAvailMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="19">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_LandAvailRQRQ</Code>
+		<Description>Land Availability Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>21</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>29</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.land.request.in.LandAvailRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="20">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_LandAvailRQRQUpdate</Code>
+		<Description>Land Availability Outbound Update Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>22</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>19</LocalMessageProcessInfoID>
+		<MessageInfoID>29</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID>10</DefaultMessageTransportID>
+		<InitialMessageStatusID>5</InitialMessageStatusID>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="21">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_LandAvailRSRS</Code>
+		<Description>Land Availability Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>30</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="22">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_LandAvailRSRSUpdate</Code>
+		<Description>Land Availability Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>30</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.land.response.in.BookingLandAvailMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="23">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_LandBookingRQ</Code>
+		<Description>Land Booking Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>25</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>22</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.land.request.in.LandBookingRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="24">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_LandBookingRQUpdate</Code>
+		<Description>Land Booking Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>26</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>23</LocalMessageProcessInfoID>
+		<MessageInfoID>22</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="25">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_LandBookingRS</Code>
+		<Description>Land Booking Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>23</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="26">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_LandBookingRSUpdate</Code>
+		<Description>Land Booking Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>23</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.land.response.in.BookingLandBookingMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="27">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_LandAvailRQ</Code>
+		<Description>Land Pricing Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>29</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>10</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.land.request.in.LandRateRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="28">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_LandAvailRQUpdate</Code>
+		<Description>Land Pricing Outbound Update Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>30</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>27</LocalMessageProcessInfoID>
+		<MessageInfoID>10</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="29">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_LandAvailRS</Code>
+		<Description>Land Pricing Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>11</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="30">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_LandAvailRSUpdate</Code>
+		<Description>Land Pricing Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>11</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.land.response.in.BookingLandRateMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="31">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_HotelAvailRQRQOut</Code>
+		<Description>Hotel Availability Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>9</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>7</LocalMessageProcessInfoID>
+		<MessageInfoID>14</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties><![CDATA[#Field properties
+#Wed Mar 03 14:21:36 PST 2010
+email.XSLTDocument=docs/styles/xsl/tour/message/getinventory.xsl
+screen.screen=com.tourapp.tour.booking.message.hotel.screen.HotelAvailResponseScreen
+]]></Properties>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="32">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_HotelAvailRSOut</Code>
+		<Description>Hotel Availability Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>15</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="33">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Land Pricing Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>34</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>27</LocalMessageProcessInfoID>
+		<MessageInfoID>10</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="34">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Land Pricing Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>11</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="35">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Transportation Pricing Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>39</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>37</LocalMessageProcessInfoID>
+		<MessageInfoID>32</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="36">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Transportation Pricing Outbound Update Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>40</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>37</LocalMessageProcessInfoID>
+		<MessageInfoID>32</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="37">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Transportation Pricing Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>38</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>32</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.trans.request.in.TransRateRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="38">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Transportation Pricing Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>33</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="39">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Transportation Pricing Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>33</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="40">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Transportation Pricing Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>33</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.trans.response.in.BookingTransRateMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="42">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Cruise Pricing Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>47</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>44</LocalMessageProcessInfoID>
+		<MessageInfoID>42</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="43">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Cruise Pricing Outbound Update Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>46</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>44</LocalMessageProcessInfoID>
+		<MessageInfoID>42</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="44">
+		<LastChanged>2011-09-09T15:05:50</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Cruise Pricing Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>45</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>42</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.cruise.request.in.CruiseRateRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="45">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Cruise Pricing Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>43</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="46">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Cruise Pricing Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>43</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.cruise.response.in.BookingCruiseRateMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="47">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Cruise Pricing Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>43</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="48">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Air Pricing Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>71</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>50</LocalMessageProcessInfoID>
+		<MessageInfoID>36</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="49">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Air Pricing Outbound Update Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>70</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>50</LocalMessageProcessInfoID>
+		<MessageInfoID>36</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="50">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Air Pricing Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>72</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>36</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.air.request.in.AirRateRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="51">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Car Pricing Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>69</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>34</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.car.request.in.CarRateRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="52">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Car Pricing Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>68</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>51</LocalMessageProcessInfoID>
+		<MessageInfoID>34</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="53">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Car Pricing Outbound Update Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>67</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>51</LocalMessageProcessInfoID>
+		<MessageInfoID>34</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="54">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Item Pricing Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>66</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>40</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.item.request.in.ItemRateRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="55">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Item Pricing Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>65</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>54</LocalMessageProcessInfoID>
+		<MessageInfoID>40</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="56">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Item Pricing Outbound Update Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>64</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>54</LocalMessageProcessInfoID>
+		<MessageInfoID>40</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="57">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Tour Pricing Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>63</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>38</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.tour.request.in.TourRateRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="59">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Tour Pricing Outbound Update Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>61</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>57</LocalMessageProcessInfoID>
+		<MessageInfoID>38</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="60">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Tour Pricing Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>62</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>57</LocalMessageProcessInfoID>
+		<MessageInfoID>38</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="61">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Tour Pricing Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>39</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.tour.response.in.BookingTourRateMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="62">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Tour Pricing Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>39</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="63">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Tour Pricing Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>39</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="64">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Item Pricing Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>41</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.item.response.in.BookingItemRateMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="65">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Item Pricing Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>41</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="66">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Item Pricing Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>41</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="67">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Car Pricing Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>35</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.car.response.in.BookingCarRateMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="68">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Car Pricing Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>35</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="69">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Car Pricing Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>35</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="70">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Air Pricing Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>37</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.air.response.in.BookingAirRateMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="71">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Air Pricing Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>37</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="72">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Air Pricing Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>37</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="73">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Air Availability Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>44</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.air.response.in.BookingAirAvailMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="74">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Air Availability Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>44</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="75">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Air Availability Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>44</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="76">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Air Booking Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>56</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.air.response.in.BookingAirBookingMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="78">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Air Booking Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>56</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="79">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Car Availability Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>46</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.car.response.in.BookingCarAvailMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="80">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Car Availability Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>46</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="81">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Car Availability Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>46</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="82">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Car Booking Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>58</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.car.response.in.BookingCarBookingMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="83">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Car Booking Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>58</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="84">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Cruise Availability Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>48</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.cruise.response.in.BookingCruiseAvailMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="85">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Cruise Availability Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>48</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="86">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Cruise Availability Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>48</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="87">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Cruise Booking Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>60</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.cruise.response.in.BookingCruiseBookingMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="88">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Cruise Booking Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>60</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="89">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Item Availability Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>52</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.item.response.in.BookingItemAvailMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="90">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Item Availability Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>52</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="91">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Item Availability Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>52</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="92">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Item Booking Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>64</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.item.response.in.BookingItemBookingMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="93">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Item Booking Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>64</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="94">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Tour Availability Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>50</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.tour.response.in.BookingTourAvailMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="95">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Tour Availability Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>50</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="96">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Tour Booking Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>62</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.tour.response.in.BookingTourBookingMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="97">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Tour Booking Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>62</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="98">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Transportation Availability Inbound Update Respon</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>54</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.trans.response.in.BookingTransAvailMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="99">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Transportation Availability Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>54</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="100">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Transportation Availability Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>54</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="101">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Transportation Booking Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>66</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.trans.response.in.BookingTransAvailMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="102">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Transportation Booking Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>66</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="103">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Air Availability Outbound Update Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>73</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>105</LocalMessageProcessInfoID>
+		<MessageInfoID>45</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="104">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Air Availability Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>74</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>105</LocalMessageProcessInfoID>
+		<MessageInfoID>45</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="105">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Air Availability Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>75</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>45</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.air.request.in.AirAvailRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="106">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Air Booking Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>76</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>107</LocalMessageProcessInfoID>
+		<MessageInfoID>57</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="107">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Air Booking Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>78</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>57</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.air.request.in.AirBookingRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="108">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Car Availability Outbound Update Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>79</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>110</LocalMessageProcessInfoID>
+		<MessageInfoID>47</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="109">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Car Availability Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>80</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>110</LocalMessageProcessInfoID>
+		<MessageInfoID>47</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="110">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Car Availability Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>81</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>47</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.car.request.in.CarAvailRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="111">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Car Booking Outbound Update Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>82</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>112</LocalMessageProcessInfoID>
+		<MessageInfoID>59</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="112">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Car Booking Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>83</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>59</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.car.request.in.CarBookingRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="113">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Cruise Availability Outbound Update Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>84</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>115</LocalMessageProcessInfoID>
+		<MessageInfoID>49</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="114">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Cruise Availability Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>85</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>115</LocalMessageProcessInfoID>
+		<MessageInfoID>49</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="115">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Cruise Availability Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>86</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>49</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.cruise.request.in.CruiseAvailRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="116">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Cruise Booking Outbound Update Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>87</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>117</LocalMessageProcessInfoID>
+		<MessageInfoID>61</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="117">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Cruise Booking Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>88</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>61</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.cruise.request.in.CruiseBookingRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="118">
+		<LastChanged>2011-09-12T14:49:26</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Item Availability Outbound Update Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>89</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>120</LocalMessageProcessInfoID>
+		<MessageInfoID>53</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="119">
+		<LastChanged>2008-02-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Item Availability Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>90</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>120</LocalMessageProcessInfoID>
+		<MessageInfoID>53</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="120">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Item Availability Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>91</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>53</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.item.request.in.ItemAvailRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="121">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Item Booking Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>92</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>122</LocalMessageProcessInfoID>
+		<MessageInfoID>65</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="122">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Item Booking Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>93</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>65</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.item.request.in.ItemBookingRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="123">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Tour Availability Outbound Update Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>94</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>125</LocalMessageProcessInfoID>
+		<MessageInfoID>51</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="124">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Tour Availability Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>133</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>125</LocalMessageProcessInfoID>
+		<MessageInfoID>51</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="125">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Tour Availability Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>95</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>51</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.tour.request.in.TourAvailRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="126">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Tour Booking Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>96</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>127</LocalMessageProcessInfoID>
+		<MessageInfoID>63</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="127">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Tour Booking Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>97</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>63</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.tour.request.in.TourBookingRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="128">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Transportation Availability Outbound Update Reques</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>98</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>130</LocalMessageProcessInfoID>
+		<MessageInfoID>55</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="129">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Transportation Availability Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>100</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>130</LocalMessageProcessInfoID>
+		<MessageInfoID>55</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="130">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Transportation Availability Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>99</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>55</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.trans.request.in.TransAvailRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="131">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Transportation Booking Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>101</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>132</LocalMessageProcessInfoID>
+		<MessageInfoID>67</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="132">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Transportation Booking Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>102</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>67</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.trans.request.in.TransAvailRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="133">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Tour Availability Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>50</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="134">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>MANUAL</Code>
+		<Description>Outgoing manual message</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>31</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="135">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>ITINERARY</Code>
+		<Description>Itinerary</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>68</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID/>
+		<ProcessorClass/>
+		<Properties><![CDATA[#Field properties
+#Fri Aug 25 00:19:49 PDT 2006
+template=itinerary
+]]></Properties>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="136">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>INVOICE</Code>
+		<Description>Invoice</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>68</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID/>
+		<ProcessorClass/>
+		<Properties><![CDATA[#Field properties
+#Fri Aug 25 00:23:39 PDT 2006
+template=invoice
+]]></Properties>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="137">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>COVER</Code>
+		<Description>Cover Letter with detailed itinerary</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>68</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID/>
+		<ProcessorClass/>
+		<Properties><![CDATA[#Field properties
+#Fri Aug 25 00:22:02 PDT 2006
+template=cover-detailed
+]]></Properties>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="138">
+		<LastChanged>2008-02-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>BOOKING_MANUAL</Code>
+		<Description>Booking Customer Message (default)</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>68</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="139">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Sales itinerary (pdf)</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>68</MessageInfoID>
+		<MessageTypeID/>
+		<ProcessTypeID/>
+		<ProcessorClass/>
+		<Properties><![CDATA[#Field properties
+#Fri Aug 25 00:24:37 PDT 2006
+template=itinerary-fo
+]]></Properties>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="140">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Detailed itinerary (html)</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>68</MessageInfoID>
+		<MessageTypeID/>
+		<ProcessTypeID/>
+		<ProcessorClass/>
+		<Properties><![CDATA[#Field properties
+#Fri Aug 25 00:22:49 PDT 2006
+template=itinerary-detailed
+]]></Properties>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="142">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Agent sales letter with links</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>68</MessageInfoID>
+		<MessageTypeID/>
+		<ProcessTypeID/>
+		<ProcessorClass/>
+		<Properties><![CDATA[#Field properties
+#Fri Aug 25 00:20:45 PDT 2006
+template=agent-link-letter
+]]></Properties>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="143">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Sales invoice (pdf)</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>68</MessageInfoID>
+		<MessageTypeID/>
+		<ProcessTypeID/>
+		<ProcessorClass/>
+		<Properties><![CDATA[#Field properties
+#Fri Aug 25 00:24:09 PDT 2006
+template=invoice-fo
+]]></Properties>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="144">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Vouchers</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>69</MessageInfoID>
+		<MessageTypeID/>
+		<ProcessTypeID/>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="145">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Tour orders</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>69</MessageInfoID>
+		<MessageTypeID/>
+		<ProcessTypeID/>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="146">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>jobSchedulerQueue</Code>
+		<Description>Start the Job Scheduler</Description>
+		<QueueNameID>6</QueueNameID>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>31</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties><![CDATA[#Field properties
+#Wed Mar 03 15:15:50 PST 2010
+application=org.jbundle.main.schedule.app.JobSchedulerApp
+process2=org.jbundle.main.msg.process.MessageTimeoutProcess
+process1=org.jbundle.main.schedule.app.JobSchedulerProcess
+autostart=true
+]]></Properties>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="147">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_Cancel_RQ</Code>
+		<Description>Booking Cancellation Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>153</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>148</LocalMessageProcessInfoID>
+		<MessageInfoID>71</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="148">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_Cancel_RQRQ</Code>
+		<Description>Booking Cancellation Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>154</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>71</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.base.request.in.ProductCancelRequestMessageInProcessor</ProcessorClass>
+		<Properties><![CDATA[#Field properties
+#Wed Mar 03 14:21:36 PST 2010
+ota.safe=false
+]]></Properties>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="149">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_HotelResModify_RQOut</Code>
+		<Description>Hotel Booking Outbound Change Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>152</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>150</LocalMessageProcessInfoID>
+		<MessageInfoID>70</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="150">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_HotelResModify_RQ</Code>
+		<Description>Hotel Booking Inbound Change Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>151</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>70</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.hotel.request.in.HotelBookingRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="151">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_HotelResModify_RQOut</Code>
+		<Description>Hotel Booking Outbound Change Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>72</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="152">
+		<LastChanged>2011-09-09T15:49:04</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_HotelResModify_RS</Code>
+		<Description>Hotel Booking Inbound Change Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>72</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.hotel.response.in.BookingHotelBookingMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="153">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Booking Cancellation Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>73</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.base.response.in.BookingCancelMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="154">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Booking Cancellation Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>73</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="155">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Car Booking Change Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>157</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>156</LocalMessageProcessInfoID>
+		<MessageInfoID>83</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="156">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Car Booking Change Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>158</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>83</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.car.request.in.CarBookingRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="157">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Car Booking Change Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>82</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.car.response.in.BookingCarBookingMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="158">
+		<LastChanged>2011-09-09T15:00:59</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Car Booking Change Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>82</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="159">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Air Booking Change Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>161</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>74</MessageInfoID>
+		<MessageTypeID/>
+		<ProcessTypeID/>
+		<ProcessorClass>com.tourapp.tour.message.air.request.in.AirBookingRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="160">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Air Booking Change Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>162</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>159</LocalMessageProcessInfoID>
+		<MessageInfoID>74</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="161">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Air Booking Change Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>75</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="162">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Air Booking Change Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>75</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.air.response.in.BookingAirBookingMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="163">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Cruise Booking Change Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>166</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>164</LocalMessageProcessInfoID>
+		<MessageInfoID>77</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="164">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Cruise Booking Change Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>77</MessageInfoID>
+		<MessageTypeID/>
+		<ProcessTypeID/>
+		<ProcessorClass>com.tourapp.tour.message.cruise.request.in.CruiseBookingRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="165">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Cruise Booking Change Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>76</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="166">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Cruise Booking Change Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>76</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.cruise.response.in.BookingCruiseBookingMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="167">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Item Booking Change Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>170</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>168</LocalMessageProcessInfoID>
+		<MessageInfoID>79</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="168">
+		<LastChanged>2008-02-12T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Item Booking Change Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>169</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>79</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.item.request.in.ItemBookingRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="169">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Item Booking Change Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>78</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="170">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Item Booking Change Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>78</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.item.response.in.BookingItemBookingMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="171">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Land Booking Change Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>174</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>172</LocalMessageProcessInfoID>
+		<MessageInfoID>81</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="172">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Land Booking Change Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>173</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>81</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.land.request.in.LandBookingRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="173">
+		<LastChanged>2011-08-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Land Booking Change Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>80</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="174">
+		<LastChanged>2011-08-05T15:59:48</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Land Booking Change Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>80</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.land.response.in.BookingLandBookingMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="175">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Tour Booking Change Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>178</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>176</LocalMessageProcessInfoID>
+		<MessageInfoID>85</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="176">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Tour Booking Change Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>177</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>85</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.tour.request.in.TourBookingRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="177">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Tour Booking Change Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>84</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="178">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Tour Booking Change Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>84</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.tour.response.in.BookingTourBookingMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="179">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Transportation Booking Change Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>182</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>180</LocalMessageProcessInfoID>
+		<MessageInfoID>87</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="180">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Transportation Booking Change Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>181</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>87</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.trans.request.in.TransAvailRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="181">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Transportation Booking Change Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>86</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="182">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Transportation Booking Change Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>86</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.trans.response.in.BookingTransAvailMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="183">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Product Update Request Out Error Processor</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>88</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.base.error.ProductUpdateMessageOutErrorProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="184">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Product Request Out Error Processor</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>88</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.base.error.ProductMessageOutErrorProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="185">
+		<LastChanged>2011-08-05T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Product Request In Error Processor</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>88</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.base.error.ProductMessageInErrorProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="186">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Product Update Request In Error Processor</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>88</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.base.error.ProductUpdateMessageInErrorProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="187">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Product Reply In Error Update Processor</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>89</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.base.error.ProductReplyInUpdateErrorProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="188">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Product Reply Out Error Update Processor</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>89</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.base.error.ProductReplyOutUpdateErrorProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="189">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Product Reply In Error Processor</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>89</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.base.error.ProductReplyInErrorProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="190">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Product Reply Out Error Processor</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>89</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.base.error.ProductReplyOutErrorProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="191">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Hotel Information Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>196</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>99</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.hotel.request.in.HotelInfoRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="192">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Hotel Information Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>194</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>191</LocalMessageProcessInfoID>
+		<MessageInfoID>99</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="193">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Hotel Information Outbound Update Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>195</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>191</LocalMessageProcessInfoID>
+		<MessageInfoID>99</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="194">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Hotel Information Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>93</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="195">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Hotel Information Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>93</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.hotel.response.in.BookingHotelInfoMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="196">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Hotel Information Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>93</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="197">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>PingOutRQ</Code>
+		<Description>Ping Outgoing Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>200</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>198</LocalMessageProcessInfoID>
+		<MessageInfoID>106</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="198">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>PingInRQ</Code>
+		<Description>Ping Incoming Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>199</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>106</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.base.request.in.PingRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="199">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>PingOutRS</Code>
+		<Description>Ping Outgoing Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>107</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="200">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>PingInRS</Code>
+		<Description>Ping Incoming Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>107</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="201">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Air Information Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>206</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>90</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.air.request.in.AirInfoRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="202">
+		<LastChanged>2008-02-12T05:00:28</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Air Information Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>204</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>201</LocalMessageProcessInfoID>
+		<MessageInfoID>90</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="203">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Air Information Outbound Update Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>205</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>201</LocalMessageProcessInfoID>
+		<MessageInfoID>90</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="204">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Air Information Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>91</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="205">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Air Information Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>91</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.air.response.in.BookingAirInfoMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="206">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Air Information Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>91</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="207">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Car Information Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>95</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="208">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Car Information Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>95</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.car.response.in.BookingCarInfoMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="209">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Car Information Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>95</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="210">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Cruise Information Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>92</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="211">
+		<LastChanged>2011-08-05T15:59:48</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Cruise Information Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>92</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.cruise.response.in.BookingCruiseInfoMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="212">
+		<LastChanged>2011-07-01T02:32:54</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Cruise Information Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>92</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="213">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Item Information Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>101</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="214">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Item Information Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>101</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.item.response.in.BookingItemInfoMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="215">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Item Information Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>101</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="216">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Land Information Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>94</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="217">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Land Information Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>94</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.land.response.in.BookingLandInfoMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="218">
+		<LastChanged>2008-02-12T05:00:44</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Land Information Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>94</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="219">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Tour Information Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>96</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="220">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Tour Information Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>96</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.tour.response.in.BookingTourInfoMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="221">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Tour Information Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>96</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="222">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Transportation Information Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>97</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="223">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Transportation Information Inbound Update Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>97</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.trans.response.in.BookingTransInfoMsgReplyInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="224">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Transportation Information Outbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>97</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="225">
+		<LastChanged>2011-09-09T15:05:26</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Transportation Information Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>224</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>105</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.trans.request.in.TransInfoRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="226">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Transportation Information Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>222</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>225</LocalMessageProcessInfoID>
+		<MessageInfoID>105</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="227">
+		<LastChanged>2010-10-17T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Transportation Information Outbound Update Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>223</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>225</LocalMessageProcessInfoID>
+		<MessageInfoID>105</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="228">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Tour Information Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>221</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>104</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.tour.request.in.TourInfoRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="229">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Tour Information Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>219</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>228</LocalMessageProcessInfoID>
+		<MessageInfoID>104</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="230">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Tour Information Outbound Update Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>220</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>228</LocalMessageProcessInfoID>
+		<MessageInfoID>104</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="231">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Land Information Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>218</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>102</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.land.request.in.LandInfoRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="232">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Land Information Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>216</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>231</LocalMessageProcessInfoID>
+		<MessageInfoID>102</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="233">
+		<LastChanged>2011-09-05T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Land Information Outbound Update Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>217</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>231</LocalMessageProcessInfoID>
+		<MessageInfoID>102</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="234">
+		<LastChanged>2012-01-15T11:32:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Item Information Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>215</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>100</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.item.request.in.ItemInfoRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="235">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Item Information Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>213</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>234</LocalMessageProcessInfoID>
+		<MessageInfoID>100</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="236">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Item Information Outbound Update Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>214</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>234</LocalMessageProcessInfoID>
+		<MessageInfoID>100</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="237">
+		<LastChanged>0001-12-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Cruise Information Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>212</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>98</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.cruise.request.in.CruiseInfoRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="238">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Cruise Information Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>210</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>237</LocalMessageProcessInfoID>
+		<MessageInfoID>98</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="239">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Cruise Information Outbound Update Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>211</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>237</LocalMessageProcessInfoID>
+		<MessageInfoID>98</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="240">
+		<LastChanged>2011-09-09T15:59:47</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Car Information Inbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>209</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>103</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass>com.tourapp.tour.message.car.request.in.CarInfoRequestMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="241">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Car Information Outbound Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>207</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>240</LocalMessageProcessInfoID>
+		<MessageInfoID>103</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="242">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Car Information Outbound Update Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>208</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>240</LocalMessageProcessInfoID>
+		<MessageInfoID>103</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="243">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>CurrencyRateOut</Code>
+		<Description>Currency Conversion Rate Request</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>244</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>108</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="244">
+		<LastChanged>2008-02-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>ConversionRateResponseIn</Code>
+		<Description>Currency Conversion Rate Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>109</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="245">
+		<LastChanged>2011-08-05T15:59:48</LastChanged>
+		<Deleted>N</Deleted>
+		<Code/>
+		<Description>Hotel Rate AND Availability Outbound Update Req.</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>18</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID>15</LocalMessageProcessInfoID>
+		<MessageInfoID>24</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties><![CDATA[#Field properties
+#Wed Mar 03 14:21:36 PST 2010
+screen.screen=com.tourapp.tour.booking.message.hotel.screen.HotelRateAvailResponseScreen
+email.XSLTDocument=docs/styles/xsl/tour/message/getrateavail.xsl
+]]></Properties>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="246">
+		<LastChanged>2011-08-05T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>OTA_HotelRateAvailRSRS</Code>
+		<Description>Hotel Rate AND Availability Inbound Response</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>25</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="247">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>StandardMessageRS</Code>
+		<Description>Standard Message Response Out</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>111</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="248">
+		<LastChanged>2012-01-15T11:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>StandardMessageResponse</Code>
+		<Description>Standard Message Response In</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>111</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>2</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="249">
+		<LastChanged>2011-09-09T15:49:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>RunRemoteProcessRQ</Code>
+		<Description>Run Remote Process Request Out</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID/>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>110</MessageInfoID>
+		<MessageTypeID>1</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass/>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+	<MessageProcessInfo ID="250">
+		<LastChanged>2011-08-05T15:59:05</LastChanged>
+		<Deleted>N</Deleted>
+		<Code>RunRemoteProcess</Code>
+		<Description>Run Remote Process Request In</Description>
+		<QueueNameID/>
+		<ReplyMessageProcessInfoID>247</ReplyMessageProcessInfoID>
+		<LocalMessageProcessInfoID/>
+		<MessageInfoID>110</MessageInfoID>
+		<MessageTypeID>2</MessageTypeID>
+		<ProcessTypeID>1</ProcessTypeID>
+		<ProcessorClass>org.jbundle.base.message.remote.RunRemoteProcessMessageInProcessor</ProcessorClass>
+		<Properties/>
+		<DefaultMessageTransportID/>
+		<InitialMessageStatusID/>
+	</MessageProcessInfo>
+</file>

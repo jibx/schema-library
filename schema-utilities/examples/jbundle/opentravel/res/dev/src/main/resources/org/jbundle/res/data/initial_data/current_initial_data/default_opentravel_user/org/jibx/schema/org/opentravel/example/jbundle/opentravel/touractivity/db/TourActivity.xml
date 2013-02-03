@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><file>
+	<TourActivity ID="1">
+		<LastChanged>2013-02-01T13:15:56</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Product 1</Description>
+		<MinPrice>10.00</MinPrice>
+		<MaxPrice>20.00</MaxPrice>
+	</TourActivity>
+	<TourActivity ID="2">
+		<LastChanged>2013-02-01T13:16:03</LastChanged>
+		<Deleted>N</Deleted>
+		<Description>Product 2</Description>
+		<MinPrice>20.00</MinPrice>
+		<MaxPrice>30.00</MaxPrice>
+	</TourActivity>
+</file>

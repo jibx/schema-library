@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><file>
+	<Menus ID="1">
+		<LastChanged>2012-12-24T10:46:32</LastChanged>
+		<Deleted>N</Deleted>
+		<Name>Main menu</Name>
+		<ParentFolderID>0</ParentFolderID>
+		<Sequence>10</Sequence>
+		<Comment/>
+		<Code>Main</Code>
+		<Type>menu</Type>
+		<AutoDesc>Y</AutoDesc>
+		<Program>Main</Program>
+		<Params/>
+		<IconResource/>
+		<Keywords/>
+		<XmlData/>
+		<MenusHelp/>
+	</Menus>
+	<Menus ID="2">
+		<LastChanged>2012-12-24T11:01:10</LastChanged>
+		<Deleted>N</Deleted>
+		<Name>Empty</Name>
+		<ParentFolderID>1</ParentFolderID>
+		<Sequence>10</Sequence>
+		<Comment>The menu is not set up yet</Comment>
+		<Code/>
+		<Type/>
+		<AutoDesc>Y</AutoDesc>
+		<Program/>
+		<Params/>
+		<IconResource/>
+		<Keywords/>
+		<XmlData/>
+		<MenusHelp/>
+	</Menus>
+	<Menus ID="3">
+		<LastChanged>2013-02-01T12:10:34</LastChanged>
+		<Deleted>N</Deleted>
+		<Name>Go</Name>
+		<ParentFolderID>1</ParentFolderID>
+		<Sequence>20</Sequence>
+		<Comment/>
+		<Code/>
+		<Type>record</Type>
+		<AutoDesc>Y</AutoDesc>
+		<Program>org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.db.TourActivity</Program>
+		<Params/>
+		<IconResource/>
+		<Keywords/>
+		<XmlData/>
+		<MenusHelp/>
+	</Menus>
+</file>

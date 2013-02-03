@@ -56,6 +56,20 @@ public class TourActivity extends VirtualRecord
         return (m_tableName == null) ? Record.formatTableNames(TOUR_ACTIVITY_FILE, bAddQuotes) : super.getTableNames(bAddQuotes);
     }
     /**
+     * Make a default screen.
+     */
+    public ScreenParent makeScreen(ScreenLoc itsLocation, ComponentParent parentScreen, int iDocMode, Map<String,Object> properties)
+    {
+        ScreenParent screen = null;
+        if ((iDocMode & ScreenConstants.MAINT_MODE) == ScreenConstants.MAINT_MODE)
+            screen = Record.makeNewScreen(MAINT_SCREEN_CLASS, itsLocation, parentScreen, iDocMode | ScreenConstants.DONT_DISPLAY_FIELD_DESC, properties, this, true);
+        else if ((iDocMode & ScreenConstants.DISPLAY_MODE) == ScreenConstants.DISPLAY_MODE)
+            screen = Record.makeNewScreen(GRID_SCREEN_CLASS, itsLocation, parentScreen, iDocMode | ScreenConstants.DONT_DISPLAY_FIELD_DESC, properties, this, true);
+        else
+            screen = super.makeScreen(itsLocation, parentScreen, iDocMode, properties);
+        return screen;
+    }
+    /**
      * Add this field in the Record's field sequence.
      */
     public BaseField setupField(int iFieldSeq)
