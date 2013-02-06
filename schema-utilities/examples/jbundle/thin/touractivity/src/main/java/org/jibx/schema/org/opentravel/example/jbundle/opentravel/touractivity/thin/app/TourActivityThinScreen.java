@@ -10,29 +10,17 @@ package org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.t
  *  @author Don Corley don@tourgeek.com
  *  @version 1.0.0.
  */
-import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.FocusEvent;
-import java.util.Map;
 
 import javax.swing.JComponent;
 
-import org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.thin.db.TourActivity;
-import org.jbundle.thin.base.db.Constants;
 import org.jbundle.thin.base.db.Converter;
-import org.jbundle.thin.base.db.FieldInfo;
 import org.jbundle.thin.base.db.FieldList;
-import org.jbundle.thin.base.remote.RemoteException;
-import org.jbundle.thin.base.remote.RemoteSession;
-import org.jbundle.thin.base.remote.RemoteTable;
-import org.jbundle.thin.base.remote.RemoteTask;
-import org.jbundle.thin.base.screen.BaseApplet;
 import org.jbundle.thin.base.screen.JBaseScreen;
 import org.jbundle.thin.base.screen.JScreen;
-import org.jbundle.thin.base.screen.grid.JCellRemoteComboBox;
-import org.jbundle.thin.base.screen.util.JFSImage;
-import org.jbundle.thin.base.screen.util.JFSTextScroller;
 import org.jbundle.thin.base.util.message.ThinMessageManager;
+import org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.thin.db.TourActivity;
 
 
 /**
@@ -78,6 +66,10 @@ public class TourActivityThinScreen extends JScreen
      */
     public boolean addSubPanels(Container parent)
     {
+        FieldList record = this.getFieldList();
+        record.getField(TourActivity.AVAILABILITY_DAYS).setHidden(true);
+        record.getField(TourActivity.START_DATE).setHidden(true);
+        record.getField(TourActivity.END_DATE).setHidden(true);
         return super.addSubPanels(parent);
     }
     /**

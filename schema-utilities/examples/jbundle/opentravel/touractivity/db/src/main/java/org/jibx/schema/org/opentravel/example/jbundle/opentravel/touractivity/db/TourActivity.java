@@ -16,6 +16,7 @@ import org.jbundle.base.util.*;
 import org.jbundle.model.*;
 import org.jbundle.model.db.*;
 import org.jbundle.model.screen.*;
+import java.util.*;
 import org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.model.db.*;
 
 /**
@@ -26,6 +27,7 @@ public class TourActivity extends VirtualRecord
 {
     private static final long serialVersionUID = 1L;
 
+    protected Date targetDate = null;
     /**
      * Default constructor.
      */
@@ -93,9 +95,13 @@ public class TourActivity extends VirtualRecord
         if (iFieldSeq == 3)
             field = new StringField(this, DESCRIPTION, Constants.DEFAULT_FIELD_LENGTH, null, null);
         if (iFieldSeq == 4)
-            field = new CurrencyField(this, MIN_PRICE, Constants.DEFAULT_FIELD_LENGTH, null, null);
+            field = new CurrencyField(this, PRICE, Constants.DEFAULT_FIELD_LENGTH, null, null);
         if (iFieldSeq == 5)
-            field = new CurrencyField(this, MAX_PRICE, Constants.DEFAULT_FIELD_LENGTH, null, null);
+            field = new ShortField(this, AVAILABILITY_DAYS, Constants.DEFAULT_FIELD_LENGTH, null, null);
+        if (iFieldSeq == 6)
+            field = new DateField(this, START_DATE, Constants.DEFAULT_FIELD_LENGTH, null, null);
+        if (iFieldSeq == 7)
+            field = new DateField(this, END_DATE, Constants.DEFAULT_FIELD_LENGTH, null, null);
         if (field == null)
             field = super.setupField(iFieldSeq);
         return field;
@@ -119,6 +125,44 @@ public class TourActivity extends VirtualRecord
         if (keyArea == null)
             keyArea = super.setupKey(iKeyArea);     
         return keyArea;
+    }
+    /**
+     * Open Method.
+     */
+    public void open() throws DBException
+    {
+        super.open();
+    }
+    /**
+     * SetTargetDate Method.
+     */
+    public Object setTargetDate(Date date)
+    {
+        targetDate = date;
+        Map<String, Object> properties = new HashMap<String, Object>();
+        properties.put(TARGET_DATE, targetDate);
+        try {
+            return this.handleRemoteCommand(SET_FILTER, properties);
+        } catch (Exception ex) {
+            return null;    // Ignore
+        }
+    }
+    /**
+     * Do a remote command.
+     * @param strCommand The command
+     * @param properties The properties for the command
+     * @return The return value or Boolean.FALSE if not handled.
+     */
+    public Object doRemoteCommand(String strCommand, Map<String, Object> properties)
+    {
+        if (SET_FILTER.equalsIgnoreCase(strCommand))
+            if (properties != null)
+                if (properties.get(TARGET_DATE) instanceof Date)
+            {
+                targetDate = (Date)properties.get(TARGET_DATE);
+                return Boolean.TRUE;
+            }
+        return super.doRemoteCommand(strCommand, properties);
     }
 
 }

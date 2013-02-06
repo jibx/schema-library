@@ -62,6 +62,23 @@ public class TourActivityGridScreen extends GridScreen
         return new TourActivity(this);
     }
     /**
+     * Add the screen fields.
+     * Override this to create (and return) the screen record for this recordowner.
+     * @return The screen record.
+     */
+    public Record addScreenRecord()
+    {
+        return new TourActivityScreenRecord(this);
+    }
+    /**
+     * Add button(s) to the toolbar.
+     */
+    public void addToolbarButtons(ToolScreen toolScreen)
+    {
+        super.addToolbarButtons(toolScreen);
+        this.getScreenRecord().getField(TourActivityScreenRecord.TARGET_DATE).setupDefaultView(toolScreen.getNextLocation(ScreenConstants.RIGHT_WITH_DESC, ScreenConstants.SET_ANCHOR), toolScreen, ScreenConstants.DEFAULT_DISPLAY);
+    }
+    /**
      * SetupSFields Method.
      */
     public void setupSFields()

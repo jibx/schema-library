@@ -13,6 +13,7 @@ public class TourActivity extends FieldList
 {
     private static final long serialVersionUID = 1L;
 
+    protected Date targetDate = null;
 
     public TourActivity()
     {
@@ -54,10 +55,16 @@ public class TourActivity extends FieldList
         field.setDataClass(Boolean.class);
         field.setHidden(true);
         field = new FieldInfo(this, DESCRIPTION, Constants.DEFAULT_FIELD_LENGTH, null, null);
-        field = new FieldInfo(this, MIN_PRICE, 18, null, null);
+        field = new FieldInfo(this, PRICE, 18, null, null);
         field.setDataClass(Double.class);
-        field = new FieldInfo(this, MAX_PRICE, 18, null, null);
-        field.setDataClass(Double.class);
+        field = new FieldInfo(this, AVAILABILITY_DAYS, 5, null, null);
+        field.setDataClass(Short.class);
+        field = new FieldInfo(this, START_DATE, 12, null, null);
+        field.setDataClass(Date.class);
+        field.setScale(Constants.DATE_ONLY);
+        field = new FieldInfo(this, END_DATE, 12, null, null);
+        field.setDataClass(Date.class);
+        field.setScale(Constants.DATE_ONLY);
     }
     /**
     * Set up the key areas.
@@ -69,6 +76,20 @@ public class TourActivity extends FieldList
         keyArea.addKeyField(ID, Constants.ASCENDING);
         keyArea = new KeyAreaInfo(this, Constants.SECONDARY_KEY, DESCRIPTION_KEY);
         keyArea.addKeyField(DESCRIPTION, Constants.ASCENDING);
+    }
+    /**
+     * SetTargetDate Method.
+     */
+    public Object setTargetDate(Date date)
+    {
+        targetDate = date;
+        Map<String, Object> properties = new HashMap<String, Object>();
+        properties.put(TARGET_DATE, targetDate);
+        try {
+            return this.handleRemoteCommand(SET_FILTER, properties);
+        } catch (Exception ex) {
+            return null;    // Ignore
+        }
     }
 
 }
