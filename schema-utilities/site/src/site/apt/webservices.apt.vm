@@ -53,9 +53,9 @@ Web service example
  features:install cxf cxf-databinding-jibx http obr
 
  obr:addurl http://www.jibx.org/repository.xml
- obr:start -d org.jibx.schema.org.opentravel._2011B.ping.ws.service
- obr:start -d org.jibx.schema.org.opentravel._2011B.ping.ws.rest
- obr:start -d org.jibx.schema.org.opentravel._2011B.ping.ws.soap
+ obr:start -d org.jibx.schema.org.opentravel._2012B.ping.ws.service
+ obr:start -d org.jibx.schema.org.opentravel._2012B.ping.ws.rest
+ obr:start -d org.jibx.schema.org.opentravel._2012B.ping.ws.soap
 +-----+
 
  You just added cxf and a web server to your OSGi container. Then you started a REST and SOAP server and your ping web service.
