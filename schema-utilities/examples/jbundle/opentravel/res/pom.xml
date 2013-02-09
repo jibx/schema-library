@@ -5,18 +5,18 @@
 
   <parent>
     <groupId>org.jibx.schema.org.opentravel.example.jbundle</groupId>
-    <artifactId>jibx-example-jbundle-reactor</artifactId>
+    <artifactId>jibx-example-jbundle-opentravel-reactor</artifactId>
     <version>1.0.9-SNAPSHOT</version>
   </parent>
 
-  <artifactId>jibx-example-jbundle-opentravel-reactor</artifactId>
+  <artifactId>jibx-example-jbundle-opentravel-res-reactor</artifactId>
 
-  <name>jibx-example-jbundle-opentravel-reactor</name>
+  <name>jibx-example-jbundle-opentravel-res-reactor</name>
   <packaging>pom</packaging>
 
   <modules>
-    <module>touractivity</module>
-    <module>res</module>
+    <module>data</module>
+    <module>dev</module>
   </modules>
 
 </project>

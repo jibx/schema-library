@@ -44,6 +44,16 @@
       <version>${schema-library-version-range}</version>
     </dependency>
     <dependency>
+      <groupId>org.jibx.schema.org.opentravel.example.jbundle</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.example.jbundle.res.data</artifactId>
+      <version>${schema-library-version-range}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.example.jbundle</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.example.jbundle.res.dev</artifactId>
+      <version>${schema-library-version-range}</version>
+    </dependency>
+    <dependency>
        <groupId>org.jbundle.config.dep</groupId>
        <artifactId>jbundle-config-dep-all</artifactId>
        <version>${jbundle-version}</version>
