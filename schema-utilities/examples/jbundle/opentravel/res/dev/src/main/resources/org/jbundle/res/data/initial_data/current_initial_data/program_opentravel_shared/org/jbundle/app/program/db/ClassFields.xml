@@ -59,4 +59,64 @@
 		<ClassFieldsType>S</ClassFieldsType>
 		<IncludeScope>4</IncludeScope>
 	</ClassFields>
+	<ClassFields ID="5">
+		<LastChanged>2013-02-08T22:10:11</LastChanged>
+		<Deleted>N</Deleted>
+		<ClassInfoClassName>TourActivity</ClassInfoClassName>
+		<ClassInfoID/>
+		<ClassFieldClass>String</ClassFieldClass>
+		<ClassFieldSequence>30</ClassFieldSequence>
+		<ClassFieldName>TARGET_DATE</ClassFieldName>
+		<ClassFieldDesc/>
+		<ClassFieldProtect>public static final</ClassFieldProtect>
+		<ClassFieldInitial/>
+		<ClassFieldInitialValue>"targetDate"</ClassFieldInitialValue>
+		<ClassFieldsType>N</ClassFieldsType>
+		<IncludeScope>4</IncludeScope>
+	</ClassFields>
+	<ClassFields ID="6">
+		<LastChanged>2013-02-08T22:10:31</LastChanged>
+		<Deleted>N</Deleted>
+		<ClassInfoClassName>TourActivity</ClassInfoClassName>
+		<ClassInfoID/>
+		<ClassFieldClass>String</ClassFieldClass>
+		<ClassFieldSequence>40</ClassFieldSequence>
+		<ClassFieldName>SET_FILTER</ClassFieldName>
+		<ClassFieldDesc/>
+		<ClassFieldProtect>public static final</ClassFieldProtect>
+		<ClassFieldInitial/>
+		<ClassFieldInitialValue>"setFilter"</ClassFieldInitialValue>
+		<ClassFieldsType>N</ClassFieldsType>
+		<IncludeScope>4</IncludeScope>
+	</ClassFields>
+	<ClassFields ID="7">
+		<LastChanged>2013-02-08T22:21:10</LastChanged>
+		<Deleted>N</Deleted>
+		<ClassInfoClassName>TourActivity</ClassInfoClassName>
+		<ClassInfoID/>
+		<ClassFieldClass>Date</ClassFieldClass>
+		<ClassFieldSequence>50</ClassFieldSequence>
+		<ClassFieldName>targetDate</ClassFieldName>
+		<ClassFieldDesc/>
+		<ClassFieldProtect/>
+		<ClassFieldInitial/>
+		<ClassFieldInitialValue>null</ClassFieldInitialValue>
+		<ClassFieldsType>N</ClassFieldsType>
+		<IncludeScope>3</IncludeScope>
+	</ClassFields>
+	<ClassFields ID="8">
+		<LastChanged>2013-02-08T22:16:10</LastChanged>
+		<Deleted>N</Deleted>
+		<ClassInfoClassName>TourActivity</ClassInfoClassName>
+		<ClassInfoID/>
+		<ClassFieldClass>java.util</ClassFieldClass>
+		<ClassFieldSequence>0</ClassFieldSequence>
+		<ClassFieldName/>
+		<ClassFieldDesc/>
+		<ClassFieldProtect>public static final</ClassFieldProtect>
+		<ClassFieldInitial/>
+		<ClassFieldInitialValue/>
+		<ClassFieldsType>P</ClassFieldsType>
+		<IncludeScope>4</IncludeScope>
+	</ClassFields>
 </file>

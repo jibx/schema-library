@@ -7,8 +7,8 @@
 		<SourceDirectory>src/main/java/</SourceDirectory>
 		<ResourcesDirectory>src/main/resources/</ResourcesDirectory>
 		<ClassDirectory>target/classes/</ClassDirectory>
-		<ArchiveDirectory>workspace-jibx/jibx/schema-library/schema-utilities/examples/jbundle/opentravel/res/data/src/main/re</ArchiveDirectory>
-		<DevArchiveDirectory>workspace-jibx/jibx/schema-library/schema-utilities/examples/jbundle/opentravel/res/data/src/main/re</DevArchiveDirectory>
+		<ArchiveDirectory>workspace-jibx/jibx/schema-library/schema-utilities/examples/jbundle/opentravel/res/data/src/main/resources</ArchiveDirectory>
+		<DevArchiveDirectory>workspace-jibx/jibx/schema-library/schema-utilities/examples/jbundle/opentravel/res/dev/src/main/resources</DevArchiveDirectory>
 		<ResourceType>Properties</ResourceType>
 		<ClassResourceType>Properties</ClassResourceType>
 		<PackageName/>

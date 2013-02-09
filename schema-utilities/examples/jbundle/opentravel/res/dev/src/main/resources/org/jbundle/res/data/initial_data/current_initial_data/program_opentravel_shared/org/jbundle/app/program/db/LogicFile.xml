@@ -17,7 +17,7 @@
 	<LogicFile ID="2">
 		<LastChanged>2013-02-03T06:16:46</LastChanged>
 		<Deleted>N</Deleted>
-		<Sequence>1,000</Sequence>
+		<Sequence>20</Sequence>
 		<MethodName>openMainRecord</MethodName>
 		<LogicDescription/>
 		<MethodReturns/>
@@ -32,13 +32,88 @@
 	<LogicFile ID="3">
 		<LastChanged>2013-02-03T06:16:54</LastChanged>
 		<Deleted>N</Deleted>
-		<Sequence>1,000</Sequence>
+		<Sequence>100</Sequence>
 		<MethodName>setupSFields</MethodName>
 		<LogicDescription/>
 		<MethodReturns/>
 		<MethodInterface/>
 		<MethodClassName>TourActivityGridScreen</MethodClassName>
 		<LogicSource/>
+		<LogicThrows/>
+		<Protection/>
+		<CopyFrom/>
+		<IncludeScope>4</IncludeScope>
+	</LogicFile>
+	<LogicFile ID="4">
+		<LastChanged>2013-02-08T22:14:23</LastChanged>
+		<Deleted>N</Deleted>
+		<Sequence>100</Sequence>
+		<MethodName>setTargetDate</MethodName>
+		<LogicDescription/>
+		<MethodReturns>Object</MethodReturns>
+		<MethodInterface>Date date</MethodInterface>
+		<MethodClassName>TourActivity</MethodClassName>
+		<LogicSource><![CDATA[targetDate = date;
+Map<String, Object> properties = new HashMap<String, Object>();
+properties.put(TARGET_DATE, targetDate);
+try {
+    return this.handleRemoteCommand(SET_FILTER, properties);
+} catch (Exception ex) {
+    return null;    // Ignore
+}]]></LogicSource>
+		<LogicThrows/>
+		<Protection/>
+		<CopyFrom/>
+		<IncludeScope>7</IncludeScope>
+	</LogicFile>
+	<LogicFile ID="5">
+		<LastChanged>2013-02-08T22:17:14</LastChanged>
+		<Deleted>N</Deleted>
+		<Sequence>200</Sequence>
+		<MethodName>doRemoteCommand</MethodName>
+		<LogicDescription/>
+		<MethodReturns/>
+		<MethodInterface/>
+		<MethodClassName>TourActivity</MethodClassName>
+		<LogicSource><![CDATA[if (SET_FILTER.equalsIgnoreCase(strCommand))
+    if (properties != null)
+        if (properties.get(TARGET_DATE) instanceof Date)
+    {
+        targetDate = (Date)properties.get(TARGET_DATE);
+        return Boolean.TRUE;
+    }
+return super;]]></LogicSource>
+		<LogicThrows/>
+		<Protection/>
+		<CopyFrom/>
+		<IncludeScope>1</IncludeScope>
+	</LogicFile>
+	<LogicFile ID="6">
+		<LastChanged>2013-02-08T22:12:53</LastChanged>
+		<Deleted>N</Deleted>
+		<Sequence>30</Sequence>
+		<MethodName>addScreenRecord</MethodName>
+		<LogicDescription/>
+		<MethodReturns/>
+		<MethodInterface/>
+		<MethodClassName>TourActivityGridScreen</MethodClassName>
+		<LogicSource>return new TourActivityScreenRecord(this);</LogicSource>
+		<LogicThrows/>
+		<Protection/>
+		<CopyFrom/>
+		<IncludeScope>4</IncludeScope>
+	</LogicFile>
+	<LogicFile ID="7">
+		<LastChanged>2013-02-08T22:13:11</LastChanged>
+		<Deleted>N</Deleted>
+		<Sequence>40</Sequence>
+		<MethodName>addToolbarButtons</MethodName>
+		<LogicDescription/>
+		<MethodReturns/>
+		<MethodInterface/>
+		<MethodClassName>TourActivityGridScreen</MethodClassName>
+		<LogicSource><![CDATA[super;
+this.getScreenRecord().getField(TourActivityScreenRecord.TARGET_DATE).setupDefaultView(toolScreen.getNextLocation(ScreenConstants.RIGHT_WITH_DESC, ScreenConstants.SET_ANCHOR), toolScreen, ScreenConstants.DEFAULT_DISPLAY);]]></LogicSource>
 		<LogicThrows/>
 		<Protection/>
 		<CopyFrom/>
