@@ -127,13 +127,6 @@ public class TourActivity extends VirtualRecord
         return keyArea;
     }
     /**
-     * Open Method.
-     */
-    public void open() throws DBException
-    {
-        super.open();
-    }
-    /**
      * SetTargetDate Method.
      */
     public Object setTargetDate(Date date)
