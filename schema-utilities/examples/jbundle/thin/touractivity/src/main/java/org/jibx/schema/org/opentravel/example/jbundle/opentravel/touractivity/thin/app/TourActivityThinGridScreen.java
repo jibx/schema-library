@@ -11,12 +11,15 @@ package org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.t
  *  @version 1.0.0.
  */
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.util.Date;
 
 import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
+import org.jbundle.model.db.Convert;
 import org.jbundle.thin.base.db.Constants;
 import org.jbundle.thin.base.db.FieldInfo;
 import org.jbundle.thin.base.db.FieldList;
@@ -26,7 +29,6 @@ import org.jbundle.thin.base.screen.grid.JGridScreen;
 import org.jbundle.thin.base.screen.grid.JGridScreenToolbar;
 import org.jbundle.thin.base.screen.util.cal.JCalendarDualField;
 import org.jbundle.thin.base.util.message.ThinMessageManager;
-import org.jbundle.util.jcalendarbutton.JCalendarPopup;
 import org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.thin.db.TourActivity;
 
 
@@ -36,7 +38,7 @@ import org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.th
  * Data fields in the second column aligned left.
  */
 public class TourActivityThinGridScreen extends JGridScreen
-    implements PropertyChangeListener
+implements FocusListener
 {
     private static final long serialVersionUID = 1L;
 
@@ -83,12 +85,9 @@ public class TourActivityThinGridScreen extends JGridScreen
      */
     public JComponent createToolbar()
     {
-        addPropertyChangeListener(JCalendarPopup.DATE_PARAM, this);
-        
         return new JGridScreenToolbar(this, null)
         {
             private static final long serialVersionUID = 1L;
-
             /**
              * Add the buttons to this window.
              * Override this to include buttons other than the default buttons.
@@ -96,32 +95,65 @@ public class TourActivityThinGridScreen extends JGridScreen
             public void addButtons()
             {
                 super.addButtons();
-//                this.addButton(Constants.BACK);
-                FieldInfo field = new FieldInfo(null, "Date", Constants.DEFAULT_FIELD_LENGTH, null, null)
-                {
-                    public int setData(Object vpData, boolean bDisplayOption, int iMoveMode)
-                    {
-                        int error = super.setData(vpData, bDisplayOption, iMoveMode);
-                        System.out.println("----------- " + vpData);
-                        return error;
-                    }
-                };
-                field.setDataClass(Date.class);
-                JCalendarDualField component = new JCalendarDualField(field);
-
-                field.addComponent(component);
-                component.setConverter(field);
-                
+                this.add(new JLabel("Date"));
+                MyCalendarDualField component = new MyCalendarDualField(null);
                 this.add(component);
+                component.addFocusListener((TourActivityThinGridScreen)getToolbarParent());
             }            
         };
         
     }
+    class MyCalendarDualField extends JCalendarDualField
+    {
+        private static final long serialVersionUID = 1L;
+        public MyCalendarDualField(FieldInfo field)
+        {
+            super(field);
+        }
+        public void init(Convert converter, boolean bAddCalendarButton, boolean bAddTimeButton)
+        {
+            if (converter == null)
+            {
+                converter = new FieldInfo(null, "Date", Constants.DEFAULT_FIELD_LENGTH, null, null)
+                {
+                    private static final long serialVersionUID = 1L;
+
+                    public int setData(Object vpData, boolean bDisplayOption, int iMoveMode)
+                    {
+                        Date oldDate = null;
+                        if (this.getData() instanceof Date)
+                            oldDate = (Date)this.getData();
+                        int error = super.setData(vpData, bDisplayOption, iMoveMode);
+                        if (((this.getData() != null) && (!this.getData().equals(oldDate)))
+                            || ((this.getData() == null) && (oldDate != null)))
+                        {
+                            TourActivity record = (TourActivity)getFieldList();
+                            record.setTargetDate((Date)this.getData());
+                            record.getTable().close();
+                            getGridModel().resetTheModel();
+                        }
+                        return error;
+                    }
+                };
+                ((FieldInfo)converter).setDataClass(Date.class);
+            }
+            super.init(converter, bAddCalendarButton, bAddTimeButton);
+        }
+    };
     @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-        // TODO Auto-generated method stub
-        
+    public void focusGained(FocusEvent e) {
     }
+    @Override
+    public void focusLost(FocusEvent e) {
+        if (e.getComponent() instanceof JTextField)
+            if (e.getComponent().getParent() instanceof MyCalendarDualField)
+        {
+            Convert converter = ((MyCalendarDualField)e.getComponent().getParent()).getConverter();
+            if (converter != null)
+                if (converter.getField() != null)
+                    converter.getField().setString(((JTextField)e.getComponent()).getText(), Constants.DISPLAY, Constants.SCREEN_MOVE);
+        }
+    }            
     /**
      * Build the list of fields that make up the screen.
      * Override this to create a new record.

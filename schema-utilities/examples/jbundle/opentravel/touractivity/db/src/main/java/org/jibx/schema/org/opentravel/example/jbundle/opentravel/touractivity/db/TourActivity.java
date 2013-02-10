@@ -156,7 +156,8 @@ public class TourActivity extends VirtualRecord
                 CompareFileFilter filter = (CompareFileFilter)this.getListener(CompareFileFilter.class);
                 if ((filter == null) && (targetDate != null))
                 {
-                    this.addListener(new FileFilter(null)
+                    FileFilter listener = null;
+                    this.addListener(listener = new FileFilter(null)
                     {
                         /**
                      * Check the record locally.
@@ -182,8 +183,8 @@ public class TourActivity extends VirtualRecord
                         }
                         return super.doLocalCriteria(strbFilter, bIncludeFileName, vParamList);
                     }
-                    
                 });
+                listener.setMasterSlaveFlag(FileListener.RUN_IN_MASTER | FileListener.RUN_IN_SLAVE);
             }
             else if (filter != null)
             {

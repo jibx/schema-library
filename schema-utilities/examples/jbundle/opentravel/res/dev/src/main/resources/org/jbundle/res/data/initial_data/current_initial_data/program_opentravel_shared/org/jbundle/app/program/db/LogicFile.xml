@@ -67,7 +67,7 @@ try {
 		<IncludeScope>7</IncludeScope>
 	</LogicFile>
 	<LogicFile ID="5">
-		<LastChanged>2013-02-09T21:07:35</LastChanged>
+		<LastChanged>2013-02-10T13:45:28</LastChanged>
 		<Deleted>N</Deleted>
 		<Sequence>200</Sequence>
 		<MethodName>doRemoteCommand</MethodName>
@@ -83,7 +83,8 @@ try {
         CompareFileFilter filter = (CompareFileFilter)this.getListener(CompareFileFilter.class);
         if ((filter == null) && (targetDate != null))
         {
-            this.addListener(new FileFilter(null)
+            FileFilter listener = null;
+            this.addListener(listener = new FileFilter(null)
             {
                 /**
              * Check the record locally.
@@ -109,8 +110,8 @@ try {
                 }
                 return super.doLocalCriteria(strbFilter, bIncludeFileName, vParamList);
             }
-            
         });
+        listener.setMasterSlaveFlag(FileListener.RUN_IN_MASTER | FileListener.RUN_IN_SLAVE);
     }
     else if (filter != null)
     {
