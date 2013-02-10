@@ -95,7 +95,7 @@ implements FocusListener
             public void addButtons()
             {
                 super.addButtons();
-                this.add(new JLabel("Date"));
+                this.add(new JLabel("Target date"));
                 MyCalendarDualField component = new MyCalendarDualField(null);
                 this.add(component);
                 component.addFocusListener((TourActivityThinGridScreen)getToolbarParent());
