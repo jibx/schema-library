@@ -79,6 +79,24 @@ public class TourActivityGridScreen extends GridScreen
         this.getScreenRecord().getField(TourActivityScreenRecord.TARGET_DATE).setupDefaultView(toolScreen.getNextLocation(ScreenConstants.RIGHT_WITH_DESC, ScreenConstants.SET_ANCHOR), toolScreen, ScreenConstants.DEFAULT_DISPLAY);
     }
     /**
+     * Add all the screen listeners.
+     */
+    public void addListeners()
+    {
+        super.addListeners();
+        this.setAppending(false);
+        this.setEditing(false);
+        this.getMainRecord().setSelected(true); // Need all the fields
+        this.getScreenRecord().getField(TourActivityScreenRecord.TARGET_DATE).addListener(new FieldReSelectHandler(this) {
+            public int fieldChanged(boolean bDisplayOption, int iMoveMode)
+            {
+                TourActivity record = (TourActivity)getMainRecord();
+                record.setTargetDate(((DateField)this.getOwner()).getDateTime());
+                return super.fieldChanged(bDisplayOption, iMoveMode);
+            }
+        });
+    }
+    /**
      * SetupSFields Method.
      */
     public void setupSFields()

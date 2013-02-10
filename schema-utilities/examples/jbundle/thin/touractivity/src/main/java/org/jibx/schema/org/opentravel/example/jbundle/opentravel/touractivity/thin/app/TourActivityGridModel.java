@@ -35,8 +35,7 @@ public class TourActivityGridModel extends ThinTableModel
     private static final long serialVersionUID = 1L;
 
     public static final int ADD_BUTTON_COLUMN = 0;
-    public static final int DELETE_BUTTON_COLUMN = ADD_BUTTON_COLUMN + 1;
-    public static final int DESCRIPTION = DELETE_BUTTON_COLUMN + 1;
+    public static final int DESCRIPTION = ADD_BUTTON_COLUMN + 1;
     public static final int COLUMN_COUNT = DESCRIPTION + 1;
     
     /**
@@ -82,7 +81,6 @@ public class TourActivityGridModel extends ThinTableModel
         switch (iIndex)
         {
             case ADD_BUTTON_COLUMN:
-            case DELETE_BUTTON_COLUMN:
                 return null;
             case DESCRIPTION:
                 return fieldList.getField(TourActivity.DESCRIPTION);
@@ -98,7 +96,6 @@ public class TourActivityGridModel extends ThinTableModel
         switch (iColumnIndex)
         {
             case ADD_BUTTON_COLUMN:
-            case DELETE_BUTTON_COLUMN:
                 return ImageIcon.class;
         }
         return super.getColumnClass(iColumnIndex);
@@ -112,8 +109,6 @@ public class TourActivityGridModel extends ThinTableModel
         {
             case ADD_BUTTON_COLUMN:
                 return BaseApplet.getSharedInstance().loadImageIcon(Constants.FILE_ROOT + Constants.FORM, Constants.BLANK);
-            case DELETE_BUTTON_COLUMN:
-                return BaseApplet.getSharedInstance().loadImageIcon(Constants.FILE_ROOT + Constants.DELETE, Constants.BLANK);
         }
         return super.getColumnValue(iColumnIndex, iEditMode);
     }
@@ -132,12 +127,6 @@ public class TourActivityGridModel extends ThinTableModel
             button.setOpaque(false);
             button.setName(Constants.FORM);
             return button;
-        case DELETE_BUTTON_COLUMN:
-            ImageIcon icon2 = (ImageIcon)this.getValueAt(-1, iColumnIndex);
-            JCellButton button3 = new JCellButton(icon2);
-            button3.setOpaque(false);
-            button3.setName(Constants.DELETE);
-            return button3;
         }
         return super.createColumnCellEditor(iColumnIndex);
     }
@@ -151,7 +140,6 @@ public class TourActivityGridModel extends ThinTableModel
         switch (iColumnIndex)
         {
         case ADD_BUTTON_COLUMN:
-        case DELETE_BUTTON_COLUMN:
             ImageIcon icon = (ImageIcon)this.getValueAt(-1, iColumnIndex);
             JCellButton button = new JCellButton(icon);
             return button;
@@ -161,10 +149,20 @@ public class TourActivityGridModel extends ThinTableModel
     /**
      * Don't allow appending.
      */
-//  public boolean isAppending()
-//  {
-//      return false;
-//  }
+    public boolean isAppending()
+    {
+        return false;
+    }
+    /**
+     * Is this cell editable.
+     * @return true unless this is a deleted record.
+     */
+    public boolean isCellEditable(int iRowIndex, int iColumnIndex)
+    {
+        if (ADD_BUTTON_COLUMN == iColumnIndex)
+            return true; // Don't allow changes to deleted records
+        return false;        // All my fields are note editable
+    }
     /**
      * Returns the name of the column at columnIndex.
      */
@@ -174,8 +172,6 @@ public class TourActivityGridModel extends ThinTableModel
         {
             case ADD_BUTTON_COLUMN:
                 return "+";
-            case DELETE_BUTTON_COLUMN:
-                return "x";
         }
         return super.getColumnName(iColumnIndex);
     }

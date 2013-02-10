@@ -22,7 +22,7 @@
 		<Deleted>N</Deleted>
 		<Description>Weekend Tour</Description>
 		<Price>45.00</Price>
-		<AvailabilityDays>3</AvailabilityDays>
+		<AvailabilityDays>65</AvailabilityDays>
 		<StartDate/>
 		<EndDate/>
 	</TourActivity>

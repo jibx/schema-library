@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><file>
 	<ClassInfo ID="1">
-		<LastChanged>2013-02-08T22:17:16</LastChanged>
+		<LastChanged>2013-02-09T21:08:25</LastChanged>
 		<Deleted>N</Deleted>
 		<ClassName>TourActivity</ClassName>
 		<BaseClassName>VirtualRecord</BaseClassName>
@@ -34,7 +34,7 @@
 		<CopyDescFrom/>
 	</ClassInfo>
 	<ClassInfo ID="3">
-		<LastChanged>2013-02-08T22:13:32</LastChanged>
+		<LastChanged>2013-02-09T21:06:57</LastChanged>
 		<Deleted>N</Deleted>
 		<ClassName>TourActivityGridScreen</ClassName>
 		<BaseClassName>GridScreen</BaseClassName>

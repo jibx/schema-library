@@ -153,8 +153,49 @@ public class TourActivity extends VirtualRecord
                 if (properties.get(TARGET_DATE) instanceof Date)
             {
                 targetDate = (Date)properties.get(TARGET_DATE);
-                return Boolean.TRUE;
+                CompareFileFilter filter = (CompareFileFilter)this.getListener(CompareFileFilter.class);
+                if ((filter == null) && (targetDate != null))
+                {
+                    this.addListener(new FileFilter(null)
+                    {
+                        /**
+                     * Check the record locally.
+                     */
+                    public boolean doLocalCriteria(StringBuffer strbFilter, boolean bIncludeFileName, Vector<BaseField> vParamList)
+                    {
+                        Date startDate = ((DateField)getOwner().getField(TourActivity.START_DATE)).getDateTime();
+                        Date endDate = ((DateField)getOwner().getField(TourActivity.END_DATE)).getDateTime();
+                        short days = (short)getOwner().getField(TourActivity.AVAILABILITY_DAYS).getValue();
+                        if (startDate != null)
+                            if (startDate.after(targetDate))
+                                return false;
+                        if (endDate != null)
+                            if (endDate.before(targetDate))
+                                return false;
+                        if (days != 0)
+                        {
+                            Calendar calendar = Converter.gCalendar;
+                            calendar.setTime(targetDate);
+                            short dayOfWeek = (short)calendar.get(Calendar.DAY_OF_WEEK);
+                            if ((days & (1 << (dayOfWeek - 1))) == 0)
+                                return false;
+                        }
+                        return super.doLocalCriteria(strbFilter, bIncludeFileName, vParamList);
+                    }
+                    
+                });
             }
+            else if (filter != null)
+            {
+                if (targetDate == null)
+                    filter.free();
+                else
+                {
+                    
+                }
+            }
+            return Boolean.TRUE;
+        }
         return super.doRemoteCommand(strCommand, properties);
     }
 

@@ -11,12 +11,23 @@ package org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.t
  *  @version 1.0.0.
  */
 
-import org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.thin.db.TourActivity;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.Date;
+
+import javax.swing.JComponent;
+
+import org.jbundle.thin.base.db.Constants;
+import org.jbundle.thin.base.db.FieldInfo;
 import org.jbundle.thin.base.db.FieldList;
 import org.jbundle.thin.base.screen.AbstractThinTableModel;
 import org.jbundle.thin.base.screen.JBaseScreen;
 import org.jbundle.thin.base.screen.grid.JGridScreen;
+import org.jbundle.thin.base.screen.grid.JGridScreenToolbar;
+import org.jbundle.thin.base.screen.util.cal.JCalendarDualField;
 import org.jbundle.thin.base.util.message.ThinMessageManager;
+import org.jbundle.util.jcalendarbutton.JCalendarPopup;
+import org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.thin.db.TourActivity;
 
 
 /**
@@ -25,6 +36,7 @@ import org.jbundle.thin.base.util.message.ThinMessageManager;
  * Data fields in the second column aligned left.
  */
 public class TourActivityThinGridScreen extends JGridScreen
+    implements PropertyChangeListener
 {
     private static final long serialVersionUID = 1L;
 
@@ -64,6 +76,51 @@ public class TourActivityThinGridScreen extends JGridScreen
         ThinMessageManager.freeScreenMessageListeners(this);
         
         super.free();
+    }
+    /**
+     * Add the toolbars?
+     * @return The newly created toolbar or null.
+     */
+    public JComponent createToolbar()
+    {
+        addPropertyChangeListener(JCalendarPopup.DATE_PARAM, this);
+        
+        return new JGridScreenToolbar(this, null)
+        {
+            private static final long serialVersionUID = 1L;
+
+            /**
+             * Add the buttons to this window.
+             * Override this to include buttons other than the default buttons.
+             */
+            public void addButtons()
+            {
+                super.addButtons();
+//                this.addButton(Constants.BACK);
+                FieldInfo field = new FieldInfo(null, "Date", Constants.DEFAULT_FIELD_LENGTH, null, null)
+                {
+                    public int setData(Object vpData, boolean bDisplayOption, int iMoveMode)
+                    {
+                        int error = super.setData(vpData, bDisplayOption, iMoveMode);
+                        System.out.println("----------- " + vpData);
+                        return error;
+                    }
+                };
+                field.setDataClass(Date.class);
+                JCalendarDualField component = new JCalendarDualField(field);
+
+                field.addComponent(component);
+                component.setConverter(field);
+                
+                this.add(component);
+            }            
+        };
+        
+    }
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        // TODO Auto-generated method stub
+        
     }
     /**
      * Build the list of fields that make up the screen.
