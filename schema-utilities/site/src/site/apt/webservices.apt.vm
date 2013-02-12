@@ -60,7 +60,7 @@ Web service example
 
  You just added cxf and a web server to your OSGi container. Then you started a REST and SOAP server and your ping web service.
 
- Step 3: Click this link {{{http://localhost:8181/rest/ping/ping/Hello}http://localhost:8092/rest/ping/ping/Hello}} to send a 'Hello' message to the RESTful ping service.
+ Step 3: Click this link {{{http://localhost:8092/rest/ping/ping/Hello}http://localhost:8092/rest/ping/ping/Hello}} to send a 'Hello' message to the RESTful ping service.
  
  Load client.html (from the opentravel-ping-service project root directory) into your favorite browser
  and click 'send'. Most browsers will display the soap xml message returned from the web

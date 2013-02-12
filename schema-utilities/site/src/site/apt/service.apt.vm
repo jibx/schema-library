@@ -63,7 +63,7 @@ Web service example
 +-----+
 
  Step 3:
- You will find the wsdl file here: {{{http://localhost:8092/soap/hotel?wsdl}http://localhost:8092/soap/touractivity?wsdl}}.
+ You will find the wsdl file here: {{{http://localhost:8092/soap/hotel?wsdl}http://localhost:8092/soap/hotel?wsdl}}.
  
  If you would like to test this web service to see if it works, either fire up soapui and send it a message or create a
  {{{http://blog.tourgeek.com}JiBX test client}} using the {{{./client.html}JiBX client framework}}.
