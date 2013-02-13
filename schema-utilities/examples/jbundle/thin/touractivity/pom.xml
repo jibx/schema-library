@@ -39,6 +39,12 @@
       <artifactId>org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.res</artifactId>
       <version>${schema-library-version-range}</version>
     </dependency>
+    
+    <dependency>
+    <groupId>org.jbundle.thin.base.db</groupId>
+    <version>1.0.1-SNAPSHOT</version>
+  <artifactId>org.jbundle.thin.base.db.misc</artifactId>        
+    </dependency>
   </dependencies>
 
 </project>

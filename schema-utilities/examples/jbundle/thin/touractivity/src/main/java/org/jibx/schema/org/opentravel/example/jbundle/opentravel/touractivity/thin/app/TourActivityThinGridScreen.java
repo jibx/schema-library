@@ -11,23 +11,38 @@ package org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.t
  *  @version 1.0.0.
  */
 
+import java.awt.Container;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.Date;
 
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.TableColumn;
 
+import org.jbundle.model.DBException;
 import org.jbundle.model.db.Convert;
 import org.jbundle.thin.base.db.Constants;
 import org.jbundle.thin.base.db.FieldInfo;
 import org.jbundle.thin.base.db.FieldList;
+import org.jbundle.thin.base.db.FieldTable;
+import org.jbundle.thin.base.db.mem.base.PTable;
+import org.jbundle.thin.base.db.mem.base.PhysicalDatabaseParent;
+import org.jbundle.thin.base.db.model.ThinPhysicalDatabase;
 import org.jbundle.thin.base.screen.AbstractThinTableModel;
+import org.jbundle.thin.base.screen.BaseApplet;
 import org.jbundle.thin.base.screen.JBaseScreen;
+import org.jbundle.thin.base.screen.ThinApplication;
+import org.jbundle.thin.base.screen.grid.JCellButton;
 import org.jbundle.thin.base.screen.grid.JGridScreen;
 import org.jbundle.thin.base.screen.grid.JGridScreenToolbar;
 import org.jbundle.thin.base.screen.util.cal.JCalendarDualField;
+import org.jbundle.thin.base.util.Application;
 import org.jbundle.thin.base.util.message.ThinMessageManager;
 import org.jibx.schema.org.opentravel.example.jbundle.opentravel.touractivity.thin.db.TourActivity;
 
@@ -180,5 +195,55 @@ implements FocusListener
     public JBaseScreen createMaintScreen(FieldList record)
     {
         return new TourActivityThinScreen(this.getParentObject(), record);
+    }
+    /**
+     * Add any applet sub-panel(s) now.
+     */
+    public boolean addSubPanels(Container parent, int options)
+    {
+/*        parent.setLayout(new BoxLayout(parent, BoxLayout.X_AXIS));
+        FieldList record = new TestTable(this);
+
+//+     this.linkNewRemoteTable(null, record, true);
+//------------------------
+        Application app = this.getApplication();
+        PhysicalDatabaseParent dbOwner = (PhysicalDatabaseParent)((ThinApplication)app).getPDatabaseParent(BaseApplet.mapDBParentProperties, true);
+        PTable pTable = dbOwner.getPDatabase(record.getDatabaseName(), ThinPhysicalDatabase.NET_TYPE, true).getPTable(record, true, true);
+//------------------------
+        
+        FieldTable table = record.getTable();
+        try   {
+            table.addNew();
+//          record.getFieldInfo("ID").setString("1");
+            record.getField("TestName").setString("no 1");
+            table.add(record);
+            table.addNew();
+            record.getField("TestName").setString("no 2");
+            table.add(record);
+            table.close();
+//          while (table.hasNext())
+            {
+//              table.next();
+//System.out.println("Test/103--==================" + record.toString() + "==========");
+            }
+        } catch (DBException ex)    {
+            ex.printStackTrace();
+        }
+//------------------------
+
+        model = new TestGridModel(record.getTable());
+        thinscreen = new JTable(model);
+        model.setGridScreen(thinscreen, false);
+            TableColumn newColumn = thinscreen.getColumnModel().getColumn(0);
+            ImageIcon icon = (ImageIcon)model.getValueAt(0, 0);
+            newColumn.setPreferredWidth(20);    // Yeah I know, but I know the width and I don't want to have to wait to load the icon.
+            JCellButton button = new JCellButton(icon);
+            newColumn.setCellEditor(button);
+            button.addActionListener(this);
+            button = new JCellButton(icon);
+            newColumn.setCellRenderer(button);
+        JScrollPane scrollpane = new JScrollPane(thinscreen);
+        parent.add(scrollpane);*/
+        return true;
     }
 }
