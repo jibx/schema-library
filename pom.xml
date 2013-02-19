@@ -5,13 +5,13 @@
   <parent>
     <groupId>org.jibx.config</groupId>
     <artifactId>jibx-parent</artifactId>
-    <version>7.0.0</version>
+    <version>7.0.1-SNAPSHOT</version>
     <relativePath>../jibx-parent</relativePath>
   </parent>
 
   <groupId>org.jibx.schema.config</groupId>
-  <artifactId>schema-library-reactor2</artifactId>
-  <version>1.0.9-SNAPSHOT</version>
+  <artifactId>schema-library-reactor</artifactId>
+  <version>1.1.0-SNAPSHOT</version>
   
   <packaging>pom</packaging>
   <name>schema-library-reactor</name>
@@ -25,20 +25,20 @@
 
   <modules>
     <module>schema-utilities/examples/jbundle</module>
-    <!-- module>schema-library-parent</module>
+    <module>schema-library-parent</module>
     <module>schema-utilities</module>
 
     <module>org.docbook</module>
-    <module>org.apache.maven</module -->
+    <module>org.apache.maven</module>
     <!-- module>org.hr-xml   not on-line any more </module -->
-    <!-- module>org.opentravel</module>
+    <module>org.opentravel</module>
     <module>org.oasis-open</module>
     <module>org.w3</module>
     <module>net.webservicex</module>
     <module>org.xmlsoap</module>
 
     <module>org.jibx</module>
-    <module>net.java</module -->
+    <module>net.java</module>
   </modules>
 
 </project>
