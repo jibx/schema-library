@@ -18,10 +18,10 @@ import org.jibx.schema.org.opentravel._2012B.ping.PingRS;
 @DataBinding(org.apache.cxf.jibx.JibxDataBinding.class)
 public interface Ping {
 
-    @WebResult(name = "PingRS", targetNamespace = "http://www.opentravel.org/OTA/2003/05/common", partName = "payload")
+    @WebResult(name = "PingRS", targetNamespace = "http://www.opentravel.org/OTA/2003/05", partName = "payload")
     @WebMethod(operationName = "Ping")
     public PingRS ping(
-        @WebParam(partName = "payload", name = "PingRQ", targetNamespace = "http://www.opentravel.org/OTA/2003/05/common")
+        @WebParam(partName = "payload", name = "PingRQ", targetNamespace = "http://www.opentravel.org/OTA/2003/05")
         	PingRQ payload
     );
 }

@@ -17,17 +17,17 @@ import org.jibx.schema.org.opentravel._2012B.hotel.*;
 @DataBinding(org.apache.cxf.jibx.JibxDataBinding.class)
 public interface Hotel {
 
-    @WebResult(name = "HotelResRS", targetNamespace = "http://www.opentravel.org/OTA/2003/05/common", partName = "payload")
+    @WebResult(name = "HotelResRS", targetNamespace = "http://www.opentravel.org/OTA/2003/05", partName = "payload")
     @WebMethod(operationName = "HotelRes")
     public ResRS res(
-        @WebParam(partName = "payload", name = "HotelResRQ", targetNamespace = "http://www.opentravel.org/OTA/2003/05/common")
+        @WebParam(partName = "payload", name = "HotelResRQ", targetNamespace = "http://www.opentravel.org/OTA/2003/05")
         	ResRQ payload
     );
 
-    @WebResult(name = "HotelResModifyRS", targetNamespace = "http://www.opentravel.org/OTA/2003/05/common", partName = "payload")
+    @WebResult(name = "HotelResModifyRS", targetNamespace = "http://www.opentravel.org/OTA/2003/05", partName = "payload")
     @WebMethod(operationName = "HotelResModify")
     public ResModifyRS resModify(
-        @WebParam(partName = "payload", name = "HotelResModifyRQ", targetNamespace = "http://www.opentravel.org/OTA/2003/05/common")
+        @WebParam(partName = "payload", name = "HotelResModifyRQ", targetNamespace = "http://www.opentravel.org/OTA/2003/05")
         	ResModifyRQ payload
     );
 }

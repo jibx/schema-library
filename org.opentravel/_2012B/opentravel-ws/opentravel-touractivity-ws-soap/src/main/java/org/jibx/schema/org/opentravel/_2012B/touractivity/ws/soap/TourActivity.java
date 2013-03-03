@@ -17,17 +17,17 @@ import org.jibx.schema.org.opentravel._2012B.touractivity.*;
 @DataBinding(org.apache.cxf.jibx.JibxDataBinding.class)
 public interface TourActivity {
 
-    @WebResult(name = "TourActivityAvailRS", targetNamespace = "http://www.opentravel.org/OTA/2003/05/common", partName = "payload")
+    @WebResult(name = "TourActivityAvailRS", targetNamespace = "http://www.opentravel.org/OTA/2003/05", partName = "payload")
     @WebMethod(operationName = "TourActivityAvail")
     public AvailRS avail(
-        @WebParam(partName = "payload", name = "TourActivityAvailRQ", targetNamespace = "http://www.opentravel.org/OTA/2003/05/common")
+        @WebParam(partName = "payload", name = "TourActivityAvailRQ", targetNamespace = "http://www.opentravel.org/OTA/2003/05")
         	AvailRQ payload
     );
 
-    @WebResult(name = "TourActivitySearchRS", targetNamespace = "http://www.opentravel.org/OTA/2003/05/common", partName = "payload")
+    @WebResult(name = "TourActivitySearchRS", targetNamespace = "http://www.opentravel.org/OTA/2003/05", partName = "payload")
     @WebMethod(operationName = "TourActivitySearch")
     public SearchRS search(
-        @WebParam(partName = "payload", name = "TourActivitySearchRQ", targetNamespace = "http://www.opentravel.org/OTA/2003/05/common")
+        @WebParam(partName = "payload", name = "TourActivitySearchRQ", targetNamespace = "http://www.opentravel.org/OTA/2003/05")
         	SearchRQ payload
     );
 }

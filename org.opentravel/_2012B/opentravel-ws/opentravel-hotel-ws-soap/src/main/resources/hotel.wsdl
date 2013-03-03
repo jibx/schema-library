@@ -6,21 +6,21 @@
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:tns="http://www.opentravel.org/OTA/2003/05/ws"
-    xmlns:ota="http://www.opentravel.org/OTA/2003/05/common"
+    xmlns:ota="http://www.opentravel.org/OTA/2003/05"
     targetNamespace="http://www.opentravel.org/OTA/2003/05/ws">
 
 	<wsdl:types>
-		<xsd:schema targetNamespace="http://www.opentravel.org/OTA/2003/05/common"
+		<xsd:schema targetNamespace="http://www.opentravel.org/OTA/2003/05"
 			id="OTA2012B" elementFormDefault="qualified"
 			version="1.000">
 			<xsd:import schemaLocation="http://www.opentravel.org/2012B/OTA_HotelResRQ.xsd"
-				namespace="http://www.opentravel.org/OTA/2003/05/common" />
+				namespace="http://www.opentravel.org/OTA/2003/05" />
 			<xsd:import schemaLocation="http://www.opentravel.org/2012B/OTA_HotelResRS.xsd"
-				namespace="http://www.opentravel.org/OTA/2003/05/common" />
+				namespace="http://www.opentravel.org/OTA/2003/05" />
 			<xsd:import schemaLocation="http://www.opentravel.org/2012B/OTA_HotelResModifyRQ.xsd"
-				namespace="http://www.opentravel.org/OTA/2003/05/common" />
+				namespace="http://www.opentravel.org/OTA/2003/05" />
 			<xsd:import schemaLocation="http://www.opentravel.org/2012B/OTA_HotelResModifyRS.xsd"
-				namespace="http://www.opentravel.org/OTA/2003/05/common" />
+				namespace="http://www.opentravel.org/OTA/2003/05" />
 		</xsd:schema>
 	</wsdl:types>
     

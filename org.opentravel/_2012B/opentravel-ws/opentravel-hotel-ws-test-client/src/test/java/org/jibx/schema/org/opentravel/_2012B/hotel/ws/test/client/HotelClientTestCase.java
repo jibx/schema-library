@@ -59,7 +59,7 @@ public class HotelClientTestCase extends HotelClientTest
     	Element element = marshalObjectToDOM(message);
     	String firstElement = element.getFirstChild().getLocalName();
     	Assert.assertTrue("Return message is missing success element", "Success".equalsIgnoreCase(firstElement));
-    	Assert.assertTrue("Return message is missing success element",  Utilities.xPathTest(xml, "//ota:Success", "ota", "http://www.opentravel.org/OTA/2003/05/common"));
+    	Assert.assertTrue("Return message is missing success element",  Utilities.xPathTest(xml, "//ota:Success", "ota", "http://www.opentravel.org/OTA/2003/05"));
     }
 
 }
