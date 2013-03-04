@@ -3,7 +3,7 @@
     <parent>
         <artifactId>schema-library-parent</artifactId>
         <groupId>org.jibx.schema.config</groupId>
-        <version>1.1.0-SNAPSHOT</version>
+        <version>1.1.0</version>
         <relativePath>../../schema-library-parent</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -11,7 +11,7 @@
     <artifactId>org.jibx.schema.org.w3.TR._2002.REC_xmlenc_core_20021210.xenc_schema</artifactId>
     <packaging>bundle</packaging>
     <name>Schema Library - w3.org - TR._2002.REC_xmlenc_core_20021210.xenc_schema</name>
-    <version>1.1.0-SNAPSHOT</version>
+    <version>1.1.0</version>
     <description>www.w3.org/TR/2002/REC-xmlenc-core-20021210/xenc-schema.xsd</description>
     <developers>
         <developer>

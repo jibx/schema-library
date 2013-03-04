@@ -5,7 +5,7 @@
     <parent>
       <groupId>org.jibx.schema.org.opentravel._2011B.ws</groupId>
       <artifactId>opentravel-2011B-ws-reactor</artifactId>
-      <version>1.1.0-SNAPSHOT</version>
+      <version>1.1.0</version>
     </parent>
 
   <artifactId>opentravel-touractivity-ws-service-archetype</artifactId>
