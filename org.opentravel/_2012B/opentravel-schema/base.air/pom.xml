@@ -47,7 +47,7 @@
                   </includes>
                 </includeBaseBinding>
               </includeBaseBindings>
-              <defaultNamespace>http://www.opentravel.org/OTA/2003/05</defaultNamespace>
+              <defaultNamespace>http://www.opentravel.org/OTA/2003/05/common</defaultNamespace>
 	        </configuration>
           </execution>
           <execution>

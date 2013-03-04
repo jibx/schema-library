@@ -15,7 +15,6 @@
 
   <properties>
     <systemName>fastrez</systemName>
-    <defaultNamespace>http://www.opentravel.org/OTA/2003/05</defaultNamespace>
     <include-binding />
   </properties>
 
