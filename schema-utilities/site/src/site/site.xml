@@ -36,6 +36,21 @@
 <item name="Server framework" href="./service.html"/>
 </menu>
 <menu name="Schema library">
+<item name="opentravel-touractivity-ws-swing-client-reactor" href="./site.html#opentravel-touractivity-ws-swing-client-reactor" collapse="true">
+<item name="jibx-example-jbundle-opentravel-reactor"/>
+<item name="jibx-example-jbundle-opentravel-touractivity-reactor"/>
+<item name="jibx-example-jbundle-opentravel-touractivity-model"/>
+<item name="jibx-example-jbundle-opentravel-touractivity-res"/>
+<item name="jibx-example-jbundle-opentravel-touractivity-thin"/>
+<item name="jibx-example-jbundle-opentravel-touractivity-db"/>
+<item name="jibx-example-jbundle-opentravel-touractivity-screen"/>
+<item name="jibx-example-jbundle-opentravel-res-reactor"/>
+<item name="jibx-example-jbundle-res-data"/>
+<item name="jibx-example-jbundle-res-dev"/>
+<item name="jibx-example-jbundle-thin-reactor"/>
+<item name="jibx-example-jbundle-opentravel-touractivity-thin-app"/>
+<item name="jibx-example-jbundle-opentravel-main"/>
+</item>
 <item name="docbook.org" href="./site.html#docbook.org" collapse="true">
 <item name="Schema Library - docbook.org - 5_0"/>
 </item>

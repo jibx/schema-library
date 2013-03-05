@@ -24,7 +24,6 @@
   </scm>
 
   <modules>
-    <module>schema-utilities/examples/jbundle</module>
     <module>schema-library-parent</module>
     <module>schema-utilities</module>
 
