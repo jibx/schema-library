@@ -1,0 +1,17 @@
+<archetype-descriptor name="multi-module">
+
+  <fileSets>
+    <fileSet filtered="true" packaged="true">
+      <directory>src/main/java</directory>
+      <includes>
+        <include>**/*.java</include>
+      </includes>
+    </fileSet>
+  </fileSets>
+
+  <requiredProperties>
+    <requiredProperty key="travel-segment">	<!-- ping or hotel -->
+      <defaultValue>ping</defaultValue>
+    </requiredProperty>
+  </requiredProperties>
+</archetype-descriptor>
