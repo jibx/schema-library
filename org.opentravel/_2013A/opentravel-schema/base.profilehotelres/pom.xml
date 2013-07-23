@@ -29,9 +29,6 @@
             <Include-Resource>META-INF/binding.xml=${basedir}/target/generated-sources/binding.xml</Include-Resource>
             <Import-Package>
 	    *;resolution:=optional,
-	    ${project.groupId}.base.air;resolution:=optional,	<!-- binding references this -->
-	    ${project.groupId}.base.veh;resolution:=optional,	<!-- binding references this -->
-	    ${project.groupId}.base.rail;resolution:=optional,	<!-- binding references this -->
 	    </Import-Package>
           </instructions>
         </configuration>
