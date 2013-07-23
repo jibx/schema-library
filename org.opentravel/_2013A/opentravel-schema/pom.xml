@@ -63,6 +63,8 @@
 
     <module>ping</module>
 
+    <module>reviews</module>
+
     <module>misc</module>
 
     <module>fastrez</module>		<!-- Standalone -->
