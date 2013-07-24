@@ -6,7 +6,7 @@
   <parent>
     <artifactId>schema-utilities-reactor</artifactId>
     <groupId>org.jibx.schema.config</groupId>
-    <version>1.1.1-SNAPSHOT</version>
+    <version>1.1.1</version>
   </parent>
 
   <artifactId>create-jibx-project-utilities</artifactId>
@@ -44,12 +44,12 @@
       <dependency>
         <groupId>org.jibx.schema.org.apache.maven</groupId>
         <artifactId>org.jibx.schema.org.apache.maven.maven_v4_0_0</artifactId>
-        <version>1.1.1-SNAPSHOT</version>
+        <version>1.1.1</version>
       </dependency>
       <dependency>
         <groupId>org.jibx.schema.org.oasis_open</groupId>
         <artifactId>org.jibx.schema.org.oasis_open.committees.entity.release._1_0.catalog</artifactId>
-        <version>1.1.1-SNAPSHOT</version>
+        <version>1.1.1</version>
       </dependency>
   </dependencies>
 
