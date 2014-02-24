@@ -5,7 +5,7 @@
     <parent>
       <groupId>org.jibx.schema.org.opentravel._2013B.ws</groupId>
       <artifactId>opentravel-2013B-ws-reactor</artifactId>
-      <version>1.1.2-SNAPSHOT</version>
+      <version>1.1.2</version>
     </parent>
 
 	<artifactId>opentravel-ws-features</artifactId>
