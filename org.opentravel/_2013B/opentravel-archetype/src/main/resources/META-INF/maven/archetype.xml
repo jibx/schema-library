@@ -1,0 +1,8 @@
+<archetype>
+  <id>jibx-ota-osgi-archetype</id>
+  <requiredProperties>
+    <requiredProperty key="travel-segment">	<!-- ping or hotel -->
+      <defaultValue>ping</defaultValue>
+    </requiredProperty>
+  </requiredProperties>
+</archetype>

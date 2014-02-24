@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<wsdl:definitions name="wsdl-first"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:tns="http://www.opentravel.org/OTA/2003/05/ws"
+    xmlns:ota="http://www.opentravel.org/OTA/2003/05"
+    targetNamespace="http://www.opentravel.org/OTA/2003/05/ws">
+
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.opentravel.org/OTA/2003/05"
+			id="OTA2013B" elementFormDefault="qualified"
+			version="1.000">
+			<xsd:import schemaLocation="http://www.opentravel.org/2013B/OTA_TourActivityAvailRQ.xsd"
+				namespace="http://www.opentravel.org/OTA/2003/05" />
+			<xsd:import schemaLocation="http://www.opentravel.org/2013B/OTA_TourActivityAvailRS.xsd"
+				namespace="http://www.opentravel.org/OTA/2003/05" />
+			<xsd:import schemaLocation="http://www.opentravel.org/2013B/OTA_TourActivitySearchRQ.xsd"
+				namespace="http://www.opentravel.org/OTA/2003/05" />
+			<xsd:import schemaLocation="http://www.opentravel.org/2013B/OTA_TourActivitySearchRS.xsd"
+				namespace="http://www.opentravel.org/OTA/2003/05" />
+		</xsd:schema>
+	</wsdl:types>
+    
+    <wsdl:message name="TourActivityAvailRequest">
+        <wsdl:part name="payload" element="ota:OTA_TourActivityAvailRQ"/>
+    </wsdl:message>
+    <wsdl:message name="TourActivityAvailResponse">
+        <wsdl:part name="payload" element="ota:OTA_TourActivityAvailRS"/>
+    </wsdl:message>
+    <wsdl:message name="TourActivitySearchRequest">
+        <wsdl:part name="payload" element="ota:OTA_TourActivitySearchRQ"/>
+    </wsdl:message>
+    <wsdl:message name="TourActivitySearchResponse">
+        <wsdl:part name="payload" element="ota:OTA_TourActivitySearchRS"/>
+    </wsdl:message>
+
+    <wsdl:portType name="TourActivity">
+        <wsdl:operation name="TourActivityAvail">
+            <wsdl:input message="tns:TourActivityAvailRequest"/>
+            <wsdl:output message="tns:TourActivityAvailResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="TourActivitySearch">
+            <wsdl:input message="tns:TourActivitySearchRequest"/>
+            <wsdl:output message="tns:TourActivitySearchResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    
+    <wsdl:binding name="TourActivitySOAPBinding" type="tns:TourActivity">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="TourActivityAvail">
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+       </wsdl:operation>
+        <wsdl:operation name="TourActivitySearch">
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+       </wsdl:operation>
+   </wsdl:binding>
+
+    <wsdl:service name="TourActivityService">
+        <wsdl:port binding="tns:TourActivitySOAPBinding" name="soap">
+           <soap:address location="http://localhost:8092/soap/touractivity/" />
+       </wsdl:port>
+   </wsdl:service>
+
+</wsdl:definitions>
