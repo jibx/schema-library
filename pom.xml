@@ -19,8 +19,8 @@
 
   <scm>
     <url>https://github.com/jibx/schema-library</url>
-    <connection>scm:git:https:github.com/jibx/schema-library</connection>
-    <developerConnection>scm:git:https:github.com/jibx/schema-library</developerConnection>
+    <connection>scm:git:https://github.com/jibx/schema-library</connection>
+    <developerConnection>scm:git:https://github.com/jibx/schema-library</developerConnection>
   </scm>
 
   <modules>
