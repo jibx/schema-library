@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<wsdl:definitions name="wsdl-first"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:tns="http://www.opentravel.org/OTA/2003/05/ws"
+    xmlns:ota="http://www.opentravel.org/OTA/2003/05"
+    targetNamespace="http://www.opentravel.org/OTA/2003/05/ws">
+
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.opentravel.org/OTA/2003/05"
+			id="OTA2014A" elementFormDefault="qualified"
+			version="1.000">
+			<xsd:import schemaLocation="http://www.opentravel.org/2014A/OTA_PingRQ.xsd"
+				namespace="http://www.opentravel.org/OTA/2003/05" />
+			<xsd:import schemaLocation="http://www.opentravel.org/2014A/OTA_PingRS.xsd"
+				namespace="http://www.opentravel.org/OTA/2003/05" />
+		</xsd:schema>
+	</wsdl:types>
+    
+    <wsdl:message name="PingRequest">
+        <wsdl:part name="payload" element="ota:OTA_PingRQ"/>
+    </wsdl:message>
+    <wsdl:message name="PingResponse">
+        <wsdl:part name="payload" element="ota:OTA_PingRS"/>
+    </wsdl:message>
+
+    <wsdl:portType name="Ping">
+        <wsdl:operation name="Ping">
+            <wsdl:input message="tns:PingRequest"/>
+            <wsdl:output message="tns:PingResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    
+    <wsdl:binding name="PingSOAPBinding" type="tns:Ping">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="Ping">
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+       </wsdl:operation>
+   </wsdl:binding>
+
+    <wsdl:service name="PingService">
+        <wsdl:port binding="tns:PingSOAPBinding" name="soap">
+           <soap:address location="http://localhost:8092/soap/ping/" />
+       </wsdl:port>
+   </wsdl:service>
+
+</wsdl:definitions>

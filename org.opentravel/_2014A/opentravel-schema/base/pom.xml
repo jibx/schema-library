@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jibx.schema.org.opentravel._2014A</groupId>
+    <artifactId>opentravel-schema-reactor</artifactId>
+    <version>1.1.3-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>org.jibx.schema.org.opentravel._2014A.base</artifactId>
+  <packaging>bundle</packaging>
+
+  <name>Schema Library - org.opentravel.base - 2014A - opentravel.org base schema</name>
+
+  <properties>
+    <systemName>base</systemName>
+    <include-binding />
+  </properties>
+
+  <build>
+    <!-- To use the plugin goals in your POM or parent POM -->
+    <plugins>
+ 
+      <plugin>
+        <groupId>org.jibx</groupId>
+        <artifactId>jibx-maven-plugin</artifactId>
+        
+        <executions>
+          <execution>
+            <id>generate-java-code-from-schema</id>
+            <goals>
+              <goal>schema-codegen</goal>
+            </goals>
+	        <configuration>
+	        	<schemaLocation>${schemaLocation}</schemaLocation>
+	            <includeSchemas>
+	                <includeSchema>OTA_Common*.xsd</includeSchema>
+	                <includeSchema>OTA_SimpleTypes.xsd</includeSchema>
+	                <includeSchema>OTA_Lists.xsd</includeSchema>
+	            </includeSchemas>
+                <customizations>
+                    <customization>${customization-file}</customization>
+                </customizations>
+              <defaultNamespace>http://www.opentravel.org/OTA/2003/05/common</defaultNamespace>
+	        </configuration>
+          </execution>
+                <execution>
+                    <id>compile-binding</id>
+                    <goals>
+                        <goal>bind</goal>
+                    </goals>
+                    <configuration>
+                        <schemaBindingDirectory>target/generated-sources</schemaBindingDirectory>
+                        <includeSchemaBindings>
+                          <includeSchemaBinding>binding.xml</includeSchemaBinding>
+                        </includeSchemaBindings>
+                    </configuration>
+                </execution>
+        </executions>
+	  </plugin>
+
+  </plugins>
+  </build>
+ 
+  <dependencies>
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel._2014A</groupId>  <!-- I need the schema to continue compiling -->
+      <artifactId>opentravel-schema-cache</artifactId>
+      <version>${project.version}</version>
+      <scope>compile</scope>
+      <type>pom</type>
+    </dependency>
+	<dependency>
+	  <groupId>org.jibx</groupId>
+	  <artifactId>jibx-run</artifactId>
+	</dependency>
+	<dependency>
+	  <groupId>org.jibx</groupId>
+	  <artifactId>jibx-extras</artifactId>
+	  <scope>compile</scope>
+	</dependency>
+	<dependency>	<!-- Why isn't this a jibx dependency? -->
+	  <groupId>joda-time</groupId>
+	  <artifactId>joda-time</artifactId>
+	</dependency>
+	<dependency>
+      <groupId>org.jibx.schema.ws</groupId>
+      <artifactId>org.jibx.schema.ws.utilities</artifactId>
+      <version>1.1.3-SNAPSHOT</version>	    	    
+	</dependency>
+  </dependencies>
+
+</project>

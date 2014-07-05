@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jibx.schema.org.opentravel._2014A</groupId>
+    <artifactId>opentravel-schema-reactor</artifactId>
+    <version>1.1.3-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>org.jibx.schema.org.opentravel._2014A.pkg</artifactId>
+  <packaging>bundle</packaging>
+
+  <name>Schema Library - org.opentravel.pkg - 2014A - opentravel.org pkg schema</name>
+
+  <properties>
+    <systemName>pkg</systemName>
+    <schemaFilter>OTA_Pkg</schemaFilter>
+    <include-binding>${basedir}/../base.pkg/target/generated-sources/binding.xml</include-binding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel._2014A</groupId>
+      <artifactId>org.jibx.schema.org.opentravel._2014A.base.pkg</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
+
+</project>
