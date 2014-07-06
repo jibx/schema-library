@@ -5,7 +5,7 @@
     <parent>
       <groupId>org.jibx.schema.org.opentravel._2014A.ws</groupId>
       <artifactId>opentravel-2014A-ws-reactor</artifactId>
-      <version>1.1.3</version>
+      <version>1.1.4-SNAPSHOT</version>
     </parent>
 
     <artifactId>org.jibx.schema.org.opentravel._2014A.hotel.ws.test.client</artifactId>
@@ -66,13 +66,13 @@
 	<dependency>
 		<groupId>org.jibx.schema.org.opentravel._2014A</groupId>
 		<artifactId>org.jibx.schema.org.opentravel._2014A.hotel</artifactId>
-		<version>1.1.3</version>
+		<version>1.1.4-SNAPSHOT</version>
 	</dependency>
 
     <dependency>
       <groupId>org.jibx.schema.org.opentravel._2014A.ws</groupId>
       <artifactId>org.jibx.schema.org.opentravel._2014A.base.ws.test.client</artifactId>
-      <version>1.1.3</version>
+      <version>1.1.4-SNAPSHOT</version>
     </dependency>
 
     <dependency>
