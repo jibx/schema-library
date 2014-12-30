@@ -3,7 +3,7 @@
     <parent>
         <artifactId>schema-library-parent</artifactId>
         <groupId>org.jibx.schema.config</groupId>
-        <version>1.1.4</version>
+        <version>1.1.5-SNAPSHOT</version>
         <relativePath>../schema-library-parent</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -11,7 +11,7 @@
     <artifactId>org.docbook</artifactId>
     <packaging>pom</packaging>
     <name>docbook.org</name>
-    <version>1.1.4</version>
+    <version>1.1.5-SNAPSHOT</version>
     <description>DocBook schema bindings.</description>
     <developers>
         <developer>
