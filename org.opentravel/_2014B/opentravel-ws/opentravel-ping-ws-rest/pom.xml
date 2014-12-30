@@ -5,7 +5,7 @@
     <parent>
       <groupId>org.jibx.schema.org.opentravel._2014B.ws</groupId>
       <artifactId>opentravel-2014B-ws-reactor</artifactId>
-      <version>1.1.5-SNAPSHOT</version>
+      <version>1.1.4-SNAPSHOT</version>
     </parent>
 
     <artifactId>org.jibx.schema.org.opentravel._2014B.ping.ws.rest</artifactId>
@@ -47,7 +47,7 @@
 	<dependency>
 		<groupId>org.jibx.schema.org.opentravel._2014B</groupId>
 		<artifactId>org.jibx.schema.org.opentravel._2014B.ping</artifactId>
-		<version>1.1.5-SNAPSHOT</version>
+		<version>1.1.4-SNAPSHOT</version>
 	</dependency>
         
     <dependency>
