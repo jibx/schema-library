@@ -17,6 +17,7 @@ org.opentravel/_2012B/opentravel-schema/schema/src/main/schema/ota-schema
 org.opentravel/_2013A/opentravel-schema/schema/src/main/schema/ota-schema
 org.opentravel/_2013B/opentravel-schema/schema/src/main/schema/ota-schema
 org.opentravel/_2014A/opentravel-schema/schema/src/main/schema/ota-schema
+org.opentravel/_2014B/opentravel-schema/schema/src/main/schema/ota-schema
 gen
 bin
 derby.log

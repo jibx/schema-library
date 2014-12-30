@@ -5,7 +5,7 @@
     <parent>
       <groupId>org.jibx.schema.org.opentravel._2013A.ws</groupId>
       <artifactId>opentravel-2013A-ws-reactor</artifactId>
-      <version>1.1.2-SNAPSHOT</version>
+      <version>1.1.4-SNAPSHOT</version>
     </parent>
 
     <artifactId>org.jibx.schema.org.opentravel._2013A.touractivity.ws.service</artifactId>
@@ -42,7 +42,7 @@
 	<dependency>
 		<groupId>org.jibx.schema.org.opentravel._2013A</groupId>
 		<artifactId>org.jibx.schema.org.opentravel._2013A.touractivity</artifactId>
-		<version>1.1.2-SNAPSHOT</version>
+		<version>1.1.4-SNAPSHOT</version>
 	</dependency>
   </dependencies>
 

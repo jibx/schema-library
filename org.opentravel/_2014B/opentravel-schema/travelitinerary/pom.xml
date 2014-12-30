@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jibx.schema.org.opentravel._2014B</groupId>
+    <artifactId>opentravel-schema-reactor</artifactId>
+    <version>1.1.4-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>org.jibx.schema.org.opentravel._2014B.travelitinerary</artifactId>
+  <packaging>bundle</packaging>
+
+  <name>Schema Library - org.opentravel.travelitinerary - 2014B - opentravel.org travelitinerary schema</name>
+
+  <properties>
+    <systemName>travelitinerary</systemName>
+    <schemaFilter>OTA_TravelItinerary</schemaFilter>
+    <include-binding>${basedir}/../hotel/target/generated-sources/binding.xml</include-binding>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.jibx</groupId>
+        <artifactId>jibx-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>generate-java-code-from-schema</id>
+            <goals>
+              <goal>schema-codegen</goal>
+            </goals>
+	        <configuration>
+	        	<schemaLocation>${schemaLocation}</schemaLocation>
+	            <customizations>
+	            	<customization>${customization-file}</customization>
+	            </customizations>
+	            <includeSchemas>
+	                <includeSchema>${schemaFilter}*.xsd</includeSchema>
+	            </includeSchemas>
+              <includeBaseBindings>
+                <includeBaseBinding>
+                  <includes>
+                    <include>${basedir}/../base.cruise/target/generated-sources/binding.xml</include>
+                    <include>${basedir}/../hotel/target/generated-sources/binding.xml</include>
+                  </includes>
+                </includeBaseBinding>
+              </includeBaseBindings>
+              <defaultNamespace>${defaultNamespace}</defaultNamespace>
+	        </configuration>
+          </execution>
+          <execution>
+              <id>compile-binding</id>
+              <goals>
+                  <goal>bind</goal>
+              </goals>
+              <configuration>
+                  <schemaBindingDirectory>target/generated-sources</schemaBindingDirectory>
+                  <includeSchemaBindings>
+                    <includeSchemaBinding>binding.xml</includeSchemaBinding>
+                  </includeSchemaBindings>
+              </configuration>
+          </execution>
+        </executions>
+	  </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel._2014B</groupId>
+      <artifactId>org.jibx.schema.org.opentravel._2014B.hotel</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel._2014B</groupId>
+      <artifactId>org.jibx.schema.org.opentravel._2014B.base.cruise</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
+
+</project>
