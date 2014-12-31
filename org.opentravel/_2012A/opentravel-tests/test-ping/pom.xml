@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.jibx.schema.org.opentravel._2012A.test</groupId>
     <artifactId>opentravel-2012A-tests-reactor</artifactId>
-    <version>1.1.4-SNAPSHOT</version>
+    <version>1.1.4</version>
   </parent>
 
   <artifactId>org.jibx.schema.org.opentravel._2012A.test.ping</artifactId>

@@ -5,7 +5,7 @@
 	<parent>
 	  <groupId>org.jibx.schema.org.oasis_open</groupId>
 	  <artifactId>oasis-open-reactor</artifactId>
-	  <version>1.1.4-SNAPSHOT</version>
+	  <version>1.1.4</version>
     </parent>
 
     <groupId>org.jibx.schema.org.oasis_open</groupId>
