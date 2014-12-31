@@ -31,7 +31,6 @@
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Export-Package>${project.artifactId}.*;version=${project.version}</Export-Package>
                         <Import-Package>*;resolution:=optional</Import-Package>
-                        <Require-Bundle>org.apache.cxf.bundle</Require-Bundle>
                     </instructions>
                 </configuration>
             </plugin>

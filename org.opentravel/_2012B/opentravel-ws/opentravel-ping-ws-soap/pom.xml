@@ -36,7 +36,6 @@
                             org.apache.cxf.jibx.*;resolution:=optional,
 	                        *;resolution:=optional,
                         </Import-Package>
-                        <Require-Bundle>org.apache.cxf.bundle</Require-Bundle>
                     </instructions>
                 </configuration>
             </plugin>

@@ -34,7 +34,6 @@
                         <Import-Package>
 	                        *;resolution:=optional,
                         </Import-Package>
-                        <Require-Bundle>org.apache.cxf.bundle</Require-Bundle>
                     </instructions>
                 </configuration>
             </plugin>

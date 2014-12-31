@@ -26,7 +26,6 @@
                             org.osgi.*;resolution:=optional;version="[1.5,2)",	<!-- HACK - cxf-rt-databinding-jibx messes this up -->
                             *;resolution:=optional
                          </Import-Package>
-                        <Require-Bundle>org.apache.cxf.bundle</Require-Bundle>
                         <!-- Bundle-Activator>org.jibx.schema.org.opentravel._2012A.touractivity.ws.rest.TourActivityRestService</Bundle-Activator -->
                     </instructions>
                 </configuration>
