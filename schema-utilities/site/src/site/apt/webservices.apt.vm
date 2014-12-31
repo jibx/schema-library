@@ -49,10 +49,12 @@ Web service example
  Step 2: Add and run the JiBX OSGi bundles in this example.
 
 +-----+
- features:addurl mvn:org.apache.cxf.karaf/apache-cxf/${cxf-version}/xml/features
- features:install cxf cxf-databinding-jibx http obr
+ feature:repo-add mvn:org.apache.cxf.karaf/apache-cxf/${cxf-version}/xml/features
+ feature:install cxf http obr
 
  obr:addurl http://www.jibx.org/repository.xml
+ feature:install cxf-databinding-jibx
+
  obr:start -d org.jibx.schema.org.opentravel._2012B.ping.ws.service
  obr:start -d org.jibx.schema.org.opentravel._2012B.ping.ws.rest
  obr:start -d org.jibx.schema.org.opentravel._2012B.ping.ws.soap
