@@ -5,7 +5,7 @@
   <parent>
     <artifactId>opentravel-2014A-reactor</artifactId>
     <groupId>org.jibx.schema.org.opentravel._2014A</groupId>
-    <version>1.1.4</version>
+    <version>1.1.5-SNAPSHOT</version>
   </parent>
 
   <artifactId>opentravel-schema-reactor</artifactId>
