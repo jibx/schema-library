@@ -19,8 +19,8 @@
 
   <modules>
     <module>transform</module>
-    <module>net.webservicex.stockquote</module>
-    <module>net.webservicex.currencyconvertor</module>
+    <!-- module>net.webservicex.stockquote</module -->
+    <!-- module>net.webservicex.currencyconvertor</module -->
   </modules>
 
 </project>

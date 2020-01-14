@@ -28,7 +28,7 @@
     <module>opentravel-ping-ws-rest</module>
     <module>opentravel-ping-ws-soap</module>
     <module>opentravel-ping-ws-service</module>
-    <module>opentravel-ws-features</module>
+    <!-- module>opentravel-ws-features</module -->
   </modules>
 
 </project>
