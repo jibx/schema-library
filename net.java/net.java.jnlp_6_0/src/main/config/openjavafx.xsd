@@ -1,6 +1,6 @@
 <xs:schema
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  targetNamespace="http://javafx.com">
+  targetNamespace="https://openjfx.io">
 
   <!-- Schema for a JNLP 6.0 -->
   <xs:element name="javafx-runtime">
