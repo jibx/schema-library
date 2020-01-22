@@ -44,7 +44,7 @@
 	<dependency>
 		<groupId>org.jibx.schema.org.opentravel._2013A</groupId>
 		<artifactId>org.jibx.schema.org.opentravel._2013A.touractivity</artifactId>
-		<version>${parent.version}</version>
+		<version>${project.parent.version}</version>
 	</dependency>
   </dependencies>
 
