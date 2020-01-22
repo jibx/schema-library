@@ -7,6 +7,8 @@ target
 .attach*
 *.releaseBackup
 release.properties
+*.versionsBackup
+
 schema-utilities/examples/org.jibx.android.test.app/bin
 schema-utilities/examples/org.jibx.android.test.app/gen
 org.opentravel/_2010B/opentravel-schema/schema/src/main/schema/ota-schema
