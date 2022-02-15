@@ -51,7 +51,7 @@
               </includes>
             </includeBaseBinding>
           </includeBaseBindings>
-          <schemaLocation>http://www.jibx.org/sampleschema/company.xsd</schemaLocation>
+          <schemaLocation>https://jibx.sourceforge.io/sampleschema/company.xsd</schemaLocation>
         </configuration>
       </plugin>
     </plugins>

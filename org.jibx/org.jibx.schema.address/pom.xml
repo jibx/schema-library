@@ -50,7 +50,7 @@
               </includes>
             </includeBaseBinding>
           </includeBaseBindings>
-          <schemaLocation>http://www.jibx.org/sampleschema/address.xsd</schemaLocation>
+          <schemaLocation>https://jibx.sourceforge.io/sampleschema/address.xsd</schemaLocation>
         </configuration>
       </plugin>
     </plugins>

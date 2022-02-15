@@ -26,7 +26,7 @@
         <inherited>true</inherited>
 
        <configuration>
-          <schemaLocation>http://www.jibx.org/sampleschema/person.xsd</schemaLocation>
+          <schemaLocation>https://jibx.sourceforge.io/sampleschema/person.xsd</schemaLocation>
         </configuration>
       </plugin>
 
