@@ -1,0 +1,13 @@
+<schema-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    generate-all="true" delete-annotations="true" any-handling="dom"
+    type-substitutions="xs:integer xs:int xs:decimal xs:float"
+    binding-file-name="binding.xml">
+  <name-converter strip-suffixes="_Type Type"/>
+  <schema-type type-name="dateTime" format-name="DateTime.UTC"/>
+  <schema-type type-name="date" format-name="LocalDate.default"/>
+  <schema-type type-name="time" format-name="LocalTime.local"/>
+  <class-decorator class="org.jibx.schema.codegen.extend.CollectionMethodsDecorator"/>
+  <schema-set package="org.jibx.schema.org.opentravel.x2011B.ping" names="OTA_Ping*.xsd">
+    <name-converter strip-prefixes="OTA_"/>
+  </schema-set>
+</schema-set> 

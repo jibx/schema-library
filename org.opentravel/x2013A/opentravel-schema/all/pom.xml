@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jibx.schema.org.opentravel.x2013A</groupId>
+    <artifactId>opentravel-schema-reactor</artifactId>
+    <version>1.2.2-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>opentravel-all</artifactId>
+  <packaging>pom</packaging>
+  <name>Schema Library - opentravel-all - 2013A - All opentravel.org bundles</name>
+
+  <dependencies>
+    
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2013A</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2013A.base</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2013A</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2013A.air</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2013A</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2013A.veh</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2013A</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2013A.profile</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2013A</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2013A.hotel</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2013A</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2013A.destactivity</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2013A</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2013A.pkg</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2013A</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2013A.travelitinerary</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2013A</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2013A.touractivity</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2013A</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2013A.dynamicpkg</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    
+    
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2013A</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2013A.insurance</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2013A</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2013A.loyalty</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2013A</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2013A.cruise</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2013A</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2013A.golf</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2013A</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2013A.rail</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2013A</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2013A.screen</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2013A</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2013A.ping</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2013A</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2013A.misc</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+  </dependencies>
+</project>

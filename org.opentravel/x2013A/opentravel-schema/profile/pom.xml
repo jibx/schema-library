@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jibx.schema.org.opentravel.x2013A</groupId>
+    <artifactId>opentravel-schema-reactor</artifactId>
+    <version>1.2.2-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>org.jibx.schema.org.opentravel.x2013A.profile</artifactId>
+  <packaging>bundle</packaging>
+
+  <name>Schema Library - org.opentravel.profile - 2013A - opentravel.org profile schema</name>
+
+  <properties>
+    <systemName>profile</systemName>
+    <schemaFilter>OTA_Profile</schemaFilter>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.jibx</groupId>
+        <artifactId>jibx-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>generate-java-code-from-schema</id>
+            <goals>
+              <goal>schema-codegen</goal>
+            </goals>
+	        <configuration>
+	        	<schemaLocation>${schemaLocation}</schemaLocation>
+	            <customizations>
+	            	<customization>${customization-file}</customization>
+	            </customizations>
+	            <includeSchemas>
+	                <includeSchema>${schemaFilter}*RS.xsd</includeSchema>
+	                <includeSchema>${schemaFilter}*RQ.xsd</includeSchema>
+	            </includeSchemas>
+              <includeBaseBindings>
+                <includeBaseBinding>
+                  <includes>
+                    <include>${basedir}/../base.profilehotelres/target/generated-sources/binding.xml</include>
+                  </includes>
+                </includeBaseBinding>
+              </includeBaseBindings>
+              <defaultNamespace>${defaultNamespace}</defaultNamespace>
+	        </configuration>
+          </execution>
+          <execution>
+              <id>compile-binding</id>
+              <goals>
+                  <goal>bind</goal>
+              </goals>
+              <configuration>
+                  <schemaBindingDirectory>target/generated-sources</schemaBindingDirectory>
+                  <includeSchemaBindings>
+                    <includeSchemaBinding>binding.xml</includeSchemaBinding>
+                  </includeSchemaBindings>
+              </configuration>
+          </execution>
+        </executions>
+	  </plugin>
+    </plugins>
+  </build>
+ 
+  <dependencies>
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2013A</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2013A.base.profilehotelres</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
+
+</project>

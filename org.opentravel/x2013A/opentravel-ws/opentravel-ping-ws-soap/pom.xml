@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+      <groupId>org.jibx.schema.org.opentravel.x2013A.ws</groupId>
+      <artifactId>opentravel-2013A-ws-reactor</artifactId>
+      <version>1.2.2-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>org.jibx.schema.org.opentravel.x2013A.ping.ws.soap</artifactId>
+    
+    <packaging>bundle</packaging>
+    <name>Schema Library - org.opentravel.ping.ws.soap - 2013A - opentravel.org ping soap server</name>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Export-Package>
+                            ${project.artifactId}.*;version=${project.version}
+                        </Export-Package>
+                        <Import-Package>
+                            org.apache.cxf.jibx.*;resolution:=optional,
+	                        *;resolution:=optional,
+                        </Import-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <dependencies>
+        <dependency>
+            <groupId>org.jibx.schema.org.opentravel.x2013A</groupId>
+            <artifactId>org.jibx.schema.org.opentravel.x2013A.ping</artifactId>
+            <version>1.2.2-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-ws-metadata_2.0_spec</artifactId>
+            <version>${geronimo-ws-metadata.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-databinding-jibx</artifactId>
+            <version>${cxf-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.xml.ws</groupId>
+            <artifactId>jaxws-api</artifactId>
+            <version>${jaxws-version}</version>
+        </dependency>
+    </dependencies>
+    
+</project>

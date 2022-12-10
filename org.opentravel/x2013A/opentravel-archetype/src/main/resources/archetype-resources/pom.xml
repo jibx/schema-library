@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>${groupId}</groupId>
+  <artifactId>${artifactId}</artifactId>
+  <version>${version}</version>
+  <packaging>jar</packaging>
+
+  <name>Schema Library - opentravel.org - ${artifactId}</name>
+
+  <dependencies>
+#if(${travel-segment}=='hotel')
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2013A</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2013A.hotel</artifactId>
+      <version>1.0.9</version>
+    </dependency>
+#end
+#if(${travel-segment}=='ping')
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2013A</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2013A.ping</artifactId>
+      <version>1.0.9</version>
+    </dependency>
+#end
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.1.1</version>
+        <executions>
+          <execution>
+          	<phase>run</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+            <mainClass>${package}.App</mainClass>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.6</source>	<!-- jibx needs at least 1.5 to use enums and generics -->
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

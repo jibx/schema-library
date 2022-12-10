@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jibx.schema.org.opentravel.x2011A</groupId>
+    <artifactId>opentravel-schema-reactor</artifactId>
+    <version>1.2.0-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>opentravel-schema-cache</artifactId>
+  <packaging>pom</packaging>
+
+  <name>opentravel.org schema cache - 2011A</name>
+
+      <build>
+        <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>xml-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>initialize</phase> <!-- Has to be done before codegen -->
+            <goals>
+              <goal>transform</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <transformationSets>
+            <transformationSet>
+              <dir>src/main/schema/ota-schema</dir>
+              <stylesheet>${basedir}/src/main/xslt/transform.xsl</stylesheet>
+            </transformationSet>
+          </transformationSets>
+        </configuration>
+      </plugin>
+      </plugins>
+      </build>
+
+
+  <profiles>
+    <profile>
+      <id>build-codetable</id>
+      <activation>  <!-- Only download if it has not been done before - TODO Why doesn't this work? -->
+        <file>
+          <missing>${basedir}/src/main/schema/ota-schema/OTA_VehicleCommonTypes.xsd</missing>
+        </file>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>download-schema</id>
+                <phase>validate</phase>
+                <configuration>
+                  <tasks>
+                    <property name="version" value="${project.version}" />
+                    <property name="artifactId" value="${project.artifactId}" />
+                    <property name="basedir" value="${basedir}" />
+                    <property name="schemadir" value="${basedir}/src/main/schema/ota-schema" />
+    
+                    <ant antfile="${basedir}/build.xml">
+                      <target name="download" />
+                    </ant>
+                  </tasks>
+                </configuration>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>download-codetable</id>
+                <phase>validate</phase>
+                <configuration>
+                  <tasks>
+                    <property name="version" value="${project.version}" />
+                    <property name="artifactId" value="${project.artifactId}" />
+                    <property name="basedir" value="${basedir}" />
+                    <property name="schemadir" value="${basedir}/src/main/schema/codetable-schema" />
+    
+                    <ant antfile="${basedir}/build.xml">
+                      <target name="download-codetable" />
+                    </ant>
+                  </tasks>
+                </configuration>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          
+      
+        </plugins>
+      </build>
+
+    </profile>
+  </profiles>
+
+</project>

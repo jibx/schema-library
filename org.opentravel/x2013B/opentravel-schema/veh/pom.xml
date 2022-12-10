@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jibx.schema.org.opentravel.x2013B</groupId>
+    <artifactId>opentravel-schema-reactor</artifactId>
+    <version>1.2.2-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>org.jibx.schema.org.opentravel.x2013B.veh</artifactId>
+  <packaging>bundle</packaging>
+
+  <name>Schema Library - org.opentravel.veh - 2013B - opentravel.org veh schema</name>
+
+  <properties>
+    <systemName>veh</systemName>
+    <schemaFilter>OTA_Veh</schemaFilter>
+    <include-binding>${basedir}/../base.veh/target/generated-sources/binding.xml</include-binding>
+  </properties>
+ 
+  <dependencies>
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2013B</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2013B.base.veh</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
+
+</project>

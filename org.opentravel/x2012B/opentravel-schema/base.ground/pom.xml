@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jibx.schema.org.opentravel.x2012B</groupId>
+    <artifactId>opentravel-schema-reactor</artifactId>
+    <version>1.2.0-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>org.jibx.schema.org.opentravel.x2012B.base.ground</artifactId>
+  <packaging>bundle</packaging>
+
+  <name>Schema Library - org.opentravel.base.ground - 2012B - opentravel.org base ground schema</name>
+
+  <properties>
+    <systemName>base.ground</systemName>
+    <schemaFilter>OTA_Ground</schemaFilter>
+    <include-binding>${basedir}/../base.veh/target/generated-sources/binding.xml</include-binding>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.jibx</groupId>
+        <artifactId>jibx-maven-plugin</artifactId>
+
+        <executions>
+          <execution>
+            <id>generate-java-code-from-schema</id>
+            <goals>
+              <goal>schema-codegen</goal>
+            </goals>
+	        <configuration>
+	        	<schemaLocation>${schemaLocation}</schemaLocation>
+	            <customizations>
+	            	<customization>${customization-file}</customization>
+	            </customizations>
+	            <includeSchemas>
+	                <includeSchema>${schemaFilter}CommonTypes.xsd</includeSchema>
+	            </includeSchemas>
+              <includeBaseBindings>
+                <includeBaseBinding>
+                  <includes>
+                    <include>${include-binding}</include>
+                  </includes>
+                </includeBaseBinding>
+              </includeBaseBindings>
+              <defaultNamespace>http://www.opentravel.org/OTA/2003/05/common</defaultNamespace>
+	        </configuration>
+          </execution>
+          <execution>
+              <id>compile-binding</id>
+              <goals>
+                  <goal>bind</goal>
+              </goals>
+              <configuration>
+                  <schemaBindingDirectory>target/generated-sources</schemaBindingDirectory>
+                  <includeSchemaBindings>
+                    <includeSchemaBinding>binding.xml</includeSchemaBinding>
+                  </includeSchemaBindings>
+              </configuration>
+          </execution>
+        </executions>
+	  </plugin>
+    </plugins>
+  </build>
+ 
+  <dependencies>
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2012B</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2012B.base.veh</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
+
+</project>

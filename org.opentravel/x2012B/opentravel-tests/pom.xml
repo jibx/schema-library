@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jibx.schema.org.opentravel.x2012B</groupId>
+    <artifactId>opentravel-2012B-reactor</artifactId>
+    <version>1.2.0-SNAPSHOT</version>
+  </parent>
+
+  <groupId>org.jibx.schema.org.opentravel.x2012B.test</groupId>
+  <artifactId>opentravel-2012B-tests-reactor</artifactId>
+  
+  <packaging>pom</packaging>
+  <name>Schema Library - opentravel-tests-reactor - opentravel tests</name>
+
+  <modules>
+    <module>test-ping</module>
+    <module>test-hotel</module>
+  </modules>
+
+</project>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jibx.schema.org.opentravel.x2014A</groupId>
+    <artifactId>opentravel-schema-reactor</artifactId>
+    <version>1.2.2-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>org.jibx.schema.org.opentravel.x2014A.misc</artifactId>
+  <packaging>bundle</packaging>
+
+  <name>Schema Library - org.opentravel.misc - 2014A - opentravel.org misc schema</name>
+
+  <properties>
+    <systemName>misc</systemName>
+    <schemaFilter>*</schemaFilter>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.jibx</groupId>
+        <artifactId>jibx-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>generate-java-code-from-schema</id>
+            <goals>
+              <goal>schema-codegen</goal>
+            </goals>
+	        <configuration>
+	        	<schemaLocation>${schemaLocation}</schemaLocation>
+	            <customizations>
+	            	<customization>${customization-file}</customization>
+	            </customizations>
+	            <includeSchemas>
+	                <!-- include>*.xsd</include -->
+	                <includeSchema>OTA_Cancel*.xsd</includeSchema>
+	                <includeSchema>OTA_Authorization*.xsd</includeSchema>
+	                <includeSchema>OTA_Cancel*.xsd</includeSchema>
+	                <includeSchema>OTA_Delete*.xsd</includeSchema>
+	                <includeSchema>OTA_Error*.xsd</includeSchema>
+	                <includeSchema>OTA_FileAttachment*.xsd</includeSchema>
+	                <includeSchema>OTA_Notif*.xsd</includeSchema>
+	                <includeSchema>OTA_Purchase*.xsd</includeSchema>
+	                <includeSchema>OTA_Read*.xsd</includeSchema>
+	                <includeSchema>OTA_ResRetrieveRS.xsd</includeSchema>
+	            </includeSchemas>
+              <includeBaseBindings>
+                <includeBaseBinding>
+                  <includes>
+                    <include>${basedir}/../base.cruise/target/generated-sources/binding.xml</include>
+                    <include>${basedir}/../base.rail/target/generated-sources/binding.xml</include>
+                    <include>${basedir}/../base.pkg/target/generated-sources/binding.xml</include>
+                    <include>${basedir}/../veh/target/generated-sources/binding.xml</include>
+                    <include>${basedir}/../hotel/target/generated-sources/binding.xml</include>
+                    </includes>
+                </includeBaseBinding>
+              </includeBaseBindings>
+              <defaultNamespace>${defaultNamespace}</defaultNamespace>
+	        </configuration>
+          </execution>
+          <execution>
+              <id>compile-binding</id>
+              <goals>
+                  <goal>bind</goal>
+              </goals>
+              <configuration>
+                  <schemaBindingDirectory>target/generated-sources</schemaBindingDirectory>
+                  <includeSchemaBindings>
+                    <includeSchemaBinding>binding.xml</includeSchemaBinding>
+                  </includeSchemaBindings>
+              </configuration>
+          </execution>
+        </executions>
+	  </plugin>
+    </plugins>
+  </build>
+ 
+  <dependencies>
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2014A</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2014A.base.cruise</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+      <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2014A</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2014A.base.pkg</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2014A</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2014A.base.rail</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2014A</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2014A.veh</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jibx.schema.org.opentravel.x2014A</groupId>
+      <artifactId>org.jibx.schema.org.opentravel.x2014A.hotel</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
+
+</project>
