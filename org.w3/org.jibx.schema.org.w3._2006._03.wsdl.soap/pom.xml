@@ -26,7 +26,7 @@
                 <artifactId>jibx-maven-plugin</artifactId>
                 <inherited>true</inherited>
                 <configuration>
-          <schemaLocation>http://www.w3.org/2006/03/wsdl/soap.xsd</schemaLocation>
+          <schemaLocation>https://www.w3.org/2006/03/wsdl/soap.xsd</schemaLocation>
         </configuration>
             </plugin>
         </plugins>

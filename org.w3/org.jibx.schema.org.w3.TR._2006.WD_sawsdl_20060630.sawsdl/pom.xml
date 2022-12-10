@@ -26,7 +26,7 @@
                 <artifactId>jibx-maven-plugin</artifactId>
                 <inherited>true</inherited>
                 <configuration>
-          <schemaLocation>http://www.w3.org/TR/2006/WD-sawsdl-20060630/sawsdl.xsd</schemaLocation>
+          <schemaLocation>https://www.w3.org/TR/2006/WD-sawsdl-20060630/sawsdl.xsd</schemaLocation>
         </configuration>
             </plugin>
         </plugins>

@@ -26,7 +26,7 @@
                 <artifactId>jibx-maven-plugin</artifactId>
                 <inherited>true</inherited>
                 <configuration>
-          <schemaLocation>http://ns.hr-xml.org/2_4/HR-XML-2_4/StandAlone/Assignment.xsd</schemaLocation>
+          <schemaLocation>https://ns.hr-xml.org/2_4/HR-XML-2_4/StandAlone/Assignment.xsd</schemaLocation>
         </configuration>
             </plugin>
         </plugins>

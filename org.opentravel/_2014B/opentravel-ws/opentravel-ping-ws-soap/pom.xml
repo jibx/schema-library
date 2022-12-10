@@ -59,6 +59,11 @@
         <artifactId>cxf-rt-databinding-jibx</artifactId>
         <version>${cxf-version}</version>
     </dependency>
-        </dependencies>
+    <dependency>
+        <groupId>javax.xml.ws</groupId>
+        <artifactId>jaxws-api</artifactId>
+        <version>${jaxws-version}</version>
+    </dependency>
+</dependencies>
     
 </project>

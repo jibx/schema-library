@@ -19,6 +19,7 @@
   <properties>
     <link>./opentravel/index.html</link>
     <projectName>jibx-schema-library</projectName>
+    <jaxws-version>2.3.1</jaxws-version>
   </properties>
 
   <modules>

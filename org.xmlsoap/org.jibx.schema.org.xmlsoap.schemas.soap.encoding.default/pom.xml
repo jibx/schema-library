@@ -26,7 +26,7 @@
                 <artifactId>jibx-maven-plugin</artifactId>
                 <inherited>true</inherited>
                 <configuration>
-          <schemaLocation>http://schemas.xmlsoap.org/soap/encoding/default.xsd</schemaLocation>
+          <schemaLocation>https://schemas.xmlsoap.org/soap/encoding/default.xsd</schemaLocation>
         </configuration>
             </plugin>
         </plugins>

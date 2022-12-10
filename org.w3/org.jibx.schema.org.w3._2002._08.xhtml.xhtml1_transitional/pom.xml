@@ -26,7 +26,7 @@
                 <artifactId>jibx-maven-plugin</artifactId>
                 <inherited>true</inherited>
                 <configuration>
-          <schemaLocation>http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd</schemaLocation>
+          <schemaLocation>https://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd</schemaLocation>
         </configuration>
             </plugin>
         </plugins>

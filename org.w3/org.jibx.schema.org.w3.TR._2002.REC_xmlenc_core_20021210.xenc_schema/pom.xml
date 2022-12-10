@@ -26,7 +26,7 @@
                 <artifactId>jibx-maven-plugin</artifactId>
                 <inherited>true</inherited>
                 <configuration>
-          <schemaLocation>http://www.w3.org/TR/2002/REC-xmlenc-core-20021210/xenc-schema.xsd</schemaLocation>
+          <schemaLocation>https://www.w3.org/TR/2002/REC-xmlenc-core-20021210/xenc-schema.xsd</schemaLocation>
         </configuration>
             </plugin>
         </plugins>
