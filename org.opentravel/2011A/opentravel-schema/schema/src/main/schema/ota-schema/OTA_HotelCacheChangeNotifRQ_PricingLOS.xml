@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: Cache push for LOS Price Change -->
+<!-- USE CASE DETAILS: 
+
+This use case includes the following examples of cache changes:
+LOS price change
+	1.	June 5, 2011: KB/Rack
+		a.	1 nt $100 per night
+		b.	2 nt $120 per night
+		c.	3 nt $80 per night
+		d.	4 nt $110 per night
+		e.	5 nt $80 per night
+		f.	6 nt $110 per night
+		g.	7 nt $100 per night
+	2.	June 6, 2011: KB/Rack
+		a.	1 nt $100 per night
+		b.	2 nt $110 per night
+		c.	3 nt $100 per night
+		d.	4 nt $110 per night
+		e.	5 nt $80 per night
+		f.	6 nt $100 per night
+		g.	7 nt $120 per night
+-->
+
+<OTA_HotelCacheChangeNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelCacheChangeNotifRQ.xsd" EchoToken="12345" TimeStamp="2011-03-29T09:30:47" Target="Production" Version="1.000" PrimaryLangID="en-us">
+
+	<!-- Point of sale information for the sender of the cache notification -->
+	<POS>
+		<Source>
+			<RequestorID Type="10" ID="Marriott International"/>
+			<!-- Type10 = Hotel. See OpenTravel Code List Unique ID Type (UIT). -->
+		</Source>
+	</POS>
+
+	<!-- Price Change (LOS) -->
+	<CacheChangeInfo ChainCode="5158" HotelCode="10107">
+		<TimeSpan End="2011-06-05" Start="2011-06-05" LengthOfStay="7"/>
+		<ProductInfo RatePlanCode="RACK" RoomTypeCode="KB"/>
+	</CacheChangeInfo>
+
+</OTA_HotelCacheChangeNotifRQ>

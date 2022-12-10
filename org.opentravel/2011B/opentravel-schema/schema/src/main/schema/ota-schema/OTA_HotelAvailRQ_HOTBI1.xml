@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: Send Hotel Stay Billing Instructions for Corporate Hotel Stay to a Property Management (or other) System Using the OTA_HotelResNotifRQ/RS Message. -->
+<!-- USE CASE STEP: (1 OF 3): THIS USE CASE INSTANCE IS FOR THE FIRST STEP OF THE SCENARIO WHERE HOTEL AVAILABILITY IS QUERIED. -->
+<!-- USE CASE DETAILS: Jane Martin is representing her company, Widgets-R-Us, at a tradeshow event at the Hotel Deluxe in Phoenix from June 1 through June 3. Widgets-R-Us is paying for Jane’s room rate, room taxes and meals for the 3 days of her stay per a negotiated agreement between Hotel Deluxe and the Widgets-R-Us. Jane uses an online travel site to check availability at the Hotel Deluxe, and upon finding availability books her stay using her corporate credit card as a payment guarantee. On June 3, the last day of Jane’s stay, a billing instruction code (RMTXFD) is sent to the Hotel Deluxe property management system (PMS) that instructs Jane’s room rate, room taxes and meals for the 3 days of her stay (June 1 through June 3) to be billed to Widgets-R-Us. -->
+
+<OTA_HotelAvailRQ TimeStamp="2011-04-01T10:25:30" 
+EchoToken="7656" 
+Target="Production" 
+Version="3.001" 
+PrimaryLangID="ENG" 
+MaxResponses="30" 
+xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelAvailRQ.xsd">
+
+	<!-- Transaction originator (point of sale) information. -->
+	<POS>
+		<Source>
+			<RequestorID Type="13" ID="JQIR2244" />
+				<!-- RequestorID Type 13: Internet Broker (See OpenTravel Code List Unique ID Type.) -->
+		</Source>
+	</POS>
+	
+	<!-- A collection of availability request segments (AvailRequestSegment). Each segment includes a collection of criteria that requests a bookable entity, which may include designated rate plans, room types, amenities or services, and the request can be used for guest rooms or other inventory items for which availability is sought. Each segment would be presumed to have a unique date range for each request. -->
+	<AvailRequestSegments>
+		<AvailRequestSegment AvailReqType="Room" ResponseType="PropertyList">
+			<!-- AvailReqType = Room: This availability query is for guest rooms only. -->
+			<!-- ResponseType = PropertyList: The response should be a property list. -->
+			
+			<!-- Note that for newer implementations, this element is where availability search criteria is defined. -->
+			<HotelSearchCriteria AvailableOnlyIndicator="true" BestOnlyIndicator="false">
+				<!-- AvailabilityOnlyIndicator = true: Only hotels that are available. -->
+				<!-- BestOnlyInd = false: Return all room rates for hotels that are available, even if they are not the lowest rates available. -->
+				
+				<!-- Child elements that identify a single search criterion by criteria type. -->
+				<Criterion AlternateAvailability="Never">
+					<!-- AlternateAvailability = Never: Do not return alternate availability if the requested dates are not available. -->
+					
+					<!-- The Position element contains three attributes, Latitude, Longitude, and Altitude, used to indicate the geographic location(s) requested by the search, expressed in notation specified by ISO standard 6709. THIS IS NOT USED IN THIS SCENARIO. -->
+					<Position/>
+
+					<!-- Indicates the detail of hotel reference information when searching for a specific hotel, brand name, etc. -->
+					<HotelRef HotelCityCode="PHX" HotelName="Hotel Deluxe"/>
+					
+					<!-- Room level amenities for searches. In this scenario, high speed internet in the room is requested. -->
+					<RoomAmenity PreferLevel="Required" RoomAmenity="51"/>
+						<!-- PreferLevel = Required: This amenity is required in the guest room. -->
+						<!-- RoomAmenity 51 = High speed internet connection. Refer to OpenTravel Room Amenity Type (RMA) code list. -->
+						
+					<!-- Range of dates, or fixed set of dates for Availability Request. Date range can also be specified by using start dates and number of nights (minimum, maximum or fixed). In this scenario, a fixed set of dates with a start (check-in) date and night duration are used. -->
+					<StayDateRange Start="2011-06-01" Duration="P3D"/>
+						<!-- Duration P3D = 3 days -->
+
+					<!-- Used to identify available room products. In this scenario, a bed type is requested. -->
+					<RoomStayCandidates>
+						<RoomStayCandidate BedTypeCode="1">
+							<!-- BedTypeCode 1 = Double. Refer to OpenTravel Code List Bed Type Code (BED). -->
+							
+							<!-- A recurring element that identifies the number of guests and ages of the guests. In this scenario, one adult is identified. -->
+							<GuestCounts>
+								<GuestCount AgeQualifyingCode="10" Count="1"/>
+									<!-- AgeQualifyingCode 10 = Adult. Refer to OpenTravel Age Qualifying Code (AQC) code list. -->
+							</GuestCounts>
+						</RoomStayCandidate>
+					</RoomStayCandidates>
+				</Criterion>
+			</HotelSearchCriteria>
+		</AvailRequestSegment>
+	</AvailRequestSegments>
+
+</OTA_HotelAvailRQ>

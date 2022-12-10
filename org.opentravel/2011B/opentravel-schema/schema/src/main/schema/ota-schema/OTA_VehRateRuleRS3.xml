@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: Rates Rules with Vehicle Rental No Show Fees. -->
+<!-- USE CASE DETAILS: The transaction was processed successfully by the car supplier with no business warnings and this response message includes detailed no show fee information for the Ford Focus that was returned in the rates & availability response. -->
+
+<OTA_VehRateRuleRS xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_VehRateRuleRS.xsd" 
+TimeStamp="2010-07-10T17:26:19.34085-04:00" 
+Target="Production" 
+Version="3.000">
+
+  <!-- The presence of this element indicates the message was processed successfully by the receiving system. -->
+  <Success />
+  
+  <!-- Rental dates, times, and locations. -->
+  <VehRentalCore PickUpDateTime="2010-07-18T12:00:00" ReturnDateTime="2010-07-26T15:00:00">
+    <PickUpLocation LocationCode="IND" CodeContext="AC" />
+    <ReturnLocation LocationCode="IND" CodeContext="AC" />
+  </VehRentalCore>
+  
+  <!-- Information on one specific vehicle. -->
+  <Vehicle AirConditionInd="true" TransmissionType="Automatic" FuelType="Unspecified" DriveType="Unspecified" PassengerQuantity="5" BaggageQuantity="2" Code="CCAR" CodeContext="SIPP">
+
+    <VehType VehicleCategory="1" DoorCount="2-4" />
+    <!-- Vehicle Category of 1 = "Car" - See OpenTravel Code List Vehicle Category (VEC). -->
+    <VehClass Size="4" />
+    <!-- Size of 4 = "Compact" - See  OpenTravel Code List Size (SIZ). -->
+    <VehMakeModel Name="Ford Focus" />
+    <PictureURL>FordFocus.jpg</PictureURL>
+  </Vehicle>
+  
+  <!-- Information on the rates associated with this vehicle. Rate information can include the distance and the base rental cost, along with information on the various factors that may influence this rate. This element may repeat to allow different distances to be made available for different charges. -->
+  <RentalRate>
+
+    <!-- Information on the distance that a reserved vehicle may be driven as part of the standard rental charge. -->
+    <RateDistance Unlimited="true" DistUnitName="Mile" VehiclePeriodUnitName="RentalPeriod" />
+    
+    <!-- Information on the charges associated with this vehicle. -->
+    <VehicleCharges>
+      <VehicleCharge Amount="174.95" CurrencyCode="USD" Description="Weekly Rate" IncludedInEstTotalInd="true" Purpose="1">
+      <!-- Purpose of 1 = "Vehicle Rental" - See OpenTravel Code List Vehicle Charge Purpose Type (VCP). -->
+       <Calculation UnitCharge="174.95" UnitName="Week" Quantity="1" />
+      </VehicleCharge>
+      
+      <VehicleCharge Amount="49.98" CurrencyCode="USD" Description="Extra Day Rate" IncludedInEstTotalInd="true" Purpose="10">
+      <!-- Purpose of 10 = "Additional Day" - See OpenTravel Code List Vehicle Charge Purpose Type (VCP). -->
+       <Calculation UnitCharge="24.99" UnitName="Day" Quantity="2" />
+      </VehicleCharge>
+    </VehicleCharges>
+    
+    <!-- xxxxxxxxxxx -->
+    <RateQualifier RateCategory="16" />
+ 	<!-- Rate Category of 16 = "Standard" - See OpenTravel Code List Rate Category (RTC). -->
+
+    <!-- NOTE: No show fee indicator is true, so no show fees apply. Note that the guarantee required indicator is also set to true for specification of no show fee payment information. -->
+    <RateRestrictions AdvancedBookingInd="true" GuaranteeReqInd="true" NoShowFeeInd="true" />
+  </RentalRate>
+  
+  <!-- The anticipated total cost of a reservation, the sum of the individual charges, optional charges and associated fees. -->
+  <TotalCharge RateTotalAmount="224.93" EstimatedTotalAmount="283.64" CurrencyCode="USD" />
+  
+  <!-- Rules pertaining to the rental rate and/or vehicle. -->
+  <RateRules MinimumKeep="P5D" MaximumKeep="P90D" MaximumRental="P90D">
+    <AdvanceBooking OffsetTimeUnit="Hour" OffsetUnitMultiplier="1" RequiredInd="true" />
+    <PickupReturnRules>
+      <EarliestPickup Time="2010-07-18T12:00:00" />
+      <LatestPickup Time="2010-07-18T14:00:00" />
+      <LatestReturn Time="2010-07-26T15:00:00" />
+    </PickupReturnRules>
+    <RateGuarantee OffsetTimeUnit="Day" OffsetUnitMultiplier="180" />
+    
+    <!-- Payment rules associated with this reservation. -->
+    <!-- NOTE that these acceptable payments also apply to no show fees. -->
+    <PaymentRules>
+		<PaymentRule RuleType="4"/>
+		<!-- Payment rule type 4 = "Guarantee" - See OpenTravel Code List Rule Type (RUL). -->
+		  <AcceptablePayments PaymentTypeCode="40">
+			<AcceptablePayment CreditCardCode="AX" />
+			<AcceptablePayment CreditCardCode="DN" />
+			<AcceptablePayment CreditCardCode="DS" />
+			<AcceptablePayment CreditCardCode="MC" />
+			<AcceptablePayment CreditCardCode="VI" />
+		  </AcceptablePayments>
+    </PaymentRules>
+    
+    <!-- VEHICLE RENTAL NO SHOW FEE INFORMATION -->
+    <!-- Information regarding the no show fee policy for this vehicle type. -->
+    <NoShowFeeInfo>
+    
+      <!-- The time by which a cancellation must be made to avoid the no show fee. -->
+      <Deadline OffsetTimeUnit="Hour" OffsetUnitMultiplier="24" OffsetDropTime="BeforeArrival" />
+		  <!-- 24 hours before arrival. -->
+      
+	  <!-- The period of time between scheduled pickup time and no show fee. -->
+      <GracePeriod OffsetTimeUnit="Hour" OffsetUnitMultiplier="2" OffsetDropTime="AfterArrival" />
+		  <!-- 2 hours after arrival. -->
+
+	  <!-- The amount of the no show fee if a reservation is not cancelled before the specified deadline and the renter does not show up for the reservation. -->
+      <FeeAmount Amount="25.00" CurrencyCode="USD" GuaranteeReqInd="true" EmailRequiredInd="false" />
+		  <!-- Fee of $25.00 with guarantee required, but no customer email address required. -->
+
+	  <!-- A general text description of the no show fee policy that is suitable for display to the customer during the booking process. -->
+      <Description Formatted="true" Language="en" TextFormat="PlainText">A no show fee of 25.00 USD will be charged for reservations that are not picked up. No fee will be charged if the reservation is cancelled more than 24 hours before the pickup. If flight information is provided and the flight is cancelled or delayed, no fee will be charged.</Description>
+    </NoShowFeeInfo>
+  </RateRules>
+  
+   <!-- Fees associated with this vehicle quotation. -->
+   <Fees>
+    <Fee Amount="15.75" CurrencyCode="USD" Description="Sales Tax" IncludedInEstTotalInd="true" Purpose="7">
+    <!-- Purpose of 7 = "Fee" - See OpenTravel Code List Vehicle Charge Purpose Type (VCP) -->
+      <Calculation UnitCharge="224.93" Percentage="7.0" />
+    </Fee>
+   <Fee Amount="17.99" CurrencyCode="USD" Description="Excise Tax" IncludedInEstTotalInd="true" Purpose="7">
+      <Calculation UnitCharge="224.93" Percentage="8.0" />
+    </Fee>
+    <Fee Amount="24.97" CurrencyCode="USD" Description="Airport Fee" IncludedInEstTotalInd="true" Purpose="7">
+      <Calculation UnitCharge="224.93" Percentage="11.1" />
+    </Fee>
+  </Fees>
+  
+  <!-- Information on the rental location (pick up or drop off), including address, telephone, directions, hours of operations, etc. -->
+  <LocationDetails AtAirport="true" Code="IND" Name="Indianapolis Intl Airport" CodeContext="AC" AssocAirportLocList="IND">
+    <Address>
+      <StreetNmbr>5773 W Washington Street</StreetNmbr>
+      <CityName>Indianapolis</CityName>
+      <PostalCode>46241</PostalCode>
+      <StateProv StateCode="IN">Indiana</StateProv>
+      <CountryName Code="US">United States</CountryName>
+    </Address>
+    <Telephone PhoneTechType="1" PhoneNumber="800-242-7368" DefaultInd="true" />
+    <!--Phone tech type of 1 = "Voice" - See OpenTravel Code List Phone Technology Type (PTT) -->
+    <Telephone PhoneTechType="3" PhoneNumber="317-248-5691" />
+    <!--Phone tech type of 3 = "Fax" - See OpenTravel Code List Phone Technology Type (PTT) -->
+    <AdditionalInfo>
+      <ParkLocation Location="3" />
+      <!--Location of 3 = "Shuttle off airport" - See OpenTravel Code Vehicle Where At Facility (VWF) -->
+      <CounterLocation Location="3" />
+      <OperationSchedules>
+        <OperationSchedule>
+          <OperationTimes>
+			 <OperationTime Start="00:00:00" End="23:59:00" Mon="true" />
+			 <OperationTime Start="00:00:00" End="23:59:00" Tue="true" />
+			 <OperationTime Start="00:00:00" End="23:59:00" Weds="true" />
+			 <OperationTime Start="00:00:00" End="23:59:00" Thur="true" />
+			 <OperationTime Start="00:00:00" End="23:59:00" Fri="true" />
+			 <OperationTime Start="00:00:00" End="23:59:00" Sat="true" />
+			 <OperationTime Start="00:00:00" End="23:59:00" Sun="true" />
+          </OperationTimes>
+        </OperationSchedule>
+      </OperationSchedules>
+      <Shuttle>
+        <ShuttleInfos>
+          <ShuttleInfo Type="Transportation">
+            <SubSection>
+              <Paragraph>
+                <Text>ACE Rent A Car</Text>
+              </Paragraph>
+            </SubSection>
+          </ShuttleInfo>
+          <ShuttleInfo Type="PickupInfo">
+            <SubSection>
+              <Paragraph>
+                <Text>Call 800-242-7368 for shuttle service.</Text>
+              </Paragraph>
+            </SubSection>
+          </ShuttleInfo>
+          <ShuttleInfo Type="Miscellaneous">
+            <SubSection>
+              <Paragraph>
+                <Text>ACE Rent a Car is a short shuttle ride from the terminal. Free shuttle service is provided upon request. On arrival please call 800-242-7368 for shuttle service.</Text>
+              </Paragraph>
+            </SubSection>
+          </ShuttleInfo>
+        </ShuttleInfos>
+      </Shuttle>
+    </AdditionalInfo>
+  </LocationDetails>
+  
+  <!-- xxxxxxxxxxx -->
+  <VendorMessages>
+    <VendorMessage InfoType="2">
+    <!--Info type of 2 = "Policy" - See OpenTravel Code List List Information Type (INF) -->
+      <SubSection>
+        <Paragraph>
+          <Text>LOCAL RENTERS** rate will be limited to 150 free mile per day and .20 per extra mile. Vehicles are not permitted to be driven in CA, WA, OR, ID, UT, NV, AZ, NM, British Columbia, Alberta, Saskatchewan or Mexico. A $100.00 advance deposit is required on specialty vehicles.  See local policy for details.</Text>
+        </Paragraph>
+      </SubSection>
+    </VendorMessage>
+  </VendorMessages>
+</OTA_VehRateRuleRS>

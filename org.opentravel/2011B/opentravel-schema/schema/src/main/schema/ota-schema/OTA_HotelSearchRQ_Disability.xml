@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<OTA_HotelSearchRQ Version="3.001" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelSearchRQ.xsd" xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<POS>
+		<Source AirlineVendorID="FG" PseudoCityCode="MIA" ISOCountry="US" ISOCurrency="USD" AgentSine="A4444BM" AgentDutyCode="FR" />
+		<Source>
+			<RequestorID Type="5" ID="12345675" ID_Context="IATA" />
+			<!-- 5 means travel agent --> 
+		</Source>
+	</POS>
+	<Criteria>
+		<Criterion>
+  <RefPoint>Empire State Building</RefPoint> 
+  <CodeRef LocationCode="17" CodeContext="OTA-REF code list" /> 
+	<!-- 17 means landmark --> 
+  <HotelRef HotelCityCode="NYC" /> 
+  <Radius Distance="2" DistanceMeasure="MILES" /> 
+  <HotelAmenity Code="254" />
+  <!--  254 means connecting rooms --> 
+  <RoomAmenity RoomAmenity="74" /> 
+	<!--  74 means non smoking --> 
+  <RoomAmenity RoomAmenity="158" /> 
+	<!-- 158 means CNN is in the room 
+  --> 
+  <RoomAmenity RoomAmenity="123" /> 
+	<!-- 123 means wireless internet access --> 
+	<HotelFeature AccessibilityCode="110" />
+	<!-- 110 means roll-in shower available --> 
+	<HotelFeature AccessibilityCode="102" />
+	<!-- 102 means accessible baths --> 
+	<HotelFeature AccessibilityCode="28" />
+	<!-- 28 means public areas wheelchair accessible-->
+<HotelFeature AccessibilityCode="38" />
+	<!-- 38 means grab bars in bathroom-->
+	
+  </Criterion>
+  </Criteria>
+  </OTA_HotelSearchRQ>

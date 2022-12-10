@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="5.000" id="OTA2013B">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_RailCommonTypes.xsd"/>
+	<xs:element name="OTA_RailAvailRS">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The Availability Response message contains train vvailability for a station on a specific date. A set of OriginDestinationOptions is returned, each of which contains one or more (connecting) trains that serve the city pair. The response  comprises a list of available train departures from the Origin to the Destination and, where the responding system has this facility, valid fares available on those departures.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="Success" type="SuccessType">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">An element that is not intended to contain any data. The mere presence of a success element within the response message indicates that the incoming request message was processed successfully.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Warnings" type="WarningsType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Indicates that the recipient of the request message identified one or more business-level warnings/errors, but the message itself was successfully processed.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OriginDestinationInformation" minOccurs="0" maxOccurs="99">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Information on the locations between which availability was requested. This provides for multiple origin/destination pairs in one request message.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="RailOriginDestinationInformationType">
+									<xs:sequence>
+										<xs:element name="OriginDestinationOption" maxOccurs="999">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">A collection of train options for the specified origin-destination pair.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="OriginLocation" type="LocationType" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">The origin location code and optional code context.</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="DestinationLocation" type="LocationType" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">The destination location code and optional code context.</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="JourneySegment" maxOccurs="10">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">Journey Segment information which may be a train and/or a bus segment.</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="TrainSegment" minOccurs="0">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">Train segment information.</xs:documentation>
+																	</xs:annotation>
+																	<xs:complexType>
+																		<xs:complexContent>
+																			<xs:extension base="TrainSegmentType">
+																				<xs:sequence>
+																					<xs:element name="TrainOrigin" type="LocationType" minOccurs="0">
+																						<xs:annotation>
+																							<xs:documentation xml:lang="en">Represents the start location of this train service.</xs:documentation>
+																						</xs:annotation>
+																					</xs:element>
+																					<xs:element name="TrainDestination" type="LocationType" minOccurs="0">
+																						<xs:annotation>
+																							<xs:documentation xml:lang="en">Represents the final destination location of this train service.</xs:documentation>
+																						</xs:annotation>
+																					</xs:element>
+																					<xs:element name="RailAmenities" type="RailAmenityType" minOccurs="0">
+																						<xs:annotation>
+																							<xs:documentation xml:lang="en">A collection of preferred or offered rail amenities, including an amenity code, quantity and/or an associated preference level.</xs:documentation>
+																						</xs:annotation>
+																					</xs:element>
+																					<xs:element name="AvailabilityDetail" maxOccurs="99">
+																						<xs:annotation>
+																							<xs:documentation xml:lang="en">Specific inventory-controlled service class code or detailed accommodation information, class and passenger type fares, and other service-related information including reservation class, reservation type, different class codes returned indicator, and autotrain vehicle type. This information collectively represents one or more specific classes of service, such as "First class" and/or a seat and berth  accommodation.</xs:documentation>
+																						</xs:annotation>
+																						<xs:complexType>
+																							<xs:sequence>
+																								<xs:element name="ClassCode" minOccurs="0">
+																									<xs:annotation>
+																										<xs:documentation xml:lang="en">The class of inventory controlled services available.</xs:documentation>
+																									</xs:annotation>
+																									<xs:complexType>
+																										<xs:complexContent>
+																											<xs:extension base="ClassCodeType"/>
+																										</xs:complexContent>
+																									</xs:complexType>
+																								</xs:element>
+																								<xs:element name="Reference" type="xs:string" minOccurs="0">
+																									<xs:annotation>
+																										<xs:documentation xml:lang="en">A reference code for the available service(s) returned in this message that may be used in a booking message. This is used as a reference number in the booking request so availability service details do not need to be replicated in the booking request message.</xs:documentation>
+																									</xs:annotation>
+																								</xs:element>
+																								<xs:element ref="AncillaryService" minOccurs="0"/>
+																								<xs:element name="Accommodation" minOccurs="0">
+																									<xs:annotation>
+																										<xs:documentation xml:lang="en">Type, class and compartment categories of train accommodations.</xs:documentation>
+																									</xs:annotation>
+																									<xs:complexType>
+																										<xs:complexContent>
+																											<xs:extension base="AccommodationType">
+																												<xs:attribute name="Quantity" type="xs:positiveInteger" use="optional">
+																													<xs:annotation>
+																														<xs:documentation xml:lang="en">The quantity.</xs:documentation>
+																													</xs:annotation>
+																												</xs:attribute>
+																											</xs:extension>
+																										</xs:complexContent>
+																									</xs:complexType>
+																								</xs:element>
+																							</xs:sequence>
+																							<xs:attribute name="ReservationClass" type="xs:string" use="optional">
+																								<xs:annotation>
+																									<xs:documentation xml:lang="en">Specifies class, such as Coach, Premium and Sleeper.</xs:documentation>
+																								</xs:annotation>
+																							</xs:attribute>
+																							<xs:attribute name="ReservationType" use="optional">
+																								<xs:annotation>
+																									<xs:documentation xml:lang="en">Specifies if the class code is reserved or unreserved.</xs:documentation>
+																								</xs:annotation>
+																								<xs:simpleType>
+																									<xs:restriction base="xs:string">
+																										<xs:enumeration value="Reservable"/>
+																										<xs:enumeration value="NotReservable"/>
+																									</xs:restriction>
+																								</xs:simpleType>
+																							</xs:attribute>
+																							<xs:attribute name="VehicleType" type="xs:string" use="optional">
+																								<xs:annotation>
+																									<xs:documentation xml:lang="en">The vehicle type for autotrains, such as a Channel Tunnel, including car, van, motorcycle, etc.</xs:documentation>
+																								</xs:annotation>
+																							</xs:attribute>
+																							<xs:attribute name="IsBicycleInd" type="xs:boolean" use="optional">
+																								<xs:annotation>
+																									<xs:documentation xml:lang="en">When true, the class code is for a bicycle which many types of trains accommodate.</xs:documentation>
+																								</xs:annotation>
+																							</xs:attribute>
+																							<xs:attribute name="AlternativeInd" type="xs:boolean" use="optional">
+																								<xs:annotation>
+																									<xs:documentation xml:lang="en">When true, the class code returned is different from the requested class code.</xs:documentation>
+																								</xs:annotation>
+																							</xs:attribute>
+																						</xs:complexType>
+																					</xs:element>
+																					<xs:element name="VendorMessages" type="VendorMessagesType" minOccurs="0">
+																						<xs:annotation>
+																							<xs:documentation xml:lang="en">A collection of special comments on the segment.</xs:documentation>
+																						</xs:annotation>
+																					</xs:element>
+																					<xs:element name="Remarks" minOccurs="0">
+																						<xs:annotation>
+																							<xs:documentation xml:lang="en">A collection of remarks about the segment.</xs:documentation>
+																						</xs:annotation>
+																						<xs:complexType>
+																							<xs:sequence>
+																								<xs:element name="Remark" type="WarningType" maxOccurs="99">
+																									<xs:annotation>
+																										<xs:documentation xml:lang="en">A remark about the segment.</xs:documentation>
+																									</xs:annotation>
+																								</xs:element>
+																							</xs:sequence>
+																						</xs:complexType>
+																					</xs:element>
+																				</xs:sequence>
+																				<xs:attribute name="OnTimeRate" type="Percentage" use="optional">
+																					<xs:annotation>
+																						<xs:documentation> Specifies the Dept. of Transport on time rate of the  train.</xs:documentation>
+																					</xs:annotation>
+																				</xs:attribute>
+																				<xs:attribute name="AlternativeInd" type="xs:boolean" use="optional">
+																					<xs:annotation>
+																						<xs:documentation xml:lang="en">When true, indicates that the priced segment information returned was not the same as requested segment.</xs:documentation>
+																					</xs:annotation>
+																				</xs:attribute>
+																				<xs:attribute name="RestrictedServiceInd" type="xs:boolean" use="optional">
+																					<xs:annotation>
+																						<xs:documentation xml:lang="en">When true, indicates that this is a restricted service.</xs:documentation>
+																					</xs:annotation>
+																				</xs:attribute>
+																				<xs:attribute name="CancelledInd" type="xs:boolean" use="optional">
+																					<xs:annotation>
+																						<xs:documentation xml:lang="en">When true, indicates that a segment has been cancelled.</xs:documentation>
+																					</xs:annotation>
+																				</xs:attribute>
+																			</xs:extension>
+																		</xs:complexContent>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="BusSegment" minOccurs="0">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">Bus segment information which may be hosted in the rail provider system or a code share.</xs:documentation>
+																	</xs:annotation>
+																	<xs:complexType>
+																		<xs:complexContent>
+																			<xs:extension base="BusSegmentType">
+																				<xs:sequence>
+																					<xs:element name="ClassCodes" maxOccurs="99">
+																						<xs:annotation>
+																							<xs:documentation xml:lang="en">The class of inventory controlled services available.</xs:documentation>
+																						</xs:annotation>
+																						<xs:complexType>
+																							<xs:complexContent>
+																								<xs:extension base="ClassCodeType">
+																									<xs:attribute name="ReservationClass" type="xs:string" use="required">
+																										<xs:annotation>
+																											<xs:documentation xml:lang="en">Specifies class, such as Coach, Premium and Sleeper.</xs:documentation>
+																										</xs:annotation>
+																									</xs:attribute>
+																									<xs:attribute name="ReservationType" type="xs:string" use="required">
+																										<xs:annotation>
+																											<xs:documentation xml:lang="en">Specifies the type of the reservation.</xs:documentation>
+																										</xs:annotation>
+																									</xs:attribute>
+																									<xs:attribute name="VehicleType" type="xs:string" use="optional">
+																										<xs:annotation>
+																											<xs:documentation xml:lang="en">Specifies the type of the vehicle or bus.</xs:documentation>
+																										</xs:annotation>
+																									</xs:attribute>
+																									<xs:attribute name="AlternativeInd" type="xs:boolean" use="optional">
+																										<xs:annotation>
+																											<xs:documentation xml:lang="en">When true, this is an alternate form of transportation.</xs:documentation>
+																										</xs:annotation>
+																									</xs:attribute>
+																								</xs:extension>
+																							</xs:complexContent>
+																						</xs:complexType>
+																					</xs:element>
+																					<xs:element name="Remarks" minOccurs="0">
+																						<xs:annotation>
+																							<xs:documentation xml:lang="en">Remarks about the bus segment.</xs:documentation>
+																						</xs:annotation>
+																						<xs:complexType>
+																							<xs:sequence>
+																								<xs:element name="Remark" type="WarningType" maxOccurs="99"/>
+																							</xs:sequence>
+																						</xs:complexType>
+																					</xs:element>
+																				</xs:sequence>
+																			</xs:extension>
+																		</xs:complexContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="Remark" type="WarningType" minOccurs="0" maxOccurs="5">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">Remarks about the specified origin-destination pair.</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="LastHoldDate" type="xs:date" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">The last date after which the priced journey will be cancelled if not ticketed.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="JourneyDuration" type="xs:duration" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">The duration of the journey plus stop over time.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="AlternativeInd" type="xs:boolean" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">When TRUE, indicates that the returned journey was not the same as the requested journey.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:extension>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+				<xs:element name="Errors" type="ErrorsType">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Indicates that an error occurred in the processing of the incoming request message. An error is defined as a malformed XML message that could not be processed.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="PassengerPriceType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">A price per passenger type.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="AlternateCurrencyPrice" minOccurs="0">
+				<xs:complexType>
+					<xs:attributeGroup ref="CurrencyAmountGroup"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="CurrencyAmountGroup"/>
+		<xs:attributeGroup ref="TravelerCountGroup"/>
+	</xs:complexType>
+	<xs:complexType name="PriceRuleType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">A definition of a pricing rule.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="StringLength1to128">
+				<xs:attribute name="Type" type="StringLength1to32" use="required"/>
+				<xs:attribute name="Value" type="StringLength1to8" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Where applicable, a qualifying value for the price rule, e.g. 2 for minimum occupancy or Adult.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="FareRuleType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">A price and rule combination.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="PassengerPriceType">
+					<xs:sequence>
+						<xs:element ref="PriceRule" maxOccurs="9"/>
+						<xs:element ref="TotalFare"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PriceRule" type="PriceRuleType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">A rule governing the application of a price.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="TotalFare">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Encapsulates the total price for all adults and all children, or all tickets (in the case of a multi-passenger ticket). If the total fare cannot be calculated, the reason is given.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="AlternateCurrencyTotal" minOccurs="0">
+					<xs:complexType>
+						<xs:attributeGroup ref="CurrencyAmountGroup"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attributeGroup ref="CurrencyAmountGroup"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

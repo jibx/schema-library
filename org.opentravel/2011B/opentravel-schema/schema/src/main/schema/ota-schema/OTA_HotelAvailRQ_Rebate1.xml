@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: Hotel Rebate Program: A traveler searches for a hotel participating in a rebate program. -->
+<!-- USE CASE DETAILS: 
+
+1.	Jane Smith is searching for a hotel on an online travel site. Her company is participating in the Taxeo VAT rebate program and has requested that employees search for Taxeo participating hotels when making hotel arrangements. Jane enters her search criteria including the name of the Taxeo rebate program and her trip purpose of business. (OTA_HotelSearchRQ_Rebate1.xml)
+2.	Jane receives a list of hotels that match her search criteria including two that are participating in the Taxeo VAT program. (OTA_HotelSearchRS_Rebate1.xml)
+3.	Jane requests availability on the property (THIS INSTANCE) and receives a room availability response (OTA_HotelAvailRS_Rebate1.xml)
+4.	Jane books her stay and a copy of her credit card guarantee information is passed in the Taxeo payment element that will be sent to/ or utilized in house for the VAT rebate (OTA_HotelResRQ_Rebate1.xml). Jane receives a confirmation for her hotel stay (OTA_HotelResRS_Rebate1.xml)
+-->
+
+<OTA_HotelAvailRQ Version="3.002" 
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelAvailRQ.xsd" 
+xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+TimeStamp="2011-09-17T09:30:47" 
+RequestedCurrency="USD" 
+RequestedCurrencyIndicator="true" 
+MaxResponses="100">
+
+<!-- Explanation of payload attributes: -->
+<!-- * Version - (REQUIRED) The version of the OpenTravel message you are using. I threw in "3.001" - this is the latest version of the message. -->
+<!-- * RequestedCurrency (OPTIONAL) - The code specifying the currency in which the response should be sent. Use ISO 4217, three alpha code. -->
+<!-- * RequestedCurrencyIndicator (OPTIONAL) - When true, indicates that response should only incude rates that match requested currency. -->
+<!-- * TimeStamp (OPTIONAL) - Indicates the creation date and time of the message in UTC. -->
+<!-- * MaxResponses (OPTIONAL) - A positive integer value that indicates the maximum number of responses desired in the return. -->
+
+	<!-- Transaction originator (point of sale) information. -->
+	<POS>
+		<Source>
+			<RequestorID Type="13" ID="123456" />
+				<!-- 	RequestorID @Type 7: Internet Broker (See OpenTravel Code List Unique ID Type.) -->
+		</Source>	
+	</POS>
+	
+	<!-- A collection of availability request segments. Each segment includes a collection of criteria that requests a bookable entity, which may include designated rate plans, room types, amenities or services, and the request can be used for guest rooms or other inventory items for which availability is sought. Each segment would be presumed to have a unique date range for each request. -->
+	<AvailRequestSegments>
+	
+		<AvailRequestSegment ResponseType="PropertyList" AvailReqType="Room">
+			<!-- * AvailReqType (OPTIONAL) - An enumerated type that indicates whether the availability request is for a room or non-room product, such as amenities or other activities (e.g.: banquet, conference room, etc.) Values: Room,  NonRoom, Both. -->
+			<!-- * ResponseType (OPTIONAL) -  The type of data to be returned, either a list of hotel records or a list of area (city/reference) codes. -->
+			
+			<!-- This is the element to specify availability search criteria if you're using OpenTravel Hotel messages that are later than 2005B. -->
+			
+			<HotelSearchCriteria AvailableOnlyIndicator="true">
+				<!-- AvailabilityOnlyIndicator (OPTIONAL) - When true, return only hotels that are available. -->
+				
+				<Criterion>
+					<!-- The chain and hotel code from the previous Hotel Search are included here. -->
+					<HotelRef ChainCode="EU" HotelCode="abc123" HotelCityCode="PAR" HotelName="Le Marquis Eiffel"/>
+
+					<RebatePrograms>
+						<RebateProgram ParticipationInd="true" ProgramName="Taxeo">
+						</RebateProgram>
+					</RebatePrograms>
+
+				</Criterion>
+			</HotelSearchCriteria>
+				
+		</AvailRequestSegment>
+	</AvailRequestSegments>
+
+</OTA_HotelAvailRQ>

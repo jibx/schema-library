@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: Rail Booking Request with Traveler Details. -->
+<!-- USE CASE DETAILS: An end user uses a wholesaler website to book a business trip from Beijing to Shanghai. They would like to book a onw way ticket. This response indicates that the reservation was processed successfully and it has been provisionally booked with a warning returned that the customer requested seat preferences cannot be confirmed until arrival at the station. Note that a Rail Book Confirmation or Rail Ignore Booking message will either confirm or cancel this provisional booking. -->
+
+<OTA_RailBookRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_RailBookRS.xsd" EchoToken="183529" TimeStamp="2010-12-16T09:30:47-05:00" Target="Production" Version="3.000" SequenceNmbr="1" PrimaryLangID="en-us" AltLangID="en-us">
+
+	<!-- The presence of this element indicates the request message was processed successfully by the receiving system. -->
+	<Success/>
+
+	<!-- The presence of this element indicates the request message was processed successfully by the trading partner but one or more business warnings have been returned. -->
+	<Warnings>
+		<!-- Warning Type 11 is "Advisory" - See OpenTravel Code List Error Warning Type (EWT). -->
+		<Warning Type="11" RecordID="123456">Provisional train seat reservation could not be Committed. No seats have been confirmed.</Warning>
+	</Warnings>
+
+	<!-- Information for the rail reservation that was successfully created. -->
+	<RailReservation>
+		<UniqueID ID="123456" Type="23"/>
+			<!-- UniqueID Type 23 = Provisional reservation. See OpenTravel Code List Unique ID Type (UIT). -->
+
+		<Itinerary>
+			<OriginAndDestination>
+				<OriginLocation>BEI</OriginLocation>
+				<DestinationLocation>SHA</DestinationLocation>
+				<TrainSegment BookStatus="BKD">
+					<DepartureStation>
+						<Details LocationCode="Beijing Central"/>
+					</DepartureStation>
+					<ArrivalStation>
+						<Details LocationCode="SHA1"/>
+					</ArrivalStation>
+					<MarketingCompany>CHRT</MarketingCompany>
+				</TrainSegment>
+			</OriginAndDestination>
+		</Itinerary>
+		
+		<Traveler>
+			<GivenName>Shuang</GivenName>
+			<Surname>Lu</Surname>
+			
+			<Document DocID="14653321" DocType="2"></Document>
+				<!-- DocType 2: Passport (See OpenTravel Code List Document Type (DOC) -->
+
+		</Traveler>
+		
+	</RailReservation>
+		
+</OTA_RailBookRS>

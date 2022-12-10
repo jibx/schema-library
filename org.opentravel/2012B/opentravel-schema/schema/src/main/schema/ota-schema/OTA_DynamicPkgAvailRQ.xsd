@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="3.000" id="OTA2012B">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:annotation>
+		<xs:documentation source="Notice" xml:lang="en">The OTA_CodeType simpleType will be deprecated in the 2013A OpenTravel XML Message Suite publication. All OTA_CodeType typed attributes with be replaced with elements typed as an open list, e.g. List_NameOfList.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_DynamicPkgCommonTypes.xsd"/>
+	<xs:element name="OTA_DynamicPkgAvailRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The Dynamic Package Availability request message is used to obtain availability (with optional pricing) for various components of a dynamic package reservation, that may include Air, Hotel, Car, and Package Options.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" type="POS_Type" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Point of Sale (POS) identifies the party or connection channel making the request.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="SearchCriteria">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Contains the specific search criteria for each desired package component.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PromotionCodes" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Promotion codes that will be applied at either the package or component level.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="PromotionCode" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Used to apply discounts and tracking codes to a package.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:attribute name="RPH" type="RPH_Type" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">This is a reference placeholder, used as a unique index for this promotion code in this message.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="Code" type="StringLength1to16" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">The code identiying the tracking or discount promotion. Each code may be referenced by one or more component specific search criteria.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="AirSearch" type="DynamicPkgAirSearchType" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Identifies specific search criteria for air searches.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="HotelSearch" type="DynamicPkgHotelSearchType" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Identifies specific search criteria for hotel searches.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="PackageOptionSearch" type="DynamicPkgOptionSearchType" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Identifies specific search criteria for package option searches.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="CarSearch" type="DynamicPkgCarSearchType" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Identifies specific search criteria for rental car searches.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="MultimodalOffer" type="MultiModalOfferType" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation source="Description" xml:lang="en">Multimodal offer influencers.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="DynamicPackage" type="DynamicPkgType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Contains information about the guests and already reserved portions of the package.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="InclusionSets" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">A container of RPHs (reference place holders) that refer back to a master DynamicPackage inclusion collection for any of the packages specified in this message. 
+
+This is typically used to describe an inclusive item that is included with a hotel, air or car DynamicPackage component, such as a free ticket to a theme park for booking a certain hotel room type.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="InclusionSet" type="InclusionSetType" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

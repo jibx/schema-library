@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: #1: Local golf course with carts and club rentals -->
+<!-- USE CASE DETAILS: 
+
+Jane and John Smith are golfers and are looking for a local course to play on. They are flexible in the days and times that they can play, but they want a course that provides golf carts and has club rentals. They do a search through an online golf site (Golf For All) and see that The Grand Del Mar is a local course that has golf carts and club rentals—and an afternoon tee time discount, so they book the discounted afternoon tee time.
+-->
+
+<OTA_GolfCourseSearchRQ xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_GolfCourseSearchRQ.xsd" 
+EchoToken="12345" 
+TimeStamp="2011-05-01T09:44:52" 
+Target="Production" 
+Version="3.000" 
+PrimaryLangID="en-us">
+
+	<!-- Point of sale information for the sender of the request, in this case the golf distributors branded website. -->
+	<POS>
+		<Source>
+			<RequestorID Type="7" ID="GolfForAllWebsite"/>
+			<!-- Type 7 = "Wholesaler". See OpenTravel Code List Unique ID Type (UIT). -->
+		</Source>
+	</POS>
+	
+	<!-- Transaction processing directives, including display currency overrides. If no display currency information is provided, the display and pricing currency will default to the value in POS/Source/@ISOCurrency. -->
+	<ProcessingInfo SummaryResultsInd="true" DisplayCurrency="US" MaxResultsQty="30"/>
+		<!-- SummaryResultsInd: If true, summary information is requested in the search results. NOTE, check with your trading partners to see if they support this functionality. -->
+		<!-- DisplayCurrency: The requested display currency in ISO 4217 encoding. -->
+		<!-- MaxResultsQty: The maximum quantity of search results in the response. NOTE, check with your trading partners to see if they support this functionality.  -->
+		
+	<!-- Golf facility and tee time search criteria. -->
+	<Criteria>
+
+		<!-- In this use case, a proximity search is used because the search is for a local facility within 10 miles of the specified city and state. -->
+		<Proximity CityName="San Diego" StateProv="CA" DistanceMax="10" DistanceMeasure="miles" />
+		
+		<!-- Golf course amenities. Note that these amenities are known to the receiving (processing system) by name, ID or a combination of both. -->
+		<Amenities Name="Golf Cart" IncludedInTeeTimePriceInd="true"/>
+			<!-- A golf cart that is included in the tee time price. -->
+		<Amenities Name="Club Rental"/>
+			<!-- Golf clubs for rent. -->
+		
+	</Criteria>
+	
+</OTA_GolfCourseSearchRQ>

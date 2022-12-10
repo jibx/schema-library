@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- OpenTravel Reference Implentation Sample Instance-->
+<!-- Use Case Scenario:
+Miss Priscilla Wallis, a wheelchair user accompanied by a caregiver, goes to the “CDEFG” travel agency located in Miami, Florida to book 2 hotel rooms in NY City during summer 2012. She is not familiar with any hotels in NY and wants to get a selection of hotel properties corresponding to her criteria:
+
+•	The property should be located within 2 miles from the Empire State Building
+•	The property should have wireless internet access in the guest room
+•	The property should have non-smoking rooms
+•	CNN must be available in the guest room
+•	The guest room must have a roll in shower
+•	The guest room mush have an accessible bathroom 
+•	The hotel mush have wheelchair accessible public spaces
+•	The hotel must offer connecting rooms
+
+There is no preference regarding the Hotel chain.  The travel agent from the “CDEFG” travel agency is requesting a hotel list on his terminal, based on the criteria provided by Miss Wallis. This request is sent to the “SuperHL” system using OTA_HotelSearchRQ.  The Vendor ID of the “CDEFG” travel agency is “FG”. The code of the “Super-HL” system is “SH”.
+-->
+
+<OTA_HotelSearchRQ Version="3.001" 
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelSearchRQ.xsd" 
+xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<POS>
+		<Source AirlineVendorID="FG" PseudoCityCode="MIA" ISOCountry="US" ISOCurrency="USD" AgentSine="A4444BM" AgentDutyCode="FR" />
+		<Source>
+			<RequestorID Type="5" ID="12345675" ID_Context="IATA" />
+			<!-- 5 means travel agent --> 
+		</Source>
+	</POS>
+	<Criteria>
+		<Criterion>
+  <RefPoint>Empire State Building</RefPoint> 
+  <CodeRef LocationCode="17" CodeContext="OTA-REF code list" /> 
+	<!-- 17 means landmark --> 
+  <HotelRef HotelCityCode="NYC" /> 
+  <Radius Distance="2" DistanceMeasure="MILES" /> 
+  <HotelAmenity Code="254" />
+  <!--  254 means connecting rooms --> 
+  <RoomAmenity RoomAmenity="74" /> 
+	<!--  74 means non smoking --> 
+  <RoomAmenity RoomAmenity="158" /> 
+	<!-- 158 means CNN is in the room 
+  --> 
+  <RoomAmenity RoomAmenity="123" /> 
+	<!-- 123 means wireless internet access --> 
+	<HotelFeature AccessibilityCode="110" />
+	<!-- 110 means roll-in shower available --> 
+	<HotelFeature AccessibilityCode="102" />
+	<!-- 102 means accessible baths --> 
+	<HotelFeature AccessibilityCode="28" />
+	<!-- 28 means public areas wheelchair accessible-->
+<HotelFeature AccessibilityCode="38" />
+	<!-- 38 means grab bars in bathroom-->
+	
+  </Criterion>
+  </Criteria>
+  </OTA_HotelSearchRQ>

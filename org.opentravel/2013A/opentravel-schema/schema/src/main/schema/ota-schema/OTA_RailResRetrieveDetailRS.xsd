@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="2.000" id="OTA2013A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_RailCommonTypes.xsd"/>
+	<xs:element name="OTA_RailResRetrieveDetailRS">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">This message returns detailed information about an existing rail reservation for an exact match on a read request that includes:
+
+- Full rail itinerary details, including origin and destination location details (including departure and arrival station, marketing and operating companies, equipment, train identification and classification, inventory class codes, accommodation details, ancillary services, charges and vendor messages)
+- Passenger information
+- Payment rules
+- Fulfillment details
+
+NOTES: 
+
+- For summary rail reservation information on an exact match of a read request, or multiple matches on a read request, the OTA_RailResRetrieveSummaryRS message is typically returned. 
+
+- Check with your trading partner to confirm their implementation of the Rail Read Reservation response messages.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="Success" type="SuccessType">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">An element that is not intended to contain any data. The mere presence of a success element within the response message indicates that the incoming request message was processed successfully.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Warnings" type="WarningsType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Indicates that the recipient of the request message identified one or more business-level warnings/errors, but the message itself was successfully processed.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RailReservation" type="RailReservationType" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Represents the train reservation that was previously created.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:element name="Errors" type="ErrorsType">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Indicates that an error occurred in the processing of the incoming request message. An error is defined as a malformed XML message that could not be processed.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.opentravel.org/OTA/2003/05" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="1.000" id="OTA2010B">
+	<xs:include schemaLocation="OTA_CommonTypes.xsd"/>
+	<xs:include schemaLocation="OTA_HotelCommonTypes.xsd"/>
+	<xs:annotation>
+		<xs:documentation xml:lang="en">All Schema files in the OpenTravel Alliance specification are made available according to the terms defined by the OpenTravel License Agreement at http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:element name="OTA_HotelInvChangeRS">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">This message provides response functionality from a query of a trading partners system for hotel inventory items that have availability and/or rate changes and therefore should be updated in a trading partner’s cache. The information in this response message will indicate if an OTA_HotelAvailRQ is required to refresh the trading partner’s data cache.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" type="POS_Type" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Information about the message initiator.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:choice>
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Errors that ocurred during the processing of the request message -OR-  information created by the successful processing of the request message.</xs:documentation>
+					</xs:annotation>
+					<xs:sequence>
+						<xs:element name="Success" type="SuccessType">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">An element that is not intended to contain any data. The mere presence of a success element within the response message indicates that the incoming request message was processed successfully.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Warnings" type="WarningsType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Indicates that the recipient of the request message identified one or more business-level warnings/errors, but the message itself was successfully processed.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="CacheChangeInfo" type="CacheType" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Information that has changed and should be updated in the cache via an OTA_HotelAvailRQ request message.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+					<xs:element name="Errors" type="ErrorsType">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Indicates that an error occurred in the processing of the incoming request message. An error is defined as a critical error caused by corruption of a message in transit or a communication failure. </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="CacheType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Information that has changed and should be updated in the cache.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="TimeSpan" type="TimeSpanType">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The start and end date of information that should be updated in the cache for the associated @HotelCode and an optional "change date mask" that indicates if there are changes in all or a portion of the returned date range</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="OtherInfo" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Other optional information that may be returned used to further target the OTA_HotelAvailRQ message.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="RoomTypeCode" type="StringLength1to16" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Specific system room type code, ex: A1K, A1Q etc.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="RatePlanCode" type="StringLength1to64" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">A string value may be used to request a particular code or an ID if the guest qualifies for a specific rate, such as AARP, AAA, a corporate rate, etc., or to specify a negotiated code as a result of a negotiated rate.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="HotelCode" type="StringLength1to16" use="required">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The code that uniquely identifies a single hotel property. The hotel code is decided between vendors.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TimeSpanType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The start date, end date and (day of month) change mask by Hotel Code.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="Start" use="required">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The start date of information that should be updated in the cache.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:date"/>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="End" use="required">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The end date of information that should be updated in the cache.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string"/>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="ChangeDateMask" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">If not present, indicates that everything between the Start and End date has changed.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string"/>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+</xs:schema>

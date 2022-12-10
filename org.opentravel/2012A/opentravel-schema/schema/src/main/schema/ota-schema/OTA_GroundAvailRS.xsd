@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05/alpha" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05/alpha" elementFormDefault="qualified" version="2.000" id="OTA2012A">
+	<xs:include schemaLocation="OTA_GroundCommonTypes.xsd"/>
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:annotation>
+    <xs:documentation source="Notice" xml:lang="en">The OTA_CodeType simpleType will be deprecated in the 2013A OpenTravel XML Message Suite publication. All OTA_CodeType typed attributes with be replaced with elements typed as an open list, e.g. List_NameOfList.</xs:documentation>
+  </xs:annotation>
+	<xs:element name="OTA_GroundAvailRS">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The OpenTravel Ground Transportation availability response message returns supplier availability that matches specified search criteria.
+
+This message may include a success element (and/or business warnings) with availability details or an error message indicating why the message could not be processed.
+
+Availability response information includes:
+-Service information (including service type, vehicle type, disability equipped vehicle indicator and recommended maximum passengers and baggage)
+-Vehicle make and model information
+-Rate qualifying information associated with the vehicle and/or ground transportation service
+-Restrictions that apply to the vehicle and/or ground transportation service, such as advanced booking, guarantees and cancellation/ modification penalty indicators
+-Service charges, including taxes, minimum and maximum charges, and service charge calculation details
+-Fees that may be applied in addition to the Ground Transportation Service charges
+-Estimated total charges
+-Service availability reference ID/number
+-Payment rules that are applicable to a specific vehicle or ground service type</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="Success" type="SuccessType">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">An element that is not intended to contain any data. The mere presence of a success element within the response message indicates that the incoming request message was processed successfully.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Warnings" type="WarningsType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Indicates that the recipient of the request message identified one or more business-level warnings/errors, but the message itself was successfully processed.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="GroundServices" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Information about available ground services.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="GroundService" maxOccurs="unbounded">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Available service information, including type of service, vehicle details, service restrictions, charges and fees and payment rules.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:sequence>
+											<xs:choice>
+												<xs:element name="Service" minOccurs="0" maxOccurs="1">
+													<xs:annotation>
+														<xs:documentation source="description" xml:lang="en">Pickup, interim stops and drop-off details.</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:complexContent>
+															<xs:extension base="GroundServiceDetailType">
+																<xs:sequence>
+																	<xs:element name="VehicleMakeModel" minOccurs="0">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">Vehicle make and model information.</xs:documentation>
+																		</xs:annotation>
+																		<xs:complexType>
+																			<xs:attributeGroup ref="VehicleMakeModelGroup"/>
+																		</xs:complexType>
+																	</xs:element>
+																</xs:sequence>
+															</xs:extension>
+														</xs:complexContent>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="Shuttle" type="GroundShuttleType" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation source="description" xml:lang="en">Shuttle schedule and locations.</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+											</xs:choice>
+											<xs:element name="RateQualifier" type="GroundRateQualifierType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Rate qualifying information associated with this vehicle/ ground transportation service.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Promotions" type="GroundPromotionType" minOccurs="0" maxOccurs="unbounded">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Promotions associated with this vehicle/ ground transportation service.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Restrictions" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Restrictions that apply to this vehicle/ ground transportation service.</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:sequence>
+														<xs:element name="AdvanceBooking" minOccurs="0">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">Indicates whether or not advance booking is required for this rate and if so, what the advance booking requirements are.</xs:documentation>
+															</xs:annotation>
+															<xs:complexType>
+																<xs:attributeGroup ref="DeadlineGroup"/>
+																<xs:attribute name="RequiredInd" type="xs:boolean" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">If true, advanced booking is required for this rate.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+															</xs:complexType>
+														</xs:element>
+													</xs:sequence>
+													<xs:attribute name="AdvancedBookingInd" type="xs:boolean" use="optional">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">When true, this rate requires advanced booking.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+													<xs:attribute name="CorporateRateInd" type="xs:boolean" use="optional">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">When true, this is a negotiated corporate rate.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+													<xs:attribute name="GuaranteeReqInd" type="xs:boolean" use="optional">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">When true, a guarantee is required.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+													<xs:attribute name="CancellationPenaltyInd" type="xs:boolean" use="optional">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">When true indicates a fee applies if a cancellation is requested.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+													<xs:attribute name="ModificationPenaltyInd" type="xs:boolean" use="optional">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">When true indicates a fee applies if a modification is requested.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="ServiceCharges" type="GroundServiceChargesType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Charges that apply to this vehicle/ ground transportation service. 
+
+NOTE: Non-base charges, such as gratuity, are typically specified in the Fees element.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Fees" type="GroundServiceChargesType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Fees that are applied in addition to the Ground Transportation Service charges. 
+
+NOTE: Non-base charges, such as the basic price of the service are typically specified in the ServiceCharges element, while additional fees, such as gratuity, are specified here.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="TotalCharge" type="GroundTotalChargeType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">The estimated total charge for the service. 
+
+NOTE: This element typically contains the total of both ServiceCharges and Fees.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Reference" type="UniqueID_Type" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">A reference code for the available service(s) returned in this message that may be used in a booking message. This is used as a reference number in the booking request so availability service details do not need to be replicated in the booking request message.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="PaymentRules" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">A collection of payment rules associated with this ground transportation availability. This instance of PaymentRules is typically used if there are payment rules that are applicable to a specific vehicle or ground service type. </xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:complexContent>
+														<xs:extension base="PaymentRulesType">
+															<xs:sequence>
+																<xs:element name="AcceptablePayments" minOccurs="0" maxOccurs="unbounded">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">A collection of acceptable methods of payment.</xs:documentation>
+																	</xs:annotation>
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="AcceptablePayment" maxOccurs="unbounded">
+																				<xs:annotation>
+																					<xs:documentation xml:lang="en">Specifies an acceptable method of payment.</xs:documentation>
+																				</xs:annotation>
+																				<xs:complexType>
+																					<xs:attribute name="CreditCardCode" type="PaymentCardCodeType" use="optional">
+																						<xs:annotation>
+																							<xs:documentation xml:lang="en">The acceptable credit card for this payment rule.</xs:documentation>
+																						</xs:annotation>
+																					</xs:attribute>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																		<xs:attribute name="PaymentTypeCode" type="OTA_CodeType" use="optional">
+																			<xs:annotation>
+																				<xs:documentation xml:lang="en"> Specifies the type of payment (i.e., guarantee, deposit). Refer to OpenTravel Code List Payment Type (PMT).</xs:documentation>
+																			</xs:annotation>
+																		</xs:attribute>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:extension>
+													</xs:complexContent>
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element ref="TPA_Extensions" minOccurs="0"/>
+				</xs:sequence>
+				<xs:element name="Errors" type="ErrorsType">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Indicates that an error occurred in the processing of the incoming request message. An error is defined as a malformed XML message that could not be processed.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

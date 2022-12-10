@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="2.000" id="OTA2013B">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_GroundCommonTypes.xsd"/>
+	<xs:element name="OTA_GroundCancelRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The Ground Cancel message requests the cancellation of one confirmed ground reservation. The CancelType (e.g. Cancel or Hold) and a minimum of one unique ID's (typically the booking confirmation number of the reservation to be canceled) are required.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" type="POS_Type">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Point of Sale Identification.  Identification number of the vendor that has made the vehicle availability request and agency number assigned by IATA, ARC, ESRP or TID.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Reservation">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">One ground transportation reservation to be canceled.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="UniqueID" type="UniqueID_Type" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Sending own UniqueID and partner UniqueID - the receiving system needs to know which one - UniqueID acts as a reference for each system.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Verification" type="VerificationType" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Additional verification information for the reservation to be canceled.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="CancelType" type="List_TransactionAction_Base" use="required">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Used to specify if this is to initiate a cancellation or to commit the cancellation.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element ref="TPA_Extensions" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+			<xs:attributeGroup ref="ReqRespVersion"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: Air Availability Request with Flexible Departure (WindowAfter and WindowBefore) -->
+<!-- USE CASE DETAILS: An air availability request message is passed to a trading partner. This availability requests specifies a flexible departure date as the customer is price conscious and willing to adjust their departure date and time based on the price of the ticket.
+-->
+<OTA_AirAvailRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05
+OTA_AirAvailRQ.xsd" EchoToken="12345" TimeStamp="2011-06-10T09:30:47-05:00" Target="Production" Version="2.002" SequenceNmbr="1" PrimaryLangID="en-us">
+
+	<!-- Transaction originator (point of sale) information. -->
+	<POS>
+		<Source>
+			<RequestorID Type="7" ID="12345"/>
+				<!--	RequestorID @Type 7: Wholesaler (See OpenTravel Code List Unique ID Type.) -->
+		</Source>
+	</POS>
+	
+	<!-- A collection of information that specifies how the message processing should occur or how the data should be returned. -->
+	<ProcessingInfo DisplayOrder="ByPriceLowToHigh"  AvailabilityIndicator="true" SearchType="Normal "/>
+
+	<!-- Information on the locations between which availability is to be checked. -->
+	<!-- Note that we include two instances of OriginDestinationInformation because this is a roundtrip availability search. -->
+	<!-- Leg 1: Outbound Trip -->
+	<OriginDestinationInformation>
+	
+		<!-- Origin and Destination location, and time information for the request. Also includes the ability to specify a connection location for the search. In this use case, a time period of 2 days is applied before and after the requested departure date in the availability search results. -->
+		<DepartureDateTime WindowBefore="P2D" WindowAfter="P2D">2011-10-06T10:00:00-05:00</DepartureDateTime>
+			<!-- NOTES:
+					WindowBefore/WindowAfter: A period of time that can be applied to another time resulting in an earlier range of time. In this use case, we applied two days ("P2D").
+					The duration data type is used to specify a time interval. The time interval is specified in the following form "PnYnMnDTnHnMnS" where:
+					* P indicates the period (required)
+					* nY indicates the number of years
+					* nM indicates the number of months
+					* nD indicates the number of days
+					* T indicates the start of a time section (required if you are going to specify hours, minutes, or seconds)
+					* nH indicates the number of hours
+					* nM indicates the number of minutes
+					* nS indicates the number of seconds
+			-->
+		<OriginLocation LocationCode="IAD"/>
+		<DestinationLocation LocationCode="FLG"/>
+		
+	</OriginDestinationInformation>
+	
+	<!-- Leg 2: Return Trip -->
+	<OriginDestinationInformation>
+		<DepartureDateTime>2011-10-12T10:00:00-05:00</DepartureDateTime>
+		<OriginLocation LocationCode="FLG"/>
+		<DestinationLocation LocationCode="IAD"/>
+	</OriginDestinationInformation>
+	
+	<!-- Air Availability traveler preference information for both legs of the flight. NOTE: This could be specified in the OriginDestinationInformation above if it is different for flight legs. -->
+	<TravelPreferences MaxStopsQuantity="1">
+		<FlightTypePref PreferLevel="Preferred" FlightType="Nonstop"/>
+		<CabinPref PreferLevel="Preferred" Cabin="Economy"/>
+		<TicketDistribPref PreferLevel="Only" DistribType="2"/>
+			<!-- DistribType 2 = "Email". Refer to OpenTravel Code List Distribution Type (DTB). -->
+	</TravelPreferences>
+	
+	<!-- Specify the number of seats for the Air Availability Search. -->
+	<TravelerInfoSummary>
+		<SeatsRequested>1</SeatsRequested>
+	</TravelerInfoSummary>
+
+</OTA_AirAvailRQ>

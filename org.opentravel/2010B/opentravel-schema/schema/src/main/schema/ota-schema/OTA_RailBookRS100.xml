@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: Rail Booking Request with Traveler Details. -->
+<!-- USE CASE DETAILS: An end user uses a wholesaler website to book a business trip between Beijing and Shanghai. They would like to book a round trip with a specified return trip date and traveler details. This response indicates that the reservation was processed successfully and it has been provisionally booked with a confirmation ID returned. Note that a Rail Book Confirmation or Rail Ignore Booking message will either confirm or cancel this provisional booking. -->
+
+<OTA_RailBookRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_RailBookRS.xsd" EchoToken="183529" TimeStamp="2010-12-16T09:30:47-05:00" Target="Production" Version="3.000" SequenceNmbr="1" PrimaryLangID="en-us" AltLangID="en-us">
+
+	<!-- The presence of this element indicates the request message was processed successfully by the receiving system. -->
+	<Success/>
+	
+	<UniqueID ID="1234567" Type="14"/>
+		<!-- Type 14 = "Reservation". See OpenTravel Code List Unique ID Type (UIT). -->
+		
+</OTA_RailBookRS>

@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="2.000" id="OTA2014B">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_Profile.xsd"/>
+	<xs:element name="OTA_AirGetOfferRQ">
+		<xs:annotation>
+			<xs:documentation source="Use" xml:lang="en">The Get Offer request message provides trip and passenger characteristics to be used by an offer processing system to target relevant offers.
+
+Request criteria may be specified for the entire trip or by individual traveler and/or arranger and include any combination of the following:
+
+» Confirmed booking —including air itinerary, traveler/arranger, purchased offers, payment, pricing and ticketing information
+» Pre-booking —including origin/destination, itinerary, traveler/arranger preferences and specific flight information
+» Baggage —including item type, quantity, description, origin/destination, marketing/operating carriers and traveler/itinerary association
+» Seat information —including marketing classification, requested quantity and traveler/itinerary association
+» Offers to include and/or exclude
+» Offers that have already been presented and/or purchased
+
+Additional supported business functionality includes:
+» Offer family encoding by airline suppliers and/or ATPCO
+» Detailed point of sale information
+» Pricing structure flexibility, including display/ pricing currency(s), ticketing country/ city, and loyalty program redemption support
+» Offer stages that specify the stage in the journey at which the ancillary offer request is being made or the offer was purchased, e.g. shopping and check-in
+» Travel insurance product offers included with ancillary offers</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS">
+					<xs:annotation>
+						<xs:documentation source="Use" xml:lang="en">Point of Sale identification that identifies the party or connection channel making the request and is used for message authentication. Terminal, entity, position, channel information and message password may be included.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="POS_Type"/>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PriceStructure" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation source="Use" xml:lang="en">Offer pricing structure request information, including display and pricing currency overrides. If no display or pricing currency information is provided, the display and pricing currency will default to the value in POS/Source/
+@ISOCurrency.</xs:documentation>
+						<xs:documentation source="Developer Notes" xml:lang="en">The ticketing currency code is set in the ISOCurrency attribute in POS/Source.
+
+If no DisplayCurrency or PricingCurrency codes are provided, the display and pricing currency will default to the value in POS/Source/@ISOCurrency.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="ExcludePointsInd" type="xs:boolean" use="optional">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">If true, redemption point quantities should NOT be included in the results.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="TicketingCountryCode" type="ISO3166" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Use" xml:lang="en">The country code where the ticket will be/ has been issued in ISO 3166 encoding.</xs:documentation>
+								<xs:documentation source="Reference" xml:lang="en">ISO 3166 Alpha-3 Country Codes: http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3</xs:documentation>
+								<xs:documentation source="Developer" xml:lang="en">If this code is entered, it overrides the TicketingCityCode.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="TicketingCityCode" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Use" xml:lang="en">The city or airport code where the ticket will be/ has been issued in IATA encoding.</xs:documentation>
+								<xs:documentation source="Reference" xml:lang="en">If using IATA airport codes: http://www.airport-technology.com/codes/</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="UpperCaseAlphaNumericLength3to5"/>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="DisplayCurrency" type="ISO4217" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Use" xml:lang="en">The requested display currency in ISO 4217 encoding.</xs:documentation>
+								<xs:documentation source="Reference" xml:lang="en">(Reference): http://www.opentraveldevelopersnetwork.com/Supported_ISO_Standards.php</xs:documentation>
+								<xs:documentation source="More Info" xml:lang="en">(More Info): http://www.opentraveldevelopersnetwork.com/2012A_SchemaDoc/DisplayCurrency</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="PricingCurrency" type="ISO4217" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Use" xml:lang="en">The requested pricing/filing currency in ISO 4217 encoding.</xs:documentation>
+								<xs:documentation source="Example" xml:lang="en">CAD = Canadian Dollar | USD = United States Dollar | EUR = Euro</xs:documentation>
+								<xs:documentation source="Reference" xml:lang="en">http://www.opentraveldevelopersnetwork.com/Supported_ISO_Standards.php</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="RequestCriterion">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">A container with request criteria used to determine the ancillary offer response. Note that the structure of the elements allows criteria to be specified for the entire trip or by individual traveler and/or arranger.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ConfirmedBookingInfo" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Reservation details for a completed booking.
+
+NOTE: This information only pertains to confirmed and booked reservations. All other offer criteria should be specified in the other elements in this message.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="AirItinerary" type="PricedItineraryType" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">A collection of all flight segments for the booking.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Traveler" type="TravelerInfoType" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation source="Use" xml:lang="en">All traveler information relevant to the booking.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Arranger" type="AirArrangerType" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">All arranger information relevant to the booking. Note an arranger is defined as a person or entity associated with an air trip who will not be traveling. This is generally used to describe an individual or company paying for a ticket or making the travel plans.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Payment" type="PaymentFormType" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">All payment information relevant to the booking.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Ticketing" type="TicketingInfoType" minOccurs="0" maxOccurs="99">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Information that specifies the ticketing arrangement or a summary of the associated ticket(s).</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Pricing" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Information applicable to the pricing of the booking.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="PricingIndicator" minOccurs="0" maxOccurs="5">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">Specific information about the price.</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attributeGroup ref="PricingInfoGroup">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">Specific information about the price.</xs:documentation>
+																</xs:annotation>
+															</xs:attributeGroup>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="Account" minOccurs="0" maxOccurs="5">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">Specifies an account code applicable to the pricing and reservation.</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="Code" type="StringLength1to32" use="required">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">The account code applicable to the fare.</xs:documentation>
+																</xs:annotation>
+															</xs:attribute>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="Comment" type="FreeTextType" minOccurs="0" maxOccurs="10">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">A comment applicable to all the pricing information.</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="StatisticalCode" type="AlphaNumericStringLength1to8" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">Used for domestic or international sales differentiation.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="ValidatingAirlineCode" type="AlphaNumericStringLength1to8" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">The validating airline code for the ticketing.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="DepartureDate" type="DateOrDateTimeType" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">The departure date of the first leg of the booked itinerary.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="PriceType" type="AlphaNumericStringLength1to8" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">Used to specify the type of price.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="NUC_Rate" type="xs:decimal" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">The neutral unit currency rate.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="ExchangeRate" type="xs:decimal" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">The currency exchange rate.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="PurchasedOffers" type="AirPurchasedOfferType" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Information pertaining to any merchandising offers purchased by the traveler and/or arranger associated with this booking.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="BookingReferenceID" type="UniqueID_Type" minOccurs="0" maxOccurs="99">
+											<xs:annotation>
+												<xs:documentation source="description" xml:lang="en">The passenger PNR or other booking reference ID.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="LastModified" type="DateOrDateTimeType" use="optional">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">Specifies the date the reservation was last modified.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="AirItinerary" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Air itinerary information, including a choice between (non-priced) air itinerary information or priced air itinerary information and itinerary upgrade instructions.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ItineraryUpgrade" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Information about how to upgrade the itinerary.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="UpgradeSegment" maxOccurs="unbounded">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">Information about upgrading a particular segment into a new class.</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="ItinerarySegmentRPH" type="RPH_Type" use="required">
+																<xs:annotation>
+																	<xs:documentation>A reference to the  segment that is being upgraded from AirItinerary or PricedAirItinerary.</xs:documentation>
+																</xs:annotation>
+															</xs:attribute>
+															<xs:attribute name="MarketingResBookDesigCode" type="UpperCaseAlphaLength1to2" use="optional">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">The Marketing Carrier Reservation Booking Designator (RBD) to upgrade to.</xs:documentation>
+																</xs:annotation>
+															</xs:attribute>
+															<xs:attribute name="OperatingResBookDesigCode" type="xs:string" use="optional">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">The Operating Carrier Reservation Booking Designator (RBD) to upgrade to.</xs:documentation>
+																</xs:annotation>
+															</xs:attribute>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Itinerary" minOccurs="0" maxOccurs="99">
+											<xs:annotation>
+												<xs:documentation source="Use" xml:lang="en">Air itinerary information at flight segment detail that pertains to the trip as a whole with optional pricing information.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:complexContent>
+													<xs:extension base="PricedItineraryType">
+														<xs:attribute name="RPH" type="Numeric1to99" use="optional">
+															<xs:annotation>
+																<xs:documentation source="Use" xml:lang="en">A unique ID for this priced itinerary that may be used elsewhere in the message.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+													</xs:extension>
+												</xs:complexContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Arranger" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Information about a person or entity associated with an air trip who will not be traveling. This is generally used to describe an individual or company paying for a ticket or making the travel plans.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="AirArrangerType">
+											<xs:attribute name="RPH" type="RPH_Type" use="optional">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">A unique ID for this arranger that may be referenced elsewhere in this schema to associate the arranger with other information.</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="BaggageInfo" type="BaggageQueryType" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Information about traveler(s) and their baggage for baggage services offers.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="IncludeExclude" type="AncillaryServiceActionType" minOccurs="0" maxOccurs="999">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Service items, including service type, product group(s), and sub-group(s), to be required, included or excluded in the offer response.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="OriginDestination" minOccurs="0" maxOccurs="10">
+								<xs:annotation>
+									<xs:documentation source="Definition" xml:lang="en">Origin and Destination location and time information for the trip.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="OriginDestinationInformationType">
+											<xs:sequence>
+												<xs:element name="AlternateLocationInfo" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">Specifies alternate location(s) for the origin and/or destination.</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:attribute name="OriginLocation" type="ListOfStringLength1to8" use="optional">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">Specifies alternate airport/city codes for the origin location.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+														<xs:attribute name="DestinationLocation" type="ListOfStringLength1to8" use="optional">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">Specifies alternate airport/city codes for the destination location.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+													</xs:complexType>
+												</xs:element>
+												<xs:element ref="TPA_Extensions" minOccurs="0"/>
+											</xs:sequence>
+											<xs:attribute name="RPH" type="RPH_Type" use="optional">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">A unique reference to this origin destination information.</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="PresentedPurchased" minOccurs="0" maxOccurs="999">
+								<xs:annotation>
+									<xs:documentation source="Use" xml:lang="en">Offers that have already been presented to and/or purchased during this session.</xs:documentation>
+									<xs:documentation source="Developer Notes" xml:lang="en">Note that purchased offers associated with a confirmed booking are in the ConfirmedBookingInfo/ PurchasedOffersInfo element.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="AncillaryServiceDetailType">
+											<xs:sequence>
+												<xs:element name="LandProductInfo" type="AirLandProductType" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">Information about purchased land product(s), such as lounge passes.</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+											</xs:sequence>
+											<xs:attribute name="PurchasedInd" type="xs:boolean" use="optional">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">If true, this offer was purchased.</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="PricingQualifier" type="AirPricingQualifierType" minOccurs="0" maxOccurs="9">
+								<xs:annotation>
+									<xs:documentation source="Description" xml:lang="en">Additional pricing information, including restrictions, promotions and tax exemptions.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="SeatInfo" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Seats preferences and change information used for seat marketing.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="DetailedInfo" minOccurs="0" maxOccurs="99">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Detailed seat request information, including quantity, aircraft equipment and cabin class and sub-class information.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:complexContent>
+													<xs:extension base="AirSeatMarketingClassType"/>
+												</xs:complexContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="TotalReqSeatQty" type="xs:positiveInteger" use="optional">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">The calculated number of required seats, e.g.: 0 for Infant On Lap, 1 for Normal Passenger and 2 for Oversized Passenger. This may be used to determine if two seats need to be together.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="ChangeInd" type="xs:boolean" use="optional">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">If true, this is a seat re-accommodation request. In this scenario, two instances of DetailedInfo should be used, one for the original equipment and one for the changed equipment.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="SpecificFlight" type="SpecificFlightInfoType" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Specific flight number and airline that availability is being requested for.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Traveler" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">A choice between traveler quantities and age classification OR detailed traveler information.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:choice>
+										<xs:element name="PassengerTypeQuantity" maxOccurs="10">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Number of travelers and their age classification if traveler details are not known or required for a specific type of offer request.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:complexContent>
+													<xs:extension base="PassengerTypeQuantityType"/>
+												</xs:complexContent>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="AirTraveler" maxOccurs="99">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Detailed information about the traveler, including gender, age, name, contact, loyalty and profile reference.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:complexContent>
+													<xs:extension base="AirTravelerType">
+														<xs:attribute name="RPH" type="RPH_Type" use="optional">
+															<xs:annotation>
+																<xs:documentation source="Use" xml:lang="en">A unique ID for this traveler that may be referenced elsewhere in this schema to associate the traveler with other information.</xs:documentation>
+																<xs:documentation source="Developer Notes" xml:lang="en">(Developer Notes) RPH references within this message: RequestCriterion/CheckedItemInfo/@TravelerRPH</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+														<xs:attribute name="IsLeadInd" type="xs:boolean" use="optional">
+															<xs:annotation>
+																<xs:documentation source="Use" xml:lang="en">If true, indicates that this traveler is the lead traveler or main contact for the trip.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+													</xs:extension>
+												</xs:complexContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:choice>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="TravelPreferences" minOccurs="0" maxOccurs="10">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Travel preference information that applies to the entire trip, including flight type, cabin type and vendor preferences.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="AirSearchPrefsType">
+											<xs:attribute name="FlexDatePref" use="optional">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">To specify which portions of the journey the date is flexible.</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+													<xs:restriction base="xs:string">
+														<xs:enumeration value="Outbound">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">Date is flexible on the outbound portion.</xs:documentation>
+															</xs:annotation>
+														</xs:enumeration>
+														<xs:enumeration value="Return">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">Date is flexible on the return portion.</xs:documentation>
+															</xs:annotation>
+														</xs:enumeration>
+														<xs:enumeration value="Both">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">Date is flexible on the entire journey.</xs:documentation>
+															</xs:annotation>
+														</xs:enumeration>
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:attribute>
+											<xs:attribute name="FlexWeekendInd" type="xs:boolean" use="optional">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">If true, days before or after the weekend day should be searched.</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+											<xs:attribute name="FlexLevelInd" type="xs:boolean" use="optional">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">If true, eligible for widest flex searches.</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+											<xs:attribute name="NoFareBreakInd" type="xs:boolean" use="optional">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">If true, no fare breaks in the itinerary apart from the turn point should be considered.</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+											<xs:attribute name="OriginDestinationRPHs" type="ListOfRPH" use="optional">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Refers to specific origin destination information within this request message.</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="TripInsurance" type="AirInsuranceOfferType" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation source="Use" xml:lang="en">Third-party trip insurance information.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element ref="TPA_Extensions" minOccurs="0"/>
+						</xs:sequence>
+						<xs:attribute name="OfferStage" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Use" xml:lang="en">Specifies the journey stage at which the ancillary offer request is being made, e.g. shopping and check-in.</xs:documentation>
+								<xs:documentation source="Developer Notes" xml:lang="en">If used, this is considered an offer processing system "actionable" value. Check with your trading partners to ensure they support this level of offer processing.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="Shopping"/>
+									<xs:enumeration value="BookingConfirmation"/>
+									<xs:enumeration value="PostConfirmation">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">After booking but pre-flight.</xs:documentation>
+										</xs:annotation>
+									</xs:enumeration>
+									<xs:enumeration value="CheckIn"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="TripInsuranceInd" type="xs:boolean" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Use" xml:lang="en">If true, trip insurance offers are being requested.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="CodeSource" use="required">
+							<xs:annotation>
+								<xs:documentation source="Use" xml:lang="en">The source for service code and sub-code definitions. Note that this may be overidden elsewhere in the message by entering a value into an @CodeSource attribute.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="AirlineInternal"/>
+									<xs:enumeration value="ATPCO"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element ref="TPA_Extensions" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The standard attributes that appear on the root element of all OpenTravel messages.</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+			<xs:attribute name="MaxOfferQty" type="xs:positiveInteger" use="optional">
+				<xs:annotation>
+					<xs:documentation source="Use" xml:lang="en">The maximum number of offers desired in the response.</xs:documentation>
+					<xs:documentation source="Developer Notes" xml:lang="en">This is typically used to constrain the offer results, allowing the processing engine to return the most relevant offers. It is recommended that you confirm that your trading partners support this functionality before implementing.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

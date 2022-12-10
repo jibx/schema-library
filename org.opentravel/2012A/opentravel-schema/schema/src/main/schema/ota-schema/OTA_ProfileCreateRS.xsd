@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="3.000" id="OTA2012A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:annotation>
+    <xs:documentation source="Notice" xml:lang="en">The OTA_CodeType simpleType will be deprecated in the 2013A OpenTravel XML Message Suite publication. All OTA_CodeType typed attributes with be replaced with elements typed as an open list, e.g. List_NameOfList.</xs:documentation>
+  </xs:annotation>
+	<xs:include schemaLocation="OTA_Profile.xsd"/>
+	<xs:element name="OTA_ProfileCreateRS">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Provides the IDs resulting from the creation of a new profile.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="Success" type="SuccessType">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Indicates successful processing of a profile create message. Returning an empty element of this type indicates success.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Warnings" type="WarningsType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">A successfully processed message, but one in which warnings are generated.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="UniqueID" type="UniqueID_Type" maxOccurs="99">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The unique id of the business document created by the request.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:element name="Errors" type="ErrorsType">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Indicates that an error occurred during the processing of a message.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

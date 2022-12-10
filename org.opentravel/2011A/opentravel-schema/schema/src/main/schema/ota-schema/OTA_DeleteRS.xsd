@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="2.000" id="OTA2011A">
+  <xs:include schemaLocation="OTA_CommonTypes.xsd"/>
+  <xs:annotation>
+    <xs:documentation xml:lang="en">All Schema files in the OpenTravel Alliance specification are made available according to the terms defined by the OpenTravel License Agreement at http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+  </xs:annotation>
+  <xs:element name="OTA_DeleteRS">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Response to a generic OTA_DeleteRQ message, available as an action on several OpenTravel services which requests a server to delete the business object(s) identified by the UniqueID element(s).</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice>
+        <xs:sequence>
+          <xs:element name="Success" type="SuccessType">
+            <xs:annotation>
+              <xs:documentation>Returning an empty element of this type indicates the successful processing of an OpenTravel message. This is used in conjunction with Warnings to report any warnings or business errors.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Warnings" type="WarningsType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Used when a message has been successfully processed to report any warnings or business errors that occurred.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="UniqueID" type="UniqueID_Type" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>UniqueID of the deleted object.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+        <xs:element name="Errors" type="ErrorsType">
+          <xs:annotation>
+            <xs:documentation>Indicates an error occurred during the processing of an OpenTravel message. If the message successfully processes, but there are business errors, those errors should be passed in the warning element.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:choice>
+      <xs:attributeGroup ref="OTA_PayloadStdAttributes">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.</xs:documentation>
+        </xs:annotation>
+      </xs:attributeGroup>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

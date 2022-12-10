@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: OPENTRAVEL FORUM POST -->
+<!-- USE CASE DETAILS:
+I am looking for an example of an OTA_HotelAvailRQ/RS with this criteria:
+
+1) Arrival & Departure Dates: (Arrival) 30/08/2010 AUG 30 2010; (Departure) 02/09/2010 SEP 2 2010; total of a 4 night stay)
+2) Two individual rooms (The first with 2 adults and the second with 3 adults)
+
+I’d like an example of the following returned availability information in the response message:
+1) First room type is "double room"
+2) Second room type is "triple room"
+3) Each room type has three rate plans:
+3.1) first: "High season rate plan" from 30 to 31 August
+3.2) second: "Low season rate plan" from 1 to 2 September
+3.3) three:"1 night gratis for every two" 
+
+The room prices are in Euro’s for the request and response:
+Day: 1 2 3 4
+Room type
+Double 80 0 60 0
+Triple 95 0 75 0
+
+I am not interested in location, hotel information and other information that may be in the message – I’m only interested in the <RoomStays> element within the message.
+
+Can you write an xml example for this situation?
+ -->
+
+<OTA_HotelAvailRQ Version="3.001" 
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelAvailRQ.xsd" 
+xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+RequestedCurrency="EUR" 
+RequestedCurrencyIndicator="true">
+
+	<!-- NOTE: The RequestedCurrency attribute is an  ISO 4217 three alpha code code specifying the currency in which the response should be sent. "EUR" was used in this example. -->
+	<!-- NOTE: The RequestedCurrencyIndicator of TRUE means that the response should only incude rates that match requested currency. -->
+	
+	<!-- A collection of AvailRequestSegment. Each segment includes a collection of criteria that requests a bookable entity, which may include designated rate plans, room types, amenities or services, and the request can be used for guest rooms or other inventory items for which availability is sought. Each segment would be presumed to have a unique date range for each request. -->
+	<AvailRequestSegments>
+	
+		<!-- To accommodate the ability to perform multiple requests within one message, the availability request contains the repeating element, AvailRequestSegment. Each segment includes a collection of criteria that requests a bookable entity, which may include designated rate plans, room types, amenities or services, and the request can be used for guest rooms or other inventory items for which availability is sought. Each segment would be presumed to have a unique date range for each request. -->
+		<AvailRequestSegment>
+			
+			<!-- Use of the Hotel Search Criteria element is recommended for all OpenTravel Implementations greater than 2005B and is used in this example. -->
+			<HotelSearchCriteria>
+				<Criterion>
+					
+					<!-- Range of dates, or fixed set of dates for Availability Request. NOTE, based on your requirement for a very simple sample instance, the <StayDateRange> is used below... but you could also use the <StartDateWindow> and <EndDateWindow> elements if you needed to specify some additiona date range criteria. -->
+					<StayDateRange Start="2010-08-30" End="2010-09-02"/>
+					
+					<!-- This includes your guest count criteria for each room. -->
+					<RoomStayCandidates>
+					
+						<!-- Requested room #1, occupancy = 2 adults. -->
+						<RoomStayCandidate Quantity="1">
+							<GuestCounts>
+								<GuestCount Count="2" AgeQualifyingCode="10"></GuestCount>
+									<!-- Age Qualifying Code of 10 = "Adult" - Refer to OpenTravel Code List Age Qualifying Code (AQC). -->
+							</GuestCounts>
+						</RoomStayCandidate>
+						
+						<!-- Requested room #2, occupancy = 3 adults. -->
+						<RoomStayCandidate Quantity="1">
+							<GuestCounts>
+								<GuestCount Count="3" AgeQualifyingCode="10"></GuestCount>
+									<!-- Age Qualifying Code of 10 = "Adult" - Refer to OpenTravel Code List Age Qualifying Code (AQC). -->
+							</GuestCounts>
+						</RoomStayCandidate>
+						
+					</RoomStayCandidates>
+
+				</Criterion>
+				
+			</HotelSearchCriteria>
+
+		</AvailRequestSegment>
+	</AvailRequestSegments>
+
+</OTA_HotelAvailRQ>

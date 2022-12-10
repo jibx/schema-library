@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="2.000" id="OTA2013A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_HotelCommonTypes.xsd"/>
+	<xs:element name="OTA_HotelAvailGetRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Provides the ability to request availability details for hotel properties by specific criteria that may include dates, date ranges, rates, rooms and products.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" type="POS_Type" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Point of sale information about the message initiator.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="MultimodalOffer" type="MultiModalOfferType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Multimodal offer influencers.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="HotelAvailRequests">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Container for the individual HotelAvailRequests(s).</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="HotelAvailRequest" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Provides the criteria to specify availability details to return.The critiera can include date ranges, room and products, rate plans, hurdle rate, etc.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="DateRange" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">A date or range of dates for the request criteria.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:attributeGroup ref="DateTimeSpanGroup"/>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="DestinationSystemsCode" type="DestinationSystemCodesType" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">A collection of destination system codes. These are systems for which this request is targeted.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="RatePlanCandidates" type="RatePlanCandidatesType" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Collection of requested rate plans.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="RoomTypeCandidates" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Collection of room stay candidates.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="RoomTypeCandidate" maxOccurs="unbounded">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">Element used to specify room products.</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:complexContent>
+																<xs:extension base="RoomStayCandidateType"/>
+															</xs:complexContent>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Offers" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Collection of requested offers.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Offer" maxOccurs="unbounded">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">Requested offer.</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="OfferCode" type="StringLength1to16" use="optional">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">A string value used to request a particular offer.</xs:documentation>
+																</xs:annotation>
+															</xs:attribute>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="SendData" type="xs:boolean" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">When true, send all offer data.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="RestrictionStatusCandidates" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">A collection of Restriction Status values.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="RestrictionStatusCandidate" maxOccurs="unbounded">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">Availability status assigned to the room rate combination.</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attributeGroup ref="RestrictionStatusGroup"/>
+															<xs:attribute name="MaxAdvancedBookingOffset" type="xs:duration" use="optional">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">Maximum days before the arrival date for which this rate plan may be booked.</xs:documentation>
+																</xs:annotation>
+															</xs:attribute>
+															<xs:attribute name="MinAdvancedBookingOffset" type="xs:duration" use="optional">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">Minimum days before the arrival date for which this rate plan may be booked.</xs:documentation>
+																</xs:annotation>
+															</xs:attribute>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="SendAllRestrictions" type="xs:boolean">
+													<xs:annotation>
+														<xs:documentation>Boolean Flag indicating if all restriction status types should be sent or only the ones requested in RestrictionStatusCandidate.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="LengthsOfStayCandidates" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Collection of Length of Stay elements. These LOS elements indicate what LOS restrictions are to be included in the response.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="LengthOfStayCandidate" minOccurs="0" maxOccurs="unbounded">
+														<xs:annotation>
+															<xs:documentation>A collection of patterns defining allowable lengths of stay (LOS).</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="MinMaxMessageType" use="optional">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">An enumerated type used to define how the minimum and maximum LOS is applied. Values: Set Minimum LOS, Remove Minimum LOS, Set Maximum LOS, Remove Maximum LOS, Set Forward Minimum Stay, Remove Forward Minimum Stay, Set Forward Maximum Stay, Remove Forward Maximum Stay.</xs:documentation>
+																</xs:annotation>
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:enumeration value="SetMinLOS">
+																			<xs:annotation>
+																				<xs:documentation xml:lang="en">Used to set the minimum length of stay (LOS).</xs:documentation>
+																			</xs:annotation>
+																		</xs:enumeration>
+																		<xs:enumeration value="RemoveMinLOS">
+																			<xs:annotation>
+																				<xs:documentation xml:lang="en">Used to remove the minimum length of stay (LOS).</xs:documentation>
+																			</xs:annotation>
+																		</xs:enumeration>
+																		<xs:enumeration value="SetMaxLOS">
+																			<xs:annotation>
+																				<xs:documentation xml:lang="en">Used to set the maximum length of stay (LOS).</xs:documentation>
+																			</xs:annotation>
+																		</xs:enumeration>
+																		<xs:enumeration value="RemoveMaxLOS">
+																			<xs:annotation>
+																				<xs:documentation xml:lang="en">Used to remove the maximum length of stay (LOS).</xs:documentation>
+																			</xs:annotation>
+																		</xs:enumeration>
+																		<xs:enumeration value="SetForwardMinStay"/>
+																		<xs:enumeration value="RemoveForwardMinStay"/>
+																		<xs:enumeration value="SetForwardMaxStay"/>
+																		<xs:enumeration value="RemoveForwardMaxStay"/>
+																		<xs:enumeration value="FixedLOS">
+																			<xs:annotation>
+																				<xs:documentation xml:lang="en">This indicates the required length of stay (LOS).</xs:documentation>
+																			</xs:annotation>
+																		</xs:enumeration>
+																		<xs:enumeration value="FullPatternLOS">
+																			<xs:annotation>
+																				<xs:documentation xml:lang="en">This indicates allowable length of stay (LOS). When used, there is an option to fully define the open and closed status with the attribute FullPatternLOS in the subelement LOS_Pattern.</xs:documentation>
+																			</xs:annotation>
+																		</xs:enumeration>
+																		<xs:enumeration value="MinLOS">
+																			<xs:annotation>
+																				<xs:documentation xml:lang="en">Used to specify the minimum length of stay.</xs:documentation>
+																			</xs:annotation>
+																		</xs:enumeration>
+																		<xs:enumeration value="MaxLOS">
+																			<xs:annotation>
+																				<xs:documentation xml:lang="en">Used to specify the maximum length of stay.</xs:documentation>
+																			</xs:annotation>
+																		</xs:enumeration>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:attribute>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="SendAllLengthsOfStay" type="xs:boolean">
+													<xs:annotation>
+														<xs:documentation>Boolean Flag indicating if all lengths of stay types should be sent or only the ones requested in LengthOfStayCandidate.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="FixedPatternLength" type="Numeric1to999" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">The number of elements in the requested fixed pattern length of stay (FPLOS) array.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="BestAvailableRateCandidate" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Use to request Best Available Rate.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:attribute name="SendLengthOfStayTime" type="xs:boolean">
+													<xs:annotation>
+														<xs:documentation>Boolean Flag indicating if length of stays are requested. Not including this attribute or setting it to false impies there will be one best available rate sent for all lengths of stay.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="SendRatePlanCode" type="xs:boolean">
+													<xs:annotation>
+														<xs:documentation>Boolean flag indicating the best available rate should be sent as a rate plan code.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="SendAmount" type="xs:boolean">
+													<xs:annotation>
+														<xs:documentation>Boolean flag indicating the best available rate should be sent as a rate amount. If this attrinbute is true, the currency code attributes may be included to ensure the responder currency matches the sender currency.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attributeGroup ref="CurrencyCodeGroup"/>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="HurdleRateCandidate" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Use to request Hurdle Rates.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:attribute name="SendAmount" type="xs:boolean">
+													<xs:annotation>
+														<xs:documentation>Boolean flag indicating the hurdle rate is requested. If this attrinbute is true, the currency code attributes may be included to ensure the responder currency matches the sender currency.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attributeGroup ref="CurrencyCodeGroup"/>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="DeltaCandidate" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Use to request Delta.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:attribute name="SendAmount" type="xs:boolean">
+													<xs:annotation>
+														<xs:documentation>Boolean flag indicating the best available rate delta is requested. If this attrinbute is true, the currency code attributes may be included to ensure the responder currency matches the sender currency.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attributeGroup ref="CurrencyCodeGroup"/>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="HotelRef" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Indicates the detail of hotel reference information.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:attributeGroup ref="HotelReferenceGroup"/>
+												<xs:attribute name="SegmentCategoryCode" type="OTA_CodeType" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">Used to search for hotels within a particular market segment. Refer to OpenTravel Code Segment Category Code Type (SEG).</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="PropertyClassCode" type="OTA_CodeType" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">Refer to OpenTravel Code list OpenTravel Code List Property Class Type (PCT).</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="ArchitecturalStyleCode" type="OTA_CodeType" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">Refer to OpenTravel Code List Architectural Style Code (ARC).</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="SupplierIntegrationLevel" type="xs:nonNegativeInteger" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">The level of integration of a property to provide automated transaction information. The lower the number, the higher the integration (e.g., a 1 means the supplier has the highest level of integration automation).</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="RebatePrograms" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Used to request rebate programs the hotel participates in.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="RebateProgram" type="RebateType" maxOccurs="unbounded">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">A rebate program the hotel participates in, such as "Value Added Tax" (VAT).</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="SendDataInd" type="xs:boolean" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">When true, send all rebate program information.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+										<xs:element ref="TPA_Extensions" minOccurs="0"/>
+									</xs:sequence>
+									<xs:attribute name="SendBookingLimit" type="xs:boolean">
+										<xs:annotation>
+											<xs:documentation>Boolean Flag indicating if overbooking or allocation (defined by BookingLimitMessageType)  is requested.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="BookingLimitMessageType" use="optional">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">An enumerated type defining the function of the booking limit message. Values: SetLimit (Allocation), AdjustLimit (Overbooking).</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="RemoveLimit"/>
+												<xs:enumeration value="SetLimit"/>
+												<xs:enumeration value="AdjustLimit"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+			<xs:attribute name="SummaryOnly" type="xs:boolean" use="optional"/>
+			<xs:attribute name="SortOrder" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="AlphaLength1">
+						<xs:enumeration value="A"/>
+						<xs:enumeration value="D"/>
+						<xs:enumeration value="N"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="RequestedCurrency" type="AlphaLength3" use="optional"/>
+			<xs:attributeGroup ref="MaxResponsesGroup"/>
+			<xs:attribute name="SearchCacheLevel" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Live"/>
+						<xs:enumeration value="VeryRecent"/>
+						<xs:enumeration value="LessRecent"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="MaximumWaitTime" type="xs:decimal" use="optional">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The value of this attribute will be a decimal field identifying the maximum number of seconds the responding application has to respond to the request. For example, suppose a client requests 10 OTA 'RatePlanRequestSegment' items but can only wait up to 4.0 seconds max. If only 6 segments were collected within the time-frame, the client would only receive those 6 segments within one response message.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="MoreDataEchoToken" type="StringLength1to128" use="optional">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The response to the previous request returns this attribute if there was more data than could be returned in the response.  Including the attribute in this request indicates where to begin the next block of data.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="InfoSource" type="InfoSourceType" use="optional">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Used to specify the source of the data being exchanged as determined by trading partners.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

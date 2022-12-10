@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: #1: Tour Search -->
+<!-- USE CASE DETAILS: 
+
+Jane Smith is taking a business trip to the state of Arizona (in the United States) and she wants to take a bicycle tour of the Grand Canyon National Park while she is there. She is not flexible on the dates and times that she can take the tour as she has already booked her flight and lodging. She has no special requirements and does not want to spend more than $100 for this tour. She will not be bringing her bicycle so she needs a tour that provides bicycles as extra amenities.
+-->
+
+<OTA_TourActivitySearchRQ xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_TourActivitySearchRQ.xsd" 
+EchoToken="12345" 
+TimeStamp="2011-05-01T09:44:52" 
+Target="Production" 
+Version="1.000" 
+PrimaryLangID="en-us">
+
+	<!-- Point of sale information for the sender of the availability request, in this case the tour suppliers branded website. -->
+	<POS>
+		<Source>
+			<RequestorID Type="11" ID="ABCToursWebsite"/>
+			<!-- Type 11 = "Tour Operator". See OpenTravel Code List Unique ID Type (UIT). -->
+		</Source>
+	</POS>
+
+	<!--Information that may directly impact how the receiving system processes the request message. -->
+		<ProcessingInformation DecimalPlaces="2" LanguageCode="en-us" MaxResponses="20" DisplayCurrency="US"  PricingCurrency="US"/>
+	
+	<SearchCriteria>
+
+		<!-- Category and type preferences. -->
+		<CategoryTypePref PreferLevel="Only">
+			<Category>SportsAndRecreation</Category>
+			<Type>Bicycling</Type>
+		</CategoryTypePref>
+
+		<!-- Specifies the number of customers, optionally by customer type or group size. -->
+		<CustomerCounts Quantity="1">
+			<QualifierInfo>Adult</QualifierInfo>
+		</CustomerCounts>
+		
+		<!-- The preferred start date/ time and allowable time window for the search. -->
+		<DateTimePref End="2012-06-13" Start="2012-06-13"/>
+	
+		<!-- Locations to be included in or excluded from the search. -->
+		<LocationPref PreferLevel="Only" StateCodeList="Arizona">
+			<Region RegionName="Grand Canyon" SubRegionName="Grand Canyon National State Park"/>
+		</LocationPref>
+		
+		<!-- Other preferences, including guide,  spoken language and physically challenged accessibility. -->
+		<OtherPref GuideInd="false"/>
+
+		<!-- Range or limit of budget. -->
+		<PricePref MaxPrice="100">
+			<PricingType>PerPerson</PricingType>
+		</PricePref>
+		
+	</SearchCriteria>
+
+</OTA_TourActivitySearchRQ>

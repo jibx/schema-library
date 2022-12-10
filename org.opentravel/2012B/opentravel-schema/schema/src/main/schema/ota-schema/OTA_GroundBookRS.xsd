@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="2.000" id="OTA2012B">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:annotation>
+		<xs:documentation source="Notice" xml:lang="en">The OTA_CodeType simpleType will be deprecated in the 2013A OpenTravel XML Message Suite publication. All OTA_CodeType typed attributes with be replaced with elements typed as an open list, e.g. List_NameOfList.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_GroundCommonTypes.xsd"/>
+	<xs:element name="OTA_GroundBookRS">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The OpenTravel Ground Transportation reservation (booking) response message may include a success element (and/or business warnings) with reservation details or an error message indicating why the message could not be processed.
+
+Reservation response information includes:
+-A confirmation number for the successfully booked ground transportation service reservation
+-Information about a primary passenger (who is the contact for this reservation) and additional passengers associated with the reservation
+-Information about the locations associated with the reservation, including pickup, interim stop(s) and drop-off details
+-Vehicle make and model information associated with this reservation
+-Rate qualifying information associated with the vehicle and/or ground transportation service reservation
+-Service charges, including taxes, minimum and maximum charges, and service charge calculation details
+-Fees that may be applied in addition to the Ground Transportation Service charges
+-Estimated total charges
+-Restrictions that apply to this vehicle/ ground transportation service reservation
+-Payment rules that are applicable to this ground service reservation
+-Comments associated with this reservation</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="Success" type="SuccessType">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">An element that is not intended to contain any data. The mere presence of a success element within the response message indicates that the incoming request message was processed successfully.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Warnings" type="WarningsType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Indicates that the recipient of the request message identified one or more business-level warnings/errors, but the message itself was successfully processed.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Reservation" type="GroundReservationType" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Details for the booked ground service reservation.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Payment" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Payment(s) associated with this ground transportation reservation request.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="Payment" type="PaymentFormType" maxOccurs="unbounded"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element ref="TPA_Extensions" minOccurs="0"/>
+				</xs:sequence>
+				<xs:element name="Errors" type="ErrorsType">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Indicates that an error occurred in the processing of the incoming request message. An error is defined as a malformed XML message that could not be processed.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

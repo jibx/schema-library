@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: OPENTRAVEL FORUM POST -->
+<!-- USE CASE DETAILS:
+i want to create a web page which allows a person to search for available hotels (All ratings or a specific rating e.g:3 stars, 4 stars, ..etc.) in a specific city.
+i want the result to show only hotels with available rooms.
+ -->
+
+<OTA_HotelAvailRQ Version="3.001" 
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelAvailRQ.xsd" 
+xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+TimeStamp="2010-07-17T09:30:47" 
+RequestedCurrency="USD" 
+RequestedCurrencyIndicator="true" 
+MaxResponses="100">
+
+<!-- Explanation of payload attributes: -->
+<!-- * Version - (REQUIRED) The version of the OpenTravel message you are using. I threw in "3.001" - this is the latest version of the message. -->
+<!-- * RequestedCurrency (OPTIONAL) - The code specifying the currency in which the response should be sent. Use ISO 4217, three alpha code. -->
+<!-- * RequestedCurrencyIndicator (OPTIONAL) - When true, indicates that response should only incude rates that match requested currency. -->
+<!-- * TimeStamp (OPTIONAL) - Indicates the creation date and time of the message in UTC. -->
+<!-- * MaxResponses (OPTIONAL) - A positive integer value that indicates the maximum number of responses desired in the return. -->
+
+	<!-- Transaction originator (point of sale) information. -->
+	<POS>
+		<Source>
+			<RequestorID Type="13" ID="JQIR2244" />
+				<!-- RequestorID Type 13 = "Internet Broker" - See the OpenTravel Code List Unique ID Type (UIT). -->
+		</Source>
+	</POS>
+	
+	<!-- A collection of availability request segments. Each segment includes a collection of criteria that requests a bookable entity, which may include designated rate plans, room types, amenities or services, and the request can be used for guest rooms or other inventory items for which availability is sought. Each segment would be presumed to have a unique date range for each request. -->
+	<AvailRequestSegments>
+	
+		<!-- To accommodate the ability to perform multiple requests within one message, the availability request contains this repeating element, AvailRequestSegment. Each segment includes a collection of criteria that requests a bookable entity, which may include designated rate plans, room types, amenities or services, and the request can be used for guest rooms or other inventory items for which availability is sought. Each segment would be presumed to have a unique date range for each request. -->
+		<AvailRequestSegment ResponseType="PropertyList" AvailReqType="Room">
+			<!-- * AvailReqType (OPTIONAL) - An enumerated type that indicates whether the availability request is for a room or non-room product, such as amenities or other activities (e.g.: banquet, conference room, etc.) Values: Room,  NonRoom, Both. -->
+			<!-- * ResponseType (OPTIONAL) -  The type of data to be returned, either a list of hotel records or a list of area (city/reference) codes. -->
+			
+			<!-- This is the element to specify availability search criteria if you're using OpenTravel Hotel messages that are later than 2005B. -->
+			
+			<HotelSearchCriteria AvailableOnlyIndicator="true">
+				<!-- AvailabilityOnlyIndicator (OPTIONAL) - When true, return only hotels that are available. THIS IS HOW YOU REQUEST ONLY HOTELS WITH AVAILABLE ROOMS. -->
+				
+				<!-- HERE IS YOUR CITY SEARCH CRITERIA. These are the HotelSearchCriteria child elements that each identify a single search criterion by criteria type. Because many of the types include partial matches to string values such as partial addresses (street names without a number) or partial telephone numbers (area code or three-digit prefix area, etc.) a ExactMatch attribute indicates whether the match to the string value must be exact. -->
+				<Criterion AddressSearchScope="Primary" ExactMatch="true" AlternateAvailability="WhenUnavailable">
+					<!-- ExactMatch (OPTIONAL) - Values of "true" or "false", indicating whether the string of the search value must be an exact match. -->
+					<!-- AddressSearchScope (OPTIONAL) - An enumerated list of how address searches should be processed. "Primary" = the address search keyword(s) will be compared to the physical address of the property. "Alternate" = the 'city' area attractions associated with the property will be searched. -->
+					<!-- AlternateAvailability (OPTIONAL) - Most hotel supplier CRS systems will return alternate availability and this value identifies under what circumstances alternate availability should be returned. Make sure you check with your trading partner to see if they support alternate availability. "Never" = Do not return alternate availability. "WhenUnavailable" = Only return alternates when requested is not available. "Always" = Always return alternates even when request is available. -->
+					
+					<!-- Use any parts of the address information to refine your search, such as street name, postal code, or country code. I used the city of "Tampa" and state of "Florida" for this example. You can also search for a city for example by <Position> using the latitude and longitude coordinates (expressed in notation specified by ISO standard 6709) - I didn't include that in this example as it's not well suited for a city search. -->
+					<Address AddressSearchScope="Primary">
+						<!-- AddressSearchScope (OPTIONAL) - Determines how the keywords specified in the Address element will be processed. "Primary" = The address search keyword(s) will be compared to the physical address of the property. "Alternate" = The 'city' area attractions associated with the property will be searched. "PrimaryAndAlternate" = The search keyword(s) will be compared to the physical address of the property and the 'city' area attractions associated with the property will be searched. -->
+						<CityName>Tampa</CityName>
+						<StateProv StateCode="FL"/>
+					</Address>
+
+					<!-- We're going to get to "ratings" below... but this is another way to specify a search for hotels within a particular market segment. -->
+					<HotelRef SegmentCategoryCode="4" />
+						<!-- SegmentCategoryCode of 4 = "Deluxe" - See OpenTravel Code List Segment Category Code (SEG). -->
+					
+					<!-- You could also use this to search for hotels that are within a certain distance of the city of Tampa, such as 10 miles in the example I provided. -->
+					<Radius UnitOfMeasureCode="1" Distance="10"/>
+						<!-- UnitOfMeasureCode of 1 = "Miles" - See OpenTravel Code List Unit of Measure (UOM). -->
+					
+					<!-- Here's where you specify the "star" ratings for the hotel search, e.g. the hotel ratings. You need to check with your hotel suppliers to see if they support them in an availability search, and if so, which ratings they support. You can specify up to 5 of them here. Now of course European agency ratings and Chinese government ratings have NOTHING to do with hotels in Tampa, Florida... but I just wanted to provide a few different examples for you. -->
+					
+					<!-- NOTE: TO SEARCH FOR ALL RATINGS... don't include any <Award> elements -->
+					
+					<!-- United States Triple AAA Auto Club Ratings -->
+					<Award Rating="5 Diamonds" Provider="Triple AAA"/>
+					<!-- Chinese Government Ratings -->
+					<Award Rating="4 Stars" Provider="National Tourism Administration"/>
+					<!-- French Government Ratings -->
+					<Award Rating="Three Stars" Provider="French Government"/>
+					<!-- United States Forbes Travel Guide Star Ratings -->
+					<Award Rating="Four Stars" Provider="Forbes Travel Guide Star Ratings"/>
+					
+					<!-- Here's where your specifying the stay date range for the hotel availability request. -->
+					<StayDateRange Start="2011-02-10" End="2011-02-16"/>
+					
+				</Criterion>
+			</HotelSearchCriteria>
+			<TPA_Extensions/>
+		</AvailRequestSegment>
+	</AvailRequestSegments>
+
+</OTA_HotelAvailRQ>

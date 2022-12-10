@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="2.000" id="OTA2012A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:annotation>
+    <xs:documentation source="Notice" xml:lang="en">The OTA_CodeType simpleType will be deprecated in the 2013A OpenTravel XML Message Suite publication. All OTA_CodeType typed attributes with be replaced with elements typed as an open list, e.g. List_NameOfList.</xs:documentation>
+  </xs:annotation>
+	<xs:include schemaLocation="OTA_RailCommonTypes.xsd"/>
+	<xs:element name="OTA_RailScheduleRS">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The Rail Schedule response message contains schedule information including origin and destination, equipment, marketing and operating companies, departure and arrival stations, accommodation and ancillary service  information, etc.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="Success" type="SuccessType">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The standard way to indicate successful processing of an OpenTravel message. Returning an empty element of this type indicates success.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Warnings" type="WarningsType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The standard way to indicate successful processing of an OpenTravel message, but one in which business warnings are generated.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OriginDestinationOptions" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The origin location, destination location and train segment information for the rail schedule request.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Holds the collection of train options for this origin-destination pair. There maybe limits imposed by individual supplier that are below the maximum occurrences for this element.</xs:documentation>
+							</xs:annotation>
+							<xs:sequence>
+								<xs:element name="OriginLocation" type="LocationType">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Travel origin location. </xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="DestinationLocation" type="LocationType">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Travel destination location.</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="OriginDestinationOption" maxOccurs="999">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Train segment information and train segment comments.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="TrainSegment" maxOccurs="9">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">A collection of one or more legs that are defined as a single train number.</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:complexContent>
+														<xs:extension base="TrainSegmentType">
+															<xs:sequence>
+																<xs:choice minOccurs="0">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">A choice between entering train class codes as a general list or categorized by type, class and compartment.</xs:documentation>
+																	</xs:annotation>
+																	<xs:element name="ClassCodes" type="ClassCodeType" minOccurs="0" maxOccurs="99">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">The class of inventory controlled services available.</xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																	<xs:element ref="AccommodationCategory" minOccurs="0"/>
+																</xs:choice>
+																<xs:element name="Comment" type="FreeTextType" minOccurs="0" maxOccurs="10">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">Any special comments on the leg, e.g. "Operated by Amtrak."</xs:documentation>
+																	</xs:annotation>
+																</xs:element>
+															</xs:sequence>
+															<xs:attribute name="OnTimeRate" type="Percentage" use="optional">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">Specifies the on time performance of the  train from a recognized reporting agency such as the US Department of Transport, e.g. 99%.</xs:documentation>
+																</xs:annotation>
+															</xs:attribute>
+														</xs:extension>
+													</xs:complexContent>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="Comment" type="FreeTextType" minOccurs="0" maxOccurs="10">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Used to specify comment information for a group of train segments.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+				<xs:element name="Errors" type="ErrorsType">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">A collection of errors that occurred during the processing of this message.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel messages.</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

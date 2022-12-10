@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: OPENTRAVEL FORUM POST -->
+<!-- USE CASE DETAILS:
+Hotel rates & availability query with specified Location, Check In/Out Dates and Number of Guests specified in the request and driving directions, hotel images & URLs included with rates and availability in the response
+ -->
+
+<OTA_DynamicPkgAvailRQ Version="2.000" 
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_DynamicPkgAvailRQ.xsd" 
+xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<SearchCriteria>
+
+		<!-- ===================================== -->
+		<!-- HOTEL INFO                                                        -->
+		<!-- ===================================== -->
+		<HotelSearch>
+			<HotelSearchCriteria AvailableOnlyIndicator="true">
+				<!-- AvailabilityOnlyIndicator (OPTIONAL) - When true, return only hotels that are available. THIS IS HOW YOU REQUEST ONLY HOTELS WITH AVAILABLE ROOMS. -->
+				
+				<!-- HERE IS YOUR LOCATION SEARCH CRITERIA. These are the HotelSearchCriteria child elements that each identify a single search criterion by criteria type. Because many of the types include partial matches to string values such as partial addresses (street names without a number) or partial telephone numbers (area code or three-digit prefix area, etc.) a ExactMatch attribute indicates whether the match to the string value must be exact. -->
+				<Criterion AddressSearchScope="Primary" ExactMatch="true" AlternateAvailability="WhenUnavailable">
+					<!-- ExactMatch (OPTIONAL) - Values of "true" or "false", indicating whether the string of the search value must be an exact match. -->
+					<!-- AddressSearchScope (OPTIONAL) - An enumerated list of how address searches should be processed. "Primary" = the address search keyword(s) will be compared to the physical address of the property. "Alternate" = the 'city' area attractions associated with the property will be searched. -->
+					<!-- AlternateAvailability (OPTIONAL) - Most hotel supplier CRS systems will return alternate availability and this value identifies under what circumstances alternate availability should be returned. Make sure you check with your trading partner to see if they support alternate availability. "Never" = Do not return alternate availability. "WhenUnavailable" = Only return alternates when requested is not available. "Always" = Always return alternates even when request is available. -->
+					
+					<!-- Use any parts of the address information to refine your search, such as street name, postal code, or country code. I used the city of "Tampa" and state of "Florida" for this example. You can also search for a city for example by <Position> using the latitude and longitude coordinates (expressed in notation specified by ISO standard 6709) - I didn't include that in this example as it's not well suited for a city search. -->
+					<Address AddressSearchScope="Primary">
+						<!-- AddressSearchScope (OPTIONAL) - Determines how the keywords specified in the Address element will be processed. "Primary" = The address search keyword(s) will be compared to the physical address of the property. "Alternate" = The 'city' area attractions associated with the property will be searched. "PrimaryAndAlternate" = The search keyword(s) will be compared to the physical address of the property and the 'city' area attractions associated with the property will be searched. -->
+						<CityName>Tampa</CityName>
+						<StateProv StateCode="FL"/>
+					</Address>
+
+					<!-- You could also use this to search for hotels that are within a certain distance of the city of Tampa, such as 10 miles in the example I provided. -->
+					<Radius UnitOfMeasureCode="1" Distance="10"/>
+						<!-- UnitOfMeasureCode of 1 = "Miles" - See OpenTravel Code List Unit of Measure (UOM). -->
+					
+					<!-- HERE IS YOUR STAY DATE RANGE for the hotel availability request. -->
+					<StayDateRange Start="2011-02-10" End="2011-02-16"/>
+
+					<!-- HERE IS YOUR NUMBER OF GUESTS for the hotel availability request. -->
+					<RoomStayCandidates>
+						<!-- Occupancy = 2 adults. -->
+						<RoomStayCandidate Quantity="1">
+							<GuestCounts>
+								<GuestCount Count="2" AgeQualifyingCode="10"></GuestCount>
+									<!-- Age Qualifying Code of 10 = "Adult" - Refer to OpenTravel Code List Age Qualifying Code (AQC). -->
+							</GuestCounts>
+						</RoomStayCandidate>
+					</RoomStayCandidates>
+				</Criterion>
+			</HotelSearchCriteria>
+		</HotelSearch>
+		
+		<!-- ===================================== -->
+		<!-- CAR INFO                                                            -->
+		<!-- ===================================== -->
+		<CarSearch>
+			<VehAvailRQCore Status="Available">
+				<VehRentalCore PickUpDateTime="2011-02-10T04:30:00" ReturnDateTime="2011-02-16T10:30:00">
+					<PickUpLocation LocationCode="TPA"/>
+					<ReturnLocation LocationCode="TPA"/>
+				</VehRentalCore>
+				<VendorPrefs>
+					<VendorPref CompanyShortName="Hertz" Code="ZE" PreferLevel="Preferred"/>
+				</VendorPrefs>
+				<VehPrefs>
+					<VehPref AirConditionInd="true" TransmissionType="Automatic" AirConditionPref="Only" TransmissionPref="Only">
+						<VehType VehicleCategory="1" DoorCount="4"/>
+							<!-- Vehicle Category of 1 is "Car" - See OpenTravel Code List Vehicle Category (VEC). -->
+						<VehClass Size="4"/>
+							<!-- Vehicle Class Size of 4 is "Compact" - See OpenTravel Code List Size (SIZ). -->
+					</VehPref>
+				</VehPrefs>
+			</VehAvailRQCore>
+			<!-- The supplemental information associated with the request for availability of a rental vehicle. -->
+			<VehAvailRQInfo>
+			
+				<!-- Information on the one primary driver and, optionally, several additional drivers. This may be used to provide a frequent renter number. -->
+				<Customer>
+					<Primary>
+						<PersonName>
+							<GivenName>Joe</GivenName>
+							<Surname>Bailey</Surname>
+						</PersonName>
+						<CustLoyalty MembershipID="H3P200" />
+					</Primary>
+				</Customer>
+				
+				<!-- Details of the arrival transportation. -->
+				<ArrivalDetails TransportationCode="14" Number="2935">
+				<!-- Transportation code 14 is "Plane" - See OpenTravel Code List Transportation Code (TRP). -->
+					<OperatingCompany Code="AA"/>
+				</ArrivalDetails>
+				
+			</VehAvailRQInfo>
+		</CarSearch>
+
+	</SearchCriteria>
+</OTA_DynamicPkgAvailRQ>

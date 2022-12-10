@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<OTA_DestActivityCapabilitiesRQ Target="Production" TransactionStatusCode="Start" TransactionIdentifier="ABCD1234" PrimaryLangID="en-us" CorrelationID="a" EchoToken="12345" AltLangID="en-us" Version="2.000" TimeStamp="2001-12-17T09:30:47Z" RetransmissionIndicator="true" SequenceNmbr="1"  xmlns="http://www.opentravel.org/OTA/2003/05" 
+ xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_DestActivityCapabilitiesRQ"   />
+
+

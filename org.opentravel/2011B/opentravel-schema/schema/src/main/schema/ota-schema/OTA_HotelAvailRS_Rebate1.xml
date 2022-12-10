@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: Hotel Rebate Program: A traveler searches for a hotel participating in a rebate program. -->
+<!-- USE CASE DETAILS: 
+
+1.	Jane Smith is searching for a hotel on an online travel site. Her company is participating in the Taxeo VAT rebate program and has requested that employees search for Taxeo participating hotels when making hotel arrangements. Jane enters her search criteria including the name of the Taxeo rebate program and her trip purpose of business. (OTA_HotelSearchRQ_Rebate1.xml)
+2.	Jane receives a list of hotels that match her search criteria including two that are participating in the Taxeo VAT program. (OTA_HotelSearchRS_Rebate1.xml)
+3.	Jane requests availability on the property (OTA_HotelAvailRQ_Rebate1.xml) and receives a room availability response. (THIS INSTANCE)
+4.	Jane books her stay and a copy of her credit card guarantee information is passed in the Taxeo payment element that will be sent to/ or utilized in house for the VAT rebate (OTA_HotelResRQ_Rebate1.xml). Jane receives a confirmation for her hotel stay (OTA_HotelResRS_Rebate1.xml)
+-->
+
+<OTA_HotelAvailRS Version="6.002" 
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelAvailRS.xsd" 
+xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+TimeStamp="2011-09-17T09:30:47">
+
+	<Success/>
+	
+	<RoomStays>
+		<RoomStay>
+			<RatePlans>
+				<RatePlan RatePlanCode="CORA999"/>
+			</RatePlans>
+			<RoomRates>
+				<RoomRate>
+					<Rates>
+						<Rate EffectiveDate="2011-11-02" ExpireDate="2011-11-12">
+							<Base AmountBeforeTax="189.00" CurrencyCode="USD"/>
+							<RateDescription>
+								<Text>CORPORATE RATE*DELUXE ROOM (1 KING OR 2 DOUBLES)</Text>
+							</RateDescription>
+						</Rate>
+					</Rates>
+				</RoomRate>
+			</RoomRates>
+		</RoomStay>
+		
+		<RoomStay>
+			<RatePlans>
+				<RatePlan RatePlanCode="CORB999"/>
+			</RatePlans>
+			<RoomRates>
+				<RoomRate>
+					<Rates>
+						<Rate EffectiveDate="2011-11-02" ExpireDate="2011-11-12">
+							<Base AmountBeforeTax="199.00" CurrencyCode="USD"/>
+							<RateDescription>
+								<Text>CONC DELUXE RM*PRIVATE FLOOR W/ADDL AMENITIES*LOUNGE INCLDS HOT CONTINENTAL BKFST,EVENING HORS D'OEUVRES,HONOR BAR &amp; DESSERT</Text>
+							</RateDescription>
+						</Rate>
+					</Rates>
+				</RoomRate>
+			</RoomRates>
+		</RoomStay>
+		
+		<RoomStay>
+			<RatePlans>
+				<RatePlan RatePlanCode="REGA999"/>
+			</RatePlans>
+			<RoomRates>
+				<RoomRate>
+					<Rates>
+						<Rate EffectiveDate="2011-11-02" ExpireDate="2011-11-12">
+							<Base AmountBeforeTax="270.00" CurrencyCode="USD"/>
+							<RateDescription>
+								<Text>REGULAR RATE*DELUXE ROOM (1KING OR 2DOUBLES)</Text>
+							</RateDescription>
+						</Rate>
+					</Rates>
+				</RoomRate>
+			</RoomRates>
+		</RoomStay>
+		
+		<RoomStay>
+			<RatePlans>
+				<RatePlan RatePlanCode="REGB999"/>
+			</RatePlans>
+			<RoomRates>
+				<RoomRate>
+					<Rates>
+						<Rate EffectiveDate="2011-11-02" ExpireDate="2011-11-12">
+							<Base AmountBeforeTax="285.00" CurrencyCode="USD"/>
+							<RateDescription>
+								<Text>CONC DELUXE RM*PRIVATE FLOOR W/ADDL AMENITIES*LOUNGE INCLDS HOT CONTINENTAL BREAKFAST,EVENING HORS D'OEUVRES &amp; HONOR BAR</Text>
+							</RateDescription>
+						</Rate>
+					</Rates>
+				</RoomRate>
+			</RoomRates>
+		</RoomStay>
+		
+		<RoomStay>
+			<RatePlans>
+				<RatePlan RatePlanCode="AAAAAAA"/>
+			</RatePlans>
+			<RoomRates>
+				<RoomRate>
+					<Rates>
+						<Rate EffectiveDate="2011-11-02" ExpireDate="2011-11-12">
+							<Base AmountBeforeTax="189.00" CurrencyCode="USD"/>
+							<RateDescription>
+								<Text>AAAA WEEKDAY*DELUXE ROOM (1KING OR 2DOUBLES) * ID REQUIED AT CHECK IN *</Text>
+							</RateDescription>
+						</Rate>
+					</Rates>
+				</RoomRate>
+			</RoomRates>
+		</RoomStay>
+	</RoomStays>
+	
+	<RebatePrograms>
+			<!-- Rebate programs this hotel is participating in. -->
+			<RebateProgram ParticipationInd="true" ProgramName="Taxeo"/>
+			<RebateProgram ParticipationInd="true" ProgramName="European Green Building Programs"/>
+	</RebatePrograms>
+	
+</OTA_HotelAvailRS>

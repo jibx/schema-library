@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <OTA_HotelAvailRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelAvailRQ.xsd" Version="4.000">
+<AvailRequestSegments>
+	<AvailRequestSegment>
+			<HotelSearchCriteria>
+			<Criterion>
+			    <HotelRef ChainCode="AA" HotelCode="AAABC" /> 
+			    <HotelFeature AccessibilityCode="76"/>
+			    <!-- 76 means vibrating pillows available --> 
+			    <HotelFeature AccessibilityCode="39"/>
+			    <!-- 39 means telephone for hearing impaired -->
+			     <HotelFeature AccessibilityCode="34"/>
+			    <!-- 34 means visual emergency alarm for hearing impaired guest-->
+			    <HotelFeature AccessibilityCode="65"/>
+			    <!-- 65 means Hearing induction loop system installed-->
+			    <HotelFeature AccessibilityCode="45"/>
+			    <!-- 45 means Closed caption TV-->
+			 </Criterion>
+		</HotelSearchCriteria>
+		<StayDateRange End="2012-01-30" Start="2012-01-16" /> 
+		<RoomStayCandidates>
+			<RoomStayCandidate Quantity="1">
+				<GuestCounts>
+				  <GuestCount AgeQualifyingCode="10" Count="1" /> 
+				</GuestCounts>
+			</RoomStayCandidate>
+		</RoomStayCandidates>
+	</AvailRequestSegment>
+  </AvailRequestSegments>
+  </OTA_HotelAvailRQ>

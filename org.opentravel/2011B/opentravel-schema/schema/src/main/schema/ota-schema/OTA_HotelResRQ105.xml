@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: Multiple Guests in Multiple Rooms for a Multiple-Night Stay. -->
+<!-- USE CASE DETAILS: 
+Three guests (John Smith, Mary Smith and Julie Smith) are booking rooms at the ABC Hotel through an online booking site.
+They are staying for 4 nights.
+John and Mary are sharing one room and have requested a room with a balcony.
+Julie has her own room.
+John and Mary each provide their own credit card guarantee information in US currency. -->
+
+<OTA_HotelResRQ Version="5.001" 
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelResRQ.xsd" 
+xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+EchoToken="12345" 
+TimeStamp="2011-06-17T09:30:47-05:00" 
+Target="Production">
+
+	<!-- The point-of-sale data, contained in the POS element, communicates the information that allows the receiving system to identify the trading partner that is sending the request or the response message.  -->
+	<POS>
+		<Source>
+			<RequestorID ID="MYCOMPANYID" Type="13">
+				<!-- Requestor Type of 13 = "Internet Broker". See OpenTravel Unique ID Type (UIT) Code List. -->
+			</RequestorID>
+			<BookingChannel Type="7">
+				<!-- Booking Channel Type of 7 = "Internet". See OpenTravel Booking Channel Type (BCT) Code List. -->
+			</BookingChannel>
+		</Source>
+	</POS>
+	
+	<!-- A collection of hotel reservation information, including reservation details, written confirmation instructions and routing hops. -->
+	<HotelReservations>
+		<HotelReservation CreateDateTime="2011-06-17T09:30:47-05:00" ResStatus="Book" RoomStayReservation="true">
+
+			<!-- A collection of RoomStay objects.  Room stays associated with this reservation. -->
+			<RoomStays>
+			
+				<!-- Details on the Room Stay including Guest Counts, Time Span of this Room Stay, pointers to Res Guests, guest Memberships, Comments and Special Requests pertaining to this particular Room Stay and finally finacial information related to the Room Stay, including Guarantee, Deposit and Payment and Cancellation Penalties. -->
+				<RoomStay>
+					<RoomTypes>
+					
+						<!-- Room Type 1 for John and Mary Smith -->
+						<RoomType NonSmoking="true" Quantity="1" BedTypeCode="3" RoomTypeCode="1KDLXE">
+							<!-- Bed Type of 3 = "King". See OpenTravel Bed Type Codes (BED) Code List. -->
+							<Amenities>
+								<Amenity RoomAmenity="7" PreferLevel="Preferred"/>
+								<!-- Room Amenity of 7 = "Balcony/Lania/Terrace". See OpenTravel Room Amenity Types (RMA) Code List. -->
+							</Amenities>
+						</RoomType>
+
+						<!-- Room Type 2 for Julie Smith -->
+						<RoomType NonSmoking="false" Quantity="1" BedTypeCode="1" RoomTypeCode="A2DL">
+							<!-- Bed Type of 1 = "Double". See OpenTravel Bed Type Codes (BED) Code List. -->
+							<Amenities>
+								<Amenity RoomAmenity="101" PreferLevel="Preferred"/>
+								<!-- Room Amenity of 101 = "Smoking". See OpenTravel Room Amenity Types (RMA) Code List. -->
+							</Amenities>
+						</RoomType>
+					</RoomTypes>
+					
+					<!-- A collection of Rate Plans associated with a particular Room Stay. One is defined for John and Mary and one for Julie. -->
+					<RatePlans>
+					
+						<!-- Rate Plan for Room Type 1 (John and Mary Smith) -->
+						<RatePlan RatePlanCode="RPKINGDLX" RatePlanType="24" ID_RequiredInd="true">
+								<!-- Rate Plan Type of 24 = "Published". See OpenTravel Rate Plan Types (RPT) Code List. -->
+							<Guarantee GuaranteeType="Deposit">
+								<GuaranteesAccepted>
+									<GuaranteeAccepted >
+										<PaymentCard CardType="1"/>
+											<!-- Card Type of 1 = "Credit". See OpenTravel Card Type (CDT) Code List. -->
+									</GuaranteeAccepted>
+									<GuaranteeAccepted >
+										<PaymentCard CardType="2"/>
+											<!-- Card Type of 1 = "Debit". See OpenTravel Card Type (CDT) Code List. -->
+									</GuaranteeAccepted>
+								</GuaranteesAccepted>
+								<GuaranteeDescription>
+									<Text>One night deposit required.</Text>
+								</GuaranteeDescription>
+							</Guarantee>
+							<CancelPenalties>
+								<CancelPenalty>
+									<Deadline AbsoluteDeadline="2011-09-17T11:59:00-05:00"/>
+									<AmountPercent NmbrOfNights="1"/>
+									<PenaltyDescription>
+										<Text>One night deposit will be charged if reservation is canceled within 24 hours of check-in date.</Text>
+									</PenaltyDescription>
+								</CancelPenalty>
+							</CancelPenalties>
+							<MealsIncluded  Breakfast="true"/>
+						</RatePlan>
+
+						<!-- Rate Plan for Room Type 2 (Julie Smith) -->
+						<RatePlan RatePlanCode="RPDBLSTD" RatePlanType="24" ID_RequiredInd="true">
+								<!-- Rate Plan Type of 24 = "Published". See OpenTravel Rate Plan Types (RPT) Code List. -->
+							<Guarantee GuaranteeType="Deposit">
+								<GuaranteesAccepted>
+									<GuaranteeAccepted >
+										<PaymentCard CardType="1"/>
+											<!-- Card Type of 1 = "Credit". See OpenTravel Card Type (CDT) Code List. -->
+									</GuaranteeAccepted>
+									<GuaranteeAccepted >
+										<PaymentCard CardType="2"/>
+											<!-- Card Type of 1 = "Debit". See OpenTravel Card Type (CDT) Code List. -->
+									</GuaranteeAccepted>
+								</GuaranteesAccepted>
+								<GuaranteeDescription>
+									<Text>One night deposit required.</Text>
+								</GuaranteeDescription>
+							</Guarantee>
+							<CancelPenalties>
+								<CancelPenalty >
+									<Deadline AbsoluteDeadline="2011-09-17T11:59:00-05:00"/>
+									<AmountPercent NmbrOfNights="1"/>
+									<PenaltyDescription>
+										<Text>One night deposit will be charged if reservation is canceled less than 24 hours before check-in date.</Text>
+									</PenaltyDescription>
+								</CancelPenalty>
+							</CancelPenalties>
+						</RatePlan>
+					</RatePlans>
+
+					<!-- Room rate information -->
+					<RoomRates>
+					
+						<!-- Room Rates for Room 1 (John and Mary Smith) -->
+						<RoomRate RatePlanCode="RPKINGDLX" RoomTypeCode="1KDLXE">
+							<Rates>
+								<Rate AgeQualifyingCode="10" MinLOS="2">
+										<!-- Age Qualifying Code of 10 = "Adult". See OpenTravel Age Qualifying Code (AQC) Code List. -->
+										
+									<!-- The base amount charged for the accommodation or service per unit of time (ex: Nightly, Weekly, etc). If TaxInclusive is set to True, then taxes are included in the base amount. Note that any additional charges should itemized in the other elements. -->	
+									<Base AmountAfterTax="310.00" CurrencyCode="USD" DecimalPlaces="2" Type="19"/>
+										<!-- Charge Type of 19 = "Per room per night". See OpenTravel Charge Type (CHG) Code List. -->
+									<CancelPolicies>
+										<CancelPenalty >
+											<Deadline AbsoluteDeadline="2011-09-17T11:59:00-05:00"/>
+											<AmountPercent NmbrOfNights="1"/>
+											<PenaltyDescription>
+												<Text>One night deposit will be charged if reservation is canceled less than 24 hours before check-in date.</Text>
+											</PenaltyDescription>
+										</CancelPenalty>
+									</CancelPolicies>
+								</Rate>
+							</Rates>
+
+							<!-- Guest counts for this room type -->
+							<GuestCounts>
+								<GuestCount AgeQualifyingCode="10" Count="2"/>
+									<!-- Age Qualifying Code of 10 = "Adult". See OpenTravel Age Qualifying Code (AQC) Code List. -->
+							</GuestCounts>
+						</RoomRate>
+
+						<!-- Room Rates for Room 2 (Julie Smith) -->
+						<RoomRate RatePlanCode="RPDBLSTD" RoomTypeCode="A2DL">
+							<Rates>
+								<Rate AgeQualifyingCode="10" MinLOS="2">
+										<!-- Age Qualifying Code of 10 = "Adult". See OpenTravel Age Qualifying Code (AQC) Code List. -->
+										
+									<!-- The base amount charged for the accommodation or service per unit of time (ex: Nightly, Weekly, etc). If TaxInclusive is set to True, then taxes are included in the base amount. Note that any additional charges should itemized in the other elements. -->	
+									<Base AmountAfterTax="187.00" CurrencyCode="USD" DecimalPlaces="2" Type="19"/>
+										<!-- Charge Type of 19 = "Per room per night". See OpenTravel Charge Type (CHG) Code List. -->
+									<CancelPolicies>
+										<CancelPenalty >
+											<Deadline AbsoluteDeadline="2011-09-17T11:59:00-05:00"/>
+											<AmountPercent NmbrOfNights="1"/>
+											<PenaltyDescription>
+												<Text>One night deposit will be charged if reservation is canceled less than 24 hours before check-in date.</Text>
+											</PenaltyDescription>
+										</CancelPenalty>
+									</CancelPolicies>
+								</Rate>
+							</Rates>
+							
+							<!-- Guest counts for this room type -->
+							<GuestCounts>
+								<GuestCount AgeQualifyingCode="10" Count="1"/>
+									<!-- Age Qualifying Code of 10 = "Adult". See OpenTravel Age Qualifying Code (AQC) Code List. -->
+							</GuestCounts>
+						</RoomRate>
+
+					</RoomRates>
+
+					<!-- Guest counts for the whole reservation -->
+					<GuestCounts IsPerRoom="true">
+						<GuestCount AgeQualifyingCode="10" Count="2" ResGuestRPH="1"/>
+							<!-- Age Qualifying Code of 10 = "Adult". See OpenTravel Age Qualifying Code (AQC) Code List. -->
+						<GuestCount AgeQualifyingCode="10" Count="1" ResGuestRPH="2"/>
+							<!-- Age Qualifying Code of 10 = "Adult". See OpenTravel Age Qualifying Code (AQC) Code List. -->					
+					</GuestCounts>
+					
+					<!-- Length of stay for the whole reservation -->
+					<TimeSpan Start="2011-09-18" End="2011-09-22"/>
+					
+					<!-- Guarantee deposit payment information for each room -->
+					<DepositPayments>
+					
+						<!-- Room 1 John and Mary Smith -->
+						<GuaranteePayment GuaranteeType="Deposit" RoomTypeCode="1KDLXE">
+							<AcceptedPayments>
+								<AcceptedPayment>
+									<PaymentCard CardCode="MC" CardNumber="9999999999999999" ExpireDate="1214" CardHolderRPH="1" SeriesCode="999">
+										<CardHolderName>John Q Smith</CardHolderName>
+										<Address>
+											<AddressLine>100 Main Street</AddressLine>
+											<CityName>Anycity</CityName>
+											<PostalCode>99999</PostalCode>
+											<StateProv>Florida</StateProv>
+										</Address>
+										<Telephone PhoneNumber="9999999999"/>
+										<Email>JohnQSmith@anywhere.com</Email>
+									</PaymentCard>
+								</AcceptedPayment>
+							</AcceptedPayments>
+							<AmountPercent Amount="310.00" DecimalPlaces="2" CurrencyCode="USD" TaxInclusive="true"/>
+						</GuaranteePayment>
+						
+						<!-- Room 2 Julie Smith -->
+						<GuaranteePayment GuaranteeType="Deposit" RoomTypeCode="A2DL">
+							<AcceptedPayments>
+								<AcceptedPayment>
+									<PaymentCard CardCode="AX" CardNumber="9999999999999999" ExpireDate="1216" CardHolderRPH="2" SeriesCode="1234">
+										<CardHolderName>Mary Q Smith</CardHolderName>
+										<Address>
+											<AddressLine>900 Anywhere Street</AddressLine>
+											<CityName>Anycity</CityName>
+											<PostalCode>99999</PostalCode>
+											<StateProv>Florida</StateProv>
+										</Address>
+										<Telephone PhoneNumber="9999999999"/>
+										<Email>JulieQSmith@anywhere.com</Email>
+									</PaymentCard>
+								</AcceptedPayment>
+							</AcceptedPayments>
+							<AmountPercent Amount="187.00" DecimalPlaces="2" CurrencyCode="USD" TaxInclusive="true"/>
+						</GuaranteePayment>						
+					</DepositPayments>
+				</RoomStay>
+			</RoomStays>
+
+		</HotelReservation>
+	</HotelReservations>
+
+</OTA_HotelResRQ>

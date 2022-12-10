@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+ <OTA_HotelResRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelResRQ.xsd" Version="5.001">
+ <POS>
+  <Source ISOCurrency="USD" /> 
+    </POS>
+ <HotelReservations>
+ <HotelReservation>
+ <RoomStays>
+ <RoomStay>
+ <RoomTypes>
+  <RoomType NumberOfUnits="1" /> 
+  </RoomTypes>
+ <RatePlans>
+  <RatePlan RatePlanCode="CORA999" /> 
+  </RatePlans>
+  <RoomRates>
+			<RoomRate>
+			<Rates>
+				<Rate EffectiveDate="2012-08-10" ExpireDate="2012-08-12">
+				<Base AmountBeforeTax="100.00"></Base>
+				</Rate>
+			</Rates>
+			</RoomRate>
+		</RoomRates>
+ <GuestCounts>
+  <GuestCount AgeQualifyingCode="10" Count="1" /> 
+ <!-- Age Qualifying Code 10 = adult from OTA code table AQC  --> 
+  </GuestCounts>
+  <TimeSpan End="2012-08-12" Start="2012-08-10" /> 
+ <Guarantee>
+ <GuaranteesAccepted>
+ <GuaranteeAccepted>
+ <PaymentCard CardCode="VS" CardNumber="4111111111111202" ExpireDate="0506">
+  <CardHolderName>Costello</CardHolderName> 
+  </PaymentCard>
+  </GuaranteeAccepted>
+  </GuaranteesAccepted>
+  </Guarantee>
+  <BasicPropertyInfo ChainCode="AA" HotelCode="DNABC" >
+	
+	   <HotelFeature AccessibilityCode="29"></HotelFeature>
+	   <!--  Disability Feature Code 29 = Service animals allowed on property for people with disabilities from OTA code table PHY   --> 
+	   <HotelFeature AccessibilityCode="66"></HotelFeature>
+	   <!--  Disability Feature Code 66 =  Restaurant/bar menus available in Braille from OTA code table PHY   --> 
+	   <HotelFeature AccessibilityCode="38"></HotelFeature>
+	   <!--  Disability Feature Code 38 =  Grab bars in bathroom from OTA code table PHY   --> 
+	   </BasicPropertyInfo>
+	   
+ <Comments>
+ <Comment>
+  <Text>non-smoking room requested;king bed</Text> 
+  </Comment>
+  </Comments>
+  </RoomStay>
+  </RoomStays>
+ <ResGuests>
+ <ResGuest>
+ <Profiles>
+ <ProfileInfo>
+ <Profile ProfileType="1">
+ <!-- 
+  Profile Type 1 = customer from OTA code table PRT 
+  
+
+  --> 
+ <Customer>
+ <PersonName>
+  <NamePrefix>Ms.</NamePrefix> 
+  <GivenName>Charlotte</GivenName> 
+  <Surname>Costello</Surname> 
+  </PersonName>
+  <Telephone PhoneNumber="8145556123" PhoneTechType="1" /> 
+ <!-- 
+  Phone Tech Type 1 = voice from OTA code table PTT 
+  
+
+  --> 
+  <Email>charlotte.costello@corp.com</Email> 
+ <Address>
+  <AddressLine>123 Locust St.</AddressLine> 
+  <CityName>Hyndman</CityName> 
+  <PostalCode>15545</PostalCode> 
+  <StateProv>PA</StateProv> 
+  <CountryName>USA</CountryName> 
+  </Address>
+  </Customer>
+  </Profile>
+  </ProfileInfo>
+  </Profiles>
+  </ResGuest>
+  </ResGuests>
+  </HotelReservation>
+  </HotelReservations>
+  </OTA_HotelResRQ>

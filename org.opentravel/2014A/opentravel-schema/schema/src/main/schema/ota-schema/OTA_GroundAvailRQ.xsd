@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="2.000" id="OTA2014A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_GroundCommonTypes.xsd"/>
+	<xs:element name="OTA_GroundAvailRQ">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">The OpenTravel Ground Transportation availability request message queries a suppliers system for service availability that matches specified search criteria. 
+
+Search criteria options include: 
+-Type of service-including airport and simple transfers
+-Date and time of required service
+-Pickup, stops and drop-off details
+-Passenger and baggage quantities
+-Special requirements-including child car seats, fuel efficient vehicle, meet and greet, pet friendly and disability equipped vehicle request
+-Rate qualifying information-including promotions and corporate accounts
+-Vehicle type-including limousine and luxury sedan.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" type="POS_Type">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Point of Sale Identification.  Identification number of the vendor that has made the vehicle availability request and agency number assigned by IATA, ARC, ESRP or TID.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ProcessingInfo" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Message processing information.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="MaxResponses" type="xs:positiveInteger" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">A positive integer value that indicates the maximum number of responses desired in the return.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="CurrencyCode" type="AlphaLength3" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">The requested currency for pricing in the response message in ISO 4217 (3) alpha character format.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="DecimalPlaces" type="xs:nonNegativeInteger" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">The ISO 4217 standard "minor unit" for the number of decimal places for the @CurrencyCode.</xs:documentation>
+								<xs:documentation source="Developer Notes" xml:lang="en">The ISO 4217 standard "minor unit" is typically used when the amount provided includes the minor unit of currency without a decimal point (e.g., USD 8500 needs DecimalPlaces="2" to represent $85).</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="MultimodalOffer" type="MultiModalOfferType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Multimodal offer influencers.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:choice>
+					<xs:element name="Service" type="GroundLocationsType" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation source="description" xml:lang="en">Pickup, interim stops and drop-off details.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Shuttle" type="GroundLocationType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation source="description" xml:lang="en">Location type, name and address details.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:choice>
+				<xs:element name="Passengers" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Information about passengers who require the ground transportation.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CustomerID" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation source="Description" xml:lang="en">The identification of the customer for whom a booking is being requested. This is different from the customer's loyalty number. This is typically used for a customer that has an account with the transportation supplier and/or operator.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="UniqueID_Type"/>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Category" type="List_AgeCategory" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation source="Description" xml:lang="en">An identifier for a passenger/customer age range or category.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="Age" type="Numeric0to999" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">A passenger age, such as "25".</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="Quantity" type="xs:nonNegativeInteger" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">The quantity of passengers for the @Age, CustomerID or Category.</xs:documentation>
+								<xs:documentation source="Developer" xml:lang="en">Note that the CodeList element has an @Quantity attribute which should be used to specify associated quantity(s).</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ServiceType" type="List_GroundServiceProvided" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">An extensible list of service types requested by the customer.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="PassengerPrefs" type="GroundServiceType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Passenger preferences including service type, physically challenged vehicle and other vehicle preferences.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="RateQualifier" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Rate qualifier(s) that apply to this availability request.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="GroundRateQualifierType"/>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Promotions" type="GroundPromotionType" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Promotion codes to be used to calculate availability.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="DisabilityInfo" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Disability vehicle preferences.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="RequiredInd" type="xs:boolean" use="required">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">If TRUE, a disability compatible vehicle is required.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="VehiclePrefs" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Vehicle type preferences.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Type" type="List_VehCategory" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation source="Description" xml:lang="en">An extensible list of vehicle types and/or categories.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Size" type="List_VehSize" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation source="Description" xml:lang="en">An extensible list of vehicle sizes.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="ServiceLevel" type="List_LevelOfService" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation source="Description" xml:lang="en">An extensible list of service levels.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="Quantity" type="xs:positiveInteger" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">The quantity associated with Vehicle Type and/or Vehicle Size.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element ref="TPA_Extensions" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

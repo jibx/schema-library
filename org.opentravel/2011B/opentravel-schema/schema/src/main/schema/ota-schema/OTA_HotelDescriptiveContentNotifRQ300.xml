@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: OPENTRAVEL FORUM POST -->
+<!-- USE CASE DETAILS: Is there an OpenTravel message that will allow you to pass a constrained list of areas that your trading partners can include in their OTA_HotelAvailRQ and OTA_HotelSearchRQ messages? -->
+ 
+ <OTA_HotelDescriptiveContentNotifRQ Version="7.000" 
+ xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelDescriptiveContentNotifRQ.xsd" 
+ xmlns="http://www.opentravel.org/OTA/2003/05" 
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ 
+	<HotelDescriptiveContents>
+
+		<!-- NOTES: Overwrite = TRUE indicates that your trading partners should replace all geographical search area information (e.g. do a full overlay) with the information contained in this message. Alternatively, you can make this FALSE indicating to your trading partners that they should append the data in this message. OR, one additional option is to use a value within the TPA_Extensions element (as shown below in EXAMPLE 2) that indicates to your trading partner if the region/city pair should be added or removed. -->
+		<HotelDescriptiveContent Overwrite="true">
+			<TPA_Extensions>
+				<SearchEngineAreas>
+					<!-- EXAMPLE 1: Use HotelDescriptiveContent Overwrite parameter. -->
+					<SearchEngineArea Region="Campania" City="Sorrento" />
+					<SearchEngineArea Region="Campania" City="Amalfi" />
+					<SearchEngineArea Region="Campania" City="Capri" />
+					<SearchEngineArea Region="Lazio" City="Rome" />
+					<SearchEngineArea Region="Lazio" City="Ostia" />
+					<SearchEngineArea Region="Lazio" City="Nettuno" />
+
+					<!-- EXAMPLE 2: Specify append/remove action here versus in the HotelDescriptiveContent Overwrite parameter. -->
+					<SearchEngineArea Region="Lazio" City="Rome" Action="Remove" />
+					<SearchEngineArea Region="Lazio" City="Ostia" Action="Add" />
+					<SearchEngineArea Region="Lazio" City="Nettuno" Action="Add" />
+				</SearchEngineAreas>			
+			</TPA_Extensions>
+		</HotelDescriptiveContent>
+	</HotelDescriptiveContents>
+</OTA_HotelDescriptiveContentNotifRQ>

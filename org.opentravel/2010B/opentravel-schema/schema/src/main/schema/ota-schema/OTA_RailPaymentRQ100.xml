@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: A rail payment using a credit card. -->
+<!-- USE CASE DETAILS: An end user uses a wholesaler website to find and book a direct (no connection) train for a business trip between Beijing and Shanghai. They are submitting credit card payment information. -->
+
+<OTA_RailPaymentRQ TimeStamp="2011-02-03T10:25:30" EchoToken="7656" Target="Production" Version="1.000" PrimaryLangID="CHI" xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05
+OTA_RailPaymentRQ.xsd">
+
+	<!-- Transaction originator (point of sale) information. -->
+	<POS>
+		<Source>
+			<RequestorID Type="7" ID="JQIR2244" MessagePassword="ek^4$327F21"/>
+				<!-- RequestorID Type 7: Wholesaler (See OpenTravel Code List Unique ID Type.) -->
+				<!-- Password specified for authentication with trading partner system. -->
+		</Source>
+	</POS>
+
+	<!-- Full details on the rail payment information. -->
+	<RailPaymentInfo>
+		<UniqueID ID="123456" Type="14">
+			<!-- Type 14: Reservation. See OpenTravel Code List Unique ID Type (UIT). -->
+		</UniqueID>
+
+		<!-- Information of the form(s) of payment to be used to pay for this reservation. The element repeats to allow for multiple forms of payment to be used, if so required. -->
+		<PaymentInfo PaymentType="5">
+			<!-- Used to specify the form of payment. 5 = Credit Card. Refer to OpenTravel Code List Payment Type (PMT). -->
+			<PaymentCard CardType="1" CardNumber="1234999977772222" ExpireDate="0914">
+				<!-- Indicates the type of magnetic striped card. CardType 1 = Credit. Refer to OpenTravel Code List Card Type (CDT). -->
+				<CardHolderName>Shuang Lu</CardHolderName>
+				<Address>
+					<AddressLine>11267 AiHeQiao Rd.</AddressLine>
+					<CityName>Shanghai</CityName>
+				</Address>
+			</PaymentCard>
+			
+			<PaymentAmount Amount="89" CurrencyCode="CNY"/>
+		</PaymentInfo>
+	</RailPaymentInfo>
+
+</OTA_RailPaymentRQ>

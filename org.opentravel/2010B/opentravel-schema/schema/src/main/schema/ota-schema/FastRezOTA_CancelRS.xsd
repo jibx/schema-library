@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.opentravel.org/OTA/2003/05" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="1.00" id="OTA2010B">
+	<xs:include schemaLocation="FastRezOTA_SimpleTypes.xsd"/>
+	<xs:annotation>
+		<xs:documentation xml:lang="en">All Schema files in the OpenTravel Alliance specification are made available according to the terms defined by the OpenTravel License Agreement at http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:annotation>
+		<xs:documentation>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY" and "OPTIONAL" in this document are to be interpreted as described in RFC 2199.</xs:documentation>
+	</xs:annotation>
+	<xs:element name="OTA_CancelRS">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The cancel response is used to respond to a cancel request message.  If the reservation is successfully cancelled the cancellation number MUST be returned.  Details regarding the cancellation SHOULD also be provided.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="Success">
+						<xs:annotation>
+							<xs:documentation>An empty Success element MUST be returned in order to in indicate the successful processing of the cancellation request message.</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:length value="0"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="Warnings" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Warnings MAY be used in conjunction with the Success element to define one or more business errors or informational alerts associated with the cancellation.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="Warning" maxOccurs="5">
+									<xs:annotation>
+										<xs:documentation>Warning MUST define a business error or informational alert associated with the cancellation. </xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:simpleContent>
+											<xs:extension base="xs:string">
+												<xs:attribute name="Type" type="OTA_CodeType" use="required">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">Type MUST identify the type of warning and MUST refer to OpenTravel Code List Error Warning Type (EWT).</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="ShortText" type="StringLength1to64" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">ShortText MAY contain an abbreviated version of the warning in textual format.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="Code" type="OTA_CodeType" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">Code MAY be used to identify a warning associated with this cancellation and MUST refer to OpenTravel Code List Error Codes (ERR).</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="Status" type="StringLength1to64" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">Status MAY be used to identify the status of the cancellation.  RECOMMENDED values are (NotProcessed | Incomplete | Compete | Unknown).</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="Tag" type="xs:string" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">Tag MAY identify an unknown or misspelled tag that caused an error in processing. It is RECOMMENDED that the Tag attribute use XPath notation to identify the location of a tag in the event that more than one tag of the same name is present in the document. Alternatively, the tag name alone MAY be used to identify missing data [Type=ReqFieldMissing].</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="RPH" type="RPH_Type" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">The RPH (Reference Place Holder) MAY be used as an index for this warning.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:extension>
+										</xs:simpleContent>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="UniqueID">
+						<xs:annotation>
+							<xs:documentation>UniqueID MUST contain the booking reference for the active reservation to be cancelled. The combination of @ID and @ID_Context MUST be unique for the lifetime of the reservation.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:attribute name="Type" type="OTA_CodeType" use="required">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">The Type MUST refer to OpenTravel Code List Unique ID Type (UIT). FastRez RECOMMENDS restricting the use of the code table to code 14 - Reservation.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="ID" type="StringLength1to32" use="required">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">ID MUST contain a unique identifying value for the reservation within the scope of the ID_Context.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="ID_Context" type="StringLength1to32" use="required">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">ID Context MUST identify the authoritative source of the ID (e.g., IATA, ABTA).</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="CancelInfoRS" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>CancelInfoRS MUST contain  the supplier's cancellation number if the reservation was successfully cancelled and MAY contain rules associated with cancelling the reservation.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="CancelRules" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>CancelRules MAY contain a collection of cancellation rules that apply to the cancellation of the reservation.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="CancelRule">
+												<xs:annotation>
+													<xs:documentation>CancelRule MUST specify details of a cancellation rule that applies to the cancellation of this reservation.</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:sequence>
+														<xs:element name="PaymentCard">
+															<xs:annotation>
+																<xs:documentation>PaymentCard MUST specify the details of the debit or credit card to which the cancellation penalty will be applied.  Either the CardNumber or MaskedCardNumber MUST be returned to identify the card being charged.</xs:documentation>
+															</xs:annotation>
+															<xs:complexType>
+																<xs:sequence>
+																	<xs:element name="CardHolderName" type="StringLength1to64">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">CardHolderName MUST specify the name of the holder of the payment card.</xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																</xs:sequence>
+																<xs:attribute name="CardType" type="OTA_CodeType" use="required">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">MUST indicate the type of magnetic striped card. Refer to OpenTravel Code ListCard Type (CDT).</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+																<xs:attribute name="CardCode" type="PaymentCardCodeType" use="required">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">CardCode MUST contain the 2 character code of the credit card issuer.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+																<xs:attribute name="CardNumber" type="NumericStringLength1to19" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">CardNumber MAY contain the credit card number embossed on the card to which this charge will be applied.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+																<xs:attribute name="ExpireDate" type="MMYYDate" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">ExpireDate MAY indicate the ending date for the payment card.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+																<xs:attribute name="MaskedCardNumber" type="AlphaNumericStringLength1to19" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">MaskedCardNumber MAY contain the concealed credit card number (e.g., xxxxxxxxxxxx9922) to which this cancellation penalty will be applied.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+															</xs:complexType>
+														</xs:element>
+													</xs:sequence>
+													<xs:attribute name="CancelByDate" type="DateOrDateTimeType" use="required">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">CancelByDate MUST contain the date by which a cancellation must be made in order to avoid the cancellation penalty.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+													<xs:attribute name="Amount" type="Money" use="optional">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">The Amount MUST specify the charge associated with the cancellation penalty, if one applies.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+													<xs:attribute name="CurrencyCode" type="AlphaLength3" use="optional">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">The CurrencyCode MUST specify the code of the monetary unit in which the Amount is expressed, if Amount is present. CurrencyCode MUST conform to ISO 4217, 3 character codes.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="UniqueID">
+									<xs:annotation>
+										<xs:documentation>The UniqueID MUST contain the supplier's cancellation reference for the reservation being cancelled.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:attribute name="Type" type="OTA_CodeType" use="required">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">The Type MUST refer to OpenTravel Code List Unique ID Type (UIT). FastRez RECOMMENDS restricting the use of the code table to code 15 - Cancellation.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="ID" type="StringLength1to32" use="required">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">ID MUST contain a unique identifying value for the reservation within the scope of the ID_Context.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="ID_Context" type="StringLength1to32" use="required">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">ID Context MUST identify the authoritative source of the ID (e.g., IATA, ABTA).</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Comment" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Comment MAY contain textual information regarding the cancellation of the reservation.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="Text">
+									<xs:annotation>
+										<xs:documentation>Text MUST contain textual information regarding the cancellation.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:simpleContent>
+											<xs:extension base="xs:string">
+												<xs:attribute name="Language" type="xs:language" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">Language MAY be used to specify the language of this text item if it differs from the language identified in the PrimaryLangID on the root element.   Language MUST conform to ISO 639 language codes.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:extension>
+										</xs:simpleContent>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+							<xs:attribute name="Name" type="StringLength1to64" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Name MAY define the information that is being sent in the Text element.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+				<xs:element name="Errors">
+					<xs:annotation>
+						<xs:documentation>Errors MUST be returned if the message was not successfully processed.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Error" maxOccurs="5">
+								<xs:annotation>
+									<xs:documentation>Error MUST identify an error that occurred during the processing of a message.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attribute name="Type" type="OTA_CodeType" use="required">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">Type MUST identify the type of error and MUST refer to OpenTravel Code List Error Warning Type (EWT).</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="ShortText" type="StringLength1to64" use="optional">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">ShortText MAY provide an abbreviated version of the error in textual format.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="Code" type="OTA_CodeType" use="optional">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">Code MAY be used to identify an error associated with the cancellation request and MUST refer to OpenTravel Code List Error Codes (ERR).</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="Status" type="StringLength1to64" use="optional">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">Status MAY be used to identify the status of the cancellation.  RECOMMENDED values are (NotProcessed | Incomplete | Compete | Unknown).</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="Tag" type="xs:string" use="optional">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">Tag MAY identify an unknown or misspelled tag that caused an error in processing. It is RECOMMENDED that the Tag attribute use XPath notation to identify the location of a tag in the event that more than one tag of the same name is present in the document. Alternatively, the tag name alone MAY be used to identify missing data [Type=ReqFieldMissing].</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="NodeList" type="xs:string" use="optional">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">NodeList MAY contain an XPath expression that selects all the nodes whose data caused this error.  Further, this expression SHOULD have an additional constraint which contains the data of the node. This will provide the offending data back to systems that cannot maintain the original message. </xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+			<xs:attribute name="EchoToken" type="StringLength1to128" use="optional">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">EchoToken MAY provide a reference for additional message identification, assigned by the requesting host system. This attribute SHOULD NOT be used to maintain state, but SHOULD only be used for diagnostic purposes.  When a request message includes an echo token the corresponding response message MUST include an echo token with an identical value.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="TimeStamp" type="xs:dateTime" use="required">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">TimeStamp MUST indicate the creation date and time of the message in UTC using the following format specified by ISO 8601; YYYY-MM-DDThh:mm:ssZ with time values using the 24 hour clock (e.g. 20 November 2003, 1:59:38 pm UTC becomes 2003-11-20T13:59:38Z).</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="Version" type="xs:decimal" use="required">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Version MUST be consistent with the underlying schema baseline.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="PrimaryLangID" type="xs:language" use="required">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">PrimaryLangID MUST conform to ISO 639 language codes. The code MUST define the language of the request. FastRez RECOMMENDS that the response SHOULD match the request, but a response MAY use any language recognized by ISO 639.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="Status" type="TransactionStatusType" use="required">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Status MUST identify the status of the reservation cancellation.  The Status for FastRez MUST be Cancelled or Unsuccessful.  If the status is Unsuccessful, the reason for the cancellation being unsuccessful MUST be sent in either the Warning element or the Error element depending on why the cancellation was not processed.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

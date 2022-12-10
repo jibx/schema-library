@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="4.000" id="OTA2014A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_GolfCommonTypes.xsd"/>
+	<xs:element name="OTA_GolfCourseResRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The Golf Course Reservation request provides the information required to book a tee time reservation for one or more golfers. 
+
+Booking information includes:
+» An internal reference number for the requested booking
+» Round and Package ID
+» Start date, time and duration for the tee time
+» Detailed or summary information about the golfers
+» Charges for the tee time
+» Payment form details for the tee time
+» Discounts requested for the tee time
+» Amenities requested for the tee time
+» Commissions that apply to the booking</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation source="Use" xml:lang="en">Point of Sale identification.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="POS_Type"/>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="GolfCourseRes" type="TeeTimeResType" maxOccurs="99">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Golf course tee time reservation(s) to be booked.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="TPA_Extensions" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

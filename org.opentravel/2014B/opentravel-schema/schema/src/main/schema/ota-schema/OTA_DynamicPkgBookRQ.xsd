@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="3.000" id="OTA2014B">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_DynamicPkgCommonTypes.xsd"/>
+	<xs:element name="OTA_DynamicPkgBookRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Requests the system to book the specified component itineraries for one or more identified passengers. This message contains identical components to the vertical-specific book request messages (i.e., OTA_AirBookRQ, OTA_HotelResRQ, OTA_VehResRQ).</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" type="POS_Type" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Point of Sale (POS) identifies the party or connection channel making the request.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="DynamicPackage" type="DynamicPkgType">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Contains the selected components that will make up the reservation.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="InclusionSets" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">A container of RPHs (reference place holders) that refer back to a master DynamicPackage inclusion collection for any of the packages specified in this message. 
+
+This is typically used to describe an inclusive item that is included with a hotel, air or car DynamicPackage component, such as a free ticket to a theme park for booking a certain hotel room type.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="InclusionSet" type="InclusionSetType" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+			<xs:attributeGroup ref="MaxResponsesGroup">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Used to specify the maximum number of responses to a request.</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

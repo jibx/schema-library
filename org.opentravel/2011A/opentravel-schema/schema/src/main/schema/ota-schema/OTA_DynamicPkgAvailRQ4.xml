@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OTA_DynamicPkgAvailRQ xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_DynamicPkgAvailRQ.xsd" xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Target="Test" TimeStamp="2009-07-20T11:55:34" Version="2" TransactionIdentifier="88cbd782cbaf77a0">
+	<POS>
+		<Source>
+			<RequestorID ID="BTA142" MessagePassword="jg97fg6#67f" Type="5">
+				<!--Type (UIT) 5= Travel Agency -->
+				<CompanyName>Bob's Travel Agency</CompanyName>
+			</RequestorID>
+		</Source>
+	</POS>
+	<SearchCriteria>
+		<PackageOptionSearch MaxResponses="20" RequestType="AvailPrice" SequenceNumber="1">
+			<OptionSearchCriteria AvailableOnlyIndicator="true">
+				<Criterion>
+					<RefPoint StateProv="FL" CountryCode="US" Code="MCO"/>
+					<DateRange Start="2009-09-29" End="2009-10-03"/>
+					<RequestTypes>
+						<RequestType Type="4"/>
+						<!-- Type (PKO) 4 = Ticket -->
+					</RequestTypes>
+					<GuestCounts>
+						<GuestCount AgeQualifyingCode="10" Count="1"/>
+						<GuestCount AgeQualifyingCode="8" Count="2"/>
+					</GuestCounts>
+				</Criterion>
+			</OptionSearchCriteria>
+		</PackageOptionSearch>
+		<CarSearch MaxResponses="20" RequestType="AvailPrice" SequenceNumber="2">
+			<VehAvailRQCore Status="Available">
+				<VehRentalCore PickUpDateTime="2009-09-29T16:00:00" ReturnDateTime="2009-10-03T07:00:00">
+					<PickUpLocation LocationCode="MCO"/>
+					<ReturnLocation LocationCode="MCO"/>
+				</VehRentalCore>
+			</VehAvailRQCore>
+			<VehAvailRQInfo/>
+		</CarSearch>
+	</SearchCriteria>
+	<DynamicPackage>
+		<Components>
+			<HotelComponent DynamicPkgStatus="PendingPurchase" CreateDateTime="2009-05-08T15:51:07.0295786-07:00" QuoteID="88cb9e4678cb0f26">
+				<RoomStays>
+					<RoomStay>
+						<RoomRates>
+							<RoomRate RatePlanCode="HMCO03*ROH*233*8cbd74bc0443060*6815349" RatePlanID="152" RatePlanCategory="829F97A9F0B6E0E3EC23CF1251A27F5E88FC6F83532A6EE38133C4EDD107DFB6" RoomTypeCode="ROH" InvBlockCode="1" NumberOfUnits="1" AvailabilityStatus="AvailableForSale">
+								<Rates>
+									<Rate AgeQualifyingCode="10">
+										<Base AmountBeforeTax="232.41" AmountAfterTax="251.00" CurrencyCode="USD"/>
+									</Rate>
+								</Rates>
+								<RoomRateDescription>
+									<Text>Standard </Text>
+								</RoomRateDescription>
+								<Total AmountBeforeTax="232.41" AmountAfterTax="251.00" CurrencyCode="USD"/>
+							</RoomRate>
+						</RoomRates>
+						<TimeSpan Start="2009-09-29" End="2009-10-03"/>
+						<BasicPropertyInfo HotelCode="HMCO03" HotelCityCode="MCO" HotelName="Disney's All-Star Sports Resort"/>
+						<ResGuestRPHs>
+							<ResGuestRPH RPH="1"/>
+							<ResGuestRPH RPH="2"/>
+							<ResGuestRPH RPH="3"/>
+						</ResGuestRPHs>
+					</RoomStay>
+				</RoomStays>
+			</HotelComponent>
+			<AirComponent DynamicPkgStatus="PendingPurchase" CreateDateTime="2009-05-08T15:51:07.0452039-07:00" QuoteID="88cb9e4678cb0f26">
+				<AirItinerary>
+					<OriginDestinationOptions>
+						<OriginDestinationOption>
+							<FlightSegment ArrivalDateTime="2009-09-29T16:17:00" DepartureDateTime="2009-09-29T09:00:00" FlightNumber="567" ResBookDesigCode="G" StopQuantity="0">
+								<DepartureAirport LocationCode="PHX"/>
+								<ArrivalAirport LocationCode="MCO"/>
+								<OperatingAirline Code="US" CompanyShortName="US">US Airways</OperatingAirline>
+								<Equipment AirEquipType="321"/>
+								<MarketingAirline Code="US"/>
+								<BookingClassAvails CabinType="Economy">
+									<BookingClassAvail ResBookDesigCode="G"/>
+								</BookingClassAvails>
+							</FlightSegment>
+						</OriginDestinationOption>
+						<OriginDestinationOption>
+							<FlightSegment ArrivalDateTime="2009-10-03T09:00:00" DepartureDateTime="2009-10-03T07:25:00" FlightNumber="1519" ResBookDesigCode="G" StopQuantity="0">
+								<DepartureAirport LocationCode="MCO"/>
+								<ArrivalAirport LocationCode="PHX"/>
+								<OperatingAirline Code="US" CompanyShortName="US">US Airways</OperatingAirline>
+								<Equipment AirEquipType="752"/>
+								<MarketingAirline Code="US"/>
+								<BookingClassAvails CabinType="Economy">
+									<BookingClassAvail ResBookDesigCode="G"/>
+								</BookingClassAvails>
+							</FlightSegment>
+						</OriginDestinationOption>
+					</OriginDestinationOptions>
+				</AirItinerary>
+				<AirItineraryPricingInfo QuoteID="515FED7189CDD1BD7B83640EBB708160C8B0F9097764EF04433E1136A18E09A9">
+					<ItinTotalFare NegotiatedFare="true">
+						<BaseFare Amount="496.74" CurrencyCode="USD"/>
+						<Taxes>
+							<Tax Amount="37.26" CurrencyCode="USD" TaxCode="US">USTRANSP</Tax>
+							<Tax Amount="15.00" CurrencyCode="USD" TaxCode="AY">USSECURITY</Tax>
+							<Tax Amount="27.00" CurrencyCode="USD" TaxCode="XF">USPFC</Tax>
+							<Tax Amount="21.60" CurrencyCode="USD" TaxCode="ZP">USZP</Tax>
+						</Taxes>
+						<TotalFare Amount="597.60" CurrencyCode="USD"/>
+					</ItinTotalFare>
+					<PTC_FareBreakdowns>
+						<PTC_FareBreakdown>
+							<PassengerTypeQuantity Code="ADT" Quantity="3"/>
+							<FareBasisCodes>
+								<FareBasisCode>GGAUSJ6Y</FareBasisCode>
+							</FareBasisCodes>
+							<PassengerFare>
+								<BaseFare Amount="165.58" CurrencyCode="USD"/>
+								<Taxes>
+									<Tax Amount="6.21" CurrencyCode="USD" TaxCode="US">USTRANSP</Tax>
+									<Tax Amount="2.5" CurrencyCode="USD" TaxCode="AY">USSECURITY</Tax>
+									<Tax Amount="3.6" CurrencyCode="USD" TaxCode="ZP">USZP</Tax>
+									<Tax Amount="4.5" CurrencyCode="USD" TaxCode="XF">USPFC</Tax>
+									<Tax Amount="6.21" CurrencyCode="USD" TaxCode="US">USTRANSP</Tax>
+									<Tax Amount="2.5" CurrencyCode="USD" TaxCode="AY">USSECURITY</Tax>
+									<Tax Amount="3.6" CurrencyCode="USD" TaxCode="ZP">USZP</Tax>
+									<Tax Amount="4.5" CurrencyCode="USD" TaxCode="XF">USPFC</Tax>
+								</Taxes>
+								<TotalFare Amount="199.2" CurrencyCode="USD"/>
+							</PassengerFare>
+							<TravelerRefNumber RPH="1"/>
+							<TravelerRefNumber RPH="2"/>
+							<TravelerRefNumber RPH="3"/>
+						</PTC_FareBreakdown>
+					</PTC_FareBreakdowns>
+					<PriceRequestInformation FareQualifier="7"/>
+				</AirItineraryPricingInfo>
+				<TicketingInfo TicketType="eTicket">
+					<TicketAdvisory>NONREF/PEN FOR CHG</TicketAdvisory>
+					<TicketAdvisory>VALID US ONLY</TicketAdvisory>
+				</TicketingInfo>
+			</AirComponent>
+		</Components>
+		<ResGuests>
+			<ResGuest ResGuestRPH="1" AgeQualifyingCode="10" LocationCode="PHX"/>
+			<!--AgeQualifyingCode (AQC) 10= Adult -->
+			<ResGuest ResGuestRPH="2" AgeQualifyingCode="8" Age="15" LocationCode="PHX"/>
+			<!--AgeQualifyingCode (AQC) 8= Child -->
+			<ResGuest ResGuestRPH="3" AgeQualifyingCode="8" Age="10" LocationCode="PHX"/>
+			<!--AgeQualifyingCode (AQC) 8= Child -->
+		</ResGuests>
+	</DynamicPackage>
+</OTA_DynamicPkgAvailRQ>

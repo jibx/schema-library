@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+xmlns="http://www.opentravel.org/OTA/2003/05" 
+targetNamespace="http://www.opentravel.org/OTA/2003/05" 
+elementFormDefault="qualified" 
+version="1.000" 
+id="OTA2011B">
+	<xs:include schemaLocation="OTA_GroundCommonTypes.xsd"/>
+	<xs:annotation>
+		<xs:documentation xml:lang="en">All Schema files in the OpenTravel Alliance specification are made available according to the terms defined by the OpenTravel License Agreement at http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:element name="OTA_GroundAvailRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The OpenTravel Ground Transportation availability request message queries a suppliers system for service availability that matches specified search criteria. 
+
+Search criteria options include: 
+-Type of service-including airport and simple transfers
+-Date and time of required service
+-Pickup, stops and drop-off details
+-Passenger and baggage quantities
+-Special requirements-including child car seats, fuel efficient vehicle, meet and greet, pet friendly and disability equipped vehicle request
+-Rate qualifying information-including promotions and corporate accounts
+-Vehicle type-including limousine and luxury sedan.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" type="POS_Type">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Point of Sale Identification.  Identification number of the vendor that has made the vehicle availability request and agency number assigned by IATA, ARC, ESRP or TID.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Locations" type="GroundLocationsType">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Pickup, interim stops and drop-off details.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="RateQualifier" type="GroundRateQualifierType" minOccurs="0" maxOccurs="13">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Requested rate qualifier and promotions information.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="PassengerPreferences" type="GroundServiceType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Passenger preferences including service type, physically challenged vehicle and other vehicle preferences.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ServiceType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">A type of service requested by the customer.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="Code" type="GroundServiceProvided" use="required">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">A requested service type, such as Airport Transfer, Hourly and Simple Transfer.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="DisabilityInfo" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Disability vehicle preferences.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="RequiredInd" type="xs:boolean" use="required">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">If TRUE, a disability compatible vehicle is required.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="VehiclePrefs" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Vehicle type preferences.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="VehiclePref" maxOccurs="10">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Up to 10 vehicle type preferences.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attribute name="VehicleType" type="OTA_CodeType" use="optional">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">The type of vehicle requested. Refer to the OpenTravel Vehicle Category (VEC) code list.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="VehicleSize" type="OTA_CodeType" use="optional">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">The size of the vehicle. Refer to OpenTravel Size (SIZ) code list.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="ServiceLevel" type="OTA_CodeType" use="optional">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">The level of service, such as deluxe and VIP. Refer to OpenTravel Level of Service (LOS) code list.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element ref="TPA_Extensions" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+			<xs:attributeGroup ref="ReqRespVersion"/>
+			<xs:attributeGroup ref="MaxResponsesGroup"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

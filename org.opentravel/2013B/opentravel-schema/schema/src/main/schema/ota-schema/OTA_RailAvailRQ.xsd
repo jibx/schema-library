@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="5.000" id="OTA2013B">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_RailCommonTypes.xsd"/>
+	<xs:element name="OTA_RailAvailRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The rail availability request message requests train availability for a station pair on a specific date for a specific number and type of passengers. Optional request information can include: time and flexible time windows, connecting cities and client preferences. Additionally, this request can be narrowed to request availability for a specific train.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" type="POS_Type">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Point of Sale Identification.  Identification number of the vendor that has made the rail availability request and agency number assigned by IATA, ARC, ESRP or TID.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="MultimodalOffer" type="MultiModalOfferType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Multimodal offer influencers.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="RailAvailQuery">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Criteria for a rail availability query.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="RailAvailQueryType">
+								<xs:sequence>
+									<xs:element ref="TPA_Extensions" minOccurs="0"/>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+			<xs:attributeGroup ref="MaxResponsesGroup">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Maximum number of reponses desired in the reponse message.</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

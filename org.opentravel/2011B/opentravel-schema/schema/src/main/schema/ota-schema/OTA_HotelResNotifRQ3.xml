@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: Hotel Billing Instructions to Move Guest from a Master Corporate Account to an Individual Account  -->
+<!-- USE CASE DETAILS:  A hotel sends a billing instruction to change a guests billing account from a corporate (group event) account to an individual account for the last two days of the guest stay. 
+Note that in this example: 
+1) The original reservation had 3 guests, but these billing instructions only apply to one of them
+2) A billing code authorization code is required
+3) The hotel includes a description of the billing code
+4) Guest payment information is specified in the ResGuests element
+5) The guest reservation ID is specified in the /ResGlobalInfo/@ResID attribute
+6) The receiver of the message requires a password. -->
+
+<OTA_HotelResNotifRQ TimeStamp="2011-11-06T10:25:30" 
+EchoToken="7656" 
+Target="Production" 
+Version="5.001" 
+xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelResNotifRQ.xsd">
+
+	<!-- Transaction originator (point of sale) information. -->
+	<POS>
+		<!-- Details about the requestor. It may be repeated to also accommodate the delivery system. -->
+		<Source>
+			<RequestorID ID="1234567" Type="10" MessagePassword="ek^4$327F21">
+				<!-- RequestorID Type 10: Hotel (See OpenTravel Code List Unique ID Type.) -->
+				<!-- Password specified for authentication with trading partner system. -->
+				<CompanyName CompanyShortName="ABC Hotel"/>
+			</RequestorID>
+		</Source>
+	</POS>
+
+	<!-- A container for one or more HotelReservations -->
+	<HotelReservations>
+		<!-- Details about a hotel reservation including Billing Instructions -->
+
+		<HotelReservation>
+			<!-- A collection of RoomStay information -->
+
+			<RoomStays>
+				<!-- Details about a Room Stay -->
+				<RoomStay>
+					<!-- Room type information, including room type code -->
+					<RoomTypes>
+						<RoomType RoomTypeCode="A1K"/>
+					</RoomTypes>
+
+					<!-- Rate plan information, including rate plan code -->
+					<RatePlans>
+						<RatePlan RatePlanCode="RMTXFD">
+							<RatePlanInclusions>
+								<RatePlanInclusionDesciption>
+									<Text>Corporate rate with meals included.</Text>
+								</RatePlanInclusionDesciption>
+							</RatePlanInclusions>
+							<MealsIncluded Breakfast="true" Lunch="true" Dinner="true"/>
+						</RatePlan>
+					</RatePlans>
+
+					<!-- A collection of RoomRates -->
+					<RoomRates>
+						<!-- Room rate information -->
+						<RoomRate>
+							<Rates>
+								<Rate ChargeType="1">
+									<!-- Charge Type of 1 = "Daily". See OpenTravel Charge Type (CHG) code list. -->
+									<Base AmountBeforeTax="169" CurrencyCode="USD" DecimalPlaces="2">
+										<Taxes>
+											<Tax Amount="31" CurrencyCode="USD" DecimalPlaces="2">
+											</Tax>
+										</Taxes>
+									</Base>
+									<Total AmountAfterTax="200" CurrencyCode="USD" DecimalPlaces="2">
+									</Total>
+								</Rate>
+							</Rates>
+						</RoomRate>
+					</RoomRates>
+					
+					<!-- The Time Span which covers the Room Stay. -->
+					<TimeSpan Start="2011-06-01" End="2011-06-06">
+					</TimeSpan>
+
+				</RoomStay>
+			</RoomStays>
+
+			<!-- Billing codes that apply to a set of instructions for a set of transactions that are routed to a designated folio. -->
+			<BillingInstructionCode BillingCode="RMTXFD"  BillingType="4" Description="Room, tax and food charged to individual guest account" Start="2011-06-04" End="2011-06-06" AuthorizationCode="1234567">
+				<!-- Billing Type of 4 = "Individual". Refer to OpenTravel Reservation Billing Type (RBT) code list. -->
+				<ResGuestRPH RPH="1"/>
+					<!-- See ResGuests/ResGuest below for the details about this guest. -->
+			</BillingInstructionCode>
+
+			<ResGuests>
+				<!-- First Guest -->
+				<ResGuest AgeQualifyingCode="10" GroupEventCode="GROUPCODE" PrimaryIndicator="true" ResGuestRPH="1">
+					<!-- Age Qualifying Code of 10 = "Adult". Refer to OpenTravel Code List Age Qualifying Code (AQC). -->
+					<!-- This ResGuestRPH is referenced above in the /BillingInstructionCodes/BillingInstructionCode/GuestCountRPHs/@RPH attribute. -->
+					<Profiles>
+						<ProfileInfo>
+							<Profile>
+								<Customer>
+									<PersonName>
+										<NamePrefix>Ms.</NamePrefix>
+										<GivenName>Jane</GivenName>
+										<Surname>Smith</Surname>
+									</PersonName>
+									<Telephone PhoneNumber="999-999-9999"></Telephone>
+									<Email>janesmith@anycompany.com</Email>
+									<PaymentForm RPH="1">
+										<PaymentCard CardCode="MC" CardNumber="9999999999999999" ExpireDate="1212" SeriesCode="123" CardHolderRPH="1">
+											<CardHolderName>Jane Smith</CardHolderName>
+											<CardIssuerName BankID="1234567"/>
+											<Address>
+												<StreetNmbr>100</StreetNmbr>
+												<AddressLine>Anywhere Street</AddressLine>
+												<CityName>Any City</CityName>
+												<PostalCode>99999</PostalCode>
+												<StateProv>Anystate</StateProv>
+											</Address>
+											<Telephone PhoneNumber="999-999-9999"></Telephone>
+										</PaymentCard>
+									</PaymentForm>
+								</Customer>
+							</Profile>
+						</ProfileInfo>
+					</Profiles>
+				</ResGuest>
+
+				<!-- Second Guest -->
+				<ResGuest AgeQualifyingCode="10" GroupEventCode="GROUPCODE" ResGuestRPH="2">
+					<!-- Age Qualifying Code of 10 = "Adult". Refer to OpenTravel Code List Age Qualifying Code (AQC). -->
+					<!-- This ResGuestRPH is referenced above in the /BillingInstructionCodes/BillingInstructionCode/GuestCountRPHs/@RPH attribute. -->
+					<Profiles>
+						<ProfileInfo>
+							<Profile>
+								<Customer>
+									<PersonName>
+										<NamePrefix>Mr.</NamePrefix>
+										<GivenName>Tom</GivenName>
+										<Surname>Jones</Surname>
+									</PersonName>
+									<Telephone PhoneNumber="999-999-9999"></Telephone>
+									<Email>tjones@anycompany.com</Email>
+									<PaymentForm>
+										<PaymentCard>
+											<CardHolderName>Thomas R Jones</CardHolderName>
+											<CardIssuerName BankID="222222"/>
+											<Address>
+												<StreetNmbr>200</StreetNmbr>
+												<AddressLine>Anywhere Street</AddressLine>
+												<CityName>Any City</CityName>
+												<PostalCode>99999</PostalCode>
+												<StateProv>Anystate</StateProv>
+											</Address>
+											<Telephone PhoneNumber="999-999-9999"></Telephone>
+										</PaymentCard>
+									</PaymentForm>
+								</Customer>
+							</Profile>
+						</ProfileInfo>
+					</Profiles>
+				</ResGuest>
+
+				<!-- Third Guest -->
+				<ResGuest AgeQualifyingCode="10" GroupEventCode="GROUPCODE" ResGuestRPH="3">
+					<!-- Age Qualifying Code of 10 = "Adult". Refer to OpenTravel Code List Age Qualifying Code (AQC). -->
+					<!-- This ResGuestRPH is referenced above in the /BillingInstructionCodes/BillingInstructionCode/GuestCountRPHs/@RPH attribute. -->
+					<Profiles>
+						<ProfileInfo>
+							<Profile>
+								<Customer>
+									<PersonName>
+										<NamePrefix>Mr.</NamePrefix>
+										<GivenName>Sam</GivenName>
+										<Surname>Davidson</Surname>
+									</PersonName>
+									<Telephone PhoneNumber="999-999-9999"></Telephone>
+									<Email>sam.davidson@anycompany.com</Email>
+									<PaymentForm>
+										<PaymentCard>
+											<CardHolderName>Samual Davidson</CardHolderName>
+											<CardIssuerName BankID="33333"/>
+											<Address>
+												<StreetNmbr>300</StreetNmbr>
+												<AddressLine>Anywhere Street</AddressLine>
+												<CityName>Any City</CityName>
+												<PostalCode>99999</PostalCode>
+												<StateProv>Anystate</StateProv>
+											</Address>
+											<Telephone PhoneNumber="999-999-9999"></Telephone>
+										</PaymentCard>
+									</PaymentForm>
+								</Customer>
+							</Profile>
+						</ProfileInfo>
+					</Profiles>
+				</ResGuest>
+			</ResGuests>
+
+			<ResGlobalInfo>
+				<!-- The reference to this guest defined in ResGuests element -->
+				<ResGuestRPHs>1</ResGuestRPHs>
+
+				<!-- Guest guarantee information -->
+				<Guarantee>
+					<GuaranteesAccepted>
+						<GuaranteeAccepted>
+							<PaymentCard CardCode="MC" CardNumber="9999999999999999" ExpireDate="1212" SeriesCode="123" CardHolderRPH="1">
+								<CardHolderName>Jane Smith</CardHolderName>
+								<CardIssuerName BankID="1234567"/>
+								<Address>
+									<StreetNmbr>100</StreetNmbr>
+									<AddressLine>Anywhere Street</AddressLine>
+									<CityName>Any City</CityName>
+									<PostalCode>99999</PostalCode>
+									<StateProv>Anystate</StateProv>
+								</Address>
+								<Telephone PhoneNumber="999-999-9999"></Telephone>
+							</PaymentCard>
+						</GuaranteeAccepted>
+					</GuaranteesAccepted>
+				</Guarantee>
+
+				<!-- Resort fee information -->
+				<Fees>
+					<Fee Amount="22.50" CurrencyCode="USD" ChargeFrequency="1" MandatoryIndicator="true" TaxInclusive="true">
+						<!-- Charge Frequency of 1 = "Daily". Refer to OpenTravel Code List Charge Type (CHG). -->
+						<Description>
+							<Text>Resort fee</Text>
+						</Description>
+					</Fee>
+				</Fees>
+
+				<!-- ResGlobalInfo is a container for various information that affects the Reservation as a whole. These include global comments, counts, reservation IDs, loyalty programs, and payment methods. -->
+				<HotelReservationIDs>
+					<HotelReservationID HotelReservationID_RPH="1" ResID_Type="40" ResID_Value="193350531" ResGuestRPH="1"/>
+						<!-- Reservation ID Type of 40 = "Confirmation Number". Refer to OpenTravel Code Unique ID Type (UIT). -->
+
+				</HotelReservationIDs>
+			</ResGlobalInfo>
+
+		</HotelReservation>
+	</HotelReservations>
+
+</OTA_HotelResNotifRQ>

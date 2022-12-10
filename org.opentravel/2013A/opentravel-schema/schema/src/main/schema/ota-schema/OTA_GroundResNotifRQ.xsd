@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="2.000" id="OTA2013A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_GroundCommonTypes.xsd"/>
+	<xs:element name="OTA_GroundResNotifRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The OpenTravel Ground Transportation reservation (booking) notification request message is designed to be used as an unsolicited push notification message between IT systems and/or trading partners. This message includes the information required to create or store details for one ground transportation reservation that may have multiple segments associated with it.
+
+Exchanged reservation information includes:
+-Confirmation number(s) for the successfully booked ground transportation service reservation
+-Information about the primary passenger (who is the contact for this reservation) and additional passengers associated with the reservation
+-Information about the locations associated with the reservation, including pickup, interim stop(s) and drop-off details
+-Vehicle make and model information associated with the reservation
+-Rate qualifying information associated with the vehicle and/or ground transportation service reservation
+-Service charges, including taxes, minimum and maximum charges, and service charge calculation details
+-Fees that were applied in addition to the Ground Transportation Service charges
+-Estimated total charges
+-Restrictions that apply to the ground transportation service reservation
+-Payment rules that were applicable to the ground service reservation
+-Comments associated with the reservation</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" type="POS_Type">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Point of Sale Identification. Identification number of the vendor that has made the vehicle availability request and agency number assigned by IATA, ARC, ESRP or TID.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Reservation" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Details for the booked ground service reservation.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="GroundReservationType">
+								<xs:attribute name="InternalNotes" type="StringLength0to128" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Internal notes exchanged between systems that are related to the reservation but not displayed to a customer.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Payment" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">A collection of payments associated with all ground transportation reservation requests. Note that if payment information is included at the Reservation level, that payment information overrides this global payment information.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Payment" type="PaymentFormType" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Details about a payment associated with one ground transportation reservation request.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element ref="TPA_Extensions" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

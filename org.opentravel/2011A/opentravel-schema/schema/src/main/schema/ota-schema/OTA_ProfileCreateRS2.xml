@@ -1,0 +1,1 @@
+<OTA_ProfileCreateRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_ProfileCreateRS.xsd" Version="08.1"><Success/><UniqueID Type="21" Instance="1" ID="82DRC1" ID_Context="CSX"/><!--Type (UIT) 21= Profile --></OTA_ProfileCreateRS>

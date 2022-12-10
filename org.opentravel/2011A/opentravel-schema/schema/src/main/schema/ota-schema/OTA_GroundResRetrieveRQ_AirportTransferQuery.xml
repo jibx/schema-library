@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: #1: Airport Transfer -->
+<!-- USE CASE DETAILS: 
+
+1.	Jane Smith needs ground transportation to an airport and goes to the Academy Limousine site because they have sent her a 10% off coupon for an airport transfer.
+2.	From the Academy Limousine website, Jane does an availability request for June 15 at 9:00 AM. (OTA_GroundAvailRQ_AirportTransfer.xml)
+3.	Jane receives two ground transportation availability responses, one for an Executive Sedan and one for a Luxury Sedan. She reviews the pricing, fees, deposit and cancellation information for each service. (OTA_GroundAvailRS_AirportTransfer.xml)
+4.	Jane selects the Executive Sedan and books the ground transportation service. (OTA_GroundBookRQ_AirportTransfer.xml)
+5.	She receives a booking response that includes the details of her ground transportation reservation. (OTA_GroundBookRS_AirportTransfer.xml)
+6.	A week after making the ground transportation reservation, Jane has had to change her flight to be two hours later (11:00 AM). She phones Academy Limousine to change her reservation, but does not know her reservation number.
+7.	The Academy Limousine representative searches for Jane’s reservation by entering her last name and date of service (THIS INSTANCE). She receives 2 responses and identifies Jane’s reservation (OTA_GroundResRetrieveRS_AirportTransferQuery.xml)
+8. The Academy Limousine representative then issues a reservation retrieve request using the confirmation number returned in step 7 above and receives a detailed reservation response (OTA_GroundResRetrieveRS_AirportTransferDetail.xml/ OTA_GroundResRetrieveRS_AirportTransferDetail.xml)
+-->
+
+<OTA_GroundResRetrieveRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_GroundResRetrieveRQ.xsd" EchoToken="12345" TimeStamp="2011-05-07T08:45:25" Target="Production" Version="1.000" PrimaryLangID="en-us">	
+
+	<!-- Point of sale information for the sender of the booking request. -->
+	<POS>
+		<Source>
+			<RequestorID Type="43" ID="Academy Limousine"/>
+			<!-- Type 43 = "Ground Transportation Supplier (branded website)". See OpenTravel Code List Unique ID Type (UIT). -->
+		</Source>
+	</POS>
+	
+	<!-- Search criteria that can be used to retrieve an existing ground transportation reservation if the reservation ID/reference number is not known. -->
+	<ReservationSearchCriteria DateTime="2011-06-15T09:00:00">
+		<Passengers>
+			<Primary>
+				<PersonName>
+					<Surname>Smith</Surname>
+				</PersonName>
+			</Primary>
+		</Passengers>
+	
+	</ReservationSearchCriteria>
+	
+</OTA_GroundResRetrieveRQ>

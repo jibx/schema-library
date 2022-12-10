@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="4.000" id="OTA2012B">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:annotation>
+    <xs:documentation source="Notice" xml:lang="en">The OTA_CodeType simpleType will be deprecated in the 2013A OpenTravel XML Message Suite publication. All OTA_CodeType typed attributes with be replaced with elements typed as an open list, e.g. List_NameOfList.</xs:documentation>
+  </xs:annotation>
+	<xs:include schemaLocation="OTA_HotelContentDescription.xsd"/>
+	<xs:include schemaLocation="OTA_HotelReservation.xsd"/>
+	<xs:element name="OTA_NotifReportRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">This message is used to indicate the status of processing one or several previous messages.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="MessageAcknowledgementType">
+					<xs:sequence>
+						<xs:element name="NotifDetails" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">A container used to specify a certain set of previous messages.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:choice>
+									<xs:element name="HotelNotifReport">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">Used to provide business details regarding processing of a previous hotel message.</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:choice>
+												<xs:element name="HotelReservations" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">Collection of hotel reservations.</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="HotelReservation" maxOccurs="unbounded">
+																<xs:annotation>
+																	<xs:documentation>A hotel reservation.</xs:documentation>
+																</xs:annotation>
+																<xs:complexType>
+																	<xs:complexContent>
+																		<xs:extension base="HotelReservationType">
+																			<xs:attribute name="WarningRPH" type="ListOfRPH" use="optional">
+																				<xs:annotation>
+																					<xs:documentation xml:lang="en">Refers to one or more warning elements giving details of one or more processing problems.</xs:documentation>
+																				</xs:annotation>
+																			</xs:attribute>
+																		</xs:extension>
+																	</xs:complexContent>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="AvailStatusMessages" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">Collection of availability status messages.</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="AvailStatusMessage" maxOccurs="unbounded">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">An availability status message.</xs:documentation>
+																</xs:annotation>
+																<xs:complexType>
+																	<xs:complexContent>
+																		<xs:extension base="AvailStatusMessageType">
+																			<xs:attribute name="WarningRPH" type="ListOfRPH" use="optional">
+																				<xs:annotation>
+																					<xs:documentation xml:lang="en">Refers to one or more warning elements giving details of one or more processing problems.</xs:documentation>
+																				</xs:annotation>
+																			</xs:attribute>
+																		</xs:extension>
+																	</xs:complexContent>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+														<xs:attributeGroup ref="HotelReferenceGroup">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">The hotel reference identifies a specific hotel by using the chain code, the brand code, and the hotel code. The codes used are agreed upon by trading partners.</xs:documentation>
+															</xs:annotation>
+														</xs:attributeGroup>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="RateAmountMessages" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">Collection of rate amount messages.</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="RateAmountMessage" maxOccurs="unbounded">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">A rate amount message.</xs:documentation>
+																</xs:annotation>
+																<xs:complexType>
+																	<xs:complexContent>
+																		<xs:extension base="RateAmountMessageType">
+																			<xs:attribute name="WarningRPH" type="ListOfRPH" use="optional">
+																				<xs:annotation>
+																					<xs:documentation xml:lang="en">Refers to one or more warning elements giving details of one or more processing problems.</xs:documentation>
+																				</xs:annotation>
+																			</xs:attribute>
+																		</xs:extension>
+																	</xs:complexContent>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+														<xs:attributeGroup ref="HotelReferenceGroup">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">The hotel reference identifies a specific hotel by using the chain code, the brand code, and the hotel code. The codes used are agreed upon by trading partners.</xs:documentation>
+															</xs:annotation>
+														</xs:attributeGroup>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="HotelDescriptiveContents" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">Collection of hotel descriptive contents.</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="HotelDescriptiveContent" maxOccurs="unbounded">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">A hotel descriptive content message that was not successfully processed.</xs:documentation>
+																</xs:annotation>
+																<xs:complexType>
+																	<xs:complexContent>
+																		<xs:extension base="HotelDescriptiveContentType">
+																			<xs:attributeGroup ref="HotelReferenceGroup">
+																				<xs:annotation>
+																					<xs:documentation xml:lang="en">The hotel reference identifies a specific hotel by using the chain code, the brand code, and the hotel code. The codes used are agreed upon by trading partners.</xs:documentation>
+																				</xs:annotation>
+																			</xs:attributeGroup>
+																			<xs:attribute name="WarningRPH" type="ListOfRPH" use="optional">
+																				<xs:annotation>
+																					<xs:documentation xml:lang="en">Refers to one or more warning elements giving details of one or more processing problems.</xs:documentation>
+																				</xs:annotation>
+																			</xs:attribute>
+																		</xs:extension>
+																	</xs:complexContent>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+														<xs:attributeGroup ref="HotelReferenceGroup">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">The hotel reference identifies a specific hotel by using the chain code, the brand code, and the hotel code. The codes used are agreed upon by trading partners.</xs:documentation>
+															</xs:annotation>
+														</xs:attributeGroup>
+													</xs:complexType>
+												</xs:element>
+											</xs:choice>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="VehNotifReport">
+										<xs:annotation>
+											<xs:documentation>Used to provide business details regarding processing of a previous vehicle message.</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="VehRes" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation>Vehicle reservation.</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="VehNotifReportRQCore">
+																<xs:annotation>
+																	<xs:documentation>Identifies the common, or core, information associated with the request providing information on the reservation of a rental vehicle.</xs:documentation>
+																</xs:annotation>
+																<xs:complexType>
+																	<xs:complexContent>
+																		<xs:extension base="VehicleResRSCoreType">
+																			<xs:attribute name="ReservationStatus" use="optional">
+																				<xs:annotation>
+																					<xs:documentation xml:lang="en">Used to specify the status of the reservation with either one of the enumerations in TransactionStatusType or an UpperCaseAlphaLength1to2 code such as an IATA status code.</xs:documentation>
+																				</xs:annotation>
+																				<xs:simpleType>
+																					<xs:union memberTypes="TransactionStatusType UpperCaseAlphaLength1to2"/>
+																				</xs:simpleType>
+																			</xs:attribute>
+																		</xs:extension>
+																	</xs:complexContent>
+																</xs:complexType>
+															</xs:element>
+															<xs:element name="VehNotifReportRQInfo" type="VehicleResRSAdditionalInfoType" minOccurs="0">
+																<xs:annotation>
+																	<xs:documentation>Identifies the supplemental information associated with the request providing information on the reservation of a rental vehicle.</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:choice>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

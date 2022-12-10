@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: #1: Airport Transfer -->
+<!-- USE CASE DETAILS: 
+
+1.	Jane Smith needs ground transportation to an airport and goes to the Academy Limousine site because they have sent her a 10% off coupon for an airport transfer.
+2.	From the Academy Limousine website, Jane does an availability request for June 15 at 9:00 AM. (OTA_GroundAvailRQ_AirportTransfer.xml)
+3.	Jane receives two ground transportation availability responses, one for an Executive Sedan and one for a Luxury Sedan. She reviews the pricing, fees, deposit and cancellation information for each service. (THIS INSTANCE)
+4.	Jane selects the Executive Sedan and books the ground transportation service. (OTA_GroundBookRQ_AirportTransfer.xml)
+5.	She receives a booking response that includes the details of her ground transportation reservation. (OTA_GroundBookRS_AirportTransfer.xml)
+6.	A week after making the ground transportation reservation, Jane has had to change her flight to be two hours later (11:00 AM). She phones Academy Limousine to change her reservation, but does not know her reservation number.
+7.	The Academy Limousine representative searches for Jane’s reservation by entering her last name and date of service (OTA_GroundResRetrieveRQ_AirportTransferQuery.xml). She receives 2 responses and identifies Jane’s reservation (OTA_GroundResRetrieveRS_AirportTransferQuery.xml)
+8. The Academy Limousine representative then issues a reservation retrieve request using the confirmation number returned in step 7 above and receives a detailed reservation response (OTA_GroundResRetrieveRQ_AirportTransferDetail.xml/ OTA_GroundResRetrieveRS_AirportTransferDetail.xml)
+-->
+
+<OTA_GroundAvailRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_GroundAvailRS.xsd" EchoToken="12345" TimeStamp="2011-05-01T09:44:55" Target="Production" Version="1.000" PrimaryLangID="en-us">	
+
+<!-- An element that is not intended to contain any data. The mere presence of a success element within the response message indicates that the incoming request message was processed successfully. -->
+<Success/>
+
+	<!-- Information about available ground services. First choice: Executive Sedan -->
+	<GroundServices>
+	
+		<GroundService>
+			<!-- Available service information. -->
+			<ServiceInfo  DisabilityVehicleInd="false"  MaximumBaggage="4" MaximumPassengers="3" MeetAndGreetInd="true" VehicleType="25" ServiceType="AirportTransfer" ShortDescription="Our Executive Sedans are newer model Lincoln Continentals and fully air conditioned. Up to three passengers and 4 suitcases are accommodated."/>
+				<!-- Vehicle Type 1 = "Car/Sedan". See OpenTravel Code List Vehicle Category (VEC). -->
+				<!-- Service Level 3 = "Executive". See OpenTravel Code List Level of Service (LOS). -->
+				<!-- Vehicle Size 8 = "Full Size". See OpenTravel Code List Size (SIZ). -->
+
+			<!-- Qualifying promotion code (10% off coupon for an airport transfer). -->
+			<RateQualifier PromotionCode="10AIRPORT"/>
+			
+			<!-- Restrictions that apply to this vehicle/ ground transportation service. Note that these two restrictions are further defined below in the PaymentRules element. -->
+			<Restrictions CancellationPenaltyInd="true" GuaranteeReqInd="true"/>
+
+			<!-- Base service charges for this ground transportation service. Note charges include 10% discount. -->
+			<ServiceCharges>
+				<ServiceCharge Purpose="35" Amount="67.50" CurrencyCode="USD" Description="$75 base charge minus 10% discount">
+					<!-- Type 35 = "Base Rate". See OpenTravel Code List Vehicle Charge Purpose Type (VCP). -->
+
+					<TaxAmounts>
+						<TaxAmount Total="2.00" CurrencyCode="USD" Description="State ground transportation tax" Percentage="3"/>
+					</TaxAmounts>
+					
+				</ServiceCharge>
+			</ServiceCharges>
+
+			<!-- Fees including a 15% driver gratuity. -->
+			<Fees>
+				<Fee Purpose="37" Description="Minimum driver gratuity 15%" CurrencyCode="USD" Amount="11.00">
+					<!-- Purpose 35 = "Gratuity". See OpenTravel Code List Vehicle Charge Purpose Type (VCP). -->
+				</Fee>
+
+				<!--Notice that tolls are extra. -->
+				<Fee Purpose="38" Description="All toll charges will be added to base service charge.">
+					<!-- Purpose 38 = "Tolls". See OpenTravel Code List Vehicle Charge Purpose Type (VCP). -->
+				</Fee>
+
+				<!--Notice that waiting time is $50 an hour. -->
+				<Fee Purpose="41" Description="Wait time is charged at $50 per hour on 1/2 hour increments.">
+					<!-- Purpose 41 = "Wait Time". See OpenTravel Code List Vehicle Charge Purpose Type (VCP). -->
+				</Fee>
+			</Fees>
+
+			<!-- The estimated total charge for the service. NOTE: This element typically contains the total of both ServiceCharges and Fees. -->
+			<TotalCharge CurrencyCode="USD" EstimatedTotalAmount="80.50"/>
+
+			<!-- A reference code for the available service(s) returned in this message that may be used in a booking message. This is used as a reference number in the booking request so availability service details do not need to be replicated in the booking request message. -->
+			<Reference ID="AVAIL11111" Type="16">
+				<!-- Type 16 = "Reference". See OpenTravel Code List Unique ID Type (UIT). -->
+			</Reference>
+
+			<!-- Payment rules for restrictions listed above (cancellation and guarantee) as well as deposit requirements. -->
+			<PaymentRules>
+			
+				<!-- Cancellation rule: Jane must cancel 24 hours in advance of pickup date/time to avoid a $50 cancellation fee. -->
+				<PaymentRule RuleType="1" AbsoluteDeadline="2011-06-14T09:00:00" Amount="50.00" CurrencyCode="USD"/>
+					<!-- Type 1 = "Cancel". See OpenTravel Code List Rule Type (RUL). -->
+
+				<!-- Deposit rule: a 50% of total estimate deposit will be charged at time of booking. -->
+				<PaymentRule RuleType="3" Percent="50" CurrencyCode="USD"/>
+					<!-- Type 3 = "Deposit". See OpenTravel Code List Rule Type (RUL). -->
+				
+				<!-- Guarantee rule: A credit card hold for an additional 50% of the ground transportation charges will be placed at time of booking. -->
+				<PaymentRule RuleType="4" Percent="50" CurrencyCode="USD"/>
+					<!-- Type 4 = "Guarantee". See OpenTravel Code List Rule Type (RUL). -->									
+
+				<!-- Credit card types accepted as payment and guarantee -->
+				<AcceptablePayments PaymentTypeCode="31">
+					<!-- Payment Type Code of 31 = "Guarantee". See OpenTravel Code List Payment Type (PMT). -->
+					
+					<!-- American Express, VISA and MasterCard accepted. -->
+					<AcceptablePayment CreditCardCode="AX"/>
+					<AcceptablePayment CreditCardCode="VI"/>					
+					<AcceptablePayment CreditCardCode="MC"/>
+					
+				</AcceptablePayments>
+
+			</PaymentRules>
+			
+		</GroundService>
+
+		<!-- **************************************************************************************** -->
+		<!-- Information about available ground services. Second choice: Luxury Sedan -->
+		<!-- **************************************************************************************** -->
+		<GroundService>
+			<!-- Available service information. -->
+			<ServiceInfo  DisabilityVehicleInd="false"  MaximumBaggage="6" MaximumPassengers="3" MeetAndGreetInd="true" VehicleType="26" ServiceType="AirportTransfer" ShortDescription="Our Luxury Sedans are newer model Mercedes and fully air conditioned. Up to three passengers and 6 suitcases are accommodated." ServiceLevel="4" VehicleSize="8"/>
+				<!-- Vehicle Type 1 = "Car/Sedan". See OpenTravel Code List Vehicle Category (VEC). -->
+				<!-- Service Level 4 = "Luxury". See OpenTravel Code List Level of Service (LOS). -->
+				<!-- Vehicle Size 8 = "Full Size". See OpenTravel Code List Size (SIZ). -->
+			
+			<!-- Qualifying promotion code (10% off coupon for an airport transfer). -->
+			<RateQualifier PromotionCode="10AIRPORT"/>
+			
+			<!-- Restrictions that apply to this vehicle/ ground transportation service. Note that these two restrictions are further defined below in the PaymentRules element. -->
+			<Restrictions CancellationPenaltyInd="true" GuaranteeReqInd="true"/>
+
+			<!-- Base service charges for this ground transportation service. Note charges include 10% discount. -->
+			<ServiceCharges>
+				<ServiceCharge Purpose="35" Amount="90.00" CurrencyCode="USD" Description="$100 base charge minus 10% discount">
+					<!-- Type 35 = "Base Rate". See OpenTravel Code List Vehicle Charge Purpose Type (VCP). -->
+
+					<TaxAmounts>
+						<TaxAmount Total="2.50" CurrencyCode="USD" Description="State ground transportation tax" Percentage="3"/>
+					</TaxAmounts>
+					
+				</ServiceCharge>
+			</ServiceCharges>
+
+			<!-- Fees including a 15% driver gratuity. -->
+			<Fees>
+				<Fee Purpose="37" Description="Minimum driver gratuity 15%" CurrencyCode="USD" Amount="15.00">
+					<!-- Purpose 35 = "Gratuity". See OpenTravel Code List Vehicle Charge Purpose Type (VCP). -->
+				</Fee>
+
+				<!--Notice that tolls are extra. -->
+				<Fee Purpose="38" Description="All toll charges will be added to base service charge.">
+					<!-- Purpose 38 = "Tolls". See OpenTravel Code List Vehicle Charge Purpose Type (VCP). -->
+				</Fee>
+
+				<!--Notice that waiting time is $50 an hour. -->
+				<Fee Purpose="41" Description="Wait time is charged at $50 per hour on 1/2 hour increments.">
+					<!-- Purpose 41 = "Wait Time". See OpenTravel Code List Vehicle Charge Purpose Type (VCP). -->
+				</Fee>
+			</Fees>
+
+			<!-- The estimated total charge for the service. NOTE: This element typically contains the total of both ServiceCharges and Fees. -->
+			<TotalCharge CurrencyCode="USD" EstimatedTotalAmount="80.50"/>
+
+			<!-- A reference code for the available service(s) returned in this message that may be used in a booking message. This is used as a reference number in the booking request so availability service details do not need to be replicated in the booking request message. -->
+			<Reference ID="AVAIL22222" Type="16">
+				<!-- Type 16 = "Reference". See OpenTravel Code List Unique ID Type (UIT). -->
+			</Reference>
+
+			<!-- Payment rules for restrictions listed above (cancellation and guarantee) as well as deposit requirements. -->
+			<PaymentRules>
+			
+				<!-- Cancellation rule: Jane must cancel 24 hours in advance of pickup date/time to avoid a $50 cancellation fee. -->
+				<PaymentRule RuleType="1" AbsoluteDeadline="2011-06-14T09:00:00" Amount="50.00" CurrencyCode="USD"/>
+					<!-- Type 1 = "Cancel". See OpenTravel Code List Rule Type (RUL). -->
+
+				<!-- Deposit rule: a 50% of total estimate deposit will be charged at time of booking. -->
+				<PaymentRule RuleType="3" Percent="50" CurrencyCode="USD"/>
+					<!-- Type 3 = "Deposit". See OpenTravel Code List Rule Type (RUL). -->
+				
+				<!-- Guarantee rule: A credit card hold for an additional 50% of the ground transportation charges will be placed at time of booking. -->
+				<PaymentRule RuleType="4" Percent="50" CurrencyCode="USD"/>
+					<!-- Type 4 = "Guarantee". See OpenTravel Code List Rule Type (RUL). -->									
+
+				<!-- Credit card types accepted as payment and guarantee -->
+				<AcceptablePayments PaymentTypeCode="31">
+					<!-- Payment Type Code of 31 = "Guarantee". See OpenTravel Code List Payment Type (PMT). -->
+					
+					<!-- American Express, VISA and MasterCard accepted. -->
+					<AcceptablePayment CreditCardCode="AX"/>
+					<AcceptablePayment CreditCardCode="VI"/>					
+					<AcceptablePayment CreditCardCode="MC"/>
+					
+				</AcceptablePayments>
+			</PaymentRules>
+		</GroundService>
+
+		<!-- NOTE: Additional availability items would repeat here... -->
+		
+	</GroundServices>
+</OTA_GroundAvailRS>

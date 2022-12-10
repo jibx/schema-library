@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+ <OTA_HotelSearchRS xmlns="http://www.opentravel.org/OTA/2003/05" 
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelSearchRS.xsd" 
+ EchoToken="HL" 
+ Target="Production" 
+ Version="3.001" 
+ PrimaryLangID="EN-US">
+ 
+  <Success /> 
+<Properties>
+<Property ChainCode="AA" HotelCode="abc123" HotelCityCode="NYC" HotelName="Hotel ABC" HotelCodeContext="SH">
+<!-- The hotel code is created by the Super-HL system , it is not provided to the customer, it can be used as a reference for follow up entries sent to the Super-HL system 
+  --> 
+<RelativePosition Direction="S" Distance="0.4">
+<Transportations>
+  <Transportation TransportationCode="20" /> 
+<!-- 20 represents Taxi as the property's main transportation
+  --> 
+  </Transportations>
+  </RelativePosition>
+  
+  </Property>
+<Property ChainCode="AB" HotelCode="abc234" HotelCityCode="NYC" HotelName="Hotel DEF" HotelCodeContext="SH">
+<RelativePosition Direction="E" Distance="0.7">
+<Transportations>
+  <Transportation TransportationCode="20" /> 
+  </Transportations>
+  </RelativePosition>
+  </Property>
+  
+<Property ChainCode="AC" HotelCode="abc678" HotelCityCode="NYC" HotelName="Hotel GHI" HotelCodeContext="SH">
+<RelativePosition Direction="W" Distance="0.7">
+<Transportations>
+  <Transportation TransportationCode="20" /> 
+  </Transportations>
+  </RelativePosition>
+  </Property>
+  </Properties>
+  
+<Criteria>
+	<Criterion ExactMatch="true">
+	<!-- The point of reference provided by the customer was the Empire State Building  --> 
+	  <RefPoint>Empire State Building</RefPoint> 
+	  <CodeRef LocationCode="17" /> 
+	<!-- the Location code is landmark" --> 
+	  <HotelRef HotelCityCode="NYC" /> 
+	  <Radius Distance="2" DistanceMeasure="miles" /> 
+	<!-- The hotel listed should be within 2 miles from the Empire State Building --> 
+	  <HotelAmenity Code="254" />
+	  <!--  254 means connecting rooms --> 
+	  <RoomAmenity RoomAmenity="74" /> 
+		<!--  74 means non smoking --> 
+	  <RoomAmenity RoomAmenity="158" /> 
+		<!-- 158 means CNN is in the room --> 
+	  <RoomAmenity RoomAmenity="123" /> 
+		<!-- 123 means wireless internet access --> 
+		<HotelFeature AccessibilityCode="110" />
+		<!-- 110 means roll-in shower available --> 
+		<HotelFeature AccessibilityCode="102" />
+		<!-- 102 means accessible baths --> 
+		<HotelFeature AccessibilityCode="28" />
+		<!-- 28 means public areas wheelchair accessible-->
+		<HotelFeature AccessibilityCode="38" />
+		<!-- 38 means grab bars in bathroom-->
+	  </Criterion>
+  </Criteria>
+  </OTA_HotelSearchRS>

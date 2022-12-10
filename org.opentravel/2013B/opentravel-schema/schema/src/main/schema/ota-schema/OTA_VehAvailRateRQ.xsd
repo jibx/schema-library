@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="3.000" id="OTA2013B">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_VehicleCommonTypes.xsd"/>
+	<xs:element name="OTA_VehAvailRateRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">OpenTravel vehicle rental availability message.</xs:documentation>
+			<xs:documentation source="Implementer" xml:lang="en">Implementer: The root tag of OTA_VehAvailRateRQ contains standard payload attributes found in all OpenTravel payload documents. Because the results of the search message could be quite numerous, the request also has an attribute, MaxResponses, indicating the number of replies requested. The attribute ReqRespVersion is a positive integer value that indicates the version number requested for the response message.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" type="POS_Type">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Point of Sale Identification.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="CustomerID" type="UniqueID_Type" minOccurs="0" maxOccurs="3">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Customer identification.</xs:documentation>
+						<xs:documentation source="Implementer" xml:lang="en">Implementer: This is the identification of the customer for whom availability is being requested. This is different than the customer's loyalty number.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="VehAvailRQCore">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Core availability request information.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="VehicleAvailRQCoreType"/>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="VehAvailRQInfo" type="VehicleAvailRQAdditionalInfoType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Supplemental information.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+			<xs:attributeGroup ref="ReqRespVersion">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Used to request the version of the payload message desired for the response.</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+			<xs:attributeGroup ref="MaxResponsesGroup"/>
+			<xs:attribute name="MaxPerVendorInd" type="xs:boolean" use="optional">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">When true, max responses is per vendor.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

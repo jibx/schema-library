@@ -1,0 +1,1370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="2.000" id="OTA2008A2010B">
+	<xs:include schemaLocation="OTA_HotelContentDescription.xsd"/>
+	<xs:annotation>
+		<xs:documentation xml:lang="en">All Schema files in the OpenTravel Alliance specification are made available according to the terms defined by the OpenTravel License Agreement at http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:simpleType name="DestinationLevelType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Defines the geopolitical level of a destination (e.g., Country, Resort).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Continent"/>
+			<xs:enumeration value="Country"/>
+			<xs:enumeration value="State"/>
+			<xs:enumeration value="Area"/>
+			<xs:enumeration value="SubArea"/>
+			<xs:enumeration value="Resort"/>
+			<xs:enumeration value="District"/>
+			<xs:enumeration value="Region"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MealPlanCode">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">A code for a meal plan, refer to OpenTravel Code list (MPT). A generic string may also be used.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="OTA_CodeType StringLength1to8"/>
+	</xs:simpleType>
+	<xs:simpleType name="PkgTravelCode">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The supplier's code to identify the travel arrangement for the package</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="StringLength1to8"/>
+	</xs:simpleType>
+	<xs:attributeGroup name="DestinationLevelGroup">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Defines a destination.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="DestinationCode" type="StringLength1to8" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The code identifying a destination. For a Country, this will be the ISO 3166-2 code.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DestinationLevel" type="DestinationLevelType" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Defines the geopolitical level of a destination (e.g., Country, Region).</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DestinationName" type="StringLength1to64" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The name of the destination.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="ExtrasSelectionGroup">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Selection type and rule code for an extra.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="SelectionType" use="optional">
+			<xs:simpleType>
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Used to indicate whether an Extra must be booked (Mandatory), may be requested (Optional) or included automatically but may be removed (Removeable).</xs:documentation>
+				</xs:annotation>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="Mandatory"/>
+					<xs:enumeration value="Optional"/>
+					<xs:enumeration value="Removeable"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="RuleCode" use="optional">
+			<xs:simpleType>
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Specifies the type of linked extras allowed : OneOf (only one of the linked extras may be booked) or AnyOf (any or all of the dependants may be booked</xs:documentation>
+				</xs:annotation>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="AnyOf"/>
+					<xs:enumeration value="OneOf"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="MealPlanGroup">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Code, name and quantity of diners for a meal plan.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="Plan" type="StringLength1to32" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A description of the meal plan.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Code" type="MealPlanCode" use="required">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The code for a meal plan e.g. AB- as brochure, AI- all inclusive, BB- bed and breakfast, FB- full board, HB- Half Board, RO- room only,SC- self catering</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attributeGroup ref="QuantityGroup"/>
+		<xs:attribute name="RPH" type="RPH_Type" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Used to associate a cost with a specific inventory item, e.g. a supplement for a flight leg.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="PriceGroup">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The passenger price of an item - e.g. the base price for a package.</xs:documentation>
+		</xs:annotation>
+		<xs:attributeGroup ref="GuestCountGroup">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Defines the number of guests.</xs:documentation>
+			</xs:annotation>
+		</xs:attributeGroup>
+		<xs:attribute name="PriceQualifier" type="Numeric1to3" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A number qualifying the passenger price e.g. 1 with an Age Qualifying Code of 8 (Child) indicates a 1st child price; 2 = 2nd child price and so on.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="PriceBasis" type="PricingType" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">An enumerated type that defines how a service is priced. Values: Per stay, Per person, Per night, Per person per night,  Per use.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attributeGroup ref="CurrencyAmountGroup"/>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="ResortCodeGroup">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Identifies a resort, town or city.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="ResortCode" type="StringLength1to8" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Provides the supplier's code for the resort.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ResortName" type="StringLength1to64" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Provides the supplier's name for the resort.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:complexType name="AccommodationSegmentRequestType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Defines the required accommodation component of a package holiday.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Identity" type="PropertyIdentityType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Full name or description plus codes for a property.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DateRange" type="DateTimeSpanType">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The Start date and Duration or End Date of the accommodation stay.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RoomProfiles" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A collection of RoomProfile elements.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RoomProfile" type="RoomProfileType" maxOccurs="9">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Details of passengers and amenities for a room.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="MealPlans" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A collection of meal plan elements.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="MealPlan" type="MealPlanType" maxOccurs="9">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Details of meal arrangements, booked or available according to context, with appropriate supplementary charges.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="RPH" type="RPH_Type" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">(Reference Place Holder) - an index code to identify an instance in a collection of like items. For example, used to assign individual passengers or clients to particular itinerary items.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attributeGroup ref="DestinationLevelGroup">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Identifies the parent of the Resort. The geo-political position of the destination (e.g. country) is determined by the DestinationLevel attribute.</xs:documentation>
+			</xs:annotation>
+		</xs:attributeGroup>
+		<xs:attributeGroup ref="ResortCodeGroup">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Identifies a resort by code or name.</xs:documentation>
+			</xs:annotation>
+		</xs:attributeGroup>
+	</xs:complexType>
+	<xs:complexType name="CabinAvailType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Identifies a section of an aircraft, possibly providing extra services.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Seat" type="SeatAvailabilityType" maxOccurs="26">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Specifies seat availability by class withn a cabin</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BaggageAllowance" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Provides the maximum weight of checked-in bags per passenger in this cabin</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="UnitsOfMeasureGroup">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Specifies the weight and measurement units for baggage.</xs:documentation>
+						</xs:annotation>
+					</xs:attributeGroup>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="OptionalCodeOptionalNameGroup">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Provides a code and/or name for a cabin.</xs:documentation>
+			</xs:annotation>
+		</xs:attributeGroup>
+		<xs:attribute name="Meal" type="MealServiceType" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Specifies the meal provided.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="ChargesType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">A value representing a supplement for an item over the cost of the item on which a package basic price is calculated; may be repeated for multiple currencies e.g. GBP and Euros.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Charge" type="FeeType" maxOccurs="9">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> The charge element repeats to allow differential charging according to, for example, age.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CustomerCountsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">CustomerCounts- Categorization of all Customers in a reservation or request. The total number of Customers will equal the sum of the Count attribute of all CustomerCount objects in this collection and assumes that the AgeQualifyingCode will be used to determine how each Customer should be billed. Each booking segment has its own CustomerCount attribute to help determine billing, headcount, etc.  The CustomerCount collection cannot be modified using a delta. It must be resent in its entirety if modified.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CustomerCount" maxOccurs="99">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The quantity and definition of one customer type.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="BirthDateGroup">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The date of birth of a traveller.</xs:documentation>
+						</xs:annotation>
+					</xs:attributeGroup>
+					<xs:attributeGroup ref="TravelerCountGroup"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ExtrasCoreType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Describes an optional service which is not included in the standard package but may be booked in addition.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="SubCategory" minOccurs="0" maxOccurs="5">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Identifies a sub-category of Extra, for example Large, Medium or Small Frame for a Mountain Bike Extra or Vehicle Type for a Car Rental extra.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="OptionalCodeOptionalNameGroup">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Specifies the code and/or name of an extra.</xs:documentation>
+						</xs:annotation>
+					</xs:attributeGroup>
+					<xs:attribute name="ListOfPassengerRPH" type="ListOfRPH">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Where an option is applicable only to certain passengers, this attribute will contain the ReferencePlaceHolders of the relevant passengers.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="RPH" type="RPH_Type" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">(Reference Place Holder) - an index code to identify an instance in a collection of like items.. For example,  used to assign individual passengers or clients to particular itinerary items.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Code" type="StringLength1to8" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Code to uniquely identify an extra.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Type" type="AlphaLength3" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A one to three character code denoting the type of an Extra,  for example 'C' for car hire, 'SKI' for Ski extras.  Allocated by the provider.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Quantity" type="Numeric0to99" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The quantity of an extra being booked.  A value of zero may be used to remove an automatic or previously selected extra.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="GroupCode" type="AlphaLength1" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A code which links two or more Extras together, enabling a rule to be applied to all group members e.g. only one of the group may be booked, or any combination.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Name" type="StringLength1to64" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The name of an extra being booked.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ListOfInventoryItemRPH" type="ListOfRPH" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">One or more pointers to the Inventory Item(s) with which an extra may be booked.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ListofRoomRPH" type="ListOfRPH" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">One or more pointers to the room(s) with which an extra may be booked.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="ExtrasInfoType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Describes an optional service which is not included in the standard package but may be booked in addition.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ExtrasCoreType">
+				<xs:sequence>
+					<xs:element name="Criteria" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Conditions which must be met for an extra to be bookable e.g. age of passenger, booking of parent extra.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:attribute name="MinimumAge" type="xs:positiveInteger" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">The minimum age qualification for an extra.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="MaximumAge" type="xs:positiveInteger" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">The maximum age qualification for an extra.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="YearsExperience" type="xs:positiveInteger" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">The minimum number of years of experience required to book this extra e.g. driving experiience for car rental.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="DateRequiredInd" type="xs:boolean" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">When 'true', a date must be supplied for the Extra request.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="DurationRequiredInd" type="xs:boolean" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">When 'true', a duration must be supplied for the Extra request.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="StockControlledInd" type="xs:boolean" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">When 'true', the availabilty of this extra needs to be checked; when 'false' the extra is available.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="MaximumOccupancy" type="Numeric1to99" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">The maximum number of people permitted for this extra (e.g. car occupancy)</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Periods" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">A collection of prices by booking period.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="Period" type="PeriodPriceType" maxOccurs="unbounded">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">The price of the Extra per unit (which may be person, room, car etc,) and/or duration</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="AdditionalInfoPrompt" minOccurs="0" maxOccurs="4">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Additional textual information is sometimes required when an Extra is selected.  This element allows for up to 4 lines of prompts to be displayed.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:attribute name="AdditionalInfoText" type="StringLength1to32" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">The text of a prompt for additional information</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="LineNumber" type="Numeric1to4" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">The line number to define the sequence of the prompt</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="ParentExtras" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Identifies the parent with which this Extra is available (e.g., an ice skating session with ice skates).</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:attribute name="ListOfParentRPH" type="ListOfRPH" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Where an option is applicable only to certain passengers, this attribute will contain the ReferencePlaceHolders of the relevant passengers.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attributeGroup ref="ExtrasSelectionGroup">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Selection type and rule code for an extra.</xs:documentation>
+								</xs:annotation>
+							</xs:attributeGroup>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="ExtraLocationInfo" minOccurs="0" maxOccurs="5">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Indicates where the extra can be obtained and returned, (e.g., airport, property or resort).</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:attribute name="Location" type="OTA_CodeType" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Where the extra may be collected from and returned to. Refer to OpenTravel Code List Vehicle Where at Facility (VWF)</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="Type" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Indicates whether the Location is for Pickup, DropOff or Both.</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:NMTOKEN">
+										<xs:enumeration value="PickUp"/>
+										<xs:enumeration value="DropOff"/>
+										<xs:enumeration value="Both"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+				<xs:attributeGroup ref="ExtrasSelectionGroup">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Selection type and rule code for an extra.</xs:documentation>
+					</xs:annotation>
+				</xs:attributeGroup>
+				<xs:attribute name="ApplyTo" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Indicates whether the service applies to all passengers on booking, just to selected passengers or not to passengers at all.</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:NMTOKEN">
+							<xs:enumeration value="SelectedPax"/>
+							<xs:enumeration value="AllPax"/>
+							<xs:enumeration value="NoPax"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ExtrasType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Requests an optional service which is not included in the standard package but may be booked in addition.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ExtrasCoreType">
+				<xs:sequence>
+					<xs:element name="Date" type="DateTimeSpanType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Specifies the date and/or duration for the option</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="PassengerCounts" type="CustomerCountsType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Counts of the number of passengers in age categories.  Used when individual passenger identification is not required.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="AdditionalInfo" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Additional textual information is sometimes required when an option is selected.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="ListOfPassengerRPH" type="ListOfRPH" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Where an option is applicable only to certain passengers, this attribute will contain the ReferencePlaceHolders of the relevant passengers.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ItineraryItemRequestType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Request data for any valid item of inventory.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="Accommodation" type="AccommodationSegmentRequestType">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Details of an accommodation item required in the tour.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Flight" type="PkgFlightSegmentType">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Details of a flight item required in the tour.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RentalCar">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Details of a rental car included in the tour.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="VehicleRentalCoreType">
+							<xs:attribute name="RPH" type="RPH_Type" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">(Reference Place Holder) - an index code to identify an instance in a collection of like items.. For example,  used to assign individual passengers or clients to particular itinerary items.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="Name" type="StringLength1to64" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">The name or type of vehicle e.g. 'Opel Corsa or similar'.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="Code" type="StringLength1to8" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">The supplier's code for the vehicle.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+		<xs:attribute name="RPH" type="RPH_Type" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">(Reference Place Holder) - an index code to identify an instance in a collection of like items. For example, used to assign individual passengers or clients to particular itinerary items.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="MealPlanType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Details of meal arrangements, booked or available according to context, with appropriate supplementary charges.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CustomerCounts" type="CustomerCountsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Counts of the number of passengers in age categories. Used when individual passenger identification is not required.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PassengerRPHs" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Details of individual passengers - may be used instead of CustomerCounts.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="ListOfPassengerRPH" type="ListOfRPH" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Where an option is applicable only to certain passengers, this attribute will contain the ReferencePlaceHolders of the relevant passengers.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Prices" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Price" maxOccurs="9">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">The passenger price of an item - e.g. the base price for a package.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:attributeGroup ref="PriceGroup"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="MealPlanGroup"/>
+		<xs:attribute name="ListOfRoomRPH" type="ListOfRPH" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A list of the Rooms with which this Meal Plan is available.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="OwnInsuranceChoiceType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Details of the customer's own insurance policy.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CustomerCounts" type="CustomerCountsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Counts of the number of passengers in age categories. Used when individual passenger identification is not required.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="RPH" type="RPH_Type" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">(Reference Place Holder) - an index code to identify an instance in a collection of like items. For example, used to assign individual passengers or clients to particular itinerary items.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="InsuranceCompany" type="StringLength1to64" use="required">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The name of the customer's chosen insurance company.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="PolicyNmbr" type="StringLength1to64" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A reference by which an issued policy is recognised.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TourType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Defines a complete tour request.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="URL" type="URL_Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A reference to a source of information for the tour.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CompanyName" type="CompanyNameType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The company supplying the tour.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DateRange" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The Start date and Duration or End Date of the tour.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="DateTimeSpanGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ItineraryItems" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A collection of elements to allow any item of inventory to be requested for a booking. Normal usage is for the items to be presented in chronological sequence.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ItineraryItem" type="ItineraryItemRequestType" maxOccurs="99">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Details of a tour component.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Extras" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A collection of Extras requests.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Extra" type="ExtrasType" maxOccurs="99">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Describes an optional service which is not included in the tour but may be booked. in addition.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PromotionCodes" type="StringLength1to16" minOccurs="0" maxOccurs="5">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">One or more codes to request promotional pricing (up to 5 may be specified.)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="ID_OptionalGroup">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">An identifier for the package.</xs:documentation>
+			</xs:annotation>
+		</xs:attributeGroup>
+		<xs:attribute name="Type" type="OTA_CodeType" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Refer to OpenTravel Code List Package Type (PKG).</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="TravelCode" type="PkgTravelCode" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The supplier's code to identify the travel arrangement for the package.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="TourCode" type="StringLength1to8" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The supplier's code to identify the accommodation/tour arrangements.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="MealIncludedCode" type="MealPlanCode" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The code for an included meal. See OpenTravel Code List Meal Plan Type (MPT.)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="FreeChildrenQuantity" type="Numeric0to99" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The number of free child places required.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="BrandCode" type="StringLength1to8" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The code for the tour operator's product brand.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ProductCode" type="StringLength1to8" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The tour operator's code for the product within the brand.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="PeriodPriceType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Provides dates and times of availability together with duration and prices. The Duration attribite defines the period for which a charge applies, e.g. P1D = per day, P1N = per night, P7D = per week etc.  If this attribute is not present, the period is assumed to be the duration of the booking.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="OperationScheduleType">
+				<xs:sequence>
+					<xs:element name="Price" type="PkgPriceType" minOccurs="0" maxOccurs="5">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Provides a price for an extra by booking/rental period whihch may also be at passenger type/age-level.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="RPH" type="RPH_Type" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">(Reference Place Holder) - an index code to identify an instance in a collection of like items.. For example,  used to assign individual passengers or clients to particular itinerary items.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="Category" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Identifies the unit on which on Extra is charged, e.g. per person, room, adult etc.</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:NMTOKEN">
+							<xs:enumeration value="Room"/>
+							<xs:enumeration value="Booking"/>
+							<xs:enumeration value="Person"/>
+							<xs:enumeration value="Adult"/>
+							<xs:enumeration value="Child"/>
+							<xs:enumeration value="Car"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="Type" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Indicates whether the DurationPeriod is a 'Base' (i.e.. a charge for one of a tier of durations like 3days, 7days etc.) or 'AddOn' (i.e. for periods extending a base period like extra day, extra week etc.)</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:NMTOKEN">
+							<xs:enumeration value="Base"/>
+							<xs:enumeration value="AddOn"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="DurationPeriod" type="DurationType" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Defines the period for which a charge applies, e.g. P1D = per day, P1N = per night, P7D = per week etc.  If this attribute is not present, the period is assumed to be the duration of the booking.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="PriceBasis" type="PricingType" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">An enumerated type that defines how a service is priced.  Values:  Per stay,  Per person, Per night, Per person per night,  Per use. </xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="BasePeriodRPHs" type="ListOfRPH" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Use with an 'AddOn' DurationPeriod to point to the 'Base' DurationPeriod(s) which it extends.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="GuidePriceIndicator" type="xs:boolean" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">When 'true', the accompanying price(s) are guidelines; full pricing will be returned when the Extra is selected in a Quick Cost message.  When 'false',  an accurate costing can be calculated from the price(s) given.  When this attribute is absent, accurate prices will be assumed.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="MaximumPeriod" type="DurationType" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">The maximum period for which the associated service is bookable.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PkgFlightSegmentBaseType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Construct for holding a flight segment availability object.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="DepartureAirport" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Departure point of flight segment.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="AirportLocationGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ArrivalAirport" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Arrival point of flight segment.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="AirportLocationGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="OperatingAirline" type="OperatingAirlineType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> The operating airline of the flight if it is a codeshare  flight.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Equipment" type="EquipmentType" minOccurs="0" maxOccurs="2">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> The type of equipment  used for the  flight..</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="DepartureDateTime" type="xs:dateTime" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Specifies the date and time of a flight departure.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ArrivalDateTime" type="xs:dateTime" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Specifies the date and time of a flight arrival.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="StopQuantity" type="xs:nonNegativeInteger" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en"> The number of stops the flight makes</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="RPH" type="RPH_Type">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">(Reference Place Holder) - an index code to identify an instance in a collection of like items. For example,  used to assign individual passengers or clients to particular itinerary items.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="InfoSource" type="InfoSourceType" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Used to specify the source of the data being exchanged as determined by trading partners.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="PkgFlightSegmentType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Provides details for an air segment in a response message.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="PkgFlightSegmentBaseType">
+				<xs:sequence>
+					<xs:element name="CabinAvailability" type="CabinAvailType" minOccurs="0" maxOccurs="5">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Identifies a section of an aircraft, possibly providing extra services.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="Type" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Indicates whether the flight is a scheduled or charter service.</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="Charter"/>
+							<xs:enumeration value="Scheduled"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="DepartureDay" type="DayOfWeekType" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Specifies the day on which the flight departs.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="TravelCode" type="PkgTravelCode" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">The supplier's code to identify the travel arrangement for the package</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="Duration" type="xs:duration" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">A length of time.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="DirectionInd" type="AirTripType" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Identifies whether travel is: one way, return trip, circle trip, open jaw, other</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="CheckInDate" type="xs:dateTime" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Provides the recommended date and time of passenger check-in.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="CheckInDesk" type="StringLength1to64" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Identifies the desk or desks at which the customer will check-in and optionally the handling company operating the check-in service.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="TOD_Indicator" type="xs:boolean" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">When 'true', the ticket(s) must be picked up at the airport, usually on the date of departure.  When 'false', the tickets will be delivered according to the normal fulfilment arrangements e.g. by post or as an e-ticket.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="TicketType" type="TicketType" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Paper or e-ticket</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TourPassengerListItem">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Details of a passenger or of a quantity of generic passengers e.g. 2 children aged 5.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Name" type="PersonNameType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The name of  the passenger or traveler.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SpecialNeed" minOccurs="0" maxOccurs="5">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A special requirement e.g. wheelchair or vegetarian meal.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="StringLength0to64">
+							<xs:attribute name="Code" type="StringLength1to8" use="optional"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PassportInformation" type="DocumentType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Details of the passenger's passport.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="RPH" type="RPH_Type" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">(Reference Place Holder) - an index code to identify an instance in a collection of like items. For example, used to assign individual passengers or clients to particular itinerary items.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="InsuranceRPH" type="RPH_Type" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Used to associate this passenger with their insurance cover provided by the supplier.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attributeGroup ref="GenderGroup"/>
+		<xs:attribute name="Nationality" type="ISO3166" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Used to indicate the nationality of a person, if known. Uses ISO 3166 Country Codes.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attributeGroup ref="BirthDateGroup"/>
+		<xs:attribute name="LeadCustomerInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">When 'true', indicates that this is the 'lead' passenger (i.e., the primary contact making the booking).</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attributeGroup ref="TravelerCountGroup"/>
+	</xs:complexType>
+	<xs:complexType name="PkgPriceType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Gives a price for a quantity of a traveller type e.g. a price for 2 adults.</xs:documentation>
+		</xs:annotation>
+		<xs:attributeGroup ref="TravelerCountGroup"/>
+		<xs:attributeGroup ref="CurrencyAmountGroup"/>
+		<xs:attribute name="PriceBasis" type="PricingType" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">An enumerated type that defines how a service is priced. Values: Per stay, Per person, Per night, Per person per night, Per use.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="PropertyIdentityType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Full name or description plus codes for a property.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="StringLength0to128">
+				<xs:attributeGroup ref="HotelReferenceGroup"/>
+				<xs:attribute name="PropertyClassType" type="OTA_CodeType" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Refer to OpenTravel Code List Property Class Type (PCT).  e.g. 3 (Apartment); 20 (Hotel).</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="ContentURL" type="xs:anyURI">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">A reference to a source of information for the property.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="RoomProfileType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Describes the occupancy of a room or cabin.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="RoomStayCandidateType">
+				<xs:sequence>
+					<xs:element name="PassengerRPHs" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Details of individual passengers in a room; may be used instead of GuestCounts.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:attribute name="ListOfPassengerRPH" type="ListOfRPH" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Where an option is applicable only to certain passengers, this attribute will contain the ReferencePlaceHolders of the relevant passengers.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="Description" type="ShortDescriptionType" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">A full description of the room/apartment etc.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attributeGroup ref="OccupancyGroup"/>
+				<xs:attribute name="MaxAdults" type="Numeric1to99" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Maximum number of adults allowed in a unit of accommodation.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="CotQuantity" type="Numeric0to4" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">The number of cots/cribs available in a room/apartment etc.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="FreeChildFlag" type="xs:boolean" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Indicates whether a free child is permitted in a room/apartment etc.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SeatAvailabilityType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Details of seat availability by class with optional charge information.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Charges" type="ChargesType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A collection of seat prices. The charge element repeats to allow differential charging according to, for exaample, age.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="CodeListGroup">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Specifies a seat class and quantity. </xs:documentation>
+			</xs:annotation>
+		</xs:attributeGroup>
+	</xs:complexType>
+	<xs:complexType name="TourInformationType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The TourDescriptiveContent element contains the descriptive information about a tour.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="TourName">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The full name of the tour and/or other identifiers.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="ShortName" type="StringLength1to64" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Abbreviated tour name.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="ID" type="StringLength1to255" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Unique identifier of a tour.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="MultimediaDescriptions" type="MultimediaDescriptionsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Descriptive and/or multi-media information about the tour.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Destination" minOccurs="0" maxOccurs="9">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Identifies the location of the tour.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="LocationGeneralType">
+							<xs:sequence>
+								<xs:element name="Region" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Region of the tour e.g. the Sahara.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:attributeGroup ref="RegionGroup">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Region information for the tour.</xs:documentation>
+											</xs:annotation>
+										</xs:attributeGroup>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="Position" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Describes the geocoded location of the tour.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:attributeGroup ref="PositionGroup"/>
+										<xs:attribute name="Placemark" type="StringLength1to255" use="optional">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">A free-form definition of the destination's position. Could be used as an online mapping service locator.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Category" minOccurs="0" maxOccurs="5">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Provides information on a specific aspect of a tour.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="CategoryItem" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Identifies an item for the specified category.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:attribute name="Name" type="StringLength1to64" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Provides the name of the category item.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="Code" type="StringLength1to8" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">A code for an item within a category.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute name="Type" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Specifies the type of information in the CategoryItem.</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:NMTOKEN">
+								<xs:enumeration value="Activity">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Identifies the category as an activity.</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+								<xs:enumeration value="Theme">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Identifies the category theme.</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+								<xs:enumeration value="Ability">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Identifies the category ability level.</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+								<xs:enumeration value="Exertion">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Identifies the category exertion level.</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+								<xs:enumeration value="Comfort">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Identifies the category comfort level.</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Keywords" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A collection of keywords relevant to search for tours.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Keyword" maxOccurs="99">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Keyword relevant to search for tours.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="StringLength1to255">
+										<xs:attribute name="Type" type="StringLength1to32" use="optional">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Describes the category of keywords being presented.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Charge" type="FeeType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Contains guideline price information about the tour.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Duration" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Provides the duration for the tour.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="Description" type="StringLength1to64" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Textual description of the tour duration (e.g., one day and four hours).</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="Duration" type="xs:duration" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The duration of the tour in ISO8601 format (e.g., P1DT04H).</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Departures" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A collection of departure dates and times.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="DepartureSchedule" minOccurs="0" maxOccurs="366">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Departure dates and times.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="OperationSchedulePlusChargeType">
+										<xs:attribute name="PeriodTitle" type="StringLength1to64" use="optional">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Describes the duration period, e.g. 5 days, 4 nights.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="InfoType" type="StringLength1to32" use="optional">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Allows the provider to indicate whether the schedule is general or specific.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="HasAvailabilityInd" type="xs:boolean" use="optional">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">When true, the tour has availability.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="Availability" type="Numeric1to999" use="optional">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Indicates the number of inventory items (e.g. seats) available.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PolicyInfo" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Policy information pertaining to the tour.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="CustomerPolicy" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Basic customer policy information pertaining to the tour.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:attribute name="MinimumCustomers" type="xs:nonNegativeInteger" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">The minimum number of customers on the tour.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="MaximumCustomers" type="xs:nonNegativeInteger" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">The maximum number of customers on the tour.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="MinimumAge" type="xs:nonNegativeInteger" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">The minimum permitted age for customers on the tour.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="MaximumAge" type="xs:nonNegativeInteger" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">The maximum permitted age for customers on the tour.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="BookingPolicy" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Booking policy information pertaining to the tour.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:attributeGroup ref="InvBlockCutoffGroup">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">The date (AbsoluteCutoff) or period before departure (OffsetDuration) after which no bookings are permitted.  The OffsetCalculationMode attribute is not required for Tours.</xs:documentation>
+									</xs:annotation>
+								</xs:attributeGroup>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="SupplierInfo" type="ContactInfoType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Provides details of the tour supplier.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Language" minOccurs="0" maxOccurs="9">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Languages spoken by the tour staff.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="Language" type="xs:language" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Language spoken on the tour.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="URLs" type="URLsType" minOccurs="0" maxOccurs="5">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A collection of URL elements.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="TPA_Extensions" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="LanguageCode" type="xs:language" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Identification of the language used for the tour descriptive information.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="TimeZone" type="StringLength1to64" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The local time zone in which the tour departs. This could include additional information regarding time zones (e.g., Daylight Saving Time observed), the difference between the local time and GMT. </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attributeGroup ref="DateTimeSpanGroup">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Used to define the lifespan of the tour content. Used to provide the first and last dates for the tour.</xs:documentation>
+			</xs:annotation>
+		</xs:attributeGroup>
+		<xs:attributeGroup ref="DateTimeStampGroup">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Defines the dates and authorship of the creation and latest update of the descriptive data.</xs:documentation>
+			</xs:annotation>
+		</xs:attributeGroup>
+	</xs:complexType>
+</xs:schema>

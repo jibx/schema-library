@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="3.000" id="OTA2014B">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_CommonTypes.xsd"/>
+	<xs:element name="OTA_FileAttachmentNotifRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The OpenTravel File Attachment Notification message pair enables a sending system to physically transfer encoded binary files to a receiving system that will store or process them.
+The request message and the encoded files are transferred together in a single encoded entity, with the request message being the first item retrieved by the receiving system. The receiving system uses the request message as a table of contents with the descriptive information it needs to decode and store the files.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" type="POS_Type" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Point of Sale identification that identifies the party or connection channel making the request and is used for message authentication. Terminal, entity, position, channel information and message password may be included.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="FileAttachmentReferences">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Details about the file(s) attached to this message.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="FileAttachmentReference" maxOccurs="99">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Specifies details about the file attached to this message.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attributeGroup ref="FileAttachmentGroup"/>
+									<xs:attributeGroup ref="DateTimeStampGroup">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">Creation date time, creator ID, last modification date time and last modifier ID.</xs:documentation>
+										</xs:annotation>
+									</xs:attributeGroup>
+								</xs:complexType>
+							</xs:element>
+							<xs:element ref="TPA_Extensions" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element ref="TPA_Extensions" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

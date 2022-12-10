@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="6.000" id="OTA2012A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:annotation>
+    <xs:documentation source="Notice" xml:lang="en">The OTA_CodeType simpleType will be deprecated in the 2013A OpenTravel XML Message Suite publication. All OTA_CodeType typed attributes with be replaced with elements typed as an open list, e.g. List_NameOfList.</xs:documentation>
+  </xs:annotation>
+	<xs:include schemaLocation="OTA_HotelReservation.xsd"/>
+	<xs:element name="OTA_HotelResNotifRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">This message supports the functionality of updating other systems with reservation data. The message assumes a push model, with the originating system pushing the data to another system.  The originating system would usually be a booking source, such as a Global Distribution System (GDS), a Central Reservation System (CRS) or some other agent of the hotel.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" type="POS_Type" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">The point-of-sale data, contained in the element, communicates the information that allows the receiving system to identify the trading partner that is sending the request or the response message.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="MessageID" type="UniqueID_Type" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">This represents a batch ID.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="HotelReservations" type="HotelReservationsType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">A collection of hotel reservations.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+			<xs:attribute name="ResStatus" type="TransactionActionType" use="optional"/>
+			<xs:attribute name="HoldDuration" type="xs:duration" use="optional">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The time until a hold is released.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="2.000" id="OTA2010B">
+  <xs:include schemaLocation="OTA_GolfCommonTypes.xsd"/>
+  <xs:annotation>
+    <xs:documentation xml:lang="en">All Schema files in the OpenTravel Alliance specification are made available according to the terms defined by the OpenTravel License Agreement at http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+  </xs:annotation>
+  <xs:element name="OTA_GolfCourseAvailRS">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">The OTA_CourseAvailRS is the response message associated with the OTA_CourseAvailRQ message. It includes any errors and warnings, or an element indicating success. Where the response is successful, the tee times and fees will be included.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:annotation>
+        <xs:documentation xml:lang="en">May have either errors or warnings or both, but must have one if there is no success.</xs:documentation>
+      </xs:annotation>
+      <xs:choice>
+        <xs:sequence>
+          <xs:element name="Success" type="SuccessType"/>
+          <xs:element name="Warnings" type="WarningsType" minOccurs="0"/>
+          <xs:element name="UniqueID" type="UniqueID_Type" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The unique Id and company information of the requester.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="GolfCourseTeeTimes">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="GolfCourseTeeTime" type="GolfCourseTeeTimeType" maxOccurs="99">
+                  <xs:annotation>
+                    <xs:documentation xml:lang="en">Golf course tee time information, including the range of dates and times for which the round (or rounds) are being requested, as well as information relating to the number of golfers, the number of holes requested, and the number of times. It also includes the maximum price permitted in the response.</xs:documentation>
+                  </xs:annotation>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:element name="Errors" type="ErrorsType"/>
+      </xs:choice>
+      <xs:attributeGroup ref="OTA_PayloadStdAttributes">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.</xs:documentation>
+        </xs:annotation>
+      </xs:attributeGroup>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

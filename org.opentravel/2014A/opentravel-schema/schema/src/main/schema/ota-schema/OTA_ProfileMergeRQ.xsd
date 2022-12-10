@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="2.000" id="OTA2014A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_Profile.xsd"/>
+	<xs:element name="OTA_ProfileMergeRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">This message provides for the merging of one or more profiles.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" type="POS_Type" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Point of sale object.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="UniqueID" type="UniqueID_Type" maxOccurs="9">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Identifies the profile for which information is being merged from the profiles identified by the ObsoleteProfileID together with the owner of the profile or an id provided by the client.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ObsoleteProfileID" type="UniqueID_Type" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>The profile(s) to be merged into the profile represented by UniqueID.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Profile" type="ProfileType">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Results of the merged profile.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

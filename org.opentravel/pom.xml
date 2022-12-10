@@ -23,15 +23,15 @@
   </properties>
 
   <modules>
-    <module>_2014B</module>
-    <module>_2014A</module>
-    <module>_2013B</module>
-    <module>_2013A</module>
-    <!-- module>_2012B</module>
-    <module>_2012A</module>
-    <module>_2011B</module>
-    <module>_2011A</module -->
-    <module>_2010B</module>
+    <module>2014B</module>
+    <module>2014A</module>
+    <module>2013B</module>
+    <module>2013A</module>
+    <!-- module>2012B</module>
+    <module>2012A</module>
+    <module>2011B</module>
+    <module>2011A</module -->
+    <module>2010B</module>
   </modules>  
 
 </project>

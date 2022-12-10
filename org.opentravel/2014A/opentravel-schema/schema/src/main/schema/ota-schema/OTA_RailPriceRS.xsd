@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="2.000" id="OTA2014A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_RailCommonTypes.xsd"/>
+	<xs:element name="OTA_RailPriceRS">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The OpenTravel Rail Price response message may return:
+- A success indicator with rail price details
+- A business warning with or without rail price details
+- An error response (indicating why the message could not be processed) with no rail price details as the request has not been processed
+
+If successfully processed, the Rail Price response information includes a priced itinerary with some or all of the following information:
+- Pricing information for a rail itinerary, including the total price for the rail itinerary and pricing details, e.g. summary or detailed basic fare, discounts, service charges, fare adjustments, fees and taxes.
+- Journey information from one specific origin to one specific destination, including train segment and pricing details
+- Passenger information, including occupation, age qualifier, disability, loyalty program, personal identification and contact information
+- Notes associated with the priced itinerary
+</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="Success" type="SuccessType">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">An element that is not intended to contain any data. The mere presence of a success element within the response message indicates that the incoming request message was processed successfully.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Warnings" type="WarningsType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Indicates that the recipient of the request message identified one or more business-level warnings/errors, but the message itself was successfully processed.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="PricedItinerary">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Summary fare information applicable to the total journey, including total fare, basic fare, discounts applied, etc.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="RailItineraryPrice" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Pricing information for a rail itinerary.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="TotalPrice" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">The total price for the rail itinerary.</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:attributeGroup ref="CurrencyAmountGroup"/>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="PriceDetail" maxOccurs="99">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Pricing details for a rail itinerary, including summary or detailed basic fare, discounts, service charges, fare adjustments, fees and taxes.</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:complexContent>
+														<xs:extension base="RailPriceType">
+															<xs:attribute name="PassengerCategoryRPH">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">Reference to a passenger category within the same xml data instance.</xs:documentation>
+																</xs:annotation>
+															</xs:attribute>
+														</xs:extension>
+													</xs:complexContent>
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="OriginDestination" maxOccurs="9">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Journey information from one specific origin to one specific destination, including train segment and pricing details.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="OriginLocation" type="LocationType">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Travel origin location.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="DestinationLocation" type="LocationType">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Travel destinationlocation.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="TrainSegment" minOccurs="0" maxOccurs="9">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">A collection of one or more train segments.</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:complexContent>
+														<xs:extension base="TrainSegmentSummaryType">
+															<xs:sequence>
+																<xs:element name="PriceDetail" minOccurs="0" maxOccurs="99">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">Price information, including breakdown calculated at the train segment level.  Each PriceDetail element contains the fare quote corresponding to the traveler's rail accommodation and ancillary service(s). </xs:documentation>
+																	</xs:annotation>
+																	<xs:complexType>
+																		<xs:complexContent>
+																			<xs:extension base="RailPriceType">
+																				<xs:sequence>
+																					<xs:element ref="AccommodationService" minOccurs="0"/>
+																					<xs:element name="ClassCode" minOccurs="0" maxOccurs="99">
+																						<xs:annotation>
+																							<xs:documentation xml:lang="en">The class of inventory controlled services available.</xs:documentation>
+																						</xs:annotation>
+																						<xs:complexType>
+																							<xs:attributeGroup ref="CodeGroup"/>
+																						</xs:complexType>
+																					</xs:element>
+																				</xs:sequence>
+																				<xs:attribute name="PassengerCategoryRPH" type="RPH_Type">
+																					<xs:annotation>
+																						<xs:documentation xml:lang="en">Reference to the passenger category.</xs:documentation>
+																					</xs:annotation>
+																				</xs:attribute>
+																			</xs:extension>
+																		</xs:complexContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:extension>
+													</xs:complexContent>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="PriceDetail" maxOccurs="99">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Pricing details calculated at the origin/destination level.</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:complexContent>
+														<xs:extension base="RailPriceType">
+															<xs:attribute name="PassengerCategoryType" type="RPH_Type" use="optional">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">Reference to passenger category within the same xml data instance.</xs:documentation>
+																</xs:annotation>
+															</xs:attribute>
+														</xs:extension>
+													</xs:complexContent>
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="PassengerInfo" type="RailPassengerCategoryDetailType" maxOccurs="99">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Passenger information, including occupation, age qualifier, disability, loyalty program, personal identification and contact information.</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Note" type="FreeTextType" minOccurs="0" maxOccurs="5">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">A description of the priced itinerary.</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+				<xs:element name="Errors" type="ErrorsType">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Indicates that an error occurred in the processing of the incoming request message. An error is defined as a malformed XML message that could not be processed.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

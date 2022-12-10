@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.opentravel.org/OTA/2003/05" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="2.000" id="OTA2011B">
+  <xs:include schemaLocation="OTA_LoyaltyCommonTypes.xsd"/>
+  <xs:annotation>
+    <xs:documentation xml:lang="en">All Schema files in the OpenTravel Alliance specification are made available according to the terms defined by the OpenTravel License Agreement at http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+  </xs:annotation>
+  <xs:element name="OTA_LoyaltyCertificateRedemptionRQ">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">The CertificateRedemptionRQ allows businesses to communicate with their loyalty service provider to generate redemption certificates for their customers.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="RedemptionInfo">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">Information about the certificate or points redemption.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RedemptionDetail">
+                <xs:annotation>
+                  <xs:documentation xml:lang="en">Detailed redemption information.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:attributeGroup ref="LoyaltyCertificateNumberGroup"/>
+                  <xs:attributeGroup ref="PromotionCodeGroup"/>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Customer" type="PersonNameType" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation xml:lang="en">Information about the individual associated with the loyalty program.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="TravelInfos">
+                <xs:annotation>
+                  <xs:documentation xml:lang="en">Information about the customers trip and loyalty program.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="TravelInfo" type="LoyaltyTravelInfoType" maxOccurs="99"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

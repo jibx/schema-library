@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="3.000" id="OTA2014B">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_LoyaltyCommonTypes.xsd"/>
+	<xs:element name="OTA_LoyaltyAccountRS">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">This message may be used to respond to a loyalty account create request or a loyalty account read request.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="Success" type="SuccessType">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">An element that is not intended to contain any data. The mere presence of a success element within the response message indicates that the incoming request message was processed successfully.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Warnings" type="WarningsType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Indicates that the recipient of the request message identified one or more business-level warnings/errors, but the message itself was successfully processed.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="UniqueID" type="UniqueID_Type"/>
+					<xs:element name="AccountInfo" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Loyalty account information, including member information, preferences, security and sub-account balances.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="AccountInfoType">
+									<xs:sequence>
+										<xs:element name="CustLoyalty" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Further account information.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:attributeGroup ref="CustomerLoyaltyGroup"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="Action" type="ActionType">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">The action that has been applied to the account information.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+								</xs:extension>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Location" type="LocationType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The location code where the enrollment originated.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:element name="Errors" type="ErrorsType">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Indicates that an error occurred in the processing of the incoming request message. An error is defined as a malformed XML message that could not be processed.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

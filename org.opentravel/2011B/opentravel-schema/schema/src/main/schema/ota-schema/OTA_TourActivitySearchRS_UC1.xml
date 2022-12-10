@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: #1: Tour Search -->
+<!-- USE CASE DETAILS: 
+
+Jane Smith is taking a business trip to the state of Arizona (in the United States) and she wants to take a bicycle tour of the Grand Canyon National Park while she is there. She is not flexible on the dates and times that she can take the tour as she has already booked her flight and lodging. She has no special requirements and does not want to spend more than $100 for this tour. She will not be bringing her bicycle so she needs a tour that provides bicycles as extra amenities.
+-->
+
+<OTA_TourActivitySearchRS xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_TourActivitySearchRS.xsd" 
+EchoToken="12345" 
+TimeStamp="2011-05-01T09:44:52" 
+Target="Production" 
+Version="1.000" 
+PrimaryLangID="en-us">
+
+	<!-- Point of sale information for the sender of the request, in this case the tour suppliers branded website. -->
+	<POS>
+		<Source>
+			<RequestorID Type="11" ID="ABCToursWebsite"/>
+			<!-- Type 11 = "Tour Operator". See OpenTravel Code List Unique ID Type (UIT). -->
+		</Source>
+	</POS>
+
+	<!-- An element that is not intended to contain any data. The mere presence of a success element within the response message indicates that the incoming request message was processed successfully. -->
+	<Success/>
+	
+	<!--Information that may directly impact how the receiving system processes the request message. -->
+		<ProcessingInformation DecimalPlaces="2" LanguageCode="en-us" DisplayCurrency="US"  PricingCurrency="US"/>
+
+	<TourActivityInfo AlternateInd="false">
+		<BasicInfo SupplierProductCode="GNPBIKE1" ShortName="Bike Tour" Name="Grand Canyon National Park Bike Tour" TourActivityID="12345"/>
+
+		<Schedule>
+			<Summary Description="Early Morning Departure" Duration="P1Y2M3DT10H30M" Start="2012-06-13" End="2012-06-13"/>
+		</Schedule>
+		
+		<CategoryAndType>
+			<Category>SportsAndRecreation</Category>
+			<Type>Bicycling</Type>
+		</CategoryAndType>
+		
+		<Description FreeChildrenQty="0">
+			<ShortDescription>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</ShortDescription>
+			
+			<LongDescription>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+
+Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+
+Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </LongDescription>
+			
+			<Multimedia LastUpdated="2001-12-17T09:30:47Z">
+				<MultimediaDescription>
+					<ImageItems>
+						<ImageItem>
+							<ImageFormat>
+								<URL>http://www.sometourwebsite/image1</URL>
+							</ImageFormat>
+						</ImageItem>
+					</ImageItems>
+				</MultimediaDescription>
+			</Multimedia>
+		</Description>
+		
+		<!-- Supported promotion and discount program information. -->
+		<Discount>
+			<ProgramDetail ProgramID="123" Description="Travel Arizona Discount Cards Accepted" Name="Travel Arizona Card"/>
+			<Promotion EndDate="2012-09-05" Disclaimer="**Bicycle rental not included" StartDate="2012-06-01">Two for one summer special</Promotion>
+		</Discount>
+
+		<!-- Extras (amenities) available and/or required for the tour/ activity. -->
+		<Extra RequiredInd="true" Description="String" ReserveInd="true" SupplierCode="ADLTBKE" Name="Adult sized bike">
+			<Deposit>
+				<AcceptedPayment GuaranteeIndicator="true" PaymentTransactionTypeCode="charge"/>
+				<Amount GuaranteedInd="true" Description="Bicyle Deposit" TaxInclusive="true" Amount="25"/>
+			</Deposit>
+		</Extra>
+	
+		<!-- Languages spoken by staff. -->
+		<LanguageSpoken Code="English"/>
+		<LanguageSpoken Code="Spanish"/>
+		<LanguageSpoken Code="French"/>
+
+		<!-- The location of the tour/ activity. -->
+		<Location>
+			<Address>
+				<AddressLine>100 Grand Street, South Entrance</AddressLine>
+				<CityName>Grand Canyon</CityName>
+				<PostalCode>12345</PostalCode>
+				<County>USA</County>
+				<StateProv StateCode="AZ"></StateProv>
+			</Address>
+		</Location>
+		
+		<!-- Pricing. -->
+		<Pricing MaxPrice="75">
+			<PricingType>PerPerson</PricingType>
+		</Pricing>
+		
+	</TourActivityInfo>
+</OTA_TourActivitySearchRS>

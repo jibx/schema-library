@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="2.000" id="OTA2013A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_GolfCommonTypes.xsd"/>
+	<xs:element name="OTA_GolfFacilityInfoRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The Golf Facility Information request sends a request for updated golf course facility information which is used to keep trading partner database(s) and cache(s) current with golf supplier facility information. 
+
+Golf facility request information includes the ID and (optional) name of the golf course facility, which may be repeated to request information about multiple courses.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation source="Use" xml:lang="en">Point of Sale identification.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="POS_Type"/>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="GolfFacility" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Golf facility ID(s) to request updated information for.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="ID" type="StringLength0to32" use="required">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">The ID of the facility or course.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="Name" type="xs:string" use="optional">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">The full or partial name of the golf facility or course.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

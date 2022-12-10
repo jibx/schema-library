@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="1.000" id="OTA2013A">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_GolfCommonTypes.xsd"/>
+	<xs:element name="OTA_GolfRatePlanRS">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">This message returns information about golf rate plans that meet the requested criteria.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="Success" type="SuccessType">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The presence of the empty Success element explicitly indicates that the request message was successful.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Warnings" type="WarningsType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Used in conjunction with the Success element to define one or more business errors.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Course" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation source="Description" xml:lang="en">Rate(s) that meet the requested criteria.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="Rate" minOccurs="0" maxOccurs="unbounded">
+									<xs:annotation>
+										<xs:documentation source="Description" xml:lang="en">Rate associated information.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="DateRange">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">A date or range of dates, including days of the week, used to filter rate results.</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:attributeGroup ref="DOW_PatternGroup">
+														<xs:annotation>
+															<xs:documentation source="Description" xml:lang="en">Days of the week that the rate applies to.</xs:documentation>
+														</xs:annotation>
+													</xs:attributeGroup>
+													<xs:attribute name="StartDate" type="xs:date" use="optional">
+														<xs:annotation>
+															<xs:documentation source="Description" xml:lang="en">The starting date.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+													<xs:attribute name="StartTime" type="xs:time" use="optional">
+														<xs:annotation>
+															<xs:documentation source="Description" xml:lang="en">The starting time.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+													<xs:attribute name="EndDate" type="xs:date" use="optional">
+														<xs:annotation>
+															<xs:documentation source="Description" xml:lang="en">The ending date</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+													<xs:attribute name="EndTime" type="xs:time" use="optional">
+														<xs:annotation>
+															<xs:documentation source="Description" xml:lang="en">The ending time.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="Amenity" minOccurs="0" maxOccurs="unbounded">
+												<xs:annotation>
+													<xs:documentation source="Description" xml:lang="en">Amenities included with a rate.</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:attribute name="ID" type="xs:string" use="optional">
+														<xs:annotation>
+															<xs:documentation source="Description" xml:lang="en">A unique ID for an amenity.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+													<xs:attribute name="Code" type="xs:string" use="optional">
+														<xs:annotation>
+															<xs:documentation source="Description" xml:lang="en">A code for an amenity.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+													<xs:attribute name="Name" type="xs:string" use="optional">
+														<xs:annotation>
+															<xs:documentation source="Description" xml:lang="en">The name of an amenity.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+													<xs:attribute name="IncludedInTeeTimePriceInd" type="xs:boolean" use="optional">
+														<xs:annotation>
+															<xs:documentation source="Description" xml:lang="en">If true, this amenity should be included with a tee time rate plan.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="AppliesTo" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation source="Description" xml:lang="en">Constraints for the rate plan, including golfer types and facility(s) that the rate applies to.</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:sequence>
+														<xs:element name="GolferType" minOccurs="0" maxOccurs="unbounded">
+															<xs:annotation>
+																<xs:documentation source="Description" xml:lang="en">Golfer type(s) that the rate applies to.</xs:documentation>
+															</xs:annotation>
+															<xs:complexType>
+																<xs:sequence>
+																	<xs:element name="Category" type="List_GolferType" minOccurs="0">
+																		<xs:annotation>
+																			<xs:documentation source="Description" xml:lang="en">An extensible list of golfer categories.</xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																	<xs:element name="AgeQualifier" type="List_AgeCategory" minOccurs="0">
+																		<xs:annotation>
+																			<xs:documentation source="Description" xml:lang="en">An extensible list of age qualifiers.</xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																</xs:sequence>
+																<xs:attribute name="Quantity" type="xs:positiveInteger" use="optional">
+																	<xs:annotation>
+																		<xs:documentation source="Description" xml:lang="en">The quantity of this type of golfer.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+															</xs:complexType>
+														</xs:element>
+														<xs:element name="MembershipProgram" minOccurs="0" maxOccurs="unbounded">
+															<xs:annotation>
+																<xs:documentation source="Description" xml:lang="en">Membership (or loyalty) program(s) that the rate applies to.</xs:documentation>
+															</xs:annotation>
+															<xs:complexType>
+																<xs:attribute name="ID" type="xs:string" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">The ID of the loyalty program.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+																<xs:attribute name="Name" type="xs:string" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">The name of the loyalty program.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+															</xs:complexType>
+														</xs:element>
+														<xs:element name="NegotiatedRate" minOccurs="0" maxOccurs="unbounded">
+															<xs:annotation>
+																<xs:documentation source="Description" xml:lang="en">Corporate IDs that the rate applies to.</xs:documentation>
+															</xs:annotation>
+															<xs:complexType>
+																<xs:sequence>
+																	<xs:element name="RateComment" minOccurs="0" maxOccurs="unbounded">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">This may be used to provide any additional information about rates (e.g., must tee off by 9AM.)</xs:documentation>
+																		</xs:annotation>
+																		<xs:complexType>
+																			<xs:complexContent>
+																				<xs:extension base="FormattedTextTextType">
+																					<xs:attribute name="Name" type="StringLength1to64" use="optional">
+																						<xs:annotation>
+																							<xs:documentation xml:lang="en">Defines the type of rate comments (e.g., textual rule, marketing information).</xs:documentation>
+																						</xs:annotation>
+																					</xs:attribute>
+																				</xs:extension>
+																			</xs:complexContent>
+																		</xs:complexType>
+																	</xs:element>
+																</xs:sequence>
+																<xs:attribute name="CorpDiscountNmbr" type="StringLength1to32" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">This is the vendor specific code used to identify a special rate associated with a specific organization.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+																<xs:attribute name="VendorRateID" type="StringLength1to32" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en"> The identifier assigned to this rate by the vendor.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+																<xs:attribute name="RateQualifier" type="StringLength1to32" use="optional">
+																	<xs:annotation>
+																		<xs:documentation source="Description" xml:lang="en">This is the vendor specific code for rate codes (e.g. WES, 2A, DLY00).</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+															</xs:complexType>
+														</xs:element>
+													</xs:sequence>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="CartFee" minOccurs="0" maxOccurs="unbounded">
+												<xs:annotation>
+													<xs:documentation source="Description" xml:lang="en">Charge information associated with the cart rental.</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:sequence>
+														<xs:element name="TaxAmounts" minOccurs="0">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">A collection of one or more taxes associated with a specific charge.</xs:documentation>
+															</xs:annotation>
+															<xs:complexType>
+																<xs:sequence>
+																	<xs:element name="TaxAmount" maxOccurs="unbounded">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">Detailed information on one specific tax associated with a specific charge.</xs:documentation>
+																		</xs:annotation>
+																		<xs:complexType>
+																			<xs:attributeGroup ref="GolfTaxAmountGroup"/>
+																		</xs:complexType>
+																	</xs:element>
+																</xs:sequence>
+															</xs:complexType>
+														</xs:element>
+														<xs:element name="Description" type="ParagraphType" minOccurs="0" maxOccurs="unbounded">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">Text description of the fees in a given language.</xs:documentation>
+															</xs:annotation>
+														</xs:element>
+														<xs:element name="Calculation" minOccurs="0" maxOccurs="unbounded">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">Information on how this charge was calculated, for example, a daily rate multiplied by the number of players, a percentage, etc.</xs:documentation>
+															</xs:annotation>
+															<xs:complexType>
+																<xs:attribute name="UnitCharge" type="Money" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">This is used in conjunction with UnitName to specify the charge per unit as defined by UnitName (e.g., if UnitCharge="100" and UnitName="day" the result is 100 dollars per day).</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+																<xs:attribute name="UnitName" type="StringLength1to32" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">The UnitName attribute provides the unit on which an item charge may be based when purchasing a round of golf.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+																<xs:attribute name="Quantity" type="Numeric1to99" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">This is used in conjunction with UnitName to specify the quantity of units as defined by UnitName (e.g., if Quantity="5" and UnitName="day" the result is 5 days).</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+																<xs:attribute name="Percentage" type="Percentage" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">Provides the ability to define a particular percentage.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+																<xs:attribute name="Applicability" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en"> Indicates a time or a place of reference (e.g. before pick-up, drop-off location).</xs:documentation>
+																	</xs:annotation>
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:enumeration value="FromPickupLocation">
+																				<xs:annotation>
+																					<xs:documentation xml:lang="en">Distances are referenced from the pick-up location.</xs:documentation>
+																				</xs:annotation>
+																			</xs:enumeration>
+																			<xs:enumeration value="FromDropoffLocation">
+																				<xs:annotation>
+																					<xs:documentation xml:lang="en">Distances are referenced from the drop-off location.</xs:documentation>
+																				</xs:annotation>
+																			</xs:enumeration>
+																			<xs:enumeration value="BeforePickup">
+																				<xs:annotation>
+																					<xs:documentation xml:lang="en">Times are referenced from the pick-up time.</xs:documentation>
+																				</xs:annotation>
+																			</xs:enumeration>
+																			<xs:enumeration value="AfterDropoff">
+																				<xs:annotation>
+																					<xs:documentation xml:lang="en">Times are referenced from the drop-off time.</xs:documentation>
+																				</xs:annotation>
+																			</xs:enumeration>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:attribute>
+																<xs:attribute name="MaxQuantity" type="Numeric1to999" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">This is used in conjunction with UnitName to specify the maximum quantity of units as defined by UnitName.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+																<xs:attribute name="Total" type="Money" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">The total for a specific item in a calculation.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+															</xs:complexType>
+														</xs:element>
+													</xs:sequence>
+													<xs:attributeGroup ref="CurrencyAmountGroup"/>
+													<xs:attribute name="TaxInclusiveInd" type="xs:boolean" use="optional">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">If true, taxes are included in this charge.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+													<xs:attribute name="GuaranteedInd" type="xs:boolean" use="optional">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">If true, a guarantee payment or hold is required.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+													<xs:attribute name="RateConvertInd" type="xs:boolean" use="optional">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">When true, the rate has been converted to a different currency.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="GreensFee" minOccurs="0" maxOccurs="unbounded">
+												<xs:annotation>
+													<xs:documentation source="Description" xml:lang="en">Charge information associated with greens fee.</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:sequence>
+														<xs:element name="TaxAmounts" minOccurs="0">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">A collection of one or more taxes associated with a specific charge.</xs:documentation>
+															</xs:annotation>
+															<xs:complexType>
+																<xs:sequence>
+																	<xs:element name="TaxAmount" maxOccurs="unbounded">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">Detailed information on one specific tax associated with a specific charge.</xs:documentation>
+																		</xs:annotation>
+																		<xs:complexType>
+																			<xs:attributeGroup ref="GolfTaxAmountGroup"/>
+																		</xs:complexType>
+																	</xs:element>
+																</xs:sequence>
+															</xs:complexType>
+														</xs:element>
+														<xs:element name="Description" type="ParagraphType" minOccurs="0" maxOccurs="unbounded">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">Text description of the fees in a given language.</xs:documentation>
+															</xs:annotation>
+														</xs:element>
+														<xs:element name="Calculation" minOccurs="0" maxOccurs="unbounded">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">Information on how this charge was calculated, for example, a daily rate multiplied by the number of players, a percentage, etc.</xs:documentation>
+															</xs:annotation>
+															<xs:complexType>
+																<xs:attribute name="UnitCharge" type="Money" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">This is used in conjunction with UnitName to specify the charge per unit as defined by UnitName (e.g., if UnitCharge="100" and UnitName="day" the result is 100 dollars per day).</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+																<xs:attribute name="UnitName" type="StringLength1to32" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">The UnitName attribute provides the unit on which an item charge may be based when purchasing a round of golf.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+																<xs:attribute name="Quantity" type="Numeric1to99" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">This is used in conjunction with UnitName to specify the quantity of units as defined by UnitName (e.g., if Quantity="5" and UnitName="day" the result is 5 days).</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+																<xs:attribute name="Percentage" type="Percentage" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">Provides the ability to define a particular percentage.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+																<xs:attribute name="Applicability" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en"> Indicates a time or a place of reference (e.g. before pick-up, drop-off location).</xs:documentation>
+																	</xs:annotation>
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:enumeration value="FromPickupLocation">
+																				<xs:annotation>
+																					<xs:documentation xml:lang="en">Distances are referenced from the pick-up location.</xs:documentation>
+																				</xs:annotation>
+																			</xs:enumeration>
+																			<xs:enumeration value="FromDropoffLocation">
+																				<xs:annotation>
+																					<xs:documentation xml:lang="en">Distances are referenced from the drop-off location.</xs:documentation>
+																				</xs:annotation>
+																			</xs:enumeration>
+																			<xs:enumeration value="BeforePickup">
+																				<xs:annotation>
+																					<xs:documentation xml:lang="en">Times are referenced from the pick-up time.</xs:documentation>
+																				</xs:annotation>
+																			</xs:enumeration>
+																			<xs:enumeration value="AfterDropoff">
+																				<xs:annotation>
+																					<xs:documentation xml:lang="en">Times are referenced from the drop-off time.</xs:documentation>
+																				</xs:annotation>
+																			</xs:enumeration>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:attribute>
+																<xs:attribute name="MaxQuantity" type="Numeric1to999" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">This is used in conjunction with UnitName to specify the maximum quantity of units as defined by UnitName.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+																<xs:attribute name="Total" type="Money" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">The total for a specific item in a calculation.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+															</xs:complexType>
+														</xs:element>
+													</xs:sequence>
+													<xs:attributeGroup ref="CurrencyAmountGroup"/>
+													<xs:attribute name="TaxInclusiveInd" type="xs:boolean" use="optional">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">If true, taxes are included in this charge.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+													<xs:attribute name="GuaranteedInd" type="xs:boolean" use="optional">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">If true, a guarantee payment or hold is required.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+													<xs:attribute name="RateConvertInd" type="xs:boolean" use="optional">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">When true, the rate has been converted to a different currency.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="Policy" minOccurs="0" maxOccurs="unbounded">
+												<xs:annotation>
+													<xs:documentation source="Description" xml:lang="en">Policies associated with the rate.</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:sequence>
+														<xs:element name="Cancel" minOccurs="0">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">Defines the tee time cancellation policy of the golf facility and accepted guarantee payment types.</xs:documentation>
+															</xs:annotation>
+															<xs:complexType>
+																<xs:sequence>
+																	<xs:element name="Deadline" minOccurs="0">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">Cancellation deadline, absolute or relative.</xs:documentation>
+																		</xs:annotation>
+																		<xs:complexType>
+																			<xs:attributeGroup ref="DeadlineGroup">
+																				<xs:annotation>
+																					<xs:documentation xml:lang="en">The absolute deadline or amount of offset time before a deadline for a payment of cancel goes into effect.</xs:documentation>
+																				</xs:annotation>
+																			</xs:attributeGroup>
+																		</xs:complexType>
+																	</xs:element>
+																	<xs:element name="AmountPercent" minOccurs="0">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">Cancellation fee expressed as a fixed amount, or percentage tee time price.</xs:documentation>
+																		</xs:annotation>
+																		<xs:complexType>
+																			<xs:sequence>
+																				<xs:element name="Taxes" type="TaxesType" minOccurs="0">
+																					<xs:annotation>
+																						<xs:documentation xml:lang="en">A collection of taxes.</xs:documentation>
+																					</xs:annotation>
+																				</xs:element>
+																			</xs:sequence>
+																			<xs:attribute name="TaxInclusiveInd" type="xs:boolean" use="optional">
+																				<xs:annotation>
+																					<xs:documentation xml:lang="en">Indicates whether taxes are included when figuring the base amount.</xs:documentation>
+																				</xs:annotation>
+																			</xs:attribute>
+																			<xs:attribute name="FeesInclusiveInd" type="xs:boolean" use="optional">
+																				<xs:annotation>
+																					<xs:documentation xml:lang="en">Indicates whether fees, such as those imposed by a travel agency or other booking agent, are included when figuring cancel penalties.</xs:documentation>
+																				</xs:annotation>
+																			</xs:attribute>
+																			<xs:attribute name="BasisType" use="optional">
+																				<xs:annotation>
+																					<xs:documentation xml:lang="en">Provides the basis for how the amount of the guarantee is calculated.</xs:documentation>
+																				</xs:annotation>
+																				<xs:simpleType>
+																					<xs:restriction base="StringLength1to16">
+																						<xs:enumeration value="FullStay">
+																							<xs:annotation>
+																								<xs:documentation xml:lang="en">Uses the full stay as the basis.</xs:documentation>
+																							</xs:annotation>
+																						</xs:enumeration>
+																						<xs:enumeration value="Nights">
+																							<xs:annotation>
+																								<xs:documentation xml:lang="en">Uses the nights as the basis.</xs:documentation>
+																							</xs:annotation>
+																						</xs:enumeration>
+																						<xs:enumeration value="FirstLast">
+																							<xs:annotation>
+																								<xs:documentation xml:lang="en">Uses the first and last night as the basis.</xs:documentation>
+																							</xs:annotation>
+																						</xs:enumeration>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:attribute>
+																			<xs:attribute name="Percent" type="Percentage" use="optional">
+																				<xs:annotation>
+																					<xs:documentation xml:lang="en">The percentage used to calculate the amount.</xs:documentation>
+																				</xs:annotation>
+																			</xs:attribute>
+																			<xs:attributeGroup ref="CurrencyAmountGroup">
+																				<xs:annotation>
+																					<xs:documentation xml:lang="en">Provides a monetary amount and the currency code to reflect the currency in which this amount is expressed.</xs:documentation>
+																				</xs:annotation>
+																			</xs:attributeGroup>
+																		</xs:complexType>
+																	</xs:element>
+																	<xs:element name="PenaltyDescription" type="ParagraphType" minOccurs="0" maxOccurs="unbounded">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">Text description of the Penalty in a given language.</xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																	<xs:element name="GuaranteeAccepted" minOccurs="0" maxOccurs="unbounded">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">Guarantee payment forms accepted by the golf facility.</xs:documentation>
+																		</xs:annotation>
+																		<xs:complexType>
+																			<xs:complexContent>
+																				<xs:extension base="PaymentFormType">
+																					<xs:attribute name="Description" type="xs:string" use="optional">
+																						<xs:annotation>
+																							<xs:documentation xml:lang="en">A description of the guarantee.</xs:documentation>
+																						</xs:annotation>
+																					</xs:attribute>
+																					<xs:attribute name="NoCardHolderInfoReqInd" type="xs:boolean" use="optional">
+																						<xs:annotation>
+																							<xs:documentation xml:lang="en">If true, no credit card holder information is required. If false, it is not required.</xs:documentation>
+																						</xs:annotation>
+																					</xs:attribute>
+																					<xs:attribute name="NameReqInd" type="xs:boolean" use="optional">
+																						<xs:annotation>
+																							<xs:documentation xml:lang="en">If true, the credit card holder name is required. If false, it is not required.</xs:documentation>
+																						</xs:annotation>
+																					</xs:attribute>
+																					<xs:attribute name="AddressReqInd" type="xs:boolean" use="optional">
+																						<xs:annotation>
+																							<xs:documentation xml:lang="en">If true, credit card holder address is required. If false, it is not required.</xs:documentation>
+																						</xs:annotation>
+																					</xs:attribute>
+																					<xs:attribute name="PhoneReqInd" type="xs:boolean" use="optional">
+																						<xs:annotation>
+																							<xs:documentation xml:lang="en">If true, credit card holder phone number is required. If false, it is not required.</xs:documentation>
+																						</xs:annotation>
+																					</xs:attribute>
+																				</xs:extension>
+																			</xs:complexContent>
+																		</xs:complexType>
+																	</xs:element>
+																</xs:sequence>
+																<xs:attribute name="NonRefundableInd" type="xs:boolean" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">Indicates that any prepayment for the golf tee time is non refundable, therefore a 100% penalty on the prepayment is applied, irrespective of deadline.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+																<xs:attributeGroup ref="DOW_PatternGroup">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">If a day(s) of the week is set to true then the associated policy applies to that day of week.</xs:documentation>
+																	</xs:annotation>
+																</xs:attributeGroup>
+																<xs:attributeGroup ref="DateTimeSpanGroup">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">The date time span for which the policy applies.</xs:documentation>
+																	</xs:annotation>
+																</xs:attributeGroup>
+																<xs:attribute name="TeeTimeCode" type="StringLength1to16" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">A system specific tee time to which this cancellation penalty applies.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+															</xs:complexType>
+														</xs:element>
+														<xs:element name="Fee" type="FeeType" minOccurs="0" maxOccurs="unbounded">
+															<xs:annotation>
+																<xs:documentation source="Description" xml:lang="en">A fee that may be associated with the rate plan.</xs:documentation>
+															</xs:annotation>
+														</xs:element>
+														<xs:element name="General" minOccurs="0">
+															<xs:annotation>
+																<xs:documentation source="Description" xml:lang="en">General policy(s) that may be associated with the rate plan.</xs:documentation>
+															</xs:annotation>
+															<xs:complexType>
+																<xs:simpleContent>
+																	<xs:extension base="xs:string">
+																		<xs:attribute name="Type" type="xs:string" use="optional">
+																			<xs:annotation>
+																				<xs:documentation xml:lang="en">The type of the policy, such as "Tee Time" or "Cart Rental".</xs:documentation>
+																			</xs:annotation>
+																		</xs:attribute>
+																	</xs:extension>
+																</xs:simpleContent>
+															</xs:complexType>
+														</xs:element>
+														<xs:element name="Tax" minOccurs="0" maxOccurs="unbounded">
+															<xs:annotation>
+																<xs:documentation source="Description" xml:lang="en">Tax policy(s) associated with the rate plan.</xs:documentation>
+															</xs:annotation>
+															<xs:complexType>
+																<xs:complexContent>
+																	<xs:extension base="TaxType"/>
+																</xs:complexContent>
+															</xs:complexType>
+														</xs:element>
+													</xs:sequence>
+													<xs:attributeGroup ref="DateTimeSpanGroup">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">Used to indicate the effective dates of the policy.</xs:documentation>
+														</xs:annotation>
+													</xs:attributeGroup>
+													<xs:attribute name="Code" type="xs:string" use="optional">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">The code identifying this policy.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+													<xs:attribute name="LastUpdated" type="xs:dateTime" use="optional">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">The date and time when the policy information for this facility was last updated.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+													<xs:attributeGroup ref="DOW_PatternGroup">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">Used to indicate the effective day for the policy.</xs:documentation>
+														</xs:annotation>
+													</xs:attributeGroup>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="RateCategory" type="List_RateCategory" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation source="Description" xml:lang="en">An extensible list of associated rate categories.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Rules" type="GolfAppliedRuleType" minOccurs="0" maxOccurs="unbounded">
+												<xs:annotation>
+													<xs:documentation source="Description" xml:lang="en">Rules that apply to the rate.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element ref="TPA_Extensions" minOccurs="0"/>
+										</xs:sequence>
+										<xs:attribute name="Code">
+											<xs:annotation>
+												<xs:documentation source="Description" xml:lang="en">An ID or code for a golf course.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="RateCode" type="StringLength1to64" use="optional">
+											<xs:annotation>
+												<xs:documentation source="Description" xml:lang="en">The rate ID or code.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="RateName" type="xs:string" use="optional">
+											<xs:annotation>
+												<xs:documentation source="Description" xml:lang="en">The name of the rate.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="RatePeriod" use="optional">
+											<xs:annotation>
+												<xs:documentation source="Description" xml:lang="en">The valid duration of the rate.</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="RatePeriodSimpleType"/>
+											</xs:simpleType>
+										</xs:attribute>
+										<xs:attribute name="CorpDiscountNmbr" type="StringLength1to32" use="optional">
+											<xs:annotation>
+												<xs:documentation source="Description" xml:lang="en">A vendor specific code used to identify a special rate associated with a specific organization.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="PromotionCode" type="StringLength1to32" use="optional">
+											<xs:annotation>
+												<xs:documentation source="Description" xml:lang="en">A promotion ID or code identifier assigned by the supplier.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="CustomerCode" type="StringLength1to32" use="optional">
+											<xs:annotation>
+												<xs:documentation source="Description" xml:lang="en">An ID or code for a frequent player, member, etc.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+							<xs:attribute name="Code">
+								<xs:annotation>
+									<xs:documentation source="Description" xml:lang="en">An code for a golf course.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="ID">
+								<xs:annotation>
+									<xs:documentation source="Description" xml:lang="en">An ID for a golf course.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="Name">
+								<xs:annotation>
+									<xs:documentation source="Description" xml:lang="en">A name for a golf course.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="ShortName">
+								<xs:annotation>
+									<xs:documentation source="Description" xml:lang="en">The short name of the golf course.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="PrepaidMethod" use="optional">
+								<xs:annotation>
+									<xs:documentation source="Description" xml:lang="en">Inclusion or exclusion of prepaid rates.</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="Exclude Prepaid">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Exclude prepaid rates from the response.</xs:documentation>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="Include Prepaid">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Return prepaid and non-prepaid rates.</xs:documentation>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="Prepaid Only">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Only return prepaid rates.</xs:documentation>
+											</xs:annotation>
+										</xs:enumeration>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+							<xs:attribute name="AvailInd" type="xs:boolean" use="optional">
+								<xs:annotation>
+									<xs:documentation source="Description" xml:lang="en">If true, this tee time rate is available.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:complexType>
+					</xs:element>
+					<xs:element ref="TPA_Extensions" minOccurs="0"/>
+				</xs:sequence>
+				<xs:element name="Errors" type="ErrorsType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Errors are returned if the request was unable to be processed.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">This element defines standard attributes that appear on the root element for all OpenTravel Messages.</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

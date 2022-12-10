@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: One-way rail booking request with traveler details. -->
+<!-- USE CASE DETAILS: An end user uses a wholesaler website to book a business trip between Beijing and Shanghai. They would like to book a one way trip with traveler details including the the customers identification document. The wholesaler system uses this message to book the trip. -->
+
+<OTA_RailBookRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_RailBookRQ.xsd" EchoToken="183529" TimeStamp="2010-12-16T09:30:47-05:00" Target="Production" Version="3.000" SequenceNmbr="1" PrimaryLangID="en-us" AltLangID="en-us">
+
+	<!-- Transaction originator (point of sale) information. -->
+	<POS>
+		<Source>
+			<RequestorID Type="7" ID="JQIR2244" MessagePassword="ek^4$327F21"/>
+				<!-- RequestorID Type 7: Wholesaler (See OpenTravel Code List Unique ID Type.) -->
+				<!-- Password specified for authentication with trading partner system. -->
+		</Source>
+	</POS>
+	
+	<!-- Full details on the reservation that is to be created, specifying location information, passenger data and payment details. -->
+	<RailBookInfo>
+	
+		<!--Details about one specific journey between this origin and destination location. This element will be repeated for each journey.  For example, for a round-trip reservation, this element will occur two times. -->
+		<OriginDestination>
+		
+			<!-- The travel origin location. -->
+			<OriginLocation LocationCode="PEK">BEIJING</OriginLocation>
+			
+			<!-- The travel destination location. -->
+			<DestinationLocation LocationCode="SHA">SHANGHAI</DestinationLocation>
+			
+			<TrainSegment>
+				<!-- Train departure station information. -->
+				<DepartureStation >
+					<Details LocationCode="PEK" IsStaffedInd="true" SST_MachineInd="true" TicketPrinterInd="true">BEIJING</Details>
+				</DepartureStation>
+				
+				<!-- Train arrival station information. -->
+				<ArrivalStation>
+					<Details LocationCode="SHA">SHANGHAI</Details>
+				</ArrivalStation> 
+				
+				<!-- The departure date and time. -->
+				<DepartureDateTime>2010-12-06T05:00:00</DepartureDateTime>
+				
+				<!-- The arrival date and time. -->
+				<ArrivalDateTime>2010-12-06T08:48:00</ArrivalDateTime>
+				
+				<!-- Train identification information, including  a train number and a train network code. -->
+				<TrainIdentification>
+				
+					<!-- The unique number that identifies the train. -->
+					<TrainNumber>12345</TrainNumber>
+					
+					<!-- The network code of a rail operator defined by UIC (International Union of Railways.) -->
+					<NetworkCode Code="CHRT"/>
+				</TrainIdentification>
+				
+				<!-- Specific traveler requests. -->
+				<TravelerRequest>
+					<!-- Specific traveler requested accommodations, including class and type, with associated accommodation attributes such as seat, berth and compartment number, seat position, seat direction and adjacent seating preferences. -->
+					<AccommodationService>
+					<AccommodationDetail Deck="Regular-OneLevelOnly">
+						<!-- Seat accommodation information, including the seat type and associated seat attributes, such as seat number, position and direction. -->
+						<Seat Number="12A" Position="Aisle" Direction="Facing">Seat</Seat>
+						<!-- A commonly offered accommodation class, such as first class and second class. -->
+						<Class>Business</Class>
+						<!-- Car information, such as car number. -->
+						<Car Number="11"/>
+					</AccommodationDetail>
+					</AccommodationService>
+				</TravelerRequest>
+			</TrainSegment>
+		</OriginDestination>
+
+		<!-- Information about the individual travelers or traveler categories. Use of Travelers or Traveler Category will be based on Trading Partner Agreement. -->
+		<PassengerInfo>
+		<PassengerDetail>
+			<Identification>
+			
+			<GivenName>Shuang</GivenName>
+			<Surname>Lu</Surname>
+			
+			<Document DocID="14653321" DocType="2"></Document>
+				<!-- DocType 2: Passport (See OpenTravel Code List Document Type (DOC) -->
+         </Identification>
+		</PassengerDetail>
+		</PassengerInfo>
+	</RailBookInfo>
+</OTA_RailBookRQ>

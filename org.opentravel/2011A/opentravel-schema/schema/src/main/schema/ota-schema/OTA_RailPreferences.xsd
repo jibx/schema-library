@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="3.000" id="OTA2003A2011A">
+	<xs:include schemaLocation="OTA_CommonPrefs.xsd"/>
+	<xs:annotation>
+		<xs:documentation xml:lang="en">All Schema files in the OpenTravel Alliance specification are made available according to the terms defined by the OpenTravel License Agreement at http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:attributeGroup name="RailTypePrefGroup">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Indicates preferences for certain types of trains, such as connections or stopovers, when used for a specific travel situation.</xs:documentation>
+		</xs:annotation>
+		<xs:attributeGroup ref="PreferLevelGroup"/>
+		<xs:attribute name="MaxConnections" type="xs:nonNegativeInteger" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Indicates that if connection is chosen, then this attribute defines the maximum number of connections preferred.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="NonScheduledFltInfo" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">To specify which types of non-scheduled air service should be included.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="ChartersOnly">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Only include non scheduled trains that are charter trains.</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="ExcludeCharters">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Do not include non scheduled trains that are charters.</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="All">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Include both charter non scheduled trains and those that are not charters.</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="BackhaulIndicator" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">If true, include connections where one of the enroute stops is the same as the initial board point or the final off point of the train.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="GroundTransportIndicator" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">If true, include trains that include at least one leg that is ground transportation.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DirectAndNonStopOnlyInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">If true, direct and non-stop trains are requested.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="NonStopsOnlyInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">If true, only non-stop trains are requested.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="OnlineConnectionsOnlyInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">If true, only online connection trains are requested (i.e., same marketing airline).</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="RoutingType" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Specifies the travel routing preference.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="Normal">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">No special conditions.</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="Mirror">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Outbound and inbound route of travel must be the same.</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="ExcludeTrainInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">When true, exclude connections that include travel by train for one of the legs.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:attributeGroup>
+</xs:schema>

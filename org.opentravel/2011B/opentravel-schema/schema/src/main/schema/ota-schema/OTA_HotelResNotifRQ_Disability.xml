@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+ <OTA_HotelResNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelResNotifRQ.xsd" EchoToken="354" TimeStamp="2012-01-26T10:22:00-05:00" Target="Production" Version="5.000" ResStatus="Commit">
+	<POS>
+		<Source>
+			<RequestorID Type="13" ID="473" /> 
+			<!--  Type 13 = Internet broker from OTA code list UIT --> 
+			<BookingChannel Type="7" Primary="true">
+			<!--  Type 7 = Internet from OTA code list BCT --> 
+				<CompanyName>Travel Today</CompanyName> 
+			</BookingChannel>
+		 </Source>
+	</POS>
+	<HotelReservations>
+		<HotelReservation>
+			<RoomStays>
+				<RoomStay>
+					<RoomTypes>
+						<RoomType>
+							<Amenities>
+								<Amenity RoomAmenity="161" />
+								<!-- Room Amenity 161 = Accessible room from code list RMA--> 
+								<Amenity RoomAmenity="74" />
+								<!-- Room Amenity 74 = Non-smoking from code list RMA--> 
+								<Amenity RoomAmenity="58" />
+								<!-- Room Amenity 58 = King bed from code list RMA--> 
+							</Amenities>
+						</RoomType>
+					</RoomTypes>
+					<RatePlans>
+						  <RatePlan RatePlanCode="CORA999" /> 
+					</RatePlans>
+					<RoomRates>
+						<RoomRate>
+							<Rates>
+								<Rate EffectiveDate="2012-10-18" ExpireDate="2012-10-20">
+									<Base AmountBeforeTax="280.00" /> 
+								</Rate>
+							</Rates>
+						</RoomRate>
+					</RoomRates>
+					<GuestCounts>
+						<GuestCount Count="1" /> 
+					</GuestCounts>
+					<TimeSpan Start="2012-10-18" End="2012-10-20" /> 
+					<Guarantee>
+						<GuaranteesAccepted>
+							<GuaranteeAccepted>
+								<PaymentCard CardType="VS" CardNumber="4111111111111202" ExpireDate="1213">
+									<CardHolderName>David Dewberry</CardHolderName> 
+								</PaymentCard>
+							</GuaranteeAccepted>
+						</GuaranteesAccepted>
+					</Guarantee>
+					<BasicPropertyInfo ChainCode="AA" HotelCode="AAABC" HotelName="ABC Hotel" >
+						<HotelFeature AccessibilityCode="96"/>
+						<!-- AccessibilityCode 96 = Width/diameter of wheelchair turning space in bathroom from code list PHY--> 
+						<HotelFeature AccessibilityCode="38"/>
+						<!-- AccessibilityCode 38 = Grab bars in bathroom from code list PHY-->
+						<HotelFeature AccessibilityCode="44"/>
+						<!-- AccessibilityCode 44 = Bathtub seat from code list PHY-->
+						<HotelFeature AccessibilityCode="28"/>
+						<!-- AccessibilityCode 28 = Public areas wheelchair accessible from code list PHY-->
+						<HotelFeature AccessibilityCode="15"/>
+						<!-- AccessibilityCode 15 = Light switches in guest rooms for wheelchair user's height from code list PHY-->	
+						<HotelFeature AccessibilityCode="5"/>
+						<!-- AccessibilityCode 5 = Closet rods in guest rooms for wheelchair user's height from code list PHY-->
+						<HotelFeature AccessibilityCode="50"/>
+						<!-- AccessibilityCode 50 = Accessible parking from code list PHY-->		
+					</BasicPropertyInfo> 
+					<Comments>
+						<Comment>
+							  <Text>non-smoking Room requested;king bed</Text> 
+						</Comment>
+					</Comments>
+					</RoomStay>
+				</RoomStays>
+				<ResGuests>
+					<ResGuest>
+						<Profiles>
+							<ProfileInfo>
+								<Profile ProfileType="1">
+									<Customer>
+										<PersonName>
+											<NamePrefix>Mr.</NamePrefix> 
+											<GivenName>David</GivenName> 
+											<Surname>Dewberry</Surname> 
+										</PersonName>
+										<Telephone PhoneNumber="7245554321" PhoneTechType="1" /> 
+										<!--  Phone Tech Type 1 = Voice from OTA code list BTT  --> 
+										<Email>david.dewberry@dewberrycorp.com</Email> 
+										<Address>
+											<AddressLine>321 Myrtle Lane</AddressLine> 
+											<CityName>Latrobe</CityName> 
+											<PostalCode>15650</PostalCode> 
+											<StateProv>PA</StateProv> 
+											<CountryName>USA</CountryName> 
+										</Address>
+										<PhysChallName PhysChallInd="true">Wheelchair user</PhysChallName>
+									</Customer>
+								</Profile>
+							</ProfileInfo>
+						</Profiles>
+					</ResGuest>
+				</ResGuests>
+			<ResGlobalInfo>
+				<HotelReservationIDs>
+					<HotelReservationID ResID_Type="13" ResID_Value="7865" ResID_Source="Travel Today" /> 
+					<!--  Res ID Type 13 = Internet broker from OTA code list UIT  --> 
+				</HotelReservationIDs>
+			</ResGlobalInfo>
+		   <TPA_Extensions /> 
+		</HotelReservation>
+  </HotelReservations>
+  </OTA_HotelResNotifRQ>

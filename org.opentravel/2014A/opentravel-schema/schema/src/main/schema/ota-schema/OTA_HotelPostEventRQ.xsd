@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="3.000" id="OTA2014A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+  <xs:include schemaLocation="OTA_HotelEvent.xsd"/>
+  <xs:element name="OTA_HotelPostEventRQ">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">This message may be used to request post event information for one or more events for one or more sites. It may also be used to request one or more post event report(s) for one or more sites.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Requestor" minOccurs="0" maxOccurs="10">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">Specifies to whom the post event report should be sent.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="UniqueID_Type">
+                <xs:attribute name="SecondaryRoutingIndicator" type="xs:boolean" use="optional">
+                  <xs:annotation>
+                    <xs:documentation xml:lang="en">When true, indicates that this party is someone other than the requestor and should also receive the post event report (i.e., a HotelPostEventNotifRQ should be sent to this party).</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="RequestorType" use="optional">
+                  <xs:annotation>
+                    <xs:documentation xml:lang="en">Identifies the type of requestor so the response can be filtered appropriately.</xs:documentation>
+                  </xs:annotation>
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:enumeration value="Internal">
+                        <xs:annotation>
+                          <xs:documentation xml:lang="en">Identifies the requestor as an internal party.</xs:documentation>
+                        </xs:annotation>
+                      </xs:enumeration>
+                      <xs:enumeration value="External">
+                        <xs:annotation>
+                          <xs:documentation xml:lang="en">Identifies the requestor as an external party.</xs:documentation>
+                        </xs:annotation>
+                      </xs:enumeration>
+                      <xs:enumeration value="EventPlanner">
+                        <xs:annotation>
+                          <xs:documentation xml:lang="en">Identifies the requestor as an event planner.</xs:documentation>
+                        </xs:annotation>
+                      </xs:enumeration>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:attribute>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:choice>
+          <xs:element name="Events" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A collection of individual events for which the post event report is being requested. Provides the ability to request information for a specific event or event planner for one or more sites.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Event" maxOccurs="unbounded">
+                  <xs:annotation>
+                    <xs:documentation xml:lang="en">The event for which the post event report is being requested. </xs:documentation>
+                  </xs:annotation>
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="Date" type="DateTimeSpanType" minOccurs="0" maxOccurs="99">
+                        <xs:annotation>
+                          <xs:documentation xml:lang="en">Date or date range for this occurrence of this event (e.g., a single date or date range may be used if a single occurrence of the event is requested; multiple dates or date ranges may be used if the data being requested is for an event that has been held more than once, such as an annual meeting).</xs:documentation>
+                        </xs:annotation>
+                      </xs:element>
+                      <xs:element name="EventIdentifier" minOccurs="0" maxOccurs="9">
+                        <xs:annotation>
+                          <xs:documentation xml:lang="en">Identifier information for an individual event. This element repeats to accommodate the IDs of multiple systems.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                          <xs:attributeGroup ref="ID_OptionalGroup">
+                            <xs:annotation>
+                              <xs:documentation xml:lang="en">Unique identifier for the event.</xs:documentation>
+                            </xs:annotation>
+                          </xs:attributeGroup>
+                          <xs:attribute name="ID_Context" type="StringLength1to32" use="optional">
+                            <xs:annotation>
+                              <xs:documentation xml:lang="en">Used to identify the source of the identifier (e.g., IATA, ABTA).</xs:documentation>
+                            </xs:annotation>
+                          </xs:attribute>
+                          <xs:attribute name="MeetingName" type="xs:string" use="optional">
+                            <xs:annotation>
+                              <xs:documentation xml:lang="en">This is used to identify the name of the event.</xs:documentation>
+                            </xs:annotation>
+                          </xs:attribute>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="EventSites" minOccurs="0">
+                        <xs:annotation>
+                          <xs:documentation xml:lang="en">A collection of event sites.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="EventSite" maxOccurs="unbounded">
+                              <xs:annotation>
+                                <xs:documentation xml:lang="en">Site or group of sites for which a post event report is being requested.</xs:documentation>
+                              </xs:annotation>
+                              <xs:complexType>
+                                <xs:attributeGroup ref="HotelReferenceGroup"/>
+                              </xs:complexType>
+                            </xs:element>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="MostRecentEventIndicator" type="xs:boolean" use="optional">
+                      <xs:annotation>
+                        <xs:documentation xml:lang="en">When true, indicates the response should include data only for the most recent event held. When false, indicates the response should include data for all events that match the request criteria.</xs:documentation>
+                      </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="EventHostName" type="StringLength1to128" use="optional">
+                      <xs:annotation>
+                        <xs:documentation xml:lang="en">The name of the event host company or the name of the meeting planner for the event.</xs:documentation>
+                      </xs:annotation>
+                    </xs:attribute>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Sites" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A collection of sites for which a post event report is being requested. Provides the ability to request information for a site or group of sites without the specific details of an event. Typically this would be a batch transmission of post event history.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Site" maxOccurs="unbounded">
+                  <xs:annotation>
+                    <xs:documentation xml:lang="en">A location for which a post event report is being requested.</xs:documentation>
+                  </xs:annotation>
+                  <xs:complexType>
+                    <xs:attributeGroup ref="HotelReferenceGroup">
+                      <xs:annotation>
+                        <xs:documentation xml:lang="en">Identifies specific information about the site location(s). This may be as general as all the hotels in a specific hotel chain or as specific as an individual site (e.g., HotelCityCode identifies the city for which post event report information is being requested; HotelName and/or HotelCode identifies a specific site; ChainName and/or ChainCode identifies a specific hotel chain).</xs:documentation>
+                      </xs:annotation>
+                    </xs:attributeGroup>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="Date" type="DateTimeSpanType" minOccurs="0" maxOccurs="99">
+                  <xs:annotation>
+                    <xs:documentation xml:lang="en">Date or date range for this site or sites.</xs:documentation>
+                  </xs:annotation>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

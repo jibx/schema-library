@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.opentravel.org/OTA/2003/05" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="1.00" id="OTA2010B">
+	<xs:include schemaLocation="FastRezOTA_SimpleTypes.xsd"/>
+	<xs:annotation>
+		<xs:documentation xml:lang="en">All Schema files in the OpenTravel Alliance specification are made available according to the terms defined by the OpenTravel License Agreement at http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:annotation>
+		<xs:documentation>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY" and "OPTIONAL" in this document are to be interpreted as described in RFC 2199.</xs:documentation>
+	</xs:annotation>
+	<xs:element name="OTA_HotelAvailRS">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The availability response message is used to respond the the availability request message. If the request was successfully processed and availability is found, the response MUST return availability details for the properties that meet the criteria specified in the request message.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS">
+					<xs:annotation>
+						<xs:documentation>The POS MUST identify the party or connection channel making the request.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Source">
+								<xs:annotation>
+									<xs:documentation>Source MUST be used to specify details regarding the requestor.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="RequestorID">
+											<xs:annotation>
+												<xs:documentation>RequestorID MUST contain a globally unique identifier of the entity making the request (e.g. ATA/IATA/ID number, Electronic Reservation Service Provider (ERSP), Association of British Travel Agents (ABTA)). The combination of @ID and @ID_Context MUST be unique.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:attribute name="Type" type="OTA_CodeType" use="required">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">The Type identifies the ID and MUST refer to OpenTravel Code List Unique ID Type (UIT).</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="ID" type="StringLength1to32" use="required">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">ID MUST contain a unique identifying value for the requestor within the scope of the ID_Context.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="ID_Context" type="StringLength1to32" use="required">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">ID_Context MUST identify the authoritative source of the ID (e.g., IATA, ABTA).</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="ISOCountry" type="ISO3166" use="required">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">ISOCountry identifies the country code of the requesting party and MUST conform to ISO-3166. The country code of the requesting party MAY be used to refine responses therefore it SHOULD reflect the origin of the Guest.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="ISOCurrency" type="AlphaLength3" use="required">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">ISOCurrency MUST conform to ISO 4217, 3 character codes. OpenTravel RECOMMENDS that the same currency code be used in the response, but responses MAY be returned in any valid currency.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:choice>
+					<xs:sequence>
+						<xs:element name="Success">
+							<xs:annotation>
+								<xs:documentation>An empty Success element MUST be returned in order to in indicate the successful processing of the availability request message.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:length value="0"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="Warnings" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Warnings MAY be used in conjunction with the Success element to define one or more business errors or informational alerts associated with the availability.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Warning" maxOccurs="5">
+										<xs:annotation>
+											<xs:documentation>Warning MUST define a business error or informational alert associated with the availability.</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:simpleContent>
+												<xs:extension base="xs:string">
+													<xs:attribute name="Type" type="OTA_CodeType" use="required">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">Type MUST identify the type of warning and MUST refer to OpenTravel Code List Error Warning Type (EWT).</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+													<xs:attribute name="ShortText" type="StringLength1to64" use="optional">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">ShortText MAY contain an abbreviated version of the warning in textual format.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+													<xs:attribute name="Code" type="OTA_CodeType" use="optional">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">Code MAY be used to identify a warning associated with this availability and MUST refer to OpenTravel Code List Error Codes (ERR).</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+													<xs:attribute name="Status" type="StringLength1to64" use="optional">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">Status MAY be used to identify the status of the availability. RECOMMENDED values are (NotProcessed | Incomplete | Compete | Unknown).</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+													<xs:attribute name="Tag" type="xs:string" use="optional">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">Tag MAY identify an unknown or misspelled tag that caused an error in processing. It is RECOMMENDED that the Tag attribute use XPath notation to identify the location of a tag in the event that more than one tag of the same name is present in the document. Alternatively, the tag name alone MAY be used to identify missing data [Type=ReqFieldMissing].</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+													<xs:attribute name="RPH" type="RPH_Type" use="optional">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">The RPH (Reference Place Holder) MAY be used as an index for this warning.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+												</xs:extension>
+											</xs:simpleContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="RoomStays">
+							<xs:annotation>
+								<xs:documentation>RoomStays contains a collection of RoomStay elements. If more than one property is returned in the availability response, the RoomStay element MUST repeat for each property.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="RoomStay" maxOccurs="unbounded">
+										<xs:annotation>
+											<xs:documentation>RoomStay MUST specify availability details for a single property.</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="RoomTypes">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">A collection of available RoomTypes. If more than one room type is available for this hotel, the RoomType element MUST repeat for each room type.</xs:documentation>
+														<xs:documentation xml:lang="en">The RoomType element is used to contain all the room type information for a single RateType Code (ex A1K) for a given date range. </xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="RoomType" maxOccurs="unbounded">
+																<xs:annotation>
+																	<xs:documentation>RoomType MUST specify the details of an available room type.</xs:documentation>
+																</xs:annotation>
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element name="RoomDescription">
+																			<xs:annotation>
+																				<xs:documentation>The RoomDescription MUST provide information regarding the description of the room.</xs:documentation>
+																			</xs:annotation>
+																			<xs:complexType>
+																				<xs:sequence>
+																					<xs:element name="Text">
+																						<xs:annotation>
+																							<xs:documentation>The Text element MUST provide textual information regarding the description of the room.</xs:documentation>
+																						</xs:annotation>
+																						<xs:complexType>
+																							<xs:simpleContent>
+																								<xs:extension base="xs:string">
+																									<xs:attribute name="Language" type="xs:language" use="optional">
+																										<xs:annotation>
+																											<xs:documentation xml:lang="en">Language MAY be used to specify the language of this text item if it differs from the language identified in the PrimaryLangID on the root element. Language MUST conform to ISO 639 language codes.</xs:documentation>
+																										</xs:annotation>
+																									</xs:attribute>
+																								</xs:extension>
+																							</xs:simpleContent>
+																						</xs:complexType>
+																					</xs:element>
+																				</xs:sequence>
+																				<xs:attribute name="Name" type="StringLength1to64" use="optional">
+																					<xs:annotation>
+																						<xs:documentation xml:lang="en">The Name MAY be used to identify the type of information sent in the Text element.</xs:documentation>
+																					</xs:annotation>
+																				</xs:attribute>
+																			</xs:complexType>
+																		</xs:element>
+																	</xs:sequence>
+																	<xs:attribute name="RoomTypeCode" type="StringLength1to16" use="required">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">RoomTypeCode MUST specify the system room type code that identifies this room type (e.g. A1K, A1Q).</xs:documentation>
+																		</xs:annotation>
+																	</xs:attribute>
+																	<xs:attribute name="BedTypeCode" type="ListOfOTA_CodeType" use="optional">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">BedTypeCode MAY specify the type of bed(s) found in the room. Typical values would be Double, Twin, Queen, or King. Refer to OpenTravel Code List Bed Type Code (BED).</xs:documentation>
+																		</xs:annotation>
+																	</xs:attribute>
+																	<xs:attribute name="NonSmoking" type="xs:boolean" use="optional">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">The NonSmoking indicator MAY be used to specify whether or not the room type is non-smoking. When true, the room type MUST be non-smoking.</xs:documentation>
+																		</xs:annotation>
+																	</xs:attribute>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="RatePlans">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">A collection of available Rate Plans. If more than one rate plan is available for this hotel, the RatePlan element MUST repeat for each rate plan.</xs:documentation>
+														<xs:documentation xml:lang="en">The rate plan element is used to contain all the rate information for a single Rate Plan Code (ex RACK) for a given date range. A given Rate Plan may have variable rates, over the effective period of the Rate Plan, this is represented by the child element Rates.</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="RatePlan" maxOccurs="unbounded">
+																<xs:annotation>
+																	<xs:documentation>RatePlan MUST specify the details of an available rate plan.</xs:documentation>
+																</xs:annotation>
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element name="MealsIncluded" minOccurs="0">
+																			<xs:annotation>
+																				<xs:documentation xml:lang="en">MealsIncluded MAY specify which meals are included in this rate plan. FastRez RECOMMENDS that either the MealPlanCodes attribute be used OR the Breakfast, Lunch and Dinner booleans be used, but that they SHOULD NOT be used in conjunction with each other.</xs:documentation>
+																			</xs:annotation>
+																			<xs:complexType>
+																				<xs:attribute name="Breakfast" type="xs:boolean" use="optional">
+																					<xs:annotation>
+																						<xs:documentation xml:lang="en">The Breakfast indicator MAY be used to specify if breakfast is included with this rate plan. When true, breakfast MUST be included.</xs:documentation>
+																					</xs:annotation>
+																				</xs:attribute>
+																				<xs:attribute name="Lunch" type="xs:boolean" use="optional">
+																					<xs:annotation>
+																						<xs:documentation xml:lang="en">The Lunch indicator MAY be used to specify if lunch is included with this rate plan. When true, lunch MUST be included.</xs:documentation>
+																					</xs:annotation>
+																				</xs:attribute>
+																				<xs:attribute name="Dinner" type="xs:boolean" use="optional">
+																					<xs:annotation>
+																						<xs:documentation xml:lang="en">The Dinner indicator MAY be used to specify if dinner is included with this rate plan. When true, dinner MUST be included.</xs:documentation>
+																					</xs:annotation>
+																				</xs:attribute>
+																				<xs:attribute name="MealPlanCodes" type="ListOfOTA_CodeType" use="optional">
+																					<xs:annotation>
+																						<xs:documentation xml:lang="en">The MealPlanCodes MAY be used to identify the types of meals included with this rate plan. The MealPlanCodes MUST refer to OpenTravel Code List Meal Plan Type (MPT).</xs:documentation>
+																					</xs:annotation>
+																				</xs:attribute>
+																			</xs:complexType>
+																		</xs:element>
+																		<xs:element name="RatePlanDescription">
+																			<xs:annotation>
+																				<xs:documentation>The RatePlanDescription MUST provide textual information regarding the rate plan.</xs:documentation>
+																			</xs:annotation>
+																			<xs:complexType>
+																				<xs:sequence>
+																					<xs:element name="Text">
+																						<xs:annotation>
+																							<xs:documentation>The Text element MUST provide textual information regarding the rate plan.</xs:documentation>
+																						</xs:annotation>
+																						<xs:complexType>
+																							<xs:simpleContent>
+																								<xs:extension base="xs:string">
+																									<xs:attribute name="Language" type="xs:language" use="optional">
+																										<xs:annotation>
+																											<xs:documentation xml:lang="en">Language MAY be used to specify the language of this text item if it differs from the language identified in the PrimaryLangID on the root element. Language MUST conform to ISO 639 language codes.</xs:documentation>
+																										</xs:annotation>
+																									</xs:attribute>
+																								</xs:extension>
+																							</xs:simpleContent>
+																						</xs:complexType>
+																					</xs:element>
+																				</xs:sequence>
+																				<xs:attribute name="Name" type="StringLength1to64" use="optional">
+																					<xs:annotation>
+																						<xs:documentation xml:lang="en">The Name MAY be used to identify the type of information sent in the Text element.</xs:documentation>
+																					</xs:annotation>
+																				</xs:attribute>
+																			</xs:complexType>
+																		</xs:element>
+																	</xs:sequence>
+																	<xs:attribute name="RatePlanCode" type="StringLength1to16" use="required">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">RatePlanCode MUST specify the code that identifies this rate plan.</xs:documentation>
+																		</xs:annotation>
+																	</xs:attribute>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="RoomRates">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">A collection of available Room Rates. If more than one room rate is available for this hotel, the RoomRate element MUST repeat for each room rate.</xs:documentation>
+														<xs:documentation xml:lang="en">The combination of a given Rate Plan and Room Type. This allows for support for systems where Rate Plans are child of Room Type as well as systems which Room Types are child of Rate Plans.</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="RoomRate" maxOccurs="unbounded">
+																<xs:annotation>
+																	<xs:documentation>RoomRate MUST specify the details of an available room rate.</xs:documentation>
+																</xs:annotation>
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element name="Rates">
+																			<xs:annotation>
+																				<xs:documentation>The Rates container allows for future expansion of the message.</xs:documentation>
+																			</xs:annotation>
+																			<xs:complexType>
+																				<xs:sequence>
+																					<xs:element name="Rate">
+																						<xs:annotation>
+																							<xs:documentation>Rate MUST specify the details of the room rate. </xs:documentation>
+																						</xs:annotation>
+																						<xs:complexType>
+																							<xs:sequence>
+																								<xs:element name="CancelPolicies" minOccurs="0">
+																									<xs:annotation>
+																										<xs:documentation>The CancelPolicies container allows for future expansion of the message.</xs:documentation>
+																									</xs:annotation>
+																									<xs:complexType>
+																										<xs:sequence>
+																											<xs:element name="CancelPenalty" maxOccurs="5">
+																												<xs:annotation>
+																													<xs:documentation>CancelPenalty MUST specify the cancellation penalty associated to this room rate. </xs:documentation>
+																												</xs:annotation>
+																												<xs:complexType>
+																													<xs:sequence>
+																														<xs:element name="Deadline">
+																															<xs:annotation>
+																																<xs:documentation>Deadline MUST specify the cancellation deadline. </xs:documentation>
+																															</xs:annotation>
+																															<xs:complexType>
+																																<xs:attribute name="AbsoluteDeadline" type="TimeOrDateTimeType" use="required">
+																																	<xs:annotation>
+																																		<xs:documentation xml:lang="en">AbsoluteDeadline MUST specify the date and/or time by which this reservation MUST be cancelled to avoid penalties. </xs:documentation>
+																																	</xs:annotation>
+																																</xs:attribute>
+																															</xs:complexType>
+																														</xs:element>
+																														<xs:element name="AmountPercent">
+																															<xs:annotation>
+																																<xs:documentation>AmountPercent MUST identify the cancellation fee that will be applied if the reservation is cancelled after the Deadline.</xs:documentation>
+																															</xs:annotation>
+																															<xs:complexType>
+																																<xs:attribute name="Amount" type="Money" use="required">
+																																	<xs:annotation>
+																																		<xs:documentation xml:lang="en">The Amount MUST specify the monetary amount of the cancellation penalty.</xs:documentation>
+																																	</xs:annotation>
+																																</xs:attribute>
+																																<xs:attribute name="CurrencyCode" type="AlphaLength3" use="required">
+																																	<xs:annotation>
+																																		<xs:documentation xml:lang="en">The CurrencyCode MUST specify the code of the monetary unit in which the Amount is expressed. CurrencyCode MUST conform to ISO 4217, 3 character codes.</xs:documentation>
+																																	</xs:annotation>
+																																</xs:attribute>
+																															</xs:complexType>
+																														</xs:element>
+																														<xs:element name="PenaltyDescription">
+																															<xs:annotation>
+																																<xs:documentation>The PenaltyDescription MUST provide textual information regarding the cancellation penalty. </xs:documentation>
+																															</xs:annotation>
+																															<xs:complexType>
+																																<xs:sequence>
+																																	<xs:element name="Text">
+																																		<xs:annotation>
+																																			<xs:documentation>The Text element MUST provide textual information regarding the cancellation penalty.</xs:documentation>
+																																		</xs:annotation>
+																																		<xs:complexType>
+																																			<xs:simpleContent>
+																																				<xs:extension base="xs:string">
+																																					<xs:attribute name="Language" type="xs:language" use="optional">
+																																						<xs:annotation>
+																																							<xs:documentation xml:lang="en">Language MAY be used to specify the language of this text item if it differs from the language identified in the PrimaryLangID on the root element. Language MUST conform to ISO 639 language codes.</xs:documentation>
+																																						</xs:annotation>
+																																					</xs:attribute>
+																																				</xs:extension>
+																																			</xs:simpleContent>
+																																		</xs:complexType>
+																																	</xs:element>
+																																</xs:sequence>
+																																<xs:attribute name="Name" type="StringLength1to64" use="optional">
+																																	<xs:annotation>
+																																		<xs:documentation xml:lang="en">The Name MAY be used to identify the type of information sent in the Text element.</xs:documentation>
+																																	</xs:annotation>
+																																</xs:attribute>
+																															</xs:complexType>
+																														</xs:element>
+																													</xs:sequence>
+																												</xs:complexType>
+																											</xs:element>
+																										</xs:sequence>
+																									</xs:complexType>
+																								</xs:element>
+																								<xs:element name="Total">
+																									<xs:annotation>
+																										<xs:documentation>Total MUST specify he nightly room charge before and/or after taxes for this room rate. Either AmountBeforeTax or AmountAfterTax MUST be returned.</xs:documentation>
+																									</xs:annotation>
+																									<xs:complexType>
+																										<xs:attribute name="AmountBeforeTax" type="Money" use="optional">
+																											<xs:annotation>
+																												<xs:documentation xml:lang="en">AmountBeforeTax MAY specify the room rate before taxes are applied.</xs:documentation>
+																											</xs:annotation>
+																										</xs:attribute>
+																										<xs:attribute name="AmountAfterTax" type="Money" use="optional">
+																											<xs:annotation>
+																												<xs:documentation xml:lang="en">AmountAfterTax MAY specify the room rate after taxes are applied.</xs:documentation>
+																											</xs:annotation>
+																										</xs:attribute>
+																										<xs:attribute name="CurrencyCode" type="AlphaLength3" use="required">
+																											<xs:annotation>
+																												<xs:documentation xml:lang="en">The CurrencyCode MUST specify the code of the monetary unit in which the amount is expressed. CurrencyCode MUST conform to ISO 4217, 3 character codes.</xs:documentation>
+																											</xs:annotation>
+																										</xs:attribute>
+																									</xs:complexType>
+																								</xs:element>
+																							</xs:sequence>
+																						</xs:complexType>
+																					</xs:element>
+																				</xs:sequence>
+																			</xs:complexType>
+																		</xs:element>
+																	</xs:sequence>
+																	<xs:attribute name="EffectiveDate" type="xs:date" use="required">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">EffectiveDate MUST specify the starting date for this room rate.</xs:documentation>
+																		</xs:annotation>
+																	</xs:attribute>
+																	<xs:attribute name="ExpireDate" type="xs:date" use="required">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">ExpireDate MUST specify the expiry date for this room rate.</xs:documentation>
+																		</xs:annotation>
+																	</xs:attribute>
+																	<xs:attribute name="ExpireDateExclusiveIndicator" type="xs:boolean" use="required">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">The ExpireDateExlusiveIndicator is used to indicate whether or not the expire date is excluded from the room rate. The ExpireDateExclusiveIndicator MUST be set to true when the ExpireDate is the first day after the applicable period (e.g. when expire date is Oct 15 the last date of the period is Oct 14).</xs:documentation>
+																		</xs:annotation>
+																	</xs:attribute>
+																	<xs:attribute name="RoomTypeCode" type="StringLength1to16" use="required">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">RoomTypeCode MUST specify the specific system room type code for this room rate (e.g. A1K, A1Q).</xs:documentation>
+																		</xs:annotation>
+																	</xs:attribute>
+																	<xs:attribute name="RatePlanCode" type="StringLength1to64" use="required">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">RatePlanCode MUST identify the rate plan for this room rate.</xs:documentation>
+																		</xs:annotation>
+																	</xs:attribute>
+																	<xs:attribute name="PromotionCode" type="StringLength1to32" use="optional">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">PromotionCode MAY identify host to link directly with a specific named advertising campaign. By including the code, the client is able to gain access to special offers which MAY have been created for a specifically targeted group via a CRM system or for a wider advertising campaign using Television or press adverts.</xs:documentation>
+																		</xs:annotation>
+																	</xs:attribute>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="Guarantee">
+													<xs:annotation>
+														<xs:documentation>Guarantee MUST specify the guarantee information required to book a reservation.</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="GuaranteesAccepted" minOccurs="0">
+																<xs:annotation>
+																	<xs:documentation>The GuaranteesAccepted container allows for future expansion of the message.</xs:documentation>
+																</xs:annotation>
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element name="GuaranteeAccepted" maxOccurs="unbounded">
+																			<xs:annotation>
+																				<xs:documentation>GuaranteeAccepted MUST identify an acceptable form of guarantee in order to book a reservation. GaranteeAccepted MUST repeat for each acceptable form of guarantee.</xs:documentation>
+																			</xs:annotation>
+																			<xs:complexType>
+																				<xs:sequence>
+																					<xs:element name="PaymentCard">
+																						<xs:annotation>
+																							<xs:documentation>PaymentCard MUST provide the details of the payment card for this acceptable form of guarantee.</xs:documentation>
+																						</xs:annotation>
+																						<xs:complexType>
+																							<xs:attribute name="CardType" type="OTA_CodeType" use="required">
+																								<xs:annotation>
+																									<xs:documentation xml:lang="en">CardType specifies the type of magnetic striped card and MUST refer to OpenTravel Code ListCard Type (CDT). FastRez RECOMMENDS restricting the use of the code table to the codes 1 - Credit and 2 - Debit.</xs:documentation>
+																								</xs:annotation>
+																							</xs:attribute>
+																							<xs:attribute name="CardCode" type="PaymentCardCodeType" use="required">
+																								<xs:annotation>
+																									<xs:documentation xml:lang="en">The CardCode MUST specify the 2 character code of the payment card issuer.</xs:documentation>
+																								</xs:annotation>
+																							</xs:attribute>
+																						</xs:complexType>
+																					</xs:element>
+																				</xs:sequence>
+																			</xs:complexType>
+																		</xs:element>
+																	</xs:sequence>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+														<xs:attribute name="GuaranteeType" use="required">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">GuaranteeType MUST specify the type of the guarantee required in order to book a reservation. FastRez GuaranteeType MUST either be GuaranteeRequired or None.</xs:documentation>
+															</xs:annotation>
+															<xs:simpleType>
+																<xs:restriction base="StringLength1to32">
+																	<xs:enumeration value="GuaranteeRequired">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">A valid form of guarantee MUST be provided to book a reservation.</xs:documentation>
+																		</xs:annotation>
+																	</xs:enumeration>
+																	<xs:enumeration value="None">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">A guarantee is OPTIONAL to book a reservation.</xs:documentation>
+																		</xs:annotation>
+																	</xs:enumeration>
+																</xs:restriction>
+															</xs:simpleType>
+														</xs:attribute>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="BasicPropertyInfo">
+													<xs:annotation>
+														<xs:documentation>BasicPropertyInfo MUST identify the property for this RoomStay.</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:attribute name="ChainCode" type="StringLength1to8" use="optional">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">The ChainCode MAY identify a hotel chain or management group (e.g. Hyatt, Hilton, Marriott). The hotel chain code is decided between vendors and is OPTIONAL if the hotel is an independent property that can be identified by the HotelCode attribute alone.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+														<xs:attribute name="BrandCode" type="StringLength1to8" use="optional">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">The BrandCode MAY identify the brand within a chain (e.g., Courtyard, Hampton Inn). This code is OPTIONAL if the hotel is an independent property that can be identified by the HotelCode attribute alone.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+														<xs:attribute name="HotelCode" type="StringLength1to16" use="required">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">The HotelCode MUST uniquely identify a single hotel property for which the availability was performed. The HotelCode MAY be used in conjunction with the ChainCode and BrandCode in order to uniquely identify the hotel property. The hotel code is decided between vendors.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+														<xs:attribute name="HotelName" type="StringLength1to128" use="optional">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">HotelName MAY specify the proper name of the hotel.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+														<xs:attribute name="ChainName" type="StringLength1to64" use="optional">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">ChainName MAY specify the name of the hotel chain (e.g., Hilton, Marriott, Hyatt).</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+														<xs:attribute name="BrandName" type="StringLength1to64" use="optional">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">BrandName MAY specify the name of the brand of the hotel property (e.g., Courtyard, Hampton Inn).</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+											<xs:attribute name="WarningRPH" type="ListOfRPH" use="optional">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">This references the RPH found in the Warning element. Used to identify the warnings associated with this RoomStay.</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Criteria">
+							<xs:annotation>
+								<xs:documentation>The Criteria container allows for future expansion of the message.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Criterion">
+										<xs:annotation>
+											<xs:documentation>Criterion MUST return the search criterion that was submitted in the availability request.</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="HotelRef">
+													<xs:annotation>
+														<xs:documentation>The hotel reference identifies either the specific hotel or the city for which the availability should be performed. Either the HotelCode or the HotelCityCode MUST be provided.</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:annotation>
+															<xs:documentation xml:lang="en">HotelReference: The hotel reference identifies a specific hotel by using the Chain Code, the Brand Code, and the Hotel Code. The codes used are agreed upon by trading partners.</xs:documentation>
+														</xs:annotation>
+														<xs:attribute name="ChainCode" type="StringLength1to8" use="optional">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">The ChainCode MAY identify a hotel chain or management group (e.g. Hyatt, Hilton, Marriott). The hotel chain code is decided between vendors and is OPTIONAL if the hotel is an independent property that can be identified by the HotelCode attribute alone.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+														<xs:attribute name="BrandCode" type="StringLength1to8" use="optional">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">The BrandCode MAY identify the brand within a chain (e.g., Courtyard, Hampton Inn). This code is OPTIONAL if the hotel is an independent property that can be identified by the HotelCode attribute alone.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+														<xs:attribute name="HotelCode" type="StringLength1to16" use="optional">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">The HotelCode MUST uniquely identify a single hotel property for which the availability is to be performed. The HotelCode MAY be used in conjunction with the ChainCode and BrandCode in order to uniquely identify the hotel property. The hotel code is decided between vendors.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+														<xs:attribute name="HotelCityCode" type="StringLength1to8" use="optional">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">The HotelCityCode MUST contain the IATA city code (e.g. DCA, ORD LAX) for which the availability is to be performed.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="StayDateRange">
+													<xs:annotation>
+														<xs:documentation>The StayDateRange MUST specify the arrival and departure dates for the availability request.</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:attribute name="Start" type="DateOrTimeOrDateTimeType" use="required">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">Start MUST specify the arrival date for the availability request.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+														<xs:attribute name="End" type="DateOrTimeOrDateTimeType" use="required">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">End MUST specify the departure date for the availability request.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="RoomStayCandidates">
+													<xs:annotation>
+														<xs:documentation>The RoomStayCandidates container allows for future expansion of the message.</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="RoomStayCandidate">
+																<xs:annotation>
+																	<xs:documentation>The RoomStayCandidate attributes MAY identify preferences for the room requested.</xs:documentation>
+																</xs:annotation>
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element name="GuestCounts">
+																			<xs:annotation>
+																				<xs:documentation>GuestCounts contains a collection of GuestCount elements that MUST identify the number of guests for the availability request.</xs:documentation>
+																			</xs:annotation>
+																			<xs:complexType>
+																				<xs:sequence>
+																					<xs:element name="GuestCount" maxOccurs="10">
+																						<xs:annotation>
+																							<xs:documentation>GuestCount MUST identify the number of guests for the availability request. The number of guests and OPTIONALLY the ages of the guests MAY be used to determine the room rates based on business rules for occupancy at each property. Only the rates that apply to the guest count information specified SHOULD be returned.</xs:documentation>
+																						</xs:annotation>
+																						<xs:complexType>
+																							<xs:attribute name="AgeQualifyingCode" type="OTA_CodeType" use="required">
+																								<xs:annotation>
+																									<xs:documentation xml:lang="en">The AgeQualifyingCode specifies a code representing the age type of the guest and MUST refer to the OpenTravel Code List Age Qualifying Code (AQC). This attribute MUST be used in conjunction with the Count attribute to identify the number of guests of this age type. FastRez RECOMMENDS restricting the use of the code table to codes 7 - Infant, 8 - Child, 10 - Adult, and 11 - Senior.</xs:documentation>
+																								</xs:annotation>
+																							</xs:attribute>
+																							<xs:attribute name="Age" type="Numeric0to999" use="optional">
+																								<xs:annotation>
+																									<xs:documentation xml:lang="en">Age MAY be used to specify the age of the guest(s). This MAY be used to calculate additional person fees by guest age.</xs:documentation>
+																								</xs:annotation>
+																							</xs:attribute>
+																							<xs:attribute name="Count" type="Numeric1to999" use="required">
+																								<xs:annotation>
+																									<xs:documentation xml:lang="en">Count MUST specify the number of guests that are of the age type identified in AgeQualifyingCode and OPTIONALLY of the age identified in the Age attribute.</xs:documentation>
+																								</xs:annotation>
+																							</xs:attribute>
+																						</xs:complexType>
+																					</xs:element>
+																				</xs:sequence>
+																			</xs:complexType>
+																		</xs:element>
+																	</xs:sequence>
+																	<xs:attribute name="BedTypeCode" type="ListOfOTA_CodeType" use="optional">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">The BedTypeCode MUST Indicate the type of bed(s) for the availability request. Typical values include Double, Twin, Queen, or King. Refer to OpenTravel Code List Bed Type Code (BED).</xs:documentation>
+																		</xs:annotation>
+																	</xs:attribute>
+																	<xs:attribute name="NonSmoking" type="xs:boolean" use="optional">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">When true, indicates that only non-smoking rooms SHOULD be returned in the availability response.</xs:documentation>
+																		</xs:annotation>
+																	</xs:attribute>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:element name="Errors">
+						<xs:annotation>
+							<xs:documentation>Errors MUST be returned if the message was not successfully processed.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="Error" maxOccurs="5">
+									<xs:annotation>
+										<xs:documentation>Error MUST identify an error that occurred during the processing of the message.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:attribute name="Type" type="OTA_CodeType" use="required">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Type MUST identify the type of error and MUST refer to OpenTravel Code List Error Warning Type (EWT).</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="ShortText" type="StringLength1to64" use="optional">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">ShortText MAY provide an abbreviated version of the error in textual format.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="Code" type="OTA_CodeType" use="optional">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Code MAY be used to identify an error associated with the availability request and MUST refer to OpenTravel Code List Error Codes (ERR).</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="Status" type="StringLength1to64" use="optional">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Status MAY be used to identify the status of the availability. RECOMMENDED values are (NotProcessed | Incomplete | Compete | Unknown).</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="Tag" type="xs:string" use="optional">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Tag MAY identify an unknown or misspelled tag that caused an error in processing. It is RECOMMENDED that the Tag attribute use XPath notation to identify the location of a tag in the event that more than one tag of the same name is present in the document. Alternatively, the tag name alone MAY be used to identify missing data [Type=ReqFieldMissing].</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="NodeList" type="xs:string" use="optional">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">NodeList MAY contain an XPath expression that selects all the nodes whose data caused this error. Further, this expression SHOULD have an 	additional constraint which contains the data of the node. This will provide the offending data back to systems that cannot maintain the original message.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="EchoToken" type="StringLength1to128" use="optional">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">EchoToken MAY provide a reference for additional message identification, assigned by the requesting host system. This attribute SHOULD NOT be used to maintain state, but SHOULD only be used for diagnostic purposes. When a request message includes an echo token the corresponding response message MUST include an echo token with an identical value.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="TimeStamp" type="xs:dateTime" use="required">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">TimeStamp MUST indicate the creation date and time of the message in UTC using the following format specified by ISO 8601; YYYY-MM-DDThh:mm:ssZ with time values using the 24 hour clock (e.g. 20 November 2003, 1:59:38 pm UTC becomes 2003-11-20T13:59:38Z).</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="Version" type="xs:decimal" use="required">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Version MUST be consistent with the underlying schema baseline.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="PrimaryLangID" type="xs:language" use="required">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">PrimaryLangID code MUST conform to ISO 639 language codes. The code MUST define the language of the request. FastRez RECOMMENDS that the response SHOULD match the request, but a response MAY use any language recognized by ISO 639.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

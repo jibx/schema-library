@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="5.000" id="OTA2014A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_HotelCommonTypes.xsd"/>
+	<xs:element name="OTA_HotelInvBlockNotifRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The OTA_InvBlockNotifRQ may be used to send a notification of one or more new inventory blocks. This message may also be used to modify or cancel one or more existing inventory blocks.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" type="POS_Type" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">POS provides a mechanism to indicate the source of the message.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="InvBlocks" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">This may be used for creating blocks at multiple hotels or multiple blocks at a single hotel.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="HotelRef" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">This is used to identify the hotel to which the block(s) applies.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attributeGroup ref="HotelReferenceGroup"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="InvBlockDates" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">This is used to indicate the date or date range applicable to all inventory blocks in this message.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attributeGroup ref="InvBlockDatesGroup"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="InvBlock" minOccurs="0" maxOccurs="99">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">This is for creating a single block at a single hotel.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="InvBlockType">
+											<xs:sequence>
+												<xs:element name="Guarantee" type="GuaranteeType" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">The guarantee information to hold a reservation</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="MarketCode" minOccurs="0" maxOccurs="5">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">This is user specific information used for tracking and  market segmentation reporting.</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:attribute name="MarketCode" type="StringLength1to64" use="optional">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">The company specific code that relates to the market being sold to (e.g. corporate, government, association, social).</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+														<xs:attribute name="MarketCodeName" type="StringLength1to64" use="optional">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">The descriptive name of the code that relates to the market being sold to (e.g. corporate, government, association, social).</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+														<xs:attribute name="CommissionableIndicator" type="xs:boolean" use="optional">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">If true, indicates that the rate for this market code is commissionable. The Commission element may be used to send details regarding the commission.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+														<xs:attribute name="SourceOfBusiness" type="StringLength1to64">
+															<xs:annotation>
+																<xs:documentation source="Description" xml:lang="en">The source of the business.</xs:documentation>
+																<xs:documentation source="Example" xml:lang="en">Example: Radio</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Contacts" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">A collection of contacts.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Contact" type="ContactPersonType" maxOccurs="99">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">This may be used for multiple sets of contact information (e.g., sales manager, group contact, event manager).</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attributeGroup ref="InvBlockGroup"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element ref="TPA_Extensions" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

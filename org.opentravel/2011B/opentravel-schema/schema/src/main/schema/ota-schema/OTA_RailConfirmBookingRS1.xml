@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: Confirm One or More "Provisionally Booked" Train Seat Reservations. -->
+<!-- USE CASE DETAILS: An online travel agent is booking a rail trip for a family of five. The agent has provisionally booked five seats on a train using the OTA_RailBookRQ/RS message. Note that a provisional booking is one that has been processed successfully by the OTA_RailBookRQ/RS messages but is not yet confirmed in the trading partners system. The agent system has issued an OTA_RailConfirmBookingRQ message with the unique ID's of the five provisional train seat reservations. This response message indicates that the COMMIT of the five seat reservations has been successful and the unique ID's of the committed seat reservations are returned. -->
+
+<OTA_RailConfirmBookingRS xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_RailConfirmBookingRS.xsd" 
+Version="1.000">
+
+	<!-- The presence of this element indicates the message was processed successfully by the receiving system -->
+	<Success/>
+	
+	<!-- The PNR locator list for the queued reservations that are now COMMITTED (confirmed.) -->
+	<Confirmation>
+		<!-- The reservation confirmation number that uniquely identifies a reservation. -->
+		<UniqueID ID="0000001" Type="40">
+			<!-- Unique ID type of 40 is "Confirmation number" - See OpenTravel Code List Unique ID Type (UIT). -->
+			<CompanyName>ABC Travel Company</CompanyName>
+		</UniqueID>
+	</Confirmation>
+	
+	<Confirmation>
+		<UniqueID ID="0000002" Type="40">
+			<!-- Unique ID type of 40 is "Confirmation number" - See OpenTravel Code List Unique ID Type (UIT). -->
+			<CompanyName>ABC Travel Company</CompanyName>
+		</UniqueID>
+	</Confirmation>
+
+	<Confirmation>
+		<UniqueID ID="0000003" Type="40">
+			<!-- Unique ID type of 40 is "Confirmation number" - See OpenTravel Code List Unique ID Type (UIT). -->
+			<CompanyName>ABC Travel Company</CompanyName>
+		</UniqueID>
+	</Confirmation>
+	
+	<Confirmation>
+		<UniqueID ID="0000004" Type="40">
+			<!-- Unique ID type of 40 is "Confirmation number" - See OpenTravel Code List Unique ID Type (UIT). -->
+			<CompanyName>ABC Travel Company</CompanyName>
+		</UniqueID>
+	</Confirmation>
+	
+	<Confirmation>
+		<UniqueID ID="0000005" Type="40">
+			<!-- Unique ID type of 40 is "Confirmation number" - See OpenTravel Code List Unique ID Type (UIT). -->
+			<CompanyName>ABC Travel Company</CompanyName>
+		</UniqueID>
+	</Confirmation>
+	
+</OTA_RailConfirmBookingRS>

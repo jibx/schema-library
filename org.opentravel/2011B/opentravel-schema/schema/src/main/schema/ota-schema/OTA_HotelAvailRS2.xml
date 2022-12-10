@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: OPENTRAVEL FORUM POST -->
+<!-- USE CASE DETAILS:
+I am looking for an example of an OTA_HotelAvailRQ/RS with this criteria:
+
+1) Arrival & Departure Dates: (Arrival) 30/08/2010 AUG 30 2010; (Departure) 02/09/2010 SEP 2 2010; total of a 4 night stay)
+2) Two individual rooms (The first with 2 adults and the second with 3 adults)
+
+I’d like an example of the following returned availability information in the response message:
+1) First room type is "double room"
+2) Second room type is "triple room"
+3) Each room type has three rate plans:
+3.1) first: "High season rate plan" from 30 to 31 August
+3.2) second: "Low season rate plan" from 1 to 2 September
+3.3) three:"1 night gratis for every two" 
+
+The room prices are in Euro’s for the request and response:
+Day: 1 2 3 4
+Room type
+Double 80 0 60 0
+Triple 95 0 75 0
+
+I am not interested in location, hotel information and other information that may be in the message – I’m only interested in the <RoomStays> element within the message.
+
+Can you write an xml example for this situation?
+ -->
+
+<OTA_HotelAvailRS Version="6.001" 
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelAvailRS.xsd" 
+xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<!-- The presence of this element indicates the request message was processed successfully by the receiving system. -->
+	<Success/>
+
+	<RoomStays>
+	
+		<!-- AVAILABILITY FOR 2 ADULTS IN DOUBLE AND TRIPLE ROOMS -->
+		<RoomStay>
+			<!-- If you're just looking to return rates... this could be optional. -->
+			<RoomTypes>
+				<!-- DOUBLE ROOM DESCRIPTION -->
+				<RoomType RoomType="Double Room" RoomTypeCode="DBL" NonSmoking="true">
+					<RoomDescription>
+						<Text>DELUXE DOUBLE ROOM (1 KING OR 1 QUEEN OR 2 DOUBLES)</Text>
+					</RoomDescription>
+					<Occupancy MaxOccupancy="4"/>
+				</RoomType>
+			<!-- TRIPLE ROOM DESCRIPTION -->
+				<RoomType RoomType="Triple Room" RoomTypeCode="TRP" NonSmoking="true">
+					<RoomDescription>
+						<Text>DELUXE TRIPLE ROOM (2 QUEEN OR 2 KING) WITH SLEEPER SOFA AND A BALCONY.</Text>
+					</RoomDescription>
+					<Occupancy MaxOccupancy="6"/>
+				</RoomType>
+			</RoomTypes>
+
+			<!-- LOW AND HIGH SEASON RATE PLANS CODES AND NAMES -->
+			<RatePlans>
+				<RatePlan  RatePlanName="LOW SEASON JANUARY 1 TO JULY 31; SEPTEMBER 1 TO DECEMBER 31" RatePlanID="LOW"/>
+				<RatePlan  RatePlanName="HIGH SEASON AUGUST 1 TO AUGUST 31" RatePlanID="HGH"/>
+			</RatePlans>
+
+			<!-- ============================================== -->
+			<!-- ROOM PRICING: DOUBLE ROOM                                           -->
+			<!-- ============================================== -->
+
+			<RoomRates>
+				<!-- DAY 1 HIGH SEASON RATE - NO PROMOTION -->
+				<RoomRate RoomTypeCode="DBL" RatePlanID="HGH">
+					<Rates>
+						<Rate EffectiveDate="2010-08-30" ExpireDate="2010-08-30">
+							<Base AmountBeforeTax="80.00" CurrencyCode="EUR"/>
+							<!-- Rate description could be excluded if your trading partners use the <RoomDescription>'s and <RatePlan> descriptions above -->
+							<RateDescription>
+								<Text>DELUXE DOUBLE ROOM (1 KING OR 1 QUEEN OR 2 DOUBLES) - (HIGH SEASON AUGUST 1 TO AUGUST 31).</Text>
+							</RateDescription>
+						</Rate>
+					</Rates>
+				</RoomRate>
+				<!-- DAY 2 HIGH SEASON RATE - WITH PROMOTION - EVERY OTHER NIGHT FREE -->
+				<RoomRate RoomTypeCode="DBL" RatePlanID="HGH" PromotionCode="EVERYOTHERNIGHTFREE">
+					<Rates>
+						<Rate EffectiveDate="2010-08-31" ExpireDate="2010-08-31">
+							<Base AmountBeforeTax="0.00" CurrencyCode="EUR"/>
+							<!-- Rate description could be excluded if your trading partners use the <RoomDescription>'s and <RatePlan> descriptions above -->
+							<RateDescription>
+								<Text>DELUXE DOUBLE ROOM (1 KING OR 1 QUEEN OR 2 DOUBLES) - (HIGH SEASON AUGUST 1 TO AUGUST 31) WITH PROMOTION - EVERY OTHER NIGHT FREE.</Text>
+							</RateDescription>
+						</Rate>
+					</Rates>
+				</RoomRate>
+				<!-- DAY 3 LOW SEASON RATE - NO PROMOTION -->
+				<RoomRate RoomTypeCode="DBL" RatePlanID="LOW">
+					<Rates>
+						<Rate EffectiveDate="2010-09-01" ExpireDate="2010-09-01">
+							<Base AmountBeforeTax="60.00" CurrencyCode="EUR"/>
+							<!-- Rate description could be excluded if your trading partners use the <RoomDescription>'s and <RatePlan> descriptions above -->
+							<RateDescription>
+								<Text>DELUXE DOUBLE ROOM (1 KING OR 1 QUEEN OR 2 DOUBLES) - (LOW SEASON JANUARY 1 TO JULY 31; SEPTEMBER 1 TO DECEMBER 31).</Text>
+							</RateDescription>
+						</Rate>
+					</Rates>
+				</RoomRate>
+				<!-- DAY 4 LOW SEASON RATE - WITH PROMOTION - EVERY OTHER NIGHT FREE -->
+				<RoomRate RoomTypeCode="DBL" RatePlanID="LOW" PromotionCode="EVERYOTHERNIGHTFREE">
+					<Rates>
+						<Rate EffectiveDate="2010-09-02" ExpireDate="2010-09-02">
+							<Base AmountBeforeTax="0.00" CurrencyCode="EUR"/>
+							<!-- Rate description could be excluded if your trading partners use the <RoomDescription>'s and <RatePlan> descriptions above -->
+							<RateDescription>
+								<Text>DELUXE DOUBLE ROOM (1 KING OR 1 QUEEN OR 2 DOUBLES) - (LOW SEASON JANUARY 1 TO JULY 31; SEPTEMBER 1 TO DECEMBER 31) WITH PROMOTION - EVERY OTHER NIGHT FREE.</Text>
+							</RateDescription>
+						</Rate>
+					</Rates>
+				</RoomRate>
+
+			<!-- ============================================== -->
+			<!-- ROOM PRICING: TRIPLE ROOM                                             -->
+			<!-- ============================================== -->
+
+				<!-- DAY 1 HIGH SEASON RATE - NO PROMOTION -->
+				<RoomRate RoomTypeCode="TRP" RatePlanID="HGH">
+					<Rates>
+						<Rate EffectiveDate="2010-08-30" ExpireDate="2010-08-30">
+							<Base AmountBeforeTax="95.00" CurrencyCode="EUR"/>
+							<!-- Rate description could be excluded if your trading partners use the <RoomDescription>'s and <RatePlan> descriptions above -->
+							<RateDescription>
+								<Text>DELUXE TRIPLE ROOM (2 QUEEN OR 2 KING) WITH SLEEPER SOFA AND A BALCONY (HIGH SEASON AUGUST 1 TO AUGUST 31).</Text>
+							</RateDescription>
+						</Rate>
+					</Rates>
+				</RoomRate>
+				<!-- DAY 2 HIGH SEASON RATE - WITH PROMOTION - EVERY OTHER NIGHT FREE -->
+				<RoomRate RoomTypeCode="TRP" RatePlanID="HGH" PromotionCode="EVERYOTHERNIGHTFREE">
+					<Rates>
+						<Rate EffectiveDate="2010-08-31" ExpireDate="2010-08-31">
+							<Base AmountBeforeTax="0.00" CurrencyCode="EUR"/>
+							<!-- Rate description could be excluded if your trading partners use the <RoomDescription>'s and <RatePlan> descriptions above -->
+							<RateDescription>
+								<Text>DELUXE TRIPLE ROOM (2 QUEEN OR 2 KING) WITH SLEEPER SOFA AND A BALCONY (HIGH SEASON AUGUST 1 TO AUGUST 31) WITH PROMOTION - EVERY OTHER NIGHT FREE.</Text>
+							</RateDescription>
+						</Rate>
+					</Rates>
+				</RoomRate>
+				<!-- DAY 3 LOW SEASON RATE - NO PROMOTION -->
+				<RoomRate RoomTypeCode="TRP" RatePlanID="LOW">
+					<Rates>
+						<Rate EffectiveDate="2010-09-01" ExpireDate="2010-09-01">
+							<Base AmountBeforeTax="75.00" CurrencyCode="EUR"/>
+							<!-- Rate description could be excluded if your trading partners use the <RoomDescription>'s and <RatePlan> descriptions above -->
+							<RateDescription>
+								<Text>DELUXE TRIPLE ROOM (2 QUEEN OR 2 KING) WITH SLEEPER SOFA AND A BALCONY (LOW SEASON JANUARY 1 TO JULY 31; SEPTEMBER 1 TO DECEMBER 31).</Text>
+							</RateDescription>
+						</Rate>
+					</Rates>
+				</RoomRate>
+				<!-- DAY 4 LOW SEASON RATE - WITH PROMOTION - EVERY OTHER NIGHT FREE -->
+				<RoomRate RoomTypeCode="TRP" RatePlanID="LOW" PromotionCode="EVERYOTHERNIGHTFREE">
+					<Rates>
+						<Rate EffectiveDate="2010-09-02" ExpireDate="2010-09-02">
+							<Base AmountBeforeTax="0.00" CurrencyCode="EUR"/>
+							<!-- Rate description could be excluded if your trading partners use the <RoomDescription>'s and <RatePlan> descriptions above -->
+							<RateDescription>
+								<Text>DELUXE TRIPLE ROOM (2 QUEEN OR 2 KING) WITH SLEEPER SOFA AND A BALCONY (LOW SEASON JANUARY 1 TO JULY 31; SEPTEMBER 1 TO DECEMBER 31) WITH PROMOTION - EVERY OTHER NIGHT FREE.</Text>
+							</RateDescription>
+						</Rate>
+					</Rates>
+				</RoomRate>
+			</RoomRates>
+			
+			<!-- GUEST COUNTS -->
+			<GuestCounts IsPerRoom="true">
+				<GuestCount Count="2"/>
+			</GuestCounts>
+		
+		</RoomStay>
+		
+		<!-- AVAILABILITY FOR 3 ADULTS IN DOUBLE AND TRIPLE ROOMS -->
+		<RoomStay>
+			<!-- If you're just looking to return rates... this could be optional. -->
+			<RoomTypes>
+				<!-- DOUBLE ROOM DESCRIPTION -->
+				<RoomType RoomType="Double Room" RoomTypeCode="DBL" NonSmoking="true">
+					<RoomDescription>
+						<Text>DELUXE DOUBLE ROOM (1 KING OR 1 QUEEN OR 2 DOUBLES)</Text>
+					</RoomDescription>
+					<Occupancy MaxOccupancy="4"/>
+				</RoomType>
+			<!-- TRIPLE ROOM DESCRIPTION -->
+				<RoomType RoomType="Triple Room" RoomTypeCode="TRP" NonSmoking="true">
+					<RoomDescription>
+						<Text>DELUXE TRIPLE ROOM (2 QUEEN OR 2 KING) WITH SLEEPER SOFA AND A BALCONY.</Text>
+					</RoomDescription>
+					<Occupancy MaxOccupancy="6"/>
+				</RoomType>
+			</RoomTypes>
+
+			<!-- LOW AND HIGH SEASON RATE PLANS CODES AND NAMES -->
+			<RatePlans>
+				<RatePlan  RatePlanName="LOW SEASON JANUARY 1 TO JULY 31; SEPTEMBER 1 TO DECEMBER 31" RatePlanID="LOW"/>
+				<RatePlan  RatePlanName="HIGH SEASON AUGUST 1 TO AUGUST 31" RatePlanID="HGH"/>
+			</RatePlans>
+
+			<!-- ============================================== -->
+			<!-- ROOM PRICING: DOUBLE ROOM                                           -->
+			<!-- ============================================== -->
+
+			<RoomRates>
+				<!-- DAY 1 HIGH SEASON RATE - NO PROMOTION -->
+				<RoomRate RoomTypeCode="DBL" RatePlanID="HGH">
+					<Rates>
+						<Rate EffectiveDate="2010-08-30" ExpireDate="2010-08-30">
+							<Base AmountBeforeTax="80.00" CurrencyCode="EUR"/>
+							<!-- Rate description could be excluded if your trading partners use the <RoomDescription>'s and <RatePlan> descriptions above -->
+							<RateDescription>
+								<Text>DELUXE DOUBLE ROOM (1 KING OR 1 QUEEN OR 2 DOUBLES) - (HIGH SEASON AUGUST 1 TO AUGUST 31).</Text>
+							</RateDescription>
+						</Rate>
+					</Rates>
+				</RoomRate>
+				<!-- DAY 2 HIGH SEASON RATE - WITH PROMOTION - EVERY OTHER NIGHT FREE -->
+				<RoomRate RoomTypeCode="DBL" RatePlanID="HGH" PromotionCode="EVERYOTHERNIGHTFREE">
+					<Rates>
+						<Rate EffectiveDate="2010-08-31" ExpireDate="2010-08-31">
+							<Base AmountBeforeTax="0.00" CurrencyCode="EUR"/>
+							<!-- Rate description could be excluded if your trading partners use the <RoomDescription>'s and <RatePlan> descriptions above -->
+							<RateDescription>
+								<Text>DELUXE DOUBLE ROOM (1 KING OR 1 QUEEN OR 2 DOUBLES) - (HIGH SEASON AUGUST 1 TO AUGUST 31) WITH PROMOTION - EVERY OTHER NIGHT FREE.</Text>
+							</RateDescription>
+						</Rate>
+					</Rates>
+				</RoomRate>
+				<!-- DAY 3 LOW SEASON RATE - NO PROMOTION -->
+				<RoomRate RoomTypeCode="DBL" RatePlanID="LOW">
+					<Rates>
+						<Rate EffectiveDate="2010-09-01" ExpireDate="2010-09-01">
+							<Base AmountBeforeTax="60.00" CurrencyCode="EUR"/>
+							<!-- Rate description could be excluded if your trading partners use the <RoomDescription>'s and <RatePlan> descriptions above -->
+							<RateDescription>
+								<Text>DELUXE DOUBLE ROOM (1 KING OR 1 QUEEN OR 2 DOUBLES) - (LOW SEASON JANUARY 1 TO JULY 31; SEPTEMBER 1 TO DECEMBER 31).</Text>
+							</RateDescription>
+						</Rate>
+					</Rates>
+				</RoomRate>
+				<!-- DAY 4 LOW SEASON RATE - WITH PROMOTION - EVERY OTHER NIGHT FREE -->
+				<RoomRate RoomTypeCode="DBL" RatePlanID="LOW" PromotionCode="EVERYOTHERNIGHTFREE">
+					<Rates>
+						<Rate EffectiveDate="2010-09-02" ExpireDate="2010-09-02">
+							<Base AmountBeforeTax="0.00" CurrencyCode="EUR"/>
+							<!-- Rate description could be excluded if your trading partners use the <RoomDescription>'s and <RatePlan> descriptions above -->
+							<RateDescription>
+								<Text>DELUXE DOUBLE ROOM (1 KING OR 1 QUEEN OR 2 DOUBLES) - (LOW SEASON JANUARY 1 TO JULY 31; SEPTEMBER 1 TO DECEMBER 31) WITH PROMOTION - EVERY OTHER NIGHT FREE.</Text>
+							</RateDescription>
+						</Rate>
+					</Rates>
+				</RoomRate>
+
+			<!-- ============================================== -->
+			<!-- ROOM PRICING: TRIPLE ROOM                                             -->
+			<!-- ============================================== -->
+
+				<!-- DAY 1 HIGH SEASON RATE - NO PROMOTION -->
+				<RoomRate RoomTypeCode="TRP" RatePlanID="HGH">
+					<Rates>
+						<Rate EffectiveDate="2010-08-30" ExpireDate="2010-08-30">
+							<Base AmountBeforeTax="95.00" CurrencyCode="EUR"/>
+							<!-- Rate description could be excluded if your trading partners use the <RoomDescription>'s and <RatePlan> descriptions above -->
+							<RateDescription>
+								<Text>DELUXE TRIPLE ROOM (2 QUEEN OR 2 KING) WITH SLEEPER SOFA AND A BALCONY (HIGH SEASON AUGUST 1 TO AUGUST 31).</Text>
+							</RateDescription>
+						</Rate>
+					</Rates>
+				</RoomRate>
+				<!-- DAY 2 HIGH SEASON RATE - WITH PROMOTION - EVERY OTHER NIGHT FREE -->
+				<RoomRate RoomTypeCode="TRP" RatePlanID="HGH" PromotionCode="EVERYOTHERNIGHTFREE">
+					<Rates>
+						<Rate EffectiveDate="2010-08-31" ExpireDate="2010-08-31">
+							<Base AmountBeforeTax="0.00" CurrencyCode="EUR"/>
+							<!-- Rate description could be excluded if your trading partners use the <RoomDescription>'s and <RatePlan> descriptions above -->
+							<RateDescription>
+								<Text>DELUXE TRIPLE ROOM (2 QUEEN OR 2 KING) WITH SLEEPER SOFA AND A BALCONY (HIGH SEASON AUGUST 1 TO AUGUST 31) WITH PROMOTION - EVERY OTHER NIGHT FREE.</Text>
+							</RateDescription>
+						</Rate>
+					</Rates>
+				</RoomRate>
+				<!-- DAY 3 LOW SEASON RATE - NO PROMOTION -->
+				<RoomRate RoomTypeCode="TRP" RatePlanID="LOW">
+					<Rates>
+						<Rate EffectiveDate="2010-09-01" ExpireDate="2010-09-01">
+							<Base AmountBeforeTax="75.00" CurrencyCode="EUR"/>
+							<!-- Rate description could be excluded if your trading partners use the <RoomDescription>'s and <RatePlan> descriptions above -->
+							<RateDescription>
+								<Text>DELUXE TRIPLE ROOM (2 QUEEN OR 2 KING) WITH SLEEPER SOFA AND A BALCONY (LOW SEASON JANUARY 1 TO JULY 31; SEPTEMBER 1 TO DECEMBER 31).</Text>
+							</RateDescription>
+						</Rate>
+					</Rates>
+				</RoomRate>
+				<!-- DAY 4 LOW SEASON RATE - WITH PROMOTION - EVERY OTHER NIGHT FREE -->
+				<RoomRate RoomTypeCode="TRP" RatePlanID="LOW" PromotionCode="EVERYOTHERNIGHTFREE">
+					<Rates>
+						<Rate EffectiveDate="2010-09-02" ExpireDate="2010-09-02">
+							<Base AmountBeforeTax="0.00" CurrencyCode="EUR"/>
+							<!-- Rate description could be excluded if your trading partners use the <RoomDescription>'s and <RatePlan> descriptions above -->
+							<RateDescription>
+								<Text>DELUXE TRIPLE ROOM (2 QUEEN OR 2 KING) WITH SLEEPER SOFA AND A BALCONY (LOW SEASON JANUARY 1 TO JULY 31; SEPTEMBER 1 TO DECEMBER 31) WITH PROMOTION - EVERY OTHER NIGHT FREE.</Text>
+							</RateDescription>
+						</Rate>
+					</Rates>
+				</RoomRate>
+			</RoomRates>
+			
+			<!-- GUEST COUNTS -->
+			<GuestCounts IsPerRoom="true">
+				<GuestCount Count="3"/>
+			</GuestCounts>
+		
+		</RoomStay>
+
+	</RoomStays>
+
+</OTA_HotelAvailRS>

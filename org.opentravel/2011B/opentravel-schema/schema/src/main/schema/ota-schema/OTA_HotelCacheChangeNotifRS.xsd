@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.opentravel.org/OTA/2003/05" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="1.000" id="OTA2011B">
+	<xs:include schemaLocation="OTA_CommonTypes.xsd"/>
+	<xs:include schemaLocation="OTA_HotelCommonTypes.xsd"/>
+	<xs:annotation>
+		<xs:documentation xml:lang="en">All Schema files in the OpenTravel Alliance specification are made available according to the terms defined by the OpenTravel License Agreement at http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:element name="OTA_HotelCacheChangeNotifRS">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The Hotel Cache Change Notification Response message may return:
+
+-A success indicator (indicating that the message was successfully received and processed)
+-A business warning (indicating that some portion of the message processing generated a business condition)
+-An error response that may indicate why the message could not be processed)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice>
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Errors that ocurred during the processing of the request message -OR-  an indication of successful processing of the request message.</xs:documentation>
+					</xs:annotation>
+					<xs:sequence>
+						<xs:element name="Success" type="SuccessType">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">An element that is not intended to contain any data. The mere presence of a success element within the response message indicates that the incoming request message was processed successfully.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Warnings" type="WarningsType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Indicates that the recipient of the request message identified one or more business-level warnings/errors, but the message itself was successfully processed.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+					<xs:element name="Errors" type="ErrorsType">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Indicates that an error occurred in the processing of the incoming request message. An error is defined as a malformed XML message that could not be processed. </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:choice>
+				<xs:sequence>
+					<xs:element name="UniqueID" type="UniqueID_Type" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">May be used to return the unique id from the request message.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.opentravel.org/OTA/2003/05" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="1.000" id="OTA2011A">
+	<xs:include schemaLocation="OTA_GroundCommonTypes.xsd"/>
+	<xs:annotation>
+		<xs:documentation xml:lang="en">All Schema files in the OpenTravel Alliance specification are made available according to the terms defined by the OpenTravel License Agreement at http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:element name="OTA_GroundResRetrieveRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The OpenTravel Ground Transportation reservation request is used to specify criteria to retrieve an existing ground transportation reservation, which may include a unique ground transportation reservation identifier (which if valid will return one matching reservation) or general search criteria for a reservation (which if valid may return one or more reservations that matched the search criteria.)
+
+Reservation retrieve request information includes:
+-Point of sale information for the requestor
+-A choice between entering a known ground transportation service reservation identifier used to return one exact matching reservation -OR- basic search criteria used to retrieve one or more matching reservations
+----A reference ID for the existing ground transportation reservation
+----Search criteria that can be used to retrieve an existing ground transportation reservation if the reservation ID/reference number is not known, including passenger name/contact information and rate qualifiers associated with the reservation</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" type="POS_Type">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Point of Sale Identification. Identification number of the vendor that has made the vehicle availability request and agency number assigned by IATA, ARC, ESRP or TID.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Reference" type="UniqueID_Type" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">A reference ID for the existing ground transportation reservation.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ReservationSearchCriteria" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Search criteria that can be used to retrieve an existing ground transportation reservation if the reservation ID/reference number is not known.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Passengers" type="GroundPrimaryAdditionalPassengerType" minOccurs="0" maxOccurs="3">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Primary and additional passenger(s) associated with the reservation name and contact information.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="RateQualifiers" type="GroundRateQualifierType" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Rate qualifier and promotions that apply to this reservation.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="DateTime" type="DateOrDateTimeType" use="optional">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">The date and time of the pickup, stop or dropoff.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element ref="TPA_Extensions" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+			<xs:attributeGroup ref="ReqRespVersion"/>
+			<xs:attribute name="ReqRespChoice" use="optional">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">An indication of the level of information to be returned in the response message.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="Summary"/>
+						<xs:enumeration value="Detail"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

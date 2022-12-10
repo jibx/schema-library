@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05/beta" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05/beta" elementFormDefault="qualified" version="1.000" id="OTA2012B">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:annotation>
+		<xs:documentation source="Notice" xml:lang="en">The OTA_CodeType simpleType will be deprecated in the 2013A OpenTravel XML Message Suite publication. All OTA_CodeType typed attributes with be replaced with elements typed as an open list, e.g. List_NameOfList.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_AirCommonTypes.xsd"/>
+	<xs:element name="OTA_AirBaggageRQ">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">OpenTravel Air Baggage Request.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Note: The air baggage message set provides baggage related functionality including pricing for checked bags, baggage allowance for an itinerary and lists of checked baggage. Baggage calculations may be based on an airline supplier, a specific flight, an air reservation, a traveler type, traveler loyalty benefits, a fare group (including private and negotiated fares) and an origin/ destination pair.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Point of Sale.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="POS_Type"/>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ProcessingInfo">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Message level processing directives.</xs:documentation>
+						<xs:documentation source="Moreinfo" xml:lang="en">OpenTravel Best Practice: Information Message Level Processing Directives: For messages that have message level processing directives specified, and also have child elements with attributes where the same information may be specified, the child attributes are assumed to inherit the message level processing directives UNLESS child-level information has been specified (which then overrides the message-level directives, but ONLY for the child-level specification.)</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="QueryType" use="required">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">Query type.</xs:documentation>
+								<xs:documentation source="Example" xml:lang="en">Example: BaggageCharge</xs:documentation>
+								<xs:documentation source="Moreinfo" xml:lang="en">Note: This is the requested baggage query type that the receiving will fulfill.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="BaggageCharge">
+										<xs:annotation>
+											<xs:documentation source="Description" xml:lang="en">Retrieves baggage charges for a specified itinerary or traveler(s).</xs:documentation>
+										</xs:annotation>
+									</xs:enumeration>
+									<xs:enumeration value="BaggageAllowance">
+										<xs:annotation>
+											<xs:documentation source="Description" xml:lang="en">Retrieves baggage allowances for a specified itinerary or traveler(s).</xs:documentation>
+										</xs:annotation>
+									</xs:enumeration>
+									<xs:enumeration value="BaggageChargeAndAllowance">
+										<xs:annotation>
+											<xs:documentation source="Description" xml:lang="en">Retrieves both baggage allowances and charges for a specified itinerary or traveler(s).</xs:documentation>
+										</xs:annotation>
+									</xs:enumeration>
+									<xs:enumeration value="BaggageList">
+										<xs:annotation>
+											<xs:documentation source="Description" xml:lang="en">Retrieves a list (or catalog) of all bags that may be checked for a specified itinerary and airline carrier that includes pricing. Typically used to calculate applicable charges. All bag types and pricing information.</xs:documentation>
+										</xs:annotation>
+									</xs:enumeration>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="PricingCurrency" type="AlphaLength3" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">Pricing/ filing currency.</xs:documentation>
+								<xs:documentation source="Example" xml:lang="en">Example: USD</xs:documentation>
+								<xs:documentation source="Moreinfo" xml:lang="en">OpenTravel Best Practice: Currency Type Designation: Unless otherwise noted, all currency code designations are three alpha characters and WILL follow ISO 4217 prescribed format. Additionally, all currency amounts SHOULD have decimal places (minor units) specified.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="DecimalPlaces" type="xs:nonNegativeInteger" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">Currency decimal places.</xs:documentation>
+								<xs:documentation source="Examples" xml:lang="en">Example: 2</xs:documentation>
+								<xs:documentation source="Moreinfo" xml:lang="en">OpenTravel Best Practice: Currency Type Designation: Unless otherwise noted, all currency code designations are three alpha characters and WILL follow ISO 4217 prescribed format. Additionally, all currency amounts SHOULD have decimal places (minor units) specified.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Baggage" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Baggage information.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="BaggageSpecificationType">
+								<xs:attribute name="CheckedInInd" type="xs:boolean" use="optional">
+									<xs:annotation>
+										<xs:documentation source="Description" xml:lang="en">If true, this baggage is already checked in.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="ExcessBaggageNmbr" type="xs:integer" use="optional">
+									<xs:annotation>
+										<xs:documentation source="Description" xml:lang="en">Excess baggage occurrences.</xs:documentation>
+										<xs:documentation source="Example" xml:lang="en">Example: 2</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="BaggageRPH" type="RPH_Type" use="optional">
+									<xs:annotation>
+										<xs:documentation source="Description" xml:lang="en">Baggage Item Reference ID.</xs:documentation>
+										<xs:documentation source="Example" xml:lang="en">Example: 1</xs:documentation>
+										<xs:documentation source="Moreinfo" xml:lang="en">Note: This is a unique reference ID for one baggage item that is set here and may be referenced elsewhere in this message.</xs:documentation>
+										<xs:documentation source="Moreinfo" xml:lang="en">OpenTravel Best Practice: Using Reference Place Holders: The reference place holder (RPH) is a unique ID assigned to an instance in a collection of like items (e.g. used to assign a unique ID to each passenger in a list of passengers. When referencing an RPH, the same RPH type is used to identify the assigned unique ID in an element that references the item in a collection.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="FareInfoRPH" type="RPH_Type" use="optional">
+									<xs:annotation>
+										<xs:documentation source="Description" xml:lang="en">Fare Reference ID.</xs:documentation>
+										<xs:documentation source="Example" xml:lang="en">Example: 2</xs:documentation>
+										<xs:documentation source="Moreinfo" xml:lang="en">Note: This fare reference ID was defined elsewhere in this message.</xs:documentation>
+										<xs:documentation source="Moreinfo" xml:lang="en">OpenTravel Best Practice: Using Reference Place Holders: The reference place holder (RPH) is a unique ID assigned to an instance in a collection of like items (e.g. used to assign a unique ID to each passenger in a list of passengers. When referencing an RPH, the same RPH type is used to identify the assigned unique ID in an element that references the item in a collection.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="FlightSegmentRPH" type="RPH_Type" use="optional">
+									<xs:annotation>
+										<xs:documentation source="Description" xml:lang="en">Flight Segment Reference ID.</xs:documentation>
+										<xs:documentation source="Example" xml:lang="en">Example: 3</xs:documentation>
+										<xs:documentation source="Moreinfo" xml:lang="en">Note: This flight segment reference ID was defined elsewhere in this message.</xs:documentation>
+										<xs:documentation source="Moreinfo" xml:lang="en">OpenTravel Best Practice: Using Reference Place Holders: The reference place holder (RPH) is a unique ID assigned to an instance in a collection of like items (e.g. used to assign a unique ID to each passenger in a list of passengers. When referencing an RPH, the same RPH type is used to identify the assigned unique ID in an element that references the item in a collection.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="PricingRPH" type="RPH_Type" use="optional">
+									<xs:annotation>
+										<xs:documentation source="Description" xml:lang="en">Pricing Reference ID.</xs:documentation>
+										<xs:documentation source="Example" xml:lang="en">Example: 1</xs:documentation>
+										<xs:documentation source="Moreinfo" xml:lang="en">Note: This pricing reference ID was defined elsewhere in this message.</xs:documentation>
+										<xs:documentation source="Moreinfo" xml:lang="en">OpenTravel Best Practice: Using Reference Place Holders: The reference place holder (RPH) is a unique ID assigned to an instance in a collection of like items (e.g. used to assign a unique ID to each passenger in a list of passengers. When referencing an RPH, the same RPH type is used to identify the assigned unique ID in an element that references the item in a collection.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="TravelerRPH" type="RPH_Type" use="optional">
+									<xs:annotation>
+										<xs:documentation source="Description" xml:lang="en">Traveler Reference ID.</xs:documentation>
+										<xs:documentation source="Example" xml:lang="en">Example: 2</xs:documentation>
+										<xs:documentation source="Moreinfo" xml:lang="en">Note: This traveler reference ID was defined elsewhere in this message.</xs:documentation>
+										<xs:documentation source="Moreinfo" xml:lang="en">OpenTravel Best Practice: Using Reference Place Holders: The reference place holder (RPH) is a unique ID assigned to an instance in a collection of like items (e.g. used to assign a unique ID to each passenger in a list of passengers. When referencing an RPH, the same RPH type is used to identify the assigned unique ID in an element that references the item in a collection.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Company" type="CompanyNameType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Associated company information for the traveler.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="EMD" type="EMD_LiteType" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Optional services associated with electronic miscellaneous documents.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="FareInfo" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Checked bag(s) included fare reference information.</xs:documentation>
+						<xs:documentation source="Moreinfo" xml:lang="en">Note: Provides a reference for fares that include checked bags as some baggage allowances and charges are based on a fare code.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="FareDetail" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Detailed fares and related information for the specified fare.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="FareInfoType"/>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="TotalTravelerQty" type="xs:positiveInteger" use="required">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">Total passenger quantity.</xs:documentation>
+								<xs:documentation source="Example" xml:lang="en">Example: 2</xs:documentation>
+								<xs:documentation source="Moreinfo" xml:lang="en">Note: This is the total passenger quantity for the entire itinerary.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="TotalPrice" type="Money" use="required">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">The total price for the entire itinerary for all passengers of all types.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="CurrencyCode" type="AlphaLength3" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">Currency type.</xs:documentation>
+								<xs:documentation source="Example" xml:lang="en">Example: USD</xs:documentation>
+								<xs:documentation source="Moreinfo" xml:lang="en">Note: This does not need to be set if it is the same as the @PricingCurrency.</xs:documentation>
+								<xs:documentation source="Moreinfo" xml:lang="en">OpenTravel Best Practice: Currency Type Designation: Unless otherwise noted, all currency code designations are three alpha characters and WILL follow ISO 4217 prescribed format. Additionally, all currency amounts SHOULD have decimal places (minor units) specified.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="DecimalPlaces" type="xs:nonNegativeInteger" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">Currency decimal places.</xs:documentation>
+								<xs:documentation source="Examples" xml:lang="en">Example: 2</xs:documentation>
+								<xs:documentation source="Moreinfo" xml:lang="en">Note: This does not need to be set if it is the same as the @PricingCurrency.</xs:documentation>
+								<xs:documentation source="Moreinfo" xml:lang="en">OpenTravel Best Practice: Currency Type Designation: Unless otherwise noted, all currency code designations are three alpha characters and WILL follow ISO 4217 prescribed format. Additionally, all currency amounts SHOULD have decimal places (minor units) specified.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="FareInfoRPH" type="RPH_Type" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">Fare Reference ID.</xs:documentation>
+								<xs:documentation source="Example" xml:lang="en">Example: 1</xs:documentation>
+								<xs:documentation source="Moreinfo" xml:lang="en">Note: This is a unique reference ID for one set of fare information that is set here and may be referenced elsewhere in this message.</xs:documentation>
+								<xs:documentation source="Moreinfo" xml:lang="en">OpenTravel Best Practice: Using Reference Place Holders: The reference place holder (RPH) is a unique ID assigned to an instance in a collection of like items (e.g. used to assign a unique ID to each passenger in a list of passengers. When referencing an RPH, the same RPH type is used to identify the assigned unique ID in an element that references the item in a collection.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="TravelerRPH" type="RPH_Type" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">Traveler Reference ID.</xs:documentation>
+								<xs:documentation source="Example" xml:lang="en">Example: 2</xs:documentation>
+								<xs:documentation source="Moreinfo" xml:lang="en">Note: This traveler reference ID was defined elsewhere in this message.</xs:documentation>
+								<xs:documentation source="Moreinfo" xml:lang="en">OpenTravel Best Practice: Using Reference Place Holders: The reference place holder (RPH) is a unique ID assigned to an instance in a collection of like items (e.g. used to assign a unique ID to each passenger in a list of passengers. When referencing an RPH, the same RPH type is used to identify the assigned unique ID in an element that references the item in a collection.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="FlightSegment" type="BookFlightSegmentType" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Flight segment information.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="LoyaltyProgram" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Traveler loyalty program information.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="CheckedInInd" type="xs:boolean" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">If true, this traveler is already checked in.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attributeGroup ref="CustomerLoyaltyGroup"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Offer" type="AirOfferChoiceType" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Merchandising offers associated with the fare or traveler.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="PNR" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">PNR information for the traveler.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="UniqueID_Type">
+								<xs:attribute name="CheckedInInd" type="xs:boolean" use="optional">
+									<xs:annotation>
+										<xs:documentation source="Description" xml:lang="en">If true, this traveler is already checked in.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="AssociatedID" type="xs:string" use="optional">
+									<xs:annotation>
+										<xs:documentation source="Description" xml:lang="en">Associated ID.</xs:documentation>
+										<xs:documentation source="Example" xml:lang="en">Example: UAA512346</xs:documentation>
+										<xs:documentation source="Moreinfo" xml:lang="en">Note: This may contain an associated ID, such as a conjunctive ticket number.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PricingInfo" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Pricing information including ticket information, optional charges, restrictions, negotiated fares, private fares and original issuer.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="NegotiatedFare" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation source="Description" xml:lang="en">Information for negotiated fares and services.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="FareInfoType">
+											<xs:sequence>
+												<xs:element name="Supplier" type="CompanyNameType" minOccurs="0" maxOccurs="unbounded">
+													<xs:annotation>
+														<xs:documentation source="Description" xml:lang="en">Supplier/ carrier airline information.</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="TicketingInformation" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>The original ticket/document issue information.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attribute name="TicketDocumentNbr" type="StringLength1to16" use="optional">
+										<xs:annotation>
+											<xs:documentation source="Description" xml:lang="en">Ticket/ document number,</xs:documentation>
+											<xs:documentation source="Example" xml:lang="en">Example: BWA42317</xs:documentation>
+											<xs:documentation source="Moreinfo" xml:lang="en">Note: This is the original ticket/document number.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="IssuingAgentID" type="NumericStringLength1to8" use="optional">
+										<xs:annotation>
+											<xs:documentation source="Description" xml:lang="en">Issuing agent ID.</xs:documentation>
+											<xs:documentation source="Example" xml:lang="en">Example: 91256690</xs:documentation>
+											<xs:documentation source="Moreinfo" xml:lang="en">Note: This is the ID of the original issuer of the ticket/document.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="DateOfIssue" type="xs:date" use="optional">
+										<xs:annotation>
+											<xs:documentation source="Description" xml:lang="en">Date of issue.</xs:documentation>
+											<xs:documentation source="Example" xml:lang="en">Example: 2013-01-13</xs:documentation>
+											<xs:documentation source="Moreinfo" xml:lang="en">Note: This is the date the ticket/document was originally issued.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="LocationCode" type="StringLength1to8" use="optional">
+										<xs:annotation>
+											<xs:documentation source="Description" xml:lang="en">Original issue location.</xs:documentation>
+											<xs:documentation source="Example" xml:lang="en">Example: NYC14</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="IssuingAirlineCode" type="StringLength1to16" use="optional">
+										<xs:annotation>
+											<xs:documentation source="Description" xml:lang="en">Original issuing airline code.</xs:documentation>
+											<xs:documentation source="Example" xml:lang="en">Example: BWA</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="PrivateFare" type="PrivateFareType" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation source="Description" xml:lang="en">Information for private fares and services.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="DisplayToCode" type="xs:string">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">Carrier or Service Record Owner code.</xs:documentation>
+								<xs:documentation source="Example" xml:lang="en">Example: RES = all reservation centers</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="OptionalChargeCode" type="xs:string" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">Optional charge code.</xs:documentation>
+								<xs:documentation source="Example" xml:lang="en">Example: C = Catalog only, S = Service charge details</xs:documentation>
+								<xs:documentation source="Moreinfo" xml:lang="en">Note: This is a code that indicates if catalog of charges or services are requested along with allowance.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="PricingRPH" type="RPH_Type" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">Pricing Reference ID.</xs:documentation>
+								<xs:documentation source="Example" xml:lang="en">Example: 1</xs:documentation>
+								<xs:documentation source="Moreinfo" xml:lang="en">Note: This is a unique reference ID for one set of pricing information that is set here and may be referenced elsewhere in this message.</xs:documentation>
+								<xs:documentation source="Moreinfo" xml:lang="en">OpenTravel Best Practice: Using Reference Place Holders: The reference place holder (RPH) is a unique ID assigned to an instance in a collection of like items (e.g. used to assign a unique ID to each passenger in a list of passengers. When referencing an RPH, the same RPH type is used to identify the assigned unique ID in an element that references the item in a collection.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="SaleCountry" type="ISO3166" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">Country of sale code.</xs:documentation>
+								<xs:documentation source="Example" xml:lang="en">Example: us</xs:documentation>
+								<xs:documentation source="Moreinfo" xml:lang="en">Note: This is the country in which the booking will be made (sold).</xs:documentation>
+								<xs:documentation source="Moreinfo" xml:lang="en">OpenTravel Best Practice: Country Code Designation: Unless otherwise noted, all country code designations are two characters and WILL follow ISO 3166 prescribed format.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="TicketingCityCode" type="UpperCaseAlphaNumericLength3to5" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">City or airport of ticketing code.</xs:documentation>
+								<xs:documentation source="Example" xml:lang="en">Example: TYO</xs:documentation>
+								<xs:documentation source="Moreinfo" xml:lang="en">Note: This is the city or airport code where the ticket will be/ has been issued in IATA encoding.</xs:documentation>
+								<xs:documentation source="Moreinfo" xml:lang="en">OpenTravel Best Practice: Airport Code Designation: Unless otherwise noted, all airport code designations WILL be three characters and WILL follow IATA airport code prescribed format.</xs:documentation>
+								<xs:documentation source="Moreinfo" xml:lang="en">OpenTravel Best Practice: City Code Designation: Unless otherwise noted, all city code designations WILL be three characters and WILL follow IATA city code prescribed format.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="TicketingCountry" type="ISO3166" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">Country of ticketing code.</xs:documentation>
+								<xs:documentation source="Example" xml:lang="en">Example: US</xs:documentation>
+								<xs:documentation source="Moreinfo" xml:lang="en">Note: This is the country where the ticket will be issued.</xs:documentation>
+								<xs:documentation source="Moreinfo" xml:lang="en">OpenTravel Best Practice: Country Code Designation: Unless otherwise noted, all country code designations are two characters and WILL follow ISO 3166 prescribed format.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ServiceFamily" type="AncillaryServiceDetailType" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Service family information used to filter response results.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="TravelerType" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Traveler type and quantity information.</xs:documentation>
+						<xs:documentation source="Moreinfo" xml:lang="en">Note: This contains the number of travelers and their age classification if traveler details are not known.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attributeGroup ref="TravelerCountGroup">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">Traveler age and category.</xs:documentation>
+							</xs:annotation>
+						</xs:attributeGroup>
+						<xs:attribute name="TravelerRPH" type="RPH_Type" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">Traveler Type Reference ID.</xs:documentation>
+								<xs:documentation source="Example" xml:lang="en">Example: 1</xs:documentation>
+								<xs:documentation source="Moreinfo" xml:lang="en">Note: This is a unique reference ID for one traveler that is set here and may be referenced elsewhere in this message.</xs:documentation>
+								<xs:documentation source="Moreinfo" xml:lang="en">OpenTravel Best Practice: Using Reference Place Holders: The reference place holder (RPH) is a unique ID assigned to an instance in a collection of like items (e.g. used to assign a unique ID to each passenger in a list of passengers. When referencing an RPH, the same RPH type is used to identify the assigned unique ID in an element that references the item in a collection.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

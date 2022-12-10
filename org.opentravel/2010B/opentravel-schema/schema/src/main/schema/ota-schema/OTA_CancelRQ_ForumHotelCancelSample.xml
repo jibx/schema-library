@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Cancel a hotel reservation-->
+<OTA_CancelRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05
+OTA_CancelRQ.xsd" EchoToken="892345" TimeStamp="2010-10-18T14:28:47-05:00" Target="Production" Version="2.001" SequenceNmbr="1" CancelType="Initiate" TravelSector="3">
+	<!--TravelSector 3 = "Hotel". Refer to Refer to OpenTravel Codelist Travel Sector (TVS). -->
+	<!-- Cancel Type = Specifies the type of action requested when more than one function could be handled by the message. See message for enumerated list of choices. -->
+
+	<!-- This identifies the party making the request. Trading partners may define their own UniqueID. -->
+	<POS>
+		<Source>
+			<RequestorID ID="12345" Type="7">
+				<!-- The ID is your unique number with your trading partner. -->
+				<!-- RequestorID Type 7: Wholesaler (See OpenTravel Code List Unique ID Type.) -->
+			</RequestorID>
+		</Source>
+	</POS>
+
+	<!-- This allows a user to send more than one UniqueID where there is more than one UniqueID associated to a single reservation (e.g. confirmation number and PNR record locator). Note that you can send up to 5 of these in one message. -->
+	<UniqueID ID="99999999" Type="14">
+		<!-- ID is the confirmation (or unique) number you have for the previously booked hotel reservation. -->
+		<!-- Type 14 = "Reservation". (See OpenTravel Code List Unique ID Type.) -->
+		<CompanyName/>
+	</UniqueID>
+	
+	<!-- Verification that the record being canceled is the specific record requested. ALL OF THESE SUB-ELEMENTS ARE OPTIONAL and are intended to provide a more secure mechanism to ensure the correct record is being canceled. -->
+	<Verification>
+		<!-- The name associated with the hotel reservation. -->
+		<PersonName>
+			<GivenName>John</GivenName>
+			<Surname>Doe</Surname>
+		</PersonName>
+		
+		<!-- The email address associated with the hotel reservation. -->
+		<Email>John.Doe@Somewhere.com</Email>
+		
+		<!-- The telephone number associated with the hotel reservation. -->
+		<TelephoneInfo PhoneNumber="999-999-9999"/>
+		
+		<!-- The credit card associated with the hotel reservation. -->
+	</Verification>
+
+	<TPA_Extensions/>
+</OTA_CancelRQ>

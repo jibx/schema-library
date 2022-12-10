@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+targetNamespace="http://www.opentravel.org/OTA/2003/05" 
+elementFormDefault="qualified" 
+version="2.000" 
+id="OTA2013B">
+
+<xs:annotation>
+	<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+</xs:annotation>
+	<xs:include schemaLocation="OTA_VehicleCommonTypes.xsd"/>
+	<xs:include schemaLocation="OTA_CommonTypes.xsd"/>
+
+	<xs:element name="OTA_VehResStatusNotifRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Used to inform a trading partner of a confirmation or an update of an existing reservation.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" type="POS_Type">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Point of Sale Identification. Identification number of the vendor that has made the vehicle reservation notification and agency number assigned by IATA, ARC, ESRP or TID.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="VehResStatusNotifRQCore">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Identifies the common, or core, information associated with the request providing information on the reservation of a rental vehicle.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="VehicleResRSCoreType">
+								<xs:attribute name="ReservationStatus" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Used to specify the status of the reservation with either one of the enumerations in TransactionStatusType or an UpperCaseAlphaLength1to2 code such as an IATA status code.</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:union memberTypes="TransactionStatusType UpperCaseAlphaLength1to2"/>
+									</xs:simpleType>
+								</xs:attribute>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="VehResStatusNotifRQInfo" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Identifies the supplemental information associated with the request providing information on the reservation of a rental vehicle.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="VehicleResRSAdditionalInfoType">
+								<xs:attribute name="ResStatus" type="TransactionActionType" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Used to specify action which should be taken on the customer's entire reservation.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

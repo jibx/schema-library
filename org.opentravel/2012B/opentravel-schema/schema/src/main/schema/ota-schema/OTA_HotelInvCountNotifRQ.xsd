@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="3.000" id="OTA2012B">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:annotation>
+    <xs:documentation source="Notice" xml:lang="en">The OTA_CodeType simpleType will be deprecated in the 2013A OpenTravel XML Message Suite publication. All OTA_CodeType typed attributes with be replaced with elements typed as an open list, e.g. List_NameOfList.</xs:documentation>
+  </xs:annotation>
+  <xs:include schemaLocation="OTA_HotelCommonTypes.xsd"/>
+  <xs:element name="OTA_HotelInvCountNotifRQ">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">This message sends a notification to reservation systems that synchronizes the inventory available for sale at the hotel.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="POS" type="POS_Type" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">POS provides a mechanisim to indicate the source of the message.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="UniqueID" type="UniqueID_Type" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">The unique identifier element allows the trading partners to  uniquely identify each InvCountNotifRQ, (i.e.  the entire message) for transaction tracability.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Inventories" type="InvCountType">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">A collection of Inventory. Hotel identification information are the attributes of this element.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="TPA_Extensions" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="OTA_PayloadStdAttributes">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">This element defines standard attributes that appear on the root element for all OpenTravel Messages.</xs:documentation>
+        </xs:annotation>
+      </xs:attributeGroup>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.opentravel.org/OTA/2003/05" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="1.000" id="OTA2011A">
+  <xs:include schemaLocation="OTA_VehicleCommonTypes.xsd"/>
+  <xs:include schemaLocation="OTA_CommonTypes.xsd"/>
+  <xs:annotation>
+    <xs:documentation xml:lang="en">All Schema files in the OpenTravel Alliance specification are made available according to the terms defined by the OpenTravel License Agreement at http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+  </xs:annotation>
+  <xs:element name="OTA_VehResStatusNotifRS">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Acknowledges that the status notif request has been received and provides information as to its processing result.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice>
+        <xs:sequence>
+          <xs:element name="Success" type="SuccessType">
+            <xs:annotation>
+              <xs:documentation>Returning an empty element of this type indicates the successful processing of an OpenTravel message. This is used in conjunction with Warnings to report any warnings or business errors.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Warnings" type="WarningsType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Used when a message has been successfully processed to report any warnings or business errors that occurred.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="VehResStatusNotifRSCore" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Identifies the common, or core, information associated with the response providing information on the reservation of a rental vehicle. </xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension base="VehicleResRSCoreType">
+                  <xs:attribute name="ReservationStatus" use="optional">
+                    <xs:annotation>
+                      <xs:documentation xml:lang="en">Used to specify the status of the reservation with either one of the enumerations in TransactionStatusType or an UpperCaseAlphaLength1to2 code such as an IATA status code.</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:union memberTypes="TransactionStatusType UpperCaseAlphaLength1to2"/>
+                    </xs:simpleType>
+                  </xs:attribute>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="VehResStatusNotifRSInfo" type="VehicleResRSAdditionalInfoType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Identifies the supplemental information associated with the response poviding information on the reservation of a rental vehicle.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+        <xs:element name="Errors" type="ErrorsType">
+          <xs:annotation>
+            <xs:documentation>Indicates an error occurred during the processing of an OpenTravel message. If the message successfully processes, but there are business errors, those errors should be passed in the warning element.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:choice>
+      <xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

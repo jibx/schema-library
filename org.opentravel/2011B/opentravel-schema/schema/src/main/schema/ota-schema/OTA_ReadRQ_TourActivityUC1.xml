@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: #1: Tour Availability -->
+<!-- USE CASE DETAILS: 
+
+Jane Smith is taking a business trip to the state of Arizona (in the United States) and she wants to take a bicycle tour of the Grand Canyon National Park while she is there. She is not flexible on the dates and times that she can take the tour as she has already booked her flight and lodging. She has no special requirements and does not want to spend more than $100 for this tour. She will not be bringing her bicycle so she needs a tour that provides bicycles as extra amenities. 
+-->
+
+<OTA_ReadRQ xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_ReadRQ.xsd" 
+EchoToken="12345" 
+TimeStamp="2011-05-01T09:44:52" 
+Target="Production" 
+Version="4.000" 
+PrimaryLangID="en-us">
+
+	<!-- Point of sale information for the sender of the request, in this case the tour suppliers branded website. -->
+	<POS>
+		<Source>
+			<RequestorID Type="11" ID="ABCToursWebsite"/>
+			<!-- Type 11 = "Tour Operator". See OpenTravel Code List Unique ID Type (UIT). -->
+		</Source>
+	</POS>
+
+		<UniqueID ID="1234567" Type="14">
+				<!-- Type 14 = "Reservation". See OpenTravel Code Table Unique ID Type. -->
+			<CompanyName CompanyShortName="ABC Bike Tours"/>
+		</UniqueID>
+	
+	</OTA_ReadRQ>

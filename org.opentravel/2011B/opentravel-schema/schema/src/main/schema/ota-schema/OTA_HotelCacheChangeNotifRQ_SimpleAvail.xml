@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: Cache push for Simple Availability Change -->
+<!-- USE CASE DETAILS: 
+
+Hotel level close
+	1. March 29, 2011
+
+Room Availability / Restriction Changes
+
+	1.	April 1, 2011 – April 4, 2011: KB close
+	2.	April 7, 2011 – April 17, 2011: KB close to arrival
+	3. May 15, 2011 - May 23, 2011: KB LOS = 3
+
+Rate Availability / Restriction Changes
+
+	1.	June 1, 2011 – June 4, 2011: RACK close
+	2.	June 7, 2011 – June 17, 2011: RACK close to arrival
+	3. July 15, 2011 - July 23, 2011: RACK LOS = 3
+
+Product Avail / Restriction Change
+
+	1. August 17-20 RACK/KB close
+	2. August 25-28 RACK/KB close to arival
+	3. September 1-5 RACK / KB  FPLOS=0011001
+
+-->
+<OTA_HotelCacheChangeNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelCacheChangeNotifRQ.xsd" 
+EchoToken="12345" 
+TimeStamp="2011-03-29T08:30:47" 
+Target="Production" 
+Version="1.000" 
+PrimaryLangID="en-us">
+
+	<!-- Point of sale information for the sender of the cache notification -->
+	<POS>
+		<Source>
+			<RequestorID Type="10" ID="Marriott International"/>
+			<!-- Type10 = Hotel. See OpenTravel Code List Unique ID Type (UIT). -->
+		</Source>
+	</POS>
+	
+	<!-- Hotel Type Level Change -->
+	<CacheChangeInfo ChainCode="5158" HotelCode="10107">
+		<TimeSpan End="2011-03-29" Start="2011-03-29"/>
+	</CacheChangeInfo>
+	<!-- Room Type Level Change -->
+	<CacheChangeInfo ChainCode="5158" HotelCode="10107">
+		<TimeSpan End="2011-04-04" Start="2011-04-04"/>
+		<ProductInfo RoomTypeCode="KB"/>
+	</CacheChangeInfo>
+	<CacheChangeInfo ChainCode="5158" HotelCode="10107">
+		<TimeSpan End="2011-04-07" Start="2011-04-17"/>
+		<ProductInfo RoomTypeCode="KB"/>
+	</CacheChangeInfo>
+	<CacheChangeInfo ChainCode="5158" HotelCode="10107">
+		<TimeSpan End="2011-05-15" Start="2011-05-23"/>
+		<ProductInfo RoomTypeCode="KB"/>
+	</CacheChangeInfo>
+	<!-- Rate Type Level Change -->
+	<CacheChangeInfo ChainCode="5158" HotelCode="10107">
+		<TimeSpan End="2011-06-04" Start="2011-06-04"/>
+		<ProductInfo RatePlanCode="RACK"/>
+	</CacheChangeInfo>
+	<CacheChangeInfo ChainCode="5158" HotelCode="10107">
+		<TimeSpan End="2011-06-07" Start="2011-06-17"/>
+		<ProductInfo RatePlanCode="RACK"/>
+	</CacheChangeInfo>
+	<CacheChangeInfo ChainCode="5158" HotelCode="10107">
+		<TimeSpan End="2011-07-15" Start="2011-07-23"/>
+		<ProductInfo RatePlanCode="RACK"/>
+	</CacheChangeInfo>
+	<!-- Product Level Change -->
+	<CacheChangeInfo ChainCode="5158" HotelCode="10107">
+		<TimeSpan End="2011-08-17" Start="2011-08-20"/>
+		<ProductInfo RatePlanCode="RACK" RoomTypeCode="KB"/>
+	</CacheChangeInfo>
+	<CacheChangeInfo ChainCode="5158" HotelCode="10107">
+		<TimeSpan End="2011-08-25" Start="2011-08-28"/>
+		<ProductInfo RatePlanCode="RACK" RoomTypeCode="KB"/>
+	</CacheChangeInfo>
+	<CacheChangeInfo ChainCode="5158" HotelCode="10107">
+		<TimeSpan End="2011-09-01" Start="2011-09-03"/>
+		<ProductInfo RatePlanCode="RACK" RoomTypeCode="KB"/>
+	</CacheChangeInfo>
+</OTA_HotelCacheChangeNotifRQ>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: #1: Airport Transfer -->
+<!-- USE CASE DETAILS: 
+
+1.	Jane Smith needs ground transportation to an airport and goes to the Academy Limousine site because they have sent her a 10% off coupon for an airport transfer.
+2.	From the Academy Limousine website, Jane does an availability request for June 15 at 9:00 AM. (OTA_GroundAvailRQ_AirportTransfer.xml)
+3.	Jane receives two ground transportation availability responses, one for an Executive Sedan and one for a Luxury Sedan. She reviews the pricing, fees, deposit and cancellation information for each service. (OTA_GroundAvailRS_AirportTransfer.xml)
+4.	Jane selects the Executive Sedan and books the ground transportation service. (OTA_GroundBookRQ_AirportTransfer.xml)
+5.	She receives a booking response that includes the details of her ground transportation reservation. (THIS INSTANCE)
+6.	A week after making the ground transportation reservation, Jane has had to change her flight to be two hours later (11:00 AM). She phones Academy Limousine to change her reservation, but does not know her reservation number.
+7.	The Academy Limousine representative searches for Jane’s reservation by entering her last name and date of service (OTA_GroundResRetrieveRQ_AirportTransferQuery.xml). She receives 2 responses and identifies Jane’s reservation (OTA_GroundResRetrieveRS_AirportTransferQuery.xml)
+8. The Academy Limousine representative then issues a reservation retrieve request using the confirmation number returned in step 7 above and receives a detailed reservation response (OTA_GroundResRetrieveRQ_AirportTransferDetail.xml/ OTA_GroundResRetrieveRS_AirportTransferDetail.xml)
+-->
+
+<OTA_GroundBookRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_GroundBookRS.xsd" EchoToken="12345" TimeStamp="2011-05-01T09:55:28" Target="Production" Version="1.000" PrimaryLangID="en-us">
+
+	<!-- An element that is not intended to contain any data. The mere presence of a success element within the response message indicates that the incoming request message was processed successfully. -->
+	<Success/>
+	
+    <!-- Details for the booked ground service reservation. -->	
+	<Reservation>
+		<Confirmation ID="JSMITH9_15" Type="14">
+			<!-- Type 14 = "Reservation". See OpenTravel Code List Unique ID Type (UIT). -->
+		</Confirmation>
+
+		<!-- Information about a primary passenger (who is the contact for this reservation) and additional passengers. -->
+		<Passengers>
+			<Primary DefaultInd="true">
+				<PersonName>
+					<NamePrefix>Ms.</NamePrefix>
+					<GivenName>Jane</GivenName>
+					<Surname>Smith</Surname>
+				</PersonName>
+				<Telephone PhoneNumber="8139990011"/>
+				<Address>
+					<AddressLine>100 Main Street</AddressLine>
+					<CityName>Tampa</CityName>
+					<PostalCode>33626</PostalCode>
+					<StateProv StateCode="FL"/>
+				</Address>
+				<Email>Jane.Smith@SomeCompany.com</Email>
+			</Primary>
+		</Passengers>
+
+		<!-- Pickup, interim stops and drop-off details. Note in this use case it is a passenger pick-up from home with no stops. -->
+		<Locations>
+
+		<!-- Customer pickup address. -->
+			<Pickup DateTime="2011-06-15T09:00:00">
+				<Address>
+					<AddressLine>100 Main Street</AddressLine>
+					<CityName>Tampa</CityName>
+					<PostalCode>33626</PostalCode>
+					<StateProv StateCode="FL"/>
+					<SpecialInstructions>Please call customer on cell phone at 813-999-0011 when you arrive.</SpecialInstructions>
+				</Address>
+			</Pickup>
+	
+			<!-- Airport drop off details. -->
+			<Dropoff>
+				<AirportInfo>
+					<Arrival></Arrival>
+					<Departure LocationCode="TMP" Terminal="Concourse A"/>
+				</AirportInfo>
+				<Airline FlightNumber="413" Code="AA"/>
+			</Dropoff>
+			
+		</Locations>
+
+		<!-- Service details. -->
+		<ServiceType  DisabilityVehicleInd="false"  MaximumBaggage="4" MaximumPassengers="3" MeetAndGreetInd="true" VehicleType="1" ServiceType="AirportTransfer" ShortDescription="Our Executive Sedans are newer model Lincoln Continentals and fully air conditioned. Up to three passengers and 4 suitcases are accommodated." Notes="Driver will greet you in baggage claim area." ServiceLevel="3" VehicleSize="8"/>
+			<!-- Vehicle Type 1 = "Car/Sedan". See OpenTravel Code List Vehicle Category (VEC). -->
+			<!-- Service Level 3 = "Executive". See OpenTravel Code List Level of Service (LOS). -->
+			<!-- Vehicle Size 8 = "Full Size". See OpenTravel Code List Size (SIZ). -->
+		
+		<!-- Vehicle details - make and model -->
+		<VehicleMakeModel Name="Lincoln Continental" ModelYear="2010"/>
+		
+		<!-- Customer has "10% Off Airport Trip" promotion code. -->
+		<RateQualifier PromotionCode="10AIRPORT"/>
+
+		<!-- Base service charges for this ground transportation service. Note charges include 10% discount. -->
+		<ServiceCharges>
+			<ServiceCharge Purpose="35" Amount="67.50" CurrencyCode="USD" DecimalPlaces="2" Description="$75 base charge minus 10% discount">
+				<!-- Type 35 = "Base Rate". See OpenTravel Code List Vehicle Charge Purpose Type (VCP). -->
+
+				<TaxAmounts>
+					<TaxAmount Total="2.00" CurrencyCode="USD" Description="State ground transportation tax" Percentage="3"/>
+				</TaxAmounts>
+				
+			</ServiceCharge>
+		</ServiceCharges>
+
+		<!-- Fees including a 15% driver gratuity. -->
+		<Fees>
+			<Fee Purpose="37" Description="Minimum driver gratuity 15%" CurrencyCode="USD" DecimalPlaces="2" Amount="11.00">
+				<!-- Purpose 35 = "Gratuity". See OpenTravel Code List Vehicle Charge Purpose Type (VCP). -->
+			</Fee>
+
+			<!--Notice that tolls are extra. -->
+			<Fee Purpose="38" Description="All toll charges will be added to base service charge.">
+				<!-- Purpose 38 = "Tolls". See OpenTravel Code List Vehicle Charge Purpose Type (VCP). -->
+			</Fee>
+
+			<!--Notice that waiting time is $50 an hour. -->
+			<Fee Purpose="41" Description="Wait time is charged at $50 per hour on 1/2 hour increments.">
+				<!-- Purpose 41 = "Wait Time". See OpenTravel Code List Vehicle Charge Purpose Type (VCP). -->
+			</Fee>
+		</Fees>
+
+		<!-- The estimated total charge for the service. NOTE: This element typically contains the total of both ServiceCharges and Fees. -->
+		<TotalCharge CurrencyCode="USD" DecimalPlaces="2" EstimatedTotalAmount="80.50"/>
+			
+		<!-- Restrictions that apply to this vehicle/ ground transportation service. Note that these two restrictions are further defined below in the PaymentRules element. -->
+		<Restrictions CancellationPenaltyInd="true" GuaranteeReqInd="true"/>
+		
+		<!-- Customer payment information. NOTE: It is a best practice to only return a masked credit card number in the response message. -->
+		<PaymentInfo>
+		<!-- 50% of estimated service fees specified in Availability Response payment rules -->
+			<Payment GuaranteeIndicator="true" GuaranteeTypeCode="8">
+				<!-- Type 8 = "Deposit". See OpenTravel Code Payment Type (PMT). -->
+				<PaymentCard CardCode="MC" MaskedCardNumber="xxxxxxxxxxxx4444">
+					<CardHolderName>Jane M. Smith</CardHolderName>
+					<Address>
+						<AddressLine>100 Main Street</AddressLine>
+						<CityName>Tampa</CityName>
+						<PostalCode>33626</PostalCode>
+						<StateProv StateCode="FL"/>
+					</Address>
+					<Telephone PhoneNumber="8139990011"/>
+					<Email>Jane.Smith@SomeCompany.com</Email>
+				</PaymentCard>
+			</Payment>
+			
+			<!-- 50% of estimated service fee required guarantee specified in Availability Response payment rules -->
+			<Payment GuaranteeIndicator="true" GuaranteeTypeCode="31">
+				<!-- Type 31 = "Guarantee". See OpenTravel Code Payment Type (PMT). -->
+				<PaymentCard CardCode="MC" MaskedCardNumber="xxxxxxxxxxxx4444">
+					<CardHolderName>Jane M. Smith</CardHolderName>
+					<Address>
+						<AddressLine>100 Main Street</AddressLine>
+						<CityName>Tampa</CityName>
+						<PostalCode>33626</PostalCode>
+						<StateProv StateCode="FL"/>
+					</Address>
+					<Telephone PhoneNumber="8139990011"/>
+					<Email>Jane.Smith@SomeCompany.com</Email>
+				</PaymentCard>
+			</Payment>
+
+		</PaymentInfo>
+		<!-- Payment rules for restrictions listed above (cancellation and guarantee) as well as deposit requirements. -->
+		<PaymentRules>
+			<!-- Cancellation rule: Jane must cancel 24 hours in advance of pickup date/time to avoid a $50 cancellation fee. -->
+			<PaymentRule RuleType="1" AbsoluteDeadline="2011-06-14T09:00:00" Amount="50.00" CurrencyCode="USD" DecimalPlaces="2"/>
+				<!-- Type 1 = "Cancel". See OpenTravel Code List Rule Type (RUL). -->
+
+			<!-- Deposit rule: a $55 deposit will be cahrged at time of booking. -->
+			<PaymentRule RuleType="3" Amount="55.00" CurrencyCode="USD" DecimalPlaces="2"/>
+				<!-- Type 3 = "Deposit". See OpenTravel Code List Rule Type (RUL). -->
+			
+			<!-- Guarantee rule: A credit card hold for an additional 50% of the ground transportation charges will be placed at time of booking. -->
+			<PaymentRule RuleType="4" Percent="50" CurrencyCode="USD" DecimalPlaces="2"/>
+				<!-- Type 4 = "Guarantee". See OpenTravel Code List Rule Type (RUL). -->									
+		</PaymentRules>
+			
+		<Comments>Call customer at 813-999-9999 upon arrival at pick-up location.</Comments>
+		
+	</Reservation>
+</OTA_GroundBookRS>

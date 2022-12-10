@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="1.000" id="OTA2013A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_GolfCommonTypes.xsd"/>
+	<xs:include schemaLocation="OTA_Lists.xsd"/>
+	<xs:element name="OTA_GolfRateRQ">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">This message provides the ability to request rate plan details for golf facility(s) and tee time(s) by specific criteria that may include dates, date ranges, and rate qualifiers.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" type="POS_Type" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Point of sale information.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ProcessingInfo" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Transaction processing information, including display currency overrides. If no display or pricing currency information is provided, the display currency will default to the value in POS/Source/@ISOCurrency.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="DisplayCurrency" type="ISO4217" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Use" xml:lang="en">The requested display currency in ISO 4217 encoding.</xs:documentation>
+								<xs:documentation source="Reference" xml:lang="en">(Reference): http://www.opentraveldevelopersnetwork.com/Supported_ISO_Standards.php</xs:documentation>
+								<xs:documentation source="More Info" xml:lang="en">(More Info): http://www.opentraveldevelopersnetwork.com/2012A_SchemaDoc/DisplayCurrency</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="ResultsType" use="required">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">The type of results to return.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="Promotions Only"/>
+									<xs:enumeration value="Rates Only"/>
+									<xs:enumeration value="Rates with Promotions"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="RatePlanCriteria" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Provides the criteria to identify the rate(s) to be returned.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CourseName" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation source="Description" xml:lang="en">The name of a golf course.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:string">
+											<xs:attribute name="ID">
+												<xs:annotation>
+													<xs:documentation source="Description" xml:lang="en">An ID for a golf course.</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+											<xs:attribute name="Code">
+												<xs:annotation>
+													<xs:documentation source="Description" xml:lang="en">A code for a golf course.</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+											<xs:attribute name="ShortName">
+												<xs:annotation>
+													<xs:documentation source="Description" xml:lang="en">The short name of the golf course.</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="DateRange">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">A date or range of dates, including days of the week, used to filter rate results.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attributeGroup ref="DateTimeSpanGroup">
+										<xs:annotation>
+											<xs:documentation source="Description" xml:lang="en">A start date/time used in combination with a duration or an end date/time.</xs:documentation>
+										</xs:annotation>
+									</xs:attributeGroup>
+									<xs:attributeGroup ref="DOW_PatternGroup">
+										<xs:annotation>
+											<xs:documentation source="Description" xml:lang="en">Days of the week that the rate applies to.</xs:documentation>
+										</xs:annotation>
+									</xs:attributeGroup>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="AppliedDiscount" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation source="Description" xml:lang="en">Applied discounts that may include promotions and corporate ID's for negotiated rates.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attribute name="CorpDiscountNmbr" type="StringLength1to32" use="optional">
+										<xs:annotation>
+											<xs:documentation source="Description" xml:lang="en">A vendor specific code used to identify a special rate associated with a specific organization.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="PromotionID" type="StringLength1to32" use="optional">
+										<xs:annotation>
+											<xs:documentation source="Description" xml:lang="en">A promotion ID identifier assigned by the supplier.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="PromotionCode" type="StringLength1to32" use="optional">
+										<xs:annotation>
+											<xs:documentation source="Description" xml:lang="en">A promotion code identifier assigned by the supplier.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="GolferType" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Summary golfer type qualifying information.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="AgeQualifier" type="List_AgeCategory" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Age qualifiers.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Category" type="List_GolferType" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Golfer type.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="Quantity" type="xs:positiveInteger" use="optional">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">The quantity of this type of golfer.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RateQualifier" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation source="Description" xml:lang="en">Additional rate qualifiers to filter the rate results.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="RatePlanType" type="List_RatePlanType" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation source="Description" xml:lang="en">An extensible list of rate types.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="RateCategory" type="List_RateCategory" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation source="Description" xml:lang="en">An extensible list of rate categories.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="RateID" type="StringLength1to64" use="optional">
+										<xs:annotation>
+											<xs:documentation source="Description" xml:lang="en">Used to indicate a special ID code that is associated with a rate and is essential in the reservation request in order to obtain the rate. Examples are Corporate ID.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="RateCode" type="xs:string" use="optional">
+										<xs:annotation>
+											<xs:documentation source="Description" xml:lang="en">A string value may be used to request a particular code or an ID if the golfer qualifies for a specific rate, such as AARP, AAA or a corporate or negotiated rate.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+							<xs:element ref="TPA_Extensions" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

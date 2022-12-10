@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:altova="http://www.altova.com/xml-schema-extensions" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="1.000" id="OTA2014B">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_HotelCommonTypes.xsd"/>
+	<xs:element name="OTA_HotelProductRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Requests product information for one or more hotel properties by specific criteria.  </xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" type="POS_Type" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Point of sale object. </xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="HotelProducts">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">A collection of hotel products.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="HotelProduct" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">This may be used for requseting products at multiple hotels or multiple products at a single hotel.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="RoomTypes" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">A collection of room types.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="RoomType" minOccurs="0" maxOccurs="unbounded">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">An individual room type.</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="RoomTypeCode" type="StringLength1to16" use="optional">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">Specific system room type code, ex: A1K, A1Q etc.   This may be the sending system's room type code or the receiving system's room type code depending on the trading partner agreement. </xs:documentation>
+																</xs:annotation>
+															</xs:attribute>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="SendAllInd" type="xs:boolean" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">When true, send all room types.  When false, only send the room type(s) requested.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="ContentLevel" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">Specifies the amount of content that should be returned in the response, such as the full details or just the unique reference.</xs:documentation>
+													</xs:annotation>
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:enumeration value="FullDetails">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">The response should include all available information for each room type.</xs:documentation>
+																</xs:annotation>
+															</xs:enumeration>
+															<xs:enumeration value="ReferenceOnly">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">The response should just include the unique reference for each requested room type ( i.e. the room type code). </xs:documentation>
+																</xs:annotation>
+															</xs:enumeration>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="RatePlans" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">A collection of rate plans.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="RatePlan" minOccurs="0" maxOccurs="unbounded">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">An individual rate plan.</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attribute name="RatePlanCode" type="StringLength1to64" use="optional">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">A code that identifies the rate plan.  This may be the sending system's rate plan code or the receiving system's rate plan code depending on the trading partner agreement. </xs:documentation>
+																</xs:annotation>
+															</xs:attribute>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="SendAllInd" type="xs:boolean" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">When true, send all rate plans.  When false, only send the rate plan(s) requested.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="ContentLevel" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">Specifies the amount of content that should be returned in the response, such as the full details or just the unique reference.</xs:documentation>
+													</xs:annotation>
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:enumeration value="FullDetails">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">The response should include all available information for each rate plan.</xs:documentation>
+																</xs:annotation>
+															</xs:enumeration>
+															<xs:enumeration value="ReferenceOnly">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">The response should just include the unique reference for each requested rate plan ( i.e. the rate plan code).</xs:documentation>
+																</xs:annotation>
+															</xs:enumeration>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="ValueAddInclusions" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Value add inclustions for the product.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:attribute name="SendAllInd" type="xs:boolean" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">When true, send value add inclusions.  When false, do not send value add inclusions.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="PolicyInfo" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Policy information for the product or if no product is identified, policy information for the hotel.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:attribute name="SendCancelPolicy" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">Specifies the cancel policy information to be returned.</xs:documentation>
+													</xs:annotation>
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:enumeration value="FullDetails">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">The response should include all available information for each cancel policy.</xs:documentation>
+																</xs:annotation>
+															</xs:enumeration>
+															<xs:enumeration value="ReferenceOnly">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">The response should just include the unique reference for each cancel policy ( i.e. the cancel policy code). </xs:documentation>
+																</xs:annotation>
+															</xs:enumeration>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:attribute>
+												<xs:attribute name="SendGuaranteePayment" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">When true, send guarantee payment information.  When false, do not send policy information.</xs:documentation>
+													</xs:annotation>
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:enumeration value="FullDetails">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">The response should include all available information for each guarantee/payment policy.</xs:documentation>
+																</xs:annotation>
+															</xs:enumeration>
+															<xs:enumeration value="ReferenceOnly">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">The response should just include the unique reference for each guarantee/payment policy (i.e. the guarantee policy code). </xs:documentation>
+																</xs:annotation>
+															</xs:enumeration>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:attribute>
+												<xs:attribute name="SendBookingRulesInd" type="xs:boolean" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">When true, send booking rules information.  When false, do not send policy information.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Contacts" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Contact information for the product.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:attribute name="SendAllInd" type="xs:boolean" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">When true, send contact information.  When false, do not send contact information.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Taxes" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Taxes that apply to the product.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:attribute name="SendAllInd" type="xs:boolean" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">When true, send tax information.  When false, do not send tax information.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Fees" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Fees that apply to the product.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:attribute name="SendAllInd" type="xs:boolean" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">When true, send fee information.  When false, do not send fee information.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Descriptions" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">A Container for the repeating description element.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:attribute name="SendAllInd" type="xs:boolean" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">When true, send description information.  When false, do not send description information.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="AdditionalGuestAmounts" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">A collection of charges related to additional guests.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:attribute name="SendAllInd" type="xs:boolean" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">When true, send additional guest amount information.  When false, do not send additional guest amount information.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="ProductStatusType" use="optional">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">Identifies the status of the product ( i.e. Active, Deactivate).</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="Initial"/>
+												<xs:enumeration value="Active"/>
+												<xs:enumeration value="Deactiviated"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attributeGroup ref="HotelReferenceGroup"/>
+									<xs:attributeGroup ref="DateTimeSpanGroup"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attributeGroup ref="HotelReferenceGroup"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

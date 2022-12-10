@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="2.000" id="OTA2014B">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_CommonTypes.xsd"/>
+	<xs:include schemaLocation="OTA_HotelCommonTypes.xsd"/>
+	<xs:element name="OTA_HotelCacheChangeRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">This message provides request functionality for querying a trading partners system for hotel inventory items that have availability and/or rate changes and therefore should be updated in a trading partner's cache. The information in the response message will indicate if an OTA_HotelAvailRQ is required to refresh the trading partner's data cache.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" type="POS_Type" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Point of sale information about the message initiator.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="CacheSearchCriteria">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">A container element for one or more cache search criteria definitions.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CacheSearchCriterion" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">The search criteria for the cache refresh, which may include any combination of hotel IDs, brand codes, chain codes, rate information, room information, inventory block IDs and geographical area information.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="GeographicalInfo" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Geographical and position-based cache search criteria.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Position" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">The Position element contains three attributes, Latitude, Longitude, and Altitude, used to indicate the geographic location(s) requested by the search, expressed in notation specified by ISO standard 6709. It is likely that only the first two attributes, Latitude and Longitude, would be needed to define a geographic area.</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attributeGroup ref="PositionGroup"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="Address" type="AddressType" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">Uses any part of address information, such as street name, postal code, or country code.</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="Radius" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">Used to specify the extent of a search area. The extent is relative to an element (position or address) present in this message that specifies a location.</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:attributeGroup ref="DistanceAttributesGroup"/>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="ChainCode" type="StringLength1to8" use="optional">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">The code that identifies a hotel chain or management group. The hotel chain code is decided between vendors.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="BrandCode" type="StringLength1to8" use="optional">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">A code that identifies the brand or flag of a hotel, often used for independently-owned or franchised properties who are known by a specific brand.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="HotelCode" type="StringLength1to16" use="optional">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">The code that uniquely identifies a single hotel property. The hotel code is decided between vendors.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="RoomTypeCode" type="StringLength1to16" use="optional">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">Specific system room type code, ex: A1K, A1Q etc.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="InvBlockCode" type="StringLength1to64" use="optional">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">A code or identification number that identifies the room  stay as part of a group, package tour, or block of rooms designated in the inventory.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attributeGroup ref="RatePlanGroup"/>
+									<xs:attribute name="CacheStartDateTime" type="xs:dateTime" use="optional">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">The starting date/time for the cache results to be returned.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="CacheEndDateTime">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">The ending date/time for the cache results to be returned. This is used in conjunction with the cacheStartDate to constrain the date range of the results.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="MoreEchoDataToken">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">The availability response returns the attribute if there were additional rates that could not fit within the availability response. The text value should be echoed in this availability request to indicate where to begin the next block of availability data.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="ResponseType" type="StringLength1to16" use="optional">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Defines whether the response is a property list or an area list.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="AvailabilityInd" type="xs:boolean" use="required">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">When true, return changes in Availability data for the designated cache search criteria.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="RatesInd" type="xs:boolean" use="required">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">When true, return changes in Rates data for the designated cache search criteria.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="CacheFromTimestamp" type="xs:dateTime" use="required">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">The time stamp of the last time a cache refresh was requested.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+			<xs:attributeGroup ref="MaxResponsesGroup"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

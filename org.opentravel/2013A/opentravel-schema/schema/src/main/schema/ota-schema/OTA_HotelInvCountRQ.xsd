@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="3.000" id="OTA2013A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+  <xs:include schemaLocation="OTA_HotelCommonTypes.xsd"/>
+  <xs:element name="OTA_HotelInvCountRQ">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">This message provides the ability to request inventory count details for hotel properties by specific criteria that may include dates, date ranges, rooms and products.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="POS" type="POS_Type" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">Point of sale object.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="HotelInvCountRequests">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">Collection of Inventory Count requests criteria.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="HotelInvCountRequest" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:documentation xml:lang="en">Provides the criteria to identify the date range and room type inventory to be returned.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="DateRange" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation xml:lang="en">A date or range of dates for the rate plan.</xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:attributeGroup ref="DateTimeSpanGroup"/>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="RoomTypeCandidates" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation xml:lang="en">Collection of room stay candidates.</xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="RoomTypeCandidate" maxOccurs="unbounded">
+                            <xs:annotation>
+                              <xs:documentation xml:lang="en">Element used to identify available room products.</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                              <xs:complexContent>
+                                <xs:extension base="RoomStayCandidateType"/>
+                              </xs:complexContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="HotelRef" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation xml:lang="en">Indicates the detail of hotel reference information.</xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:attributeGroup ref="HotelReferenceGroup"/>
+                        <xs:attribute name="SegmentCategoryCode" type="OTA_CodeType" use="optional">
+                          <xs:annotation>
+                            <xs:documentation xml:lang="en">Used to search for hotels within a particular market segment.  Refer to OpenTravel Code Segment Category Code Type (SEG).</xs:documentation>
+                          </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="PropertyClassCode" type="OTA_CodeType" use="optional">
+                          <xs:annotation>
+                            <xs:documentation xml:lang="en">Refer to OpenTravel Code list OpenTravel Code List Property Class Type (PCT).</xs:documentation>
+                          </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="ArchitecturalStyleCode" type="OTA_CodeType" use="optional">
+                          <xs:annotation>
+                            <xs:documentation xml:lang="en">Refer to OpenTravel Code List Architectural Style Code (ARC).</xs:documentation>
+                          </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="SupplierIntegrationLevel" type="xs:nonNegativeInteger" use="optional">
+                          <xs:annotation>
+                            <xs:documentation xml:lang="en">The level of integration of a property to provide automated transaction information. The lower the number, the higher the integration (e.g., a 1 means the supplier has the highest level of integration automation).</xs:documentation>
+                          </xs:annotation>
+                        </xs:attribute>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element ref="TPA_Extensions" minOccurs="0"/>
+                  </xs:sequence>
+                  <xs:attribute name="SendBookingLimit" type="xs:boolean">
+                    <xs:annotation>
+                      <xs:documentation>Boolean Flag indicating if overbooking or allocation (defined by BookingLimitMessageType)  is requested.</xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                  <xs:attribute name="BookingLimitMessageType" use="optional">
+                    <xs:annotation>
+                      <xs:documentation xml:lang="en">An enumerated type defining the function of the booking limit message. Values: SetLimit (Allocation), AdjustLimit (Overbooking).</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="RemoveLimit"/>
+                        <xs:enumeration value="SetLimit"/>
+                        <xs:enumeration value="AdjustLimit"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+      <xs:attribute name="SummaryOnly" type="xs:boolean" use="optional"/>
+      <xs:attribute name="SortOrder" use="optional">
+        <xs:simpleType>
+          <xs:restriction base="AlphaLength1">
+            <xs:enumeration value="A"/>
+            <xs:enumeration value="D"/>
+            <xs:enumeration value="N"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="RequestedCurrency" type="AlphaLength3" use="optional"/>
+      <xs:attributeGroup ref="MaxResponsesGroup"/>
+      <xs:attribute name="SearchCacheLevel" use="optional">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Live"/>
+            <xs:enumeration value="VeryRecent"/>
+            <xs:enumeration value="LessRecent"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="MaximumWaitTime" type="xs:decimal" use="optional">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The value of this attribute will be a decimal field identifying the maximum number of seconds the responding application has to respond to the request. For example, suppose a client requests 10 OTA 'RatePlanRequestSegment' items but can only wait up to 4.0 seconds max. If only 6 segments were collected within the time-frame, the client would only receive those 6 segments within one response message. </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="MoreDataEchoToken" type="StringLength1to128" use="optional">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The response to the previous request returns this attribute if there was more data than could be returned in the response. Including the attribute in this request indicates where to begin the next block of data.	</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="InfoSource" type="InfoSourceType" use="optional">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Used to specify the source of the data being exchanged as determined by trading partners. </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

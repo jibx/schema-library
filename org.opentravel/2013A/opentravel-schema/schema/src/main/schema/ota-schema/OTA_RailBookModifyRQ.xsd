@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="3.000" id="OTA2013A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_RailCommonTypes.xsd"/>
+	<xs:element name="OTA_RailBookModifyRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The Rail Book Modify request message is used to request that a reservation be created for one or more rail journies between specified locations on specific date(s) for a specific number and type of passengers.
+
+NOTE that a subsequent  OTA_RailConfirmBookingRQ message is required to acquire a PNR for the reservation, or an OTA_RailIgnoreBookingRQ message is required to release the reservation (and associated inventory) from the trading partner system.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" type="POS_Type">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Point of Sale Identification for the transaction initiator that includes the identification information of the party that has made the reservation request and optional  information, such as an agency number assigned by IATA, ARC, ESRP or TID.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="RailBookInfo">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Full details on the reservation that is to be created, specifying location information, passenger data and payment details.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="OriginDestination" maxOccurs="9">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Details about one specific journey between this origin and destination location. This element will be repeated for each journey.  For example, for a round-trip reservation, this element will occur two times.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="OriginLocation" type="LocationType" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">The travel origin location.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="DestinationLocation" type="LocationType" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">The travel destination location.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="TrainSegment" maxOccurs="9">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">A collection of train segments that provide journey information from origin to destination. Each segment has full details on one specific train segment, including the origin and destination locations for this segment,related travelers' request, etc.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:complexContent>
+													<xs:extension base="TrainSegmentSummaryType">
+														<xs:sequence>
+															<xs:element name="ClassCodes" type="ClassCodeType" minOccurs="0" maxOccurs="99">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">The class of inventory controlled services available.</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="TravelerRequest" minOccurs="0" maxOccurs="99">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">Specific traveler preferences for the booking request, including accommodation selection and discount type.</xs:documentation>
+																</xs:annotation>
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element name="DiscountType" minOccurs="0">
+																			<xs:annotation>
+																				<xs:documentation xml:lang="en">A traveler requested discount type.</xs:documentation>
+																			</xs:annotation>
+																			<xs:complexType>
+																				<xs:attributeGroup ref="RailCodeGroup">
+																					<xs:annotation>
+																						<xs:documentation xml:lang="en">Used to specify a ticket class code and optionally the source for the code.
+
+Note that the Code may be a value from the OpenTravel Code List "Discounts Available" (DIS) or a string value up to 8 characters in length. 
+</xs:documentation>
+																					</xs:annotation>
+																				</xs:attributeGroup>
+																			</xs:complexType>
+																		</xs:element>
+																		<xs:element ref="AccommodationService"/>
+																	</xs:sequence>
+																	<xs:attribute name="TravelerRPH" type="RPH_Type" use="optional">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">A reference to the traveler or traveler category. Note that this is only used to relate data within this message.</xs:documentation>
+																		</xs:annotation>
+																	</xs:attribute>
+																</xs:complexType>
+															</xs:element>
+															<xs:element name="MarketingCompany" type="CompanyNameType" minOccurs="0">
+																<xs:annotation>
+																	<xs:documentation>The marketing train company associated with this segment.</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+														</xs:sequence>
+														<xs:attribute name="SeatPreference" type="SeatType" use="optional">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">Used to specify a seat preference, e.g. aisle, window, etc.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+														<xs:attribute name="SeatDirection" type="SeatDirectionType" use="optional">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">The direction the seat faces.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+													</xs:extension>
+												</xs:complexContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="PassengerInfo" minOccurs="0" maxOccurs="99">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Information of passenger(s) for a reservation</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="RailPassengerCategoryDetailType"/>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RateQualifier" type="RailRateQualifyingType" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Indicates the type of fares of interest to the customer, along with any discount number or promotional codes that may affect the fare.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Fulfillment" type="CompanyNameType" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Information on the fulfillment of the ticket, e.g. the party that will be issuing the ticket.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="PaymentForm" type="PaymentFormType" minOccurs="0" maxOccurs="5">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Information of the form(s) of payment to be used to pay for this reservation.  The element repeats to allow for multiple forms of payment to be used, if so required.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Contact" type="RailPersonInfoType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">The contact person for the reservation.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="TPA_Extensions" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

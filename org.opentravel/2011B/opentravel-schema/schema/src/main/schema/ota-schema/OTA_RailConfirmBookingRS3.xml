@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: Confirm One or More "Provisionally Booked" Train Seat Reservations. -->
+<!-- USE CASE DETAILS: An online travel agent is booking a rail trip for a family of five. The agent has provisionally booked five seats on a train using the OTA_RailBookRQ/RS message. Note that a provisional booking is one that has been processed successfully by the OTA_RailBookRQ/RS messages but is not yet confirmed in the trading partners system. The agent system has issued an OTA_RailConfirmBookingRQ message with the unique ID's of the five provisional train seat reservations. This response message indicates that the COMMIT of two of the five seat reservations has failed. Note that in this use case, the Rail Supplier returns an ERROR with a unique ID for each of the provisional train seat reservations that have failed. -->
+
+<OTA_RailConfirmBookingRS xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_RailConfirmBookingRS.xsd" 
+Version="1.000">
+
+	<!-- The presence of this element indicates one or more errors occurred during the processing of the request message. -->
+	<Errors>
+		<!-- Error Type 3 is "Biz Rule" - See OpenTravel Code List Error Warning Type (EWT). -->
+		<Error Type="3" RecordID="000001">All booking messages in queue must be successfully committed. No booking messages in queue committed.</Error>
+		<Error Type="3" RecordID="000005">All booking messages in queue must be successfully committed. No booking messages in queue committed.</Error>
+	</Errors>
+
+</OTA_RailConfirmBookingRS>

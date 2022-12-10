@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: #1: Local golf course with carts and club rentals -->
+<!-- USE CASE DETAILS: 
+
+Jane and John Smith are golfers and are looking for a local course to play on. They are flexible in the days and times that they can play, but they want a course that provides golf carts and has club rentals. They do a search through an online golf site (Golf For All) and see that The Grand Del Mar is a local course that has golf carts and club rentals—and an afternoon tee time discount, so they book the discounted afternoon tee time.
+-->
+
+<OTA_GolfCourseResModifyRQ xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_GolfCourseResModifyRQ.xsd" 
+EchoToken="12345" 
+TimeStamp="2011-05-01T09:44:52" 
+Target="Production" 
+Version="1.000" 
+PrimaryLangID="en-us">
+
+	<!-- Point of sale information for the sender of the request, in this case the golf distributors branded website. -->
+	<POS>
+		<Source>
+			<RequestorID Type="7" ID="GolfForAllWebsite"/>
+			<!-- Type 7 = "Wholesaler". See OpenTravel Code List Unique ID Type (UIT). -->
+		</Source>
+	</POS>
+
+	<GolfCourseRes GolferQty="2" NumberOfHoles="18" CartQty="1" InternalResID="99999" Start="2012-12-19-13:00">
+		<ReservationID ID="999999" Type="14">
+			<!-- Type 14 = "Reservation". See OpenTravel Code List Unique ID Type (UIT). -->
+			<CompanyName Code="GDM">Grand Del Mar Golf Course</CompanyName>
+		</ReservationID>
+		
+		<Amenity AmenityCode="CRT" ID="2222" Name="Golf Cart" IncludedInTeeTimePriceInd="true" Description="Comfortable golf carts stocked with refreshments and equipped with Laser Link range finders for calculating exact yardage to each hole. " Quantity="1"/>
+		
+		<Amenity AmenityCode="CLB" ReservableInd="true" ID="4444" Name="Club Rental" Description="Callaway clubs, updated yearly with the newest technology, are available for rental and may be reserved prior to tee time." PricingType="PerAmenity" IncludedInTeeTimePriceInd="false" Quantity="1"/>
+
+		<!-- Tee time fee. -->
+		<Charge DecimalPlaces="2" GuaranteedInd="true" TaxInclusive="true" Amount="65" CurrencyCode="USD">
+			<Description Language="en-us">
+				<Text>Tee Time Fee</Text>
+			</Description>
+		</Charge>
+
+		<!-- Golf club rental (reserved). -->
+		<Charge DecimalPlaces="2" GuaranteedInd="true" TaxInclusive="true" Amount="50" CurrencyCode="USD">
+			<Description Language="en-us">
+				<Text>Reserved golf club rental</Text>
+			</Description>
+		</Charge>
+		
+		<Discounts PromotionCode="WinterSpecial">
+			<RateComments>
+				<RateComment Language="en-us">50% off tee time</RateComment>
+			</RateComments>
+		</Discounts>
+		
+		<Golfer RPH="1">
+			<GolferInfo>
+				<GivenName>Jane</GivenName>
+				<Surname>Smith</Surname>
+			</GolferInfo>
+			<Address>
+				<AddressLine>100 Main Street</AddressLine>
+				<CityName>San Diego</CityName>
+				<PostalCode>12345</PostalCode>
+				<StateProv StateCode="CA"></StateProv>
+				<CountryName Code="US"></CountryName>
+			</Address>
+			<Telephone PhoneNumber="888-123-4567"/>
+			<Email>janesmith@somewhere.com</Email>
+		</Golfer>
+
+		<Golfer RPH="2">
+			<GolferInfo>
+				<GivenName>John</GivenName>
+				<Surname>Smith</Surname>
+			</GolferInfo>
+			<Address>
+				<AddressLine>100 Main Street</AddressLine>
+				<CityName>San Diego</CityName>
+				<PostalCode>12345</PostalCode>
+				<StateProv StateCode="CA"></StateProv>
+				<CountryName Code="US"></CountryName>
+			</Address>
+			<Telephone PhoneNumber="888-123-4567"/>
+			<Email>johnsmith@somewhere.com</Email>
+		</Golfer>
+		
+		<PaymentForm>
+				<PaymentCard ExpireDate="1215" CardType="MC" SeriesCode="111" CardNumber="1111222233334444">
+					<CardHolderName>Jane Smith</CardHolderName>
+					<Address>
+						<AddressLine>100 Main Street</AddressLine>
+						<CityName>San Diego</CityName>
+						<PostalCode>12345</PostalCode>
+						<StateProv StateCode="CA"/>
+						<CountryName Code="US"/>
+					</Address>
+					<Telephone PhoneNumber="888-123-4567"/>
+				</PaymentCard>
+		</PaymentForm>
+		
+	</GolfCourseRes>
+
+</OTA_GolfCourseResModifyRQ>

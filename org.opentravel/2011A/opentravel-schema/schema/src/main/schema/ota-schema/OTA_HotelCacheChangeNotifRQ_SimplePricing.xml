@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: Cache push for Simple Price Change -->
+<!-- USE CASE DETAILS: 
+
+This use case includes the following examples of cache changes:
+
+1. A simple price change on May 1, 2011 through May 14, 2011 on KB/RACK (room type rate plan combination) to $100.
+
+2. Unique daily price changes on KB/KBRACK room type rate plan combination) as follows:
+	a)	August 1, 2011: KB/Rack: $150
+	b) August 2, 2011: KB/Rack: $170
+	c) August 3, 2011: KB/Rack: $150
+	d) August 4, 2011: KB/Rack: $90
+-->
+
+<OTA_HotelCacheChangeNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelCacheChangeNotifRQ.xsd" EchoToken="12345" TimeStamp="2011-03-29T09:30:47" Target="Production" Version="1.000" PrimaryLangID="en-us">
+
+	<!-- Point of sale information for the sender of the cache notification -->
+	<POS>
+		<Source>
+			<RequestorID Type="10" ID="Marriott International"/>
+			<!-- Type10 = Hotel. See OpenTravel Code List Unique ID Type (UIT). -->
+		</Source>
+	</POS>
+
+	<!-- Price Change (Range) -->
+	<CacheChangeInfo ChainCode="5158" HotelCode="10107">
+		<TimeSpan End="2011-05-01" Start="2011-05-14"/>
+		<ProductInfo RatePlanCode="RACK" RoomTypeCode="KB"/>
+	</CacheChangeInfo>
+
+	<!-- Daily Price Change: NOTE: Even though the actual price changes are different, it is only the fact that prices have changed that is significant here. -->
+
+	<CacheChangeInfo ChainCode="5158" HotelCode="10107">
+		<TimeSpan End="2011-08-01" Start="2011-08-04"/>
+		<ProductInfo RatePlanCode="RACK" RoomTypeCode="KB"/>
+	</CacheChangeInfo>
+</OTA_HotelCacheChangeNotifRQ>

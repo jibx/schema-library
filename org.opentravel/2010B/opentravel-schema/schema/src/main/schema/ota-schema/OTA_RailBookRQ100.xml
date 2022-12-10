@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: Rail Booking Request with Traveler Details and a Promotion Code. -->
+<!-- USE CASE DETAILS: An end user uses a wholesaler website to book a business trip between Beijing and Shanghai. They would like to book a round trip with a specified return trip date and traveler details. They have a promotion code for a free return trip fare and include it in the booking details. The wholesaler system uses this message to book the trip. -->
+
+<OTA_RailBookRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_RailBookRQ.xsd" EchoToken="183529" TimeStamp="2010-12-16T09:30:47-05:00" Target="Production" Version="3.000" SequenceNmbr="1" PrimaryLangID="en-us" AltLangID="en-us">
+
+	<!-- Transaction originator (point of sale) information. -->
+	<POS>
+		<Source>
+			<RequestorID Type="7" ID="JQIR2244" MessagePassword="ek^4$327F21"/>
+				<!-- RequestorID Type 7: Wholesaler. Refer to OpenTravel Code List Unique ID Type (UIT). -->
+				<!-- Password specified for authentication with trading partner system. -->
+		</Source>
+	</POS>
+	
+	<!-- Full details on the reservation that is to be created, specifying location information, passenger data and payment details. -->
+	<RailBookInfo>
+	
+		<!--Details about one specific journey between this origin and destination location. This element will be repeated for each journey.  For example, for a round-trip reservation, this element will occur two times. -->
+		<OriginDestination>
+		
+			<!-- The travel origin location. -->
+			<OriginLocation LocationCode="PEK">BEIJING</OriginLocation>
+			
+			<!-- The travel destination location. -->
+			<DestinationLocation LocationCode="SHA">SHANGHAI</DestinationLocation>
+			
+			<!-- Details about one specific journey between this origin and destination location. This element will be repeated for each journey.  For example, for a round-trip reservation, this element will occur two times. -->
+			
+			<!-- Segment 1 -->
+			<TrainSegment>
+				<!-- Train departure station information. -->
+				<DepartureStation >
+					<Details LocationCode="PEK" IsStaffedInd="true" SST_MachineInd="true" TicketPrinterInd="true">BEIJING</Details>
+				</DepartureStation>
+				
+				<!-- Train arrival station information. -->
+				<ArrivalStation>
+					<Details LocationCode="SHA">SHANGHAI</Details>
+				</ArrivalStation> 
+				
+				<!-- The departure date and time. -->
+				<DepartureDateTime>2010-12-06T05:00:00</DepartureDateTime>
+				
+				<!-- The arrival date and time. -->
+				<ArrivalDateTime>2010-12-06T08:48:00</ArrivalDateTime>
+				
+				<!-- Train identification information, including  a train number and a train network code. -->
+				<TrainIdentification>
+				
+					<!-- The unique number that identifies the train. -->
+					<TrainNumber>12345</TrainNumber>
+					
+					<!-- The network code of a rail operator defined by UIC (International Union of Railways.) -->
+					<NetworkCode Code="CHRT"/>
+				</TrainIdentification>
+				
+				<!-- Specific traveler requests. -->
+				<TravelerRequest>
+					<!-- Specific traveler requested accommodations, including class and type, with associated accommodation attributes such as seat, berth and compartment number, seat position, seat direction and adjacent seating preferences. -->
+					<AccommodationSelection Deck="Regular-OneLevelOnly">
+						<!-- Seat accommodation information, including the seat type and associated seat attributes, such as seat number, position and direction. -->
+						<Seat Number="12A" Position="Aisle" Direction="Facing">Seat</Seat>
+						<!-- A commonly offered accommodation class, such as first class and second class. -->
+						<Class>Business</Class>
+						<!-- Car information, such as car number. -->
+						<Car Number="11"/>
+					</AccommodationSelection>
+				</TravelerRequest>
+			</TrainSegment>
+			
+			<!-- Segment 2: Return Trip -->
+			<TrainSegment>
+				<!-- Train departure station information. -->
+				<DepartureStation >
+					<Details LocationCode="SHA" IsStaffedInd="true" SST_MachineInd="true" TicketPrinterInd="true">SHANGHAI</Details>
+				</DepartureStation>
+				
+				<!-- Train arrival station information. -->
+				<ArrivalStation>
+					<Details LocationCode="BEJ" IsStaffedInd="true" SST_MachineInd="true" TicketPrinterInd="true">BEIJING</Details>
+				</ArrivalStation> 
+				
+				<!-- The departure date and time. -->
+				<DepartureDateTime>2010-12-08T15:41:00</DepartureDateTime>
+				
+				<!-- The arrival date and time. -->
+				<ArrivalDateTime>2010-12-08T23:03:00</ArrivalDateTime>
+				
+				<!-- Train identification information, including  a train number and a train network code. -->
+				<TrainIdentification>
+				
+					<!-- The unique number that identifies the train. -->
+					<TrainNumber>12345</TrainNumber>
+					
+					<!-- The network code of a rail operator defined by UIC (International Union of Railways.) -->
+					<NetworkCode Code="CHRT"/>
+				</TrainIdentification>
+				
+				<!-- Specific traveler requests. -->
+				<!-- Specific traveler requests. -->
+				<TravelerRequest>
+					<!-- Specific traveler requested accommodations, including class and type, with associated accommodation attributes such as seat, berth and compartment number, seat position, seat direction and adjacent seating preferences. -->
+					<AccommodationSelection Deck="Regular-OneLevelOnly">
+						<!-- Seat accommodation information, including the seat type and associated seat attributes, such as seat number, position and direction. -->
+						<Seat Number="2B" Position="Center" Direction="Facing">Seat</Seat>
+						<!-- A commonly offered accommodation class, such as first class and second class. -->
+						<Class>Business</Class>
+						<!-- Car information, such as car number. -->
+						<Car Number="4"/>
+					</AccommodationSelection>
+				</TravelerRequest>
+				
+			</TrainSegment>
+		</OriginDestination>
+		
+		<!-- Traveler name and other information to be included in the reservation. -->
+		<Traveler>
+			<NamePrefix>Dr.</NamePrefix>
+			<GivenName>Shuang</GivenName>
+			<Surname>Chen</Surname>
+		</Traveler>
+		
+		<!-- Indicates the type of fares of interest to the customer, along with any discount number or promotional codes that may affect the fare. -->
+		<RateQualifier TravelPurpose="1" RateQualifier="2" PromotionCode="FREERTRN" ></RateQualifier>
+			<!-- TravelPurpose of 1 = "Business." Refer to Opentravel Code List Travel Purpose (TVP). -->
+			<!-- RateQualifier of 2 = "Business." Refer to Opentravel Code List Rate Category (RTC). -->
+			<!-- PromotionCode of "FREERTRN" is a promotional code for a free retruen trip fare. -->
+
+		<!-- Information of the form(s) of payment to be used to pay for this reservation.  The element repeats to allow for multiple forms of payment to be used, if so required. -->
+		<PaymentForm>
+			<PaymentCard CardType="1" CardNumber="5111111111111111" SeriesCode="999" CardCode="MC" EffectiveDate="0510" ExpireDate="0514">
+				<!-- PaymentCard CardType of 1 = "Credit." Refer to OpenTravel Code List Card Type (CDT). -->
+				<!-- CardCode MC = "MasterCard". -->
+			</PaymentCard>
+		</PaymentForm>
+		
+	</RailBookInfo>
+</OTA_RailBookRQ>

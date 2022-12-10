@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: Rail Availability Request with a Connection Location Preference. -->
+<!-- USE CASE DETAILS: An end user uses a wholesaler website to find train availability for a business trip between Beijing and Shanghai. They know from a previous schedule inquiry that they must make a connection and they choose a specific connection location from a list of possible connection locations. The wholesaler system uses this message to request train availability that meets the specified criteria. -->
+
+<OTA_RailAvailRQ TimeStamp="2010-11-06T10:25:30" EchoToken="7656" Target="Production" Version="3.000" ResponseType="AvailabilityOnly" xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05
+OTA_RailAvailRQ.xsd">
+
+	<!-- Transaction originator (point of sale) information. -->
+	<POS>
+		<Source>
+			<RequestorID Type="7" ID="JQIR2244" MessagePassword="ek^4$327F21"/>
+				<!-- RequestorID Type 7: Wholesaler (See OpenTravel Code List Unique ID Type.) -->
+				<!-- Password specified for authentication with trading partner system. -->
+		</Source>
+	</POS>
+
+	<!-- Criteria for a rail availability query. -->
+	<RailAvailQuery>
+	
+		<!-- A collection of information about the locations for which availability is to be checked. It may be repeated to query availability of each individual train in multiple train segments for a specified route. -->
+		<AvailBaseQueryCriteria>
+			<OriginDestinationInformation>
+				<!-- The arrival date and optionally a time period that can be applied before and/or after the arrival date. -->
+				<ArrivalDateTime WindowBefore="PT2H">2010-12-06T10:00:00</ArrivalDateTime>
+				
+				<OriginLocation MultiCityStationInd="true" LocationCode="PEK">BEIJING</OriginLocation>
+					<!-- MultiCityStationInd of true means any train station within Beijing is acceptable-->
+					
+				<DestinationLocation MultiCityStationInd="true" LocationCode="SHA">SHANGHAI</DestinationLocation>
+				<!-- MultiCityStationInd of true means any train station within Shanghai is acceptable-->
+				
+				<!-- Preferred connection location criteria. -->
+				<ConnectionLocations>
+					<ConnectionLocation ConnectType="Interline" LocationCode="TIA" PreferLevel="Preferred">TIANJIN</ConnectionLocation>
+					<!-- A connection preference in Tianjin is requested by the customer. -->
+				</ConnectionLocations>
+			</OriginDestinationInformation>
+		</AvailBaseQueryCriteria>
+
+	</RailAvailQuery>
+
+</OTA_RailAvailRQ>

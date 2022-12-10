@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.opentravel.org/OTA/2003/05" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="1.00" id="OTA2010B">
+	<xs:include schemaLocation="FastRezOTA_SimpleTypes.xsd"/>
+	<xs:annotation>
+		<xs:documentation xml:lang="en">All Schema files in the OpenTravel Alliance specification are made available according to the terms defined by the OpenTravel License Agreement at http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:annotation>
+		<xs:documentation>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY" and "OPTIONAL" in this document are to be interpreted as described in RFC 2199.</xs:documentation>
+	</xs:annotation>
+	<xs:element name="OTA_CancelRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The cancel request is used to request the cancellation of a reservation. The confirmation number of the reservation as well as the guest's last name MUST be provided in order to process the request.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS">
+					<xs:annotation>
+						<xs:documentation>The POS MUST identify the party or connection channel making the request.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Source">
+								<xs:annotation>
+									<xs:documentation>Source MUST be used to specify details regarding the requestor. </xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="RequestorID">
+											<xs:annotation>
+												<xs:documentation>RequestorID MUST contain a globally unique identifier of the entity making the request  (e.g. ATA/IATA/ID number, Electronic Reservation Service Provider (ERSP), Association of British Travel Agents (ABTA)). The combination of @ID and @ID_Context MUST be unique.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:attribute name="Type" type="OTA_CodeType" use="required">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">The Type identifies the ID and MUST refer to OpenTravel Code List Unique ID Type (UIT).</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="ID" type="StringLength1to32" use="required">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">ID MUST contain a unique identifying value for the requestor within the scope of the ID_Context.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="ID_Context" type="StringLength1to32" use="required">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">ID_Context MUST identify the authoritative source of the ID (e.g., IATA, ABTA).</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="ISOCountry" type="ISO3166" use="required">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">ISOCountry identifies the country code of the requesting party and MUST conform to ISO-3166. The country code of the requesting party MAY be used to refine responses therefore it SHOULD reflect the origin of the Guest.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="ISOCurrency" type="AlphaLength3" use="required">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">ISOCurrency MUST conform to ISO 4217, 3 character codes. OpenTravel RECOMMENDS that the same currency code be used in the response, but responses MAY be returned in any valid currency.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="UniqueID">
+					<xs:annotation>
+						<xs:documentation>UniqueID MUST contain the booking reference for the active reservation to be cancelled. The combination of @ID and @ID_Context MUST be unique for the lifetime of the reservation.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="Type" type="OTA_CodeType" use="required">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">The Type specifies the type of ID  and MUST refer to OpenTravel Code List Unique ID Type (UIT). FastRez RECOMMENDS restricting the use of the code table to code 14 - Reservation.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="ID" type="StringLength1to32" use="required">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">ID MUST contain a unique identifying value for the reservation within the scope of the ID_Context.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="ID_Context" type="StringLength1to32" use="required">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">ID Context MUST identify the authoritative source of the ID (e.g., IATA, ABTA).</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Verification">
+					<xs:annotation>
+						<xs:documentation>Reservation IDs MAY be reused. Therefore Verification MUST be used to provide a means to assert that the reservation being cancelled is the intended reservation.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PersonName">
+								<xs:annotation>
+									<xs:documentation>Name information MUST be provided in order to verify that the correct reservation is being cancelled.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Surname" type="StringLength1to64">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Surname MUST contain the family name (last name) of the guest as found on the reservation.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Reasons" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">For reference purposes the Cancel request MAY contain a collection of reasons for this cancellation.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Reason" type="xs:string" maxOccurs="5">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Reason MUST contain the reason for the cancellation.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="EchoToken" type="StringLength1to128" use="optional">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">EchoToken MAY provide a reference for additional message identification, assigned by the requesting host system. This attribute SHOULD NOT be used to maintain state, but SHOULD only be used for diagnostic purposes.  When a request message includes an echo token the corresponding response message MUST include an echo token with an identical value.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="TimeStamp" type="xs:dateTime" use="required">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">TimeStamp MUST indicate the creation date and time of the message in UTC using the following format specified by ISO 8601; YYYY-MM-DDThh:mm:ssZ with time values using the 24 hour clock (e.g. 20 November 2003, 1:59:38 pm UTC becomes 2003-11-20T13:59:38Z).</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="Version" type="xs:decimal" use="required">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Version MUST be consistent with the underlying schema baseline.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="PrimaryLangID" type="xs:language" use="required">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">PrimaryLangID code MUST conform to ISO 639 language codes. The code MUST define the language of the request. FastRez RECOMMENDS that the response SHOULD match the request, but a response MAY use any language recognized by ISO 639.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="CancelType" use="required">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">CancelType identifies the type of cancellation.  The FastRez CancelType MUST be Cancel.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Cancel">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Cancellation</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

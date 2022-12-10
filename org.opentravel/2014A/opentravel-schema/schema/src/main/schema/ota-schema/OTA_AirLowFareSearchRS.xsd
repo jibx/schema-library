@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="7.000" id="OTA2014A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_AirCommonTypes.xsd"/>
+	<xs:element name="OTA_AirLowFareSearchRS">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The Low Fare Search Response message contains a number of Priced Itinerary options. Each includes: A set of available flights matching the client's request; Pricing information including taxes and full fare breakdown for each passenger type; Ticketing information; and Fare Basis Codes and the information necessary to make a rules entry. This message contains similar information to a standard airline CRS or GDS Low Fare Search Response message.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice>
+					<xs:sequence>
+						<xs:element name="Success" type="SuccessType">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Success: Standard way to indicate successful processing of an OpenTravel message. Returning an empty element of this type indicates success.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Warnings" type="WarningsType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Standard way to indicate successful processing of an OpenTravel message, but one in which warnings are generated.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="PricedItineraries" type="PricedItinerariesType">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Successfull Low Fare priced itineraries in response to a Low Fare Search request.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Offers" type="AirOfferChoiceType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">Merchandising offers.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+					<xs:element name="Errors" type="ErrorsType">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">A collection of errors that occurred during the processing of a message.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

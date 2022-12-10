@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: #1: Local golf course with carts and club rentals -->
+<!-- USE CASE DETAILS: 
+
+Jane and John Smith are golfers and are looking for a local course to play on. They are flexible in the days and times that they can play, but they want a course that provides golf carts and has club rentals. They do a search through an online golf site (Golf For All) and see that The Grand Del Mar is a local course that has golf carts and club rentals—and an afternoon tee time discount, so they book the discounted afternoon tee time.
+-->
+
+<OTA_GolfCourseResRS xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_GolfCourseResRS.xsd" 
+EchoToken="12345" 
+TimeStamp="2011-05-01T09:44:52" 
+Target="Production" 
+Version="3.000" 
+PrimaryLangID="en-us">
+
+	<Success/>
+	
+	<ProcessingInfo DisplayCurrency="US"/>
+	
+	<GolfCourseRes GolferQty="2" NumberOfHoles="18" CartQty="1" DisabledInd="false" InternalResID="999999" Start="2012-12-18-13:00" Status="Confirmed">
+		<ReservationID ID="999999" Type="14">
+			<!-- Type 14 = "Reservation". See OpenTravel Code List Unique ID Type (UIT). -->
+			<CompanyName Code="GDM">Grand Del Mar Golf Course</CompanyName>
+		</ReservationID>
+		
+		<Golfer RPH="1">
+			<GolferInfo>
+				<GivenName>Jane</GivenName>
+				<Surname>Smith</Surname>
+			</GolferInfo>
+			<Address>
+				<AddressLine>100 Main Street</AddressLine>
+				<CityName>San Diego</CityName>
+				<PostalCode>12345</PostalCode>
+				<StateProv StateCode="CA"></StateProv>
+				<CountryName Code="US"></CountryName>
+			</Address>
+			<Telephone PhoneNumber="888-123-4567"/>
+			<Email>janesmith@somewhere.com</Email>
+		</Golfer>
+
+		<Golfer RPH="2">
+			<GolferInfo>
+				<GivenName>John</GivenName>
+				<Surname>Smith</Surname>
+			</GolferInfo>
+			<Address>
+				<AddressLine>100 Main Street</AddressLine>
+				<CityName>San Diego</CityName>
+				<PostalCode>12345</PostalCode>
+				<StateProv StateCode="CA"></StateProv>
+				<CountryName Code="US"></CountryName>
+			</Address>
+			<Telephone PhoneNumber="888-123-4567"/>
+			<Email>johnsmith@somewhere.com</Email>
+		</Golfer>
+	
+		<!-- Tee time fee. -->
+		<Charge DecimalPlaces="2" GuaranteedInd="true" TaxInclusive="true" Amount="65" CurrencyCode="USD">
+			<Description Language="en-us">
+				<Text>Tee Time Fee</Text>
+			</Description>
+		</Charge>
+
+		<!-- Golf club rental (reserved). -->
+		<Charge DecimalPlaces="2" GuaranteedInd="true" TaxInclusive="true" Amount="50" CurrencyCode="USD">
+			<Description Language="en-us">
+				<Text>Reserved golf club rental</Text>
+			</Description>
+		</Charge>
+		
+		<PaymentForm>
+				<PaymentCard ExpireDate="1215" CardType="MC" SeriesCode="111" CardNumber="1111222233334444">
+					<CardHolderName>Jane Smith</CardHolderName>
+					<Address>
+						<AddressLine>100 Main Street</AddressLine>
+						<CityName>San Diego</CityName>
+						<PostalCode>12345</PostalCode>
+						<StateProv StateCode="CA"/>
+						<CountryName Code="US"/>
+					</Address>
+					<Telephone PhoneNumber="888-123-4567"/>
+				</PaymentCard>
+		</PaymentForm>
+		
+		<Discounts PromotionCode="WinterSpecial">
+			<RateComments>
+				<RateComment Language="en-us">50% off tee time</RateComment>
+			</RateComments>
+		</Discounts>
+		
+		<Amenity AmenityCode="CRT" ID="2222" Name="Golf Cart" IncludedInTeeTimePriceInd="true" Description="Comfortable golf carts stocked with refreshments and equipped with Laser Link range finders for calculating exact yardage to each hole."/>
+		<Amenity AmenityCode="CLB" ReservableInd="true" ID="4444" Name="Club Rental" Description="Callaway clubs, updated yearly with the newest technology, are available for rental and may be reserved prior to tee time." PricingType="PerAmenity" IncludedInTeeTimePriceInd="false"/>
+
+		<Policy>
+			<General Type="Other">No alcoholic beverages are permitted on the course.</General>
+			<CancelPolicy NonRefundable="true">
+				<Deadline OffsetTimeUnit="Hour" OffsetDropTime="BeforeArrival" OffsetUnitMultiplier="24"/>
+				<AmountPercent DecimalPlaces="2" Percent="50" CurrencyCode="USD" TaxInclusive="true"/>
+				<PenaltyDescription>
+					<Text Language="en-us">50% of tee time cancellation fee if tee time reservation is not cancelled 24 hours prior to tee time.</Text>
+				</PenaltyDescription>
+			</CancelPolicy>
+		</Policy>
+			
+		<FacilityInfo>
+			<UniqueID ID="1001" Type="4">
+				<!-- Type 4 = "Company". See OpenTravel Code List Unique ID Type (UIT). -->
+				<CompanyName Code="GDM">Grand Del Mar Golf Course</CompanyName>
+			</UniqueID>
+			
+			<Amenities AmenityCode="CRT" ID="2222" Name="Golf Cart" IncludedInTeeTimePriceInd="true" Description="Comfortable golf carts stocked with refreshments and equipped with Laser Link range finders for calculating exact yardage to each hole."/>
+				<!-- A golf cart that is included in the tee time price. -->
+				
+			<Amenities AmenityCode="CLB" ReservableInd="true" ID="4444" Name="Club Rental" Description="Callaway clubs, updated yearly with the newest technology, are available for rental and may be reserved prior to tee time." PricingType="PerAmenity" IncludedInTeeTimePriceInd="false"/>
+				<!-- Golf club rental that may be reserved. -->
+				
+			<Amenities AmenityCode="FCP" ID="5555" Name="Fore Caddie Program" Description="Fore caddie program with an experienced caddie that provides course strategy, measuring distances, filling divots, raking bunkers and finding errant shots." PricingType="PerAmenity" IncludedInTeeTimePriceInd="false"/>
+				<!-- Caddie assistance program. -->			
+			
+			<!-- Primary phone and website contact information for the golf facility. -->
+			<Contact PhoneNumber="858.314.1988" SiteURL="http://www.thegranddelmar.com/san-diego-golf-resort/"/>
+
+			<!-- A date and time period when a golf facility is closed. -->
+			<CourseClosure Duration="P7D" Start="2012-12-20"/>
+				<!-- This course is closed for 7 days (for greens maintenance) starting December 20. -->
+			
+			<!-- Information about course conditions with an optional source name or URL. -->
+			<CourseConditions Source="http://www.greenskeeper.org/main.cfm">Course is in excellent condition and highly recommend. Excellent customer service.</CourseConditions>
+			
+			<!-- Ratings for the course with an optional source name or URL. -->
+			<CourseRating Source="http://www.greenskeeper.org/main.cfm">9 out of 10</CourseRating>
+
+			<!-- Directions to the golf facility. -->
+			<Directions>GPS Driving Directions
+	When navigating to the resort via GPS, please program in 5299 Meadows Del Mar, San Diego, CA 92130, for the most efficient directions to our property. Make your first right after the welcome center to access the resort’s main entrance.
+	
+	From Downtown San Diego/Airport:
+	Take Interstate 5 North and exit on the 56 East/Local Bypass (Exit 33A). Take the Carmel Country Road exit (Exit 2) and turn right. Proceed one-quarter (1/4) mile on Carmel Country and turn left at Grand Del Mar Way. Turn right on Grand Del Mar Court and continue down the hill to the resort entrance.
+	
+	From Los Angeles:
+	Take Interstate 5 South and exit on the 56 East/Carmel Valley Road exit (Exit 33). Turn left at the traffic light. Follow the signs and proceed straight to the 56 East. Take the 56 East to the Carmel Country Road exit (Exit 2) and turn right. Proceed one-quarter (1/4) mile on Carmel Country and turn left at Grand Del Mar Way. Turn right on Grand Del Mar Court and continue down the hill to the resort entrance.
+	
+	From Interstate 15 North:
+	Take the Ted Williams Parkway/56 West exit (Exit 19). Turn left onto Ted Williams Parkway. Proceed to the Carmel Country Road exit (Exit 2) and turn left. Proceed one-quarter (1/4) mile on Carmel Country and turn left at Grand Del Mar Way. Turn right on Grand Del Mar Court and continue down the hill to the resort entrance.
+	
+	From Interstate 15 South:
+	Merge onto Ted Williams Parkway/56 West via Exit 19. Proceed to the Carmel Country Road exit (Exit 2) and turn left. Proceed one-quarter (1/4) mile on Carmel Country and turn left at Grand Del Mar Way. Turn right on Grand Del Mar Court and continue down the hill to the resort entrance.</Directions>			
+
+			<!-- Facility features information. -->
+			<Features ClubRentalInd="true" NumberOfHoles="18" CourseDesigner="Tom Fazio" DressPolicy="Casual" GolfLessonInd="true" YearBuilt="1999" DrivingRangeInd="true" GolfSchoolInd="true" DayLockerInd="true" DiningInd="true"/>
+			
+			<!-- A date and time period when restrictions apply to golf facility tee times. -->
+			<CourseRestrictions Duration="P1D" Description="Members Only Tournament" Type="Tournament" Start="2012-01-10"/>
+			<CourseRestrictions Duration="P1D" Description="Members Only Tournament" Type="Tournament" Start="2012-04-10"/>
+			<CourseRestrictions Duration="P1D" Description="Members Only Tournament" Type="Tournament" Start="2012-08-10"/>
+				<!-- Course is available to members only three times a year (for 1 day) for a members only tournament. -->
+			
+			<!-- A short facility description with optional long description and club type. -->
+			<Description LongDesc="With stunning Los Peñasquitos Canyon as his canvas, Tom Fazio created a masterpiece of dramatic elevations, diverse bunkering and lush fairways. Graced by Pacific breezes from the nearby coast, and awash with Southern California glow, The Grand Golf Club is San Diego’s premier golf resort.
+	
+	Voted “Golf Course Architect of the Year” three years in a row by Golf Course News, Tom Fazio is renowned for his strong sense of environmental design and challenging-but-fair golf. Perhaps that’s why 14 of his designs made Golf Digest’s list of America’s 100 Greatest Golf Courses.
+	
+	Thanks to San Diego’s renowned climate, you can play year-round on the private rolling greens. Learn one-on-one with PGA-certified instructors. Try the latest clubs, or simply relax in the handsome Clubhouse. This challenging and unforgettable experience is reserved exclusively for resort guests, Members and Villa owners of luxury resort, The Grand Del Mar. " ClubType="Open">Graced by Pacific breezes from the nearby coast, and awash with Southern California glow, The Grand Golf Club is San Diego’s premier golf resort.</Description>
+		
+			<!-- General green fee amounts. -->
+			<FeeStructure DecimalPlaces="2" FeeType="Low" Amount="75" CurrencyCode="USD"/>
+				<!-- Discounted greens fees. -->
+			<FeeStructure DecimalPlaces="2" FeeType="Average" Amount="150" CurrencyCode="USD"/>
+				<!-- Discounted greens fees. -->
+			
+			<!-- Hours of operation for the golf facility. -->
+			<HoursOfOperation>
+				<OperationSchedule Duration="PT10H">
+					<OperationTimes>
+						<OperationTime Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true"/>
+					</OperationTimes>
+						<!-- Golf facility is open 10 hours a day, 7 days a week. -->
+				</OperationSchedule>
+			</HoursOfOperation>
+		
+			<!-- Address and geocoding information for the golf facility. -->
+			<Location>
+				<AddressLine>2017 Grand Del Mar Court</AddressLine>
+				<CityName>San Diego</CityName>
+				<PostalCode>a</PostalCode>
+				<StateProv StateCode="CA"></StateProv>
+				<CountryName Code="US"></CountryName>
+			</Location>
+
+			<!-- Images, descriptions and movies that describe the golf facility. -->
+			<Multimedia>
+				<ImageItems>
+					<ImageItem>
+						<ImageFormat>
+							<URL>http://www.thegranddelmar.com/san-diego-golf-resort/pic1.jpg</URL>
+						</ImageFormat>
+						<Description>Voted “Golf Course Architect of the Year” three years in a row by Golf Course News, Tom Fazio is renowned for his strong sense of environmental design and challenging-but-fair golf. Perhaps that’s why 14 of his designs made Golf Digest’s list of America’s 100 Greatest Golf Courses.</Description>
+					</ImageItem>
+				</ImageItems>
+			</Multimedia>
+		
+			<!-- Summary golf facility and tee time policies. -->
+			<Policy Type="Cancellation">Reserved tee times must be cancelled 24 hours prior to tee time or a 50% cancellation fee is applied.</Policy>
+			<Policy Type="Other">No alcoholic beverages are permitted on the course.</Policy>
+
+			<!-- General facility promotions. -->
+			<Promotion PromotionCode="WinterSpecial">
+				<PromoDesc>Winter special: 50% off Green Fees (December 1 - 20)</PromoDesc>
+				<RateComments>
+					<RateComment>Non-members only promotion. Certain restrictions may apply.</RateComment>
+				</RateComments>
+			</Promotion>
+			
+			<!-- Scorecard information for the golf facility. -->
+			<ScoreCard TotalYardage="6885" CourseSlope="134" CoursePar="71"/>
+		
+		</FacilityInfo>
+
+	</GolfCourseRes>
+
+</OTA_GolfCourseResRS>

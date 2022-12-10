@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="4.000" id="OTA2014A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_GolfCommonTypes.xsd"/>
+	<xs:element name="OTA_GolfCourseSearchRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The Golf Course Search request sends search criteria for golf facility(s), which may be a golf course proper and/or a facility such as a hotel that has an association with a nearby golf course or a course on premise. 
+
+Supported search functionality includes:
+» Search by facility ID and/or name
+» Search by course location (street, city, state, county, country, postal code)
+» Search by geo-coded position
+» Search by proximity (location and maximum distance)
+» Search by maximum tee time fee
+» Search by facility amenities (golf carts, driving range, etc.)
+
+Additional message functionality includes:
+» Transaction processing directives to influence and or constrain search results, such as display/ pricing currency, redemption currency indicator and the maximum search results in the response
+» Point of sale information for the requestor and booking channel
+
+Developer Notes:
+» Note that this message pair is intended for a high level search of golf facility(s) and is not intended to be used for specific tee time search or availability.
+» Implementers should check with their trading partner(s) to determine the golf facility search capabilities supported by their system(s).</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation source="Use" xml:lang="en">Point of Sale identification.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="POS_Type"/>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ProcessingInfo" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Transaction processing directives, including display currency overrides. If no display currency information is provided, the display and pricing currency will default to the value in POS/Source/@ISOCurrency.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="SummaryResultsInd" type="xs:boolean" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">If true, summary information is requested in the search results.</xs:documentation>
+								<xs:documentation source="Developer" xml:lang="en">(Developer Notes) An agreement should be in place with your trading partners that specifies what information is summary versus detail.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="DisplayCurrency" type="ISO4217" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Use" xml:lang="en">The requested display currency in ISO 4217 encoding.</xs:documentation>
+								<xs:documentation source="Reference" xml:lang="en">(Reference): http://www.opentraveldevelopersnetwork.com/Supported_ISO_Standards.php</xs:documentation>
+								<xs:documentation source="More Info" xml:lang="en">(More Info): http://www.opentraveldevelopersnetwork.com/2012A_SchemaDoc/DisplayCurrency</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="MaxResultsQty" type="xs:positiveInteger" use="optional">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">The maximum quantity of search results in the response.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Criteria" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Golf facility and tee time search criteria.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:choice>
+								<xs:annotation>
+									<xs:documentation xml:lang="en">A choice between entering specific address information the golf facility or proximity reference point information.</xs:documentation>
+								</xs:annotation>
+								<xs:element name="Location" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Address and geocoding information for the golf facility.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:complexContent>
+											<xs:extension base="AddressType">
+												<xs:attributeGroup ref="PositionGroup"/>
+											</xs:extension>
+										</xs:complexContent>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="Proximity" minOccurs="0" maxOccurs="99">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Reference point information for a proximity search.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:simpleContent>
+											<xs:extension base="StringLength0to64">
+												<xs:attribute name="PostalCode">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">A postal code used for a proximity search.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="CityName" type="StringLength1to64" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">The name of the city associated with this reference point.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="StateProv" type="StateProvCodeType" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">The state or province in which the reference point is located.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="CountryCode" type="ISO3166" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">The country in which the reference point is located.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="ResortName" type="xs:string" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">The name of a resort that the golf course is associated with.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="RefPointType" type="OTA_CodeType" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">Indicates the type of location being referenced (e.g., Airport, Hotel). Refer to the OpenTravel Code table Index Point Code (IPC).</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="Name" type="StringLength1to128" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">The name of the reference point.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attributeGroup ref="DistanceAttributesGroup"/>
+											</xs:extension>
+										</xs:simpleContent>
+									</xs:complexType>
+								</xs:element>
+							</xs:choice>
+							<xs:element name="Features" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation source="Description" xml:lang="en">Facility course description and features information.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attribute name="DrivingRangeInd" type="xs:boolean" use="optional">
+										<xs:annotation>
+											<xs:documentation source="Description" xml:lang="en">If true, a golf facility with a driving range is requested.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="DiningInd" type="xs:boolean" use="optional">
+										<xs:annotation>
+											<xs:documentation source="Description" xml:lang="en">If true, a golf facility with a dining facility is requested.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="GolfProInd" type="xs:boolean" use="optional">
+										<xs:annotation>
+											<xs:documentation source="Description" xml:lang="en">If true, a golf facility with a golf pro (or golf training) is requested.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="CourseDesigner" type="xs:string" use="optional">
+										<xs:annotation>
+											<xs:documentation source="Description" xml:lang="en">If included, golf facility(s) by this designer should be included in search results.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Amenities" type="GolfAmenitySummaryType" minOccurs="0" maxOccurs="99">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Amenities available at the golf facility. Note, these amenities typically apply to all tee times at the facility.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="ID" type="StringLength0to32" use="optional">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">The ID of the facility or course.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="Name" type="xs:string" use="optional">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">The full or partial name of the golf facility or course.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element ref="TPA_Extensions" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

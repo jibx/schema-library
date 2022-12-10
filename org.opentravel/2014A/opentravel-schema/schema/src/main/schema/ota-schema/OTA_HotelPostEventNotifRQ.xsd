@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="3.000" id="OTA2014A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+  <xs:include schemaLocation="OTA_HotelEvent.xsd"/>
+  <xs:element name="OTA_HotelPostEventNotifRQ">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">This message communicates the actual history of one or more events.</xs:documentation>
+      <xs:documentation xml:lang="en">This message is used to confirm receipt of a hotel event request.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="POS" type="POS_Type" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">Identifes the party sending the message.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="MessageID" type="UniqueID_Type" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">Unique ID that identifies this message.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="EventReports" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">Collection of event reports.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="EventReport" type="EventReportType" maxOccurs="99">
+                <xs:annotation>
+                  <xs:documentation xml:lang="en">Provides the actual event information.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attributeGroup ref="OTA_PayloadStdAttributes">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The standard attributes that appear on the root element for all OpenTravel Messages.</xs:documentation>
+        </xs:annotation>
+      </xs:attributeGroup>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

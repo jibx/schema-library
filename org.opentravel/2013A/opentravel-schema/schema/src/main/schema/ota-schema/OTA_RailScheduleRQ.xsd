@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="2.000" id="OTA2013A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_RailCommonTypes.xsd"/>
+	<xs:element name="OTA_RailScheduleRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The Rail Schedule Request message requests rail schedules for a city pair. Optional request information can include: departure time and flexible time windows and connecting cities. The flexibility of the message allows the request to be narrowed to schedules for a specific train.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" type="POS_Type">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Point of Sale Identification for the transaction initiator that includes the identification information of the party that has made the reservation request and optional  information, such as an agency number assigned by IATA, ARC, ESRP or TID.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="RailScheduleQuery">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">The search criteria for a rail schedule search request.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="RailAvailScheduleQueryType">
+								<xs:sequence>
+									<xs:element name="RailPrefs" minOccurs="0" maxOccurs="99">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="ClassCodes" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">The class of inventory controlled services available.</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:complexContent>
+															<xs:extension base="ClassCodeType">
+																<xs:attribute name="PreferLevel" type="PreferLevelType" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">The preference level for an associated item.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+															</xs:extension>
+														</xs:complexContent>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="Accommodation" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">Type of accommodation including classes of seat, berth, compartment on a train that's occupied by a rail passenger. </xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:complexContent>
+															<xs:extension base="AccommodationType">
+																<xs:attribute name="PreferLevel" type="PreferLevelType" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">The preference level for an associated item.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+															</xs:extension>
+														</xs:complexContent>
+													</xs:complexType>
+												</xs:element>
+												<xs:element ref="AncillaryService" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element ref="TPA_Extensions" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Defines the standard attributes that appear on the root element for all OpenTravel messages.</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+			<xs:attributeGroup ref="MaxResponsesGroup">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The maximum number of trains that may be returned in the response.</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

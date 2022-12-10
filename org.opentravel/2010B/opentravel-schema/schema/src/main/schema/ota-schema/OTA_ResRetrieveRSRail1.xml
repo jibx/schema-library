@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OTA_ResRetrieveRS xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_ResRetrieveRS.xsd" xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Target="Production" TimeStamp="2011-05-08T15:51:07" Version="6.002" TransactionIdentifier="58A207A9C830DD11">
+
+	<!-- The presence of this element indicates the request message was processed successfully by the receiving system. -->
+	<Success/>
+	
+	<ReservationsList>
+		<RailReservation>
+			<ODInfo>
+				<OriginLocation>TMP</OriginLocation>
+				<DestinationLocation>NYC</DestinationLocation>
+				<TrainSegment>
+					<DepartureStation>Tampa</DepartureStation>
+					<ArrivalStation>Penn Station</ArrivalStation>
+					<DepartureDateTime>2011-05-08T15:51:07</DepartureDateTime>
+					<ArrivalDateTime>2011-05-08T23:51:07</ArrivalDateTime>
+					<TrainIdentification>
+						<TrainNumber>211</TrainNumber>
+						<NetworkCode Code="9999"/>
+					</TrainIdentification>
+				</TrainSegment>
+			</ODInfo>
+			<Traveler>
+				<Surname>Smith</Surname>
+			</Traveler>
+		</RailReservation>
+
+	</ReservationsList>
+</OTA_ResRetrieveRS>

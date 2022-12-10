@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: OPENTRAVEL FORUM POST -->
+<!-- USE CASE DETAILS:
+Hotel rates & availability query with specified Location, Check In/Out Dates and Number of Guests specified in the request and driving directions, hotel images & URLs included with rates and availability in the response.
+ -->
+
+<OTA_HotelAvailRS Version="6.001" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelAvailRS.xsd" xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<!-- The presence of this element indicates the request message was processed successfully by the receiving system. -->
+	<Success/>
+
+	<!-- HERE ARE RATES AND AVAILABILITY -->
+	<RoomStays>
+	
+		<RoomStay>
+		
+			<!-- If you're just looking to return rates... this could be optional... But I put it in for images for Room Types. -->
+			<RoomTypes>
+				<!-- DOUBLE ROOM DESCRIPTION -->
+				<RoomType RoomType="Double Room" RoomTypeCode="DBL" NonSmoking="true">
+					<RoomDescription>
+						<Text>DELUXE DOUBLE ROOM (1 KING OR 1 QUEEN OR 2 DOUBLES)</Text>
+					</RoomDescription>
+					<Occupancy MaxOccupancy="4"/>
+				</RoomType>
+				<RoomType RoomType="Double Room" RoomTypeCode="DBL" NonSmoking="true">
+					<RoomDescription>
+						<Image>RoomType1.jpg</Image>
+					</RoomDescription>
+				</RoomType>
+			</RoomTypes>
+
+			<RoomRates>
+				<!-- ROOM TYPE 1 -->
+				<RoomRate RoomTypeCode="DBL" RatePlanID="CRP">
+					<Rates>
+						<Rate EffectiveDate="2011-02-10" ExpireDate="2011-02-16">
+							<Base AmountBeforeTax="359.00"  AmountAfterTax="402.08" CurrencyCode="USD"/>
+							<!-- Rate description could be excluded if your trading partners use the <RoomDescription>'s and <RatePlan> descriptions above -->
+							<RateDescription>
+								<Text>DELUXE DOUBLE ROOM (1 KING OR 1 QUEEN OR 2 DOUBLES).</Text>
+							</RateDescription>
+						</Rate>
+					</Rates>
+					<Features>
+						<Feature>
+							<Description>
+								<Text>Traditional Non-smoking, Heavenly Bed And Bath, Opening Windows, Ergonomic Chair/large Desk, High-speed Internet For A Fee.</Text>
+							</Description>
+						</Feature>
+				</Features>
+				</RoomRate>
+				<!-- ROOM TYPE 2 -->
+				<RoomRate RoomTypeCode="DLX" RatePlanID="CRP" PromotionCode="EVERYOTHERNIGHTFREE">
+					<Rates>
+						<Rate EffectiveDate="2010-08-31" ExpireDate="2010-08-31">
+							<Base AmountBeforeTax="759.00" AmountAfterTax="850.08" CurrencyCode="USD"/>
+							<!-- Rate description could be excluded if your trading partners use the <RoomDescription>'s and <RatePlan> descriptions above -->
+							<RateDescription>
+								<Text>SUITE (1 KING OR 1 QUEEN OR 2 DOUBLES) WITH BALCONY.</Text>
+							</RateDescription>
+						</Rate>
+					</Rates>
+					<Features>
+						<Feature>
+							<Description>
+								<Text>Suite Non-smoking, Heavenly Bed And Bath, Bay And City View, Separate Shower/bath, Separate Living Area.</Text>
+							</Description>
+						</Feature>
+					</Features>
+				</RoomRate>
+			</RoomRates>
+			
+			<!-- GUEST COUNTS -->
+			<GuestCounts IsPerRoom="true">
+				<GuestCount Count="2"/>
+			</GuestCounts>
+		
+			<!-- HERE IS THE PROPERTY INFORMATION - INCLUDING DRIVING DIRECTIONS, HOTEL IMAGES AND URLS -->
+			<BasicPropertyInfo ChainCode="WI" HotelCode="12345" HotelCityCode="TPA" HotelName="The Westin Tampa Harbour Island">
+				<!-- * ChainCode of WI = Westin Hotels & Resorts (OPTIONAL) -->
+				<!-- * HotelCityCode of TPA = "Tampa" (OPTIONAL) -->
+				<!-- * HotelCode is assigned by your GDS or hotel supplier trading partners and is the unique ID of the property in their system (OPTIONAL) -->
+				
+				<VendorMessages>
+
+				<!-- HERE'S A DESCRIPTION OF THE HOTEL -->
+					<VendorMessage InfoType="1" Title="Overview">
+						<!-- InfoType of 1 = "Description" - See OpenTravel Code List Information Type (INF). -->
+						<SubSection>
+							<Paragraph>
+								<Text>Escape to The Westin Tampa Harbour Island, situated on a unique landscaped island in downtown Tampa. Adjacent to the Tampa Convention Center, our location is convenient for business and leisure travelers alike. Just two blocks from St. Pete Times Forum, we have access to all that Tampa has to offer.
+
+Our waterfront atmosphere leaves nothing to be desired, with an outdoor pool and a full-service business center. Host an event in one of our 13 flexible meeting rooms, some offering stunning harbor views. Enjoy delicious continental fare at our elegant restaurant, 725 South. 
+
+Our oversized guest rooms and suites at The Westin Tampa Harbour Island are designed to enhance your relaxation. Relax in our signature Heavenly Bed® for a peaceful night’s sleep. Refresh the next morning in one of our spacious bathrooms, equipped with the Heavenly Shower® featuring dual showerheads.
+								</Text>
+								</Paragraph>
+						</SubSection>
+					</VendorMessage>
+
+				<!-- HERE ARE SOME DRIVING DIRECTIONS -->
+					<VendorMessage InfoType="11" Title="From Tampa International Airport">
+						<!-- InfoType of 11 = "Driving directions" - See OpenTravel Code List Information Type (INF). -->
+						<SubSection>
+							<Paragraph>
+								<Text>Exit the Airport onto Interstate 275 North/Downtown. Take I-275 to Exit 44 which is Ashley Street - Downtown West. Follow the Tampa/Ashley Street ramp and proceed on Tampa Street through downtown. Turn right onto Franklin Street which becomes Harbour Island Boulevard and continue to the hotel.</Text>
+								</Paragraph>
+						</SubSection>
+					</VendorMessage>
+
+					<VendorMessage InfoType="11" Title="From Orlando">
+						<!-- InfoType of 11 = "Driving directions" - See OpenTravel Code List Information Type (INF). -->
+						<SubSection>
+							<Paragraph>
+								<Text>Take Interstate 4 West to Interstate 275 South. Proceed to Exit 45A downtown Ashley/Tampa Street and take Tampa Street South. Stay in the left lane and follow the signs to Tampa Convention Center/Harbour Island. This will put you onto Franklin Street. Continue straight and The Westin Tampa Harbour Island will be on the right hand side.</Text>
+								</Paragraph>
+						</SubSection>
+					</VendorMessage>
+					
+				<!-- HERE ARE SOME GENERAL PICTURES OF THE HOTEL -->
+					<VendorMessage InfoType="5" Title="Westin Harbour View">
+						<!-- InfoType of 5 = "Other" - See OpenTravel Code List Information Type (INF). -->
+						<SubSection>
+							<Paragraph>
+								<URL>http://www.starwoodhotels.com/westin/property/photos/index.html?propertyID=1764#photo1</URL>
+								</Paragraph>
+						</SubSection>
+					</VendorMessage>
+					<VendorMessage InfoType="5" Title="Lounge Lobby">
+						<!-- InfoType of 5 = "Other" - See OpenTravel Code List Information Type (INF). -->
+						<SubSection>
+							<Paragraph>
+								<URL>http://www.starwoodhotels.com/westin/property/photos/index.html?propertyID=1764#photo2</URL>
+								</Paragraph>
+						</SubSection>
+					</VendorMessage>
+					
+				</VendorMessages>
+				
+				<!-- HERE IS A URL TO A MAP OF THE HOTEL -->
+				<Position MapURL="http://www.starwoodhotels.com/westin/property/area/map.html?propertyID=1764"/>
+				
+				<!-- HERE IS THE ADDRESS OF THE HOTEL -->
+				<Address>
+					<StreetNmbr>725</StreetNmbr>
+					<AddressLine>South Harbour Island Blvd</AddressLine>
+					<CityName>Tampa</CityName>
+					<PostalCode>33602</PostalCode>
+					<StateProv StateCode="FL"/>
+					<CountryName>United States</CountryName>
+				</Address>
+				
+				<!-- HERE IS THE PHONE NUMBER FOR HOTEL RESERVATIONS -->
+				<ContactNumbers>
+					<ContactNumber PhoneNumber="(813) 229-5000"/>
+				</ContactNumbers>
+			</BasicPropertyInfo>
+
+		</RoomStay>
+		
+	</RoomStays>
+
+</OTA_HotelAvailRS>

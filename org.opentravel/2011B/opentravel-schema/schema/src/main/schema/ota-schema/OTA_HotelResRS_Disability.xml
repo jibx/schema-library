@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+ <OTA_HotelResRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelResRS.xsd" Version="5.000">
+  <Success /> 
+ <HotelReservations>
+ <HotelReservation>
+ <RoomStays>
+ <RoomStay>
+ <RoomTypes>
+		<RoomType>
+		<Amenities>
+			<Amenity RoomAmenity="58"></Amenity>
+			 <!-- Room Amenity Type 58 = King bed from OTA code table RMA  --> 
+			<Amenity RoomAmenity="74"></Amenity>
+			<!-- Room Amenity Type 74 = Non-smoking from OTA code table RMA  --> 
+		</Amenities>
+		</RoomType>
+	</RoomTypes>
+ <RatePlans>
+ <RatePlan RatePlanCode="CORA999">
+ <CancelPenalties>
+ <CancelPenalty>
+ <PenaltyDescription>
+  <Text>1 NTS RM AND TX CXL PENALTY -AS FIRST NIGHT PAYMENT CANCELLATION PERMITTED UP TO 1DAYS BEFORE ARRIVAL</Text> 
+  </PenaltyDescription>
+  </CancelPenalty>
+  </CancelPenalties>
+  </RatePlan>
+  </RatePlans>
+ <RoomRates>
+ <RoomRate>
+ <Rates>
+ <Rate EffectiveDate="2012-08-10" ExpireDate="2012-08-12">
+  <Base AmountBeforeTax="100.00" /> 
+ <RateDescription>
+  <Text>CORPORATE RATE * SUPERIOR ROOM (1 KING OR 2 SINGLE BEDS) INCLUDING DAILY BREAKFAST * RATE EXCLUDES 15 PCT TAX/SVC CHG</Text> 
+  </RateDescription>
+  </Rate>
+  </Rates>
+  </RoomRate>
+  </RoomRates>
+  <BasicPropertyInfo ChainCode="AA" HotelCode="DNABC" >
+	
+	   <HotelFeature AccessibilityCode="29"></HotelFeature>
+	   <!--  Disability Feature Code 29 = Service animals allowed on property for people with disabilities from OTA code table PHY   --> 
+	   <HotelFeature AccessibilityCode="66"></HotelFeature>
+	   <!--  Disability Feature Code 66 =  Restaurant/bar menus available in Braille from OTA code table PHY   --> 
+	   <HotelFeature AccessibilityCode="38"></HotelFeature>
+	   <!--  Disability Feature Code 38 =  Grab bars in bathroom from OTA code table PHY   --> 
+	   </BasicPropertyInfo>
+  </RoomStay>
+  </RoomStays>
+ <ResGlobalInfo>
+ <HotelReservationIDs>
+  <HotelReservationID ResID_Value="86048384" /> 
+  </HotelReservationIDs>
+  </ResGlobalInfo>
+  </HotelReservation>
+  </HotelReservations>
+  </OTA_HotelResRS>

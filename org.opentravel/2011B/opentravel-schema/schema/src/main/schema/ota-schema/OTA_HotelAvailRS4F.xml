@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<OTA_HotelAvailRS Version="6.001" 
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelAvailRS.xsd" 
+xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<Success/>
+	
+	<HotelStays>
+		<HotelStay>
+			<BasicPropertyInfo>
+				<VendorMessages>
+					<VendorMessage InfoType="8" Title="Triple AAA Three Diamond Rating">
+						<!-- InfoType of 8 = "Awards" - See OpenTravel Code List Information Type (INF). -->
+						<SubSection>
+							<Paragraph>
+								<Text>This hotel has been Triple AAA Three Diamond Rated: These establishments appeal to the traveler with comprehensive needs. Properties are multifaceted with a distinguished style, including marked upgrades in the quality of physical attributes, amenities, and level of comfort provided.
+								</Text>
+								</Paragraph>
+						</SubSection>
+					</VendorMessage>
+				</VendorMessages>
+			</BasicPropertyInfo>
+		</HotelStay>
+	</HotelStays>
+</OTA_HotelAvailRS>

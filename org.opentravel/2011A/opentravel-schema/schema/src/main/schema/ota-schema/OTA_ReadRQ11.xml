@@ -1,0 +1,14 @@
+<OTA_ReadRQ xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_ReadRQ.xsd" xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Target="Test" TimeStamp="2009-08-06T15:02:10" Version="1.000" TransactionIdentifier="58A207A9C830DD11">
+	<POS>
+		<Source>
+				<RequestorID ID="BTA142" MessagePassword="jg97fg6#67f" Type="1">
+					<CompanyName>Bob's Travel Agency</CompanyName>
+				</RequestorID>
+		</Source>
+	</POS>
+	<ReadRequests>
+		<ReadRequest>
+		  <UniqueID Type="14" ID="301877540" ID_Context="USV" />
+		</ReadRequest>
+	</ReadRequests>
+</OTA_ReadRQ>

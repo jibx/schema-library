@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="5.000" id="OTA2014A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_AirCommonTypes.xsd"/>
+	<xs:element name="OTA_AirSeatMapRS">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The SeatMap Response message contains the seat map details for the request options given for the requested flight segments. This may include multiple seat maps in case of different seat maps returned for different passengers in the same flight segment.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="Success" type="SuccessType">
+						<xs:annotation>
+							<xs:documentation source="Description" xml:lang="en">Standard way to indicate successful processing of an OpenTravel message. Returning an empty element of this type indicates success.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Warnings" type="WarningsType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation source="Description" xml:lang="en">Standard way to indicate successful processing of an OpenTravel message, but one in which warnings are generated.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="SeatMapResponses" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Seat map response element containing the results of the request.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="SeatMapResponse" maxOccurs="99">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Seat map details for each flight segment in the input request.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="FlightSegmentInfo">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Seat map flight segment information.</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:complexContent>
+														<xs:extension base="FlightSegmentType">
+															<xs:sequence>
+																<xs:element name="Warnings" type="WarningsType" minOccurs="0"/>
+															</xs:sequence>
+														</xs:extension>
+													</xs:complexContent>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="SeatMapDetails" type="SeatMapDetailsType" maxOccurs="99">
+												<xs:annotation>
+													<xs:documentation source="Description" xml:lang="en">Seat map details.</xs:documentation>
+													<xs:documentation source="Moreinfo" xml:lang="en">Note: This identifies the seat map details for the flight segment in the corresponding FlightSegmentInfo element. If the responding system has different seat maps for different passengers for the same flight segment then this element will recur accordingly. The availability of seats can differ based upon various conditions, such as a passenger's status within a loyalty program or by the amount paid or class of service booked for the ticket. For example, if one passenger has a certain status in the Frequent Flyer program of the airline, certain desirable seats may be available for selection. A passenger without such status may not be able to select those seats. Thus the availability of seats can differ by passenger.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="BookingReferenceID" type="UniqueID_Type" minOccurs="0" maxOccurs="5">
+												<xs:annotation>
+													<xs:documentation source="Description" xml:lang="en">Booking reference (PNR record locator.)</xs:documentation>
+													<xs:documentation source="MoreInfo" xml:lang="en">Note: This is used for PNR record locator. If there are more than one PNR numbers because of multiple airlines in the itinerary then this element could be repeated.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="FareBasisCode" type="FareBasisCodeType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Fare basis code associated with the seat that may be associated with a flight segment.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+										</xs:sequence>
+										<xs:attribute name="SeatUpgradeAppliedInd" type="xs:boolean">
+											<xs:annotation>
+												<xs:documentation source="Description" xml:lang="en">Upgrades included indicator.</xs:documentation>
+												<xs:documentation source="Implementer" xml:lang="en">If true, this response includes upgrades in the seat map.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="AirTravelers" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Air traveler information.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="AirTraveler" maxOccurs="99">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Air traveler detail.</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:complexContent>
+														<xs:extension base="AirTravelerType">
+															<xs:attribute name="InfantHasSeatInd" type="xs:boolean" use="optional">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">Infant with their own seat.</xs:documentation>
+																</xs:annotation>
+															</xs:attribute>
+															<xs:attribute name="SSR_Ind" type="xs:boolean" use="optional">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">Special service request indicator.</xs:documentation>
+																</xs:annotation>
+															</xs:attribute>
+															<xs:attribute name="UnaccompaniedMinorInd" type="xs:boolean" use="optional">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">Unaccompanied minor indicator.</xs:documentation>
+																</xs:annotation>
+															</xs:attribute>
+															<xs:attribute name="OxygenRequiredInd" type="xs:boolean" use="optional">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">Oxygen required indicator.</xs:documentation>
+																</xs:annotation>
+															</xs:attribute>
+															<xs:attribute name="PetInCabinInd" type="xs:boolean" use="optional">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">Pet in cabin indicator.</xs:documentation>
+																</xs:annotation>
+															</xs:attribute>
+															<xs:attribute name="ServiceAnimalInd" type="xs:boolean" use="optional">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">Service animal indicator.</xs:documentation>
+																</xs:annotation>
+															</xs:attribute>
+														</xs:extension>
+													</xs:complexContent>
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+				<xs:element name="Errors" type="ErrorsType">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">A collection of errors that occurred during the processing of a message.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel messages.</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

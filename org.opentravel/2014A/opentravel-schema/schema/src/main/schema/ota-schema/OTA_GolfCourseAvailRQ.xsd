@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="4.000" id="OTA2014A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_GolfCommonTypes.xsd"/>
+	<xs:element name="OTA_GolfCourseAvailRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The Golf Tee Time Availability requests availability for specified golf facility(s) and optional tee time(s). 
+
+Golfer information must be provided and optional discount/promotion and requested amenities may be specified to validate booking rules and establish tee time pricing.
+
+Additional message functionality includes transaction processing directives that influence search results, such as display currency and maximum quantity of results.
+
+Developer Notes: The ID of a golf facility is required to request tee time availability.
+</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation source="Use" xml:lang="en">Point of Sale identification.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="POS_Type"/>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ProcessingInfo" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Transaction processing directives, including display and pricing currency overrides. If no display or pricing currency information is provided, the display and pricing currency will default to the value in POS/Source/@ISOCurrency.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="DisplayCurrency" type="ISO4217" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Use" xml:lang="en">The requested display currency in ISO 4217 encoding.</xs:documentation>
+								<xs:documentation source="Reference" xml:lang="en">(Reference): http://www.opentraveldevelopersnetwork.com/Supported_ISO_Standards.php</xs:documentation>
+								<xs:documentation source="More Info" xml:lang="en">(More Info): http://www.opentraveldevelopersnetwork.com/2012A_SchemaDoc/DisplayCurrency</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="PricingCurrency" type="ISO4217" use="optional">
+							<xs:annotation>
+								<xs:documentation source="Use" xml:lang="en">The requested pricing currency in ISO 4217 encoding.</xs:documentation>
+								<xs:documentation source="Example" xml:lang="en">CAD = Canadian Dollar | USD = United States Dollar | EUR = Euro</xs:documentation>
+								<xs:documentation source="Reference" xml:lang="en">http://www.opentraveldevelopersnetwork.com/Supported_ISO_Standards.php</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="RedemptionInd" type="xs:boolean" use="optional">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">If true, redemption program points may be used to pay for the total or a portion of the tee time.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="MaxResultsQty" type="xs:positiveInteger" use="optional">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">The maximum quantity of search results in the response.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="MultimodalOffer" type="MultiModalOfferType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Multimodal offer influencers.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="GolfFacility" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">One or more golf facility(s) and tee time round(s) to request availability for.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="UniqueID_Type">
+								<xs:sequence>
+									<xs:element name="TeeTime" type="TeeTimeAvailType" maxOccurs="99">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">One or more tee time(s) to request availability for.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element ref="TPA_Extensions" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

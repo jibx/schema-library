@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="2.000" id="OTA2014A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_GroundCommonTypes.xsd"/>
+	<xs:element name="OTA_GroundModifyRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The OpenTravel Ground Transportation modify reservation (booking) request message includes the information required to change an existing ground transportation reservation. Note that the response for this modification is the OTA_GroundBookRS message.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ModifyType" type="List_TransactionAction_Base" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation source="description" xml:lang="en">Used to specify the type of the modify transaction.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="POS" type="POS_Type">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Point of Sale Identification. Identification number of the vendor that has made the vehicle availability request and agency number assigned by IATA, ARC, ESRP or TID.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Reservation" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Reservation modifications to be made.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ReferenceID">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">A reference ID that was returned in the booking confirmation message and uniquely identifies this reservation.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="UniqueID_Type">
+											<xs:attribute name="CancelInd" type="xs:boolean" use="optional">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">If true, this reservation segment should be canceled.</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:choice>
+								<xs:element name="Service" minOccurs="1">
+									<xs:annotation>
+										<xs:documentation source="description" xml:lang="en">Private service information.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="Type" type="List_GroundServiceProvided" form="qualified" minOccurs="0" maxOccurs="1">
+												<xs:annotation>
+													<xs:documentation source="description" xml:lang="en">The service type, such as Airport Transfer, Hourly and Simple Transfer.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="ServiceLevel" type="List_LevelOfService" minOccurs="0" maxOccurs="1">
+												<xs:annotation>
+													<xs:documentation source="description" xml:lang="en">The level of service, such as deluxe and VIP.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Locations" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Pickup, interim stops and drop-off details.</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:sequence>
+														<xs:element name="Dropoff" type="GroundLocationType" minOccurs="0">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">Drop off information, including address, airport and airline details.</xs:documentation>
+															</xs:annotation>
+														</xs:element>
+														<xs:element name="Pickup" type="GroundLocationType" minOccurs="0">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">Pickup details, including date and time, address, airport and airline information.</xs:documentation>
+															</xs:annotation>
+														</xs:element>
+														<xs:element name="Stops" minOccurs="0">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">A collection of Stop information, including address, airport and airline details.</xs:documentation>
+															</xs:annotation>
+															<xs:complexType>
+																<xs:sequence>
+																	<xs:element name="Stop" maxOccurs="unbounded">
+																		<xs:complexType>
+																			<xs:complexContent>
+																				<xs:extension base="GroundLocationType">
+																					<xs:attribute name="Sequence" type="xs:positiveInteger" use="optional">
+																						<xs:annotation>
+																							<xs:documentation xml:lang="en">A sequence number for the stop.</xs:documentation>
+																						</xs:annotation>
+																					</xs:attribute>
+																				</xs:extension>
+																			</xs:complexContent>
+																		</xs:complexType>
+																	</xs:element>
+																</xs:sequence>
+															</xs:complexType>
+														</xs:element>
+													</xs:sequence>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="VehicleSize" type="List_VehSize" minOccurs="0" maxOccurs="1">
+												<xs:annotation>
+													<xs:documentation source="description" xml:lang="en">The size of the vehicle.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="VehicleType" type="List_VehCategory" minOccurs="0" maxOccurs="1">
+												<xs:annotation>
+													<xs:documentation source="description" xml:lang="en">The type of the vehicle.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Languages" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Collection of language details pertaining to the service.</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:sequence>
+														<xs:element name="Language" maxOccurs="unbounded">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">Language details pertaining to the service.</xs:documentation>
+															</xs:annotation>
+															<xs:complexType>
+																<xs:attribute name="Language" type="xs:language" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">Language spoken by the driver or the guide.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+																<xs:attribute name="PrimaryLangInd" type="xs:boolean" use="optional">
+																	<xs:annotation>
+																		<xs:documentation xml:lang="en">If TRUE, this is the primary language spoken by the driver or the guide.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+															</xs:complexType>
+														</xs:element>
+													</xs:sequence>
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+										<xs:attribute name="ChildCarSeatInd" type="xs:boolean" use="optional">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">If TRUE, a child car seat is required or requested.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="PetFriendlyInd" type="xs:boolean" use="optional">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">If TRUE, a vehicle is being requested and/or is available that allows domestic pets.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="FuelEfficientVehInd" type="xs:boolean" use="optional">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">If TRUE, the vehicle is fuel efficient.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="MaximumPassengers" type="xs:positiveInteger" use="optional">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">The maximum quantity of passengers this vehicle can accommodate. NOTE: This figure is based on the quantity of seat belts in the vehicle.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="MaximumBaggage" type="xs:positiveInteger" use="optional">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">The (recommended) maximum baggage that can be stored in the vehicles trunk.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="GreetingSignInd" type="xs:boolean" use="optional">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">If TRUE, a greeting sign is requested.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="GreetingSignName" type="xs:string" use="optional">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">The name to be on the greeting sign.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="MeetAndGreetInd" type="xs:boolean" use="optional">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">If TRUE, complementary meet and greet services are requested and/or provided..</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="PersonalGreeterInd" type="xs:boolean" use="optional">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">If TRUE, personal meet and greet is requested (that may incur an additional charge) or available.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="MultilingualInd" type="xs:boolean" use="optional">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">If TRUE, specific languages are requested and/or provided.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="ShortDescription">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">A short description of the service type and vehicle (up to 250 characters.)</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0"/>
+													<xs:maxLength value="250"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+										<xs:attribute name="Notes" type="xs:string" use="optional">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Other notes related to the ground service, such as "Driver will meet you in baggage claim."</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="DisabilityVehicleInd" type="xs:boolean" use="optional">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">If TRUE, this vehicle is disability compatible.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="PassengerRPH" type="RPH_Type" use="optional">
+											<xs:annotation>
+												<xs:documentation source="description" xml:lang="en">A reference to a passenger ID set in the Passenger element.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="Shuttle" minOccurs="1" maxOccurs="1">
+									<xs:annotation>
+										<xs:documentation source="description" xml:lang="en">Shuttle service information.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:complexContent>
+											<xs:extension base="GroundShuttleResType">
+												<xs:attribute name="PassengerRPH" type="RPH_Type" use="optional">
+													<xs:annotation>
+														<xs:documentation source="description" xml:lang="en">A reference to a passenger ID set in the Passenger element.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:extension>
+										</xs:complexContent>
+									</xs:complexType>
+								</xs:element>
+							</xs:choice>
+							<xs:element name="Passenger" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Information about a primary passenger (who is the contact for this reservation) and additional passengers.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Primary" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Information on the primary passenger (who is the contact for this reservation.)</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:complexContent>
+													<xs:extension base="ContactPersonType">
+														<xs:sequence>
+															<xs:element name="CustomerID" type="UniqueID_Type" minOccurs="0">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">The identification of the customer for whom a booking is being requested. This is different from the customer's loyalty number.</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+														</xs:sequence>
+													</xs:extension>
+												</xs:complexContent>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Additional" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Information on additional passengers. This may also be used to pass an event manifest, e.g. a list of passengers that will have vehicles allocated by the supplier.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:complexContent>
+													<xs:extension base="ContactPersonType">
+														<xs:sequence>
+															<xs:element name="AdditionalType" minOccurs="0">
+																<xs:annotation>
+																	<xs:documentation source="description" xml:lang="en">Used to define the specific type and quantity of additional person(s).</xs:documentation>
+																</xs:annotation>
+																<xs:complexType>
+																	<xs:attributeGroup ref="TravelerCountGroup"/>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+														<xs:attributeGroup ref="DateTimeSpanGroup">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">Specifies the dates for how long the additional driver should be part of the rental contract.</xs:documentation>
+															</xs:annotation>
+														</xs:attributeGroup>
+														<xs:attribute name="CorpDiscountName" type="StringLength1to64" use="optional">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">This is the name of the organization associated with the corporate discount number.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+														<xs:attribute name="CorpDiscountNmbr" type="StringLength1to32" use="optional">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">This is the code used to identify if the additional driver is eligible for benefits associated with a specific organization.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+														<xs:attribute name="QualificationMethod" use="optional">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">Used as a qualification for an additional driver.</xs:documentation>
+															</xs:annotation>
+															<xs:simpleType>
+																<xs:restriction base="xs:string">
+																	<xs:enumeration value="RT_AirlineTicket">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">Round trip airline ticket</xs:documentation>
+																		</xs:annotation>
+																	</xs:enumeration>
+																	<xs:enumeration value="CreditCard">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">If needed, the credit card details should be passed in PaymentForm/PaymentCard.</xs:documentation>
+																		</xs:annotation>
+																	</xs:enumeration>
+																	<xs:enumeration value="PassportAndReturnTkt">
+																		<xs:annotation>
+																			<xs:documentation xml:lang="en">Passport and return airline ticket</xs:documentation>
+																		</xs:annotation>
+																	</xs:enumeration>
+																</xs:restriction>
+															</xs:simpleType>
+														</xs:attribute>
+													</xs:extension>
+												</xs:complexContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RateQualifier" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Rate qualifier and promotions that apply to this reservation.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="GroundRateQualifierType"/>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Payment" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">A collection of payments associated with this ground transportation reservation request.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Payment" type="PaymentFormType" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Payment" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">A collection of payments associated with all ground transportation reservation requests. Note that if payment information is included at the Reservation level, that payment information overrides this global payment information.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Payment" type="PaymentFormType" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element ref="TPA_Extensions" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+			<xs:attributeGroup ref="ReqRespVersion"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

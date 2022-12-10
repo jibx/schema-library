@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OTA_ResRetrieveRS xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_ResRetrieveRS.xsd" xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Target="Test" TimeStamp="2009-05-08T15:51:07" Version="1.0" TransactionIdentifier="58A207A9C830DD11">
+	<Success/>
+	<ReservationsList>
+		<PackageReservation>
+			<UniqueID Type="14" ID="301877540" ID_Context="USV"/>
+			<!-- Type (UIT) 14 = Reservation -->
+			<ArrivalLocation LocationCode="MCO"/>
+			<DepartureLocation LocationCode="PHX"/>
+		</PackageReservation>
+		<PackageReservation>
+			<UniqueID Type="14" ID="299653841" ID_Context="USV"/>
+			<!-- Type (UIT) 14 = Reservation -->
+			<ArrivalLocation LocationCode="LAS"/>
+			<DepartureLocation LocationCode="SFO"/>
+		</PackageReservation>
+		<PackageReservation>
+			<UniqueID Type="14" ID="305679853" ID_Context="USV"/>
+			<!-- Type (UIT) 14 = Reservation -->
+			<ArrivalLocation LocationCode="JFK"/>
+			<DepartureLocation LocationCode="TUS"/>
+		</PackageReservation>
+		<PackageReservation>
+			<UniqueID Type="14" ID="299865304" ID_Context="USV"/>
+			<!-- Type (UIT) 14 = Reservation -->
+			<ArrivalLocation LocationCode="SEA"/>
+			<DepartureLocation LocationCode="PHX"/>
+		</PackageReservation>
+	</ReservationsList>
+</OTA_ResRetrieveRS>

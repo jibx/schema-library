@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="4.000" id="OTA2013A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_LoyaltyCommonTypes.xsd"/>
+	<xs:element name="OTA_LoyaltyCertificateCreateRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The CertificateCreateRQ allows businesses to communicate with their loyalty service provider to generate redemption certificates for their customers.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" type="POS_Type" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">This identifies the party making the request. Trading partners are able to define their own UniqueID.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Customer" minOccurs="0" maxOccurs="999">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Customer for whom a certificate is created.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="PersonNameType">
+								<xs:attribute name="RPH" type="RPH_Type" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">The Reference Place Holder (RPH) is an index code used to identify an instance in a collection of like items (e.g. used to assign individual passengers or clients to particular itinerary items).</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="ResBookDesigCode" type="UpperCaseAlphaLength1to2" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Booking class of this customer.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="FlightRPH" type="RPH_Type" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Reference to the flight for which the certificate is requested.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="TravelInfos">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Information about the customers trip and loyalty program.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="TravelInfo" type="LoyaltyTravelInfoType" maxOccurs="99">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Information about the customers trip, including hotel stay, air flight, car rental, tour/activity, rail and ground transportation.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="LoyaltyCertificateDetail" minOccurs="0" maxOccurs="999">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Information about the customers loyalty program and certificates.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attributeGroup ref="LoyaltyCertificateNumberGroup"/>
+									<xs:attribute name="PinNumber" type="StringLength1to16" use="optional">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">The personal identification number (password) for the Member Number.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="CustomerRPH" type="RPH_Type" use="optional">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">Reference of the customer the certificate is requested for.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="FlightRPH" type="RPH_Type" use="optional">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">Reference of the flight the certificate is requested for.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="AwardType" type="StringLength1to16" use="optional">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">Describes the currency type to be deducted (e.g. miles, points, vouchers, stays).</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="CertificateRefNumber" type="xs:nonNegativeInteger" use="optional">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">A unique reference for the created certificate.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

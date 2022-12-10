@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: #1: Airport Transfer -->
+<!-- USE CASE DERIVATION: No vehicles available for date and time requested. -->
+
+<OTA_GroundAvailRS xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_GroundAvailRS.xsd" 
+EchoToken="12345" 
+TimeStamp="2011-05-01T09:44:55" 
+Target="Production" 
+Version="1.000" 
+PrimaryLangID="en-us">	
+
+<!-- An element that is not intended to contain any data. The mere presence of a success element within the response message indicates that the incoming request message was processed successfully. -->
+<Success/>
+
+<!-- A business warning that no vehicles are available -->
+<Warnings>
+	<Warning Type="11" ShortText="No vehicles available">No vehicles are available for the requested date and time.</Warning>
+		<!-- Type 11 = "Advisory". See OpenTravel Code List Error Warning Type (EWT). -->
+</Warnings>
+
+</OTA_GroundAvailRS>

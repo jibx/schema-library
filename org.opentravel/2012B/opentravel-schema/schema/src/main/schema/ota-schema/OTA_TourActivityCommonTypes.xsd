@@ -1,0 +1,1405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns="http://www.opentravel.org/OTA/2003/05/common" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.000" id="OTA2012AOTA2012B">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:annotation>
+    <xs:documentation source="Notice" xml:lang="en">The OTA_CodeType simpleType will be deprecated in the 2013A OpenTravel XML Message Suite publication. All OTA_CodeType typed attributes with be replaced with elements typed as an open list, e.g. List_NameOfList.</xs:documentation>
+  </xs:annotation>
+	<xs:include schemaLocation="OTA_CommonTypes.xsd"/>
+	<xs:simpleType name="TourActivityCategoryEnum">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Tour and activity categories enum with an "Other" value to support an open enumeration list as agreed upon between trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Accessible"/>
+			<xs:enumeration value="Adventure"/>
+			<xs:enumeration value="Cultural"/>
+			<xs:enumeration value="EcoAdventure"/>
+			<xs:enumeration value="Educational"/>
+			<xs:enumeration value="EscortedTour">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Escorted tours are typically conducted by a tour director who takes care of all services from beginning to end of the tour, which may include transportation to and from the tour location.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Family">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The tour and/or activity content and extertion level are family friendly for children, adults and seniors.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FoodAndBeverage"/>
+			<xs:enumeration value="GuidedTour">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Guided tours are somewhat similar to escorted tours but customers are greeted by a local representative rather than a designated tour director and will not be escorted to all activities and functions. Local guides will be available to answer questions through the duration of the tour. Some meals, accommodations and sightseeing may be included in the tour. </xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Group">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A day tour or activity that is well-suited for larger parties, e.g. 8+ attendees within a group.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Independent">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Guides and escorts are not available to participants.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Romantic"/>
+			<xs:enumeration value="SportsAndRecreation"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">OpenTravel Reserved words, "Other_" as enumerated value for  open enumeration support to support additional compartment type. The Value corresponding to "Other_" will be specified in the  "Value" attribute. See CompartmentType.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TourActivityPricingTypeEnum">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Tour and activity pricing options.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="PerPerson"/>
+			<xs:enumeration value="PerGroup"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">OpenTravel Reserved words, "Other_" as enumerated value for  open enumeration support to support additional compartment type. The Value corresponding to "Other_" will be specified in the  "Value" attribute. See CompartmentType.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TourActivityTypeEnum">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Tour and activity types enum with an "Other" value to support an open enumeration list as agreed upon between trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Adventure"/>
+			<xs:enumeration value="Agriculture"/>
+			<xs:enumeration value="Airline_Airplane"/>
+			<xs:enumeration value="All_Terrain_Vehicle"/>
+			<xs:enumeration value="Amphibious"/>
+			<xs:enumeration value="Aquariums"/>
+			<xs:enumeration value="Archeology"/>
+			<xs:enumeration value="Architecture"/>
+			<xs:enumeration value="Art"/>
+			<xs:enumeration value="Astronomy"/>
+			<xs:enumeration value="Attractions"/>
+			<xs:enumeration value="Audio"/>
+			<xs:enumeration value="Ballooning"/>
+			<xs:enumeration value="Banana_Boat"/>
+			<xs:enumeration value="Bareboat"/>
+			<xs:enumeration value="Barges"/>
+			<xs:enumeration value="Bicycling"/>
+			<xs:enumeration value="Bird_watching"/>
+			<xs:enumeration value="Boating/Boat_Tour"/>
+			<xs:enumeration value="Boogie_Boarding"/>
+			<xs:enumeration value="Bumper_Tubing"/>
+			<xs:enumeration value="Camping"/>
+			<xs:enumeration value="Canoeing"/>
+			<xs:enumeration value="Canyoneering"/>
+			<xs:enumeration value="Cave_Tours"/>
+			<xs:enumeration value="Climbing"/>
+			<xs:enumeration value="Clothing_Optional"/>
+			<xs:enumeration value="Combination_Tours"/>
+			<xs:enumeration value="Comedy_Club"/>
+			<xs:enumeration value="Concert"/>
+			<xs:enumeration value="Cross_Country"/>
+			<xs:enumeration value="Cruise"/>
+			<xs:enumeration value="Culinary"/>
+			<xs:enumeration value="Cultural"/>
+			<xs:enumeration value="Disabled"/>
+			<xs:enumeration value="Diving"/>
+			<xs:enumeration value="Dog_Sledding"/>
+			<xs:enumeration value="Dolphins"/>
+			<xs:enumeration value="Dude_Ranch"/>
+			<xs:enumeration value="Eclipse"/>
+			<xs:enumeration value="Ecology"/>
+			<xs:enumeration value="Educational"/>
+			<xs:enumeration value="Equestrian"/>
+			<xs:enumeration value="Executive_Board"/>
+			<xs:enumeration value="Farmstays"/>
+			<xs:enumeration value="Ferries"/>
+			<xs:enumeration value="Fishing"/>
+			<xs:enumeration value="Food"/>
+			<xs:enumeration value="Flightseeing"/>
+			<xs:enumeration value="Free"/>
+			<xs:enumeration value="Freighters"/>
+			<xs:enumeration value="Garden"/>
+			<xs:enumeration value="Golf"/>
+			<xs:enumeration value="Ghost"/>
+			<xs:enumeration value="GlassBottom_Viewing"/>
+			<xs:enumeration value="Golf_Golf_Courses"/>
+			<xs:enumeration value="Gourmet"/>
+			<xs:enumeration value="Guided_Land"/>
+			<xs:enumeration value="Guided_Restaurant"/>
+			<xs:enumeration value="Hang_Gliding"/>
+			<xs:enumeration value="Helicopter"/>
+			<xs:enumeration value="High_Performance_Jet_Boat"/>
+			<xs:enumeration value="Hiking"/>
+			<xs:enumeration value="Historical"/>
+			<xs:enumeration value="Holistic"/>
+			<xs:enumeration value="Homestays"/>
+			<xs:enumeration value="Honeymoon"/>
+			<xs:enumeration value="Horseback"/>
+			<xs:enumeration value="Hula_Dancing"/>
+			<xs:enumeration value="Inter_Island_Transportation"/>
+			<xs:enumeration value="Island_Day_Trip"/>
+			<xs:enumeration value="Jazz"/>
+			<xs:enumeration value="Jet_Skiing"/>
+			<xs:enumeration value="Kayaking"/>
+			<xs:enumeration value="Lava_Tour"/>
+			<xs:enumeration value="Lei_Greeters"/>
+			<xs:enumeration value="Luau"/>
+			<xs:enumeration value="Mancation"/>
+			<xs:enumeration value="Manta_Ray_Snorkel"/>
+			<xs:enumeration value="Marathon"/>
+			<xs:enumeration value="Meetings"/>
+			<xs:enumeration value="Motorcoach"/>
+			<xs:enumeration value="Motorcycling"/>
+			<xs:enumeration value="Mountaineering"/>
+			<xs:enumeration value="Museums"/>
+			<xs:enumeration value="Music"/>
+			<xs:enumeration value="Nature"/>
+			<xs:enumeration value="Night_Life"/>
+			<xs:enumeration value="Paragliding"/>
+			<xs:enumeration value="Parasailing"/>
+			<xs:enumeration value="Parks"/>
+			<xs:enumeration value="Photography"/>
+			<xs:enumeration value="Pilgrimage"/>
+			<xs:enumeration value="Rafting"/>
+			<xs:enumeration value="Railroad_or_Trams"/>
+			<xs:enumeration value="Rainforest"/>
+			<xs:enumeration value="Religious"/>
+			<xs:enumeration value="Rental_Equipment"/>
+			<xs:enumeration value="Research"/>
+			<xs:enumeration value="Restaurant_Tours"/>
+			<xs:enumeration value="Restaurants"/>
+			<xs:enumeration value="Safari"/>
+			<xs:enumeration value="Sailing"/>
+			<xs:enumeration value="Scuba/Snorkeling"/>
+			<xs:enumeration value="Scuba_Lessons"/>
+			<xs:enumeration value="Segway_Tours"/>
+			<xs:enumeration value="Shopping"/>
+			<xs:enumeration value="Show"/>
+			<xs:enumeration value="Sightseeing"/>
+			<xs:enumeration value="Singles"/>
+			<xs:enumeration value="Skate_Park"/>
+			<xs:enumeration value="Skiing"/>
+			<xs:enumeration value="Snowboarding"/>
+			<xs:enumeration value="Snowmobile"/>
+			<xs:enumeration value="Snuba"/>
+			<xs:enumeration value="Spa_and_Gym"/>
+			<xs:enumeration value="Space"/>
+			<xs:enumeration value="Speed_Boating"/>
+			<xs:enumeration value="Sphere_Riding"/>
+			<xs:enumeration value="Spiritual"/>
+			<xs:enumeration value="Sport_Fishing"/>
+			<xs:enumeration value="Sporting_Clays"/>
+			<xs:enumeration value="StandUp_Paddle_Boarding"/>
+			<xs:enumeration value="Storm_Chasing"/>
+			<xs:enumeration value="Submarine"/>
+			<xs:enumeration value="Submersible_Scooter"/>
+			<xs:enumeration value="Sunrise_Tours"/>
+			<xs:enumeration value="Sunset_Dinner"/>
+			<xs:enumeration value="Surfing_Camps"/>
+			<xs:enumeration value="Theater"/>
+			<xs:enumeration value="Transportation"/>
+			<xs:enumeration value="Train"/>
+			<xs:enumeration value="Trekking"/>
+			<xs:enumeration value="Turtle_Watching"/>
+			<xs:enumeration value="Underwater_Reef_Tours"/>
+			<xs:enumeration value="Vacation_Portraits"/>
+			<xs:enumeration value="Volcano"/>
+			<xs:enumeration value="Volunteering"/>
+			<xs:enumeration value="Wakeboarding"/>
+			<xs:enumeration value="Walking"/>
+			<xs:enumeration value="Water_Park"/>
+			<xs:enumeration value="Water_Skiing"/>
+			<xs:enumeration value="War"/>
+			<xs:enumeration value="Weddings"/>
+			<xs:enumeration value="Whale_Watching"/>
+			<xs:enumeration value="Windsurfing"/>
+			<xs:enumeration value="Wine"/>
+			<xs:enumeration value="Yacht_Charters"/>
+			<xs:enumeration value="Youth_Activities"/>
+			<xs:enumeration value="Zip_Line"/>
+			<xs:enumeration value="Zoo"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">OpenTravel Reserved words, "Other_" as enumerated value for  open enumeration support to support additional compartment type. The Value corresponding to "Other_" will be specified in the  "Value" attribute. See CompartmentType.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:attributeGroup name="TourActivityParticipantGroup">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Unique ID(s) assigned elsewhere in the message that associate an individual participant, a participant category and/or a group with other information.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="ParticipantID" type="RPH_Type" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A unique ID (that is assigned elsewhere in the message) that associates a participant with other information.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ParticipantCategoryID" type="RPH_Type" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A unique ID (that is assigned elsewhere in the message) that associates a participant category with other information.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="GroupID" type="RPH_Type" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A unique ID (that is assigned elsewhere in the message) that associates a group with other information.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:complexType name="TourActivityAccessibilityReqType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Physically challenged accessibility preferences.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="MobilityInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">If TRUE, one or more participants have limited mobility.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SightInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">If TRUE, one or more participants have limited or no sight and may have a service animal.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TourActivityAccessibilityType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Physically challenged accessibility services.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Comment" type="xs:string" minOccurs="0" maxOccurs="9">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Comments about physically challenged accessibility services.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="MobilityInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">If TRUE, this tour and/or activity may accommodate individuals with limited mobility.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SightInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">If TRUE, this tour and/or activity may accommodate individuals with limited or no sight. This includes individuals with service dogs.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TourActivityCategoryPrefType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Tour/ activity category and type definitions with preference designators.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Category" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Identifies a high level category and preference level. Select pre-defined category from the list or select the "Other_" value and enter a category name in the @Extension field.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="TourActivityCategoryEnum">
+							<xs:attribute name="Code" type="xs:string" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">A category code known to trading partners.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="Extension" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Enter a category here if you have selected "Other_" from the pre-defined list.</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="Cultural">
+											<xs:annotation>
+												<xs:documentation xml:lang="en"/>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="EcoAdventure">
+											<xs:annotation>
+												<xs:documentation xml:lang="en"/>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="Educational">
+											<xs:annotation>
+												<xs:documentation xml:lang="en"/>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="FamilyFun">
+											<xs:annotation>
+												<xs:documentation xml:lang="en"/>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="Free"/>
+										<xs:enumeration value="FoodBeverage">
+											<xs:annotation>
+												<xs:documentation xml:lang="en"/>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="Romantic"/>
+										<xs:enumeration value="SportsRecreation"/>
+										<xs:enumeration value="WheelchairAccess"/>
+										<xs:enumeration value="Other"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+							<xs:attributeGroup ref="PreferLevelGroup">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Used to specify the preference level for this category item</xs:documentation>
+								</xs:annotation>
+							</xs:attributeGroup>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Type" minOccurs="0" maxOccurs="9">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A granular tour/activity type with a preference level. Note that this may be associated with a specified category. Select a pre-defined type from the list or select the "Other_" value and enter a type name in the @Extension field.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="TourActivityTypeEnum">
+							<xs:attribute name="Code" type="xs:string" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">A type (sub-category) code known to trading partners.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="Extension" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Enter a type here if you have selected "Other_" from the pre-defined list.</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="Cultural">
+											<xs:annotation>
+												<xs:documentation xml:lang="en"/>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="EcoAdventure">
+											<xs:annotation>
+												<xs:documentation xml:lang="en"/>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="Educational">
+											<xs:annotation>
+												<xs:documentation xml:lang="en"/>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="FamilyFun">
+											<xs:annotation>
+												<xs:documentation xml:lang="en"/>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="Free"/>
+										<xs:enumeration value="FoodBeverage">
+											<xs:annotation>
+												<xs:documentation xml:lang="en"/>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="Romantic"/>
+										<xs:enumeration value="SportsRecreation"/>
+										<xs:enumeration value="WheelchairAccess"/>
+										<xs:enumeration value="Other"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+							<xs:attributeGroup ref="PreferLevelGroup">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Used to specify the preference level for this category item</xs:documentation>
+								</xs:annotation>
+							</xs:attributeGroup>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="TPA_Extensions" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TourActivityCategoryType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Tour/ activity category and type definitions.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Category" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Identifies a high level category and preference level. Select pre-defined category from the list or select the "Other_" value and enter a category name in the @Extension field.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="TourActivityCategoryEnum">
+							<xs:attribute name="Code" type="xs:string" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">A category code from a predefined list, agreed upon between trading partners.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="Extension" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Enter a category here if you have selected "Other_" from the pre-defined list.</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="Cultural">
+											<xs:annotation>
+												<xs:documentation xml:lang="en"/>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="EcoAdventure">
+											<xs:annotation>
+												<xs:documentation xml:lang="en"/>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="Educational">
+											<xs:annotation>
+												<xs:documentation xml:lang="en"/>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="FamilyFun">
+											<xs:annotation>
+												<xs:documentation xml:lang="en"/>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="Free"/>
+										<xs:enumeration value="FoodBeverage">
+											<xs:annotation>
+												<xs:documentation xml:lang="en"/>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="Romantic"/>
+										<xs:enumeration value="SportsRecreation"/>
+										<xs:enumeration value="WheelchairAccess"/>
+										<xs:enumeration value="Other"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Type" minOccurs="0" maxOccurs="9">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A granular tour/activity type with a preference level. Note that this may be associated with a specified category. Select a pre-defined type from the list or select the "Other_" value and enter a type name in the @Extension field.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="TourActivityTypeEnum">
+							<xs:attribute name="Code" type="xs:string" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">A type (sub-category) code from a predefined list, agreed upon between trading partners.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="Extension" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Enter a type here if you have selected "Other_" from the pre-defined list.</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="Cultural">
+											<xs:annotation>
+												<xs:documentation xml:lang="en"/>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="EcoAdventure">
+											<xs:annotation>
+												<xs:documentation xml:lang="en"/>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="Educational">
+											<xs:annotation>
+												<xs:documentation xml:lang="en"/>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="FamilyFun">
+											<xs:annotation>
+												<xs:documentation xml:lang="en"/>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="Free"/>
+										<xs:enumeration value="FoodBeverage">
+											<xs:annotation>
+												<xs:documentation xml:lang="en"/>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="Romantic"/>
+										<xs:enumeration value="SportsRecreation"/>
+										<xs:enumeration value="WheelchairAccess"/>
+										<xs:enumeration value="Other"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="TPA_Extensions" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TourActivityChargeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Base price and taxes associated with the tour and/or activity.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="TaxAmounts" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A collection of one or more taxes associated with a specific charge.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="TaxAmount" maxOccurs="99">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Detailed information on one specific tax associated with a specific charge</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:attribute name="Total" type="Money" use="required">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">The total amount of the tax.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="TaxCode" type="StringLength1to16" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">A code for the tax that is agreed upon between trading partners.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="Percentage" type="Percentage" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">A percentage of the defined charge amount that this tax represents.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="Description" type="StringLength1to64" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">A description of the tax.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="CurrencyAmountGroup"/>
+		<xs:attribute name="TaxInclusive" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">If TRUE, taxes are included in this charge.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Description" type="StringLength1to64" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A description of the charge.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="GuaranteedInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">If true, a guarantee payment or hold is required.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="RateConvertInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">When true, the rate has been converted to a different currency.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="MaxCharge" type="Money" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The maximum amount that will be charged.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="MinCharge" type="Money" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The minimum amount that will be charged.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TourActivityDescriptionType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Descriptive information that includes a short description, long description, URLs and multimedia.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ShortDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A short description up to 500 characters.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="500"/>
+						<xs:minLength value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="LongDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A long description.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string"/>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Multimedia" type="MultimediaDescriptionsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Multimedia information.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="URL" type="URL_Type" minOccurs="0" maxOccurs="5">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">URLs to descriptive information.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="GuideInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">If true, guides are available.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="GuideOverview" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A brief description of guide services.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="FreeChildrenQty" type="Numeric0to99" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The number of free child places.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TourActivityExtraRule">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Rules that apply to an extra.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ParticipantQualifier" minOccurs="0" maxOccurs="9">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Participant qualification information, including minimum age, actual age and/or age category, associated with this extra rule.
+
+Qualifiers are used in combination with the @MandatoryInd and @OptionalInd to further qualify if an extra is optional or mandatory based on a customers age, birthdate and/or age category.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="AgeQualifier" type="AgeQualifierType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">A specific type of age qualifier, such as "Adult". Select a value from the pre-defined list or select "Other_" and enter a value known between trading partners in the @Extension attribute.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute name="MinimumAge" type="xs:positiveInteger" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The minimum age qualification for an extra.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="MaximumAge" type="xs:positiveInteger" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The maximum age qualification for an extra.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="YearsExperience" type="xs:positiveInteger" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The minimum number of years of experience required to book this extra e.g. driving experiience for car rental.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="Age" type="Numeric0to999" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">This is used to specify a customers age in years.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attributeGroup ref="BirthDateGroup">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">A customers birth date.</xs:documentation>
+						</xs:annotation>
+					</xs:attributeGroup>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="OtherCriteria" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Other rule information associated with this extra, including payment form types accepted for deposits.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="DepositPaymentTypes" type="AcceptedPaymentsType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Accepted deposit payment types.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute name="MaxOccupancy" type="Numeric1to99" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The maximum number of participants permitted for this extra (e.g. golf cart occupancy).</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="DateTimeReqInd" type="xs:boolean" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">If true, a start and end date/time must be associated with the extra request.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="StockControlledInd" type="xs:boolean" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">If true, the availabilty of this extra needs to be checked.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="DurationReqInd" type="xs:boolean" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">If true, a time duration must be supplied for the extra request.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="DepositInd" type="xs:boolean" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">If true, a deposit is required to secure the extra.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="MandatoryInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">If true, this extra is mandatory and must be included with the tour and/or activity.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="OptionalInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">If true, this extra is optional and may be included with and/or removed from the tour and/or activity.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ApplyTo" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Indicates whether the extra applies to all participants or only the participants that meet the specified rule criteria.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="All_Participants"/>
+					<xs:enumeration value="Some_Participants"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Description" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A description of the rule.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TourActivityID_Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Unique identification for the tour/activity, including name, supplier ID and trading partner ID.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="TPA_Extensions" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="SupplierProductCode" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The supplier/ operator unique code that identifies the tour and/or activity.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="PartnerProductCode" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A trading partner code that is associated with the supplier/operator product code.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SupplierBrandCode" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The code for the supplier/ operator product brand.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Name" type="StringLength1to64" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The name of the tour and/or activity.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ShortName" type="StringLength1to64" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">An abbreviated name for the tour and/or activity.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="TourActivityID" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A unique ID that identifies this tour and/or activity that may be referenced elsewhere in this message.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TourActivityLanguageType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Languages spoken by the supplier/operator staff.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="Code" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The ISO 639 2 character language code.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TourActivityLocationType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Location information for the tour and/or activity.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Address" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Identifies the physical address of the tour departure and/or activity location.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="AddressInfoType"/>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Region" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Describes regional information, which may include an island.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="RegionGroup">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Other region-based location type(s) that are agreed upon between trading partners, such as the name of an island.</xs:documentation>
+						</xs:annotation>
+					</xs:attributeGroup>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Position" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Describes geocoding information.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="PositionGroup"/>
+					<xs:attribute name="Placemark" type="StringLength1to255" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">A free-form definition of the destination's position. Could be used as an online mapping service locator.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="TimeZone" type="StringLength1to64" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The local time zone in which the tour/activity departs and or starts.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TourActivityLodgingType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Participant lodging information if required by a tour supplier/ operator.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="HotelName" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The name of the hotel and/or other lodging facility the participant and/or group is staying at.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="HotelLocation" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The location of the hotel and/or other lodging facility.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="RoomNumber" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The room number in the hotel and/or other lodging facility.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TourActivityNegotiatedPricing">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Negotiated pricing for corporations and groups.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="AccountID" type="StringLength1to32" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The customer account ID if applicable.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AccountName" type="StringLength1to128" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The customer account name if applicable.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="RateCategory" type="OTA_CodeType" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The rate category associated with the tour/ activity. Refer to OpenTravel Rate Category (RTC) code list.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="RateQualifier" type="StringLength1to32" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">This is the vendor specific code for rate codes (e.g. WES, 2A, DLY00).</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CorpDiscountNmbr" type="StringLength1to32" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The vendor specific code used to identify a special rate associated with a specific organization.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TourActivityParticipantCategoryType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Participant category information, which may be age, birth date and/or an age qualifier.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="QualifierInfo" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A specific type of age and/or group qualifier, such as "Adult". Select a value from the pre-defined list or select "Other_" and enter a value known between trading partners in the @Extension attribute.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="AgeQualifierType">
+							<xs:attribute name="ParticipantCategoryID" type="RPH_Type" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">A unique identifier for a participant category.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="TPA_Extensions" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="Age" type="Numeric0to999" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">This is used to specify a participant age in years.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="BirthDate" type="xs:date" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Indicates the date of birth as indicated in the document, in ISO 8601 prescribed format.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Quantity" type="xs:nonNegativeInteger" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Used to define the quantity of participants for the specified information.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TourActivityParticipantType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Participant information, which may be age, birth date and/or an age qualifier and name information.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CategoryInfo" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A specific type of age and/or group qualifier, such as "Adult". Select a value from the pre-defined list or select "Other_" and enter a value known between trading partners in the @Extension attribute.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="AgeQualifierType">
+							<xs:attribute name="ParticipantCategoryID" type="RPH_Type" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">A unique identifier for a participant category.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ParticipantNameInfo" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Name information for participants.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="PersonNameType">
+							<xs:sequence>
+								<xs:element name="SpecialNeed" minOccurs="0" maxOccurs="5">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">The name and/or code for a special need requirement, such as a wheelchair or vegetarian meal.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:simpleContent>
+											<xs:extension base="xs:string">
+												<xs:attribute name="Code" type="xs:string" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">A code known between trading partners for a special needs item.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:extension>
+										</xs:simpleContent>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="LodgingInfo" type="TourActivityLodgingType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Lodging information for the participant.</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:sequence>
+							<xs:attribute name="ParticipantID" type="RPH_Type" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">A unique identifier for a known participant that may be referenced elsewhere in this message.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="Gender" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Identifies the gender.</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="Male"/>
+										<xs:enumeration value="Female"/>
+										<xs:enumeration value="Unknown"/>
+										<xs:enumeration value="Male_NoShare"/>
+										<xs:enumeration value="Female_NoShare"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+							<xs:attribute name="Nationality" type="ISO3166" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">The nationality of a participant, if known. Uses ISO 3166 Country Codes.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="LeadCustomerInd" type="xs:boolean" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">When 'true', indicates that this is the 'lead' participantr (i.e., the primary contact making the booking).</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="TPA_Extensions" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="Age" type="Numeric0to999" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">This is used to specify a participant age in years.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="BirthDate" type="xs:date" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Indicates the date of birth as indicated in the document, in ISO 8601 prescribed format.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Quantity" type="xs:nonNegativeInteger" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Used to define the quantity of participants for the specified information.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TourActivityPolicyType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Contains policies associated with the tour/activity.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Participant" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Participant quantity and age requirements.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="MinParticipants" type="xs:nonNegativeInteger" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The minimum number of participants for the tour/activity.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="MaxParticipants" type="xs:positiveInteger" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The maximum number of participants for the tour/activity.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="MinAge" type="xs:nonNegativeInteger" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The minimum permitted age for participants for the tour/activity.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="MaxAge" type="xs:nonNegativeInteger" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The maximum permitted age for participants on the tour/activity.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Cancel" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Cancellation policy information.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="CancelDeadline" type="DateOrTimeOrDateTimeType" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">A date and/or date/time that defines when cancellations must be received before a penalty may be incurred.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="BookingDeadline" type="DateOrTimeOrDateTimeType" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">A date and/or date/time that defines when a reservation must be received by.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Other" minOccurs="0" maxOccurs="9">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Other policy description and optional type.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="Type" type="xs:string" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">The type of the policy.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="InsuranceReqInd" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">An indication of insurance requirements.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="NotRequired"/>
+					<xs:enumeration value="Required_MustBePurchasedFromSupplier"/>
+					<xs:enumeration value="Required_MayBeProvidedByParticipant"/>
+					<xs:enumeration value="Unknown"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="InsuranceOverview" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A brief description of insurance requirements and/or options.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="WaiverInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">If true, one or more participants may be required to sign a waiver.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="WaiverOverview" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A brief description of waiver requirements.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TourActivityPromotionType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Promotion details, including coupons and other discount plans.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Promotion" minOccurs="0" maxOccurs="9">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">One or more descriptions, codes and effective dates  for promotional pricing (up to 5 may be specified.)</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="Code" type="xs:string" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">A promotion code.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="StartDate" type="DateOrDateTimeType" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">The starting date for a promotion.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="EndDate" type="DateOrTimeOrDateTimeType" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">The ending date for a promotion.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="Disclaimer" type="xs:string" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Disclaimer related to a promotion.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="DiscountProgram" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Discount program details.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Detail" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Details about a discount program.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Provider" type="CompanyNameType" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">The company name associated with the discount program.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+								<xs:attribute name="ProgramID" type="RPH_Type" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">A unique ID for this program that may be referenced elsewhere in this message.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="Name" type="xs:string" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">The name of a discount program, e.g. "Day Pass" or "Gold Card".</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="Description" type="xs:string" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">A description of the discount program.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="ParticipationInfo" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Participation information, including card number and valid dates.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:attribute name="ValidFromDate" type="DateOrDateTimeType" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">The starting date for a participant or group discount program.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="ValidThroughDate" type="DateOrTimeOrDateTimeType" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">The ending date for a participant or group discount program.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="ProgramNumber" type="xs:string" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">The card or other number associated with the program. </xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TourActivitySupplierType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Supplier and/or operator information, including address and contact details.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Name" type="CompanyNameType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Company name information.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Contact" minOccurs="0" maxOccurs="5">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Contact information.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="ContactPersonType">
+							<xs:attribute name="LocationCode" type="OTA_CodeType" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">The location for this contact (e.g., tour/activity supplier or travel agent). Refer to OpenTravel Code List Contact Location (CON).</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Address" type="AddressInfoType" minOccurs="0" maxOccurs="3">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Address information.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="WebPageURL" type="xs:anyURI" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The general supplier website URL.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="OperatorInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">If true, this information pertains to the tour/ activity operator.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SupplierInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">If true, this information pertains to the tour/ activity supplier.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TourActivityTransRequestType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Pickup and drop off requirement information for the tour/activity.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="DateTime" type="DateOrDateTimeType" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The date and time for the pickup or dropoff.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="LocationName" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The name of the pickup/ dropoff location.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="OtherInfo" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Other instructions pertaining to the pickup/ dropoff.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="PersonQty" type="xs:positiveInteger" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The quantity of persons to be picked up or dropped off.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="PickupInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">If true, this is pickup information.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DropoffInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">If true, this is dropoff information.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TourActivityTransType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Detailed pickup and drop off information for the tour/activity.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Charges" type="TourActivityChargeType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Charge information there is a fee for pickup and/or dropoff.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Schedule" type="OperationScheduleType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Pickup and dropoff schedules for the available tour/ activity.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="DateTime" type="DateOrDateTimeType" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The date and time for the pickup or dropoff.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="LocationName" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The name of the pickup/ dropoff location.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Directions" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Directions to the pickup/dropoff location.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="MeetingLocation" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The specific meeting location, e.g. "Front Desk".</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="OtherInfo" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Other instructions pertaining to the pickup/ dropoff.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="PickupInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">If true, this is pickup information.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DropoffInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">If true, this is dropoff information.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TourActivityType">
+		<xs:annotation>
+			<xs:documentation>Tour or activity type definition that supports open enumerations. Use the Other_  option to specify an activity type that is not in the list and has been agreed upon by trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="TourActivityTypeEnum">
+				<xs:attribute name="extension" type="xs:string" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">A string value that represents an "Other_", or extended, enumerated value agreed upon between trading partners.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+</xs:schema>

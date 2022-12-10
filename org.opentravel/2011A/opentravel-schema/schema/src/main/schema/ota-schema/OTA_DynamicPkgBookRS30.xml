@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OTA_DynamicPkgBookRS xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_DynamicPkgBookRS.xsd" xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Target="Test" TimeStamp="2009-05-08T15:51:07" Version="1.0">
+	<POS>
+		<Source>
+			<RequestorID ID="BTA142" MessagePassword="jg97fg6#67f" Type="5">
+				<!--Type (UIT) 5= Travel Agency -->
+				<CompanyName>Bob's Travel Agency</CompanyName>
+			</RequestorID>
+		</Source>
+	</POS>
+	<Success/>
+	<DynamicPackage DynamicPkgStatus="Cancelled">
+		<Components>
+			<HotelComponent DynamicPkgStatus="Cancelled" CreateDateTime="2009-05-08T15:51:07.0295786-07:00"/>
+			<AirComponent DynamicPkgStatus="Cancelled" CreateDateTime="2009-05-08T15:51:07.0452039-07:00"/>
+			<PackageOptionComponent DynamicPkgStatus="Cancelled" CreateDateTime="2009-05-08T15:51:07.0452039-07:00"/>
+			<CarComponent DynamicPkgStatus="Cancelled" CreateDateTime="2009-05-08T15:51:07.0452039-07:00" />
+		</Components>
+		<ResGuests>
+			<ResGuest ResGuestRPH="1" AgeQualifyingCode="10" LocationCode="PHX">
+				<!--AgeQualifyingCode (AQC) 10 = Adult -->
+				<Profiles>
+					<ProfileInfo>
+						<Profile ProfileType="1">
+							<!-- ProfileType (PRT) 1 = Customer -->
+							<Customer>
+								<PersonName>
+									<NamePrefix>Mr.</NamePrefix>
+									<GivenName>Robert</GivenName>
+									<Surname>Roberts</Surname>
+								</PersonName>
+								<Telephone PhoneLocationType="7" PhoneTechType="5" PhoneNumber="8885551234"/>
+								<!--PhoneLocationType (PLT) 7 = Office -->
+								<!--PhoneTechType (PTT) 5 = Mobile -->
+								<Email>bob@bobco.com</Email>
+								<Address>
+									<AddressLine>123 Air St.</AddressLine>
+									<CityName>Tempe</CityName>
+									<PostalCode>85281</PostalCode>
+									<StateProv>AZ</StateProv>
+									<CountryName>USA</CountryName>
+								</Address>
+								<CustLoyalty LoyalLevel="Chairman" SignupDate="2008-06-10" MembershipID="00097100564" VendorCode="USV" TravelSector="1"/>
+								<!-- TravelSector (TVS) 1 = Air -->
+							</Customer>
+						</Profile>
+					</ProfileInfo>
+				</Profiles>
+			</ResGuest>
+			<ResGuest ResGuestRPH="2" AgeQualifyingCode="8" Age="10" LocationCode="PHX">
+				<!--AgeQualifyingCode (AQC) 8 = Child -->
+				<Profiles>
+					<ProfileInfo>
+						<Profile ProfileType="1">
+							<!-- ProfileType (PRT) 1 = Customer -->
+							<Customer>
+								<PersonName>
+									<NamePrefix>Mr.</NamePrefix>
+									<GivenName>Sam</GivenName>
+									<Surname>Roberts</Surname>
+								</PersonName>
+							</Customer>
+						</Profile>
+					</ProfileInfo>
+				</Profiles>
+			</ResGuest>
+			<ResGuest ResGuestRPH="3" AgeQualifyingCode="8" Age="15" LocationCode="PHX">
+				<!--AgeQualifyingCode (AQC) 8 = Child -->
+				<Profiles>
+					<ProfileInfo>
+						<Profile ProfileType="1">
+							<!-- ProfileType (PRT) 1 = Customer -->
+							<Customer>
+								<PersonName>
+									<NamePrefix>Ms.</NamePrefix>
+									<GivenName>Sally</GivenName>
+									<Surname>Roberts</Surname>
+								</PersonName>
+							</Customer>
+						</Profile>
+					</ProfileInfo>
+				</Profiles>
+			</ResGuest>
+		</ResGuests>
+		<GlobalInfo>
+			<Guarantee>
+				<GuaranteesAccepted>
+					<GuaranteeAccepted GuaranteeID="BOB-12345678"/>
+				</GuaranteesAccepted>
+			</Guarantee>
+			<Total AmountBeforeTax="2049.15" AmountAfterTax="2168.60" CurrencyCode="USD" AdditionalFeesExcludedIndicator="false"/>
+			<DynamicPkgIDs>
+				<DynamicPkgID Type="14" ID_Context="USV" ID="301877540"/>
+				<!-- Type (UIT) 14 = Reservation -->
+			</DynamicPkgIDs>
+		</GlobalInfo>
+	</DynamicPackage>
+</OTA_DynamicPkgBookRS>

@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00" id="OTA2010B">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">All Schema files in the OpenTravel Alliance specification are made available according to the terms defined by the OpenTravel License Agreement at http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:simpleType name="AlphaLength3">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Used for an Alpha String, length exactly 3.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[a-zA-Z]{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AlphaNumericStringLength1to19">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Used forAlpha-Numeric Strings, length 1 to 19.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9a-zA-Z]{1,19}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DateOrDateTimeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">A construct to validate either a date or a dateTime value.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="xs:date xs:dateTime"/>
+	</xs:simpleType>
+	<xs:simpleType name="DateOrTimeOrDateTimeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">A construct to validate either a date or a time or a dateTime value.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="xs:date xs:dateTime xs:time"/>
+	</xs:simpleType>
+	<xs:simpleType name="ISO3166">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Specifies a 2 character country code as defined in ISO3166.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[a-zA-Z]{2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ListOfOTA_CodeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">List of OpenTravel Codes.</xs:documentation>
+		</xs:annotation>
+		<xs:list itemType="OTA_CodeType"/>
+	</xs:simpleType>
+	<xs:simpleType name="ListOfRPH">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">List of Reference Place Holders.</xs:documentation>
+		</xs:annotation>
+		<xs:list itemType="RPH_Type"/>
+	</xs:simpleType>
+	<xs:simpleType name="MMYYDate">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Month and year information.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(0[1-9]|1[0-2])[0-9][0-9]"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Money">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Specifies an amount, max 3 decimals.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Numeric0to999">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Used for Numeric values, from 0 to 999 inclusive.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Numeric1to999">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Used for Numeric values, from 1 to 999 inclusive.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NumericStringLength1to3">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Used for Numeric Strings length 1 to 3.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{1,3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NumericStringLength1to5">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Used for Numeric Strings, length 1 to 5.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{1,5}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NumericStringLength1to8">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Used for Numeric Strings, length 1 to 8.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{1,8}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NumericStringLength1to19">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Used for Numeric Strings, length 1 to 19.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{1,19}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OTA_CodeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Used for codes in the OpenTravel Code tables. Possible values of this pattern are 1, 101, 101.EQP, or 101.EQP.X.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9A-Z]{1,3}(\.[A-Z]{3}(\.X){0,1}){0,1}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PaymentCardCodeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The 2 digit code that identifies the credit card.</xs:documentation>
+		</xs:annotation>
+		<xs:union>
+			<xs:simpleType>
+				<xs:restriction base="UpperCaseAlphaLength1to2">
+					<xs:enumeration value="AX">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+					American Express 
+					</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="BC">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+					Bank Card
+					</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="BL">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+					Carte Bleu                  
+					</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="CB">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+					Carte Blanche                  
+					</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="DN">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+					Diners Club
+					</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="DS">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+					Discover Card
+					</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="EC">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+					 Eurocard
+					</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="JC">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+					Japanese Credit Bureau Credit Card
+					</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="MA">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+					 Maestro
+					</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="MC">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+					Master Card
+					</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="TP">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+					 Universal Air Travel Card
+					</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="VI">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+					 Visa
+					</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:annotation>
+					<xs:documentation xml:lang="en">This is intended to be used when the above enumeration list does not meet your needs. </xs:documentation>
+				</xs:annotation>
+				<xs:restriction base="UpperCaseAlphaLength1to2"/>
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+	<xs:simpleType name="RPH_Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The Reference Place Holder (RPH) is an index code used to identify an instance in a collection of like items (e.g. used to assign individual passengers or clients to particular itinerary items).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{1,8}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StateProvCodeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The standard code or abbreviation for the state, province, or region.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="StringLength1to8">
+			<xs:minLength value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StringLength0to64">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Used for Character Strings, length 0 to 64.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+			<xs:maxLength value="64"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StringLength0to128">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Used for Character Strings, length 0 to 128.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+			<xs:maxLength value="128"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StringLength1to8">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Used for Character Strings, length 1 to 8.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="8"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StringLength1to16">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Used for Character Strings, length 1 to 16.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="16"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StringLength1to32">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Used for Character Strings, length 1 to 32.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StringLength1to64">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Used for Character Strings, length 1 to 64.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="64"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StringLength1to128">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Used for Character Strings, length 1 to 128.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="128"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StringLength1to255">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Used for Character Strings, length 1 to 255.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="255"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TimeOrDateTimeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Allows for the specification of a date time or just time.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="xs:dateTime xs:time"/>
+	</xs:simpleType>
+	<xs:simpleType name="TransactionStatusType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">To specify a status to the transaction, usually in the response message, of the action specifed in the request message.	</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Cancelled"/>
+			<xs:enumeration value="Unsuccessful"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UpperCaseAlphaLength1to2">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Used for an Alpha String, length 1 to 2 (for letter codes).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z]{1,2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

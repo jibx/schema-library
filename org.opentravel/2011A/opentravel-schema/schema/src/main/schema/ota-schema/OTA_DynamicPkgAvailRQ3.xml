@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OTA_DynamicPkgAvailRQ xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_DynamicPkgAvailRQ.xsd" xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Target="Test" TimeStamp="2009-07-30T15:02:10" Version="1" TransactionIdentifier="58A207A9C830DD11">
+	<POS>
+		<Source>
+			<RequestorID ID="BTA142" MessagePassword="jg97fg6#67f" Type="5">
+				<!--Type (UIT) 5= Travel Agency -->
+				<CompanyName>Bob's Travel Agency</CompanyName>
+			</RequestorID>
+		</Source>
+	</POS>
+	<SearchCriteria>
+		<AirSearch RequestType="PriceFlights" SequenceNumber="1">
+			<AirItinerary>
+				<OriginDestinationOptions>
+					<OriginDestinationOption>
+						<FlightSegment DepartureDateTime="2009-09-29T09:00:00" ArrivalDateTime="2009-09-29T16:17:00" FlightNumber="567">
+							<DepartureAirport LocationCode="PHX"/>
+							<ArrivalAirport LocationCode="MCO"/>
+							<MarketingAirline Code="US"/>
+						</FlightSegment>
+					</OriginDestinationOption>
+					<OriginDestinationOption>
+						<FlightSegment DepartureDateTime="2009-10-03T07:25:00" ArrivalDateTime="2009-10-03T09:00:00" FlightNumber="1519">
+							<DepartureAirport LocationCode="MCO"/>
+							<ArrivalAirport LocationCode="PHX"/>
+							<MarketingAirline Code="US"/>
+						</FlightSegment>
+					</OriginDestinationOption>
+				</OriginDestinationOptions>
+			</AirItinerary>
+			<TravelRefSummary>
+				<PassengerTypeQuantities>
+					<PassengerTypeQuantity Code="ADT" Quantity="1"/>
+					<PassengerTypeQuantity Code="CHD" Quantity="2"/>
+				</PassengerTypeQuantities>
+				<TravelerRefNumbers>
+					<TravelerRefNumber RPH="1"/>
+					<TravelerRefNumber RPH="2"/>
+					<TravelerRefNumber RPH="3"/>
+				</TravelerRefNumbers>
+				<PriceRequestInformation FareQualifier="7"/>
+				<!--FareQualifier (FAQ) 7= Coach lowest available -->
+			</TravelRefSummary>
+		</AirSearch>
+	</SearchCriteria>
+	<DynamicPackage>
+		<ResGuests>
+			<ResGuest ResGuestRPH="1" AgeQualifyingCode="10" LocationCode="PHX"/>
+			<!--AgeQualifyingCode (AQC) 10= Adult -->
+			<ResGuest ResGuestRPH="2" AgeQualifyingCode="8" Age="15" LocationCode="PHX"/>
+			<!--AgeQualifyingCode (AQC) 8= Child -->
+			<ResGuest ResGuestRPH="3" AgeQualifyingCode="8" Age="10" LocationCode="PHX"/>
+			<!--AgeQualifyingCode (AQC) 8= Child -->
+		</ResGuests>
+	</DynamicPackage>
+</OTA_DynamicPkgAvailRQ>

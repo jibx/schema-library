@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: Cancel One or More "Provisionally Booked" Train Seat Reservations. -->
+<!-- USE CASE DETAILS: An online travel agent is booking a rail trip for a family of five. The agent has provisionally booked five seats on a train using the OTA_RailBookRQ/RS message. Note that a provisional booking is one that has been processed successfully by the OTA_RailBookRQ/RS messages but is not yet confirmed in the trading partners system. Two of the provisionally booked seats now need to be cancelled as two family members will not be going on the trip. The agent system requests a CANCEL for the two booked seats using this message. -->
+
+<OTA_RailIgnoreBookingRQ xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_RailIgnoreBookingRQ.xsd" 
+Version="1.000">
+	
+	<!-- Transaction originator (point of sale) information. -->
+	<POS>
+		<Source ISOCountry="US" ISOCurrency="USD">
+			<!-- Request type of 5 is "Travel Agency" - See OpenTravel Code List Unique ID Type (UIT). -->
+			<RequestorID Type="5" ID="12345" MessagePassword="ABC123456789"/>
+			<BookingChannel Type="9">
+				<!-- Booking Channel type of 9 is "Agent" - See OpenTravel Code List Booking Channel Type (BCT). -->
+				<CompanyName>ABC Travel Company</CompanyName>
+			</BookingChannel>
+		</Source>
+	</POS>
+	
+	<!-- The unique ID's of the queued (unconfirmed) booking requests to be cancelled. -->
+	<UniqueID ID="0000001" Type="23">
+		<!-- Unique ID type 23 is "Provisional reservation" - See See OpenTravel Code List Unique ID Type (UIT). -->
+		<CompanyName>ABC Travel Company</CompanyName>
+	</UniqueID>
+
+	<UniqueID ID="0000005" Type="23">
+		<!-- Unique ID type 23 is "Provisional reservation" - See See OpenTravel Code List Unique ID Type (UIT). -->
+		<CompanyName>ABC Travel Company</CompanyName>
+	</UniqueID>	
+
+</OTA_RailIgnoreBookingRQ>

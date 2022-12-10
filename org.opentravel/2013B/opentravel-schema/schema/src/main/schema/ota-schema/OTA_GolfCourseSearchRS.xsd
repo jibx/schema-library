@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="4.000" id="OTA2013B">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_GolfCommonTypes.xsd"/>
+	<xs:element name="OTA_GolfCourseSearchRS">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The Golf Course Search response sends results based on specified search criteria for golf facility(s), which may be a golf course proper and/or a facility such as a hotel that has an association with a nearby golf course or a course on premise. 
+
+Response information includes:
+» Facility ID, name and associated facility (if the course is on a hotel property)
+» Short and long descriptions (with optional club type) 
+» Contact information, including phone and website
+» Multimedia, including images, descriptions and movies that describe the golf facility
+» Facility features, including dress policy, golf pros, on facility dining and course designer
+» Available amenities, including type, description, pricing and reservation information
+» Guideline tee time pricing, including minimum, maximum and average
+» Location information, including physical and geo-coding
+» Hours of operation
+» Course conditions, including an optional source name or URL
+» Policy information
+» Directions
+» Course closures
+» Course restrictions
+» Course scorecard
+Additional message functionality includes transaction processing directives that influenced search results, such as display currency.
+
+Developer Notes:
+» Note that this message pair is intended for a high level search of golf facility(s) and is not intended to be used for specific tee time search or availability.
+» Implementers should check with their trading partner(s) to determine the golf facility search capabilities supported by their system(s).
+» This message may also include Warnings from business processing rules or Errors if the request did not succeed.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:annotation>
+				<xs:documentation xml:lang="en">May have either errors or warnings or both, but must have one if there is no success.</xs:documentation>
+			</xs:annotation>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="Success" type="SuccessType">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Success: Standard way to indicate successful processing of an OpenTravel message. Returning an empty element of this type indicates success.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Warnings" type="WarningsType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Standard way to indicate successful processing of an OpenTravel message, but one in which warnings are generated.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ProcessingInfo" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Transaction processing information, including display currency overrides. If no display or pricing currency information is provided, the display currency will default to the value in POS/Source/@ISOCurrency.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:attribute name="SummaryResultsInd" type="xs:boolean" use="optional">
+								<xs:annotation>
+									<xs:documentation source="Description" xml:lang="en">If true, summary information has been returned in the search results.</xs:documentation>
+									<xs:documentation source="Developer" xml:lang="en">(Developer Notes) An agreement should be in place with your trading partners that specifies what information is summary versus detail.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="DisplayCurrency" type="ISO4217" use="optional">
+								<xs:annotation>
+									<xs:documentation source="Use" xml:lang="en">The requested display currency in ISO 4217 encoding.</xs:documentation>
+									<xs:documentation source="Reference" xml:lang="en">(Reference): http://www.opentraveldevelopersnetwork.com/Supported_ISO_Standards.php</xs:documentation>
+									<xs:documentation source="More Info" xml:lang="en">(More Info): http://www.opentraveldevelopersnetwork.com/2012A_SchemaDoc/DisplayCurrency</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="GolfCourse" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Information about the golf facility(s) that meet the requested criteria.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="GolfFacilityType">
+									<xs:attribute name="FeaturedInd" type="xs:boolean" use="optional">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">If true, this facility has been marked as a featured course by the supplier.</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+								</xs:extension>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+				<xs:element name="Errors" type="ErrorsType">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">A collection of errors that occurred during the processing of a message.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns="http://www.opentravel.org/OTA/2003/05/common" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.000" id="OTA2014B">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_HotelCommonTypes.xsd"/>
+	<xs:complexType name="HotelProductType">
+		<xs:annotation>
+			<xs:documentation>Specifies product information for a hotel.  A product may be a room type, a rate plan, a room type rate plan combination or hotel policy information.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="UniqueID" type="UniqueID_Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The unique identifier element allows the trading partners to  uniquely identify each HotelProduct for tracing of transactions.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="HotelRefs" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A collection of HotelRef elements.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="HotelRef" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Identifies hotel information for an alternate system.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:attributeGroup ref="HotelReferenceGroup"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="RoomTypes" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A collection of room types.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RoomType" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">An individual room type.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="RoomTypeRefs" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">A collection of room type references.</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="RoomTypeRef" maxOccurs="unbounded">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">Specifies the room type code for other systems.</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="Description" type="ParagraphType" minOccurs="0">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">Description information related to the room type.</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+														</xs:sequence>
+														<xs:attribute name="RoomTypeCode" type="StringLength1to16" use="optional">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">A code that uniquely identifies a room type.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+														<xs:attribute name="RoomTypeCodeContext" type="StringLength1to64" use="optional">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">A text field used to communicate the context (or source of - ex Sabre, Galileo, Worldspan, Amadeus) the RoomTypeCode.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="Descriptions" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">A collection of description information.</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="Description" type="ParagraphType" maxOccurs="unbounded">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">Desription information related to the room type.</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+								<xs:attribute name="RoomTypeName" type="StringLength1to32" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">The name of the room type.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="RoomTypeCode" type="StringLength1to16" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Specific system room type code, ex: A1K, A1Q etc.   This may be the sending system's room type code or the receiving system's room type code depending on the trading partner agreement. </xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="BedTypeCode" type="ListOfOTA_CodeType" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Indicates the type of bed(s) found in the room. Typical values would be Double, Twin, Queen, or King. Refer to OpenTravel Code List Bed Type Code (BED).</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="NonSmokingInd" type="xs:boolean" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">When true, indicates non-smoking.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="MaxOccupancy" type="xs:positiveInteger" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Maximum number of guests allowed in a room type.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="MaxAdultOccupancy" type="xs:nonNegativeInteger" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Maximum number of adults allowed in a room type.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="MaxChildOccupancy" type="xs:nonNegativeInteger" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Maximum number of children allowed in a room type.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="MaxInfantOccupancy" type="xs:nonNegativeInteger" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Maximum number of infants allowed in a room type.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="RoomLocation" type="OTA_CodeType" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Identifies the location of the room within the property. Refer to OpenTravel Code List Room Location Type (RLT).</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="FeatureAmenity" type="ListOfOTA_CodeType" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Identifes the feature amenites for this room type. Refer to OpenTravel Code List Room Amenity Type (RMA).</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="RoomView" type="OTA_CodeType" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Specifies the view from the room. Typical values would be "Ocean view", "Pool view" or "Garden View". Refer to OpenTravel Code List Room View Type (RVT).</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="RoomQuality" type="ListOfOTA_CodeType" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Specifies the room classification (e.g., cabin, apartment). Refer to OpenTravel Code List Guest Room Info (GRI).</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="NbrOfBedrooms" type="xs:nonNegativeInteger" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Indicates the number of bedrooms that are in this room type.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="AccessibleInd" type="xs:boolean" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">When true, this room type is an accessible room.  When false, this room is not accessible.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="RoomGender" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Used to specify a gender assignment for a room.</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:enumeration value="Male"/>
+											<xs:enumeration value="Female"/>
+											<xs:enumeration value="MaleAndFemale"/>
+											<xs:enumeration value="Unknown"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:attribute>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="RatePlans" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A collection of rate plans.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RatePlan" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">An individual rate plan.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="SellDateRange" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">The date range for which this rate plan is offered for sell.</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:attributeGroup ref="DateTimeSpanGroup"/>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="StayDateRange" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">The date range for which this rate plan is offered for guest stays.</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:attributeGroup ref="DateTimeSpanGroup"/>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="RatePlanRefs" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">A collection of rate plan references.</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="RatePlanRef" maxOccurs="unbounded">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">Specifies the rate plan code for other systems.</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="Description" type="ParagraphType" minOccurs="0">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">Description information related the rate plan.</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+														</xs:sequence>
+														<xs:attribute name="RatePlanCode" type="StringLength1to16" use="optional">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">A code that uniquely identifes the rate plan.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+														<xs:attribute name="RatePlanCodeContext" type="StringLength1to64" use="optional">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">A text field used to communicate the context (or source of - ex Sabre, Galileo, Worldspan, Amadeus) the RatePlanCode.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="Descriptions" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">A collection of description information.</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="Description" type="ParagraphType" maxOccurs="unbounded">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">Description information related to the rate plan.</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+								<xs:attribute name="RatePlanType" type="OTA_CodeType" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Specifies the category of rate plan. Refer to OpenTravel Code List Rate Plan Type (RPT).</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="RatePlanName" type="StringLength1to64" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Provides the name of the rate plan or group. Typically used with RatePlanType to further describe the rate plan.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="RatePlanCode" type="StringLength1to64" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">A code that identifies the rate plan.  This may be the sending system's rate plan code or the receiving system's rate plan code depending on the trading partner agreement. </xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="CurrencyCode" type="AlphaLength3" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Specifies the currency code of the rate plan code. An ISO 4217 (3) alpha character code.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="PaymentCollection" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Specifies who is to collect the payment.</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:enumeration value="Hotel">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Hotel is collecting the payment.</xs:documentation>
+												</xs:annotation>
+											</xs:enumeration>
+											<xs:enumeration value="TravelAgency">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Online travel agent is collecting the payment.</xs:documentation>
+												</xs:annotation>
+											</xs:enumeration>
+											<xs:enumeration value="HotelOrAgency">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Both Hotel and Travel Agency options are supported.</xs:documentation>
+												</xs:annotation>
+											</xs:enumeration>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:attribute>
+								<xs:attribute name="BaseOccupancy" type="xs:nonNegativeInteger" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Specifies the number of guests included in the base room rate based on adult occupancy.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ValueAddInclusions" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Identifies items that are included with this product that add value or differentiate this product from other products at no additional charge (i.e. breakfast, internet, parking).</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="HotelAmenity" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Used to identify hotel amentities that are included with a product.  </xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Description" type="ParagraphType" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">Descriptive information for the hotel amenity.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+								<xs:attribute name="HotelAmenityCode" type="OTA_CodeType" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Refer to OpenTravel Code List Hotel Amenity Code (HAC).</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="CodeDetail" type="StringLength1to128" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">May be used to give further detail on the code.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="MaxNumberProvided" type="xs:nonNegativeInteger" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">The maximum number provided subject to guests in the room.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="MealPlan" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Used to identify the types of meals included with a product. </xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Description" type="ParagraphType" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">Descriptive infomation for the meal plan.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+								<xs:attribute name="MealPlanCode" type="OTA_CodeType" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Refer to OpenTravel Code List Meal Plan Type (MPT).</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="CodeDetail" type="StringLength1to128" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">May be used to give further detail on the code.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="MaxNumberProvided" type="xs:nonNegativeInteger" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">The maximum number provided subject to guests in the room.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="RoomAmenity" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Used to identify room amenities that are included with the product. </xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Description" type="ParagraphType" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">Descriptive information for the room amentiy.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+								<xs:attribute name="RoomAmenityCode" type="OTA_CodeType" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Refer to OpenTravel Code List Room Amenity Type (RMA).</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="CodeDetail" type="StringLength1to128" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">May be used to give further detail on the code.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="MaxNumberProvided" type="xs:nonNegativeInteger" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">The maximum number provided subject to guests in the room.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Other" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Used to identify other value add inclusions that are included with the product. </xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Description" type="ParagraphType" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">Descriptive information for the value add inclusion.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+								<xs:attributeGroup ref="CodeContextGroup"/>
+								<xs:attribute name="CodeDetail" type="StringLength1to128" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">May be used to give further detail on the code.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="MaxNumberProvided" type="xs:nonNegativeInteger" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">The maximum number provided subject to guests in the room.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="RoomUseExtension" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Identifies the CheckIn and/or CheckOut time available for this product. </xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:attribute name="CheckInTime" type="xs:time" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Check-in time for this hotel product.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="CheckOutTime" type="xs:time" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Check-out time for this hotel product.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PolicyInfo" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Policy Information for this product.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="CancelPolicy" type="CancelPenaltiesType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">The cancel policy details.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="GuaranteePaymentPolicy" type="RequiredPaymentsType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Guarantee and payment policy details.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="BookingRules" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">A collection of booking rules.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="BookingRule" maxOccurs="unbounded">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">The BookingRule element defines restrictions to rates and stays at the hotel for a given rate plan, room type or rate plan/room type combination.</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="DOW_Restrictions" type="DOW_RestrictionsType" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">A collection of Day Of Week restrictions.</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="Description" type="ParagraphType" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">General description of booking rule.</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+											</xs:sequence>
+											<xs:attributeGroup ref="DateTimeSpanGroup"/>
+											<xs:attributeGroup ref="DOW_PatternGroup"/>
+											<xs:attribute name="MaxAdvancedBookingOffset" type="xs:duration" use="optional">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Maximum days before the arrival date for which this rate plan may be booked.</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+											<xs:attribute name="MinAdvancedBookingOffset" type="xs:duration" use="optional">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Minimum days before the arrival date for which this rate plan may be booked.</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+											<xs:attribute name="MaxLengthOfStay" type="xs:duration" use="optional">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Maximum number of days that a product can be booked.</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+											<xs:attribute name="MinLengthOfStay" type="xs:duration" use="optional">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Minimum number of days that a product can be booked.</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Contacts" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A collection of contacts.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Contact" type="ContactPersonType" maxOccurs="99">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">This may be used for multiple sets of contact information (e.g., sales manager, group contact, event manager).</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Taxes" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Taxes that apply to the product.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Tax" type="TaxType" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Fees" type="FeesType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Fees that apply to the product.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Descriptions" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A Container for the repeating description element.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Description" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Descriptive information for the product.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="ParagraphType"/>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AdditionalGuestAmounts" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A collection of charges related to additional guests.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="AdditionalGuestAmount" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Charges related to additional guests.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="AdditionalGuestAmountType">
+										<xs:attributeGroup ref="EffectiveExpireOptionalDateGroup"/>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="TPA_Extensions" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="ProductStatusType" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Identifies the status of the product ( i.e. Active, Deactivate).</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Initial"/>
+					<xs:enumeration value="Active"/>
+					<xs:enumeration value="Deactiviated"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attributeGroup ref="HotelReferenceGroup"/>
+	</xs:complexType>
+</xs:schema>

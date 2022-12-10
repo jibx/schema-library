@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="1.000" id="OTA2014B">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_HotelCommonTypes.xsd"/>
+	<xs:include schemaLocation="OTA_Reviews.xsd"/>
+	<xs:element name="OTA_ReviewsRQ">
+		<xs:annotation>
+			<xs:documentation>Pull message to request reviews for specified criteria with the ability to filter the response.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ReviewRequest" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Review request criteria.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Hotel" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Hotel criteria.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attributeGroup ref="HotelReferenceGroup"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Period" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Date and time period criteria.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attributeGroup ref="DateTimeSpanGroup"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Questions" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">A collection of questions.  The absence of this element indicates that the data for all question categories should be returned.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="QuestionCategory" type="List_QuestionCategory" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">A grouping of questions based on the category of the question.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="AggregateInfos" type="AggregateInfoType" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Specifies the levels at which aggregate data should be returned.  Aggregate data only applies to rating type questions.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

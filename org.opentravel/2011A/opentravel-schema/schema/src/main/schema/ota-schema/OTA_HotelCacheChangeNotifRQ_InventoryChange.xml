@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: Cache Push for Simple Inventory Change -->
+<!-- USE CASE DETAILS: 
+
+This use case includes the following examples of inventory that has changed:
+	A.	November 26, 2011: 
+		1.	KB: 18 Rooms
+		2.	QB: 2 Rooms
+		3.	STE: 3 rooms	
+	B.	December 15, 2011: 
+		1.	KB: 8 Rooms
+		2.	QB: 12 Rooms
+		3.	STE: 3 rooms
+	C.	December 16, 2011
+		1.	KB: 15 rooms
+		2.	QB: 6 rooms
+		3.	STE: 0 rooms (just focus in on when inventory is zero for this sample instance)
+-->
+
+<OTA_HotelCacheChangeNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelCacheChangeNotifRQ.xsd" EchoToken="12345" TimeStamp="2011-03-29T09:44:52" Target="Production" Version="1.000" PrimaryLangID="en-us">
+
+	<!-- Point of sale information for the sender of the cache notification -->
+	<POS>
+		<Source>
+			<RequestorID Type="10" ID="Marriott International"/>
+			<!-- Type10 = Hotel. See OpenTravel Code List Unique ID Type (UIT). -->
+		</Source>
+	</POS>
+
+	<!-- Individual Date inventory change -->
+	<CacheChangeInfo ChainCode="5158" HotelCode="10107">
+		<TimeSpan End="2011-11-26" Start="2011-11-26"/>
+		<ProductInfo RoomTypeCode="KB"/>
+	</CacheChangeInfo>
+	<CacheChangeInfo ChainCode="5158" HotelCode="10107">
+		<TimeSpan End="2011-11-26" Start="2011-11-26"/>
+		<ProductInfo RoomTypeCode="QB"/>
+	</CacheChangeInfo>
+	<CacheChangeInfo ChainCode="5158" HotelCode="10107">
+		<TimeSpan End="2011-11-26" Start="2011-11-26"/>
+		<ProductInfo RoomTypeCode="STE"/>
+	</CacheChangeInfo>
+	
+	<!-- Date Range Inventory Change: As with pricing changes, it doesn't matter that the inventory data is different across the two two days, it only maters that something has changed. -->
+	<CacheChangeInfo ChainCode="5158" HotelCode="10107">
+		<TimeSpan End="2011-12-15" Start="2011-12-16"/>
+		<ProductInfo RoomTypeCode="KB"/>
+	</CacheChangeInfo>
+	<CacheChangeInfo ChainCode="5158" HotelCode="10107">
+		<TimeSpan End="2011-12-15" Start="2011-12-16"/>
+		<ProductInfo RoomTypeCode="QB"/>
+	</CacheChangeInfo>
+	<CacheChangeInfo ChainCode="5158" HotelCode="10107">
+		<TimeSpan End="2011-12-15" Start="2011-12-16"/>
+		<ProductInfo RoomTypeCode="STE"/>
+	</CacheChangeInfo>
+</OTA_HotelCacheChangeNotifRQ>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="3.000" id="OTA2012A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:annotation>
+    <xs:documentation source="Notice" xml:lang="en">The OTA_CodeType simpleType will be deprecated in the 2013A OpenTravel XML Message Suite publication. All OTA_CodeType typed attributes with be replaced with elements typed as an open list, e.g. List_NameOfList.</xs:documentation>
+  </xs:annotation>
+  <xs:include schemaLocation="OTA_HotelRFP.xsd"/>
+  <xs:element name="OTA_HotelRFP_TransientNotifRS">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">The transient RFP supports the buyer to supplier process of negotiating room rates and amenities for a given contract period. The buyer is the corporation negotiating directly with the supplier-- example, hotel chains or individual hotels.The OTA_HotelRFP_TransientNotifRS acknowledges receipt of the OTA_HotelRFP_TransientNotifRQ.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice>
+          <xs:sequence>
+            <xs:element name="Success" type="SuccessType">
+              <xs:annotation>
+                <xs:documentation xml:lang="en">The presence of the empty Successs element explicitly indicates that the OpenTravel versioned message succeeded.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Warnings" type="WarningsType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation xml:lang="en">Used in conjunction with the Success element to define one or more business errors.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Comments" minOccurs="0">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Comment" type="ParagraphType">
+                    <xs:annotation>
+                      <xs:documentation xml:lang="en">This is an open text field available to an organization to allow them to return a response indicating additional information is needed from the hotelier (e.g. not all requested information was supplied by the responding hotel and in order for the organization to review the proposal all information must be sent, please resend the information with all appropriate information).</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+          <xs:element name="Errors" type="ErrorsType">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Errors is returned if the request was unable to be processed.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:choice>
+        <xs:element name="MessageID" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">Corresponds to the MessageID used in OTA_HotelRFP_RQ.xsd and OTA_HotelRFP_NotifRQ.xsd. This is a UniqueID that is associated with the request message. </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="UniqueID_Type"/>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

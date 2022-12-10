@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<OTA_DynamicPkgAvailRS xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_DynamicPkgAvailRS.xsd" 
+xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+Target="Test" 
+TimeStamp="2009-07-20T11:21:21" 
+Version="1" 
+TransactionIdentifier="58A207A9C830DD11">
+
+	<POS>
+		<Source>
+			<RequestorID ID="BTA142" MessagePassword="jg97fg6#67f" Type="5">
+				<!--Type (UIT) 5= Travel Agency -->
+				<CompanyName>Bob's Travel Agency</CompanyName>
+			</RequestorID>
+		</Source>
+	</POS>
+	<Success/>
+	<SearchResults>
+		<AirResults ResponseType="Schedule" SequenceNumber="1" QuoteID="88cbd77e04871760">
+			<OriginDestinationInformation>
+				<DepartureDateTime>2009-09-29T07:00:00</DepartureDateTime>
+				<OriginLocation LocationCode="PHX"/>
+				<DestinationLocation LocationCode="MCO"/>
+				<OriginDestinationOptions>
+					<OriginDestinationOption>
+						<FlightSegment DepartureDateTime="2009-09-29T05:40:00" ArrivalDateTime="2009-09-29T12:29:00" StopQuantity="0" FlightNumber="680">
+							<DepartureAirport LocationCode="PHX"/>
+							<ArrivalAirport LocationCode="CLT"/>
+							<OperatingAirline Code="US" CompanyShortName="US">US Airways</OperatingAirline>
+							<Equipment AirEquipType="320"/>
+							<MarketingCabin RPH="1" CabinType="Economy"/>
+							<MarketingCabin RPH="2" CabinType="First"/>
+							<BookingClassAvail ResBookDesigCode="W" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="G" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="V" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="N" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="U" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="M" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="E" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="T" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="L" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="S" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="K" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="R" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="B" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="Y" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="Q" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="H" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="F" ResBookDesigQuantity="9" RPH="2"/>
+							<BookingClassAvail ResBookDesigCode="A" ResBookDesigQuantity="9" RPH="2"/>
+							<BookingClassAvail ResBookDesigCode="P" ResBookDesigQuantity="9" RPH="2"/>
+						</FlightSegment>
+						<FlightSegment DepartureDateTime="2009-09-29T13:01:00" ArrivalDateTime="2009-09-29T14:36:00" StopQuantity="0" FlightNumber="1710">
+							<DepartureAirport LocationCode="CLT"/>
+							<ArrivalAirport LocationCode="MCO"/>
+							<OperatingAirline Code="US" CompanyShortName="US">US Airways</OperatingAirline>
+							<Equipment AirEquipType="321"/>
+							<MarketingCabin RPH="1" CabinType="Economy"/>
+							<MarketingCabin RPH="2" CabinType="First"/>
+							<BookingClassAvail ResBookDesigCode="W" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="G" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="V" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="N" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="U" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="M" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="E" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="T" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="L" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="S" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="K" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="R" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="B" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="Y" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="Q" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="H" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="F" ResBookDesigQuantity="9" RPH="2"/>
+							<BookingClassAvail ResBookDesigCode="A" ResBookDesigQuantity="9" RPH="2"/>
+							<BookingClassAvail ResBookDesigCode="P" ResBookDesigQuantity="9" RPH="2"/>
+						</FlightSegment>
+					</OriginDestinationOption>
+					<OriginDestinationOption>
+						<FlightSegment DepartureDateTime="2009-09-29T09:00:00" ArrivalDateTime="2009-09-29T16:17:00" StopQuantity="0" FlightNumber="567">
+							<DepartureAirport LocationCode="PHX"/>
+							<ArrivalAirport LocationCode="MCO"/>
+							<OperatingAirline Code="US" CompanyShortName="US">US Airways</OperatingAirline>
+							<Equipment AirEquipType="321"/>
+							<MarketingCabin RPH="1" CabinType="Economy"/>
+							<MarketingCabin RPH="2" CabinType="First"/>
+							<BookingClassAvail ResBookDesigCode="W" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="G" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="V" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="N" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="U" ResBookDesigQuantity="0" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="M" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="E" ResBookDesigQuantity="0" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="T" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="L" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="S" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="K" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="R" ResBookDesigQuantity="0" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="B" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="Y" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="Q" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="H" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="F" ResBookDesigQuantity="9" RPH="2"/>
+							<BookingClassAvail ResBookDesigCode="A" ResBookDesigQuantity="9" RPH="2"/>
+							<BookingClassAvail ResBookDesigCode="P" ResBookDesigQuantity="9" RPH="2"/>
+						</FlightSegment>
+					</OriginDestinationOption>
+				</OriginDestinationOptions>
+			</OriginDestinationInformation>
+		</AirResults>
+		<AirResults ResponseType="Schedule" SequenceNumber="2" QuoteID="88cbd77e04871760">
+			<OriginDestinationInformation>
+				<DepartureDateTime>2009-10-03T07:00:00</DepartureDateTime>
+				<OriginLocation LocationCode="MCO"/>
+				<DestinationLocation LocationCode="PHX"/>
+				<OriginDestinationOptions>
+					<OriginDestinationOption>
+						<FlightSegment DepartureDateTime="2009-10-03T07:25:00" ArrivalDateTime="2009-10-03T09:00:00" StopQuantity="0" FlightNumber="1519">
+							<DepartureAirport LocationCode="MCO"/>
+							<ArrivalAirport LocationCode="PHX"/>
+							<OperatingAirline Code="US" CompanyShortName="US">US Airways</OperatingAirline>
+							<Equipment AirEquipType="752"/>
+							<MarketingCabin RPH="1" CabinType="Economy"/>
+							<MarketingCabin RPH="2" CabinType="First"/>
+							<BookingClassAvail ResBookDesigCode="W" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="G" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="V" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="N" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="U" ResBookDesigQuantity="0" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="M" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="E" ResBookDesigQuantity="0" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="T" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="L" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="S" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="K" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="R" ResBookDesigQuantity="0" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="B" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="Y" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="Q" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="H" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="F" ResBookDesigQuantity="5" RPH="2"/>
+							<BookingClassAvail ResBookDesigCode="A" ResBookDesigQuantity="5" RPH="2"/>
+							<BookingClassAvail ResBookDesigCode="P" ResBookDesigQuantity="5" RPH="2"/>
+						</FlightSegment>
+					</OriginDestinationOption>
+					<OriginDestinationOption>
+						<FlightSegment DepartureDateTime="2009-10-03T08:35:00" ArrivalDateTime="2009-10-03T10:25:00" StopQuantity="0" FlightNumber="104">
+							<DepartureAirport LocationCode="MCO"/>
+							<ArrivalAirport LocationCode="LAS"/>
+							<OperatingAirline Code="US" CompanyShortName="US">US Airways</OperatingAirline>
+							<Equipment AirEquipType="319"/>
+							<MarketingCabin RPH="1" CabinType="Economy"/>
+							<MarketingCabin RPH="2" CabinType="First"/>
+							<BookingClassAvail ResBookDesigCode="W" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="G" ResBookDesigQuantity="0" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="V" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="N" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="U" ResBookDesigQuantity="0" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="M" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="E" ResBookDesigQuantity="0" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="T" ResBookDesigQuantity="0" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="L" ResBookDesigQuantity="0" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="S" ResBookDesigQuantity="0" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="K" ResBookDesigQuantity="0" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="R" ResBookDesigQuantity="0" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="B" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="Y" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="Q" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="H" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="F" ResBookDesigQuantity="8" RPH="2"/>
+							<BookingClassAvail ResBookDesigCode="A" ResBookDesigQuantity="7" RPH="2"/>
+							<BookingClassAvail ResBookDesigCode="P" ResBookDesigQuantity="7" RPH="2"/>
+						</FlightSegment>
+						<FlightSegment DepartureDateTime="2009-10-03T11:35:00" ArrivalDateTime="2009-10-03T12:51:00" StopQuantity="0" FlightNumber="196">
+							<DepartureAirport LocationCode="LAS"/>
+							<ArrivalAirport LocationCode="PHX"/>
+							<OperatingAirline Code="US" CompanyShortName="US">US Airways</OperatingAirline>
+							<Equipment AirEquipType="733"/>
+							<MarketingCabin RPH="1" CabinType="Economy"/>
+							<MarketingCabin RPH="2" CabinType="First"/>
+							<BookingClassAvail ResBookDesigCode="W" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="G" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="V" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="N" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="U" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="M" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="E" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="T" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="L" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="S" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="K" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="R" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="B" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="Y" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="Q" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="H" ResBookDesigQuantity="9" RPH="1"/>
+							<BookingClassAvail ResBookDesigCode="F" ResBookDesigQuantity="8" RPH="2"/>
+							<BookingClassAvail ResBookDesigCode="A" ResBookDesigQuantity="6" RPH="2"/>
+							<BookingClassAvail ResBookDesigCode="P" ResBookDesigQuantity="6" RPH="2"/>
+						</FlightSegment>
+					</OriginDestinationOption>
+				</OriginDestinationOptions>
+			</OriginDestinationInformation>
+		</AirResults>
+		<HotelResults ResponseType="Avail" SequenceNumber="3" QuoteID="88cbd77e82da2ff8">
+			<RoomStays>
+				<RoomStay>
+					<RoomRates>
+						<RoomRate RatePlanCode="HMCO03*SPL*280*8cbd74387ab0740*6673764" RatePlanID="77" RoomTypeCode="SPL" InvBlockCode="1" NumberOfUnits="9" AvailabilityStatus="AvailableForSale">
+							<RoomRateDescription>
+								<Text>Special Promo Rate - Standard</Text>
+							</RoomRateDescription>
+						</RoomRate>
+						<RoomRate RatePlanCode="HMCO03*ROH*291*8cbd74387ab0740*6673764" RatePlanID="76" RoomTypeCode="ROH" InvBlockCode="1" NumberOfUnits="9" AvailabilityStatus="AvailableForSale">
+							<RoomRateDescription>
+								<Text>Standard </Text>
+							</RoomRateDescription>
+						</RoomRate>
+					</RoomRates>
+					<TimeSpan Start="2009-09-29" End="2009-10-03"/>
+					<BasicPropertyInfo HotelCode="HMCO03" HotelCityCode="MCO" HotelName="Disney's All-Star Sports Resort"/>
+				</RoomStay>
+				<RoomStay>
+					<RoomRates>
+						<RoomRate RatePlanCode="HMCO067*ROH*233*8cbd74387ab0740*6815349" RatePlanID="152" RoomTypeCode="ROH" InvBlockCode="1" NumberOfUnits="9" AvailabilityStatus="AvailableForSale">
+							<RoomRateDescription>
+								<Text>Standard </Text>
+							</RoomRateDescription>
+						</RoomRate>
+						<RoomRate RatePlanCode="HMCO067*STE*234*8cbd74387ab0740*6815349" RatePlanID="154" RoomTypeCode="STE" InvBlockCode="1" NumberOfUnits="5" AvailabilityStatus="AvailableForSale">
+							<RoomRateDescription>
+								<Text>Petite Suite </Text>
+							</RoomRateDescription>
+						</RoomRate>
+					</RoomRates>
+					<TimeSpan Start="2009-09-29" End="2009-10-03"/>
+					<BasicPropertyInfo HotelCode="HMCO067" HotelCityCode="MCO" HotelName="Disney's Pop Century Resort"/>
+				</RoomStay>
+			</RoomStays>
+		</HotelResults>
+		<PackageOptionResults ResponseType="Avail" SequenceNumber="4" QuoteID="88cb8d9290952a28">
+			<PackageOptionGroup>
+				<Description>
+					<Text>Disney Park Tickets</Text>
+				</Description>
+				<PackageOption ID="12345" RatePlanCode="VMCO001*CJ*0*0*6675878" RatePlanID="11590" Type="4" Quantity="9" AvailabilityStatus="AvailableForSale">
+					<!-- Type (PKO) 4 = Ticket -->
+					<ServiceDetails>
+						<Comments>
+							<Comment Name="Description"><Text>Walt Disney World Parks Base Ticket</Text></Comment>
+						</Comments>
+					</ServiceDetails>
+				</PackageOption>
+				<PackageOption ID="12345" RatePlanCode="VMCO001*DM*0*0*6675878" RatePlanID="11591" Type="4" Quantity="9" AvailabilityStatus="AvailableForSale">
+					<!-- Type (PKO) 4 = Ticket -->
+					<ServiceDetails>
+						<Comments>
+							<Comment Name="Description"><Text>Walt Disney World Parks Ticket with Park Hopper</Text></Comment>
+						</Comments>
+					</ServiceDetails>
+				</PackageOption>
+				<PackageOption ID="12345" RatePlanCode="VMCO001*JM*0*0*6675878" RatePlanID="11592" Type="4" Quantity="9" AvailabilityStatus="AvailableForSale">
+					<!-- Type (PKO) 4 = Ticket -->
+					<ServiceDetails>
+						<Comments>
+							<Comment Name="Description">
+							<Text>Walt Disney World Parks Ticket with Water Park Fun</Text></Comment>
+						</Comments>
+					</ServiceDetails>
+				</PackageOption>
+			</PackageOptionGroup>
+			<PackageOptionGroup>
+				<Description>
+					<Text>Epcot Center Tickets</Text>
+				</Description>
+				<PackageOption ID="12345" RatePlanCode="VMCO009*EP*0*0*6675878" RatePlanID="19590" Type="4" Quantity="9" AvailabilityStatus="AvailableForSale">
+					<!-- Type (PKO) 4 = Ticket -->
+					<ServiceDetails>
+						<Comments>
+							<Comment Name="Description">
+							<Text>Epcot Center ticket</Text></Comment>
+						</Comments>
+					</ServiceDetails>
+				</PackageOption>
+			</PackageOptionGroup>
+			<PackageOptionGroup>
+				<Description>
+					<Text>Sea World Tickets</Text>
+				</Description>
+				<PackageOption ID="12345" RatePlanCode="VMCO008*SW*0*0*6675878" RatePlanID="18590" Type="4" Quantity="9" AvailabilityStatus="AvailableForSale">
+					<!-- Type (PKO) 4 = Ticket -->
+					<ServiceDetails>
+						<Comments>
+							<Comment Name="Description">
+							<Text>Sea World Orlando admission</Text></Comment>
+						</Comments>
+					</ServiceDetails>
+				</PackageOption>
+			</PackageOptionGroup>
+		</PackageOptionResults>
+		<CarResults ResponseType="Avail" SequenceNumber="5" QuoteID="88cb8d9290952a28">
+			<VehAvailRSCore>
+				<VehRentalCore PickUpDateTime="2009-09-29T07:00:00" ReturnDateTime="2009-10-03T07:00:00">
+					<PickUpLocation LocationCode="MCO"/>
+					<ReturnLocation LocationCode="MCO"/>
+				</VehRentalCore>
+				<VehVendorAvails>
+					<VehVendorAvail>
+						<Vendor Code="ZI" CompanyShortName="Avis - Orlando"/>
+						<VehAvails>
+							<VehAvail>
+								<VehAvailCore Status="Available">
+									<Vehicle>
+										<VehType VehicleCategory="1" DoorCount="4"/>
+										<!-- VehicleCategory (VEC) 1= Car -->
+										<VehClass Size="3"/>
+										<!-- Size (SIZ) 3= Economy -->
+									</Vehicle>
+									<RentalRate>
+										<RateQualifier RateQualifier="ZI*E4*E4**110924"/>
+										<RateRestrictions MaximumVehiclesAllowed="2" MinimumAge="25"/>
+									</RentalRate>
+								</VehAvailCore>
+							</VehAvail>
+							<VehAvail>
+								<VehAvailCore Status="Available">
+									<Vehicle>
+										<VehType VehicleCategory="1" DoorCount="4"/>
+										<!-- VehicleCategory (VEC) 1= Car -->
+										<VehClass Size="4"/>
+										<!-- Size (SIZ) 4= Compact -->
+									</Vehicle>
+									<RentalRate>
+										<RateQualifier RateQualifier="ZI*C4*C4**110924"/>
+										<RateRestrictions MaximumVehiclesAllowed="2" MinimumAge="25"/>
+									</RentalRate>
+								</VehAvailCore>
+							</VehAvail>
+						</VehAvails>
+					</VehVendorAvail>
+				</VehVendorAvails>
+			</VehAvailRSCore>
+		</CarResults>
+	</SearchResults>
+	<DynamicPackage>
+		<ResGuests>
+			<ResGuest ResGuestRPH="1" AgeQualifyingCode="10" LocationCode="PHX"/>
+			<!--AgeQualifyingCode (AQC) 10= Adult -->
+			<ResGuest ResGuestRPH="2" AgeQualifyingCode="8" Age="15" LocationCode="PHX"/>
+			<!--AgeQualifyingCode (AQC) 8= Child -->
+			<ResGuest ResGuestRPH="3" AgeQualifyingCode="8" Age="10" LocationCode="PHX"/>
+			<!--AgeQualifyingCode (AQC) 8= Child -->
+		</ResGuests>
+	</DynamicPackage>
+</OTA_DynamicPkgAvailRS>

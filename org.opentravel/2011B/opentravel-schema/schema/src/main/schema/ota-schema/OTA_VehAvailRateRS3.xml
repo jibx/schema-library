@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: Rates & Availability with Vehicle Rental No Show Fees. -->
+<!-- USE CASE DETAILS: The transaction was processed successfully by the car supplier with no business warnings and this response message includes two car rental options. The first is an economy Chevrolet Cobalt Coupe that does not have a No Show Fee and the second is a compact Ford Focus that has a No Show Fee of $25.00 if the vehicle reservation is not cancelled 24 hours before the pick-up time. -->
+
+<OTA_VehAvailRateRS xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_VehAvailRateRS.xsd" 
+TimeStamp="2010-07-10T17:26:19.34085-04:00" 
+Target="Production" 
+Version="5.000">
+
+  	<!-- The presence of this element indicates the message was processed successfully by the receiving system. -->
+	<Success />
+  
+	<!-- The common, or core, information associated with the response providing information on the availability of rental vehicles. -->
+	<VehAvailRSCore>
+		<VehRentalCore PickUpDateTime="2010-07-18T12:00:00" ReturnDateTime="2010-07-26T15:00:00">
+		  <PickUpLocation LocationCode="IND" CodeContext="AC" />
+		  <ReturnLocation LocationCode="IND" CodeContext="AC" />
+		</VehRentalCore>
+
+	<!-- A collection of information on the availability of rental vehicles by individual vendor. -->
+    <VehVendorAvails>
+      <VehVendorAvail>
+      
+		<!-- Information on the vendor associated with this availability of vehicles. -->
+        <Vendor CompanyShortName="Ace" TravelSector="2" Code="AC">Ace Rent A Car</Vendor>
+        <VehAvails>
+        
+        <!-- VEHICLE AVAILABILITY/RATES INFORMATION -->
+        <!-- EXAMPLE 1: No Show Fees DO NOT apply to this vehicle -->
+          <VehAvail>
+            <VehAvailCore Status="Available">
+              <Vehicle AirConditionInd="true" TransmissionType="Automatic" FuelType="Unspecified" DriveType="Unspecified" PassengerQuantity="4" BaggageQuantity="3" Code="ECAR" CodeContext="SIPP">
+                <VehType VehicleCategory="1" DoorCount="2-4" />
+                <!-- Vehicle Category of 1 = "Car" - See OpenTravel Code List Vehicle Category (VEC). -->
+                <VehClass Size="3" />
+                <!-- Size of 3 = "Economy" - See  OpenTravel Code List Size (SIZ). -->
+                <VehMakeModel Name="Chevrolet Cobalt Coupe" />
+                <PictureURL>ChevroletCobalt2Dr.jpg</PictureURL>
+              </Vehicle>
+              <RentalRate>
+                <RateDistance Unlimited="true" DistUnitName="Mile" VehiclePeriodUnitName="RentalPeriod" />
+                <VehicleCharges>
+                  <VehicleCharge Amount="169.00" CurrencyCode="USD" Description="Weekly Rate" IncludedInEstTotalInd="true" Purpose="1">
+                <!-- Purpose of 1 = "Vehicle Rental" - See OpenTravel Code List Vehicle Charge Purpose Type (VCP). -->
+                    <Calculation UnitCharge="169.00" UnitName="Week" Quantity="1" />
+                  </VehicleCharge>
+                  <VehicleCharge Amount="48.28" CurrencyCode="USD" Description="Extra Day Rate" IncludedInEstTotalInd="true" Purpose="10">
+                <!-- Purpose of 10 = "Additional Day" - See OpenTravel Code List Vehicle Charge Purpose Type (VCP). -->
+                    <Calculation UnitCharge="24.14" UnitName="Day" Quantity="2" />
+                  </VehicleCharge>
+                </VehicleCharges>
+                <RateQualifier RateCategory="16" />
+				<!-- Rate Category of 16 = "Standard" - See OpenTravel Code List Rate Category (RTC). -->
+				
+                <!-- No show fee indicator is not included in schema so a no show fee does not apply. -->
+                <RateRestrictions AdvancedBookingInd="true" />
+              </RentalRate>
+              <TotalCharge RateTotalAmount="217.28" EstimatedTotalAmount="273.99" CurrencyCode="USD" />
+              <Fees>
+                <Fee Amount="15.21" CurrencyCode="USD" Description="Sales Tax" IncludedInEstTotalInd="true" Purpose="7">
+                <!-- Purpose of 7 = "Fee" - See OpenTravel Code List Vehicle Charge Purpose Type (VCP). -->
+                  <Calculation UnitCharge="217.28" Percentage="7.0" />
+                </Fee>
+                <Fee Amount="17.38" CurrencyCode="USD" Description="Excise Tax" IncludedInEstTotalInd="true" Purpose="7">
+                <!-- Purpose of 7 = "Fee" - See OpenTravel Code List Vehicle Charge Purpose Type (VCP). -->
+                  <Calculation UnitCharge="217.28" Percentage="8.0" />
+                </Fee>
+                <Fee Amount="24.12" CurrencyCode="USD" Description="Airport Fee" IncludedInEstTotalInd="true" Purpose="7">
+                <!-- Purpose of 7 = "Fee" - See OpenTravel Code List Vehicle Charge Purpose Type (VCP). -->
+                  <Calculation UnitCharge="217.28" Percentage="11.1" />
+                </Fee>
+              </Fees>
+              <Reference Type="16" ID="780623060" />
+              <!-- Reference type of 16 = "Reference" - See OpenTravel Code List Unique ID Type (UIT). -->
+            </VehAvailCore>
+          </VehAvail>
+          
+          <!-- EXAMPLE 2: No Show Fees DO apply to this vehicle. -->
+        <VehAvail>
+            <VehAvailCore Status="Available">
+              <Vehicle AirConditionInd="true" TransmissionType="Automatic" FuelType="Unspecified" DriveType="Unspecified" PassengerQuantity="5" BaggageQuantity="2" Code="CCAR" CodeContext="SIPP">
+                <VehType VehicleCategory="1" DoorCount="2-4" />
+                <!-- Vehicle Category of 1 = "Car" - See OpenTravel Code List Vehicle Category (VEC). -->
+                <VehClass Size="4" />
+                <!-- Size of 4 = "Compact" - See  OpenTravel Code List Size (SIZ). -->
+                <VehMakeModel Name="Ford Focus" />
+                <PictureURL>FordFocus.jpg</PictureURL>
+              </Vehicle>
+              <RentalRate QuoteID="123456789">
+                <RateDistance Unlimited="true" DistUnitName="Mile" VehiclePeriodUnitName="RentalPeriod" />
+                <VehicleCharges>
+                  <VehicleCharge Amount="174.95" CurrencyCode="USD" Description="Weekly Rate" IncludedInEstTotalInd="true" Purpose="1">
+                <!-- Purpose of 1 = "Vehicle Rental" - See OpenTravel Code List Vehicle Charge Purpose Type (VCP). -->
+                    <Calculation UnitCharge="174.95" UnitName="Week" Quantity="1" />
+                  </VehicleCharge>
+                  <VehicleCharge Amount="49.98" CurrencyCode="USD" Description="Extra Day Rate" IncludedInEstTotalInd="true" Purpose="10">
+                <!-- Purpose of 10 = "Additional Day" - See OpenTravel Code List Vehicle Charge Purpose Type (VCP). -->
+                    <Calculation UnitCharge="24.99" UnitName="Day" Quantity="2" />
+                  </VehicleCharge>
+                </VehicleCharges>
+                <RateQualifier RateCategory="16" />
+				<!-- Rate Category of 16 = "Standard" - See OpenTravel Code List Rate Category (RTC). -->
+                
+                <!-- No show fee indicator is true, so no show fees apply. Note that the guarantee required indicator is also set to true for specification of no show fee payment information. -->
+                <RateRestrictions AdvancedBookingInd="true" GuaranteeReqInd="true" NoShowFeeInd="true" />
+              </RentalRate>
+              <TotalCharge RateTotalAmount="224.93" EstimatedTotalAmount="283.64" CurrencyCode="USD" />
+              <Fees>
+                <Fee Amount="15.75" CurrencyCode="USD" Description="Sales Tax" IncludedInEstTotalInd="true" Purpose="7">
+                <!-- Purpose of 7 = "Fee" - See OpenTravel Code List Vehicle Charge Purpose Type (VCP). -->
+                  <Calculation UnitCharge="224.93" Percentage="7.0" />
+                </Fee>
+                <Fee Amount="17.99" CurrencyCode="USD" Description="Excise Tax" IncludedInEstTotalInd="true" Purpose="7">
+                <!-- Purpose of 7 = "Fee" - See OpenTravel Code List Vehicle Charge Purpose Type (VCP). -->
+                  <Calculation UnitCharge="224.93" Percentage="8.0" />
+                </Fee>
+                <Fee Amount="24.97" CurrencyCode="USD" Description="Airport Fee" IncludedInEstTotalInd="true" Purpose="7">
+                <!-- Purpose of 7 = "Fee" - See OpenTravel Code List Vehicle Charge Purpose Type (VCP). -->
+                  <Calculation UnitCharge="224.93" Percentage="11.1" />
+                </Fee>
+              </Fees>
+              <Reference Type="16" ID="780623061" />
+               <!-- Reference type of 16 = "Reference" - See OpenTravel Code List Unique ID Type (UIT). -->
+           </VehAvailCore>
+            
+            <VehAvailInfo>
+                <!-- THE NO SHOW FEE payment rules are specified here. -->
+              <PaymentRules>
+                <PaymentRule Amount="25.00" CurrencyCode="USD" RuleType="5" OffsetTimeUnit="Hour" OffsetUnitMultiplier="24" OffsetDropTime="BeforeArrival" />
+                <!-- The no show fee amount is $25.00 US. -->
+                <!-- RuleType of 5 is "No Show" - See OpenTravel Code List Rule Type (RUL). -->
+                <!-- The combination of OffsetTimeUnit, OffsetUnitMultiplier, and OffsetDropTime indicate the no show fee will be invoked if the vehicle reservation is not cancelled 24 hours before the pick-up time. -->
+              </PaymentRules>
+              
+            </VehAvailInfo>
+          </VehAvail>
+        </VehAvails>
+      </VehVendorAvail>
+    </VehVendorAvails>
+  </VehAvailRSCore>
+  
+</OTA_VehAvailRateRS>

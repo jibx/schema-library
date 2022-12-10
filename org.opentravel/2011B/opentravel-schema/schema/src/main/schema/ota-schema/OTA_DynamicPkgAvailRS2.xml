@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<OTA_DynamicPkgAvailRS xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_DynamicPkgAvailRS.xsd" 
+xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+Target="Test" 
+TimeStamp="2009-07-20T12:23:49" 
+Version="2" 
+TransactionIdentifier="88cbd782cbaf77a0">
+
+	<POS>
+		<Source>
+			<RequestorID ID="BTA142" MessagePassword="jg97fg6#67f" Type="5">
+				<!--Type (UIT) 5= Travel Agency -->
+				<CompanyName>Bob's Travel Agency</CompanyName>
+			</RequestorID>
+		</Source>
+	</POS>
+	<Success/>
+	<SearchResults>
+		<AirResults ResponseType="LowestFare" SequenceNumber="1" QuoteID="88cbd786be5ebe1a">
+			<PricedItineraries>
+				<PricedItinerary SequenceNumber="1">
+					<AirItinerary>
+						<OriginDestinationOptions>
+							<OriginDestinationOption>
+								<FlightSegment ArrivalDateTime="2009-09-29T16:17:00" DepartureDateTime="2009-09-29T09:00:00" FlightNumber="567" ResBookDesigCode="G" StopQuantity="0">
+									<DepartureAirport LocationCode="PHX"/>
+									<ArrivalAirport LocationCode="MCO"/>
+									<OperatingAirline Code="US" CompanyShortName="US">US Airways</OperatingAirline>
+									<Equipment AirEquipType="321"/>
+									<MarketingAirline Code="US"/>
+									<BookingClassAvails CabinType="Economy">
+										<BookingClassAvail ResBookDesigCode="G"/>
+									</BookingClassAvails>
+								</FlightSegment>
+							</OriginDestinationOption>
+							<OriginDestinationOption>
+								<FlightSegment ArrivalDateTime="2009-10-03T09:00:00" DepartureDateTime="2009-10-03T07:25:00" FlightNumber="1519" ResBookDesigCode="G" StopQuantity="0">
+									<DepartureAirport LocationCode="MCO"/>
+									<ArrivalAirport LocationCode="PHX"/>
+									<OperatingAirline Code="US" CompanyShortName="US">US Airways</OperatingAirline>
+									<Equipment AirEquipType="752"/>
+									<MarketingAirline Code="US"/>
+									<BookingClassAvails CabinType="Economy">
+										<BookingClassAvail ResBookDesigCode="G"/>
+									</BookingClassAvails>
+								</FlightSegment>
+							</OriginDestinationOption>
+						</OriginDestinationOptions>
+					</AirItinerary>
+					<AirItineraryPricingInfo QuoteID="515FED7189CDD1BD7B83640EBB708160C8B0F9097764EF04433E1136A18E09A9">
+						<ItinTotalFare>
+							<BaseFare Amount="496.74" CurrencyCode="USD"/>
+							<Taxes>
+								<Tax Amount="37.26" CurrencyCode="USD" TaxCode="US">USTRANSP</Tax>
+								<Tax Amount="15.00" CurrencyCode="USD" TaxCode="AY">USSECURITY</Tax>
+								<Tax Amount="27.00" CurrencyCode="USD" TaxCode="XF">USPFC</Tax>
+								<Tax Amount="21.60" CurrencyCode="USD" TaxCode="ZP">USZP</Tax>
+							</Taxes>
+							<TotalFare Amount="597.60" CurrencyCode="USD"/>
+						</ItinTotalFare>
+						<PTC_FareBreakdowns>
+							<PTC_FareBreakdown>
+								<PassengerTypeQuantity Code="ADT" Quantity="3"/>
+								<FareBasisCodes>
+									<FareBasisCode>GGAUSJ6Y</FareBasisCode>
+								</FareBasisCodes>
+								<PassengerFare>
+									<BaseFare Amount="165.58" CurrencyCode="USD"/>
+									<Taxes>
+										<Tax Amount="12.42" CurrencyCode="USD" TaxCode="US">USTRANSP</Tax>
+										<Tax Amount="5.00" CurrencyCode="USD" TaxCode="AY">USSECURITY</Tax>
+										<Tax Amount="7.20" CurrencyCode="USD" TaxCode="ZP">USZP</Tax>
+										<Tax Amount="9.00" CurrencyCode="USD" TaxCode="XF">USPFC</Tax>
+									</Taxes>
+									<TotalFare Amount="199.20" CurrencyCode="USD"/>
+								</PassengerFare>
+							</PTC_FareBreakdown>
+						</PTC_FareBreakdowns>
+					</AirItineraryPricingInfo>
+					<TicketingInfo TicketType="eTicket">
+						<TicketAdvisory>NONREF/PEN FOR CHG</TicketAdvisory>
+						<TicketAdvisory>VALID US ONLY</TicketAdvisory>
+					</TicketingInfo>
+				</PricedItinerary>
+				<PricedItinerary SequenceNumber="2">
+					<AirItinerary>
+						<OriginDestinationOptions>
+							<OriginDestinationOption>
+								<FlightSegment ArrivalDateTime="2009-09-29T12:29:00" DepartureDateTime="2009-09-29T05:40:00" FlightNumber="680" ResBookDesigCode="K" StopQuantity="0">
+									<DepartureAirport LocationCode="PHX"/>
+									<ArrivalAirport LocationCode="CLT"/>
+									<OperatingAirline Code="US" CompanyShortName="US">US Airways</OperatingAirline>
+									<Equipment AirEquipType="320"/>
+									<MarketingAirline Code="US"/>
+									<BookingClassAvails CabinType="Economy">
+										<BookingClassAvail ResBookDesigCode="K"/>
+									</BookingClassAvails>
+								</FlightSegment>
+								<FlightSegment ArrivalDateTime="2009-09-29T14:36:00" DepartureDateTime="2009-09-29T13:01:00" FlightNumber="1710" ResBookDesigCode="K" StopQuantity="0">
+									<DepartureAirport LocationCode="CLT"/>
+									<ArrivalAirport LocationCode="MCO"/>
+									<OperatingAirline Code="US" CompanyShortName="US">US Airways</OperatingAirline>
+									<Equipment AirEquipType="321"/>
+									<MarketingAirline Code="US"/>
+									<BookingClassAvails CabinType="Economy">
+										<BookingClassAvail ResBookDesigCode="K"/>
+									</BookingClassAvails>
+								</FlightSegment>
+							</OriginDestinationOption>
+							<OriginDestinationOption>
+								<FlightSegment ArrivalDateTime="2009-10-03T09:00:00" DepartureDateTime="2009-10-03T07:25:00" FlightNumber="1519" ResBookDesigCode="G" StopQuantity="0">
+									<DepartureAirport LocationCode="MCO"/>
+									<ArrivalAirport LocationCode="PHX"/>
+									<OperatingAirline Code="US" CompanyShortName="US">US Airways</OperatingAirline>
+									<Equipment AirEquipType="752"/>
+									<MarketingAirline Code="US"/>
+									<BookingClassAvails CabinType="Economy">
+										<BookingClassAvail ResBookDesigCode="G"/>
+									</BookingClassAvails>
+								</FlightSegment>
+							</OriginDestinationOption>
+						</OriginDestinationOptions>
+					</AirItinerary>
+					<AirItineraryPricingInfo QuoteID="4E8F0C8C57E7B4FAE201996B63F75FFC8C072C66996AA1E9DEC4F1BC634B59AA">
+						<ItinTotalFare>
+							<BaseFare Amount="692.10" CurrencyCode="USD"/>
+							<Taxes>
+								<Tax Amount="51.90" CurrencyCode="USD" TaxCode="US">USTRANSP</Tax>
+								<Tax Amount="22.50" CurrencyCode="USD" TaxCode="AY">USSECURITY</Tax>
+								<Tax Amount="36.00" CurrencyCode="USD" TaxCode="XF">USPFC</Tax>
+								<Tax Amount="32.40" CurrencyCode="USD" TaxCode="ZP">USZP</Tax>
+							</Taxes>
+							<TotalFare Amount="834.90" CurrencyCode="USD"/>
+						</ItinTotalFare>
+						<PTC_FareBreakdowns>
+							<PTC_FareBreakdown>
+								<PassengerTypeQuantity Code="ADT" Quantity="3"/>
+								<FareBasisCodes>
+									<FareBasisCode>KXAVNJ4Y</FareBasisCode>
+								</FareBasisCodes>
+								<PassengerFare>
+									<BaseFare Amount="230.70" CurrencyCode="USD"/>
+									<Taxes>
+										<Tax Amount="17.30" CurrencyCode="USD" TaxCode="US">USTRANSP</Tax>
+										<Tax Amount="7.50" CurrencyCode="USD" TaxCode="AY">USSECURITY</Tax>
+										<Tax Amount="10.80" CurrencyCode="USD" TaxCode="ZP">USZP</Tax>
+										<Tax Amount="12.00" CurrencyCode="USD" TaxCode="XF">USPFC</Tax>
+									</Taxes>
+									<TotalFare Amount="278.30" CurrencyCode="USD"/>
+								</PassengerFare>
+							</PTC_FareBreakdown>
+						</PTC_FareBreakdowns>
+					</AirItineraryPricingInfo>
+					<TicketingInfo TicketType="eTicket">
+						<TicketAdvisory>NONREF/PEN FOR CHG</TicketAdvisory>
+						<TicketAdvisory>VALID US ONLY</TicketAdvisory>
+					</TicketingInfo>
+				</PricedItinerary>
+			</PricedItineraries>
+		</AirResults>
+		<HotelResults ResponseType="AvailPrice" SequenceNumber="2" QuoteID="88cbd786be5ebe1a">
+			<RoomStays>
+				<RoomStay>
+					<RoomRates>
+						<RoomRate RatePlanCode="HMCO03*ROH*233*8cbd74bc0443060*6815349" RatePlanID="152" RatePlanCategory="829F97A9F0B6E0E3EC23CF1251A27F5E88FC6F83532A6EE38133C4EDD107DFB6" RoomTypeCode="ROH" InvBlockCode="1" NumberOfUnits="9" AvailabilityStatus="AvailableForSale">
+							<Rates>
+								<Rate AgeQualifyingCode="10">
+									<Base AmountBeforeTax="232.41" AmountAfterTax="251.00" CurrencyCode="USD"/>
+								</Rate>
+							</Rates>
+							<RoomRateDescription>
+								<Text>Standard </Text>
+							</RoomRateDescription>
+							<Total AmountBeforeTax="232.41" AmountAfterTax="251.00" CurrencyCode="USD"/>
+						</RoomRate>
+					</RoomRates>
+					<TimeSpan Start="2009-09-29" End="2009-10-03"/>
+					<BasicPropertyInfo HotelCode="HMCO03" HotelCityCode="MCO" HotelName="Disney's All-Star Sports Resort"/>
+				</RoomStay>
+				<RoomStay>
+					<RoomRates>
+						<RoomRate RatePlanCode="HMCO067*ROH*260*8cbd74bc0443060*6539819" RatePlanID="360" RatePlanCategory="C9E3A838C03F328A12B8695BB2D1D2F88B0BE06B6A29092A1DD69E4E8CB696D2" RoomTypeCode="ROH" InvBlockCode="1" NumberOfUnits="9" AvailabilityStatus="AvailableForSale">
+							<Rates>
+								<Rate AgeQualifyingCode="10">
+									<Base AmountBeforeTax="219.44" AmountAfterTax="237.00" CurrencyCode="USD"/>
+								</Rate>
+								<Rate AgeQualifyingCode="8">
+									<Base AmountBeforeTax="0.00" AmountAfterTax="0.00" CurrencyCode="USD"/>
+								</Rate>
+							</Rates>
+							<RoomRateDescription>
+								<Text>Standard</Text>
+							</RoomRateDescription>
+							<Total AmountBeforeTax="219.44" AmountAfterTax="237.00" CurrencyCode="USD"/>
+						</RoomRate>
+					</RoomRates>
+					<TimeSpan Start="2009-09-29" End="2009-10-03"/>
+					<BasicPropertyInfo HotelCode="HMCO067" HotelCityCode="MCO" HotelName="Disney's Pop Century Resort"/>
+				</RoomStay>
+			</RoomStays>
+		</HotelResults>
+		<PackageOptionResults ResponseType="AvailPrice" SequenceNumber="3" QuoteID="88cb8d9290952a28">
+			<PackageOptionGroup>
+				<Description>
+					<Text>Disney Park Tickets</Text>
+				</Description>
+				<PackageOption ID="12345" RatePlanCode="VMCO001*CJ*0*0*6675878" RatePlanID="11590" QuoteID="41E3A86649ED70D725460C219628E05E16984BE7B785F3072BD9FAFAE4287490" Type="4" AvailabilityStatus="AvailableForSale">
+					<!-- Type (PKO) 4 = Ticket -->
+					<Price AgeQualifyingCode="10" NumberOfUnits="99">
+						<!-- Type (CHG) 31 = PerUnit -->
+						<Base AmountAfterTax="95.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>fixed cost price $95 per adult per day</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" NumberOfUnits="99" MinAge="3" MaxAge="9">
+						<!-- Type (CHG) 31 = PerUnit -->
+						<Base AmountAfterTax="76.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>fixed cost price per child aged 3-9 per day</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-09-29" NumberOfUnits="99">
+						<!-- Type (CHG) 1 = Daily -->
+						<Base AmountAfterTax="105.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Adult rate for 09/29/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-09-29" NumberOfUnits="99" MinAge="3" MaxAge="9">
+						<!-- Type (CHG) 1 = Daily -->
+						<Base AmountAfterTax="70.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Child (3-9) rate for 09/29/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-09-30" NumberOfUnits="99">
+						<!-- Type (CHG)1 = Daily -->
+						<Base AmountAfterTax="100.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Adult rate for 09/30/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-09-30" NumberOfUnits="99" MinAge="3" MaxAge="9">
+						<!-- Type (CHG) 1 = Daily -->
+						<Base AmountAfterTax="70.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Child (3-9) rate for 09/30/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-10-01" NumberOfUnits="99">
+						<Base AmountAfterTax="125.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Adult rate for 10/01/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-10-01" NumberOfUnits="99" MinAge="3" MaxAge="9">
+						<Base AmountAfterTax="70.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Child (3-9) rate for 10/01/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-10-02" NumberOfUnits="99">
+						<Base AmountAfterTax="135.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Adult rate for 10/02/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-10-02" NumberOfUnits="99" MinAge="3" MaxAge="9">
+						<Base AmountAfterTax="70.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Child (3-9) rate for 10/02/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-10-03" NumberOfUnits="99">
+						<Base AmountAfterTax="135.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Adult rate for 10/03/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-10-03" NumberOfUnits="99" MinAge="3" MaxAge="9">
+						<Base AmountAfterTax="70.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Child (3-9) rate for 10/03/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-09-29" RateTimeUnit="Day" UnitMultiplier="3" NumberOfUnits="99">
+						<!-- Type (CHG) 32 = Per duration -->
+						<Base AmountAfterTax="400.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Three day pass</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-09-29" RateTimeUnit="Day" UnitMultiplier="3" NumberOfUnits="99" MinAge="3" MaxAge="9">
+						<!-- Type (CHG) 32 = Per duration -->
+						<Base AmountAfterTax="200.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Three day pass</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-09-29" RateTimeUnit="Day" UnitMultiplier="4" NumberOfUnits="99">
+						<!-- Type (CHG) 32 = Per duration -->
+						<Base AmountAfterTax="450.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Four day pass</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-09-29" RateTimeUnit="Day" UnitMultiplier="4" NumberOfUnits="99" MinAge="3" MaxAge="9">
+						<!-- Type (CHG) 32 = Per duration -->
+						<Base AmountAfterTax="225.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Four day pass</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-09-29" RateTimeUnit="Day" UnitMultiplier="5" NumberOfUnits="99">
+						<!-- Type (CHG) 32 = Per duration -->
+						<Base AmountAfterTax="550.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Five day pass</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-09-29" RateTimeUnit="Day" UnitMultiplier="5" NumberOfUnits="99" MinAge="3" MaxAge="9">
+						<!-- Type (CHG) 32 = Per duration -->
+						<Base AmountAfterTax="325.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Five  day pass</Text>
+						</RateDescription>
+					</Price>
+					<ServiceDetails>
+						<Comments>
+							<Comment Name="Description">
+								<Text>Walt Disney World Parks Base Ticket</Text>
+							</Comment>
+						</Comments>
+					</ServiceDetails>
+				</PackageOption>
+				<PackageOption ID="12345" RatePlanCode="VMCO001*DM*0*0*6675878" RatePlanID="11591" QuoteID="649582288695D6A200FA04BDB140301844C0BDB64B0F1F4DE32BADF52E99A37C" Type="4" AvailabilityStatus="AvailableForSale">
+					<!-- Type (PKO) 4 = Ticket -->
+					<Price AgeQualifyingCode="10" NumberOfUnits="99">
+						<!-- Type (CHG) 31 = PerUnit -->
+						<Base AmountAfterTax="95.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>fixed cost price $95 per adult per day</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" NumberOfUnits="99" MinAge="3" MaxAge="9">
+						<!-- Type (CHG) 31 = PerUnit -->
+						<Base AmountAfterTax="76.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>fixed cost price per child aged 3-9 per day</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-09-29" NumberOfUnits="99">
+						<!-- Type (CHG) 1 = Daily -->
+						<Base AmountAfterTax="105.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Adult rate for 09/29/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-09-29" NumberOfUnits="99" MinAge="3" MaxAge="9">
+						<Base AmountAfterTax="70.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Child (3-9) rate for 09/29/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-09-30" NumberOfUnits="99">
+						<Base AmountAfterTax="100.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Adult rate for 09/30/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-09-30" NumberOfUnits="99" MinAge="3" MaxAge="9">
+						<Base AmountAfterTax="70.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Child (3-9) rate for 09/30/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-10-01" NumberOfUnits="99">
+						<Base AmountAfterTax="125.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Adult rate for 10/01/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-10-01" NumberOfUnits="99" MinAge="3" MaxAge="9">
+						<Base AmountAfterTax="70.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Child (3-9) rate for 10/01/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-10-02" NumberOfUnits="99">
+						<Base AmountAfterTax="135.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Adult rate for 10/02/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-10-02" NumberOfUnits="99" MinAge="3" MaxAge="9">
+						<Base AmountAfterTax="70.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Child (3-9) rate for 10/02/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-10-03" NumberOfUnits="99">
+						<Base AmountAfterTax="135.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Adult rate for 10/03/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-10-03" NumberOfUnits="99" MinAge="3" MaxAge="9">
+						<Base AmountAfterTax="70.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Child (3-9) rate for 10/03/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-09-29" RateTimeUnit="Day" UnitMultiplier="3" NumberOfUnits="99">
+						<!-- Type (CHG) 32 = Per duration -->
+						<Base AmountAfterTax="400.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Three day pass</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-09-29" RateTimeUnit="Day" UnitMultiplier="3" NumberOfUnits="99" MinAge="3" MaxAge="9">
+						<!-- Type (CHG) 32 = Per duration -->
+						<Base AmountAfterTax="200.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Three day pass</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-09-29" RateTimeUnit="Day" UnitMultiplier="4" NumberOfUnits="99">
+						<!-- Type (CHG) 32 = Per duration -->
+						<Base AmountAfterTax="450.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Four day pass</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-09-29" RateTimeUnit="Day" UnitMultiplier="4" NumberOfUnits="99" MinAge="3" MaxAge="9">
+						<!-- Type (CHG) 32 = Per duration -->
+						<Base AmountAfterTax="225.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Four day pass</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-09-29" RateTimeUnit="Day" UnitMultiplier="5" NumberOfUnits="99">
+						<Base AmountAfterTax="550.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Five day pass</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-09-29" RateTimeUnit="Day" UnitMultiplier="5" NumberOfUnits="99" MinAge="3" MaxAge="9">
+						<Base AmountAfterTax="325.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Five  day pass</Text>
+						</RateDescription>
+					</Price>
+					<ServiceDetails>
+						<Comments>
+							<Comment Name="Description">
+								<Text>Walt Disney World Parks Ticket with Park Hopper</Text>
+							</Comment>
+						</Comments>
+					</ServiceDetails>
+				</PackageOption>
+				<PackageOption ID="12345" RatePlanCode="VMCO001*JM*0*0*6675878" RatePlanID="11592" QuoteID="48FA92288695D6A200FA04BDB140301844C0BDB64B0F1F4DE32BADF52E99D8BB" Type="4" AvailabilityStatus="AvailableForSale">
+					<!-- Type (PKO) 4 = Ticket -->
+					<Price AgeQualifyingCode="10" NumberOfUnits="99">
+						<!-- Type (CHG) 31 = PerUnit -->
+						<Base AmountAfterTax="95.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>fixed cost price $95 per adult per day</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" NumberOfUnits="99" MinAge="3" MaxAge="9">
+						<!-- Type (CHG) 31 = PerUnit -->
+						<Base AmountAfterTax="76.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>fixed cost price per child aged 3-9 per day</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-09-29" NumberOfUnits="99">
+						<!-- Type (CHG) 1 = Daily -->
+						<Base AmountAfterTax="105.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Adult rate for 09/29/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-09-29" NumberOfUnits="99" MinAge="3" MaxAge="9">
+						<Base AmountAfterTax="70.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Child (3-9) rate for 09/29/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-09-30" NumberOfUnits="99">
+						<Base AmountAfterTax="100.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Adult rate for 09/30/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-09-30" NumberOfUnits="99" MinAge="3" MaxAge="9">
+						<Base AmountAfterTax="70.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Child (3-9) rate for 09/30/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-10-01" NumberOfUnits="99">
+						<Base AmountAfterTax="125.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Adult rate for 10/01/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-10-01" NumberOfUnits="99" MinAge="3" MaxAge="9">
+						<Base AmountAfterTax="70.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Child (3-9) rate for 10/01/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-10-02" NumberOfUnits="99">
+						<Base AmountAfterTax="135.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Adult rate for 10/02/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-10-02" NumberOfUnits="99" MinAge="3" MaxAge="9">
+						<Base AmountAfterTax="70.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Child (3-9) rate for 10/02/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-10-03" NumberOfUnits="99">
+						<Base AmountAfterTax="135.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Adult rate for 10/03/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-10-03" NumberOfUnits="99" MinAge="3" MaxAge="9">
+						<Base AmountAfterTax="70.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Child (3-9) rate for 10/03/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-09-29" RateTimeUnit="Day" UnitMultiplier="3" NumberOfUnits="99">
+						<!-- Type (CHG) 32 = Per duration -->
+						<Base AmountAfterTax="400.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Three day pass</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-09-29" RateTimeUnit="Day" UnitMultiplier="3" NumberOfUnits="99" MinAge="3" MaxAge="9">
+						<!-- Type (CHG) 32 = Per duration -->
+						<Base AmountAfterTax="200.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Three day pass</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-09-29" RateTimeUnit="Day" UnitMultiplier="4" NumberOfUnits="99">
+						<Base AmountAfterTax="450.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Four day pass</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-09-29" RateTimeUnit="Day" UnitMultiplier="4" NumberOfUnits="99" MinAge="3" MaxAge="9">
+						<Base AmountAfterTax="225.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Four day pass</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-09-29" RateTimeUnit="Day" UnitMultiplier="5" NumberOfUnits="99">
+						<Base AmountAfterTax="550.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Five day pass</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-09-29" RateTimeUnit="Day" UnitMultiplier="5" NumberOfUnits="99" MinAge="3" MaxAge="9">
+						<Base AmountAfterTax="325.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Five  day pass</Text>
+						</RateDescription>
+					</Price>
+					<ServiceDetails>
+						<Comments>
+							<Comment Name="Description">
+								<Text>Walt Disney World Parks Ticket with Water Park Fun</Text>
+							</Comment>
+						</Comments>
+					</ServiceDetails>
+				</PackageOption>
+			</PackageOptionGroup>
+			<PackageOptionGroup>
+				<Description>
+					<Text>Epcot Center Tickets</Text>
+				</Description>
+				<PackageOption ID="12345" RatePlanCode="VMCO009*EP*0*0*6675878" RatePlanID="19590" QuoteID="6594CF288695D6A200FA04BDB140301844C0BDB64B0F1F4DE32BADF52E9912AB" Type="4" AvailabilityStatus="AvailableForSale">
+					<!-- Type (PKO) 4 = Ticket -->
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-09-29" NumberOfUnits="99">
+						<!-- Type (CHG) 1 = Daily -->
+						<Base AmountAfterTax="105.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Adult rate for 09/29/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-09-29" NumberOfUnits="99" MinAge="1" MaxAge="17">
+						<!-- Type (CHG) 1 = Daily -->
+						<Base AmountAfterTax="65.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Child rate for 09/29/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-09-30" NumberOfUnits="99">
+						<Base AmountAfterTax="100.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Adult rate for 09/30/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-09-30" NumberOfUnits="99" MinAge="1" MaxAge="17">
+						<Base AmountAfterTax="60.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Child rate for 09/30/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-10-01" NumberOfUnits="99">
+						<Base AmountAfterTax="125.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Adult rate for 10/01/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-10-01" NumberOfUnits="99" MinAge="1" MaxAge="17">
+						<Base AmountAfterTax="85.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Child rate for 10/01/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-10-02" NumberOfUnits="99">
+						<Base AmountAfterTax="135.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Adult rate for 10/02/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-10-02" NumberOfUnits="99" MinAge="1" MaxAge="17">
+						<Base AmountAfterTax="100.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Child rate for 10/02/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-10-03" NumberOfUnits="99">
+						<Base AmountAfterTax="135.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Adult rate for 10/03/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-10-03" NumberOfUnits="99" MinAge="1" MaxAge="17">
+						<Base AmountAfterTax="100.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Child rate for 10/03/2009</Text>
+						</RateDescription>
+					</Price>
+					<ServiceDetails>
+						<Comments>
+							<Comment Name="Description">
+								<Text>Epcot Center ticket</Text>
+							</Comment>
+						</Comments>
+					</ServiceDetails>
+				</PackageOption>
+			</PackageOptionGroup>
+			<PackageOptionGroup>
+				<Description>
+					<Text>Sea World Tickets</Text>
+				</Description>
+				<PackageOption ID="12345" RatePlanCode="VMCO008*SW*0*0*6675878" RatePlanID="18590" QuoteID="123FF1288695D6A200FA04BDB140301844C0BDB64B0F1F4DE32BADF52E9979CC" Type="4" AvailabilityStatus="AvailableForSale">
+					<!-- Type (PKO) 4 = Ticket -->
+					<Price AgeQualifyingCode="10" NumberOfUnits="99">
+						<!-- Type (CHG) 31 = PerUnit -->
+						<Base AmountAfterTax="95.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>fixed cost price $95 per adult per day</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" NumberOfUnits="99" MinAge="1" MaxAge="17">
+						<!-- Type (CHG) 31 = PerUnit -->
+						<Base AmountAfterTax="75.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>fixed cost price $75 per adult per day</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-09-29" NumberOfUnits="99">
+						<!-- Type (CHG) 1 = Daily -->
+						<Base AmountAfterTax="105.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Adult rate for 09/29/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-09-29" NumberOfUnits="99" MinAge="1" MaxAge="17">
+						<!-- Type (CHG) 1 = Daily -->
+						<Base AmountAfterTax="65.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Child rate for 09/29/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-09-30" NumberOfUnits="99">
+						<Base AmountAfterTax="100.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Adult rate for 09/30/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-09-30" NumberOfUnits="99" MinAge="1" MaxAge="17">
+						<Base AmountAfterTax="60.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Child rate for 09/30/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-10-01" NumberOfUnits="99">
+						<Base AmountAfterTax="125.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Adult rate for 10/01/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-10-01" NumberOfUnits="99" MinAge="1" MaxAge="17">
+						<Base AmountAfterTax="85.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Child rate for 10/01/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-10-02" NumberOfUnits="99">
+						<Base AmountAfterTax="135.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Adult rate for 10/02/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-10-02" NumberOfUnits="99" MinAge="1" MaxAge="17">
+						<Base AmountAfterTax="100.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Child rate for 10/02/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="10" EffectiveDate="2009-10-03" NumberOfUnits="99">
+						<Base AmountAfterTax="135.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Adult rate for 10/03/2009</Text>
+						</RateDescription>
+					</Price>
+					<Price AgeQualifyingCode="8" EffectiveDate="2009-10-03" NumberOfUnits="99" MinAge="1" MaxAge="17">
+						<Base AmountAfterTax="100.00" CurrencyCode="USD"/>
+						<RateDescription>
+							<Text>Child rate for 10/03/2009</Text>
+						</RateDescription>
+					</Price>
+					<ServiceDetails>
+						<Comments>
+							<Comment Name="Description">
+								<Text>Sea World Orlando</Text>
+							</Comment>
+						</Comments>
+					</ServiceDetails>
+				</PackageOption>
+			</PackageOptionGroup>
+		</PackageOptionResults>
+		<CarResults ResponseType="AvailPrice" SequenceNumber="4" QuoteID="88cb8d9290952a28">
+			<VehAvailRSCore>
+				<VehRentalCore PickUpDateTime="2009-09-29T14:00:00" ReturnDateTime="2009-10-03T07:00:00">
+					<PickUpLocation LocationCode="MCO"/>
+					<ReturnLocation LocationCode="MCO"/>
+				</VehRentalCore>
+				<VehVendorAvails>
+					<VehVendorAvail>
+						<Vendor Code="ZI" CompanyShortName="Avis - Orlando"/>
+						<VehAvails>
+							<VehAvail>
+								<VehAvailCore Status="Available">
+									<Vehicle>
+										<VehType VehicleCategory="1" DoorCount="4"/>
+										<!-- VehicleCategory (VEC) 1= Car -->
+										<VehClass Size="3"/>
+										<!-- Size (SIZ) 3= Economy -->
+									</Vehicle>
+									<RentalRate QuoteID="29E3A86649ED70D725460C219628E05E16984BE7B785F3072BD9FAFAE4287313">
+										<VehicleCharges>
+											<VehicleCharge Amount="50.00" CurrencyCode="USD" Purpose="10"/>
+											<!-- Purpose (VCP) 10= Additional day -->
+											<VehicleCharge Amount="0.45" CurrencyCode="USD" Purpose="8" Description="Per mile"/>
+											<!-- Purpose (VCP) 8= Additional distance-->
+											<VehicleCharge Amount="200.00" CurrencyCode="USD" TaxInclusive="false" Purpose="1">
+												<!-- Purpose (VCP) 1= Vehicle rental -->
+												<TaxAmounts>
+													<TaxAmount Total="24.00" CurrencyCode="USD" Percentage="12.00" Description="Tax"/>
+												</TaxAmounts>
+											</VehicleCharge>
+										</VehicleCharges>
+										<RateQualifier RateQualifier="ZI*E4*E4**110924"/>
+										<RateRestrictions MaximumVehiclesAllowed="2" MinimumAge="25"/>
+									</RentalRate>
+									<TotalCharge RateTotalAmount="200.00" EstimatedTotalAmount="324.00" CurrencyCode="USD"/>
+									<Fees>
+										<Fee Amount="25.00" CurrencyCode="USD" TaxInclusive="false" Description="SURCHARGE A:" Purpose="5"/>
+										<!-- Purpose (VCP) 5= Surcharge -->
+										<Fee Amount="75.00" CurrencyCode="USD" TaxInclusive="false" Description="SURCHARGE B:" Purpose="5"/>
+										<!-- Purpose (VCP) 5= Surcharge -->
+									</Fees>
+								</VehAvailCore>
+							</VehAvail>
+							<VehAvail>
+								<VehAvailCore Status="Available">
+									<Vehicle>
+										<VehType VehicleCategory="1" DoorCount="4"/>
+										<!-- VehicleCategory (VEC) 1= Car -->
+										<VehClass Size="4"/>
+										<!-- Size (SIZ) 4= Compact -->
+									</Vehicle>
+									<RentalRate QuoteID="8A93A86649ED70D725460C219628E05E16984BE7B785F3072BD9FAFAE4287378">
+										<VehicleCharges>
+											<VehicleCharge Amount="220.00" CurrencyCode="USD" TaxInclusive="true" Purpose="1"/>
+											<!-- Purpose (VCP) 1= Vehicle rental -->
+										</VehicleCharges>
+										<RateQualifier RateQualifier="ZI*C4*C4**110924"/>
+										<RateRestrictions MaximumVehiclesAllowed="2" MinimumAge="25"/>
+									</RentalRate>
+									<TotalCharge RateTotalAmount="220.00" EstimatedTotalAmount="220.00" CurrencyCode="USD"/>
+								</VehAvailCore>
+							</VehAvail>
+							<VehAvail>
+								<VehAvailCore Status="Available">
+									<Vehicle>
+										<VehType VehicleCategory="1" DoorCount="2"/>
+										<!-- VehicleCategory (VEC) 1= Car -->
+										<VehClass Size="6"/>
+										<!-- Size (SIZ) 6= Intermediate -->
+									</Vehicle>
+									<RentalRate QuoteID="564CC86649ED70D725460C219628E05E16984BE7B785F3072BD9FAFAE4287322">
+										<VehicleCharges>
+											<VehicleCharge Amount="300.00" CurrencyCode="USD" TaxInclusive="true" Purpose="1"/>
+											<!-- Purpose (VCP) 1= Vehicle rental -->
+										</VehicleCharges>
+										<RateQualifier RateQualifier="ZI*I4*I4**110924"/>
+										<RateRestrictions MaximumVehiclesAllowed="2" MinimumAge="25"/>
+									</RentalRate>
+									<TotalCharge RateTotalAmount="300.00" EstimatedTotalAmount="300.00" CurrencyCode="USD"/>
+								</VehAvailCore>
+							</VehAvail>
+						</VehAvails>
+					</VehVendorAvail>
+				</VehVendorAvails>
+			</VehAvailRSCore>
+		</CarResults>
+	</SearchResults>
+	<DynamicPackage>
+		<ResGuests>
+			<ResGuest ResGuestRPH="00000001" AgeQualifyingCode="10" LocationCode="PHX"/>
+			<!--AgeQualifyingCode (AQC) 10= Adult -->
+			<ResGuest ResGuestRPH="00000002" AgeQualifyingCode="8" Age="15" LocationCode="PHX"/>
+			<!--AgeQualifyingCode (AQC) 8= Child -->
+			<ResGuest ResGuestRPH="00000003" AgeQualifyingCode="8" Age="10" LocationCode="PHX"/>
+			<!--AgeQualifyingCode (AQC) 8= Child -->
+		</ResGuests>
+	</DynamicPackage>
+</OTA_DynamicPkgAvailRS>

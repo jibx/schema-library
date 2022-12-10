@@ -1,0 +1,3125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns="http://www.opentravel.org/OTA/2003/05/common" elementFormDefault="qualified" attributeFormDefault="unqualified" version="0.000" id="OTA2012B">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:annotation>
+		<xs:documentation source="Notice" xml:lang="en">The OTA_CodeType simpleType will be deprecated in the 2013A OpenTravel XML Message Suite publication. All OTA_CodeType typed attributes with be replaced with elements typed as an open list, e.g. List_NameOfList.</xs:documentation>
+	</xs:annotation>
+	<!--
+		LIST EXTENSION MECHANISM
+	-->
+	<xs:attributeGroup name="OTA_CodeExtGroup">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Code extension definition without dimension information.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="RemovalInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Item removal indicator.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: false</xs:documentation>
+				<xs:documentation source="Implementer" xml:lang="en">Implementer: If true, this item is obsolete and should be removed from the receiving system.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Code" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Proprietary code.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: MYB</xs:documentation>
+				<xs:documentation source="Implementer" xml:lang="en">Implementer: Place a code value in this attribute if you have selected the "Other_" value in the enumerated list. Note that this value should be known to your trading partners.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Description" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Code description.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: Party Supplies</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DescriptionDetail" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Code description detail.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: Mylar Baloons</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SourceName" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Code authority or owner.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: OpenTravel</xs:documentation>
+				<xs:documentation source="Implementer" xml:lang="en">Implementer: This may be a source authority/ owner name, ID or code.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SourceURL" type="xs:anyURI" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Code authority or owner URL.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: http://www.opentravel.org</xs:documentation>
+				<xs:documentation source="Implementer" xml:lang="en">Implementer: This is A URL to the code source authority/ owner.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ResourceName" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Code resource name or ID.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: OpenTravel 2012A CodeList</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ResourceURL" type="xs:anyURI" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Code resource URL.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: http://www.opentravel.org/somecodelist.html</xs:documentation>
+				<xs:documentation source="Implementer" xml:lang="en">Implementer: This is A URL to the code resource.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="UniqueID" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Unique ID for code.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: MYB123</xs:documentation>
+				<xs:documentation source="Implementer" xml:lang="en">Implementer: This is used for a database or key ID for the code item (if it is different from the @CodeExtension) in relationship to the obsolete code indicator.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:simpleType name="CodeListSchedulePeriodType">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Operating schedule date, time or date/ time.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="xs:date xs:dateTime xs:time"/>
+	</xs:simpleType>
+	<xs:complexType name="CodeListSummaryExtension">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Simple Code List extension structure that supports OpenTravel open lists and third-party code lists.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="RemovalInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Item removal indicator.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: false</xs:documentation>
+				<xs:documentation source="Implementer" xml:lang="en">Implementer: If true, this item is obsolete and should be removed from the receiving system.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Language" type="xs:language" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Code information language.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: en</xs:documentation>
+				<xs:documentation source="MoreInfo" xml:lang="en">Note: This is the language that the code information is specified in.</xs:documentation>
+				<xs:documentation source="MoreInfo" xml:lang="en">OpenTravel Best Practice for Language Designation: Unless otherwise noted, all language designations are two alpha characters and WILL follow ISO 639-1 prescribed format.</xs:documentation>
+				<xs:documentation source="Reference" xml:lang="en">Reference: http://www.iso.org/iso/home.htm</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Code" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Code value.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: MYB</xs:documentation>
+				<xs:documentation source="Implementer" xml:lang="en">Implementer: Place a code value in this attribute if you have selected the "Other_" value in the enumerated list. Note that this value should be known to your trading partners.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Description" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Code description.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: Party Supplies</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DescriptionDetail" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Code description detail.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: Mylar Baloons</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SourceName" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Code authority or owner.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: OpenTravel</xs:documentation>
+				<xs:documentation source="Implementer" xml:lang="en">Implementer: This may be a source authority/ owner name, ID or code.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SourceURL" type="xs:anyURI" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Code authority or owner URL.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: http://www.opentravel.org</xs:documentation>
+				<xs:documentation source="Implementer" xml:lang="en">Implementer: This is A URL to the code source authority/ owner.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ResourceID" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Code resource ID.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: OTALIST</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ResourceName" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Code resource name.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: OpenTravel 2012A CodeList</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ResourceURL" type="xs:anyURI" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Code resource URL.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: http://www.opentravel.org/somecodelist.html</xs:documentation>
+				<xs:documentation source="Implementer" xml:lang="en">Implementer: This is A URL to the code resource.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="UniqueID" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Code unique ID.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: MYB123</xs:documentation>
+				<xs:documentation source="Implementer" xml:lang="en">Implementer: This is used for a database or key ID for the code item (if it is different from the @CodeExtension) in relationship to the obsolete code indicator.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="CodeListDetailExtension">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Detail Code List extension structure that includes all Summary information plus quantity, proximity, charge, schedule and apply to level information.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="CodeListSummaryExtension">
+				<xs:sequence>
+					<xs:element name="ApplyToLevel" type="List_ApplyToLevel" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation source="Description" xml:lang="en">Applicable item level.</xs:documentation>
+							<xs:documentation source="Example" xml:lang="en">Example: Property</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Charge" type="CodeListFeeType" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation source="Description" xml:lang="en">Associated charge information.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Schedule" type="CodeListScheduleType" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation source="Description" xml:lang="en">Associated service schedule information.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="Quantity" type="xs:positiveInteger" use="optional">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Associated quantity for the item.</xs:documentation>
+						<xs:documentation source="Example" xml:lang="en">Example: 2</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="Proximity" use="optional">
+					<xs:annotation>
+						<xs:documentation source="Description" xml:lang="en">Associated proximity for the item.</xs:documentation>
+						<xs:documentation source="Example" xml:lang="en">Example: 2</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="Nearby"/>
+							<xs:enumeration value="NotSpecified"/>
+							<xs:enumeration value="Offsite"/>
+							<xs:enumeration value="Onsite"/>
+							<xs:enumeration value="OnsiteAndOffsite"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CodeListExtension">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Choice between summary and detailed code extension information.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="Summary" type="CodeListSummaryExtension" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Summary code information.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Detail" type="CodeListDetailExtension" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Detail code information.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+		<xs:attribute name="ChargeInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Charge information specified indicator.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: true</xs:documentation>
+				<xs:documentation source="Implementer" xml:lang="en">Implementer: If true, charge information has been specified and the Detail/Charge element should be parsed.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ProximityInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Proximity information specified indicator.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: true</xs:documentation>
+				<xs:documentation source="Implementer" xml:lang="en">Implementer: If true, proximity information has been specified and the @Proximity attribute should be parsed.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="QuantityInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Quantity information specified indicator.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: true</xs:documentation>
+				<xs:documentation source="Implementer" xml:lang="en">Implementer: If true, quantity information has been specified and the @Quantity attribute should be parsed.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ScheduleInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Schedule information specified indicator.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: true</xs:documentation>
+				<xs:documentation source="Implementer" xml:lang="en">Implementer: If true, schedule information has been specified and the Detail/Schedule element should be parsed.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="CodeListFeeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Fees associated with a code item.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Amount" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Fee amount or percentage.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="Currency">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">Money amount and currency encoding information.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:attribute name="Amount" type="xs:decimal" use="required">
+									<xs:annotation>
+										<xs:documentation source="Description" xml:lang="en">Fee or tax monetary amount.</xs:documentation>
+										<xs:documentation source="Example" xml:lang="en">Example: 2500</xs:documentation>
+										<xs:documentation source="MoreInfo" xml:lang="en">OpenTravel Best Practice for Money Amount Designation: Unless otherwise noted, all money amounts will contain the amount as a positive integer and currency designation. The decimal places (minor unit) should contain the number of decimal places associated with the amount. Example: 8500, USD, 2 represents $85.00USD.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="CurrencyCode" use="optional">
+									<xs:annotation>
+										<xs:documentation source="Description" xml:lang="en">Currency code.</xs:documentation>
+										<xs:documentation source="Example" xml:lang="en">Example: USD</xs:documentation>
+										<xs:documentation source="MoreInfo" xml:lang="en">OpenTravel Best Practice for Currency Type Designation: Unless otherwise noted, all currency code designations are three alpha characters and WILL follow ISO 4217 prescribed format. Additionally, all currency amounts SHOULD have an ISO 4217 standard decimal places (minor units) specified.</xs:documentation>
+										<xs:documentation source="Reference" xml:lang="en">Reference: http://www.iso.org/iso/home.htm</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:pattern value="[a-zA-Z]{3}"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:attribute>
+								<xs:attribute name="DecimalPlaces" type="xs:nonNegativeInteger" use="optional">
+									<xs:annotation>
+										<xs:documentation source="Use" xml:lang="en">Currency code decimal places.</xs:documentation>
+										<xs:documentation source="Developer Notes" xml:lang="en">The ISO 4217 standard "minor unit" is typically used when the amount provided includes the minor unit of currency without a decimal point (e.g., USD 8500 needs DecimalPlaces="2" to represent $85).</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="AlternateCurrency">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">Alternate currency information.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="List_LoyaltyPrgCurrency">
+										<xs:attribute name="Quantity" type="xs:positiveInteger" use="required">
+											<xs:annotation>
+												<xs:documentation source="Description" xml:lang="en">Redemption unit quantity.</xs:documentation>
+												<xs:documentation source="Example" xml:lang="en">Example: 50000</xs:documentation>
+												<xs:documentation source="Moreinfo" xml:lang="en">Note: This is the quantity of the specified loyalty currency unit required for payment of this fee.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Percent">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">Fee percentage.</xs:documentation>
+								<xs:documentation source="Example" xml:lang="en">Example: 6.25</xs:documentation>
+								<xs:documentation source="MoreInfo" xml:lang="en">Note: This is a percentage of another amount that this fee or tax is based on.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:decimal">
+									<xs:minInclusive value="0.00"/>
+									<xs:maxInclusive value="100.00"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Type" type="List_FeeTaxType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Fee type.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Description" type="xs:string" minOccurs="0" maxOccurs="5">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Fee description.</xs:documentation>
+					<xs:documentation source="Implementer" xml:lang="en">Implementer: The associated language identifier for this descriptive information is specified in the @Language attribute.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Qualifiers" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Fee qualifier(s).</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ChargeUnit" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">Charge unit information.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Unit" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation source="Description" xml:lang="en">Specific charge unit.</xs:documentation>
+											<xs:documentation source="Example" xml:lang="en">Example: PerPerson</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="List_ChargeUnit">
+													<xs:attribute name="ExemptQty" type="xs:positiveInteger" use="optional">
+														<xs:annotation>
+															<xs:documentation source="Description" xml:lang="en">Exempt quantity.</xs:documentation>
+															<xs:documentation source="Example" xml:lang="en">Example: 2</xs:documentation>
+															<xs:documentation source="MoreInfo" xml:lang="en">Note: This is the number of units permitted before charges are applied.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+													<xs:attribute name="MaximumQty" type="xs:positiveInteger" use="optional">
+														<xs:annotation>
+															<xs:documentation source="Description" xml:lang="en">Maximum units.</xs:documentation>
+															<xs:documentation source="Example" xml:lang="en">Example: 7</xs:documentation>
+															<xs:documentation source="MoreInfo" xml:lang="en">Note: This is the maximum number of charge units for which the charge will be applied.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="Frequency" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation source="Description" xml:lang="en">Charge frequency.</xs:documentation>
+											<xs:documentation source="Example" xml:lang="en">Example: Daily</xs:documentation>
+											<xs:documentation source="MoreInfo" xml:lang="en">Note: This is the timeframe used to apply the charge.</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="List_ChargeFrequency">
+													<xs:attribute name="ExemptQty" type="xs:positiveInteger" use="optional">
+														<xs:annotation>
+															<xs:documentation source="Description" xml:lang="en">Exempt quantity.</xs:documentation>
+															<xs:documentation source="Example" xml:lang="en">Example: 2</xs:documentation>
+															<xs:documentation source="MoreInfo" xml:lang="en">Note: This is the frequency exemption quantity before charges are applied.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+													<xs:attribute name="MaximumQty" type="xs:positiveInteger" use="optional">
+														<xs:annotation>
+															<xs:documentation source="Description" xml:lang="en">Maximum quantity.</xs:documentation>
+															<xs:documentation source="Example" xml:lang="en">Example: 7</xs:documentation>
+															<xs:documentation source="MoreInfo" xml:lang="en">Note: This is the maximum number of times the charge will be applied (e.g. waive charges above 30 nights).</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute name="EffectiveDateTime" type="xs:dateTime" use="optional">
+						<xs:annotation>
+							<xs:documentation source="Description" xml:lang="en">Fee starting date/ time.</xs:documentation>
+							<xs:documentation source="Example" xml:lang="en">Example: 2013-01-13</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="ExpireDateTime" type="xs:dateTime" use="optional">
+						<xs:annotation>
+							<xs:documentation source="Description" xml:lang="en">Fee ending date/ time.</xs:documentation>
+							<xs:documentation source="Example" xml:lang="en">Example: 2013-01-16</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="MaxAge" type="xs:positiveInteger" use="optional">
+						<xs:annotation>
+							<xs:documentation source="Description" xml:lang="en">Maximum age of applicability.</xs:documentation>
+							<xs:documentation source="Example" xml:lang="en">Example: 62</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="MinAge" type="xs:positiveInteger" use="optional">
+						<xs:annotation>
+							<xs:documentation source="Description" xml:lang="en">Minimum age of applicability.</xs:documentation>
+							<xs:documentation source="Example" xml:lang="en">Example: 21</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Taxes" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Fee taxes.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Amount" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">Tax amount or percentage information.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:choice>
+									<xs:element name="Currency">
+										<xs:annotation>
+											<xs:documentation source="Description" xml:lang="en">Money amount and currency encoding information.</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:attribute name="Amount" type="xs:decimal" use="required">
+												<xs:annotation>
+													<xs:documentation source="Description" xml:lang="en">Fee or tax monetary amount.</xs:documentation>
+													<xs:documentation source="Example" xml:lang="en">Example: 2500</xs:documentation>
+													<xs:documentation source="MoreInfo" xml:lang="en">OpenTravel Best Practice for Money Amount Designation: Unless otherwise noted, all money amounts will contain the amount as a positive integer and currency designation. The decimal places (minor unit) should contain the number of decimal places associated with the amount. Example: 8500, USD, 2 represents $85.00USD.</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+											<xs:attribute name="CurrencyCode" use="optional">
+												<xs:annotation>
+													<xs:documentation source="Description" xml:lang="en">Currency code.</xs:documentation>
+													<xs:documentation source="Example" xml:lang="en">Example: USD</xs:documentation>
+													<xs:documentation source="MoreInfo" xml:lang="en">OpenTravel Best Practice for Currency Type Designation: Unless otherwise noted, all currency code designations are three alpha characters and WILL follow ISO 4217 prescribed format. Additionally, all currency amounts SHOULD have an ISO 4217 standard decimal places (minor units) specified.</xs:documentation>
+													<xs:documentation source="Reference" xml:lang="en">Reference: http://www.iso.org/iso/home.htm</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+													<xs:restriction base="xs:string">
+														<xs:pattern value="[a-zA-Z]{3}"/>
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:attribute>
+											<xs:attribute name="DecimalPlaces" type="xs:nonNegativeInteger" use="optional">
+												<xs:annotation>
+													<xs:documentation source="Use" xml:lang="en">Currency code decimal places.</xs:documentation>
+													<xs:documentation source="Developer Notes" xml:lang="en">The ISO 4217 standard "minor unit" is typically used when the amount provided includes the minor unit of currency without a decimal point (e.g., USD 8500 needs DecimalPlaces="2" to represent $85).</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="AlternateCurrency">
+										<xs:annotation>
+											<xs:documentation source="Description" xml:lang="en">Alternate currency information.</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="List_LoyaltyPrgCurrency">
+													<xs:attribute name="Quantity" type="xs:positiveInteger" use="required">
+														<xs:annotation>
+															<xs:documentation source="Description" xml:lang="en">Redemption unit quantity.</xs:documentation>
+															<xs:documentation source="Example" xml:lang="en">Example: 50000</xs:documentation>
+															<xs:documentation source="Moreinfo" xml:lang="en">Note: This is the quantity of the specified loyalty currency unit required for payment of this fee.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="Percent">
+										<xs:annotation>
+											<xs:documentation source="Description" xml:lang="en">Fee percentage.</xs:documentation>
+											<xs:documentation source="Example" xml:lang="en">Example: 6.25</xs:documentation>
+											<xs:documentation source="MoreInfo" xml:lang="en">Note: This is a percentage of another amount that this fee or tax is based on.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:decimal">
+												<xs:minInclusive value="0.00"/>
+												<xs:maxInclusive value="100.00"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+								</xs:choice>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Type" type="List_FeeTaxType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">Tax type.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Description" type="xs:string" minOccurs="0" maxOccurs="5">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">Tax description.</xs:documentation>
+								<xs:documentation source="Implementer" xml:lang="en">Implementer: The associated language identifier for this descriptive information is specified in the @Language attribute.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Qualifiers" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation source="Description" xml:lang="en">Tax qualifier information.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ChargeUnit" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation source="Description" xml:lang="en">Charge unit information.</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="Unit" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation source="Description" xml:lang="en">Specific charge unit.</xs:documentation>
+														<xs:documentation source="Example" xml:lang="en">Example: PerPerson</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:complexContent>
+															<xs:extension base="List_ChargeUnit">
+																<xs:attribute name="ExemptQty" type="xs:positiveInteger" use="optional">
+																	<xs:annotation>
+																		<xs:documentation source="Description" xml:lang="en">Exempt quantity.</xs:documentation>
+																		<xs:documentation source="Example" xml:lang="en">Example: 2</xs:documentation>
+																		<xs:documentation source="MoreInfo" xml:lang="en">Note: This is the number of units permitted before charges are applied.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+																<xs:attribute name="MaximumQty" type="xs:positiveInteger" use="optional">
+																	<xs:annotation>
+																		<xs:documentation source="Description" xml:lang="en">Maximum units.</xs:documentation>
+																		<xs:documentation source="Example" xml:lang="en">Example: 7</xs:documentation>
+																		<xs:documentation source="MoreInfo" xml:lang="en">Note: This is the maximum number of charge units for which the charge will be applied.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+															</xs:extension>
+														</xs:complexContent>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="Frequency" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation source="Description" xml:lang="en">Charge frequency.</xs:documentation>
+														<xs:documentation source="Example" xml:lang="en">Example: Daily</xs:documentation>
+														<xs:documentation source="MoreInfo" xml:lang="en">Note: This is the timeframe used to apply the charge.</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:complexContent>
+															<xs:extension base="List_ChargeFrequency">
+																<xs:attribute name="ExemptQty" type="xs:positiveInteger" use="optional">
+																	<xs:annotation>
+																		<xs:documentation source="Description" xml:lang="en">Exempt quantity.</xs:documentation>
+																		<xs:documentation source="Example" xml:lang="en">Example: 2</xs:documentation>
+																		<xs:documentation source="MoreInfo" xml:lang="en">Note: This is the frequency exemption quantity before charges are applied.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+																<xs:attribute name="MaximumQty" type="xs:positiveInteger" use="optional">
+																	<xs:annotation>
+																		<xs:documentation source="Description" xml:lang="en">Maximum quantity.</xs:documentation>
+																		<xs:documentation source="Example" xml:lang="en">Example: 7</xs:documentation>
+																		<xs:documentation source="MoreInfo" xml:lang="en">Note: This is the maximum number of times the charge will be applied (e.g. waive charges above 30 nights).</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+															</xs:extension>
+														</xs:complexContent>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+								<xs:attribute name="EffectiveDateTime" type="xs:dateTime" use="optional">
+									<xs:annotation>
+										<xs:documentation source="Description" xml:lang="en">Fee starting date/ time.</xs:documentation>
+										<xs:documentation source="Example" xml:lang="en">Example: 2013-01-13</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="ExpireDateTime" type="xs:dateTime" use="optional">
+									<xs:annotation>
+										<xs:documentation source="Description" xml:lang="en">Fee ending date/ time.</xs:documentation>
+										<xs:documentation source="Example" xml:lang="en">Example: 2013-01-16</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="MaxAge" type="xs:positiveInteger" use="optional">
+									<xs:annotation>
+										<xs:documentation source="Description" xml:lang="en">Maximum age of applicability.</xs:documentation>
+										<xs:documentation source="Example" xml:lang="en">Example: 62</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="MinAge" type="xs:positiveInteger" use="optional">
+									<xs:annotation>
+										<xs:documentation source="Description" xml:lang="en">Minimum age of applicability.</xs:documentation>
+										<xs:documentation source="Example" xml:lang="en">Example: 21</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute name="MandatoryInd" type="xs:boolean" use="optional">
+						<xs:annotation>
+							<xs:documentation source="Description" xml:lang="en">Mandatory tax indicator.</xs:documentation>
+							<xs:documentation source="Example" xml:lang="en">Example: true</xs:documentation>
+							<xs:documentation source="Implementer" xml:lang="en">Implementer: If true, the tax is mandatory.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="TaxRPH" use="optional">
+						<xs:annotation>
+							<xs:documentation source="Description" xml:lang="en">Tax reference ID.</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:pattern value="[0-9]{1,8}"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="MandatoryInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Mandatory fee indicator.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: true</xs:documentation>
+				<xs:documentation source="Implementer" xml:lang="en">Implementer: If true, the fee is mandatory.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="TaxInclusiveInd" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Taxes included in fee indicator.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: true</xs:documentation>
+				<xs:documentation source="Implementer" xml:lang="en">Implementer: If true, taxes have been included in the fee amount.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="TaxableInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Fee taxable indicator.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: true</xs:documentation>
+				<xs:documentation source="Implementer" xml:lang="en">Implementer: If true, the fee is subject to tax.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DeterminationMethod" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Amount determination method.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: Inclusive</xs:documentation>
+				<xs:documentation source="MoreInfo" xml:lang="en">Note: This is used to indicate if the amount is inclusive or exclusive of other charges, such as taxes, or is cumulative (amounts have been added to each other).</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Cumulative"/>
+					<xs:enumeration value="Exclusive"/>
+					<xs:enumeration value="Inclusive"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="FeeRPH" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Fee ID.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: 1</xs:documentation>
+				<xs:documentation source="Implementer" xml:lang="en">Implementer: This is a unique ID for this set of fee information that may be referenced as an associated fee for schedule information.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="[0-9]{1,8}"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="CodeListScheduleType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Operating or availability schedule associated with a code item.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="OperationTimes" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Operation times.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="OperationTime" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Provides operating times of a facility.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="AdditionalInfo" type="List_AdditionalOperationInfo" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation source="Description" xml:lang="en">Additional operation information.</xs:documentation>
+											<xs:documentation source="Example" xml:lang="en">Example: After hours operations</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+								<xs:attribute name="Frequency" type="xs:string" use="optional">
+									<xs:annotation>
+										<xs:documentation source="Description" xml:lang="en">Frequency description.</xs:documentation>
+										<xs:documentation source="Example" xml:lang="en">Example: On the half hour</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="Description" type="xs:string" use="optional">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Period of operation description.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="Mon" type="xs:boolean" use="optional">
+									<xs:annotation>
+										<xs:documentation source="Description" xml:lang="en">Monday available indicator.</xs:documentation>
+										<xs:documentation source="Example" xml:lang="en">Example: true</xs:documentation>
+										<xs:documentation source="Implementer" xml:lang="en">If true, apply to Monday.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="Tue" type="xs:boolean" use="optional">
+									<xs:annotation>
+										<xs:documentation source="Description" xml:lang="en">Tuesday available indicator.</xs:documentation>
+										<xs:documentation source="Example" xml:lang="en">Example: true</xs:documentation>
+										<xs:documentation source="Implementer" xml:lang="en">If true, apply to Tuesday.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="Weds" type="xs:boolean" use="optional">
+									<xs:annotation>
+										<xs:documentation source="Description" xml:lang="en">Wednesday available indicator.</xs:documentation>
+										<xs:documentation source="Example" xml:lang="en">Example: true</xs:documentation>
+										<xs:documentation source="Implementer" xml:lang="en">If true, apply to Wednesday.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="Thur" type="xs:boolean" use="optional">
+									<xs:annotation>
+										<xs:documentation source="Description" xml:lang="en">Thursday available indicator.</xs:documentation>
+										<xs:documentation source="Example" xml:lang="en">Example: true</xs:documentation>
+										<xs:documentation source="Implementer" xml:lang="en">If true, apply to Thursday.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="Fri" type="xs:boolean" use="optional">
+									<xs:annotation>
+										<xs:documentation source="Description" xml:lang="en">Friday available indicator.</xs:documentation>
+										<xs:documentation source="Example" xml:lang="en">Example: true</xs:documentation>
+										<xs:documentation source="Implementer" xml:lang="en">If true, apply to Friday.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="Sat" type="xs:boolean" use="optional">
+									<xs:annotation>
+										<xs:documentation source="Description" xml:lang="en">Saturday available indicator.</xs:documentation>
+										<xs:documentation source="Example" xml:lang="en">Example: true</xs:documentation>
+										<xs:documentation source="Implementer" xml:lang="en">If true, apply to Saturday.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="Sun" type="xs:boolean" use="optional">
+									<xs:annotation>
+										<xs:documentation source="Description" xml:lang="en">Sunday available indicator.</xs:documentation>
+										<xs:documentation source="Example" xml:lang="en">Example: true</xs:documentation>
+										<xs:documentation source="Implementer" xml:lang="en">If true, apply to Sunday.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="Start" type="CodeListSchedulePeriodType" use="optional">
+									<xs:annotation>
+										<xs:documentation source="Description" xml:lang="en">Operation start period.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="Duration" type="xs:duration" use="optional">
+									<xs:annotation>
+										<xs:documentation source="Description" xml:lang="en">Period duration.</xs:documentation>
+										<xs:documentation source="Example" xml:lang="en">Example: P2D</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="End" type="CodeListSchedulePeriodType" use="optional">
+									<xs:annotation>
+										<xs:documentation source="Description" xml:lang="en">Operation end period.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="Start" type="CodeListSchedulePeriodType" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Schedule start period.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Duration" type="xs:duration" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Period duration.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: P2D</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="End" type="CodeListSchedulePeriodType" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Schedule end period.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="FeeRefRPH" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Fee reference ID.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: 1</xs:documentation>
+				<xs:documentation source="Implementer" xml:lang="en">Implementer: This is a reference to an @FeeRPH defined in the CodeListFeeType/@FeeRPH element. This reference may be used to associate a set of fee information with this schedule information.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="[0-9]{1,8}"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="ScheduleRPH" use="optional">
+			<xs:annotation>
+				<xs:documentation source="Description" xml:lang="en">Schedule ID.</xs:documentation>
+				<xs:documentation source="Example" xml:lang="en">Example: 1</xs:documentation>
+				<xs:documentation source="Implementer" xml:lang="en">Implementer: This is a unique ID for this set of schedule information that may be referenced elsewhere in this message.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="[0-9]{1,8}"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:simpleType name="List_AdditionalOperationInfo_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of hours of operation details.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Additional Operation Info (OPR) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AfterHoursAvailable"/>
+			<xs:enumeration value="AfterHoursConditional"/>
+			<xs:enumeration value="AfterHoursPickups"/>
+			<xs:enumeration value="AfterHoursReturns"/>
+			<xs:enumeration value="LimitedAvailability"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_AdditionalOperationInfo">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Hours of operation operation detail.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="List" type="List_AdditionalOperationInfo_Base">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Enumerated list.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Extension" type="CodeListSummaryExtension" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Code List extension information.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="List_AgeCategory_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of person age categories.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Age Qualifying Code (AQC) OpenTravel codelist filtered.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Adult"/>
+			<xs:enumeration value="Child"/>
+			<xs:enumeration value="Infant"/>
+			<xs:enumeration value="Junior"/>
+			<xs:enumeration value="Over21"/>
+			<xs:enumeration value="Over65"/>
+			<xs:enumeration value="Senior"/>
+			<xs:enumeration value="Student"/>
+			<xs:enumeration value="Teenager"/>
+			<xs:enumeration value="Under10"/>
+			<xs:enumeration value="Under12"/>
+			<xs:enumeration value="Under17"/>
+			<xs:enumeration value="Under2"/>
+			<xs:enumeration value="Under21"/>
+			<xs:enumeration value="Unknown"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_AgeCategory">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Person age categories.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Note: Age categories  are typically used to qualify pricing and/or eligibility.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_AgeCategory_Base">
+				<xs:attributeGroup ref="OTA_CodeExtGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_AirFareDateType_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of air fare applicable date types.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DiscontinueTravel">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">The last travel date for this fare.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="EffectiveTravel">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">The first travel date for this fare.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FirstTicketing">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">The first date for ticketing.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Historic"/>
+			<xs:enumeration value="LastTicketing">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">The last date for ticketing.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TravelCompletion">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">The date by which travel must be completed.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_AirFareDateType">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Air fare applicable date types.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_AirFareDateType_Base">
+				<xs:attributeGroup ref="OTA_CodeExtGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_AirTripType_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of air trip types.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Circle">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Identifies a circle trip type.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Inbound">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">The direction for the fare is inbound.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NonDirectional">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">There is no direction specified for the fare.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="OneWay">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Identifies a one way trip type.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="OneWayOnly">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Cannot be doubled to create a roundtrip.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="OpenJaw">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Identifies an open jaw trip type.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Outbound">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">The direction for the fare is outbound.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="OutboundSeasonRoundtrip">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">The direction for the fare is outbound seasonal roundtrip.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Return">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Identifies a return trip type.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Roundtrip">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Identifies travel from one point to another point and return to the original point. (The outbound fare shall be used also for the inbound fare component for the purpose of determining if the pricing unit is a round trip).</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_AirTripType" block="">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Air trip types.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_AirTripType_Base">
+				<xs:attributeGroup ref="OTA_CodeExtGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_ApplyToLevel_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of levels that a code item applies to.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Age Qualifying Code (AQC) OpenTravel codelist filtered.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Cabin">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">An airplane, train or ship cabin.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Facility">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">An on or offsite facility, such as a restaurant or car rental location.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GuestRoom">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">A guest room.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MeetingRoom">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">A meeting room.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Property">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">A property, such as a hotel or vacation rental unit.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Seat">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">A seat, such as an airplane or train seat.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Ship">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">A cruise ship.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Unit">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">A vacation rental unit.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_ApplyToLevel">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Code application level.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Note: Age categories  are typically used to qualify pricing and/or eligibility.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="List" type="List_ApplyToLevel_Base">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Enumerated list.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Extension" type="CodeListSummaryExtension" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Code List extension information.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="List_BankAccountType_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of bank account types.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Checking"/>
+			<xs:enumeration value="Investment"/>
+			<xs:enumeration value="Savings"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_BankAccountType">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Bank account types.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_BankAccountType_Base">
+				<xs:attributeGroup ref="OTA_CodeExtGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_CabinClass_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of cabin types.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Business">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Business class compartment.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Cockpit">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Cockpit area.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Economy">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Economy class compartment.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="First">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">First class compartment.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PremiumBusiness">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Premium Business class compartment.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PremiumEconomy">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Premium Economy class compartment.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Suite">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Suites or Sleep compartments.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_CabinClass">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Cabin types.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_CabinClass_Base">
+				<xs:attributeGroup ref="OTA_CodeExtGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_ChargeFrequency_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of charge units.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Charge Type (CHG) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Daily"/>
+			<xs:enumeration value="FirstUse"/>
+			<xs:enumeration value="HalfDay"/>
+			<xs:enumeration value="Hourly"/>
+			<xs:enumeration value="Night"/>
+			<xs:enumeration value="Minute"/>
+			<xs:enumeration value="Occurrence"/>
+			<xs:enumeration value="PerDozen"/>
+			<xs:enumeration value="Stay"/>
+			<xs:enumeration value="Weekly"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value=""/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_ChargeFrequency">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Charge units.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_ChargeFrequency_Base"/>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_ChargeUnit_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of charge types and units.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Charge Type (CHG) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AdditionsPerStay"/>
+			<xs:enumeration value="Complimentary"/>
+			<xs:enumeration value="Event"/>
+			<xs:enumeration value="Gallon"/>
+			<xs:enumeration value="Item"/>
+			<xs:enumeration value="MaximumCharge"/>
+			<xs:enumeration value="MinimumCharge"/>
+			<xs:enumeration value="OneTimeUse"/>
+			<xs:enumeration value="OneWay"/>
+			<xs:enumeration value="Order"/>
+			<xs:enumeration value="OverMinuteCharge"/>
+			<xs:enumeration value="Person"/>
+			<xs:enumeration value="Rental"/>
+			<xs:enumeration value="Reservation/Booking"/>
+			<xs:enumeration value="Room"/>
+			<xs:enumeration value="Stay"/>
+			<xs:enumeration value="Tray"/>
+			<xs:enumeration value="Unit"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_ChargeUnit">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Charge types and units.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_ChargeUnit_Base"/>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_DataActionType_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of actions to apply to specified data.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Create/Add">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Add specified data whether the data already exists or not.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Read/Query"/>
+			<xs:enumeration value="Update/Modify">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Add specified data if it does not exist or update data where it does exist.	</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Cancel">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Cancel an existing item.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Delete">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Remove specified data.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Replace">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Overlay existing data with specified data.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Other_"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_DataActionType">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Data action types.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_DataActionType_Base">
+				<xs:attributeGroup ref="OTA_CodeExtGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_FareStatus_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of fare construction, creation and publishing methods.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Constructed"/>
+			<xs:enumeration value="Created"/>
+			<xs:enumeration value="FareByRule">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Specifies that the fare was built based on rules.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FareByRulePrivate">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">The private fare was built by rules.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Published"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_FareStatus">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Fare construction, creation and publishing methods.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_FareStatus_Base">
+				<xs:attributeGroup ref="OTA_CodeExtGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_FeeTaxType_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of fee or tax types.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Fee Tax Type (FTT) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AdultRollawayFee"/>
+			<xs:enumeration value="ApplicationFee"/>
+			<xs:enumeration value="Assessment/LicenseTax"/>
+			<xs:enumeration value="BanquetServiceFee"/>
+			<xs:enumeration value="BedTax"/>
+			<xs:enumeration value="ChildRollawayCharge"/>
+			<xs:enumeration value="CityHotelFee"/>
+			<xs:enumeration value="CityTax"/>
+			<xs:enumeration value="ConventionTax"/>
+			<xs:enumeration value="CountryTax"/>
+			<xs:enumeration value="CountyTax"/>
+			<xs:enumeration value="CribFee"/>
+			<xs:enumeration value="EarlyCheckoutFee"/>
+			<xs:enumeration value="EnergyTax"/>
+			<xs:enumeration value="Exempt"/>
+			<xs:enumeration value="ExpressHandlingFee"/>
+			<xs:enumeration value="ExtraChildCharge"/>
+			<xs:enumeration value="ExtraPersonCharge"/>
+			<xs:enumeration value="FederalTax"/>
+			<xs:enumeration value="FoodAndBeverageTax"/>
+			<xs:enumeration value="FoodAndBeverageGratuity"/>
+			<xs:enumeration value="GoodsAndServicesTax(GST)"/>
+			<xs:enumeration value="InsurancePremiumTax"/>
+			<xs:enumeration value="LocalFee"/>
+			<xs:enumeration value="LodgingTax"/>
+			<xs:enumeration value="MaintenanceFee"/>
+			<xs:enumeration value="Miscellaneous"/>
+			<xs:enumeration value="NationalGovernmentTax"/>
+			<xs:enumeration value="NotKnown"/>
+			<xs:enumeration value="OccupancyTax"/>
+			<xs:enumeration value="PackageFee"/>
+			<xs:enumeration value="PetSanitationFee"/>
+			<xs:enumeration value="ResortFee"/>
+			<xs:enumeration value="RollawayFee"/>
+			<xs:enumeration value="RoomServiceFee"/>
+			<xs:enumeration value="RoomTax"/>
+			<xs:enumeration value="SalesTax"/>
+			<xs:enumeration value="ServiceCharge"/>
+			<xs:enumeration value="Standard"/>
+			<xs:enumeration value="StateTax"/>
+			<xs:enumeration value="Surcharge"/>
+			<xs:enumeration value="SurplusLinesTax"/>
+			<xs:enumeration value="TotalTax"/>
+			<xs:enumeration value="TourismTax"/>
+			<xs:enumeration value="ValueAddedTax(VAT)"/>
+			<xs:enumeration value="VAT/GSTTax"/>
+			<xs:enumeration value="Zero-Rated"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_FeeTaxType">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Fee or tax type.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="List" type="List_FeeTaxType_Base">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Enumerated list.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Extension" type="CodeListSummaryExtension" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Code List extension information.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="List_GlobalIndicatorType_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of global travel areas.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AP">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Atlantic/Pacific Round-the-World</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="AT">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Atlantic Ocean</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CT">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Circle trip</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DO">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Domestic</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="EH">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Eastern Hemisphere</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FE">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Within the Far East</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PA">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Pacific Ocean</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PN">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">TC1-TC3 via Pacific/N. America</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PO">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Polar Route</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RU">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Russia Area 3</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RW">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Round the world</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SA">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">South Atlantic only</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TS">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Trans Siberia Route</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="WH">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Western Hemisphere</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_GlobalIndicatorType">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Global travel area identifiers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_GlobalIndicatorType_Base">
+				<xs:attributeGroup ref="OTA_CodeExtGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_GolferType_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of golfer types.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ClubMember">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Member of a golf course.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GuestOfMember">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Guest of a golf course member.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GuestOfResort">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Guest at a resort.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LocalResident">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Local area resident.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LoyaltyProgramMember">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Member of a golf course loyalty program.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_GolferType">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Golfer types.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_GolferType_Base">
+				<xs:attributeGroup ref="OTA_CodeExtGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_GroundLocationType_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of location types for ground transportation service.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="City"/>
+			<xs:enumeration value="Company"/>
+			<xs:enumeration value="Hotel"/>
+			<xs:enumeration value="PointOfInterest"/>
+			<xs:enumeration value="Port"/>
+			<xs:enumeration value="Region"/>
+			<xs:enumeration value="HomeResidence"/>
+			<xs:enumeration value="TrainStation"/>
+			<xs:enumeration value="Vicinity"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_GroundLocationType">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Ground transportation service locations.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_GroundLocationType_Base">
+				<xs:attributeGroup ref="OTA_CodeExtGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_GroundServiceProvided_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of ground transportation service types.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AirportTransfer"/>
+			<xs:enumeration value="SharedTransportation"/>
+			<xs:enumeration value="Hourly"/>
+			<xs:enumeration value="Mileage"/>
+			<xs:enumeration value="SimpleTransfer"/>
+			<xs:enumeration value="Shuttle"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_GroundServiceProvided">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Ground transportation service types.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_GroundServiceProvided_Base">
+				<xs:attributeGroup ref="OTA_CodeExtGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_LevelOfService_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of service level types.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Level of Service (LOS) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Deluxe"/>
+			<xs:enumeration value="Economy"/>
+			<xs:enumeration value="Exclusive"/>
+			<xs:enumeration value="Executive"/>
+			<xs:enumeration value="Luxury"/>
+			<xs:enumeration value="Regular"/>
+			<xs:enumeration value="Shuttle"/>
+			<xs:enumeration value="VIP"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_LevelOfService">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Service levels.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_LevelOfService_Base">
+				<xs:attributeGroup ref="OTA_CodeExtGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_LoyaltyPrgCurrency_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of loyalty program currencies.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Miles"/>
+			<xs:enumeration value="Points"/>
+			<xs:enumeration value="Stays"/>
+			<xs:enumeration value="Voucher"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_LoyaltyPrgCurrency">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Loyalty program currencies.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="List" type="List_LoyaltyPrgCurrency_Base">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Enumerated list.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Extension" type="CodeListSummaryExtension" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Code List extension information.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="List_OfferAgeCategory">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Person age categories for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Age Qualifying Code (AQC) OpenTravel codelist filtered.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Adult"/>
+			<xs:enumeration value="Child"/>
+			<xs:enumeration value="Infant"/>
+			<xs:enumeration value="Over10"/>
+			<xs:enumeration value="Over12"/>
+			<xs:enumeration value="Over21"/>
+			<xs:enumeration value="Over65"/>
+			<xs:enumeration value="Senior"/>
+			<xs:enumeration value="Under2"/>
+			<xs:enumeration value="Under10"/>
+			<xs:enumeration value="Under12"/>
+			<xs:enumeration value="Under17"/>
+			<xs:enumeration value="Under18"/>
+			<xs:enumeration value="Under21"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" value in combination with the @OtherType attribute to exchange a literal that is not in the list and is known to your trading partners.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferAvailabilityStartFormula">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Offer availability start time period calculation methods for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CustomerSpecified">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">The customer has specified the earliest start date or date and time.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FlightArrival"/>
+			<xs:enumeration value="RentalCarDropOff"/>
+			<xs:enumeration value="TravelGracePeriod_Distance">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">The travel grace period (travel time between two locations) has been estimated based on the calculated distance between the known start and end locations.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TravelGracePeriod_PrivateSchedule">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">The travel grace period (travel time between two locations) has been estimated based on a known operating schedule for a supplier or prearranged mode of transportation between the start and end locations.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TravelGracePeriod_PublicSchedule">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">The travel grace period (travel time between two locations) has been estimated based on a known operating schedule for a public mode of transportation between the start and end locations.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" value in combination with the @OtherType attribute to exchange a literal that is not in the list and is known to your trading partners.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferBookingMethod">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Booking method types for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CorporateTravelPlanner"/>
+			<xs:enumeration value="Online"/>
+			<xs:enumeration value="TravelAgency"/>
+			<xs:enumeration value="TravelAgent"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" value in combination with the @OtherType attribute to exchange a literal that is not in the list and is known to your trading partners.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferCustomerValueBasis">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Customer valuation methods for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Coverage Type (COV) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ClassOfService">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Class of service booked by the traveler, e.g. first, business, economy.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CorporateClient">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Traveler is an employee with a preferred or negotiated rate corporate account.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FareClass"/>
+			<xs:enumeration value="FrequentGuest"/>
+			<xs:enumeration value="FrequentTraveler"/>
+			<xs:enumeration value="LoyaltyMemberTimePeriod"/>
+			<xs:enumeration value="LoyaltyProgramLevel"/>
+			<xs:enumeration value="PreferredClient"/>
+			<xs:enumeration value="PremiumOfferPurchase"/>
+			<xs:enumeration value="TripPrice"/>
+			<xs:enumeration value="TripPurpose"/>
+			<xs:enumeration value="UpgradePurchased"/>
+			<xs:enumeration value="VIP"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" value in combination with the @OtherType attribute to exchange a literal that is not in the list and is known to your trading partners.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferDimensionUOM">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Dimension units of measure for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Unit of Measure (UOM) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Centimeter"/>
+			<xs:enumeration value="Foot/Feet"/>
+			<xs:enumeration value="Inch"/>
+			<xs:enumeration value="Metre/Meter"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" value in combination with the @OtherType attribute to exchange a literal that is not in the list and is known to your trading partners.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferDistanceUOM">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Distance units of measure for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Unit of Measure (UOM) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Block"/>
+			<xs:enumeration value="Mile"/>
+			<xs:enumeration value="Kilometer"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" value in combination with the @OtherType attribute to exchange a literal that is not in the list and is known to your trading partners.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferDurationUOM">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Duration units of measure for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Unit of Measure (UOM) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Day"/>
+			<xs:enumeration value="Hour"/>
+			<xs:enumeration value="Minute"/>
+			<xs:enumeration value="Month"/>
+			<xs:enumeration value="Week"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" value in combination with the @OtherType attribute to exchange a literal that is not in the list and is known to your trading partners.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferFareClass">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Fare classes for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Unit of Measure (UOM) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Business"/>
+			<xs:enumeration value="Economy"/>
+			<xs:enumeration value="First"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" value in combination with the @OtherType attribute to exchange a literal that is not in the list and is known to your trading partners.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferLocationType">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Location types for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Coverage Type (COV) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Origin">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Trip mode origin or starting location.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Destination">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Trip mode ending or destination location.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SingleLocation">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Trip mode start and end locations are the same.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferLoyaltySector">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Loyalty program travel sector for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Leisure">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Leisure and activity suppliers, including cruise, day tour, actvity, package tour and golf.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Lodging">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Accommodation suppliers, including hotel, hostel and vacation rental.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Transportation">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Transportation suppliers, including air, car, ground and rail.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" value in combination with the @OtherType attribute to exchange a literal that is not in the list and is known to your trading partners.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferMeasurementSystem">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Measurement system for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Imperial"/>
+			<xs:enumeration value="Metric"/>
+			<xs:enumeration value="US_Customary"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferPassengerType">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Traveler/ customer types for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CorporateEmployee"/>
+			<xs:enumeration value="Disabled"/>
+			<xs:enumeration value="FrequentGuest"/>
+			<xs:enumeration value="FrequentTraveler"/>
+			<xs:enumeration value="Government"/>
+			<xs:enumeration value="Group"/>
+			<xs:enumeration value="LoyaltyProgramMember"/>
+			<xs:enumeration value="MeetingAttendee"/>
+			<xs:enumeration value="Military"/>
+			<xs:enumeration value="Retired"/>
+			<xs:enumeration value="VIP"/>
+			<xs:enumeration value="Other_"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferPaymentCardIssuer">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Payment card issuers for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AmericanExpress"/>
+			<xs:enumeration value="BankOfAmerica"/>
+			<xs:enumeration value="BritishAirways"/>
+			<xs:enumeration value="CapitalOne"/>
+			<xs:enumeration value="Chase"/>
+			<xs:enumeration value="Citibank"/>
+			<xs:enumeration value="ContinentalAirlines"/>
+			<xs:enumeration value="DeltaAirlines"/>
+			<xs:enumeration value="DiscoverCard"/>
+			<xs:enumeration value="Disney"/>
+			<xs:enumeration value="Eurocard"/>
+			<xs:enumeration value="Hilton"/>
+			<xs:enumeration value="Hyatt"/>
+			<xs:enumeration value="Mariott"/>
+			<xs:enumeration value="Mastercard"/>
+			<xs:enumeration value="RitzCarlton"/>
+			<xs:enumeration value="SouthwestAirlines"/>
+			<xs:enumeration value="StarwoodHotels"/>
+			<xs:enumeration value="UnitedAirlines"/>
+			<xs:enumeration value="USAirways"/>
+			<xs:enumeration value="VISA"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" value in combination with the @OtherType attribute to exchange a literal that is not in the list and is known to your trading partners.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferPaymentCardType">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Payment card types for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AmericanExpress"/>
+			<xs:enumeration value="DiscoverCard"/>
+			<xs:enumeration value="Eurocard"/>
+			<xs:enumeration value="Mastercard"/>
+			<xs:enumeration value="VISA"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" value in combination with the @OtherType attribute to exchange a literal that is not in the list and is known to your trading partners.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferPaymentMethod">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Payment methods for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Coverage Type (COV) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="BusinessCheck"/>
+			<xs:enumeration value="Cash"/>
+			<xs:enumeration value="Check"/>
+			<xs:enumeration value="CorporateAccount"/>
+			<xs:enumeration value="Coupon"/>
+			<xs:enumeration value="CreditCard"/>
+			<xs:enumeration value="DebitCard"/>
+			<xs:enumeration value="DirectBill"/>
+			<xs:enumeration value="InternetAccount"/>
+			<xs:enumeration value="LoyaltyPaymentCard"/>
+			<xs:enumeration value="LoyaltyRedemption"/>
+			<xs:enumeration value="MobilePayment"/>
+			<xs:enumeration value="Ticket"/>
+			<xs:enumeration value="Voucher"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferPaymentStatus">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Payment status for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Coverage Type (COV) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Guaranteed">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Reservation has been guaranteed.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Prepaid"/>
+			<xs:enumeration value="Unpaid"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" value in combination with the @OtherType attribute to exchange a literal that is not in the list and is known to your trading partners.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferPetType">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Pet types for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Pets Policy Code (PET) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Cat"/>
+			<xs:enumeration value="Dog"/>
+			<xs:enumeration value="ServiceAnimal"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" value in combination with the @OtherType attribute to exchange a literal that is not in the list and is known to your trading partners.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferPricingType">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Pricing types for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Coverage Type (COV) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="PerEvent">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Offer pricing includes one price for all travelers in the party.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PerGroup">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Offer pricing is for a group and additional eligibility requirements (such as group size) may apply.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PerPerson">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Offer pricing is per person.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" value in combination with the @OtherType attribute to exchange a literal that is not in the list and is known to your trading partners.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferPropertyClassType">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Property classification types for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Property Class Type (PCT) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ConferenceMeeting">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">A property with a combination of conference facilities and guest rooms.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Corporate">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">A property that accommodates corporate negotiated rates and/or is company policy mandated for traveling employees.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Budget/Economy/Hostel">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">A property with room rates that are lower than the area average.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ExtendedStay">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">A property that offers extended stay accommodations with typical reservations two weeks or greater in length.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Golf">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">A property that has a golf facility onsite or nearby.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Luxury/Upscale/Resort">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">A property with higher than average features, amenities, services and room rates.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Midscale">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">A property with room rates that are average for the area.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Ski">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">A property that has a ski facility onsite or nearby.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Spa">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">A property that has a spa onsite or nearby.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="VacationRental">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">A private house or timeshare property that typically accommodates vacationing travelers.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" value in combination with the @OtherType attribute to exchange a literal that is not in the list and is known to your trading partners.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferRateCategory">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Rate categories for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Rate Category (RTC) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Association"/>
+			<xs:enumeration value="Business"/>
+			<xs:enumeration value="Convention"/>
+			<xs:enumeration value="Corporate"/>
+			<xs:enumeration value="Employee"/>
+			<xs:enumeration value="Government"/>
+			<xs:enumeration value="Leisure"/>
+			<xs:enumeration value="Negotiated"/>
+			<xs:enumeration value="Promotional"/>
+			<xs:enumeration value="Standard"/>
+			<xs:enumeration value="VIP"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" value in combination with the @OtherType attribute to exchange a literal that is not in the list and is known to your trading partners.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferReservationStatus">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Reservation statuses for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Coverage Type (COV) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Confirmed">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Reservation has been confirmed.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="None">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">No reservation.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Tentative">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">The reservation is tentative and has been guaranteed.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" value in combination with the @OtherType attribute to exchange a literal that is not in the list and is known to your trading partners.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferTypesRequested">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Requested offer types for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Coverage Type (COV) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Activity"/>
+			<xs:enumeration value="Flight"/>
+			<xs:enumeration value="Cruise"/>
+			<xs:enumeration value="DayTour"/>
+			<xs:enumeration value="GroundTransportation"/>
+			<xs:enumeration value="Lodging"/>
+			<xs:enumeration value="Merchandise"/>
+			<xs:enumeration value="PackageTour"/>
+			<xs:enumeration value="Rail"/>
+			<xs:enumeration value="VehicleRental"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" value in combination with the @OtherType attribute to exchange a literal that is not in the list and is known to your trading partners.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferTourActivityCategory">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Tour/ activity categories for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Accessible"/>
+			<xs:enumeration value="Adventure"/>
+			<xs:enumeration value="Cultural"/>
+			<xs:enumeration value="EcoAdventure"/>
+			<xs:enumeration value="Educational"/>
+			<xs:enumeration value="Family">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The tour and/or activity content and extertion level are family friendly for children, adults and seniors.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FoodAndBeverage"/>
+			<xs:enumeration value="Group">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A day tour or activity that is well-suited for larger parties, e.g. 8+ attendees within a group.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Romantic"/>
+			<xs:enumeration value="SportsAndRecreation"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" value in combination with the @OtherType attribute to exchange a literal that is not in the list and is known to your trading partners.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferTravelSegment">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Travel segments for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="LeisureAndActivities"/>
+			<xs:enumeration value="Lodging"/>
+			<xs:enumeration value="Transportation"/>
+			<xs:enumeration value="TravelServices"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferTripDirection">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Trip directions for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Coverage Type (COV) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="OneWay"/>
+			<xs:enumeration value="Outbound"/>
+			<xs:enumeration value="Return"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferTripMode">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Trip modes for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Coverage Type (COV) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Activity"/>
+			<xs:enumeration value="Flight"/>
+			<xs:enumeration value="Cruise"/>
+			<xs:enumeration value="DayTour"/>
+			<xs:enumeration value="GroundTransportation"/>
+			<xs:enumeration value="Lodging"/>
+			<xs:enumeration value="PackageTour"/>
+			<xs:enumeration value="Train"/>
+			<xs:enumeration value="VehicleRental"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" value in combination with the @OtherType attribute to exchange a literal that is not in the list and is known to your trading partners.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferTripPurpose">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Trip mode purposes for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="BereavmentOrEmergency"/>
+			<xs:enumeration value="Business"/>
+			<xs:enumeration value="BusinessAndPersonal"/>
+			<xs:enumeration value="CharterOrGroup"/>
+			<xs:enumeration value="ConferenceOrEvent"/>
+			<xs:enumeration value="Personal"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferTripStage">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Trip stages for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Coverage Type (COV) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="PreTrip">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Passenger is checking in at airport.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="InTrip">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">The traveler has started, but not completed, this trip mode.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PostTrip">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">The traveler has completed the trip mode.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="_Other">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" value in combination with the @OtherType attribute to exchange a literal that is not in the list and is known to your trading partners.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferVehicleClass">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Rental vehicle classes for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Vehicle Size (VEH) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Compact/Economy"/>
+			<xs:enumeration value="Exotic"/>
+			<xs:enumeration value="Fullsize"/>
+			<xs:enumeration value="FuelEfficient"/>
+			<xs:enumeration value="Intermediate/Midsize"/>
+			<xs:enumeration value="LargeSUV"/>
+			<xs:enumeration value="Luxury/Premium"/>
+			<xs:enumeration value="Minivan"/>
+			<xs:enumeration value="Standard"/>
+			<xs:enumeration value="Stretch"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" value in combination with the @OtherType attribute to exchange a literal that is not in the list and is known to your trading partners.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_OfferWeightUOM">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Weight units of measure for targeted offers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Unit of Measure (UOM) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Kilogram"/>
+			<xs:enumeration value="Ounce"/>
+			<xs:enumeration value="Pound"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" value in combination with the @OtherType attribute to exchange a literal that is not in the list and is known to your trading partners.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="List_PaymentCardIssuer_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of payment card issuers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AmericanExpress"/>
+			<xs:enumeration value="BankOfAmerica"/>
+			<xs:enumeration value="BritishAirways"/>
+			<xs:enumeration value="CapitalOne"/>
+			<xs:enumeration value="Chase"/>
+			<xs:enumeration value="Citibank"/>
+			<xs:enumeration value="ContinentalAirlines"/>
+			<xs:enumeration value="DeltaAirlines"/>
+			<xs:enumeration value="DiscoverCard"/>
+			<xs:enumeration value="Disney"/>
+			<xs:enumeration value="Eurocard"/>
+			<xs:enumeration value="Hilton"/>
+			<xs:enumeration value="Hyatt"/>
+			<xs:enumeration value="Mariott"/>
+			<xs:enumeration value="Mastercard"/>
+			<xs:enumeration value="RitzCarlton"/>
+			<xs:enumeration value="SouthwestAirlines"/>
+			<xs:enumeration value="StarwoodHotels"/>
+			<xs:enumeration value="UnitedAirlines"/>
+			<xs:enumeration value="USAirways"/>
+			<xs:enumeration value="VISA"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_PaymentCardIssuer">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Payment card issuers.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_PaymentCardIssuer_Base">
+				<xs:attributeGroup ref="OTA_CodeExtGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_PowerType_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of power types.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Diesel"/>
+			<xs:enumeration value="Electric"/>
+			<xs:enumeration value="Gas"/>
+			<xs:enumeration value="Oil"/>
+			<xs:enumeration value="Solar"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_PowerType">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Power types.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_PowerType_Base">
+				<xs:attributeGroup ref="OTA_CodeExtGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_Proximity_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">A closed list of proximities.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Nearby"/>
+			<xs:enumeration value="NotSpecified"/>
+			<xs:enumeration value="Offsite"/>
+			<xs:enumeration value="Onsite"/>
+			<xs:enumeration value="OnsiteAndOffsite"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_Proximity">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Proximity type.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_Proximity_Base"/>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_RateCategory_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of rate categories.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Rate Category (RTC) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="All"/>
+			<xs:enumeration value="Association"/>
+			<xs:enumeration value="Business"/>
+			<xs:enumeration value="BusinessStandard"/>
+			<xs:enumeration value="Consortiums"/>
+			<xs:enumeration value="Conventions"/>
+			<xs:enumeration value="Corporate"/>
+			<xs:enumeration value="Credential"/>
+			<xs:enumeration value="Employee"/>
+			<xs:enumeration value="FullyInclusive"/>
+			<xs:enumeration value="Government"/>
+			<xs:enumeration value="Inclusive"/>
+			<xs:enumeration value="Industry"/>
+			<xs:enumeration value="Leisure"/>
+			<xs:enumeration value="Negotiated"/>
+			<xs:enumeration value="Promotional"/>
+			<xs:enumeration value="Standard"/>
+			<xs:enumeration value="VIP"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_RateCategory">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Rate/ rate plan categories.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_RateCategory_Base">
+				<xs:attributeGroup ref="OTA_CodeExtGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_RatePlanType_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of published rate plan types and/or categories.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Rate Plan Type (RPT) OpenTravel codelist.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Note: Typically used for rate plans that may be published, e.g. have no qualifying criteria, or may be restricted or negotiated, e.g. has qualifying criteria for eligibility and/or has been negotiated between parties.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Association"/>
+			<xs:enumeration value="ClubConcierge"/>
+			<xs:enumeration value="Consortia "/>
+			<xs:enumeration value="Contract"/>
+			<xs:enumeration value="Convention"/>
+			<xs:enumeration value="Corporate"/>
+			<xs:enumeration value="DayRate"/>
+			<xs:enumeration value="DistressedInventory"/>
+			<xs:enumeration value="FamilyPlan"/>
+			<xs:enumeration value="Government"/>
+			<xs:enumeration value="Group"/>
+			<xs:enumeration value="LastRoomAvailable"/>
+			<xs:enumeration value="Military"/>
+			<xs:enumeration value="Monthly"/>
+			<xs:enumeration value="Multi-DayPackage"/>
+			<xs:enumeration value="Negotiated"/>
+			<xs:enumeration value="Net"/>
+			<xs:enumeration value="NonLastRoomAvailable"/>
+			<xs:enumeration value="Package"/>
+			<xs:enumeration value="Promotional"/>
+			<xs:enumeration value="PromotionalPackageTour"/>
+			<xs:enumeration value="Published"/>
+			<xs:enumeration value="RegularRack"/>
+			<xs:enumeration value="SeniorCitizen"/>
+			<xs:enumeration value="TourWholesale"/>
+			<xs:enumeration value="TravelIndustry"/>
+			<xs:enumeration value="Weekend "/>
+			<xs:enumeration value="Weekly"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_RatePlanType">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Rate plan types.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_RatePlanType_Base">
+				<xs:attributeGroup ref="OTA_CodeExtGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_RecycledProducts_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of recycled products.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Aluminum"/>
+			<xs:enumeration value="Batteries"/>
+			<xs:enumeration value="ComputerParts"/>
+			<xs:enumeration value="Glass"/>
+			<xs:enumeration value="Lightbulbs"/>
+			<xs:enumeration value="Paper"/>
+			<xs:enumeration value="Plastic"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_RecycledProducts">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Recycled products.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_RecycledProducts_Base">
+				<xs:attributeGroup ref="OTA_CodeExtGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_RecycleFacilityLocation_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of recycling bin/ facility locations.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CommonAreas"/>
+			<xs:enumeration value="Garage"/>
+			<xs:enumeration value="GuestRoom"/>
+			<xs:enumeration value="MeetingRoom"/>
+			<xs:enumeration value="Restaurant"/>
+			<xs:enumeration value="StaffArea"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_RecycleFacilityLocation">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Recycling bin/ facility locations.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_RecycleFacilityLocation_Base">
+				<xs:attributeGroup ref="OTA_CodeExtGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_ReservationBillingType_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of reservation billing types.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Rate Plan Type (RPT) OpenTravel codelist.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Note: Typically used for rate plans that may be published, e.g. have no qualifying criteria, or may be restricted or negotiated, e.g. has qualifying criteria for eligibility and/or has been negotiated between parties.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Casino"/>
+			<xs:enumeration value="Corporate"/>
+			<xs:enumeration value="Group "/>
+			<xs:enumeration value="Individual"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_ReservationBilling">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Reservation billing code types.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_ReservationBillingType_Base">
+				<xs:attributeGroup ref="OTA_CodeExtGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_SSR_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of special service request types.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="BassinetSeatingRequested"/>
+			<xs:enumeration value="BlindPassenger"/>
+			<xs:enumeration value="BookingContainsAnInfant"/>
+			<xs:enumeration value="BulkheadSeatingRequested"/>
+			<xs:enumeration value="ChildAged2to11Years"/>
+			<xs:enumeration value="DeafPassenger"/>
+			<xs:enumeration value="ExtraSeatRequired"/>
+			<xs:enumeration value="ImpairedMobilityPassenger"/>
+			<xs:enumeration value="InfantAccompanyingAdultPassenger"/>
+			<xs:enumeration value="LanguageAssistance"/>
+			<xs:enumeration value="MedicalCondition"/>
+			<xs:enumeration value="MeetAndAssist"/>
+			<xs:enumeration value="OxygenRequired"/>
+			<xs:enumeration value="PetInCabin"/>
+			<xs:enumeration value="SpecialDiet_MealRestrictions"/>
+			<xs:enumeration value="ServiceAnimal"/>
+			<xs:enumeration value="SpecialLuggage"/>
+			<xs:enumeration value="UnaccompaniedMinor"/>
+			<xs:enumeration value="WheelchairRequired"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_SSRType">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Soecial service request type.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_SSR_Base">
+				<xs:attributeGroup ref="OTA_CodeExtGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_TransactionAction_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of transaction action types.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: OpenTravel</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Note: Specifies the type of action requested when more than one function could be handled by the message.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Book"/>
+			<xs:enumeration value="Cancel"/>
+			<xs:enumeration value="Commit"/>
+			<xs:enumeration value="CommitOverrideEdits">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Commit the transaction and override the end transaction edits.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Hold"/>
+			<xs:enumeration value="Initiate"/>
+			<xs:enumeration value="Ignore"/>
+			<xs:enumeration value="Modify"/>
+			<xs:enumeration value="Ticket">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">A ticket for an event, such as a show or theme park.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Quote"/>
+			<xs:enumeration value="VerifyPrice">
+				<xs:annotation>
+					<xs:documentation source="Description" xml:lang="en">Perform a price verification.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_TransactionAction">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Transaction actions.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_TransactionAction_Base">
+				<xs:attributeGroup ref="OTA_CodeExtGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_TravelPurpose_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of travel purposes.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Travel Purpose (TVP) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Bereavment/Emergency"/>
+			<xs:enumeration value="Business"/>
+			<xs:enumeration value="BusinessAndPersonal"/>
+			<xs:enumeration value="Charter/Group"/>
+			<xs:enumeration value="Conference/Event"/>
+			<xs:enumeration value="Personal"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_TravelPurpose">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Travel purpose types.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_TravelPurpose_Base">
+				<xs:attributeGroup ref="OTA_CodeExtGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_UnitOfMeasure_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of units of measure.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Unit of Measure (UOM) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Acre(s)"/>
+			<xs:enumeration value="Ampere(s)"/>
+			<xs:enumeration value="Arpent(s)"/>
+			<xs:enumeration value="Bi-Week(s)"/>
+			<xs:enumeration value="Bottle"/>
+			<xs:enumeration value="Celsius"/>
+			<xs:enumeration value="Centare(s)"/>
+			<xs:enumeration value="Centigram(s)"/>
+			<xs:enumeration value="Centiliter(s)"/>
+			<xs:enumeration value="Centimeter(s)"/>
+			<xs:enumeration value="Column(s)"/>
+			<xs:enumeration value="CubicFeet"/>
+			<xs:enumeration value="CubicFoot"/>
+			<xs:enumeration value="CubicInch(es)"/>
+			<xs:enumeration value="CubicKilometer(s)"/>
+			<xs:enumeration value="CubicMeter(s)"/>
+			<xs:enumeration value="CubicYard(s)"/>
+			<xs:enumeration value="Day(s)"/>
+			<xs:enumeration value="Degree(s)"/>
+			<xs:enumeration value="Dozen"/>
+			<xs:enumeration value="dpi-DotsPerInch"/>
+			<xs:enumeration value="Each"/>
+			<xs:enumeration value="Fahrenheit"/>
+			<xs:enumeration value="Feet"/>
+			<xs:enumeration value="FluidOunce(s)"/>
+			<xs:enumeration value="Foot"/>
+			<xs:enumeration value="FullDuration"/>
+			<xs:enumeration value="Gallon(s)"/>
+			<xs:enumeration value="GB-Gigabyte"/>
+			<xs:enumeration value="Gbps-GigabitsPerSecond"/>
+			<xs:enumeration value="GBps-GigabytesPerSecond"/>
+			<xs:enumeration value="GHz-Gigahertz"/>
+			<xs:enumeration value="Glass"/>
+			<xs:enumeration value="Gram(s)"/>
+			<xs:enumeration value="Hectare(s)"/>
+			<xs:enumeration value="HorsePower"/>
+			<xs:enumeration value="Hour(s)"/>
+			<xs:enumeration value="Inch(es)"/>
+			<xs:enumeration value="KB-Kilobyte"/>
+			<xs:enumeration value="Kbps-KilobitsPerSecond"/>
+			<xs:enumeration value="kHz-Kilohertz"/>
+			<xs:enumeration value="Kilogram(s)"/>
+			<xs:enumeration value="Kiloliter(s)"/>
+			<xs:enumeration value="Kilometer(s)"/>
+			<xs:enumeration value="KilometersPerHour"/>
+			<xs:enumeration value="Kilowatt(s)"/>
+			<xs:enumeration value="Knot(s)"/>
+			<xs:enumeration value="Litre(s)"/>
+			<xs:enumeration value="Magnum"/>
+			<xs:enumeration value="MB-Megabyte"/>
+			<xs:enumeration value="Mbps-MegabitsPerSecond"/>
+			<xs:enumeration value="MBps-MegabytesPerSecond"/>
+			<xs:enumeration value="Metre(s)"/>
+			<xs:enumeration value="MHz-Megahertz"/>
+			<xs:enumeration value="Microgram(s)"/>
+			<xs:enumeration value="Mile(s)"/>
+			<xs:enumeration value="MilesPerGallon"/>
+			<xs:enumeration value="MilesPerHour"/>
+			<xs:enumeration value="Milligram(s)"/>
+			<xs:enumeration value="Milliliter(s)"/>
+			<xs:enumeration value="Millimeter(s)"/>
+			<xs:enumeration value="Million(s)"/>
+			<xs:enumeration value="Minute(s)"/>
+			<xs:enumeration value="Month(s)"/>
+			<xs:enumeration value="Morgan(s)"/>
+			<xs:enumeration value="Nanogram(s)"/>
+			<xs:enumeration value="Nanometer(s)"/>
+			<xs:enumeration value="Ohm(s)"/>
+			<xs:enumeration value="Ounce(s)"/>
+			<xs:enumeration value="Pica(s)"/>
+			<xs:enumeration value="Piece(s)"/>
+			<xs:enumeration value="Pint(s)"/>
+			<xs:enumeration value="Pixel(s)"/>
+			<xs:enumeration value="Pixels/CM"/>
+			<xs:enumeration value="Pixels/Inch"/>
+			<xs:enumeration value="Point(s)"/>
+			<xs:enumeration value="Pound(s)"/>
+			<xs:enumeration value="Quart(s)"/>
+			<xs:enumeration value="Resolution"/>
+			<xs:enumeration value="Rod(s)"/>
+			<xs:enumeration value="Second(s)"/>
+			<xs:enumeration value="SquareAcre(s)"/>
+			<xs:enumeration value="SquareFeet"/>
+			<xs:enumeration value="SquareFoot"/>
+			<xs:enumeration value="SquareInch(es)"/>
+			<xs:enumeration value="SquareKilometer(s)"/>
+			<xs:enumeration value="SquareMetre(s)"/>
+			<xs:enumeration value="SquareMile(s)"/>
+			<xs:enumeration value="SquareYard(s)"/>
+			<xs:enumeration value="TB-Terabyte"/>
+			<xs:enumeration value="Volt(s)"/>
+			<xs:enumeration value="Watt(s)"/>
+			<xs:enumeration value="Week(s)"/>
+			<xs:enumeration value="Yard(s)"/>
+			<xs:enumeration value="Year(s)"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_UnitOfMeasure">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Units of measure.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_UnitOfMeasure_Base">
+				<xs:attributeGroup ref="OTA_CodeExtGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_VehCategory_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of vehicle categories.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Vehicle Category (VEC) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="2WheelVehicle"/>
+			<xs:enumeration value="All-Terrain"/>
+			<xs:enumeration value="Car/Sedan"/>
+			<xs:enumeration value="Coach/Bus"/>
+			<xs:enumeration value="CommercialVan/Truck"/>
+			<xs:enumeration value="Convertible"/>
+			<xs:enumeration value="Coupe"/>
+			<xs:enumeration value="Crossover"/>
+			<xs:enumeration value="ExtendedCabPickup"/>
+			<xs:enumeration value="Limo"/>
+			<xs:enumeration value="Monospace"/>
+			<xs:enumeration value="Motorcycle"/>
+			<xs:enumeration value="Motorhome"/>
+			<xs:enumeration value="Pickup"/>
+			<xs:enumeration value="Recreational"/>
+			<xs:enumeration value="RegularCabPickup"/>
+			<xs:enumeration value="Roadster"/>
+			<xs:enumeration value="Shuttle"/>
+			<xs:enumeration value="Special"/>
+			<xs:enumeration value="SpecialOffer"/>
+			<xs:enumeration value="Sport"/>
+			<xs:enumeration value="StationWagon"/>
+			<xs:enumeration value="SUV"/>
+			<xs:enumeration value="Truck"/>
+			<xs:enumeration value="Van"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_VehCategory">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Vehicle categories.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_VehCategory_Base">
+				<xs:attributeGroup ref="OTA_CodeExtGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_VehChargePurpose_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of vehicle charge purposes.</xs:documentation>
+			<xs:documentation source="developer" xml:lang="en">Source: Vehicle Charge Purpose (VCP) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AdditionalDay"/>
+			<xs:enumeration value="AdditionalDistance"/>
+			<xs:enumeration value="AdditionalDrive"/>
+			<xs:enumeration value="AdditionalHour"/>
+			<xs:enumeration value="AdditionalPassengers"/>
+			<xs:enumeration value="AdditionalWeek"/>
+			<xs:enumeration value="Adjustment"/>
+			<xs:enumeration value="AirConditioningSurcharge"/>
+			<xs:enumeration value="AirportFee"/>
+			<xs:enumeration value="BaseRate"/>
+			<xs:enumeration value="CarSeatFee"/>
+			<xs:enumeration value="CleaningFee"/>
+			<xs:enumeration value="ContractFee"/>
+			<xs:enumeration value="Coverage"/>
+			<xs:enumeration value="CustomerDropOff"/>
+			<xs:enumeration value="CustomerPickup"/>
+			<xs:enumeration value="Discount"/>
+			<xs:enumeration value="DriverWaitTime"/>
+			<xs:enumeration value="Drop"/>
+			<xs:enumeration value="EarlyAM_Fee"/>
+			<xs:enumeration value="Equipment"/>
+			<xs:enumeration value="ExtraBaggage"/>
+			<xs:enumeration value="ExtraGratuity"/>
+			<xs:enumeration value="ExtraStop"/>
+			<xs:enumeration value="Fee"/>
+			<xs:enumeration value="Fuel"/>
+			<xs:enumeration value="Fuel urcharge"/>
+			<xs:enumeration value="Gratuity"/>
+			<xs:enumeration value="Greeter"/>
+			<xs:enumeration value="HolidaySurcharge"/>
+			<xs:enumeration value="LatePM_Fee"/>
+			<xs:enumeration value="Mandatory"/>
+			<xs:enumeration value="MandatoryChargesTotal"/>
+			<xs:enumeration value="MeetAndGreet"/>
+			<xs:enumeration value="Optional"/>
+			<xs:enumeration value="Parking"/>
+			<xs:enumeration value="ParkingFees"/>
+			<xs:enumeration value="PayOnArrivalAmount"/>
+			<xs:enumeration value="PetSurcharge"/>
+			<xs:enumeration value="Phone"/>
+			<xs:enumeration value="PrepaidFuel"/>
+			<xs:enumeration value="PrepayAmount"/>
+			<xs:enumeration value="PushCart"/>
+			<xs:enumeration value="RateOverride"/>
+			<xs:enumeration value="RegistrationFee"/>
+			<xs:enumeration value="Representative"/>
+			<xs:enumeration value="Senior"/>
+			<xs:enumeration value="SpecialRequest"/>
+			<xs:enumeration value="StandardGratuity"/>
+			<xs:enumeration value="Stop"/>
+			<xs:enumeration value="Subtotal"/>
+			<xs:enumeration value="Surcharge"/>
+			<xs:enumeration value="SurfaceTransportationCharge(STC)"/>
+			<xs:enumeration value="Tax"/>
+			<xs:enumeration value="Tip"/>
+			<xs:enumeration value="Tolls"/>
+			<xs:enumeration value="TravelTimeFee"/>
+			<xs:enumeration value="VehicleCollection"/>
+			<xs:enumeration value="VehicleDelivery"/>
+			<xs:enumeration value="VehicleLicenseFee"/>
+			<xs:enumeration value="VehicleRental"/>
+			<xs:enumeration value="WaitTime"/>
+			<xs:enumeration value="WinterServiceCharge"/>
+			<xs:enumeration value="YoungDriver"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_VehChargePurpose">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Vehicle charge purpose types.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_VehChargePurpose_Base">
+				<xs:attributeGroup ref="OTA_CodeExtGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="List_VehSize_Base">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">An open list of vehicle sizes.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Source: Vehicle Size (VEH) OpenTravel codelist.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="12FootTruck"/>
+			<xs:enumeration value="12PassengerVan"/>
+			<xs:enumeration value="15PassengerVan"/>
+			<xs:enumeration value="20FootTruck"/>
+			<xs:enumeration value="24FootTruck"/>
+			<xs:enumeration value="26FootTruck"/>
+			<xs:enumeration value="50PassengerCoach"/>
+			<xs:enumeration value="CargoVan"/>
+			<xs:enumeration value="Compact"/>
+			<xs:enumeration value="CompactElite"/>
+			<xs:enumeration value="Economy"/>
+			<xs:enumeration value="EconomyElite"/>
+			<xs:enumeration value="Exotic"/>
+			<xs:enumeration value="ExoticSUV"/>
+			<xs:enumeration value="FourWheelDrive"/>
+			<xs:enumeration value="Fullsize"/>
+			<xs:enumeration value="FullsizeElite"/>
+			<xs:enumeration value="Intermediate"/>
+			<xs:enumeration value="IntermediateElite"/>
+			<xs:enumeration value="LargeSUV"/>
+			<xs:enumeration value="LargeTruck"/>
+			<xs:enumeration value="Luxury"/>
+			<xs:enumeration value="LuxuryElite"/>
+			<xs:enumeration value="MediumSUV"/>
+			<xs:enumeration value="Midsize"/>
+			<xs:enumeration value="Mini"/>
+			<xs:enumeration value="MiniElite"/>
+			<xs:enumeration value="Minivan"/>
+			<xs:enumeration value="Moped"/>
+			<xs:enumeration value="Oversize"/>
+			<xs:enumeration value="Premium"/>
+			<xs:enumeration value="PremiumElite"/>
+			<xs:enumeration value="Regular"/>
+			<xs:enumeration value="Shuttle"/>
+			<xs:enumeration value="SmallSUV "/>
+			<xs:enumeration value="Small/MediumTruck"/>
+			<xs:enumeration value="Special"/>
+			<xs:enumeration value="Standard"/>
+			<xs:enumeration value="StandardElite"/>
+			<xs:enumeration value="Stretch"/>
+			<xs:enumeration value="Subcompact"/>
+			<xs:enumeration value="Unique"/>
+			<xs:enumeration value="Other_">
+				<xs:annotation>
+					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="List_VehSize">
+		<xs:annotation>
+			<xs:documentation source="Description" xml:lang="en">Vehicle sizes.</xs:documentation>
+			<xs:documentation source="Moreinfo" xml:lang="en">Use: This is a string list of enumerations with an "Other_" literal to support an open enumeration list. Use the "Other_" enumeration in combination with the Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="List_VehSize_Base">
+				<xs:attributeGroup ref="OTA_CodeExtGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+</xs:schema>

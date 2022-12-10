@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OTA_CancelRS xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_CancelRS.xsd" 
+EchoToken="892345" 
+TimeStamp="2010-10-19T15:04:47-05:00" 
+Target="Production" 
+Version="3.000" 
+SequenceNmbr="1" 
+Status="Cancelled">
+	<!-- "Status" specifies the status for the transaction. All the enumerated values for this attribute are in the schema. -->
+	
+	<!-- Standard way to indicate successful processing of an OpenTravel message. Returning an empty element of this type indicates success. -->
+	<Success/>
+	
+	<!-- Contains the reference(s) of the items being cancelled. -->
+	<UniqueID Type="14" ID="99999">
+		<!-- ID is the confirmation (or unique) number you have for the previously booked hotel reservation. -->
+		<!-- Type 14 = "Reservation". (See OpenTravel Code List Unique ID Type.) -->
+	</UniqueID>
+	
+	<!-- Here are the cancellation rules that applied to display to the end user. -->
+	<CancelInfoRS>
+		<!-- A collection of cancellation rules. -->
+		<CancelRules>
+			<!-- Details of a cancellation rule. -->
+			<!-- This example shows a missed cancel by date with a fixed cancellation amount. Note that you can also use a percentage of the booking here. -->
+			<CancelRule CancelByDate="2010-10-18" Amount="100" DecimalPlaces="2" CurrencyCode="USD" Type="Charge">
+			
+				<!-- This is optional, but it's the credit card that the cancellation fees were (will be) charged to. -->
+				<PaymentCard CardNumber="999999999999" CardType="1" ExpireDate="0514">
+					<!-- Card Type 1 = "Credit card" Refer to OpenTravel Code List Card Type (CDT). -->
+				</PaymentCard>
+			</CancelRule>
+		</CancelRules>
+		
+		<!-- Use this if your company has it's own unique cancellation ID. -->
+		<UniqueID ID="123456789" Type="14"/>
+			<!-- Type 14 = "Reservation". (See OpenTravel Code List Unique ID Type.) -->
+
+	</CancelInfoRS>
+
+	<!-- This element let's you send any additional comments about the cancellation. -->
+	<Comment>
+		<Text>Your reservation at the ABC Hotel for December 10, 2010 to December 15, 2010 has been cancelled. Note that cancellation penalties of $100.00 USD applied and were applied to your credit card ending in "9999".</Text>
+	</Comment>
+	
+</OTA_CancelRS>

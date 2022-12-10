@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="3.000" id="OTA2013A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+  <xs:include schemaLocation="OTA_HotelEvent.xsd"/>
+  <xs:element name="OTA_HotelPostEventNotifRS" type="MessageAcknowledgementType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">This message acknowledges the receipt of a post event report notif request message.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: Rail Availability Response with a Connection Location Preference. -->
+<!-- USE CASE DETAILS: An end user uses a wholesaler website to find train availability for a business trip between Beijing and Shanghai. A prior schedule inquiry has indicated that a connection must be made and the end user has selected a preferred connection location from the list of connection location possibilities. This response message indicates that the transaction was processed successfully and there is availability on trains that make a connection in the preferred location. -->
+
+<OTA_RailAvailRS TimeStamp="2010-11-06T10:25:30" EchoToken="7656" Target="Production" Version="3.000" ResponseType="AvailabilityOnly" xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05
+OTA_RailAvailRS.xsd">
+
+	<!-- The presence of this element indicates the request message was processed successfully by the receiving system. -->
+	<Success/>
+	
+	<!-- Availability 1. -->
+	<OriginDestinationInformation>
+		<ArrivalDateTime>2010-12-06T10:49:00</ArrivalDateTime>
+		<OriginLocation LocationCode="PEK">BEIJING</OriginLocation>
+		<DestinationLocation LocationCode="SHA">SHANGHAI</DestinationLocation>
+
+		<!-- The connection location for the train. -->
+		<ConnectionLocations>
+			<ConnectionLocation LocationCode="TIA" ConnectionInfo="Stop" ConnectType="Interline" MinChangeTime="10">TIANJIN</ConnectionLocation>
+				<!-- MinChangeTime is the number of minutes between connections. -->
+		</ConnectionLocations>
+
+		<OriginDestinationOption LastHoldDate="2010-11-07">
+			<!-- LastHoldDate is the last date after which the priced journey will be cancelled if not ticketed. -->
+			
+			<!-- Journey Segment information which may be a train and/or a bus segment. -->
+			<JourneySegment>
+				<TrainSegment DepartureDateTime="2010-12-06T05:00:00" ArrivalDateTime="2010-12-06T08:48:00" StopQuantity="1" OnTimeRate="99.0">
+				<!-- DEPARTURE station information -->
+				<DepartureStation>
+					<!-- This train station is staffed, it also has self service technology including an automated ticket printer -->
+					<Details LocationCode="BEIC" IsStaffedInd="true" SST_MachineInd="true" TicketPrinterInd="true">Beijing Railway Station</Details>
+					<OperationSchedules>
+						<OperationSchedule>
+						<OperationTimes>
+						<!-- This station is open 24 hours a day, 7 days a week -->
+							<OperationTime Start="00:00:00" End="24:00:00" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true"></OperationTime>
+						</OperationTimes>
+						</OperationSchedule>
+					</OperationSchedules>
+					<Address>
+						<AddressLine>Dongbianmen, Dongcheng District, Beijing 12345</AddressLine>
+					</Address>
+					<Telephone PhoneNumber="0086-10-51019999‎"/>
+				</DepartureStation>
+				
+				<!-- ARRIVAL station information -->
+				<ArrivalStation>
+					<Details LocationCode="SHAN" IsStaffedInd="true" SST_MachineInd="true" TicketPrinterInd="true">Shanghai Railway Station</Details>
+					<OperationSchedules>
+						<OperationSchedule>
+						<OperationTimes>
+							<!-- This station is open 24 hours a day, 7 days a week -->
+							<OperationTime Start="00:00:00" End="24:00:00" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true"></OperationTime>
+						</OperationTimes>
+						</OperationSchedule>
+					</OperationSchedules>
+					<Address>
+						<AddressLine>No. 303 Mo Ling Road, Shanghai, China, 100077</AddressLine>
+					</Address>
+					<Telephone PhoneNumber="0086-10-99919999‎"/>
+				</ArrivalStation>
+				
+				<MarketingCompany>Chinese Ministry of Railways (CHRT)</MarketingCompany>
+				
+				<TrainInfo>
+					<Train>
+						<TrainNumber>D999</TrainNumber>
+						<NetworkCode Code="12345"></NetworkCode>
+					</Train>
+				</TrainInfo>
+
+				<AvailabilityDetail>
+					<!-- Seat types, berth types, accommodation class and compartment information with associated quantities. -->
+					<Accommodation>
+						<Class>Business</Class>
+					</Accommodation>
+				</AvailabilityDetail>
+				<AvailabilityDetail>
+					<Accommodation>
+						<Class>Coach</Class>
+					</Accommodation>
+				</AvailabilityDetail>	
+
+			</TrainSegment>
+			</JourneySegment>
+		</OriginDestinationOption>
+		
+	</OriginDestinationInformation>
+	
+	<!-- Availability 2. -->
+	<OriginDestinationInformation>
+		<ArrivalDateTime>2010-12-06T11:07:00</ArrivalDateTime>
+		<OriginLocation LocationCode="PEK">BEIJING</OriginLocation>
+		<DestinationLocation LocationCode="SHA">SHANGHAI</DestinationLocation>
+
+		<!-- The connection location for the train. -->
+		<ConnectionLocations>
+			<ConnectionLocation LocationCode="TIA" ConnectionInfo="Stop" ConnectType="Interline" MinChangeTime="10">TIANJIN</ConnectionLocation>
+				<!-- MinChangeTime is the number of minutes between connections. -->
+		</ConnectionLocations>
+
+		<OriginDestinationOption LastHoldDate="2010-11-07">
+			<!-- LastHoldDate is the last date after which the priced journey will be cancelled if not ticketed. -->
+			
+			<!-- Journey Segment information which may be a train and/or a bus segment. -->
+			<JourneySegment>
+				<TrainSegment DepartureDateTime="2010-12-06T05:01:00" ArrivalDateTime="2010-12-06T09:57:00" StopQuantity="2" OnTimeRate="99.0">
+				<!-- DEPARTURE station information -->
+				<DepartureStation>
+					<!-- This train station is staffed, it also has self service technology including an automated ticket printer -->
+					<Details LocationCode="BEIC" IsStaffedInd="true" SST_MachineInd="true" TicketPrinterInd="true">Beijing Railway Station</Details>
+					<OperationSchedules>
+						<OperationSchedule>
+						<OperationTimes>
+						<!-- This station is open 24 hours a day, 7 days a week -->
+							<OperationTime Start="00:00:00" End="24:00:00" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true"></OperationTime>
+						</OperationTimes>
+						</OperationSchedule>
+					</OperationSchedules>
+					<Address>
+						<AddressLine>Dongbianmen, Dongcheng District, Beijing 12345</AddressLine>
+					</Address>
+					<Telephone PhoneNumber="0086-10-51019999‎"/>
+				</DepartureStation>
+				
+				<!-- ARRIVAL station information -->
+				<ArrivalStation>
+					<Details LocationCode="SHAN" IsStaffedInd="true" SST_MachineInd="true" TicketPrinterInd="true">Shanghai Railway Station</Details>
+					<OperationSchedules>
+						<OperationSchedule>
+						<OperationTimes>
+							<!-- This station is open 24 hours a day, 7 days a week -->
+							<OperationTime Start="00:00:00" End="24:00:00" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true"></OperationTime>
+						</OperationTimes>
+						</OperationSchedule>
+					</OperationSchedules>
+					<Address>
+						<AddressLine>No. 303 Mo Ling Road, Shanghai, China, 100077</AddressLine>
+					</Address>
+					<Telephone PhoneNumber="0086-10-99919999‎"/>
+				</ArrivalStation>
+				
+				<MarketingCompany>Chinese Ministry of Railways (CHRT)</MarketingCompany>
+				
+				<TrainInfo>
+					<Train>
+						<TrainNumber>D999</TrainNumber>
+						<NetworkCode Code="12345"></NetworkCode>
+					</Train>
+				</TrainInfo>
+
+				<AvailabilityDetail>
+					<!-- Seat types, berth types, accommodation class and compartment information with associated quantities. -->
+					<Accommodation>
+						<Class>Business</Class>
+					</Accommodation>
+				</AvailabilityDetail>
+				<AvailabilityDetail>
+					<Accommodation>
+						<Class>Coach</Class>
+					</Accommodation>
+				</AvailabilityDetail>	
+
+			</TrainSegment>
+			</JourneySegment>
+		</OriginDestinationOption>
+		
+	</OriginDestinationInformation>	
+	
+</OTA_RailAvailRS>

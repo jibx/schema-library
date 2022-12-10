@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: Cancel One or More "Provisionally Booked" Train Seat Reservations. -->
+<!-- USE CASE DETAILS: An online travel agent is booking a rail trip for a family of five. The agent has provisionally booked five seats on a train using the OTA_RailBookRQ/RS message. Note that a provisional booking is one that has been processed successfully by the OTA_RailBookRQ/RS messages but is not yet confirmed in the trading partners system. The agent system has issued an OTA_RailIgnoreBookingRQ message with the unique ID's of the five provisional train seat reservations. This response message indicates that the CANCEL of two of the five seat reservations has failed. Note that in this use case, the Rail Supplier returns a WARNING with a unique ID for each of the provisional train seat reservations that have failed. -->
+
+<OTA_RailIgnoreBookingRS xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_RailIgnoreBookingRS.xsd" 
+Version="1.000">
+
+	<!-- The presence of this element indicates the request message was processed successfully by the receiving system. -->
+	<Success/>
+
+	<!-- The presence of this element indicates the request message was processed successfully by the trading partner but one or more business warnings have been returned. -->
+	<Warnings>
+		<!-- Warning Type 11 is "Advisory" - See OpenTravel Code List Error Warning Type (EWT). -->
+		<Warning Type="11" RecordID="000001">Provisional train seat reservation could not be Cancelled. No seats have been cancelled.</Warning>
+		<Warning Type="11" RecordID="000005">Provisional train seat reservation could not be Cancelled. No seats have been cancelled.</Warning>
+	</Warnings>
+
+</OTA_RailIgnoreBookingRS>

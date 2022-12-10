@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="1.000" id="OTA2010B">
+	<xs:include schemaLocation="OTA_RailCommonTypes.xsd"/>
+	<xs:annotation>
+		<xs:documentation xml:lang="en">All Schema files in the OpenTravel Alliance specification are made available according to the terms defined by the OpenTravel License Agreement at http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:element name="OTA_RailConfirmBookingRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The Rail Confirm Booking RQ message is the request message to commit one or more provisionally booked messages that have been processed successfully from an OTA_RailBookRQ message but are not yet confirmed in the trading partners system. Successful processing of this message results in PNR creation.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" type="POS_Type">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Point of Sale Identification for the transaction initiator that includes the identification information of the party that has made the reservation request and optional  information, such as an agency number assigned by IATA, ARC, ESRP or TID.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="UniqueID" type="UniqueID_Type" maxOccurs="99">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">The unique ID's of the provisional(unconfirmed) booking request(s) to be committed. Note that the @Type attribute will typically contain a value of 23 which is a "Provisional reservation" - See OpenTravel Code List Unique ID Type (UIT).</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+			<xs:attribute name="ReservationDetailsInd" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">If true, the rail reservation details are to be returned in the response.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

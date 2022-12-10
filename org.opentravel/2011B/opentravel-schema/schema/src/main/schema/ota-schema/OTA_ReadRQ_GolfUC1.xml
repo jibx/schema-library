@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: #1: Local golf course with carts and club rentals -->
+<!-- USE CASE DETAILS: 
+
+Jane and John Smith are golfers and are looking for a local course to play on. They are flexible in the days and times that they can play, but they want a course that provides golf carts and has club rentals. They do a search through an online golf site (Golf For All) and see that The Grand Del Mar is a local course that has golf carts and club rentals—and an afternoon tee time discount, so they book the discounted afternoon tee time.
+-->
+
+<OTA_ReadRQ xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_ReadRQ.xsd" 
+EchoToken="12345" 
+TimeStamp="2011-05-01T09:44:52" 
+Target="Production" 
+Version="4.000" 
+PrimaryLangID="en-us">
+
+	<!-- Point of sale information for the sender of the request, in this case the golf distributors branded website. -->
+	<POS>
+		<Source>
+			<RequestorID Type="7" ID="GolfForAllWebsite"/>
+			<!-- Type 7 = "Wholesaler". See OpenTravel Code List Unique ID Type (UIT). -->
+		</Source>
+	</POS>
+
+		<UniqueID ID="999999" Type="14">
+			<!-- Type 14 = "Reservation". See OpenTravel Code List Unique ID Type (UIT). -->
+			<CompanyName Code="GDM">Grand Del Mar Golf Course</CompanyName>
+		</UniqueID>
+		
+</OTA_ReadRQ>

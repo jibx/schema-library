@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="5.000" id="OTA2014B">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx</xs:documentation>
+	</xs:annotation>
+  <xs:include schemaLocation="OTA_HotelRFP.xsd"/>
+  <xs:element name="OTA_HotelRFP_MeetingNotifRQ">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">The OTA_HotelRFP_NotifRQ sends detailed information as previously requested via an OTA_HotelRFP_RQ or sent unsolicitated with updated information regarding an RFP. The response to this message would be the OTA_AcknowledgementRS.xsd.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="RFP_ResponseType">
+          <xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

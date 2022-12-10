@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="4.000" id="OTA2014B">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx</xs:documentation>
+	</xs:annotation>
+  <xs:include schemaLocation="OTA_HotelCommonTypes.xsd"/>
+  <xs:element name="OTA_HotelInvBlockRS">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">This message returns information about inventory count that meet the requested criteria.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice>
+        <xs:sequence>
+          <xs:element name="Success" type="SuccessType">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The presence of the empty Success element explicitly indicates that the request message was successful.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Warnings" type="WarningsType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Used in conjunction with the Success element to define one or more business errors.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="InvBlocks" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">This may be used for creating blocks at multiple hotels or multiple blocks at a single hotel.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="HotelRef" minOccurs="0">
+                  <xs:annotation>
+                    <xs:documentation xml:lang="en">This is used to identify the hotel to which the block(s) applies.</xs:documentation>
+                  </xs:annotation>
+                  <xs:complexType>
+                    <xs:attributeGroup ref="HotelReferenceGroup"/>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="InvBlockDates" minOccurs="0">
+                  <xs:annotation>
+                    <xs:documentation xml:lang="en">This is used to indicate the date or date range applicable to all inventory blocks in this message.</xs:documentation>
+                  </xs:annotation>
+                  <xs:complexType>
+                    <xs:attributeGroup ref="InvBlockDatesGroup"/>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="InvBlock" type="InvBlockType" minOccurs="0" maxOccurs="99">
+                  <xs:annotation>
+                    <xs:documentation xml:lang="en">This is for creating a single block at a single hotel.</xs:documentation>
+                  </xs:annotation>
+                </xs:element>
+                <xs:element name="Contacts" minOccurs="0">
+                  <xs:annotation>
+                    <xs:documentation xml:lang="en">A collection of contacts.</xs:documentation>
+                  </xs:annotation>
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="Contact" type="ContactPersonType" maxOccurs="99">
+                        <xs:annotation>
+                          <xs:documentation xml:lang="en">This may be used for multiple sets of contact information (e.g., sales manager, group contact, event manager).</xs:documentation>
+                        </xs:annotation>
+                      </xs:element>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+              <xs:attributeGroup ref="InvBlockGroup"/>
+            </xs:complexType>
+          </xs:element>
+          <xs:element ref="TPA_Extensions" minOccurs="0"/>
+        </xs:sequence>
+        <xs:element name="Errors" type="ErrorsType">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">Errors are returned if the request was unable to be processed.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:choice>
+      <xs:attributeGroup ref="OTA_PayloadStdAttributes">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">This element defines standard attributes that appear on the root element for all OpenTravel Messages.</xs:documentation>
+        </xs:annotation>
+      </xs:attributeGroup>
+      <xs:attribute name="MessageContentCode" type="OTA_CodeType" use="optional">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Defines specific content of the message being sent. Refer to OpenTravel Code List TDB.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

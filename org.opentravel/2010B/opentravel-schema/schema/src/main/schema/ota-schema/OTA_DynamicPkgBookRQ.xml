@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OTA_DynamicPkgBookRQ xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_DynamicPkgBookRQ.xsd" xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Target="Test" TimeStamp="2009-05-08T15:51:07" Version="1.0" TransactionIdentifier="88cb9e469b8d02ea">
+	<POS>
+		<Source>
+			<RequestorID ID="BTA142" MessagePassword="jg97fg6#67f" Type="5">
+				<!--Type (UIT) 5= Travel Agency -->
+				<CompanyName>Bob's Travel Agency</CompanyName>
+			</RequestorID>
+		</Source>
+	</POS>
+	<DynamicPackage DynamicPkgAction="Book" DynamicPkgStatus="PendingPurchase">
+		<Components>
+			<HotelComponent DynamicPkgStatus="PendingPurchase" CreateDateTime="2009-05-08T15:51:07.0295786-07:00" QuoteID="88cb9e4678cb0f26">
+				<RoomStays>
+					<RoomStay>
+						<RoomRates>
+							<RoomRate RatePlanCode="HMCO03*ROH*233*8cbd74bc0443060*6815349" RatePlanID="152" RatePlanCategory="829F97A9F0B6E0E3EC23CF1251A27F5E88FC6F83532A6EE38133C4EDD107DFB6" RoomTypeCode="ROH" InvBlockCode="1" NumberOfUnits="1" AvailabilityStatus="AvailableForSale">
+								<Rates>
+									<Rate AgeQualifyingCode="10">
+										<Base AmountBeforeTax="232.41" AmountAfterTax="251.00" CurrencyCode="USD"/>
+									</Rate>
+								</Rates>
+								<RoomRateDescription>
+									<Text>Standard </Text>
+								</RoomRateDescription>
+								<Total AmountBeforeTax="232.41" AmountAfterTax="251.00" CurrencyCode="USD"/>
+							</RoomRate>
+						</RoomRates>
+						<TimeSpan Start="2009-09-29" End="2009-10-03"/>
+						<BasicPropertyInfo HotelCode="HMCO03" HotelCityCode="MCO" HotelName="Disney's All-Star Sports Resort"/>
+						<ResGuestRPHs>
+							<ResGuestRPH RPH="1"/>
+							<ResGuestRPH RPH="2"/>
+							<ResGuestRPH RPH="3"/>
+						</ResGuestRPHs>
+					</RoomStay>
+				</RoomStays>
+			</HotelComponent>
+			<AirComponent DynamicPkgStatus="PendingPurchase" CreateDateTime="2009-05-08T15:51:07.0452039-07:00" QuoteID="88cb9e4678cb0f26">
+				<AirItinerary>
+					<OriginDestinationOptions>
+						<OriginDestinationOption>
+							<FlightSegment ArrivalDateTime="2009-09-29T16:17:00" DepartureDateTime="2009-09-29T09:00:00" FlightNumber="567" ResBookDesigCode="G" StopQuantity="0">
+								<DepartureAirport LocationCode="PHX"/>
+								<ArrivalAirport LocationCode="MCO"/>
+								<OperatingAirline Code="US" CompanyShortName="US">US Airways</OperatingAirline>
+								<Equipment AirEquipType="321"/>
+								<MarketingAirline Code="US"/>
+								<BookingClassAvails CabinType="Economy">
+									<BookingClassAvail ResBookDesigCode="G"/>
+								</BookingClassAvails>
+							</FlightSegment>
+						</OriginDestinationOption>
+						<OriginDestinationOption>
+							<FlightSegment ArrivalDateTime="2009-10-03T09:00:00" DepartureDateTime="2009-10-03T07:25:00" FlightNumber="1519" ResBookDesigCode="G" StopQuantity="0">
+								<DepartureAirport LocationCode="MCO"/>
+								<ArrivalAirport LocationCode="PHX"/>
+								<OperatingAirline Code="US" CompanyShortName="US">US Airways</OperatingAirline>
+								<Equipment AirEquipType="752"/>
+								<MarketingAirline Code="US"/>
+								<BookingClassAvails CabinType="Economy">
+									<BookingClassAvail ResBookDesigCode="G"/>
+								</BookingClassAvails>
+							</FlightSegment>
+						</OriginDestinationOption>
+					</OriginDestinationOptions>
+				</AirItinerary>
+				<AirItineraryPricingInfo QuoteID="515FED7189CDD1BD7B83640EBB708160C8B0F9097764EF04433E1136A18E09A9">
+					<ItinTotalFare NegotiatedFare="true">
+						<BaseFare Amount="496.74" CurrencyCode="USD"/>
+						<Taxes>
+							<Tax Amount="37.26" CurrencyCode="USD" TaxCode="US">USTRANSP</Tax>
+							<Tax Amount="15.00" CurrencyCode="USD" TaxCode="AY">USSECURITY</Tax>
+							<Tax Amount="27.00" CurrencyCode="USD" TaxCode="XF">USPFC</Tax>
+							<Tax Amount="21.60" CurrencyCode="USD" TaxCode="ZP">USZP</Tax>
+						</Taxes>
+						<TotalFare Amount="597.60" CurrencyCode="USD"/>
+					</ItinTotalFare>
+					<PTC_FareBreakdowns>
+						<PTC_FareBreakdown>
+							<PassengerTypeQuantity Code="ADT" Quantity="3"/>
+							<FareBasisCodes>
+								<FareBasisCode>GGAUSJ6Y</FareBasisCode>
+							</FareBasisCodes>
+							<PassengerFare>
+								<BaseFare Amount="165.58" CurrencyCode="USD"/>
+								<Taxes>
+									<Tax Amount="12.42" CurrencyCode="USD" TaxCode="US">USTRANSP</Tax>
+									<Tax Amount="5.00" CurrencyCode="USD" TaxCode="AY">USSECURITY</Tax>
+									<Tax Amount="7.20" CurrencyCode="USD" TaxCode="ZP">USZP</Tax>
+									<Tax Amount="9.00" CurrencyCode="USD" TaxCode="XF">USPFC</Tax>
+								</Taxes>
+								<TotalFare Amount="199.20" CurrencyCode="USD"/>
+							</PassengerFare>
+							<TravelerRefNumber RPH="1"/>
+							<TravelerRefNumber RPH="2"/>
+							<TravelerRefNumber RPH="3"/>
+						</PTC_FareBreakdown>
+					</PTC_FareBreakdowns>
+					<PriceRequestInformation FareQualifier="7"/>
+				</AirItineraryPricingInfo>
+				<TicketingInfo TicketType="eTicket">
+					<TicketAdvisory>NONREF/PEN FOR CHG</TicketAdvisory>
+					<TicketAdvisory>VALID US ONLY</TicketAdvisory>
+				</TicketingInfo>
+			</AirComponent>
+			<PackageOptionComponent DynamicPkgStatus="PendingPurchase" CreateDateTime="2009-05-08T15:51:07.0452039-07:00" QuoteID="88cb9e4678cb0f26">
+				<PackageOptions>
+					<PackageOption ID="12345" RatePlanCode="VMCO008*SW*0*0*6675878" RatePlanID="18590" QuoteID="216FC8288695D6A200FA04BDB140301844C0BDB64B0F1F4DE32BADF52E99A37C" Type="4" AvailabilityStatus="AvailableForSale">
+						<!-- Type (PKO) 4 = Ticket -->
+						<Price AgeQualifyingCode="10" EffectiveDate="2009-09-30" NumberOfUnits="1">
+							<!-- Type (CHG) 1 = Daily -->
+							<Base AmountAfterTax="100.00" CurrencyCode="USD"/>
+							<RateDescription>
+								<Text>Adult rate for 09/30/2009</Text>
+							</RateDescription>
+						</Price>
+						<Price AgeQualifyingCode="8" EffectiveDate="2009-09-30" NumberOfUnits="2">
+							<!-- Type (CHG) 1 = Daily -->
+							<Base AmountAfterTax="60.00" CurrencyCode="USD"/>
+							<RateDescription>
+								<Text>Child rate for 09/30/2009</Text>
+							</RateDescription>
+						</Price>
+						<ServiceDetails>
+							<Comments>
+								<Comment Name="Description">
+									<Text>Sea World admission</Text>
+								</Comment>
+							</Comments>
+						</ServiceDetails>
+					</PackageOption>
+					<PackageOption ID="12345" RatePlanCode="VMCO001*CJ*0*0*6675878" RatePlanID="11590" QuoteID="41E3A86649ED70D725460C219628E05E16984BE7B785F3072BD9FAFAE4287490" Type="4" AvailabilityStatus="AvailableForSale">
+						<!-- Type (PKO) 4 = Ticket -->
+						<Price AgeQualifyingCode="10" EffectiveDate="2009-09-29" RateTimeUnit="Day" UnitMultiplier="3" NumberOfUnits="1">
+							<!-- Type (CHG) 32 = Per duration -->
+							<Base AmountAfterTax="400.00" CurrencyCode="USD"/>
+							<RateDescription>
+								<Text>Three day pass</Text>
+							</RateDescription>
+						</Price>
+						<Price AgeQualifyingCode="8" EffectiveDate="2009-09-29" RateTimeUnit="Day" UnitMultiplier="3" NumberOfUnits="2">
+							<!-- Type (CHG) 32 = Per duration -->
+							<Base AmountAfterTax="200.00" CurrencyCode="USD"/>
+							<RateDescription>
+								<Text>Three day pass</Text>
+							</RateDescription>
+						</Price>
+						<ServiceDetails>
+							<Comments>
+								<Comment Name="Description">
+									<Text>Disney Park Tickets</Text>
+								</Comment>
+							</Comments>
+						</ServiceDetails>
+					</PackageOption>
+				</PackageOptions>
+			</PackageOptionComponent>
+			<CarComponent DynamicPkgStatus="PendingPurchase" CreateDateTime="2009-05-08T15:51:07.0452039-07:00" QuoteID="88cb9e4678cb0f26">
+				<Vehicle QuoteID="564CC86649ED70D725460C219628E05E16984BE7B785F3072BD9FAFAE4287322">
+					<VehRentalCore PickUpDateTime="2009-09-29T16:00:00" ReturnDateTime="2009-10-03T07:00:00">
+						<PickUpLocation LocationCode="MCO"/>
+						<ReturnLocation LocationCode="MCO"/>
+					</VehRentalCore>
+					<Customer>
+						<Primary>
+							<CustomerID Type="1" ID="1"/>
+							<!-- Type (UIT) 1= Customer -->
+						</Primary>
+					</Customer>
+					<VehPref>
+						<VehType VehicleCategory="1" DoorCount="2"/>
+						<!-- VehicleCategory (VEC) 1= Car -->
+						<VehClass Size="6"/>
+						<!-- Size (SIZ) 6= Intermediate -->
+					</VehPref>
+					<RateQualifier RateQualifier="ZI*I4*I4**110924"/>
+					<VehicleCharges>
+						<VehicleCharge Amount="300.00" CurrencyCode="USD" TaxInclusive="true" Purpose="1"/>
+						<!-- Purpose (VCP) 1= Vehicle rental -->
+					</VehicleCharges>
+					<TotalCharge RateTotalAmount="300.00" EstimatedTotalAmount="300.00" CurrencyCode="USD"/>
+				</Vehicle>
+			</CarComponent>
+		</Components>
+		<ResGuests>
+			<ResGuest ResGuestRPH="1" AgeQualifyingCode="10" LocationCode="PHX">
+				<!--AgeQualifyingCode (AQC) 10 = Adult -->
+				<Profiles>
+					<ProfileInfo>
+						<Profile ProfileType="1">
+							<!-- ProfileType (PRT) 1 = Customer -->
+							<Customer>
+								<PersonName>
+									<NamePrefix>Mr.</NamePrefix>
+									<GivenName>Robert</GivenName>
+									<Surname>Roberts</Surname>
+								</PersonName>
+								<Telephone PhoneLocationType="7" PhoneTechType="5" PhoneNumber="8885551234"/>
+								<!--PhoneLocationType (PLT) 7 = Office -->
+								<!--PhoneTechType (PTT) 5 = Mobile -->
+								<Email>bob@bobco.com</Email>
+								<Address>
+									<AddressLine>123 Air St.</AddressLine>
+									<CityName>Tempe</CityName>
+									<PostalCode>85281</PostalCode>
+									<StateProv>AZ</StateProv>
+									<CountryName>USA</CountryName>
+								</Address>
+								<CustLoyalty LoyalLevel="Chairman" SignupDate="2008-06-10" MembershipID="00097100564" VendorCode="USV" TravelSector="1"/>
+								<!-- TravelSector (TVS) 1 = Air -->
+							</Customer>
+						</Profile>
+					</ProfileInfo>
+				</Profiles>
+			</ResGuest>
+			<ResGuest ResGuestRPH="2" AgeQualifyingCode="8" Age="10" LocationCode="PHX">
+				<!--AgeQualifyingCode (AQC) 8 = Child -->
+				<Profiles>
+					<ProfileInfo>
+						<Profile ProfileType="1">
+							<!-- ProfileType (PRT) 1 = Customer -->
+							<Customer>
+								<PersonName>
+									<NamePrefix>Mr.</NamePrefix>
+									<GivenName>Sam</GivenName>
+									<Surname>Roberts</Surname>
+								</PersonName>
+							</Customer>
+						</Profile>
+					</ProfileInfo>
+				</Profiles>
+			</ResGuest>
+			<ResGuest ResGuestRPH="3" AgeQualifyingCode="8" Age="15" LocationCode="PHX">
+				<!--AgeQualifyingCode (AQC) 8 = Child -->
+				<Profiles>
+					<ProfileInfo>
+						<Profile ProfileType="1">
+							<!-- ProfileType (PRT) 1 = Customer -->
+							<Customer>
+								<PersonName>
+									<NamePrefix>Ms.</NamePrefix>
+									<GivenName>Sally</GivenName>
+									<Surname>Roberts</Surname>
+								</PersonName>
+							</Customer>
+						</Profile>
+					</ProfileInfo>
+				</Profiles>
+			</ResGuest>
+		</ResGuests>
+		<GlobalInfo>
+			<Guarantee>
+				<GuaranteesAccepted>
+					<GuaranteeAccepted GuaranteeID="BOB-12345678"/>
+				</GuaranteesAccepted>
+			</Guarantee>
+			<Total AmountBeforeTax="2049.15" AmountAfterTax="2168.60" CurrencyCode="USD" AdditionalFeesExcludedIndicator="false"/>
+		</GlobalInfo>
+	</DynamicPackage>
+</OTA_DynamicPkgBookRQ>

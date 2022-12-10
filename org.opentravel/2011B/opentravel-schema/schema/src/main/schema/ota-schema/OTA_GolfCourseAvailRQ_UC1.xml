@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: #1: Local golf course with carts and club rentals -->
+<!-- USE CASE DETAILS: 
+
+Jane and John Smith are golfers and are looking for a local course to play on. They are flexible in the days and times that they can play, but they want a course that provides golf carts and has club rentals. They do a search through an online golf site (Golf For All) and see that The Grand Del Mar is a local course that has golf carts and club rentals—and an afternoon tee time discount, so they book the discounted afternoon tee time.
+-->
+
+<OTA_GolfCourseAvailRQ xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_GolfCourseAvailRQ.xsd" 
+EchoToken="12345" 
+TimeStamp="2011-05-01T09:44:52" 
+Target="Production" 
+Version="3.000" 
+PrimaryLangID="en-us">
+
+	<!-- Point of sale information for the sender of the request, in this case the golf distributors branded website. -->
+	<POS>
+		<Source>
+			<RequestorID Type="7" ID="GolfForAllWebsite"/>
+			<!-- Type 7 = "Wholesaler". See OpenTravel Code List Unique ID Type (UIT). -->
+		</Source>
+	</POS>
+
+	<!-- Transaction processing directives, including display currency overrides. If no display currency information is provided, the display and pricing currency will default to the value in POS/Source/@ISOCurrency. -->
+	<ProcessingInfo DisplayCurrency="US" MaxResultsQty="10"/>
+		<!-- DisplayCurrency: The requested display currency in ISO 4217 encoding. -->
+		<!-- MaxResultsQty: The maximum quantity of search results in the response. NOTE, check with your trading partners to see if they support this functionality.  -->
+		
+	<!-- One or more golf facility(s) and tee time round(s) to request availability for. -->
+	<GolfFacility ID="1001" Type="4">
+			<!-- Type 4 = "Company". See OpenTravel Code List Unique ID Type (UIT). -->
+			<CompanyName Code="GDM">Grand Del Mar Golf Course</CompanyName>
+		
+		<!-- One or more tee time(s) to request availability for. -->
+		<TeeTime RoundID="2" CartQty="1" GolferQty="2" NumberOfHoles="18" Start="2012-12-18">
+
+			<!-- Promotion from search results requested. -->
+			<Discounts PromotionCode="WinterSpecial"/>
+			
+			<Amenity AmenityCode="CRT" ID="2222" Name="Golf Cart" IncludedInTeeTimePriceInd="true" Description="Comfortable golf carts stocked with refreshments and equipped with Laser Link range finders for calculating exact yardage to each hole."/>
+				<!-- A golf cart that is included in the tee time price. -->
+				
+			<Amenity AmenityCode="CLB" ReservableInd="true" ID="4444" Name="Club Rental" Description="Callaway clubs, updated yearly with the newest technology, are available for rental and may be reserved prior to tee time." PricingType="PerAmenity" IncludedInTeeTimePriceInd="false"/>
+				<!-- Golf club rental that may be reserved. -->
+
+		</TeeTime>
+	</GolfFacility>
+
+</OTA_GolfCourseAvailRQ>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: Cancel an entire rail reservation. -->
+<!-- USE CASE DETAILS: A travel agent has sent a cancel message for a previously booked rail reservation. The travel agent receives this response confirming that the booking has been cancelled. -->
+
+<OTA_CancelRQ CancelType="Cancel" EchoToken="892345" Version="2.002" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_CancelRQ.xsd" xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!-- CancelType specifies the type of action requested when more than one function could be handled by the message. -->
+	
+	<!-- Transaction originator (point of sale) information. -->
+	<POS>
+		<Source>
+			<RequestorID Type="5" ID="925832875"/>
+				<!-- Request type of 5 is "Travel Agency" - See OpenTravel Code List Unique ID Type (UIT). -->
+		</Source>
+	</POS>
+
+	<UniqueID ID="123456" Type="40">
+				<!-- ID type of 40 is "Confirmation number" - See OpenTravel Code List Unique ID Type (UIT). -->
+	</UniqueID>
+
+</OTA_CancelRQ>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: Hotel Rebate Program: A traveler searches for a hotel participating in a rebate program. -->
+<!-- USE CASE DETAILS: 
+
+1.	Jane Smith is searching for a hotel on an online travel site. Her company is participating in the Taxeo VAT rebate program and has requested that employees search for Taxeo participating hotels when making hotel arrangements. Jane enters her search criteria including the name of the Taxeo rebate program and her trip purpose of business. (THIS INSTANCE)
+2.	Jane receives a list of hotels that match her search criteria including two that are participating in the Taxeo VAT program. (OTA_HotelSearchRS_Rebate1.xml)
+3.	Jane requests availability on the property (OTA_HotelAvailRQ_Rebate1.xml) and receives a room availability response (OTA_HotelAvailRS_Rebate1.xml)
+4.	Jane books her stay and a copy of her credit card guarantee information is passed in the Taxeo payment element that will be sent to/ or utilized in house for the VAT rebate (OTA_HotelResRQ_Rebate1.xml). Jane receives a confirmation for her hotel stay (OTA_HotelResRS_Rebate1.xml)
+-->
+
+<OTA_HotelSearchRQ xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelSearchRQ.xsd" 
+Target="Production" 
+Version="3.000" 
+PrimaryLangID="EN-US" 
+ResponseType="PropertyList">
+
+	<!-- Transaction originator (point of sale) information. -->
+	<POS>
+		<Source>
+			<RequestorID Type="13" ID="123456" />
+				<!-- 	RequestorID @Type 7: Internet Broker (See OpenTravel Code List Unique ID Type.) -->
+		</Source>	
+	</POS>
+	
+	<!-- Specified hotel search criteria. -->
+	<Criteria>
+		<Criterion>
+		
+			<!-- Search for hotels in or near Paris, France -->
+			<Address>
+				<CityName>Paris</CityName>
+				<CountryName Code="FR"/>
+			</Address>
+			
+			<!-- Stay date range of November 3 to November 12 -->
+			<StayDateRange Start="2011-11-03" End="2011-11-12">
+			</StayDateRange>
+
+			<RebatePrograms>
+				<RebateProgram ProgramName="Taxeo" TripPurpose="Business">
+					</RebateProgram>
+			</RebatePrograms>
+			
+		</Criterion>
+	</Criteria>
+</OTA_HotelSearchRQ>

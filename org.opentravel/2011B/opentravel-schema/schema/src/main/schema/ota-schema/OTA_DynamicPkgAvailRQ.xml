@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<OTA_DynamicPkgAvailRQ xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_DynamicPkgAvailRQ.xsd" 
+xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+Target="Test" TimeStamp="2009-07-20T11:55:34" 
+Version="2" 
+TransactionIdentifier="88cbd782cbaf77a0">
+
+	<POS>
+		<Source>
+			<RequestorID ID="BTA142" MessagePassword="jg97fg6#67f" Type="5">
+				<!--Type (UIT) 5= Travel Agency -->
+				<CompanyName>Bob's Travel Agency</CompanyName>
+			</RequestorID>
+		</Source>
+	</POS>
+	<SearchCriteria>
+		<AirSearch MaxResponses="10" RequestType="Schedule" SequenceNumber="1">
+			<OriginDestinationInformation>
+				<DepartureDateTime>2009-09-29T07:00:00</DepartureDateTime>
+				<OriginLocation LocationCode="PHX"/>
+				<DestinationLocation LocationCode="MCO"/>
+			</OriginDestinationInformation>
+			<TravelPreferences>
+				<VendorPref Code="US" PreferLevel="Preferred"/>
+			</TravelPreferences>
+			<TravelRefSummary>
+				<PassengerTypeQuantities>
+					<PassengerTypeQuantity Code="ADT" Quantity="1"/>
+					<PassengerTypeQuantity Code="CHD" Quantity="2"/>
+				</PassengerTypeQuantities>
+				<PriceRequestInformation FareQualifier="7"/>
+			</TravelRefSummary>
+		</AirSearch>
+		<AirSearch MaxResponses="10" RequestType="Schedule" SequenceNumber="2">
+			<OriginDestinationInformation>
+				<DepartureDateTime>2009-10-03T07:00:00</DepartureDateTime>
+				<OriginLocation LocationCode="MCO"/>
+				<DestinationLocation LocationCode="PHX"/>
+			</OriginDestinationInformation>
+			<TravelPreferences>
+				<VendorPref Code="US" PreferLevel="Preferred"/>
+			</TravelPreferences>
+			<TravelRefSummary>
+				<PassengerTypeQuantities>
+					<PassengerTypeQuantity Code="ADT" Quantity="1"/>
+					<PassengerTypeQuantity Code="CHD" Quantity="2"/>
+				</PassengerTypeQuantities>
+				<PriceRequestInformation FareQualifier="7"/>
+			</TravelRefSummary>
+		</AirSearch>
+		<HotelSearch MaxResponses="10" RequestType="Avail" SequenceNumber="3">
+			<HotelSearchCriteria AvailableOnlyIndicator="true">
+				<Criterion>
+					<RefPoint StateProv="FL" CountryCode="US" Code="MCO"/>
+					<StayDateRange Start="2009-09-29" End="2009-10-03"/>
+					<RoomStayCandidates>
+						<RoomStayCandidate Quantity="1">
+							<GuestCounts>
+								<GuestCount AgeQualifyingCode="10" Count="1"/>
+								<!-- AgeQualifyingCode (AQC) 10= Adult -->
+								<GuestCount AgeQualifyingCode="8" Count="2"/>
+								<!-- AgeQualifyingCode (AQC) 8= Child -->
+							</GuestCounts>
+						</RoomStayCandidate>
+					</RoomStayCandidates>
+				</Criterion>
+			</HotelSearchCriteria>
+		</HotelSearch>
+		<PackageOptionSearch MaxResponses="20" RequestType="Avail" SequenceNumber="4">
+			<OptionSearchCriteria AvailableOnlyIndicator="true">
+				<Criterion>
+					<RefPoint StateProv="FL" CountryCode="US" Code="MCO"/>
+					<DateRange Start="2009-09-29" End="2009-10-03"/>
+					<RequestTypes>
+						<RequestType Type="4"/>
+						<!-- Type (PKO) 4= Ticket -->
+					</RequestTypes>
+					<GuestCounts>
+						<GuestCount AgeQualifyingCode="10" Count="1"/>
+						<GuestCount AgeQualifyingCode="8" Count="2"/>
+					</GuestCounts>
+				</Criterion>
+			</OptionSearchCriteria>
+		</PackageOptionSearch>
+		<CarSearch MaxResponses="20" RequestType="Avail" SequenceNumber="5">
+			<VehAvailRQCore Status="Available">
+				<VehRentalCore PickUpDateTime="2009-09-29T07:00:00" ReturnDateTime="2009-10-03T07:00:00">
+					<PickUpLocation LocationCode="MCO"/>
+					<ReturnLocation LocationCode="MCO"/>
+				</VehRentalCore>
+			</VehAvailRQCore>
+			<VehAvailRQInfo/>
+		</CarSearch>
+	</SearchCriteria>
+	<DynamicPackage>
+		<ResGuests>
+			<ResGuest ResGuestRPH="1" AgeQualifyingCode="10" LocationCode="PHX"/>
+			<!--AgeQualifyingCode (AQC) 10= Adult -->
+			<ResGuest ResGuestRPH="2" AgeQualifyingCode="8" Age="15" LocationCode="PHX"/>
+			<!--AgeQualifyingCode (AQC) 8= Child -->
+			<ResGuest ResGuestRPH="3" AgeQualifyingCode="8" Age="10" LocationCode="PHX"/>
+			<!--AgeQualifyingCode (AQC) 8= Child -->
+		</ResGuests>
+	</DynamicPackage>
+</OTA_DynamicPkgAvailRQ>

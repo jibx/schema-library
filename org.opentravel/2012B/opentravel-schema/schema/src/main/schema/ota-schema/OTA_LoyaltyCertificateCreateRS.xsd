@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="4.000" id="OTA2012B">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:annotation>
+    <xs:documentation source="Notice" xml:lang="en">The OTA_CodeType simpleType will be deprecated in the 2013A OpenTravel XML Message Suite publication. All OTA_CodeType typed attributes with be replaced with elements typed as an open list, e.g. List_NameOfList.</xs:documentation>
+  </xs:annotation>
+	<xs:include schemaLocation="OTA_LoyaltyCommonTypes.xsd"/>
+	<xs:element name="OTA_LoyaltyCertificateCreateRS">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The CertificateCreateRS allows businesses to communicate with their loyalty service provider to generate redemption certificates for their customers.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="Success" type="SuccessType">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">An element that is not intended to contain any data. The mere presence of a success element within the response message indicates that the incoming request message was processed successfully.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Warnings" type="WarningsType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Indicates that the recipient of the request message identified one or more business-level warnings/errors, but the message itself was successfully processed.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="LoyaltyCertificateDetail" minOccurs="0" maxOccurs="999">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Details about the loyalty certificate, including certifacte number and type.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:attributeGroup ref="LoyaltyCertificateNumberGroup"/>
+							<xs:attribute name="CustomerRPH" type="RPH_Type" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Reference of the customer the certificate is created for.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="CertificateType" type="StringLength1to16" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Describes the currency type to be deducted (e.g. miles, points, vouchers, stays.)</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="CertificateRefNumber" type="xs:nonNegativeInteger" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">A unique reference for the created certificate.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Customer" minOccurs="0" maxOccurs="999">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Customer for whom a certificate is created.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="PersonNameType">
+									<xs:attribute name="RPH" type="RPH_Type" use="optional">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">The Reference Place Holder (RPH) is an index code used to identify an instance in a collection of like items (e.g. used to assign individual passengers or clients to particular itinerary items).</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+								</xs:extension>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="TravelInfo" type="LoyaltyTravelInfoType" minOccurs="0" maxOccurs="99">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Travel information for created certificates.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="AccountInfo" type="AccountInfoType" minOccurs="0" maxOccurs="999">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Loyalty account information used to create certificate.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:element name="Errors" type="ErrorsType">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Indicates that an error occurred in the processing of the incoming request message. An error is defined as a malformed XML message that could not be processed.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

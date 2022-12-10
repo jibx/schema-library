@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.opentravel.org/OTA/2003/05" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="1.000" id="OTA2011A">
+	<xs:include schemaLocation="OTA_RailCommonTypes.xsd"/>
+	<xs:annotation>
+		<xs:documentation xml:lang="en">All Schema files in the OpenTravel Alliance specification are made available according to the terms defined by the OpenTravel License Agreement at http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+		</xs:annotation>
+	<xs:element name="OTA_RailResRetrieveSummaryRS">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">This message returns a list of summary reservation(s) information when an exact match on a read request could NOT be made or if summary reservation response information was specifically requested in the OTA_RailReadRQ @ResInfoLevel attribute.
+
+Summary reservation information in this message includes:
+
+- Reservation booking reference, date and status
+- Origin and destination summary information
+- Passenger information, including occupation, gender, age category, ADA requirements and rate qualifiers
+
+NOTES: 
+
+- For detail rail reservation information (including full itinerary details) for an exact match of a read request, the OTA_RailResRetrieveDetailRS message is typically returned.
+
+- Check with your trading partner to confirm their implementation of the Rail Read Reservation response messages.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="Success" type="SuccessType">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">An element that is not intended to contain any data. The mere presence of an empty success element within the response message indicates that the incoming request message was processed successfully.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Warnings" type="WarningsType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Indicates that the recipient of the request message identified one or more business-level warnings/errors, but the message itself was successfully processed.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RailReservation" type="RailReservationSummaryType" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Summary rail reservation information.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:sequence>
+					<xs:element name="Errors" type="ErrorsType">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Indicates that an error occurred in the processing of the incoming request message. An error is defined as a critical error caused by corruption of a message in transit or a communication failure. </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:choice>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+			<xs:attributeGroup ref="ResponseGroup">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Use the MoreDataEchoToken to indicate the last record in the list. Used in subsequent requests, to identify where the last response left off.</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

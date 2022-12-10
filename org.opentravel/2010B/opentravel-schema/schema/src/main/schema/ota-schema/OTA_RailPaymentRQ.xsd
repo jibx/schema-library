@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="1.000" id="OTA2010B">
+	<xs:include schemaLocation="OTA_RailCommonTypes.xsd"/>
+	<xs:annotation>
+		<xs:documentation xml:lang="en">All Schema files in the OpenTravel Alliance specification are made available according to the terms defined by the OpenTravel License Agreement at http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:element name="OTA_RailPaymentRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The Rail Payment request message is used to submit a payment for a reservation. This request message typically follows the combination of OTA_RailBookRQ and OTA_RailConfirmBookingRQ messages.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" type="POS_Type">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Point of Sale Identification for the transaction initiator that includes the identification information of the party that has made the reservation request and optional  information, such as an agency number assigned by IATA, ARC, ESRP or TID.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="RailPaymentInfo">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Full details on the rail payment information.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="UniqueID" type="UniqueID_Type">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">The unique ID associated with a single reservation, e.g. a confirmation number and PNR record locator.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="PaymentInfo" type="PaymentDetailType" maxOccurs="5">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Information of the form(s) of payment to be used to pay for this reservation. The element repeats to allow for multiple forms of payment to be used, if so required.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element ref="TPA_Extensions" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

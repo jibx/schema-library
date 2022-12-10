@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: Confirm a single "provisionally booked" train seat reservation. -->
+<!-- USE CASE DETAILS: An online travel agent is booking a rail trip for a customer. The agent has provisionally booked a seat on a train using the OTA_RailBookRQ/RS message. Note that a provisional booking is one that has been processed successfully by the OTA_RailBookRQ/RS messages but is not yet confirmed in the trading partners system. The agent system has issued an OTA_RailConfirmBookingRQ message with the unique ID of the provisional train seat reservation. This response message indicates that the COMMIT of the seat reservation has been successful and the unique ID of the committed seat reservation is returned. -->
+
+<OTA_RailConfirmBookingRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_RailConfirmBookingRS.xsd" Version="1.000">
+
+	<!-- The presence of this element indicates the message was processed successfully by the receiving system -->
+	<Success/>
+	
+	<!-- The PNR locator list for the provisional reservation that is now COMMITTED (confirmed.) -->
+	<Confirmation>
+		<UniqueID ID="0000002" Type="40">
+			<!-- Unique ID type of 40 is "Confirmation number" - See OpenTravel Code List Unique ID Type (UIT). -->
+			<CompanyName>ABC Travel Company</CompanyName>
+		</UniqueID>
+	</Confirmation>
+
+</OTA_RailConfirmBookingRS>

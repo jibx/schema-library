@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ota="http://www.opentravel.org/OTA/2003/05" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/FastRez/ws/v1" xmlns:frz1="http://www.opentravel.org/FastRez/ws/v1">
+	<!-- import the schema definitions here -->
+	<wsdl:types>
+		<xs:schema>
+			<xs:import namespace="http://www.opentravel.org/OTA/2003/05" schemaLocation="FastRezBinding.xsd"/>
+		</xs:schema>
+	</wsdl:types>
+	<!-- define the messages here -->
+	<!-- Availability -->
+	<wsdl:message name="CheckAvailabilityRequest">
+		<wsdl:part name="OTA_HotelAvailRQ" element="ota:OTA_HotelAvailRQ"/>
+	</wsdl:message>
+	<wsdl:message name="CheckAvailabilityResponse">
+		<wsdl:part name="OTA_HotelAvailRS" element="ota:OTA_HotelAvailRS"/>
+	</wsdl:message>
+	<!-- Book Reservation -->
+	<wsdl:message name="BookReservationRequest">
+		<wsdl:part name="OTA_HotelResRQ" element="ota:OTA_HotelResRQ"/>
+	</wsdl:message>
+	<wsdl:message name="BookReservationResponse">
+		<wsdl:part name="OTA_HotelResRS" element="ota:OTA_HotelResRS"/>
+	</wsdl:message>
+	<!-- Retrieve Reservation -->
+	<wsdl:message name="RetrieveReservationRequest">
+		<wsdl:part name="OTA_ReadRQ" element="ota:OTA_ReadRQ"/>
+	</wsdl:message>
+	<wsdl:message name="RetrieveReservationResponse">
+		<wsdl:part name="OTA_HotelResRS" element="ota:OTA_HotelResRS"/>
+	</wsdl:message>
+	<!-- Cancel Reservation -->
+	<wsdl:message name="CancelReservationRequest">
+		<wsdl:part name="OTA_CancelRQ" element="ota:OTA_CancelRQ"/>
+	</wsdl:message>
+	<wsdl:message name="CancelReservationResponse">
+		<wsdl:part name="OTA_CancelRS" element="ota:OTA_CancelRS"/>
+	</wsdl:message>
+	<wsdl:message name="ApplicationFault">
+		<wsdl:part name="ApplicationFault">
+			<!-- Inline Application Fault Definition -->
+			<xs:element name="ApplicationFault">
+				<xs:annotation>
+					<xs:documentation>Generic SOAP Fault</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Errors" type="ErrorsType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</wsdl:part>
+	</wsdl:message>
+	<!-- declare the operations and virtual port for FastRez messages -->
+	<wsdl:portType name="FastRezPortType">
+		<wsdl:operation name="CheckAvailability">
+			<wsdl:input message="frz1:CheckAvailabilityRequest"/>
+			<wsdl:output message="frz1:CheckAvailabilityResponse"/>
+			<wsdl:fault name="ApplicationFault" message="frz1:ApplicationFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="BookReservation">
+			<wsdl:input message="frz1:BookReservationRequest"/>
+			<wsdl:output message="frz1:BookReservationResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="RetrieveReservation">
+			<wsdl:input message="frz1:RetrieveReservationRequest"/>
+			<wsdl:output message="frz1:RetrieveReservationResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="CancelReservation">
+			<wsdl:input message="frz1:CancelReservationRequest"/>
+			<wsdl:output message="frz1:CancelReservationResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<!-- bind the messages and the port together -->
+	<wsdl:binding name="FastRezBinding" type="frz1:FastRezPortType">
+		<!-- Document Style not RPC interface -->
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<!-- Declare WSDL operations -->
+		<wsdl:operation name="CheckAvailability">
+			<soap:operation soapAction="FastRezAvailability" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ApplicationFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="BookReservation">
+			<soap:operation soapAction="FastRezBookReservation" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="RetrieveReservation">
+			<soap:operation soapAction="FastRezRetrieveReservation" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="CancelReservation">
+			<soap:operation soapAction="FastRezCancelReservation" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<!-- declare the physical endpoint for the service -->
+	<wsdl:service name="FastRezService">
+		<wsdl:port name="FastRezPort" binding="frz1:FastRezBinding">
+			<soap:address location="http://fastrezpartner.com"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

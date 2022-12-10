@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="2.001" id="OTA2014A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_GroundCommonTypes.xsd"/>
+	<xs:element name="OTA_GroundCancelRS">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">This message acknowledges that the ground reservation cancel message was received and processed successfully and/or has returned business warnings. If processed successfully, one or more Cancellation ID's will be returned with optional cancellation rules information and other details about the canceled reservation.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="Success" type="SuccessType">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">An element that is not intended to contain any data. The mere presence of a success element within the response message indicates that the incoming request message was processed successfully.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Warnings" type="WarningsType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Indicates that the recipient of the request message identified one or more business-level warnings/errors, but the message itself was successfully processed.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Reservation">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">One reservation that is canceled. Includes cancellation confirmation and optional information about the canceled reservation.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="CancelConfirmation" type="CancelInfoRSType">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Cancellation ID's and rules information.</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="ReservationInfo" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Optional details about the cancelled reservation.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="ReferenceID" type="UniqueID_Type" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">A reference ID that was returned in the booking confirmation message and uniquely identifies this reservation.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Locations" type="GroundLocationsType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Pickup, interim stops and drop-off details.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Passengers" type="GroundPrimaryAdditionalPassengerType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Information about a primary passenger (who is the contact for this reservation) and additional passengers.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="ServiceInfo" type="GroundServiceDetailType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Passenger preferences and information, requested and/or required, for this ground transportation service, including service type, disability vehicle, fuel efficient vehicle and other vehicle preferences and services.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Payments" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">A collection of payments associated with this ground transportation reservation request.</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:sequence>
+														<xs:element name="Payment" type="PaymentFormType" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+				<xs:element name="Errors" type="ErrorsType">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Indicates that an error occurred in the processing of the incoming request message. An error is defined as a malformed XML message that could not be processed.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

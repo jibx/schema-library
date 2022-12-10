@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: Air Booking Request/Response with EMD Information for an EMD-A Extra Baggage Fee. -->
+<!-- USE CASE DETAILS: An airline website makes a booking request for a flight that includes a $25.00 (EMD-A) baggage fee charged to the customer and this response transaction includes the EMD-A information. Note that this use case assumes the EMD has been previously issued using IATA messages.-->
+
+<OTA_AirBookRS xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05
+OTA_AirBookRS.xsd" EchoToken="456789" TimeStamp="2010-08-17T09:30:47-05:00" Target="Production" Version="8.001" SequenceNmbr="1">
+
+	<!-- The presence of this element indicates the request message was processed successfully by the receiving system. -->
+	<Success/>
+	
+	<AirReservation CreateDateTime="2010-08-17" LastModified="2010-08-17">
+	
+		<!-- AIR ITINERARY INFORMATION (All flight segments requested for booking.) -->
+		<AirItinerary>
+			<OriginDestinationOptions>
+				<OriginDestinationOption>
+					<FlightSegment RPH="1" FlightNumber="150" NumberInParty="1" DepartureDateTime="2010-12-12T09:00:00" Status="26" DepartureDay="Wed" ResBookDesigCode="Q">
+						<!-- Status of 26 = "Holds confimed" - See OpenTravel Code List Status (STS). -->
+						<DepartureAirport LocationCode="IAD"/>
+						<ArrivalAirport LocationCode="SAN"/>
+						<MarketingAirline Code="AA"/>
+					</FlightSegment>
+				</OriginDestinationOption>
+			</OriginDestinationOptions>
+		</AirItinerary>
+		
+		<!-- TRAVELER INFORMATION (All traveler information relevant to this booking request.) -->
+		<TravelerInfo>
+			<AirTraveler PassengerTypeCode="ADT">
+				<PersonName>
+					<GivenName>JOHN</GivenName>
+					<Surname>SMITH</Surname>
+				</PersonName>
+				<Telephone PhoneNumber="703-555-5555"/>
+				<CustLoyalty MembershipID="12345568" ProgramID="AA"/>
+				<TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+			</AirTraveler>
+			<SpecialReqDetails>
+				<SeatRequests>
+					<SeatRequest SeatNumber="14C" FlightRefNumberRPHList="1" TravelerRefNumberRPHList="1"/>
+				</SeatRequests>
+			</SpecialReqDetails>
+		</TravelerInfo>
+		
+		<!-- TICKETING INFORMATION (That is used to specify the ticketing arrangement or showing the issued ETKT.) -->
+		<Ticketing TicketType="eTicket" TicketDocumentNbr="0011610234533"/>
+		
+		<!-- BOOKING REFERENCE INFORMATION (That is used for a PNR record locator.) -->
+		<BookingReferenceID Type="14" ID="I23FZ4">
+		
+			<!-- Booking Reference ID Type of 14 = "Reservation" - See OpenTravel Code List Unique ID Type (UIT). -->
+			<CompanyName Code="AA"/>
+		</BookingReferenceID>
+		
+		<!-- ELECTRONIC MISCELLANEOUS DOCUMENT INFORMATION (Provides the electronic miscellaneous document information for a previously issued EMD.) -->
+		<EMD_Info TotalFltSegQty="1" EMD_Type="EMD-A" QuoteInd="false" TicketingModeCode="N" Quantity="1">
+		
+			<!--TicketingModeCode Type of N = "Ticketing Mode Indicator (Not Option 5)" - See OpenTravel Code List EMD Ticketing Mode Code-5387 (ETM). -->
+			<!-- The direct reference of the traveler assigned by the requesting system and used as a cross reference between data segments. -->
+			<TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+			
+			<!-- The agent numeric code, booking agent id, issuing agent id and/or servicing airline/system provider ID. -->
+			<AgentID Type="6" ID="123345678">
+			
+				<!--AgentID Type of 6 = "Airline" -  See OpenTravel Code List Unique ID Type (UIT). -->
+				<CompanyName Code="AA"/>
+			</AgentID>
+			
+			<!-- Form of payment information. -->
+			<PaymentDetail PaymentType="5">
+			
+				<!--Payment Type of 5 = "Credit Card" - See OpenTravel Code List Payment Type (PMT). -->
+				<PaymentCard CardCode="MC" MaskedCardNumber="XXXXXXXXXXXX1234" ExpireDate="1012"/>
+				<PaymentAmount CurrencyCode="USD" Amount="25.00"/>
+			</PaymentDetail>
+			
+			<!-- The true origin and destination. -->
+			<OriginDestination DestinationCityCode="SAN" OriginCityCode="IAD"/>
+			
+			<!-- The base fare, the base fare net and the base fare sell amounts for the EMD. -->
+			<BaseFare Purpose="Base" CurrencyCode="USD" Amount="25.00"/>
+			
+			<!-- The equivalent fare, the fare amounts in the payment currency for the EMD. -->
+			<EquivFare BankExchangeRate="1.1" Amount="27.50" CurrencyCode="CHF"/>
+			
+			<!--  The total, total net, total sell fare or refund amount of the EMD. -->
+			<TotalFare CurrencyCode="CHF" Amount="30.25"/>
+			
+			<!--  The taxes applicable for the EMD.-->
+			<Taxes>
+				<Tax TaxName="VAT" TaxTransactionType="charge" Amount="2.75" RefundableInd="true" TaxCountry="CH" CurrencyCode="CHF" TaxCode="CH"/>
+			</Taxes>
+			
+			<!-- Nonendorsable and nonrefundable indicators, penalty restriction indicators, pricing system, tour code, ISO country code, around the world fare indicator and non-reissuable/non-exchangeable indicators. -->
+			<FareInfo NonRefundableInd="true" CountryCodeOfIssue="CH">
+				<RuleIndicator RuleCode="35"/>
+				
+				<!-- Note, the RuleCode is the ATPCO category number for the fare. -->
+			</FareInfo>
+			
+			<!-- The EMD type, in connection number, fee owner and date of issue. -->
+			<TicketDocument Type="EMD" TicketDocumentNbr="001181212122" InConnectionDocNbr="0011610234533" DateOfIssue="2010-08-17" Code="AA">
+			
+				<!-- Number, status, in connection nbr, itinerary sequence nbr, coupon ref, not valid before/after, involuntary indicator, and in connection qualfier information for the EMD. -->
+				<CouponInfo ConsumedAtIssuanceInd="false" Number="1" Status="50" Value="25.00" DateOfService="2010-12-12" AssociateInd="true" TaxOnEMD_Ind="true" InConnectionNbr="2">
+				
+					<!-- Status of 50 = "Open" - See OpenTravel Code List Status (STS). -->
+					<!-- Reference to the flight segments for this EMD coupon. -->
+					<SoldFlightSegmentRPH>1</SoldFlightSegmentRPH>
+					
+					<!-- Excess baggage information. -->
+					<ExcessBaggage UnitOfMeasureQuantity="1"/>
+					
+					<!-- The reason for issuance information. -->
+					<ReasonForIssuance Description="EXCESS BAGGAGE" SubCode="0CD" Code="C"/>
+					
+					<!-- Code C = "Baggage" - See OpenTravel Code List EMD Reason For Issuance- 4183 (ERI). NOTE this value may change when the 2010B OpenTravel Code List is released. -->
+					<!-- The validating airline for this EMD coupon. -->
+					<ValidatingAirline Code="AA"/>
+				</CouponInfo>
+			</TicketDocument>
+		</EMD_Info>
+	</AirReservation>
+</OTA_AirBookRS>

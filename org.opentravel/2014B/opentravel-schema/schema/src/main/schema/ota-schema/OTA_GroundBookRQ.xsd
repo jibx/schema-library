@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="2.001" id="OTA2014B">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OTA_GroundCommonTypes.xsd"/>
+	<xs:element name="OTA_GroundBookRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The OpenTravel Ground Transportation reservation (booking) request message includes the information required to create one ground transportation reservation that may have multiple segments associated with it.
+
+Reservation request information includes:
+-Point of sale information for the requestor
+-Availability reference ID (A reference ID that was returned in a prior availability response message and may be used to reduce the amount of duplicate information in this request)
+-Service locations, that include pickup, stop(s) and drop-off details
+-Primary passenger and additional passenger contact information
+-General passenger information that may determine the class of vehicle required
+-Passenger preferences (including service type, vehicle type, disability equipped vehicle indicator and recommended maximum passengers and baggage)
+-Rate qualifying information associated with the vehicle and/or ground transportation service
+-Payment rules that are applicable to a specific vehicle or ground service type</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" type="POS_Type">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Point of Sale Identification. Identification number of the vendor that has made the vehicle availability request and agency number assigned by IATA, ARC, ESRP or TID.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Reference" type="UniqueID_Type" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">A reference ID that was returned in a prior availability response message.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="GroundReservation" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation source="description" xml:lang="en">A collection of reservation requests.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Location" type="GroundLocationsType" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Pickup, interim stops and drop-off details.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Passenger" type="GroundPrimaryAdditionalPassengerType">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Information about a primary passenger (who is the contact for this reservation) and additional passengers.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:choice>
+								<xs:element name="Service" type="GroundServiceDetailType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Private service information.  Exclusive use of vehicle (e.g. Limo or Black Car).</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Shuttle" type="GroundShuttleResType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation source="description" xml:lang="en">Shuttle reservation information.  Shared use of a vehicle where you are purchasing an individual fare or a seat (e.g. Bus, super shuttle)</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:choice>
+							<xs:element name="RateQualifier" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Rate qualifier and promotions that apply to this reservation.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="GroundRateQualifierType"/>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Payments" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Payment(s) associated with this ground transportation reservation request.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Payment" type="PaymentFormType" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">A payment associated with this ground transportation reservation request.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Reference" type="UniqueID_Type" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">A reference ID that was returned in a prior availability response message.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Payments" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Payment(s) associated with all ground transportation reservation requests. Note that if payment information is included at the GroundReservation level, that payment information overrides this global payment information.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Payment" type="PaymentFormType" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">A payment associated with this ground transportation reservation request.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element ref="TPA_Extensions" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+			<xs:attributeGroup ref="ReqRespVersion"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

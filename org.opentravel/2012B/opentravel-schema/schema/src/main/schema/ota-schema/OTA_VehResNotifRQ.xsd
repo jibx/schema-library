@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+targetNamespace="http://www.opentravel.org/OTA/2003/05" 
+elementFormDefault="qualified" 
+version="2.000" 
+id="OTA2012B">
+
+<xs:annotation>
+	<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+</xs:annotation>
+<xs:annotation>
+    <xs:documentation source="Notice" xml:lang="en">The OTA_CodeType simpleType will be deprecated in the 2013A OpenTravel XML Message Suite publication. All OTA_CodeType typed attributes with be replaced with elements typed as an open list, e.g. List_NameOfList.</xs:documentation>
+  </xs:annotation>
+
+	<xs:include schemaLocation="OTA_CommonTypes.xsd"/>
+	<xs:include schemaLocation="OTA_VehicleCommonTypes.xsd"/>
+
+	<xs:element name="OTA_VehResNotifRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">This message will push reservation details to a trading partner. The information pushed may establish this reservation initially in a trading partner's database and/or update the information that currently exists.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" type="POS_Type">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">To specify who is sending the reservation database information.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Reservations">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">A container for reservation information.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Reservation" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">All the detail information for a reservation.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ProcessingInfo">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">To specify the action to be taken on this information.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:attribute name="Action" type="ActionType" use="optional">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">To specify the action to be taken.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="BookingSource" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">To specify booking information for a specific reservation.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Source" maxOccurs="10">
+														<xs:complexType>
+															<xs:complexContent>
+																<xs:extension base="SourceType">
+																	<xs:sequence>
+																		<xs:element name="Address" type="AddressType" minOccurs="0">
+																			<xs:annotation>
+																				<xs:documentation xml:lang="en">Information on the address for the booking source.</xs:documentation>
+																			</xs:annotation>
+																		</xs:element>
+																	</xs:sequence>
+																</xs:extension>
+															</xs:complexContent>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="VehReservation" type="VehicleReservationType">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Represents the vehicle rental reservation that was successfully created.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element ref="TPA_Extensions" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="Quantity" type="xs:nonNegativeInteger" use="optional">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">The count of items being sent in this message.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+			<xs:attributeGroup ref="ReqRespVersion"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

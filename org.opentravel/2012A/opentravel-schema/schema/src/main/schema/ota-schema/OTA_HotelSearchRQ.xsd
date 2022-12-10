@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" version="4.000" id="OTA2012A">
+	<xs:annotation>
+		<xs:documentation source="Description" xml:lang="en">ALL SCHEMA FILES IN THE OPENTRAVEL ALLIANCE SPECIFICATION ARE MADE AVAILABLE ACCORDING TO THE TERMS DEFINED BY THE OPENTRAVEL LICENSE AGREEMENT AT http://www.opentravel.org/Specifications/Default.aspx.</xs:documentation>
+	</xs:annotation>
+	<xs:annotation>
+    <xs:documentation source="Notice" xml:lang="en">The OTA_CodeType simpleType will be deprecated in the 2013A OpenTravel XML Message Suite publication. All OTA_CodeType typed attributes with be replaced with elements typed as an open list, e.g. List_NameOfList.</xs:documentation>
+  </xs:annotation>
+	<xs:include schemaLocation="OTA_HotelCommonTypes.xsd"/>
+	<xs:element name="OTA_HotelSearchRQ">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">This message identifies the initial request for hotel property data.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POS" type="POS_Type" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Point of sale information about the message initiator.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Criteria" type="HotelSearchCriteriaType">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Specified hotel search criteria.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:attributeGroup ref="OTA_PayloadStdAttributes"/>
+			<xs:attributeGroup ref="MaxResponsesGroup"/>
+			<xs:attributeGroup ref="ResponseTypeGroup"/>
+			<xs:attribute name="SortOrder" use="optional">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Defines the sort order of the returned property information.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="AlphaLength1">
+						<xs:enumeration value="A">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Ascending order.</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="D">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Descending order.</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="N">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">No sort/ random order.</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="C">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Property code order.</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="P">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Property name order.</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

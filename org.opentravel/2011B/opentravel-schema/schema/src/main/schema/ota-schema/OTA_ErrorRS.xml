@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<OTA_ErrorRS EchoToken="a" 
+Severity="a" 
+DocURL="http://www.altova.com" 
+ErrorCode="SessionFailure-100" 
+CorrelationID="a" 
+TransactionIdentifier="a" 
+Status="NotProcessed" 
+RetransmissionIndicator="true" 
+TransactionStatusCode="Start" 
+TimeStamp="2001-12-17T09:30:47.0Z" 
+Version="2.000" Target="Test" 
+SequenceNmbr="1" 
+ErrorMessage="OTA version not supported" 
+PrimaryLangID="en-us" 
+AltLangID="en-us" 
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_ErrorRS.xsd" 
+xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>

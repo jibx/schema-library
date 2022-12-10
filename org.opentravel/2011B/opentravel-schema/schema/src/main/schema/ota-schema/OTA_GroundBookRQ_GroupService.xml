@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OPENTRAVEL SAMPLE INSTANCE -->
+<!-- USE CASE SCENARIO: #2: Group Service -->
+<!-- USE CASE DETAILS: 
+* The ABC Company is having their annual employee appreciation event and requests ground transportation for 65 individuals from their corporate office to the event location. 
+* Some individuals can share a transport method (e.g. a coach bus) and others require cars with a driver. 
+* As ABC Company has an account with Carey Limousine, they submit one booking request with all the required information (THIS INSTANCE). 
+* The Carey Limousine reservation system responds with an indication that they have successfully received the request (OTA_GroundBookRS_GroupService)
+* Carey Limousine customer service agents process the individual bookings and forward booking confirmations to the contacts indicated in the booking request (OTA_GroundBookRS_GroupService1). 
+-->
+
+<OTA_GroundBookRQ xmlns="http://www.opentravel.org/OTA/2003/05" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_GroundBookRQ.xsd" 
+EchoToken="12345" 
+TimeStamp="2011-05-01T09:55:25" 
+Target="Production" 
+Version="1.000" 
+PrimaryLangID="en-us">	
+
+	<!-- Point of sale information for the sender of the booking request. -->
+	<POS>
+		<Source>
+			<RequestorID Type="1" ID="ABC Company Inc."/>
+			<!-- Type 1 = "Customer". See OpenTravel Code List Unique ID Type (UIT). -->
+		</Source>
+	</POS>
+
+	<!-- ************************************************************************ -->
+	<!--		RESERVATION SET 1: 63 PEOPLE ON COACH BUSES        -->
+	<!-- ************************************************************************ -->
+	<GroundReservations>
+
+		<!-- Pickup, interim stops and drop-off details.  -->
+		<Locations>
+	
+		<!-- Pickup address. -->
+			<Pickup DateTime="2011-12-20T15:00:00">
+				<Address>
+					<AddressLine>1111 Main Street SW</AddressLine>
+					<CityName>Tampa</CityName>
+					<PostalCode>33626</PostalCode>
+					<StateProv StateCode="FL"/>
+					<Name>ABC Company Inc.</Name>
+				</Address>
+			</Pickup>
+	
+			<!-- Drop off details. -->
+			<Dropoff>
+				<Address>
+					<AddressLine>345 Ocean Drive</AddressLine>
+					<CityName>Safety Harbor</CityName>
+					<PostalCode>33699</PostalCode>
+					<StateProv StateCode="FL"/>
+					<Name>The Riviera Banquet Hall</Name>
+				</Address>
+			</Dropoff>
+			
+		</Locations>
+		
+		<!-- Information about a primary passenger (who is the contact for this reservation) and additional passengers. -->
+		<Passengers>
+			<Primary DefaultInd="true">
+				<PersonName>
+					<NamePrefix>Ms.</NamePrefix>
+					<GivenName>Jane</GivenName>
+					<Surname>Smith</Surname>
+				</PersonName>
+				<Telephone PhoneNumber="8139990011"/>
+				<Address>
+					<AddressLine>1111 Main Street SW</AddressLine>
+					<CityName>Tampa</CityName>
+					<PostalCode>33626</PostalCode>
+					<StateProv StateCode="FL"/>
+				</Address>
+				<Email>Jane.Smith@abccompany.com</Email>
+				<CompanyName>ABC Company Inc.</CompanyName>
+			</Primary>
+			
+		<!-- Information about secondary passenger group. -->
+			<Additional Quantity="63">
+				<!-- THIS IS THE GROUP QUANTITY -->
+				<Address>
+					<AddressLine>1111 Main Street SW</AddressLine>
+					<CityName>Tampa</CityName>
+					<PostalCode>33626</PostalCode>
+					<StateProv StateCode="FL"/>
+				</Address>
+				<CompanyName>ABC Company Inc.</CompanyName>
+			</Additional>
+		</Passengers>
+	
+		<!-- Service details. -->
+		<ServiceInfo  DisabilityVehicleInd="false"  MaximumPassengers="65" VehicleType="25" ServiceType="SimpleTransfer" />
+			<!-- Vehicle Type 25 = "Coach". See OpenTravel Code List Vehicle Category (VEC). -->
+	
+		<!-- Corporate account information. -->
+		<RateQualifier AccountID="ABC123" AccountName="ABC Company Inc."/>
+
+	</GroundReservations>
+
+	<!-- *********************************** -->
+	<!--		EXECUTIVE 1                        -->
+	<!-- *********************************** -->
+
+	<GroundReservations>
+	
+		<!-- Pickup, interim stops and drop-off details.  -->
+		<Locations>
+	
+		<!-- Pickup address. -->
+			<Pickup DateTime="2011-12-20T15:00:00">
+				<Address>
+					<AddressLine>1111 Main Street SW</AddressLine>
+					<CityName>Tampa</CityName>
+					<PostalCode>33626</PostalCode>
+					<StateProv StateCode="FL"/>
+					<Name>ABC Company Inc.</Name>
+				</Address>
+			</Pickup>
+	
+			<!-- Drop off details. -->
+			<Dropoff>
+				<Address>
+					<AddressLine>345 Ocean Drive</AddressLine>
+					<CityName>Safety Harbor</CityName>
+					<PostalCode>33699</PostalCode>
+					<StateProv StateCode="FL"/>
+					<Name>The Riviera Banquet Hall</Name>
+				</Address>
+			</Dropoff>
+			
+		</Locations>
+				
+		<!-- Information about a primary passenger (who is the contact for this reservation) and additional passengers. -->
+		<Passengers>
+			<Primary DefaultInd="true">
+				<PersonName>
+					<NamePrefix>Ms.</NamePrefix>
+					<GivenName>Jane</GivenName>
+					<Surname>Smith</Surname>
+				</PersonName>
+				<Telephone PhoneNumber="8139990011"/>
+				<Address>
+					<AddressLine>1111 Main Street SW</AddressLine>
+					<CityName>Tampa</CityName>
+					<PostalCode>33626</PostalCode>
+					<StateProv StateCode="FL"/>
+				</Address>
+				<Email>Jane.Smith@abccompany.com</Email>
+				<CompanyName>ABC Company Inc.</CompanyName>
+			</Primary>
+			
+		<!-- Information about secondary passenger. -->
+			<Additional Quantity="1">
+				<!-- THIS IS AN INDIVIDUAL -->
+				<PersonName>
+					<NamePrefix>Mr.</NamePrefix>
+					<GivenName>Tom</GivenName>
+					<Surname>Jones</Surname>
+					<NameSuffix>Esquire</NameSuffix>
+				</PersonName>				
+				<Address>
+					<AddressLine>1111 Main Street SW</AddressLine>
+					<CityName>Tampa</CityName>
+					<PostalCode>33626</PostalCode>
+					<StateProv StateCode="FL"/>
+				</Address>
+				<CompanyName>ABC Company Inc.</CompanyName>
+			</Additional>
+		</Passengers>
+	
+		<!-- Service details. -->
+		<ServiceInfo  DisabilityVehicleInd="false"  MaximumPassengers="2" VehicleType="1" ServiceType="SimpleTransfer" ServiceLevel="3" VehicleSize="8"/>
+			<!-- Vehicle Type 1 = "Car/Sedan". See OpenTravel Code List Vehicle Category (VEC). -->
+			<!-- Service Level 3 = "Executive". See OpenTravel Code List Level of Service (LOS). -->
+			<!-- Vehicle Size 8 = "Full Size". See OpenTravel Code List Size (SIZ). -->
+	
+		<!-- Corporate account information. -->
+		<RateQualifier AccountID="ABC123" AccountName="ABC Company Inc."/>
+
+	</GroundReservations>
+
+	<!-- *********************************** -->
+	<!--		EXECUTIVE 2                        -->
+	<!-- *********************************** -->
+
+	<GroundReservations>
+	
+		<!-- Pickup, interim stops and drop-off details.  -->
+		<Locations>
+	
+		<!-- Pickup address. -->
+			<Pickup DateTime="2011-12-20T15:00:00">
+				<Address>
+					<AddressLine>1111 Main Street SW</AddressLine>
+					<CityName>Tampa</CityName>
+					<PostalCode>33626</PostalCode>
+					<StateProv StateCode="FL"/>
+					<Name>ABC Company Inc.</Name>
+				</Address>
+			</Pickup>
+	
+			<!-- Drop off details. -->
+			<Dropoff>
+				<Address>
+					<AddressLine>345 Ocean Drive</AddressLine>
+					<CityName>Safety Harbor</CityName>
+					<PostalCode>33699</PostalCode>
+					<StateProv StateCode="FL"/>
+					<Name>The Riviera Banquet Hall</Name>
+				</Address>
+			</Dropoff>
+			
+		</Locations>
+				
+		<!-- Information about a primary passenger (who is the contact for this reservation) and additional passengers. -->
+		<Passengers>
+			<Primary DefaultInd="true">
+				<PersonName>
+					<NamePrefix>Ms.</NamePrefix>
+					<GivenName>Jane</GivenName>
+					<Surname>Smith</Surname>
+				</PersonName>
+				<Telephone PhoneNumber="8139990011"/>
+				<Address>
+					<AddressLine>1111 Main Street SW</AddressLine>
+					<CityName>Tampa</CityName>
+					<PostalCode>33626</PostalCode>
+					<StateProv StateCode="FL"/>
+				</Address>
+				<Email>Jane.Smith@abccompany.com</Email>
+				<CompanyName>ABC Company Inc.</CompanyName>
+			</Primary>
+			
+		<!-- Information about secondary passenger. -->
+			<Additional Quantity="1">
+				<!-- THIS IS AN INDIVIDUAL -->
+				<PersonName>
+					<NamePrefix>Ms.</NamePrefix>
+					<GivenName>Mary</GivenName>
+					<Surname>Blackwell</Surname>
+				</PersonName>				
+				<Address>
+					<AddressLine>1111 Main Street SW</AddressLine>
+					<CityName>Tampa</CityName>
+					<PostalCode>33626</PostalCode>
+					<StateProv StateCode="FL"/>
+				</Address>
+				<CompanyName>ABC Company Inc.</CompanyName>
+			</Additional>
+		</Passengers>
+	
+		<!-- Service details. -->
+		<ServiceInfo  DisabilityVehicleInd="false"  MaximumPassengers="1" VehicleType="1" ServiceType="SimpleTransfer" ServiceLevel="3" VehicleSize="8"/>
+			<!-- Vehicle Type 1 = "Car/Sedan". See OpenTravel Code List Vehicle Category (VEC). -->
+			<!-- Service Level 3 = "Executive". See OpenTravel Code List Level of Service (LOS). -->
+			<!-- Vehicle Size 8 = "Full Size". See OpenTravel Code List Size (SIZ). -->
+	
+		<!-- Corporate account information. -->
+		<RateQualifier AccountID="ABC123" AccountName="ABC Company Inc."/>
+
+	</GroundReservations>
+	
+	<!-- Direct Bill (corporate account) payment information. -->
+	<Payments>
+		<!-- 50% of estimated service fees specified in Availability Response payment rules -->
+		<Payment CostCenterID="ABC9920">
+			<DirectBill DirectBill_ID="ABC123">
+				<CompanyName>ABC Company Inc.</CompanyName>
+				<Address>
+					<AddressLine>1111 Main Street SW</AddressLine>
+					<CityName>Tampa</CityName>
+					<PostalCode>33626</PostalCode>
+					<StateProv StateCode="FL"/>
+				</Address>
+				<Email>Jane.Smith@abccompany.com</Email>
+				<Telephone PhoneNumber="8139999999"></Telephone>
+			</DirectBill>
+		</Payment>
+	</Payments>
+		
+</OTA_GroundBookRQ>
