@@ -1214,7 +1214,7 @@
 					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value=""/>
+			<xs:enumeration value="z"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:complexType name="List_ChargeFrequency">
