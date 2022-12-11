@@ -1209,12 +1209,12 @@
 			<xs:enumeration value="PerDozen"/>
 			<xs:enumeration value="Stay"/>
 			<xs:enumeration value="Weekly"/>
-			<xs:enumeration value="Other_">
+			<xs:enumeration value="Otherz">
 				<xs:annotation>
 					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="z"/>
+			<xs:enumeration value=""/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:complexType name="List_ChargeFrequency">
