@@ -5,12 +5,12 @@
   <parent>
     <groupId>org.jibx.schema.config</groupId>
     <artifactId>schema-library-reactor</artifactId>
-    <version>1.2.2-SNAPSHOT</version>
+    <version>1.2.2</version>
   </parent>
   
   <groupId>org.jibx.schema.org.opentravel</groupId>
   <artifactId>opentravel-reactor</artifactId>
-  <version>1.2.2-SNAPSHOT</version>
+  <version>1.2.2</version>
   <packaging>pom</packaging>
 
   <name>opentravel.org</name>
@@ -23,15 +23,15 @@
   </properties>
 
   <modules>
-    <!-- module>x2014B</module>
-    <module>x2014A</module>
+    <module>x2014B</module>
+    <!-- module>x2014A</module>
     <module>x2013B</module>
     <module>x2013A</module>
     <module>x2012B</module>
     <module>x2012A</module>
     <module>x2011B</module>
-    <module>x2011A</module -->
-    <module>x2010B</module>
+    <module>x2011A</module>
+    <module>x2010B</module -->
   </modules>
 
 </project>

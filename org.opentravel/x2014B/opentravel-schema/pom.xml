@@ -28,7 +28,7 @@
     <module>schema</module>
 
     <module>base</module>
-    <module>base.air</module>
+    <!-- module>base.air</module>
     <module>base.veh</module>
     <module>base.hotel</module>
     <module>base.profilehotelres</module>
@@ -67,11 +67,11 @@
 
     <module>misc</module>
 
-    <module>fastrez</module>		<!-- Standalone -->
+    <module>fastrez</module>		<Standalone -->
 
-    <module>codetable</module>	<!-- Standalone -->
+    <!-- module>codetable</module>	<Standalone -->
     
-    <module>all</module>
+    <!-- module>all</module -->
   </modules>
   
   <build>

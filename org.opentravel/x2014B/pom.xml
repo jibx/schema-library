@@ -18,9 +18,9 @@
 
   <modules>
     <module>opentravel-schema</module>
-    <module>opentravel-archetype</module>
+    <!-- module>opentravel-archetype</module>
     <module>opentravel-tests</module>
-    <module>opentravel-ws</module>
+    <module>opentravel-ws</module -->
   </modules>  
 
 </project>
