@@ -28,8 +28,8 @@
     <module>schema-library-parent</module>
     <!--module>schema-utilities</module-->
 
-    <!-- module>org.docbook</module not valid xml -->
-    <module>org.apache.maven</module>
+    <!-- module>org.docbook</module not valid xml>
+    <module>org.apache.maven</module -->
     <!-- module>org.hr-xml   not on-line any more </module -->
     <!--module>org.opentravel</module>
     <module>org.oasis-open</module>
@@ -37,8 +37,8 @@
     <module>net.webservicex</module>
     <module>org.xmlsoap</module>
 
-    <module>org.jibx</module>
-    <module>net.java</module-->
+    <module>org.jibx</module -->
+    <module>net.java</module>
   </modules>
 
 </project>
