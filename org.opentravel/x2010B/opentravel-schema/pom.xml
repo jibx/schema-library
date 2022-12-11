@@ -51,9 +51,9 @@
 
     <module>misc</module>
 
-    <module>fastrez</module>		<!-- Standalone -->
+    <module>fastrez</module>		<Standalone -->
 
-    <!-- module>codetable</module>	<!-- Standalone -->
+    <!-- module>codetable</module>	<Standalone -->
     
     <!-- module>all</module -->
   </modules>
