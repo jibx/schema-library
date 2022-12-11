@@ -1209,7 +1209,7 @@
 			<xs:enumeration value="PerDozen"/>
 			<xs:enumeration value="Stay"/>
 			<xs:enumeration value="Weekly"/>
-			<xs:enumeration value="Otherz">
+			<xs:enumeration value="Other_">
 				<xs:annotation>
 					<xs:documentation source="Moreinfo" xml:lang="en">Use: Select this enumeration to exchange a value that is not in the enumerated list by entering the value information in the Code Extension fields.</xs:documentation>
 				</xs:annotation>
