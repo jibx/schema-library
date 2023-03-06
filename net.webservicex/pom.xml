@@ -5,13 +5,13 @@
     <parent>
         <artifactId>schema-library-parent</artifactId>
         <groupId>org.jibx.schema.config</groupId>
-        <version>1.2.4</version>
+        <version>1.2.5-SNAPSHOT</version>
         <relativePath>../schema-library-parent</relativePath>
     </parent>
 
   <groupId>org.jibx.schema.net.webservicex</groupId>
   <artifactId>net.webservicex-reactor</artifactId>
-  <version>1.2.4</version>
+  <version>1.2.5-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>webservicex.net</name>
