@@ -11,7 +11,7 @@
     <artifactId>org.jibx.schema.org.xmlsoap.schemas.ws._2002._07.utility.utility</artifactId>
     <packaging>bundle</packaging>
     <name>Schema Library - xmlsoap.org - ws._2002._07.utility.utility</name>
-    <version>1.2.2-SNAPSHOT</version>
+    <version>1.2.3-SNAPSHOT</version>
     <description>schemas.xmlsoap.org/ws/2002/07/utility/utility.xsd</description>
     <developers>
         <developer>

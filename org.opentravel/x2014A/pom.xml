@@ -5,12 +5,12 @@
   <parent>
     <groupId>org.jibx.schema.org.opentravel</groupId>
     <artifactId>opentravel-reactor</artifactId>
-    <version>1.2.2-SNAPSHOT</version>
+    <version>1.2.3-SNAPSHOT</version>
   </parent>
   
   <groupId>org.jibx.schema.org.opentravel.x2014A</groupId>
   <artifactId>opentravel-2014A-reactor</artifactId>
-  <version>1.2.2-SNAPSHOT</version>
+  <version>1.2.3-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>Schema Library - opentravel.org 2014A</name>

@@ -6,7 +6,7 @@
     <parent>
       <groupId>org.jibx.schema.org.opentravel.x2013A.ws</groupId>
       <artifactId>opentravel-2013A-ws-reactor</artifactId>
-      <version>1.2.2-SNAPSHOT</version>
+      <version>1.2.3-SNAPSHOT</version>
     </parent>
 
     <artifactId>org.jibx.schema.org.opentravel.x2013A.hotel.ws.soap</artifactId>
@@ -46,7 +46,7 @@
         <dependency>
             <groupId>org.jibx.schema.org.opentravel.x2013A</groupId>
             <artifactId>org.jibx.schema.org.opentravel.x2013A.hotel</artifactId>
-            <version>1.2.2-SNAPSHOT</version>
+            <version>1.2.3-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.geronimo.specs</groupId>
