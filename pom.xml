@@ -21,7 +21,7 @@
     <url>https://github.com/jibx/schema-library</url>
     <connection>scm:git:https://github.com/jibx/schema-library</connection>
     <developerConnection>scm:git:https://github.com/jibx/schema-library</developerConnection>
-    <tag>schema-library-reactor-1.2.2</tag>
+    <tag>schema-library-reactor-1.2.3</tag>
   </scm>
 
   <modules>
@@ -34,11 +34,11 @@
     <module>org.opentravel</module>
     <module>org.oasis-open</module>
     <module>org.w3</module>
-    <!--module>net.webservicex</module>
+    <module>net.webservicex</module>
     <module>org.xmlsoap</module>
 
     <module>org.jibx</module>
-    <module>net.java</module -->
+    <module>net.java</module>
   </modules>
 
 </project>
