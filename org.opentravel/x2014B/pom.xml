@@ -5,12 +5,12 @@
   <parent>
     <groupId>org.jibx.schema.org.opentravel</groupId>
     <artifactId>opentravel-reactor</artifactId>
-    <version>1.2.4-SNAPSHOT</version>
+    <version>1.2.4</version>
   </parent>
   
   <groupId>org.jibx.schema.org.opentravel.x2014B</groupId>
   <artifactId>opentravel-2014B-reactor</artifactId>
-  <version>1.2.4-SNAPSHOT</version>
+  <version>1.2.4</version>
   <packaging>pom</packaging>
 
   <name>Schema Library - opentravel.org 2014B</name>
@@ -18,13 +18,13 @@
 
   <modules>
     <module>opentravel-schema</module>
-    <!-- module>opentravel-archetype</module>
+    <module>opentravel-archetype</module>
     <module>opentravel-tests</module>
-    <module>opentravel-ws</module -->
+    <module>opentravel-ws</module>
   </modules>  
 
 
   <scm>
-    <tag>schema-library-reactor-1.2.2</tag>
+    <tag>schema-library-reactor-1.2.4</tag>
   </scm>
 </project>
