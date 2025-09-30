@@ -3,7 +3,7 @@
     <parent>
         <artifactId>schema-library-parent</artifactId>
         <groupId>org.jibx.schema.config</groupId>
-        <version>1.2.6</version>
+        <version>1.2.7-SNAPSHOT</version>
         <relativePath>../../schema-library-parent</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -11,7 +11,7 @@
     <artifactId>org.jibx.schema.org.xmlsoap.schemas.wsdl</artifactId>
     <packaging>bundle</packaging>
     <name>Schema Library - xmlsoap.org - wsdl</name>
-    <version>1.2.6</version>
+    <version>1.2.7-SNAPSHOT</version>
     <description>schemas.xmlsoap.org/wsdl/</description>
     <developers>
         <developer>
